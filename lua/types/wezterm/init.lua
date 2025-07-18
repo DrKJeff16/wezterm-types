@@ -29,7 +29,7 @@
 ---@field emit fun(event: string, ...)
 ---@field enumerate_ssh_hosts fun(ssh_config_file_name: string?): { [string] : { hostname: string, identityagent: string, identityfile: string, port: string, user: string, userknownhostsfile: string } } This function will parse your ssh configuration file(s) and extract from them the set of literal (non-pattern, non-negated) host names that are specified in Host and Match stanzas contained in those configuration files and return a mapping from the hostname to the effective ssh config options for that host.  You may optionally pass a list of ssh configuration files that should be read, in case you have a special configuration.
 ---@field executable_dir string This constant is set to the directory containing the wezterm executable file.
----@field font fun(font_attributes: FontAttributes): Fonts | fun(name: string, font_attributes: FontAttributes?): Fonts https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
+---@field font (fun(font_attributes: FontAttributes): Fonts) | (fun(name: string, font_attributes: FontAttributes?): Fonts) https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
 ---@field font_with_fallback fun(fonts: string[] | FontAttributes[]): Fonts https://wezfurlong.org/wezterm/config/lua/wezterm/font_with_fallback.html
 ---@field format fun(...: FormatItem[]): string Can be used to produce a formatted string with terminal graphic attributes such as bold, italic and colors. The resultant string is rendered into a string with wezterm compatible escape sequences embedded.
 ---@field get_builtin_color_schemes any #TODO

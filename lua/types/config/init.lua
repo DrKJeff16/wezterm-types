@@ -5,6 +5,18 @@
 ---@module 'types.objects'
 ---@module 'types.wezterm'
 
+---@class DaemonOptions
+---@field stdout? string
+---@field stderr? string
+---@field pid_file? string
+
+---@class VisualBell
+---@field fade_in_duration_ms? integer
+---@field fade_out_duration_ms? integer
+---@field fade_in_function? EasingFunction
+---@field fade_out_function? EasingFunction
+---@field target? "BackgroundColor" | "CursorColor"
+
 ---@class Config
 ---@field font? FontAttributes The baseline font to use
 ---@field dpi_by_screen? { [string]: f64 }
@@ -128,7 +140,7 @@
 ---@field serial_ports? SerialDomain[]
 ---@field unix_domains? UnixDomain[]
 --     -- The set of unix domains
----@field ssh_domains? SshDomainObj[]
+---@field ssh_domains? SSHDomainObj[]
 ---@field ssh_backend? SshBackend
 ---@field tls_servers? TlsDomainServer[]
 --     -- When running in server mode, defines configuration for
@@ -366,7 +378,7 @@
 ---@field line_to_ele_shape_cache_size? usize
 ---@field glyph_cache_image_cache_size? usize
 ---@field visual_bell? VisualBell
----@field audible_bell? AudibleBell
+---@field audible_bell? "Disabled" | "SystemBeep"
 ---@field canonicalize_pasted_newlines? NewlineCanon
 ---@field unicode_version? u8
 ---@field treat_east_asian_ambiguous_width_as_wide? bool

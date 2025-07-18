@@ -243,11 +243,11 @@ local Palette = {
 ---@alias Fonts {fonts: FontAttributes[]}
 
 ---@class FontAttributes
----@field is_fallback boolean
----@field is_synthetic boolean
----@field harfbuzz_features string[]
----@field assume_emoji_presentation boolean
----@field scale number
+---@field is_fallback? boolean
+---@field is_synthetic? boolean
+---@field harfbuzz_features? string[]
+---@field assume_emoji_presentation? boolean
+---@field scale? number
 local FontAttributes = {
     -- The font family name
     family = "JetBrains Mono",
@@ -269,39 +269,39 @@ local FontAttributes = {
 }
 
 ---@class WindowFrameConfig
----@field inactive_titlebar_bg RgbColor
----@field active_titlebar_bg RgbColor
----@field inactive_titlebar_fg RgbColor
----@field active_titlebar_fg RgbColor
----@field inactive_titlebar_border_bottom RgbColor
----@field active_titlebar_border_bottom RgbColor
----@field button_fg RgbColor
----@field button_bg RgbColor
----@field button_hover_fg RgbColor
----@field button_hover_bg RgbColor
----@field border_left_width Dimension
----@field border_right_width Dimension
----@field border_top_height Dimension
----@field border_bottom_height Dimension
----@field border_left_color RgbaColor
----@field border_right_color RgbaColor
----@field border_top_color RgbaColor
----@field border_bottom_color RgbaColor
+---@field inactive_titlebar_bg? RgbColor
+---@field active_titlebar_bg? RgbColor
+---@field inactive_titlebar_fg? RgbColor
+---@field active_titlebar_fg? RgbColor
+---@field inactive_titlebar_border_bottom? RgbColor
+---@field active_titlebar_border_bottom? RgbColor
+---@field button_fg? RgbColor
+---@field button_bg? RgbColor
+---@field button_hover_fg? RgbColor
+---@field button_hover_bg? RgbColor
+---@field border_left_width? Dimension
+---@field border_right_width? Dimension
+---@field border_top_height? Dimension
+---@field border_bottom_height? Dimension
+---@field border_left_color? RgbaColor
+---@field border_right_color? RgbaColor
+---@field border_top_color? RgbaColor
+---@field border_bottom_color? RgbaColor
 
 ---@class TabBarStyle
----@field new_tab String
----@field new_tab_hover String
----@field window_hide String
----@field window_hide_hover String
----@field window_maximize String
----@field window_maximize_hover String
----@field window_close String
----@field window_close_hover String
+---@field new_tab? String
+---@field new_tab_hover? String
+---@field window_hide? String
+---@field window_hide_hover? String
+---@field window_maximize? String
+---@field window_maximize_hover? String
+---@field window_close? String
+---@field window_close_hover? String
 
 ---@class HyperlinkRule
----@field regex Regex
----@field format String
----@field highlight usize
+---@field regex? Regex
+---@field format? String
+---@field highlight? usize
 
 ---@class SerialDomain
 ---@field name String
@@ -357,7 +357,7 @@ local FontAttributes = {
 -- Show time since last response when waiting for a response. It is recommended to use <https://wezfurlong.org/wezterm/config/lua/pane/get_metadata.html#since_last_response_ms> instead.
 
 ---@class LeaderKey :KeyNoAction
----@field timeout_milliseconds u64
+---@field timeout_milliseconds? u64
 
 ---@class HyperLinkRule
 ---@field regex string The regular expression to match
