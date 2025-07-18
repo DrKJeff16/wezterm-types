@@ -2,6 +2,13 @@
 
 --TODO: specify "any" types where possible
 
+---@module 'types.wezterm.color'
+---@module 'types.wezterm.gui'
+---@module 'types.wezterm.mux'
+---@module 'types.wezterm.nerdfonts'
+---@module 'types.wezterm.procinfo'
+---@module 'types.wezterm.time'
+
 ---@alias PathBuf string
 
 ---@class Wezterm :ExecDomain

@@ -1,5 +1,5 @@
 ---@class NerdFont
-local nerdfonts  = {}
+local nerdfonts = {}
 nerdfonts.cod_account = ""
 nerdfonts.cod_activate_breakpoints = ""
 nerdfonts.cod_add = ""
