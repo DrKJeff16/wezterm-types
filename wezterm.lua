@@ -9,6 +9,13 @@ local wezterm = require("wezterm")
 ---@type Config
 local config = wezterm.config_builder()
 
+---@type Config
+local config = wezterm.config_builder()
+
+-- if wezterm.config_builder then
+config = wezterm.config_builder()
+-- end
+
 -- or, changing the font size and color scheme.
 config.font_size = 18
 config.font = wezterm.font("FiraCode Nerd Font Mono")
