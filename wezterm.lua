@@ -9,13 +9,6 @@ local wezterm = require("wezterm")
 ---@type Config
 local config = wezterm.config_builder()
 
----@type Config
-local config = {}
-
--- if wezterm.config_builder then
-config = wezterm.config_builder()
--- end
-
 -- or, changing the font size and color scheme.
 config.font_size = 18
 config.font = wezterm.font("FiraCode Nerd Font Mono")
@@ -82,49 +75,3 @@ config.default_cursor_style = "BlinkingBlock"
 config.color_scheme = "Tokyo Night Storm (Gogh)"
 
 return config
-
--- TODO: look into other features for fonts https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
--- config.font = wezterm.font 'Fira Code Nerd Font'
--- config.font = wezterm.font('Fira Code Nerd Font', { weight = 'Medium', italic = false, stretch= 'Normal' })
--- config.font = wezterm.font('Fira Code Nerd Font Propo', { weight = 'Medium', italic = false, stretch= 'Normal' })
-
--- The filled in variant of the < symbol
--- local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-
--- The filled in variant of the > symbol
--- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
-
--- wezterm.on( 'format-tab-title', function(tab, tabs, panes, config, hover, max_width)
---   local edge_background = '#0b0022'
---   local background = '#1b1032'
---   local foreground = '#808080'
-
---   if tab.is_active then
---     background = '#2b2042'
---     foreground = '#c0c0c0'
---   elseif hover then
---     background = '#3b3052'
---     foreground = '#909090'
---   end
-
---   local edge_foreground = background
-
--- -- ensure that the titles fit in the available space
--- -- and that we have room for the edges.
--- local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
--- local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
--- local t = wezterm.truncate_right(tab.active_pane.pane_id, max_width - 2)
-
---   return {
---     { Background = { Color = edge_background } },
---     { Foreground = { Color = edge_foreground } },
---     { Text = SOLID_LEFT_ARROW },
---     { Background = { Color = background } },
---     { Foreground = { Color = foreground } },
---     { Text = title },
---     { Background = { Color = edge_background } },
---     { Foreground = { Color = edge_foreground } },
---     { Text = SOLID_RIGHT_ARROW },
---   }
--- end
--- )
