@@ -5,6 +5,14 @@
 ---@module 'types.objects'
 ---@module 'types.wezterm'
 
+---@alias DefaultCursorStyle
+---|"SteadyBlock"
+---|"BlinkingBlock"
+---|"SteadyUnderline"
+---|"BlinkingUnderline"
+---|"SteadyBar"
+---|"BlinkingBar"
+
 ---@class DaemonOptions
 ---@field stdout? string
 ---@field stderr? string

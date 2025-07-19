@@ -1,8 +1,90 @@
 ---@meta
 
+---@diagnostic disable:missing-fields
+
 --TODO:? make key and mods more specific
 
----@alias KeyAssignment "ActivateCommandPalette" | "ActivateCopyMode" | "ActivateKeyTable" | "ActivateLastTab" | "ActivatePaneByIndex" | "ActivatePaneDirection" | "ActivateTab" | "ActivateTabRelative" | "ActivateTabRelativeNoWrap" | "ActivateWindow" | "ActivateWindowRelative" | "ActivateWindowRelativeNoWrap" | "AdjustPaneSize" | "AttachDomain" | "CharSelect" | "ClearKeyTableStack" | "ClearScrollback" | "ClearSelection" | "CloseCurrentPane" | "CloseCurrentTab" | "CompleteSelection" | "CompleteSelectionOrOpenLinkAtMouseCursor" | "Copy" | "CopyTo" | "DecreaseFontSize" | "DetachDomain" | "DisableDefaultAssignment" | "EmitEvent" | "ExtendSelectionToMouseCursor" | "Hide" | "HideApplication" | "IncreaseFontSize" | "InputSelector" | "MoveTab" | "MoveTabRelative" | "Multiple" | "Nop" | "OpenLinkAtMouseCursor" | "PaneSelect" | "Paste" | "PasteFrom" | "PastePrimarySelection" | "PopKeyTable" | "PromptInputLine" | "QuickSelect" | "QuickSelectArgs" | "QuitApplication" | "ReloadConfiguration" | "ResetFontAndWindowSize" | "ResetFontSize" | "ResetTerminal" | "RotatePanes" | "ScrollByCurrentEventWheelDelta" | "ScrollByLine" | "ScrollByPage" | "ScrollToBottom" | "ScrollToPrompt" | "ScrollToTop" | "Search" | "SelectTextAtMouseCursor" | "SendKey" | "SendString" | "SetPaneZoomState" | "Show" | "ShowDebugOverlay" | "ShowLauncher" | "ShowLauncherArgs" | "ShowTabNavigator" | "SpawnCommandInNewTab" | "SpawnCommandInNewWindow" | "SpawnTab" | "SpawnWindow" | "SplitHorizontal" | "SplitPane" | "SplitVertical" | "StartWindowDrag" | "SwitchToWorkspace" | "SwitchWorkspaceRelative" | "ToggleFullScreen" | "TogglePaneZoomState"
+---@alias KeyAssignment
+---|"ActivateCommandPalette"
+---|"ActivateCopyMode"
+---|"ActivateKeyTable"
+---|"ActivateLastTab"
+---|"ActivatePaneByIndex"
+---|"ActivatePaneDirection"
+---|"ActivateTab"
+---|"ActivateTabRelative"
+---|"ActivateTabRelativeNoWrap"
+---|"ActivateWindow"
+---|"ActivateWindowRelative"
+---|"ActivateWindowRelativeNoWrap"
+---|"AdjustPaneSize"
+---|"AttachDomain"
+---|"CharSelect"
+---|"ClearKeyTableStack"
+---|"ClearScrollback"
+---|"ClearSelection"
+---|"CloseCurrentPane"
+---|"CloseCurrentTab"
+---|"CompleteSelection"
+---|"CompleteSelectionOrOpenLinkAtMouseCursor"
+---|"Copy"
+---|"CopyTo"
+---|"DecreaseFontSize"
+---|"DetachDomain"
+---|"DisableDefaultAssignment"
+---|"EmitEvent"
+---|"ExtendSelectionToMouseCursor"
+---|"Hide"
+---|"HideApplication"
+---|"IncreaseFontSize"
+---|"InputSelector"
+---|"MoveTab"
+---|"MoveTabRelative"
+---|"Multiple"
+---|"Nop"
+---|"OpenLinkAtMouseCursor"
+---|"PaneSelect"
+---|"Paste"
+---|"PasteFrom"
+---|"PastePrimarySelection"
+---|"PopKeyTable"
+---|"PromptInputLine"
+---|"QuickSelect"
+---|"QuickSelectArgs"
+---|"QuitApplication"
+---|"ReloadConfiguration"
+---|"ResetFontAndWindowSize"
+---|"ResetFontSize"
+---|"ResetTerminal"
+---|"RotatePanes"
+---|"ScrollByCurrentEventWheelDelta"
+---|"ScrollByLine"
+---|"ScrollByPage"
+---|"ScrollToBottom"
+---|"ScrollToPrompt"
+---|"ScrollToTop"
+---|"Search"
+---|"SelectTextAtMouseCursor"
+---|"SendKey"
+---|"SendString"
+---|"SetPaneZoomState"
+---|"Show"
+---|"ShowDebugOverlay"
+---|"ShowLauncher"
+---|"ShowLauncherArgs"
+---|"ShowTabNavigator"
+---|"SpawnCommandInNewTab"
+---|"SpawnCommandInNewWindow"
+---|"SpawnTab"
+---|"SpawnWindow"
+---|"SplitHorizontal"
+---|"SplitPane"
+---|"SplitVertical"
+---|"StartWindowDrag"
+---|"SwitchToWorkspace"
+---|"SwitchWorkspaceRelative"
+---|"ToggleFullScreen"
+---|"TogglePaneZoomState"
 
 ---@class KeyNoAction
 ---@field key string
@@ -11,165 +93,88 @@
 ---@class Key :KeyNoAction
 ---@field action KeyAssignment
 
----@class Action can also be called as function like older versions of wezterm did
-local Action = {}
+---@generic param : any
 
----@return KeyAssignment
-Action.ActivateCommandPalette = function(param) end
----@return KeyAssignment
-Action.ActivateCopyMode = function(param) end
----@return KeyAssignment
-Action.ActivateKeyTable = function(param) end
----@return KeyAssignment
-Action.ActivateLastTab = function(param) end
----@return KeyAssignment
-Action.ActivatePaneByIndex = function(param) end
----@return KeyAssignment
-Action.ActivatePaneDirection = function(param) end
----@return KeyAssignment
-Action.ActivateTab = function(param) end
----@return KeyAssignment
-Action.ActivateTabRelative = function(param) end
----@return KeyAssignment
-Action.ActivateTabRelativeNoWrap = function(param) end
----@return KeyAssignment
-Action.ActivateWindow = function(param) end
----@return KeyAssignment
-Action.ActivateWindowRelative = function(param) end
----@return KeyAssignment
-Action.ActivateWindowRelativeNoWrap = function(param) end
----@return KeyAssignment
-Action.AdjustPaneSize = function(param) end
----@return KeyAssignment
-Action.AttachDomain = function(param) end
----@return KeyAssignment
-Action.CharSelect = function(param) end
----@return KeyAssignment
-Action.ClearKeyTableStack = function(param) end
----@return KeyAssignment
-Action.ClearScrollback = function(param) end
----@return KeyAssignment
-Action.ClearSelection = function(param) end
----@return KeyAssignment
-Action.CloseCurrentPane = function(param) end
----@return KeyAssignment
----@param param {confirm: boolean}
-Action.CloseCurrentTab = function(param) end
----@return KeyAssignment
-Action.CompleteSelection = function(param) end
-Action.CompleteSelectionOrOpenLinkAtMouseCursor = function(param) end
----@return KeyAssignment
-Action.Copy = function(param) end
----@return KeyAssignment
-Action.CopyTo = function(param) end
----@return KeyAssignment
-Action.DecreaseFontSize = function(param) end
----@return KeyAssignment
-Action.DetachDomain = function(param) end
----@return KeyAssignment
-Action.DisableDefaultAssignment = function(param) end
----@return KeyAssignment
-Action.EmitEvent = function(param) end
----@return KeyAssignment
-Action.ExtendSelectionToMouseCursor = function(param) end
----@return KeyAssignment
-Action.Hide = function(param) end
----@return KeyAssignment
-Action.HideApplication = function(param) end
----@return KeyAssignment
-Action.IncreaseFontSize = function(param) end
----@return KeyAssignment
-Action.InputSelector = function(param) end
----@return KeyAssignment
-Action.MoveTab = function(param) end
----@return KeyAssignment
-Action.MoveTabRelative = function(param) end
----@return KeyAssignment
-Action.Multiple = function(param) end
----@return KeyAssignment
-Action.Nop = function(param) end
----@return KeyAssignment
-Action.OpenLinkAtMouseCursor = function(param) end
----@return KeyAssignment
-Action.PaneSelect = function(param) end
----@return KeyAssignment
-Action.Paste = function(param) end
----@return KeyAssignment
-Action.PasteFrom = function(param) end
----@return KeyAssignment
-Action.PastePrimarySelection = function(param) end
----@return KeyAssignment
-Action.PopKeyTable = function(param) end
----@return KeyAssignment
-Action.PromptInputLine = function(param) end
----@return KeyAssignment
-Action.QuickSelect = function(param) end
----@return KeyAssignment
-Action.QuickSelectArgs = function(param) end
----@return KeyAssignment
-Action.QuitApplication = function(param) end
----@return KeyAssignment
-Action.ReloadConfiguration = function(param) end
----@return KeyAssignment
-Action.ResetFontAndWindowSize = function(param) end
----@return KeyAssignment
-Action.ResetFontSize = function(param) end
-Action.ResetTerminal = function(param) end
----@return KeyAssignment
-Action.RotatePanes = function(param) end
----@return KeyAssignment
-Action.ScrollByCurrentEventWheelDelta = function(param) end
----@return KeyAssignment
-Action.ScrollByLine = function(param) end
----@return KeyAssignment
-Action.ScrollByPage = function(param) end
----@return KeyAssignment
-Action.ScrollToBottom = function(param) end
----@return KeyAssignment
-Action.ScrollToPrompt = function(param) end
----@return KeyAssignment
-Action.ScrollToTop = function(param) end
----@return KeyAssignment
-Action.Search = function(param) end
----@return KeyAssignment
-Action.SelectTextAtMouseCursor = function(param) end
----@return KeyAssignment
-Action.SendKey = function(param) end
----@return KeyAssignment
-Action.SendString = function(param) end
----@return KeyAssignment
-Action.SetPaneZoomState = function(param) end
----@return KeyAssignment
-Action.Show = function(param) end
----@return KeyAssignment
-Action.ShowDebugOverlay = function(param) end
----@return KeyAssignment
-Action.ShowLauncher = function(param) end
----@return KeyAssignment
-Action.ShowLauncherArgs = function(param) end
----@return KeyAssignment
-Action.ShowTabNavigator = function(param) end
----@return KeyAssignment
-Action.SpawnCommandInNewTab = function(param) end
----@return KeyAssignment
-Action.SpawnCommandInNewWindow = function(param) end
----@return KeyAssignment
-Action.SpawnTab = function(param) end
----@return KeyAssignment
-Action.SpawnWindow = function(param) end
----@return KeyAssignment
-Action.SplitHorizontal = function(param) end
----@return KeyAssignment
-Action.SplitPane = function(param) end
----@return KeyAssignment
-Action.SplitVertical = function(param) end
----@return KeyAssignment
-Action.StartWindowDrag = function(param) end
----@return KeyAssignment
-Action.SwitchToWorkspace = function(param) end
----@return KeyAssignment
-Action.SwitchWorkspaceRelative = function(param) end
----@return KeyAssignment
-Action.ToggleFullScreen = function(param) end
----@return KeyAssignment
-Action.TogglePaneZoomState = function(param) end
+---@class ActionClass<T>: { [KeyAssignment]: fun(param): ActionClass } can also be called as function like older versions of wezterm did
+---@field ActivateCommandPalette fun(param): KeyAssignment
+---@field ActivateCopyMode fun(param): KeyAssignment
+---@field ActivateKeyTable fun(param): KeyAssignment
+---@field ActivateLastTab fun(param): KeyAssignment
+---@field ActivatePaneByIndex fun(param): KeyAssignment
+---@field ActivatePaneDirection fun(param): KeyAssignment
+---@field ActivateTab fun(param): KeyAssignment
+---@field ActivateTabRelative fun(param): KeyAssignment
+---@field ActivateTabRelativeNoWrap fun(param): KeyAssignment
+---@field ActivateWindow fun(param): KeyAssignment
+---@field ActivateWindowRelative fun(param): KeyAssignment
+---@field ActivateWindowRelativeNoWrap fun(param): KeyAssignment
+---@field AdjustPaneSize fun(param): KeyAssignment
+---@field AttachDomain fun(param): KeyAssignment
+---@field CharSelect fun(param): KeyAssignment
+---@field ClearKeyTableStack fun(param): KeyAssignment
+---@field ClearScrollback fun(param): KeyAssignment
+---@field ClearSelection fun(param): KeyAssignment
+---@field CloseCurrentPane fun(param): KeyAssignment
+---@field CloseCurrentTab fun(param): KeyAssignment
+---@field CompleteSelection fun(param): KeyAssignment
+---@field CompleteSelectionOrOpenLinkAtMouseCursor fun(param): KeyAssignment
+---@field Copy fun(param): KeyAssignment
+---@field CopyTo fun(param): KeyAssignment
+---@field DecreaseFontSize fun(param): KeyAssignment
+---@field DetachDomain fun(param): KeyAssignment
+---@field DisableDefaultAssignment fun(param): KeyAssignment
+---@field EmitEvent fun(param): KeyAssignment
+---@field ExtendSelectionToMouseCursor fun(param): KeyAssignment
+---@field Hide fun(param): KeyAssignment
+---@field HideApplication fun(param): KeyAssignment
+---@field IncreaseFontSize fun(param): KeyAssignment
+---@field InputSelector fun(param): KeyAssignment
+---@field MoveTab fun(param): KeyAssignment
+---@field MoveTabRelative fun(param): KeyAssignment
+---@field Multiple fun(param): KeyAssignment
+---@field Nop fun(param): KeyAssignment
+---@field OpenLinkAtMouseCursor fun(param): KeyAssignment
+---@field PaneSelect fun(param): KeyAssignment
+---@field Paste fun(param): KeyAssignment
+---@field PasteFrom fun(param): KeyAssignment
+---@field PastePrimarySelection fun(param): KeyAssignment
+---@field PopKeyTable fun(param): KeyAssignment
+---@field PromptInputLine fun(param): KeyAssignment
+---@field QuickSelect fun(param): KeyAssignment
+---@field QuickSelectArgs fun(param): KeyAssignment
+---@field QuitApplication fun(param): KeyAssignment
+---@field ReloadConfiguration fun(param): KeyAssignment
+---@field ResetFontAndWindowSize fun(param): KeyAssignment
+---@field ResetFontSize fun(param): KeyAssignment
+---@field ResetTerminal fun(param): KeyAssignment
+---@field RotatePanes fun(param): KeyAssignment
+---@field ScrollByCurrentEventWheelDelta fun(param): KeyAssignment
+---@field ScrollByLine fun(param): KeyAssignment
+---@field ScrollByPage fun(param): KeyAssignment
+---@field ScrollToBottom fun(param): KeyAssignment
+---@field ScrollToPrompt fun(param): KeyAssignment
+---@field ScrollToTop fun(param): KeyAssignment
+---@field Search fun(param): KeyAssignment
+---@field SelectTextAtMouseCursor fun(param): KeyAssignment
+---@field SendKey fun(param): KeyAssignment
+---@field SendString fun(param): KeyAssignment
+---@field SetPaneZoomState fun(param): KeyAssignment
+---@field Show fun(param): KeyAssignment
+---@field ShowDebugOverlay fun(param): KeyAssignment
+---@field ShowLauncher fun(param): KeyAssignment
+---@field ShowLauncherArgs fun(param): KeyAssignment
+---@field ShowTabNavigator fun(param): KeyAssignment
+---@field SpawnCommandInNewTab fun(param): KeyAssignment
+---@field SpawnCommandInNewWindow fun(param): KeyAssignment
+---@field SpawnTab fun(param): KeyAssignment
+---@field SpawnWindow fun(param): KeyAssignment
+---@field SplitHorizontal fun(param): KeyAssignment
+---@field SplitPane fun(param): KeyAssignment
+---@field SplitVertical fun(param): KeyAssignment
+---@field StartWindowDrag fun(param): KeyAssignment
+---@field SwitchToWorkspace fun(param): KeyAssignment
+---@field SwitchWorkspaceRelative fun(param): KeyAssignment
+---@field ToggleFullScreen fun(param): KeyAssignment
+---@field TogglePaneZoomState fun(param): KeyAssignment
+
+---@alias Action ActionClass|fun(param): KeyAssignment
