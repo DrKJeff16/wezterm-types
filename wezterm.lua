@@ -1,7 +1,6 @@
--- Pull in the wezterm API
-
 ---@module 'types'
 
+-- Pull in the wezterm API
 ---@type Wezterm
 local wezterm = require("wezterm")
 
@@ -9,65 +8,73 @@ local wezterm = require("wezterm")
 ---@type Config
 local config = wezterm.config_builder()
 
----@type Config
-local config = wezterm.config_builder()
-
--- if wezterm.config_builder then
-config = wezterm.config_builder()
--- end
-
 -- or, changing the font size and color scheme.
 config.font_size = 18
-config.font = wezterm.font("FiraCode Nerd Font Mono")
+config.font = wezterm.font({
+    family = "FiraCode Nerd Font Mono",
+    weight = "Regular",
+    style = "Normal",
+    stretch = "Normal",
+    harfbuzz_features = {
+        "calt=1",
+        "clig=1",
+        "liga=1",
+        "zero",
+        -- "onum",
+        -- "ss1",
+        -- "ss2",
+        -- "ss3",
+        -- "ss4",
+        -- "ss5",
+        -- "ss6",
+        -- "ss7",
+        -- "ss8",
+        -- "ss9",
+        -- "ss10",
+        -- "cv01",
+        -- "cv02",
+        -- "cv03",
+        -- "cv04",
+        -- "cv05",
+        -- "cv06",
+        -- "cv07",
+        -- "cv08",
+        -- "cv09",
+        -- "cv10",
+        -- "cv11",
+        -- "cv12",
+        -- "cv13",
+        -- "cv14",
+        -- "cv15",
+        -- "cv16",
+        -- "cv17",
+        -- "cv18",
+        -- "cv19",
+        -- "cv20",
+        -- "cv21",
+        -- "cv22",
+        -- "cv23",
+        -- "cv24",
+        -- "cv25",
+        -- "cv26",
+        -- "cv27",
+        -- "cv28",
+        -- "cv29",
+        -- "cv30",
+        -- "cv31",
+    },
+})
 
-config.harfbuzz_features = {
-    "calt=1",
-    "clig=1",
-    "liga=1",
-    "zero",
-    "onum",
-    "ss1",
-    "ss2",
-    "ss3",
-    "ss4",
-    "ss5",
-    "ss6",
-    "ss7",
-    "ss8",
-    "ss9",
-    "ss10",
-    "cv01",
-    "cv02",
-    "cv03",
-    "cv04",
-    "cv05",
-    "cv06",
-    "cv07",
-    "cv08",
-    "cv09",
-    "cv10",
-    "cv11",
-    "cv12",
-    "cv13",
-    "cv14",
-    "cv15",
-    "cv16",
-    "cv17",
-    "cv18",
-    "cv19",
-    "cv20",
-    "cv21",
-    "cv22",
-    "cv23",
-    "cv24",
-    "cv25",
-    "cv26",
-    "cv27",
-    "cv28",
-    "cv29",
-    "cv30",
-    "cv31",
-}
+config.term = "wezterm"
+
+config.use_ime = true
+
+config.selection_word_boundary = "{}[]()\"'`.,;:"
+config.scroll_to_bottom_on_input = true
+
+config.prefer_to_spawn_tabs = true
+
+config.quote_dropped_files = "Posix"
 
 config.audible_bell = "Disabled"
 config.window_background_opacity = 0.90
