@@ -95,7 +95,7 @@
 
 ---@generic param : any
 
----@class ActionClass<T>: { [KeyAssignment]: fun(param): ActionClass } can also be called as function like older versions of wezterm did
+---@class ActionFuncClass can also be called as function like older versions of wezterm did
 ---@field ActivateCommandPalette fun(param): KeyAssignment
 ---@field ActivateCopyMode fun(param): KeyAssignment
 ---@field ActivateKeyTable fun(param): KeyAssignment
@@ -177,4 +177,86 @@
 ---@field ToggleFullScreen fun(param): KeyAssignment
 ---@field TogglePaneZoomState fun(param): KeyAssignment
 
----@alias Action ActionClass|fun(param): KeyAssignment
+---@class ActionTableClass
+---@field ActivateCommandPalette any
+---@field ActivateCopyMode any
+---@field ActivateKeyTable any
+---@field ActivateLastTab any
+---@field ActivatePaneByIndex any
+---@field ActivatePaneDirection any
+---@field ActivateTab any
+---@field ActivateTabRelative any
+---@field ActivateTabRelativeNoWrap any
+---@field ActivateWindow any
+---@field ActivateWindowRelative any
+---@field ActivateWindowRelativeNoWrap any
+---@field AdjustPaneSize any
+---@field AttachDomain any
+---@field CharSelect any
+---@field ClearKeyTableStack any
+---@field ClearScrollback any
+---@field ClearSelection any
+---@field CloseCurrentPane any
+---@field CloseCurrentTab any
+---@field CompleteSelection any
+---@field CompleteSelectionOrOpenLinkAtMouseCursor any
+---@field Copy any
+---@field CopyTo any
+---@field DecreaseFontSize any
+---@field DetachDomain any
+---@field DisableDefaultAssignment any
+---@field EmitEvent any
+---@field ExtendSelectionToMouseCursor any
+---@field Hide any
+---@field HideApplication any
+---@field IncreaseFontSize any
+---@field InputSelector any
+---@field MoveTab any
+---@field MoveTabRelative any
+---@field Multiple any
+---@field Nop any
+---@field OpenLinkAtMouseCursor any
+---@field PaneSelect any
+---@field Paste any
+---@field PasteFrom any
+---@field PastePrimarySelection any
+---@field PopKeyTable any
+---@field PromptInputLine any
+---@field QuickSelect any
+---@field QuickSelectArgs any
+---@field QuitApplication any
+---@field ReloadConfiguration any
+---@field ResetFontAndWindowSize any
+---@field ResetFontSize any
+---@field ResetTerminal any
+---@field RotatePanes any
+---@field ScrollByCurrentEventWheelDelta any
+---@field ScrollByLine any
+---@field ScrollByPage any
+---@field ScrollToBottom any
+---@field ScrollToPrompt any
+---@field ScrollToTop any
+---@field Search any
+---@field SelectTextAtMouseCursor any
+---@field SendKey any
+---@field SendString any
+---@field SetPaneZoomState any
+---@field Show any
+---@field ShowDebugOverlay any
+---@field ShowLauncher any
+---@field ShowLauncherArgs any
+---@field ShowTabNavigator any
+---@field SpawnCommandInNewTab any
+---@field SpawnCommandInNewWindow any
+---@field SpawnTab any
+---@field SpawnWindow any
+---@field SplitHorizontal any
+---@field SplitPane any
+---@field SplitVertical any
+---@field StartWindowDrag any
+---@field SwitchToWorkspace any
+---@field SwitchWorkspaceRelative any
+---@field ToggleFullScreen any
+---@field TogglePaneZoomState any
+
+---@alias Action ActionFuncClass|fun(action: ActionTableClass)
