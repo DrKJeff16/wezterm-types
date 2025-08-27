@@ -43,6 +43,7 @@ function Serde.toml_encode_pretty(value) end
 ---@param value string
 ---@return table
 function Serde.yaml_decode(value) end
+
 ---Encodes the supplied Lua value as YAML.
 ---
 ---@param value table
