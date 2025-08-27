@@ -424,12 +424,9 @@
 ---
 ---@class FontFamilyAttributes: FontAttributes
 ---@field family string
----When [`config.font_shaper`](lua://Config.font_shaper)
----is set to `"Harfbuzz"`, this setting affects
+---When [`config.font_shaper`](lua://Config.font_shaper) is
+---set to `"Harfbuzz"`, this setting affects
 ---how font shaping takes place.
----
----See [Font Shaping](https://wezterm.org/config/font-shaping.html)
----for more information and examples.
 ---
 ---The _OpenType_ spec lists a number of features
 ---[here](https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist).
