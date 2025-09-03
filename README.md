@@ -124,7 +124,6 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 - [@DrKJeff16](https://github.com/DrKJeff16) - **Maintainer, _(current owner)_**
 - [@justinsgithub](https://github.com/justinsgithub) - **The Author _(not active currently)_**
-- [@craigmac](https://github.com/craigmac) - **Maintainer**
 - [@gonstoll](https://github.com/gonstoll) - **Maintainer**
 
 ### Contributors
