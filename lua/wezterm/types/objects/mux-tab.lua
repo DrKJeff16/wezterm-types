@@ -1,59 +1,97 @@
 ---@meta
 
----@alias PaneDirection
----|"Down"
----|"Left"
----|"Next"
----|"Prev"
----|"Right"
----|"Up"
-
 ---@class MuxSize
----@field rows number
----@field cols number
----@field pixel_width number
----@field pixel_height number
+---@field rows integer
+---@field cols integer
+---@field pixel_width integer
+---@field pixel_height integer
 ---@field dpi number
 
----`MuxTab` represents a tab that is managed by the multiplexer.
+---`MuxTab` represents a tab that is managed
+---by the multiplexer.
 ---
 ---@class MuxTab
+local M = {}
+
 ---Activates (focuses) the tab.
 ---
----@field activate fun(self: MuxTab)
----A convenience accessor for returning the active pane in the tab.
+function M:activate() end
+
+---A convenience accessor for returning the active pane
+---in the tab.
 ---
----@field active_pane fun(self): Pane
----Returns pane adjacent to the active pane in tab in the direction direction.
+---@param self MuxTab
+---@return Pane active_pane
+function M:active_pane() end
+
+---Returns the pane adjacent to the active pane
+---of the current tab, in the `direction` direction.
 ---
----@field get_pane_direction fun(self: MuxTab, direction: PaneDirection): MuxTab
+---See [`ActivatePaneDirection`](https://wezterm.org/config/lua/keyassignment/ActivatePaneDirection.html) for more information
+---about how panes are selected given direction.
+---
+---@param self MuxTab
+---@param direction "Down"|"Left"|"Next"|"Prev"|"Right"|"Up"
+---@return Pane
+function M:get_pane_direction(direction) end
+
 ---Returns the overall size of the tab,
 ---taking into account all of the contained panes.
 ---
----@field get_size fun(self: MuxTab): MuxSize
----Returns the tab title as set by `tab:set_title()`.
+---See:
+--- - [`MuxSize`](lua://MuxSize)
 ---
----@field get_title fun(self: MuxTab): string
----Returns an array table containing the set of Pane objects contained by this tab.
+---@param self MuxTab
+---@return MuxSize size
+function M:get_size() end
+
+---Returns the tab title as set by
+---[`MuxTab:set_title()`](lua://MuxTab.set_title).
 ---
----@field panes fun(self: MuxTab): Pane[]
+---@param self MuxTab
+---@return string title
+function M:get_title() end
+
+---Returns an array table containing the set of
+---[`Pane`](lua://Pane) objects
+---contained by this tab.
+---
+---@param self MuxTab
+---@return Pane[]
+function M:panes() end
+
 ---Returns an array table containing an extended info entry
 ---for each of the panes contained by this tab.
 ---
----@field panes_with_info fun(self: MuxTab): PaneInformation[]
+---See:
+--- - [`PaneInformation`](lua://PaneInformation)
+---
+---@param self MuxTab
+---@return PaneInformation[]
+function M:panes_with_info() end
+
 ---Rotates the panes in the clockwise direction.
 ---
----@field rotate_clockwise fun(self: MuxTab)
+---@param self MuxTab
+function M:rotate_clockwise() end
+
 ---Rotates the panes in the counter-clockwise direction.
 ---
----@field rotate_counter_clockwise fun(self: MuxTab)
+---@param self MuxTab
+function M:rotate_counter_clockwise() end
+
 ---Sets the tab title to the provided string.
 ---
----@field set_title fun(self: MuxTab, title: string)
----Sets the zoomed state for the active pane within this tab.
+---@param self MuxTab
+---@param title string
+function M:set_title(title) end
+
+---Sets the zoomed state for the active pane
+---within the current tab.
 ---
----A zoomed pane takes up all available space in the tab,
----hiding all other panes while it is zoomed.
+---A zoomed pane takes up all available space
+---in the tab, hiding all other panes
+---while it is zoomed.
 ---
 --- - Switching its zoom state off will restore the prior split arrangement
 --- - Setting the zoom state to `true` zooms the pane if it wasn't already zoomed
@@ -61,10 +99,21 @@
 ---
 ---Returns the prior zoom state.
 ---
----@field set_zoomed fun(self: MuxTab, state: boolean): boolean
+---@param self MuxTab
+---@param state boolean
+---@return boolean previous_state
+function M:set_zoomed(state) end
+
 ---Returns the tab ID.
 ---
----@field tab_id fun(self: MuxTab): integer
----Returns the MuxWindow object that contains this tab.
+---@param self MuxTab
+---@return integer
+function M:tab_id() end
+
+---Returns the
+---[`MuxWindow`](lua://MuxWindow) object
+---that contains this tab.
 ---
----@field window fun(self: MuxTab): MuxWindow
+---@param self MuxTab
+---@return MuxWindow
+function M:window() end
