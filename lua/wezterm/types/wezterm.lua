@@ -424,12 +424,9 @@
 ---
 ---@class FontFamilyAttributes: FontAttributes
 ---@field family string
----When [`config.font_shaper`](lua://Config.font_shaper)
----is set to `"Harfbuzz"`, this setting affects
+---When [`config.font_shaper`](lua://Config.font_shaper) is
+---set to `"Harfbuzz"`, this setting affects
 ---how font shaping takes place.
----
----See [Font Shaping](https://wezterm.org/config/font-shaping.html)
----for more information and examples.
 ---
 ---The _OpenType_ spec lists a number of features
 ---[here](https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist).
@@ -1068,9 +1065,77 @@ function Wezterm.emit(event, ...) end
 ---@return table<string, SshHost>
 function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 
+---This function constructs a Lua table that corresponds to the internal
+---[`FontFamilyAttributes`](lua://FontFamilyAttributes)
+---struct that is used to select a single named font:
+---
+---```lua
+---local wezterm = require 'wezterm'
+---
+---return {
+---  font = wezterm.font 'JetBrains Mono',
+---}
+---```
+---
+---The first parameter is the name of the font; the name can be one of the following types of names:
+---
+--- - The font family name, e.g. `"JetBrains Mono"`. The family name doesn't include any style information
+---   (such as `weight`, `stretch` or `italic`), which can be specified via the `attributes` parameter.
+---   This is the recommended name to use for the font, as it the most compatible way to resolve
+---   an installed font.
+--- - The computed full name, which is the family name with the sub-family
+---   (which incorporates style information) appended, e.g. `"JetBrains Mono Regular"`.
+--- - The postscript name, which is an ostensibly unique name identifying a given font and style
+---   that is encoded into the font by the font designer.
+---
+---See [`FontAttributes`](lua://FontAttributes)
+---and [`FontFamilyAttributes`](lua://FontFamilyAttributes).
+---
+---@param name string
+---@param attributes? FontAttributes
+---@return Fonts|FontFamilyAttributes
+function Wezterm.font(name, attributes) end
+
+---This function constructs a Lua table that corresponds to the internal
+---[`FontFamilyAttributes`](lua://FontFamilyAttributes)
+---struct that is used to select a single named font.
+---
+---When specifying a font using its family name, the second attributes parameter is
+---an **optional** table that can be used to specify style attributes.
+---
+---You can use the expanded form mentioned above to override freetype and harfbuzz settings
+---just for the specified font.
+---
+---This example shows how to disable the default ligature feature just for this particular font:
+---
+---```lua
+---local wezterm = require 'wezterm'
+---return {
+---  font = wezterm.font {
+---    family = 'JetBrains Mono',
+---    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+---  },
+---}
+---```
+---
+---The following options can be specified in the same way:
+---
+--- - [`harfbuzz_features`](lua://FontFamilyAttributes.harfbuzz_features)
+--- - [`freetype_load_target`](lua://FontFamilyAttributes.freetype_load_target)
+--- - [`freetype_render_target`](lua://FontFamilyAttributes.freetype_render_target)
+--- - [`freetype_load_flags`](lua://FontFamilyAttributes.freetype_load_flags)
+--- - [`assume_emoji_presentation`](lua://FontFamilyAttributes.assume_emoji_presentation)
+---   to control whether a font is considered to have emoji (rather than text) presentation glyphs
+---   for emoji
+---
+---@param attributes FontFamilyAttributes
+---@return Fonts|FontFamilyAttributes
+function Wezterm.font(attributes) end
+
 ---TODO: Complete description.
 ---
----[Info](https://wezterm.org/config/lua/wezterm/font_with_fallback.html).
+---Here's some [info](https://wezterm.org/config/lua/wezterm/font_with_fallback.html) on this
+---function.
 ---
 ---@param fonts (string|FontAttributes)[]
 ---@return Fonts
@@ -1148,207 +1213,68 @@ function Wezterm.json_encode(value) end
 ---@return any
 function Wezterm.json_parse(value) end
 
+---This function logs the provided message string through wezterm's logging layer
+---at `'ERROR'` level, which can be displayed via the
+---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---If you started wezterm from a terminal that text will print
+---to the `stdout` of that terminal.
+---If running as a daemon for the multiplexer server then it will be logged
+---to the daemon output path.
+---
+---```lua
+---local wezterm = require 'wezterm'
+---wezterm.log_error 'Hello!'
+---```
+---
+---See also:
+--- - [`wezterm.log_info()`](lua://Wezterm.log_info)
+--- - [`wezterm.log_warn()`](lua://Wezterm.log_warn)
+---
 ---@param msg string
 ---@param ... any
 function Wezterm.log_error(msg, ...) end
 
+---This function logs the provided message string through wezterm's logging layer
+---at the `'INFO'` level, which can be displayed via the
+---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---If you started wezterm from a terminal that text will print
+---to the `stdout` of that terminal.
+---If running as a daemon for the multiplexer server then it will be logged
+---to the daemon output path.
+---
+---```lua
+---local wezterm = require 'wezterm'
+---wezterm.log_info 'Hello!'
+---```
+---
+---See also:
+--- - [`wezterm.log_error()`](lua://Wezterm.log_error)
+--- - [`wezterm.log_warn()`](lua://Wezterm.log_warn)
+---
 ---@param msg string
 ---@param ... any
 function Wezterm.log_info(msg, ...) end
 
+---This function logs the provided message string through wezterm's logging layer
+---at the `'WARN'` level, which can be displayed via the
+---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---If you started wezterm from a terminal that text will print
+---to the `stdout` of that terminal.
+---If running as a daemon for the multiplexer server then it will be logged
+---to the daemon output path.
+---
+---```lua
+---local wezterm = require 'wezterm'
+---wezterm.log_warn 'Hello!'
+---```
+---
+---See also:
+--- - [`wezterm.log_info()`](lua://Wezterm.log_info)
+--- - [`wezterm.log_error()`](lua://Wezterm.log_error)
+---
 ---@param msg string
 ---@param ... any
 function Wezterm.log_warn(msg, ...) end
-
----@param path_or_url string
----@param application? string
-function Wezterm.open_with(path_or_url, application) end
-
----Returns a copy of a string that is at least `min_width` columns
----as measured by
----[`wezterm.column_width()`](lua://Wezterm.column_width).
----
----@param s string
----@param min_width integer
----@return string
-function Wezterm.pad_left(s, min_width) end
-
----Returns an array containing the absolute file name paths
----of the directory specified.
----
----Due to limitations in the Lua bindings,
----all of the paths must be able to be represented
----as `UTF-8` or this function will generate an error.
----
----@param path string
----@return string[]
-function Wezterm.read_dir(path) end
-
----Returns a `boolean` indicating whether WezTerm
----is believed to be running in a WSL container.
----
----@return boolean
-function Wezterm.running_under_wsl() end
-
----Joins together its array arguments by applying
----POSIX-style shell quoting on each argument
----and then adding a space.
----
----@param args string[]
----@return string
-function Wezterm.shell_join_args(args) end
-
----Quotes its single argument using
----POSIX shell quoting rules.
----
----@param s string
----@return string
-function Wezterm.shell_quote_arg(s) end
-
----Will attempt to spawn a command from the given
----string array and will return the following tuple:
----
---- - A `boolean` to denote a successful invocation
---- - The `stdout` data as a `string`
---- - The `stderr` data as a `string`
----
----@param args string[]
----@return boolean success
----@return string stdout
----@return string stderr
-function Wezterm.run_child_process(args) end
-
----@param tbl MouseBindingBase
----@return MouseBinding
-function Wezterm.permute_any_mods(tbl) end
-
----@param tbl KeyBindingBase
----@return KeyBinding
-function Wezterm.permute_any_mods(tbl) end
-
----This function is intended to help with
----generating `KeyBinding` / `MouseBinding` entries.
----These should apply regardless of the combination
----of modifier keys pressed.
----
----For each combination of modifiers
----(`CTRL`, `ALT`, `SHIFT` and `SUPER`)
----the supplied `table` value
----is copied with a `mods = <value>` entry.
----
----In addition, an entry for `NONE` is generated
----(this is the only difference between
----[`wezterm.permute_any_mods`](lua://Wezterm.permute_any_mods)
----and `wezterm.permute_any_or_no_mods`).
----
----An array holding all of those combinations is returned.
----
----If this is either the only binding or the last one,
----the resulting array can be unpacked into a
----Lua table initializer by using
----[`table.unpack()`](lua://table.unpack).
----
----@param T table
----@return (MouseBinding|KeyBinding)[]
-function Wezterm.permute_any_or_no_mods(T) end
-
----Splits a command line into a `string` argument array
----in accordance with POSIX shell rules.
----
----@param line string
----@return string[]
-function Wezterm.shell_split(line) end
-
----Returns a copy of a string that is at least
----`min_width` columns as measured by `wezterm.column_width()`.
----
----See:
----
----[`wezterm.column_width()`](lua://Wezterm.column_width)
----
----@param s string
----@param min_width integer
----@return string
-function Wezterm.pad_right(s, min_width) end
-
----Suspends the execution of the script for `ms` milliseconds.
----When the time period has elapsed,
----the script continues running at the next statement.
----
----@param ms integer
-function Wezterm.sleep_ms(ms) end
-
----Takes the input string and splits it by newlines.
----The result as an array of strings with the newlines removed.
----
----Both `\n` (LF) and `\r\n` (CRLF) are recognized as newlines.
----
----@param s string
----@return string[]
-function Wezterm.split_by_newlines(s) end
-
----Reloads and applies the configuration in `wezterm.lua`.
----
-function Wezterm.reload_configuration() end
-
----Formats the current local date/time into a string using
----the Rust `chrono strftime` syntax.
----
----@param format string
----@return string
-function Wezterm.strftime(format) end
-
----Formats the current UTC date/time into a string using
----the Rust `chrono strftime` syntax.
----
----@param format string
----@return string
-function Wezterm.strftime_utc(format) end
-
----Returns a copy of a string that is no longer than
----`max_width` columns as measured by
----[`wezterm.column_width()`](lua://Wezterm.column_width).
----Truncation occurs by removing excess characters
----from the left end of the string.
----
----For example, `wezterm.truncate_left("hello", 3)`
----returns `"llo"`.
----
----See also:
----
----[`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
----[`wezterm.pad_right()`](lua://Wezterm.pad_right)
----
----@param s string
----@param max_width integer
----@return string
-function Wezterm.truncate_left(s, max_width) end
-
----Returns a copy of a string that is no longer than
----`max_width` columns as measured by
----[`wezterm.column_width()`](lua://Wezterm.column_width).
----Truncation occurs by reemoving excess characters
----from the right end of the string.
----
----For example, `wezterm.truncate_right("hello", 3)`
----returns `"hel"`.
----
----See also:
----
----[`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
----[`wezterm.pad_left()`](lua://Wezterm.pad_left)
----
----@param s string
----@param max_width integer
----@return string
-function Wezterm.truncate_right(s, max_width) end
-
----Overly specific and exists primarily to workaround this wsl.exe issue.
----It takes as input a string and attempts to convert it from utf16 to utf8.
----
----@param s string
----@return string
-function Wezterm.utf16_to_utf8(s) end
 
 ---This event is emitted when the Command Palette is shown.
 ---
@@ -1440,7 +1366,7 @@ function Wezterm.on(event, callback) end
 ---`format-tab-title: runtime error: attempt to yield from outside a coroutine` error.
 ---
 ---@param event "format-tab-title"
----@param callback fun(tab: MuxTab, tabs: MuxTab[], panes: Pane[], config: Config, hover: boolean, max_width: number): string|FormatItem
+---@param callback fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: number): string|FormatItem
 function Wezterm.on(event, callback) end
 
 ---A custom declared event function.
@@ -1489,7 +1415,7 @@ function Wezterm.on(event, callback) end
 function Wezterm.on(event, callback) end
 
 ---@param event "gui-attached"
----@param callback fun(domain: ExecDomain)
+---@param callback fun(domain: MuxDomain|ExecDomain)
 function Wezterm.on(event, callback) end
 
 ---@param event "gui-startup"
@@ -1525,7 +1451,7 @@ function Wezterm.on(event, callback) end
 ---but if you register for this event you can co-opt the default behavior.
 ---
 ---@param event "open-uri"
----@param callback fun(window: Window, pane: Pane, uri: string)
+---@param callback fun(window: Window, pane: Pane, uri: string): boolean?
 function Wezterm.on(event, callback) end
 
 ---This event is considered to be deprecated and you should migrate to using `"update-status"`,
@@ -1675,72 +1601,322 @@ function Wezterm.on(event, callback) end
 ---@param callback CallbackWindowPane
 function Wezterm.on(event, callback) end
 
----This function constructs a Lua table that corresponds to the internal
----[`FontFamilyAttributes`](lua://FontFamilyAttributes)
----struct that is used to select a single named font:
+---This function opens the specified `path_or_url` with
+---either the specified application or the default application
+---if `application` was not passed in.
 ---
 ---```lua
----local wezterm = require 'wezterm'
+----- Opens a URL in your default browser
+---wezterm.open_with 'http://example.com'
 ---
----return {
----  font = wezterm.font 'JetBrains Mono',
----}
+----- Opens a URL specifically in firefox
+---wezterm.open_with('http://example.com', 'firefox')
 ---```
 ---
----The first parameter is the name of the font; the name can be one of the following types of names:
----
---- - The font family name, e.g. `"JetBrains Mono"`. The family name doesn't include any style information
----   (such as `weight`, `stretch` or `italic`), which can be specified via the `attributes` parameter.
----   This is the recommended name to use for the font, as it the most compatible way to resolve
----   an installed font.
---- - The computed full name, which is the family name with the sub-family
----   (which incorporates style information) appended, e.g. `"JetBrains Mono Regular"`.
---- - The postscript name, which is an ostensibly unique name identifying a given font and style
----   that is encoded into the font by the font designer.
----
----See [`FontAttributes`](lua://FontAttributes)
----and [`FontFamilyAttributes`](lua://FontFamilyAttributes).
----
----@param name string
----@param attributes? FontAttributes
----@return Fonts|FontFamilyAttributes
-function Wezterm.font(name, attributes) end
+---@param path_or_url string
+---@param application? string
+function Wezterm.open_with(path_or_url, application) end
 
----This function constructs a Lua table that corresponds to the internal
----[`FontFamilyAttributes`](lua://FontFamilyAttributes)
----struct that is used to select a single named font.
+---Returns a copy of a string `s` that is at least
+---`min_width` columns as measured by `wezterm.column_width()`.
 ---
----When specifying a font using its family name, the second attributes parameter is
----an **optional** table that can be used to specify style attributes.
+---If the string `s` is shorter than `min_width`, spaces are added
+---to the left end of the string.
 ---
----You can use the expanded form mentioned above to override freetype and harfbuzz settings
----just for the specified font.
+---For example, `wezterm.pad_left("o", 3)` returns `" o"`.
 ---
----This example shows how to disable the default ligature feature just for this particular font:
+---See also:
+--- - [`wezterm.column_width()`](lua://Wezterm.column_width)
+--- - [`wezterm.truncate_left()`](lua://Wezterm.Wezterm.truncate_left)
+--- - [`wezterm.pad_right()`](lua://Wezterm.pad_right)
+---
+---@param s string
+---@param min_width integer
+---@return string
+function Wezterm.pad_left(s, min_width) end
+
+---Returns a copy of a string `s` that is at least
+---`min_width` columns as measured by `wezterm.column_width()`.
+---
+---If the string `s` is shorter than `min_width`, spaces are added
+---to the right end of the string.
+---
+---For example, `wezterm.pad_right("o", 3)` returns `"o "`.
+---
+---See also:
+--- - [`wezterm.column_width()`](lua://Wezterm.column_width)
+--- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
+--- - [`wezterm.pad_left()`](lua://Wezterm.Wezterm.pad_left)
+---
+---@param s string
+---@param min_width integer
+---@return string
+function Wezterm.pad_right(s, min_width) end
+
+---This function is intended to help with generating
+---[`KeyBinding`](lua://KeyBinding)
+---entries.
+---These should apply regardless of
+---the combination of modifier keys pressed.
+---
+---For each combination of modifiers
+---`CTRL`, `ALT`, `SHIFT` and `SUPER`,
+---the supplied `table` value `T`
+---is copied with a `mods = <value>` entry.
+---
+---An entry for `NONE` is **NOT** generated
+---(this is the only difference between
+---[`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
+---and `wezterm.permute_any_mods`).
+---
+---A [`KeyBinding`](lua://KeyBinding)
+---array is returned.
+---
+---@param T table
+---@return KeyBinding[]
+function Wezterm.permute_any_mods(T) end
+
+---This function is intended to help with generating
+---[`MouseBinding`](lua://MouseBinding)
+---entries.
+---These should apply regardless of
+---the combination of modifier keys pressed.
+---
+---For each combination of modifiers
+---`CTRL`, `ALT`, `SHIFT` and `SUPER`,
+---the supplied `table` value `T`
+---is copied with a `mods = <value>` entry.
+---
+---An entry for `NONE` is **NOT** generated
+---(this is the only difference between
+---[`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
+---and `wezterm.permute_any_mods`).
+---
+---A [`MouseBinding`](lua://MouseBinding)
+---array is returned.
+---
+---@param T table
+---@return MouseBinding[]
+function Wezterm.permute_any_mods(T) end
+
+---This function is intended to help with generating
+---[`KeyBinding`](lua://KeyBinding)
+---entries.
+---These should apply regardless of
+---the combination of modifier keys pressed.
+---
+---For each combination of modifiers
+---`CTRL`, `ALT`, `SHIFT` and `SUPER`,
+---the supplied `table` value `T`
+---is copied with a `mods = <value>` entry.
+---
+---In addition, an entry for `NONE` is generated
+---(this is the only difference between
+---[`wezterm.permute_any_mods`](lua://Wezterm.permute_any_mods)
+---and `wezterm.permute_any_or_no_mods`).
+---
+---A [`KeyBinding`](lua://KeyBinding)
+---array is returned.
+---
+---If this is either the only binding or the last one,
+---the resulting array can be unpacked into a
+---Lua table initializer by using
+---[`table.unpack()`](lua://table.unpack).
+---
+---@param T table
+---@return KeyBinding[]
+function Wezterm.permute_any_or_no_mods(T) end
+
+---This function is intended to help with generating
+---[`MouseBinding`](lua://MouseBinding)
+---entries.
+---These should apply regardless of
+---the combination of modifier keys pressed.
+---
+---For each combination of modifiers
+---`CTRL`, `ALT`, `SHIFT` and `SUPER`,
+---the supplied `table` value `T`
+---is copied with a `mods = <value>` entry.
+---
+---In addition, an entry for `NONE` is generated
+---(this is the only difference between
+---[`wezterm.permute_any_mods`](lua://Wezterm.permute_any_mods)
+---and `wezterm.permute_any_or_no_mods`).
+---
+---A [`MouseBinding`](lua://MouseBinding)
+---array is returned.
+---
+---If this is either the only binding or the last one,
+---the resulting array can be unpacked into a
+---Lua table initializer by using
+---[`table.unpack()`](lua://table.unpack).
+---
+---@param T table
+---@return MouseBinding[]
+function Wezterm.permute_any_or_no_mods(T) end
+
+---Returns an array containing the absolute file name paths
+---of the directory `path` specified.
+---
+---Due to limitations in the Lua bindings,
+---all of the paths must be able to be represented
+---as `UTF-8` or this function will generate an error.
+---
+---@param path string
+---@return string[]
+function Wezterm.read_dir(path) end
+
+---Immediately causes the configuration to be reloaded and re-applied.
+---
+---**If you call this at the file scope in your config
+---you are in danger of creating an infinite loop
+---that renders WezTerm unresponsive.**
+---
+---The intent is for this to be used from an event or
+---timer callback function.
+---
+function Wezterm.reload_configuration() end
+
+---This function accepts an argument list; it will attempt to spawn
+---that command.
+---
+---It will return a tuple consisting of the boolean `success`
+---of the invocation, the `stdout` data and the `stderr` data.
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
----return {
----  font = wezterm.font {
----    family = 'JetBrains Mono',
----    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
----  },
----}
+---local success, stdout, stderr = wezterm.run_child_process { 'ls', '-l' }
 ---```
 ---
----The following options can be specified in the same way:
+---See also:
+--- - [`wezterm.background_child_process`](lua://Wezterm.background_child_process)
 ---
---- - [`harfbuzz_features`](lua://FontFamilyAttributes.harfbuzz_features)
---- - [`freetype_load_target`](lua://FontFamilyAttributes.freetype_load_target)
---- - [`freetype_render_target`](lua://FontFamilyAttributes.freetype_render_target)
---- - [`freetype_load_flags`](lua://FontFamilyAttributes.freetype_load_flags)
---- - [`assume_emoji_presentation`](lua://FontFamilyAttributes.assume_emoji_presentation)
----   to control whether a font is considered to have emoji (rather than text) presentation glyphs
----   for emoji
+---@param args string[]
+---@return boolean success A `boolean` to denote a successful invocation
+---@return string stdout The `stdout` data as a `string`
+---@return string stderr The `stderr` data as a `string`
+function Wezterm.run_child_process(args) end
+
+---This function returns a `boolean` indicating whether it is believed
+---that WezTerm runs in a WSL container.
 ---
----@param attributes FontFamilyAttributes
----@return Fonts|FontFamilyAttributes
-function Wezterm.font(attributes) end
+---In such an environment,
+---[`wezterm.target_triple`](lua://Wezterm.target_triple)
+---will indicate that the process is running in Linux
+---with some slight differences in system behavior
+---(such as filesystem capabilities) that you may wish
+---to probe for in the configuration.
+---
+---```lua
+---local wezterm = require 'wezterm'
+---
+---wezterm.log_error(
+---    'System '
+---    .. wezterm.target_triple
+---    .. ' '
+---    .. tostring(wezterm.running_under_wsl())
+---)
+---```
+---
+---@return boolean
+function Wezterm.running_under_wsl() end
+
+---Joins together its array arguments by applying
+---POSIX-style shell quoting on each argument
+---and then adding a space.
+---
+---@param args string[]
+---@return string
+function Wezterm.shell_join_args(args) end
+
+---Quotes its single argument `s` using
+---POSIX shell quoting rules.
+---
+---@param s string
+---@return string
+function Wezterm.shell_quote_arg(s) end
+
+---Splits a command line into a `string` argument array
+---in accordance with POSIX shell rules.
+---
+---@param line string
+---@return string[]
+function Wezterm.shell_split(line) end
+
+---Suspends the execution of the script for `ms` milliseconds.
+---When the time period has elapsed,
+---the script continues running at the next statement.
+---
+---@param ms integer
+function Wezterm.sleep_ms(ms) end
+
+---Takes the input string and splits it by newlines.
+---The result as an array of strings with the newlines removed.
+---
+---Both `\n` (LF) and `\r\n` (CRLF) are recognized as newlines.
+---
+---@param s string
+---@return string[]
+function Wezterm.split_by_newlines(s) end
+
+---Formats the current local date/time into a string using
+---the Rust `chrono strftime` syntax.
+---
+---@param format string
+---@return string
+function Wezterm.strftime(format) end
+
+---Formats the current UTC date/time into a string using
+---the Rust `chrono strftime` syntax.
+---
+---@param format string
+---@return string
+function Wezterm.strftime_utc(format) end
+
+---Returns a copy of a string that is no longer than
+---`max_width` columns as measured by
+---[`wezterm.column_width()`](lua://Wezterm.column_width).
+---Truncation occurs by removing excess characters
+---from the left end of the string.
+---
+---For example, `wezterm.truncate_left("hello", 3)`
+---returns `"llo"`.
+---
+---See also:
+---
+---[`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
+---[`wezterm.pad_right()`](lua://Wezterm.pad_right)
+---
+---@param s string
+---@param max_width integer
+---@return string
+function Wezterm.truncate_left(s, max_width) end
+
+---Returns a copy of a string that is no longer than
+---`max_width` columns as measured by
+---[`wezterm.column_width()`](lua://Wezterm.column_width).
+---Truncation occurs by reemoving excess characters
+---from the right end of the string.
+---
+---For example, `wezterm.truncate_right("hello", 3)`
+---returns `"hel"`.
+---
+---See also:
+---
+---[`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
+---[`wezterm.pad_left()`](lua://Wezterm.pad_left)
+---
+---@param s string
+---@param max_width integer
+---@return string
+function Wezterm.truncate_right(s, max_width) end
+
+---Overly specific and exists primarily to workaround this wsl.exe issue.
+---It takes as input a string and attempts to convert it from utf16 to utf8.
+---
+---@param s string
+---@return string
+function Wezterm.utf16_to_utf8(s) end
 
 ---This function is a helper to register a custom event
 ---and return an action triggering it.

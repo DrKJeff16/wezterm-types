@@ -142,17 +142,109 @@
 ---Alternatively you can use on the following keycode identifiers, although note that not all of
 ---these are meaningful on all platforms:
 ---
----Hyper, Super, Meta, Cancel, Backspace, Tab, Clear, Enter, Shift, Escape, LeftShift, RightShift,
----Control, LeftControl, RightControl, Alt, LeftAlt, RightAlt, Menu, LeftMenu, RightMenu, Pause,
----CapsLock, VoidSymbol, PageUp, PageDown, End, Home, LeftArrow, RightArrow, UpArrow, DownArrow,
----Select, Print, Execute, PrintScreen, Insert, Delete, Help, LeftWindows, RightWindows,
----Applications, Sleep, Numpad0, Numpad1, Numpad2, Numpad3, Numpad4, Numpad5, Numpad6, Numpad7,
----Numpad8, Numpad9, Multiply, Add, Separator, Subtract, Decimal, Divide, NumLock, ScrollLock,
----BrowserBack, BrowserForward, BrowserRefresh, BrowserStop, BrowserSearch, BrowserFavorites,
----BrowserHome, VolumeMute, VolumeDown, VolumeUp, MediaNextTrack, MediaPrevTrack, MediaStop,
----MediaPlayPause, ApplicationLeftArrow, ApplicationRightArrow, ApplicationUpArrow,
----ApplicationDownArrow, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17,
----F18, F19, F20, F21, F22, F23, F24.
+--- - `Add`
+--- - `Alt`
+--- - `ApplicationDownArrow`
+--- - `ApplicationLeftArrow`
+--- - `ApplicationRightArrow`
+--- - `ApplicationUpArrow`
+--- - `Applications`
+--- - `Backspace`
+--- - `BrowserBack`
+--- - `BrowserFavorites`
+--- - `BrowserForward`
+--- - `BrowserHome`
+--- - `BrowserRefresh`
+--- - `BrowserSearch`
+--- - `BrowserStop`
+--- - `Cancel`
+--- - `CapsLock`
+--- - `Clear`
+--- - `Control`
+--- - `Decimal`
+--- - `Delete`
+--- - `Divide`
+--- - `DownArrow`
+--- - `End`
+--- - `Enter`
+--- - `Escape`
+--- - `Execute`
+--- - `F1`
+--- - `F2`
+--- - `F3`
+--- - `F4`
+--- - `F5`
+--- - `F6`
+--- - `F7`
+--- - `F8`
+--- - `F9`
+--- - `F10`
+--- - `F11`
+--- - `F12`
+--- - `F13`
+--- - `F14`
+--- - `F15`
+--- - `F16`
+--- - `F17`
+--- - `F18`
+--- - `F19`
+--- - `F20`
+--- - `F21`
+--- - `F22`
+--- - `F23`
+--- - `F24`
+--- - `Help`
+--- - `Home`
+--- - `Hyper`
+--- - `Insert`
+--- - `LeftAlt`
+--- - `LeftArrow`
+--- - `LeftControl`
+--- - `LeftMenu`
+--- - `LeftShift`
+--- - `LeftWindows`
+--- - `MediaNextTrack`
+--- - `MediaPlayPause`
+--- - `MediaPrevTrack`
+--- - `MediaStop`
+--- - `Menu`
+--- - `Meta`
+--- - `Multiply`
+--- - `NumLock`
+--- - `Numpad0`
+--- - `Numpad1`
+--- - `Numpad2`
+--- - `Numpad3`
+--- - `Numpad4`
+--- - `Numpad5`
+--- - `Numpad6`
+--- - `Numpad7`
+--- - `Numpad8`
+--- - `Numpad9`
+--- - `PageDown`
+--- - `PageUp`
+--- - `Pause`
+--- - `Print`
+--- - `PrintScreen`
+--- - `RightAlt`
+--- - `RightArrow`
+--- - `RightControl`
+--- - `RightMenu`
+--- - `RightShift`
+--- - `RightWindows`
+--- - `ScrollLock`
+--- - `Select`
+--- - `Separator`
+--- - `Shift`
+--- - `Sleep`
+--- - `Subtract`
+--- - `Super`
+--- - `Tab`
+--- - `UpArrow`
+--- - `VoidSymbol`
+--- - `VolumeDown`
+--- - `VolumeMute`
+--- - `VolumeUp`
 ---
 ---The key value can refer either to the physical position of a key on an ANSI US keyboard or to the
 ---post-keyboard-layout-mapped value produced by a key press.
@@ -198,140 +290,29 @@
 ---@field key string
 ---Possible Modifier labels are:
 ---
----`SUPER`, `CMD`, `WIN` - these are all equivalent: on macOS the Command key, on Windows the
----Windows key, on Linux this can also be the Super or Hyper key. Left and right are equivalent.
+--- - `SUPER`, `CMD`, `WIN`: These are all equivalent: on macOS the `Command` key,
+---                  on Windows the `WIN`,
+---                  on Linux this can also be the `Super` or `Hyper` key.
+---                  Left and right are equivalent
+--- - `CTRL`: The control key.
+---         Left and right are equivalent
+--- - `SHIFT`: The shift key.
+---          Left and right are equivalent
+--- - `ALT`, `OPT`, `META`: These are all equivalent.
+---                  on macOS the Option key, on
+---                  other systems the Alt or Meta key.
+---                  Left and right are equivalent
+--- - `LEADER`: A special modal modifier state managed by WezTerm
+--- - `VoidSymbol`: This keycode is emitted in special cases where
+---               the original function of the key has been removed.
+---               Such as in Linux and using `setxkbmap -option caps:none`.
 ---
----`CTRL` - The control key. Left and right are equivalent.
----
----`SHIFT` - The shift key. Left and right are equivalent.
----
----`ALT`, `OPT`, `META` - these are all equivalent: on macOS the Option key, on other systems the
----Alt or Meta key. Left and right are equivalent.
----
----`LEADER` - a special modal modifier state managed by WezTerm.
----
----`VoidSymbol` - This keycode is emitted in special cases where the original function of the key has
----been removed. Such as in Linux and using setxkbmap: `setxkbmap -option caps:none`. The CapsLock
----will no longer function as before in all applications, instead emitting `VoidSymbol`.
+---The `CapsLock` will no longer function as before in all applications,
+---instead emitting `VoidSymbol`.
 ---You can also combine modifiers using the `|` symbol, like `"CMD|CTRL"`.
 ---
----@field mods? string Optional modifiers keys.
+---@field mods? string
 ---@field action? KeyAssignment
-
----@alias KeyAssignFunction fun(param: any): KeyAssignment
-
----Can also be called as function like older versions of wezterm did.
----
----@class ActionFuncClass
----@field ActivateCommandPalette KeyAssignFunction
----@field ActivateCopyMode KeyAssignFunction
----@field ActivateKeyTable KeyAssignFunction
----@field ActivateLastTab KeyAssignFunction
----@field ActivatePaneByIndex KeyAssignFunction
----@field ActivatePaneDirection KeyAssignFunction
----@field ActivateTab KeyAssignFunction
----@field ActivateTabRelative KeyAssignFunction
----@field ActivateTabRelativeNoWrap KeyAssignFunction
----@field ActivateWindow KeyAssignFunction
----@field ActivateWindowRelative KeyAssignFunction
----@field ActivateWindowRelativeNoWrap KeyAssignFunction
----@field AdjustPaneSize KeyAssignFunction
----@field AttachDomain KeyAssignFunction
----@field CharSelect KeyAssignFunction
----@field ClearKeyTableStack KeyAssignFunction
----@field ClearScrollback KeyAssignFunction
----@field ClearSelection KeyAssignFunction
----@field CloseCurrentPane KeyAssignFunction
----@field CloseCurrentTab KeyAssignFunction
----@field CompleteSelection KeyAssignFunction
----@field CompleteSelectionOrOpenLinkAtMouseCursor KeyAssignFunction
----@field Copy KeyAssignFunction
----@field DecreaseFontSize KeyAssignFunction
----@field DetachDomain KeyAssignFunction
----@field DisableDefaultAssignment KeyAssignFunction
----@field EmitEvent KeyAssignFunction
----@field ExtendSelectionToMouseCursor KeyAssignFunction
----@field Hide KeyAssignFunction
----@field HideApplication KeyAssignFunction
----@field IncreaseFontSize KeyAssignFunction
----@field InputSelector KeyAssignFunction
----@field MoveTab KeyAssignFunction
----@field MoveTabRelative KeyAssignFunction
----@field OpenLinkAtMouseCursor KeyAssignFunction
----@field PaneSelect KeyAssignFunction
----@field Paste KeyAssignFunction
----@field PasteFrom KeyAssignFunction
----@field PastePrimarySelection KeyAssignFunction
----@field PopKeyTable KeyAssignFunction
----@field PromptInputLine KeyAssignFunction
----@field QuickSelect KeyAssignFunction
----@field QuickSelectArgs KeyAssignFunction
----@field QuitApplication KeyAssignFunction
----@field ReloadConfiguration KeyAssignFunction
----@field ResetFontAndWindowSize KeyAssignFunction
----@field ResetFontSize KeyAssignFunction
----@field ResetTerminal KeyAssignFunction
----@field RotatePanes KeyAssignFunction
----@field ScrollByCurrentEventWheelDelta KeyAssignFunction
----@field ScrollByLine KeyAssignFunction
----@field ScrollByPage KeyAssignFunction
----@field ScrollToBottom KeyAssignFunction
----@field ScrollToPrompt KeyAssignFunction
----@field ScrollToTop KeyAssignFunction
----@field Search KeyAssignFunction
----@field SelectTextAtMouseCursor KeyAssignFunction
----@field SetPaneZoomState KeyAssignFunction
----@field Show KeyAssignFunction
----@field ShowDebugOverlay KeyAssignFunction
----@field ShowLauncher KeyAssignFunction
----@field ShowLauncherArgs KeyAssignFunction
----@field ShowTabNavigator KeyAssignFunction
----@field SpawnCommandInNewTab KeyAssignFunction
----@field SpawnCommandInNewWindow KeyAssignFunction
----@field SpawnTab KeyAssignFunction
----@field SpawnWindow KeyAssignFunction
----@field SplitHorizontal KeyAssignFunction
----@field SplitPane KeyAssignFunction
----@field SplitVertical KeyAssignFunction
----@field StartWindowDrag KeyAssignFunction
----@field SwitchToWorkspace KeyAssignFunction
----@field SwitchWorkspaceRelative KeyAssignFunction
----@field ToggleFullScreen KeyAssignFunction
----@field TogglePaneZoomState KeyAssignFunction
-local ActionFunc = {}
-
----Causes the key press to have no effect; it behaves as though those keys were not pressed.
----
----If instead of this you want the key presses to pass through to the terminal,
----look at [`DisableDefaultAssignment`](https://wezterm.org/config/lua/keyassignment/DisableDefaultAssignment.html).
----
-function ActionFunc.Nop() end
-
----@param s string
-function ActionFunc.SendString(s) end
-
----@param param SendKey
-function ActionFunc.SendKey(param) end
-
----@param act CopyMode
-function ActionFunc.CopyMode(act) end
-
----@param destination CopyTo
-function ActionFunc.CopyTo(destination) end
-
----Performs a sequence of multiple assignments.
----
----This is useful when you want a single key press to trigger multiple actions.
----
----@param action ActionClass[]
-function ActionFunc.Multiple(action) end
-
----Performs a sequence of multiple assignments.
----
----This is useful when you want a single key press to trigger multiple actions.
----
----@param action ActionFuncClass[]
-function ActionFunc.Multiple(action) end
 
 ---@class ActionClass
 ---@field ActivateCommandPalette any
@@ -420,8 +401,125 @@ function ActionFunc.Multiple(action) end
 ---@field ToggleFullScreen any
 ---@field TogglePaneZoomState any
 
+---@alias KeyAssignFunction fun(param: any)
+
+---Can also be called as function like older versions of wezterm did.
+---
+---@class ActionFuncClass
+---@field ActivateCommandPalette KeyAssignFunction
+---@field ActivateCopyMode KeyAssignFunction
+---@field ActivateKeyTable KeyAssignFunction
+---@field ActivateLastTab KeyAssignFunction
+---@field ActivatePaneByIndex KeyAssignFunction
+---@field ActivatePaneDirection KeyAssignFunction
+---@field ActivateTab KeyAssignFunction
+---@field ActivateTabRelative KeyAssignFunction
+---@field ActivateTabRelativeNoWrap KeyAssignFunction
+---@field ActivateWindow KeyAssignFunction
+---@field ActivateWindowRelative KeyAssignFunction
+---@field ActivateWindowRelativeNoWrap KeyAssignFunction
+---@field AdjustPaneSize KeyAssignFunction
+---@field AttachDomain KeyAssignFunction
+---@field CharSelect KeyAssignFunction
+---@field ClearKeyTableStack KeyAssignFunction
+---@field ClearScrollback KeyAssignFunction
+---@field ClearSelection KeyAssignFunction
+---@field CloseCurrentPane KeyAssignFunction
+---@field CloseCurrentTab KeyAssignFunction
+---@field CompleteSelection KeyAssignFunction
+---@field CompleteSelectionOrOpenLinkAtMouseCursor KeyAssignFunction
+---@field Copy KeyAssignFunction
+---@field DecreaseFontSize KeyAssignFunction
+---@field DetachDomain KeyAssignFunction
+---@field DisableDefaultAssignment KeyAssignFunction
+---@field EmitEvent KeyAssignFunction
+---@field ExtendSelectionToMouseCursor KeyAssignFunction
+---@field Hide KeyAssignFunction
+---@field HideApplication KeyAssignFunction
+---@field IncreaseFontSize KeyAssignFunction
+---@field InputSelector KeyAssignFunction
+---@field MoveTab KeyAssignFunction
+---@field MoveTabRelative KeyAssignFunction
+---@field OpenLinkAtMouseCursor KeyAssignFunction
+---@field PaneSelect KeyAssignFunction
+---@field Paste KeyAssignFunction
+---@field PasteFrom KeyAssignFunction
+---@field PastePrimarySelection KeyAssignFunction
+---@field PopKeyTable KeyAssignFunction
+---@field PromptInputLine KeyAssignFunction
+---@field QuickSelect KeyAssignFunction
+---@field QuickSelectArgs KeyAssignFunction
+---@field QuitApplication KeyAssignFunction
+---@field ReloadConfiguration KeyAssignFunction
+---@field ResetFontAndWindowSize KeyAssignFunction
+---@field ResetFontSize KeyAssignFunction
+---@field ResetTerminal KeyAssignFunction
+---@field RotatePanes KeyAssignFunction
+---@field ScrollByCurrentEventWheelDelta KeyAssignFunction
+---@field ScrollByLine KeyAssignFunction
+---@field ScrollByPage KeyAssignFunction
+---@field ScrollToBottom KeyAssignFunction
+---@field ScrollToPrompt KeyAssignFunction
+---@field ScrollToTop KeyAssignFunction
+---@field Search KeyAssignFunction
+---@field SetPaneZoomState KeyAssignFunction
+---@field Show KeyAssignFunction
+---@field ShowDebugOverlay KeyAssignFunction
+---@field ShowLauncher KeyAssignFunction
+---@field ShowLauncherArgs KeyAssignFunction
+---@field ShowTabNavigator KeyAssignFunction
+---@field SpawnCommandInNewTab KeyAssignFunction
+---@field SpawnCommandInNewWindow KeyAssignFunction
+---@field SpawnTab KeyAssignFunction
+---@field SpawnWindow KeyAssignFunction
+---@field SplitHorizontal KeyAssignFunction
+---@field SplitPane KeyAssignFunction
+---@field SplitVertical KeyAssignFunction
+---@field StartWindowDrag KeyAssignFunction
+---@field SwitchToWorkspace KeyAssignFunction
+---@field SwitchWorkspaceRelative KeyAssignFunction
+---@field ToggleFullScreen KeyAssignFunction
+---@field TogglePaneZoomState KeyAssignFunction
+local ActionFunc = {}
+
+---Causes the key press to have no effect; it behaves as though those keys were not pressed.
+---
+---If instead of this you want the key presses to pass through to the terminal,
+---look at [`DisableDefaultAssignment`](https://wezterm.org/config/lua/keyassignment/DisableDefaultAssignment.html).
+---
+function ActionFunc.Nop() end
+
+---@param s "Line"|"Word"|"Cell"|"Block"
+function ActionFunc.SelectTextAtMouseCursor(s) end
+
+---@param s string
+function ActionFunc.SendString(s) end
+
+---@param param SendKey
+function ActionFunc.SendKey(param) end
+
+---@param act CopyMode
+function ActionFunc.CopyMode(act) end
+
+---@param destination CopyTo
+function ActionFunc.CopyTo(destination) end
+
+---Performs a sequence of multiple assignments.
+---
+---This is useful when you want a single key press to trigger multiple actions.
+---
+---@param action ActionClass[]
+function ActionFunc.Multiple(action) end
+
+---Performs a sequence of multiple assignments.
+---
+---This is useful when you want a single key press to trigger multiple actions.
+---
+---@param action ActionFuncClass[]
+function ActionFunc.Multiple(action) end
+
 ---Helper for defining key assignment actions in your configuration file.
 ---This is really just sugar for the underlying Lua -> Rust deserialation mapping
 ---that makes it a bit easier to identify where syntax errors may exist
 ---in your configuration file
----@alias Action ActionFuncClass|fun(action: ActionClass)
+---@alias Action ActionFuncClass|ActionClass

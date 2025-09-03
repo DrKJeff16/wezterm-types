@@ -5,16 +5,20 @@
 ---`TabInformation` is purely a snapshot of some of the
 ---key characteristics of the tab, intended for use in synchronous,
 ---fast, event callbacks that format GUI elements
----such as the window and tab title bars
+---such as the window and tab title bars.
+---
 ---@class TabInformation
----@field tab_id integer
----@field tab_index integer
+---@field active_pane PaneInformation
 ---@field is_active boolean
 ---@field is_last_active boolean
----@field active_pane PaneInformation
----The ID of the window that contains this tab
----@field window_id integer
----The title of the window that contains this tab
----@field window_title string
----The title of the tab
+---@field tab_id integer
+---@field tab_index integer
+---The title of the tab.
+---
 ---@field tab_title string
+---The ID of the window that contains this tab.
+---
+---@field window_id integer
+---The title of the window that contains this tab.
+---
+---@field window_title string

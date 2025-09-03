@@ -15,29 +15,40 @@
 ---@field pixel_height number
 ---@field dpi number
 
----`MuxTab` represents a tab that is managed by the multiplexer
+---`MuxTab` represents a tab that is managed by the multiplexer.
+---
 ---@class MuxTab
----Activates (focuses) the tab
+---Activates (focuses) the tab.
+---
 ---@field activate fun(self: MuxTab)
----A convenience accessor for returning the active pane in the tab
+---A convenience accessor for returning the active pane in the tab.
+---
 ---@field active_pane fun(self): Pane
----Returns pane adjacent to the active pane in tab in the direction direction
+---Returns pane adjacent to the active pane in tab in the direction direction.
+---
 ---@field get_pane_direction fun(self: MuxTab, direction: PaneDirection): MuxTab
 ---Returns the overall size of the tab,
----taking into account all of the contained panes
+---taking into account all of the contained panes.
+---
 ---@field get_size fun(self: MuxTab): MuxSize
----Returns the tab title as set by `tab:set_title()`
+---Returns the tab title as set by `tab:set_title()`.
+---
 ---@field get_title fun(self: MuxTab): string
----Returns an array table containing the set of Pane objects contained by this tab
+---Returns an array table containing the set of Pane objects contained by this tab.
+---
 ---@field panes fun(self: MuxTab): Pane[]
 ---Returns an array table containing an extended info entry
----for each of the panes contained by this tab
+---for each of the panes contained by this tab.
+---
 ---@field panes_with_info fun(self: MuxTab): PaneInformation[]
----Rotates the panes in the clockwise direction
+---Rotates the panes in the clockwise direction.
+---
 ---@field rotate_clockwise fun(self: MuxTab)
----Rotates the panes in the counter-clockwise direction
+---Rotates the panes in the counter-clockwise direction.
+---
 ---@field rotate_counter_clockwise fun(self: MuxTab)
----Sets the tab title to the provided string
+---Sets the tab title to the provided string.
+---
 ---@field set_title fun(self: MuxTab, title: string)
 ---Sets the zoomed state for the active pane within this tab.
 ---
@@ -48,9 +59,12 @@
 --- - Setting the zoom state to `true` zooms the pane if it wasn't already zoomed
 --- - Setting the zoom state to `false` un-zooms the pane if it was zoomed
 ---
----Returns the prior zoom state
+---Returns the prior zoom state.
+---
 ---@field set_zoomed fun(self: MuxTab, state: boolean): boolean
----Returns the tab id
----@field tab_id fun(self: MuxTab): number
----Returns the MuxWindow object that contains this tab
+---Returns the tab ID.
+---
+---@field tab_id fun(self: MuxTab): integer
+---Returns the MuxWindow object that contains this tab.
+---
 ---@field window fun(self: MuxTab): MuxWindow
