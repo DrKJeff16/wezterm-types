@@ -1,67 +1,89 @@
 ---@meta
 
 ---@class MuxWindow.TabInfo
----The 0-based tab index
+---The 0-based tab index.
+---
 ---@field index integer
----A `boolean` indicating whether this is the active tab within the window
+---A `boolean` indicating whether this is
+---the active tab within the window.
+---
 ---@field is_active boolean
----The `MuxTab` object
+---A `MuxTab` object.
+---
 ---@field tab MuxTab
 
 ---@class SpawnTab
 ---Specifies the argument array for the command that should be spawned.
 ---
----If omitted the default program for the domain will be spawned
+---If omitted the default program for the domain will be spawned.
+---
 ---@field args? string[]
 ---Specifies the current working directory that should be used for the program.
 ---
----If unspecified, follows the spec from `Config.default_cwd`
+---If unspecified, it'll follow the spec from
+---[`config.default_cwd`](lua://Config.default_cwd).
+---
 ---@field cwd? string
----Sets additional environment variables in the environment for this command invocation
----@field set_environment_variables? table<string, any>
----Specifies the multiplexer domain into which the program should be spawned.
+---Specifies the multiplexer domain into which the program
+---should be spawned.
 ---
 ---The default value is assumed to be `"CurrentPaneDomain"`,
----which causes the domain from the currently active pane to be used
+---which causes the domain from the currently active pane to be used.
+---
 ---@field domain? SpawnDomain
+---Sets additional environment variables in the environment
+---for this command invocation.
+---
+---@field set_environment_variables? table<string, any>
 
----`MuxWindow` represents a window that is managed by the multiplexer
+---`MuxWindow` represents a window that is managed by the multiplexer.
+---
 ---@class MuxWindow
 ---A convenience accessor for returning
----the active pane in the active tab of the window
+---the active pane in the active tab of the window.
+---
 ---@field active_pane fun(self: MuxWindow): Pane
 ---A convenience accessor for returning
----the active tab within the window
+---the active tab within the window.
+---
 ---@field active_tab fun(self: MuxWindow): MuxTab
 ---Returns the window title as set by `OSC 0`, `OSC 2` in a contained pane,
----or through `Window:set_title()`
+---or through `Window:set_title()`.
+---
 ---@field get_title fun(self: MuxWindow): string
----Returns the name of the workspace to which the window belongs
+---Returns the name of the workspace to which the window belongs.
+---
 ---@field get_workspace fun(self: MuxWindow)
 ---Attempts to resolve this mux window to its corresponding `GUI Window`.
 ---
 ---This may not succeed for a couple of reasons:
 ---
----    If called by the multiplexer daemon, there is no GUI, so this will never succeed
----    If the mux window is part of a workspace that is not the active one
+--- - If called by the multiplexer daemon, there is no GUI, so this will never succeed
+--- - If the mux window is part of a workspace that is not the active one
 ---
----This method is the inverse of `Window:mux_window()`
+---This method is the inverse of `Window:mux_window()`.
+---
 ---@field gui_window fun(self: MuxWindow): Window
 ---Sets the window title to the provided string.
 ---
----Note that applications may subsequently change the title via escape sequences
+---Note that applications may subsequently change the title via escape sequences.
+---
 ---@field set_title fun(self: MuxWindow, title: string)
----Changes the name of the workspace to which the window belongs to
+---Changes the name of the workspace to which the window belongs to.
+---
 ---@field set_workspace fun(self: MuxWindow, name: string)
 ---Spawns a program into a new tab within this window,
 ---returning the `MuxTab`, `Pane` and `MuxWindow` objects associated with it.
 ---
 ---When no arguments are passed, the default program is spawned.
+---
 ---@field spawn_tab fun(self: MuxWindow, args: SpawnTab): tab: MuxTab, pane: Pane, window: MuxWindow
----Returns an array table holding each of the `MuxTab` objects contained within this window
+---Returns an array table holding each of the `MuxTab` objects contained within this window.
+---
 ---@field tabs fun(self: MuxWindow): MuxTab[]
 ---Returns an array table holding an extended info entry
----for each of the tabs contained within this window
+---for each of the tabs contained within this window.
+---
 ---@field tabs_with_info fun(self: MuxWindow): MuxWindow.TabInfo[]
----Returns the window multiplexer id
+---Returns the window multiplexer ID.
 ---@field window_id fun(self: MuxWindow): integer
