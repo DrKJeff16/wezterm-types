@@ -15,6 +15,7 @@ local M = {}
 
 ---Activates (focuses) the tab.
 ---
+---@param self MuxTab
 function M:activate() end
 
 ---A convenience accessor for returning the active pane
