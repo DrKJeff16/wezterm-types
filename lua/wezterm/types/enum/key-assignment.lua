@@ -45,9 +45,9 @@
 ---|"ScrollToBottom"
 ---|{ JumpBackward: { prev_char: boolean } }
 ---|{ JumpForward: { prev_char: boolean } }
----|{ MoveBackwardSemanticZoneOfType: SemanticZoneType }
+---|{ MoveBackwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ MoveByPage: number }
----|{ MoveForwardSemanticZoneOfType: SemanticZoneType }
+---|{ MoveForwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ SetSelectionMode: SelectionMode|"SemanticZone" }
 
 ---@alias SendKey Key
