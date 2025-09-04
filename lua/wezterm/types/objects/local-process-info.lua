@@ -14,24 +14,35 @@
 ---|"LockBlocked"
 ---|"Unknown"
 
----Represents a process running on the local machine
+---Represents a process running on the local machine.
+---
 ---@class LocalProcessInfo
----The process identifier (`PID`)
----@field pid integer
----The parent process identifier
----@field ppid integer
+---A table holding the argument array for the process.
+---
+---@field argv string[]
+---A table keyed by child process id and whose values are themselves.
+---`LocalProcessInfo` objects that describe the child processes.
+---
+---@field children LocalProcessInfo[]
+---The current working directory for the process (may be empty).
+---
+---@field cwd string|""
+---the full path to the executable image for the process (may be empty).
+---
+---@field executable string|""
 ---A short name for the process.
 ---
 ---Due to platform limitations, this may be inaccurate and/or truncated;
----you should look at the `executable` or `argv` fields instead of this one
+---you should look at the `executable` or `argv` fields instead of this one.
+---
 ---@field name string
----the full path to the executable image for the process (may be empty)
----@field executable string|""
----A table holding the argument array for the process
----@field argv string[]|table
----The current working directory for the process (may be empty)
----@field cwd string|""
----A string holding the status of the process
+---The process identifier (`PID`).
+---
+---@field pid integer
+---The parent process identifier.
+---
+---@field ppid integer
+---A string holding the status of the process.
 ---
 ---Possible values are:
 --- - `"Idle"`
@@ -46,7 +57,5 @@
 --- - `"Parked"`
 --- - `"LockBlocked"`
 --- - `"Unknown"`
+---
 ---@field status LocalProcessStatus
----A table keyed by child process id and whose values are themselves
----`LocalProcessInfo` objects that describe the child processes
----@field children table<integer, LocalProcessInfo>
