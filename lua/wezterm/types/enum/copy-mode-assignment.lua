@@ -7,11 +7,6 @@
 ---|"Word" Selection expands by a word at a time
 ---|"SemanticZone" Selection expands to the current semantic zone
 
----@alias SemanticZoneType
----|"Input"
----|"Output"
----|"Prompt"
-
 ---Represents a pre-defined function that can be applied to control `CopyMode`
 ---and [Search Mode](https://wezterm.org/scrollback.html#enabledisable-scrollbar)
 ---@alias CopyModeAssignment
@@ -48,6 +43,6 @@
 ---|"PriorMatch" Move the `CopyMode` / `SearchMode` selection to the previous matching text, if any
 ---|"PriorMatchPage" Move the `CopyMode` / `SearchMode` selection to the previous matching text on the previous page of the screen, if any
 ---|"SetSelectionMode" Sets the `CopyMode` selection mode
----|{ MoveBackwardSemanticZoneOfType: SemanticZoneType }
----|{ MoveForwardSemanticZoneOfType: SemanticZoneType }
+---|{ MoveBackwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
+---|{ MoveForwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ SetSelectionMode: SelectionMode }
