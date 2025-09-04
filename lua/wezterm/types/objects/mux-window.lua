@@ -18,7 +18,8 @@
 ---If omitted the default program for the domain will be spawned.
 ---
 ---@field args? string[]
----Specifies the current working directory that should be used for the program.
+---Specifies the current working directory that should be
+---used for the program.
 ---
 ---If unspecified, it'll follow the spec from
 ---[`config.default_cwd`](lua://Config.default_cwd).
@@ -39,21 +40,35 @@
 ---`MuxWindow` represents a window that is managed by the multiplexer.
 ---
 ---@class MuxWindow
+local M = {}
+
 ---A convenience accessor for returning
 ---the active pane in the active tab of the window.
 ---
----@field active_pane fun(self: MuxWindow): Pane
+---@param self MuxWindow
+---@return Pane pane
+function M:active_pane() end
+
 ---A convenience accessor for returning
 ---the active tab within the window.
 ---
----@field active_tab fun(self: MuxWindow): MuxTab
----Returns the window title as set by `OSC 0`, `OSC 2` in a contained pane,
----or through `Window:set_title()`.
+---@param self MuxWindow
+---@return MuxTab tab
+function M:active_tab() end
+
+---Returns the window title as set by `OSC 0`, `OSC 2`
+---in a contained pane, or through
+---[`MuxWindow:set_title()`](lua://MuxWindow.set_title).
 ---
----@field get_title fun(self: MuxWindow): string
+---@param self MuxWindow
+---@return string title
+function M:get_title() end
+
 ---Returns the name of the workspace to which the window belongs.
 ---
----@field get_workspace fun(self: MuxWindow)
+---@param self MuxWindow
+function M:get_workspace() end
+
 ---Attempts to resolve this mux window to its corresponding `GUI Window`.
 ---
 ---This may not succeed for a couple of reasons:
@@ -63,27 +78,55 @@
 ---
 ---This method is the inverse of `Window:mux_window()`.
 ---
----@field gui_window fun(self: MuxWindow): Window
+---@param self MuxWindow
+---@return Window window
+function M:gui_window() end
+
 ---Sets the window title to the provided string.
 ---
----Note that applications may subsequently change the title via escape sequences.
+---Note that applications may subsequently change the title
+---via escape sequences.
 ---
----@field set_title fun(self: MuxWindow, title: string)
----Changes the name of the workspace to which the window belongs to.
+---@param self MuxWindow
+---@param title string
+function M:set_title(title) end
+
+---Changes the name of the workspace to which
+---the window belongs to.
 ---
----@field set_workspace fun(self: MuxWindow, name: string)
+---@param self MuxWindow
+---@param name string
+function M:set_workspace(name) end
+
 ---Spawns a program into a new tab within this window,
----returning the `MuxTab`, `Pane` and `MuxWindow` objects associated with it.
+---returning the `MuxTab`, `Pane` and `MuxWindow` objects
+---associated with it.
 ---
 ---When no arguments are passed, the default program is spawned.
 ---
----@field spawn_tab fun(self: MuxWindow, args: SpawnTab): tab: MuxTab, pane: Pane, window: MuxWindow
----Returns an array table holding each of the `MuxTab` objects contained within this window.
+---@param self MuxWindow
+---@param args? SpawnTab
+---@return MuxTab tab
+---@return Pane pane
+---@return MuxWindow window
+function M:spawn_tab(args) end
+
+---Returns an array table holding each of the `MuxTab` objects
+---contained within this window.
 ---
----@field tabs fun(self: MuxWindow): MuxTab[]
+---@param self MuxWindow
+---@return MuxTab[] tabs
+function M:tabs() end
+
 ---Returns an array table holding an extended info entry
 ---for each of the tabs contained within this window.
 ---
----@field tabs_with_info fun(self: MuxWindow): MuxWindow.TabInfo[]
+---@param self MuxWindow
+---@return MuxWindow.TabInfo[] tabs
+function M:tabs_with_info() end
+
 ---Returns the window multiplexer ID.
----@field window_id fun(self: MuxWindow): integer
+---
+---@param self MuxWindow
+---@return integer id
+function M:window_id() end
