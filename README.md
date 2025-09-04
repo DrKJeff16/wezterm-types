@@ -8,7 +8,7 @@
 
 Example in [Neovim](https://github.com/neovim/neovim):
 
-![Neovim Demonstration](https://github.com/user-attachments/assets/c9082e54-39ad-4c7d-8d81-ddf0b1fb1fc7)
+https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
 ---
 
