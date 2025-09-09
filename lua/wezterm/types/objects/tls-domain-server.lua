@@ -1,16 +1,34 @@
+---@meta
+
+---The `TlsDomainServer` struct specifies information about
+---how to define the server side of a [TLS Domain](https://wezterm.org/multiplexing.html#tls-domains).
+---
 ---@class TlsDomainServer
+---The address:port combination on which the server
+---will listen for client connections.
+---
 ---@field bind_address string
----The address:port combination on which the server will listen
----for client connections
----@field pem_private_key string
----the path to an x509 PEM encoded private key file
----@field pem_cert string
----the path to an x509 PEM encoded certificate file
----@field pem_ca string
----the path to an x509 PEM encoded CA chain file
----@field pem_root_certs string[]
+---The path to an x509 PEM encoded CA chain file.
+---
+---You can omit this if your `tls_client` is using `bootstrap_via_ssh`.
+---
+---@field pem_ca? string
+---The path to an x509 PEM encoded certificate file.
+---
+---You can omit this if your `tls_client` is using `bootstrap_via_ssh`.
+---
+---@field pem_cert? string
+---The path to an x509 PEM encoded private key file.
+---
+---You can omit this if your `tls_client` is using `bootstrap_via_ssh`.
+---
+---@field pem_private_key? string
 ---A set of paths to load additional CA certificates.
 ---Each entry can be either the path to a directory
----or to a PEM encoded CA file.  If an entry is a directory
----then its contents will be loaded as CA certs and added
----to the trust store.
+---or to a PEM encoded CA file.
+---If an entry is a directory, then its contents
+---will be loaded as CA certs and added to the trust store.
+---
+---You can omit this if your `tls_client` is using `bootstrap_via_ssh`.
+---
+---@field pem_root_certs? string[]
