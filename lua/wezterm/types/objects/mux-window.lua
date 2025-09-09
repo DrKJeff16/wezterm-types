@@ -31,7 +31,7 @@
 ---The default value is assumed to be `"CurrentPaneDomain"`,
 ---which causes the domain from the currently active pane to be used.
 ---
----@field domain? SpawnDomain
+---@field domain? "DefaultDomain"|"CurrentPaneDomain"|{ DomainName: string }
 ---Sets additional environment variables in the environment
 ---for this command invocation.
 ---

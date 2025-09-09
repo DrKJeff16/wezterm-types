@@ -1,17 +1,29 @@
 ---@meta
 
----Describes a tab.
+---The `TabInformation` struct describes a tab.
 ---
 ---`TabInformation` is purely a snapshot of some of the
----key characteristics of the tab, intended for use in synchronous,
----fast, event callbacks that format GUI elements
----such as the window and tab title bars.
+---key characteristics of the tab, intended for use
+---in synchronous, fast event callbacks that format
+---GUI elements such as the window and tab title bars.
 ---
 ---@class TabInformation
+---The [`PaneInformation`](lua://PaneInformation)
+---for the active pane in this tab.
+---
 ---@field active_pane PaneInformation
+---Is `true` if this tab is the active tab.
+---
 ---@field is_active boolean
+---Is `true` if this tab is the previously active tab.
+---
 ---@field is_last_active boolean
+---The identifier for the tab.
+---
 ---@field tab_id integer
+---The logical tab position within its containing window,
+---with `0` indicating the leftmost tab.
+---
 ---@field tab_index integer
 ---The title of the tab.
 ---

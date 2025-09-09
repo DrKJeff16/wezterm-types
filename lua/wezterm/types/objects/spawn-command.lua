@@ -2,35 +2,47 @@
 
 --TODO: finish
 
----@alias SpawnDomain
----|"DefaultDomain"
----|"CurrentPaneDomain"
----|{ DomainName: string }
-
----@alias SpawnPosition.Origin
----|"ScreenCoordinateSystem"
----|"MainScreen"
----|"ActiveScreen"
----|{ Named: string }
-
 ---@class SpawnPosition
+---@field origin? "ScreenCoordinateSystem"|"MainScreen"|"ActiveScreen"|{ Named: string }
 ---@field x? integer
 ---@field y? integer
----@field origin? SpawnPosition.Origin
 
 ---The `SpawnCommand` struct specifies information
 ---about a new command to be spawned.
 ---
 ---It is a Lua object with the following fields;
----all of the fields have reasonable defaults and can be omitted.
+---all of the fields have reasonable defaults
+---and can be omitted.
 ---
 ---@class SpawnCommand
----The argument array specifying the command and its arguments.
+---The argument array specifying the command
+---and its arguments.
 ---
----If omitted, the default program for the target domain will be
----spawned.
+---If omitted, the default program for the target domain
+---will be spawned.
 ---
 ---@field args? string[]
+---The current working directory to set for the command.
+---
+---If omitted, wezterm will infer a value
+---based on the active pane at the time
+---this action is triggered.
+---
+---If the active pane matches the domain
+---specified in this `SpawnCommand` instance
+---then the current working directory of the active pane
+---will be used.
+---
+---If the current working directory cannot be inferred
+---then it will typically fall back to using
+---the `$HOME` directory of the current user.
+---
+---@field cwd? string
+---Specifies that the multiplexer domain
+---of the currently active pane should be used
+---to start this process.
+---
+---@field domain? "DefaultDomain"
 ---An optional label.
 ---
 ---The `label` is only used for `SpawnCommand` instances
@@ -40,31 +52,15 @@
 ---on the `args` field.
 ---
 ---@field label? string
----The current working directory to set for the command.
----
----If omitted, wezterm will infer a value based on the active pane
----at the time this action is triggered.
----
----If the active pane matches the domain specified in this `SpawnCommand` instance
----then the current working directory of the active pane will be used.
----
----If the current working directory cannot be inferred then it
----will typically fall back to using the home (`$HOME`) directory of
----the current user.
----
----@field cwd? string
----Sets additional environment variables in the environment for
----this command invocation.
----
----@field set_environment_variables? table<string, any>|table
----Specifies that the multiplexer domain of the currently active pane
----should be used to start this process.
----
----@field domain? "DefaultDomain"
----Specifies the initial position for a GUI window when this command
----is used in a context that will create a new window, such as with:
+---Specifies the initial position for a GUI window
+---when this command is used in a context that will
+---create a new window, such as with:
 ---
 --- - [`wezterm.mux.spawn_window()`](lua://Wezterm.Mux.spawn_window)
 --- - `SpawnCommandInNewWindow`
 ---
 ---@field position? SpawnPosition
+---Sets additional environment variables in the environment for
+---this command invocation.
+---
+---@field set_environment_variables? table<string, any>

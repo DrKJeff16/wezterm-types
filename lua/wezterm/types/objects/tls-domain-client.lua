@@ -1,45 +1,83 @@
+---The TlsDomainClient struct specifies information
+---about how to connect to a [TLS Domain](https://wezterm.org/multiplexing.html#tls-domains).
+---
 ---@class TlsDomainClient
----@field name string
----The name of this specific domain.  Must be unique amongst
----all types of domain in the configuration file.
----@field bootstrap_via_ssh string
----If set, use ssh to connect, start the server, and obtain
----a certificate.
----The value is "user@host:port", just like "wezterm ssh" accepts.
----@field remote_address string
----identifies the host:port pair of the remote server.
----@field pem_private_key string
----the path to an x509 PEM encoded private key file
----@field pem_cert string
----the path to an x509 PEM encoded certificate file
----@field pem_ca string
----the path to an x509 PEM encoded CA chain file
----@field pem_root_certs string[]
----A set of paths to load additional CA certificates.
----Each entry can be either the path to a directory or to a PEM encoded
----CA file.  If an entry is a directory, then its contents will be
----loaded as CA certs and added to the trust store.
----@field accept_invalid_hostnames boolean
----explicitly control whether the client checks that the certificate
+---Explicitly controls whether the client checks that the certificate
 ---presented by the server matches the hostname portion of
----`remote_address`.  The default is true.  This option is made
----available for troubleshooting purposes and should not be used outside
----of a controlled environment as it weakens the security of the TLS
----channel.
----@field expected_cn string
----the hostname string that we expect to match against the common name
----field in the certificate presented by the server.  This defaults to
----the hostname portion of the `remote_address` configuration and you
----should not normally need to override this value.
----@field connect_automatically boolean
----If true, connect to this domain automatically at startup
----@field read_timeout integer
----@field write_timeout integer
----@field local_echo_threshold_ms integer
----The path to the wezterm binary on the remote host
----@field remote_wezterm_path string
----Show time since last response when waiting for a response.
----It is recommended to use
----<https://wezfurlong.org/wezterm/config/lua/pane/get_metadata.html#since_last_response_ms>
----instead.
+---`remote_address`.
+---
+---The default is `true`.
+---
+---This option is made available for troubleshooting purposes
+---and should not be used outside of a controlled environment
+---as it weakens the security of the TLS channel.
+---
+---@field accept_invalid_hostnames? boolean
+---If set, use `ssh` to connect, start the server, and obtain
+---a certificate.
+---
+---The value is `"user@host:port"`, just like
+---what `wezterm ssh` accepts.
+---
+---@field bootstrap_via_ssh string
+---The name of this specific domain.
+---
+---Must be unique amongst all types of domain
+---in the configuration file.
+---
+---@field name string
+---The path to an x509 PEM encoded CA chain file.
+---
+---Omit this if you are using `bootstrap_via_ssh`.
+---
+---@field pem_ca? string
+---The path to an x509 PEM encoded certificate file
+---
+---Omit this if you are using `bootstrap_via_ssh`.
+---
+---@field pem_cert? string
+---The path to an x509 PEM encoded private key file.
+---
+---Omit this if you are using `bootstrap_via_ssh`.
+---
+---@field pem_private_key? string
+---A set of paths to load additional CA certificates.
+---
+---Each entry can be either the path to a directory
+---or to a PEM encoded CA file.
+---If an entry is a directory, then its contents will be
+---loaded as CA certs and added to the trust store.
+---
+---Omit this if you are using `bootstrap_via_ssh`.
+---
+---@field pem_root_certs? string[]
+---Identifies the `host:port` pair of the remote server.
+---
+---@field remote_address string
+---The hostname string that we expect to match against the common name
+---field in the certificate presented by the server.
+---
+---This defaults to the hostname portion of the `remote_address`
+---configuration.
+---
+---**You should not normally need to override this value**.
+---
+---@field expected_cn? string
+---If `true`, connect to this domain automatically at startup.
+---
+---@field connect_automatically? boolean
+---If true, connect to this domain automatically at startup.
+---
+---@field read_timeout? integer
+---@field write_timeout? integer
+---The path to the wezterm binary on the remote host.
+---
+---@field remote_wezterm_path? string
+---Specifies the round-trip latency threshold for enabling predictive
+---local echo.
+---
+---@field local_echo_threshold_ms? integer
+---If you prefer to have the information overlaid on the content area,
+---then you can this to `true`, but note that this may be dropped in the future.
+---
 ---@field overlay_lag_indicator boolean
