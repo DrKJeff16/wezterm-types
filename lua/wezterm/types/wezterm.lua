@@ -1296,7 +1296,6 @@ function Wezterm.log_warn(msg, ...) end
 ---
 ---@param event "augment-command-palette"
 ---@param callback AugmentCallbackWindowPane
----@return AugmentCommandPaletteReturn
 function Wezterm.on(event, callback) end
 
 --- - The first event parameter is a [`Window`](lua://Window)
@@ -1460,6 +1459,70 @@ function Wezterm.on(event, callback) end
 ---
 ---@param event "gui-startup"
 ---@param callback fun(cmd?: SpawnCommand)
+function Wezterm.on(event, callback) end
+
+---The `mux-is-process-stateful` event is emitted when the multiplexer layer
+---wants to determine whether a given
+---[`Pane`](lua://Pane) can be
+---closed without prompting the user.
+---
+---This event is synchronous and must return as quickly as possible
+---in order to avoid blocking the multiplexer.
+---
+---The event is passed a `LocalProcessInfo` object representing the process
+---that corresponds to the pane.
+---
+---The hook can return one of the following values:
+--- - `true`: to indicate that this process tree is considered to be stateful
+---         and that the user should be prompted before terminating the pane
+--- - `false`: to indicate that the process tree can be terminated
+---          without prompting the user
+---
+---Any other value means to use the default behavior,
+---which is to consider the configuration option:
+---[`skip_close_confirmation_for_processes_named`](lua://Config.skip_close_confirmation_for_processes_named)
+---
+---@param event "mux-is-process-stateful"
+---@param callback fun(info: LocalProcessInfo): boolean
+function Wezterm.on(event, callback) end
+
+---The `mux-startup` event is emitted once when the mux server is starting up.
+---
+---It is triggered before any default program is started.
+---
+---If the `mux-startup` event causes any panes to be created then
+---those will take precedence over the default program configuration
+---and no additional default program will be spawned.
+---
+---This event is useful for starting a set of programs in a
+---standard configuration to save you the effort of
+---manually doing it each time.
+---
+---Example:
+---
+---```lua
+---local wezterm = require 'wezterm'
+---local mux = wezterm.mux
+---
+----- this is called by the mux server when it starts up.
+----- It makes a window split top/bottom
+---wezterm.on('mux-startup', function()
+---  local tab, pane, window = mux.spawn_window {}
+---  pane:split { direction = 'Top' }
+---end)
+---
+---return {
+---  unix_domains = {
+---    { name = 'unix' },
+---  },
+---}
+---```
+---
+---See also:
+--- - [`wezterm.mux`](lua://Wezterm.Mux)
+---
+---@param event "mux-startup"
+---@param callback fun()
 function Wezterm.on(event, callback) end
 
 --- - The first event parameter is a [`Window`](lua://Window)
