@@ -1878,7 +1878,8 @@
 ---@field ssh_backend? "Ssh2"|"LibSsh"
 ---Configures SSH multiplexing domains.
 ---
----This option accepts a list of [`SshDomain`](lua://SshDomain) objects.
+---This option accepts a list of tables of type
+---[`SshDomain`](lua://SshDomain).
 ---
 ---Read more about SSH Domains [here](https://wezterm.org/multiplexing.html#ssh-domains).
 ---
