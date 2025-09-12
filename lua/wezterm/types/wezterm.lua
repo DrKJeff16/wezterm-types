@@ -1414,10 +1414,50 @@ function Wezterm.on(event, callback) end
 ---@param callback fun(window: Window, pane: Pane, tabs: MuxTab[], panes: Pane[], config: Config): string
 function Wezterm.on(event, callback) end
 
+---This event is triggered when the GUI is starting up
+---after attaching the selected domain.
+---For example, when you use `wezterm connect DOMAIN` or
+---`wezterm start --domain DOMAIN` to start the GUI,
+---the `gui-attached` event will be triggered and passed the
+---[`MuxDomain`](lua://MuxDomain) object
+---associated with `DOMAIN`.
+---
+---In cases where you don't specify the domain,
+---the default domain will be passed instead.
+---
+---This event fires after the `gui-startup` event.
+---
+---Note that the `gui-startup` event does not fire when invoking
+---`wezterm connect DOMAIN` or `wezterm start --domain DOMAIN --attach`.
+---
 ---@param event "gui-attached"
 ---@param callback fun(domain: MuxDomain|ExecDomain)
 function Wezterm.on(event, callback) end
 
+---The `gui-startup` event is emitted once when the GUI server
+---is starting up when running the `wezterm start` subcommand.
+---
+---If no explicit program was passed to `wezterm start`,
+---and if the `gui-startup` event causes any panes to be created
+---then those will take precedence
+---over the default program configuration
+---and no additional default program will be spawned.
+---
+---This event is useful for starting a set of programs in a
+---standard configuration to save you the effort of doing it
+---manually each time.
+---
+--- - It is triggered before any default program is started
+--- - This event fires before `gui-attached`
+--- - This event does not fire for `wezterm connect` invocations
+--- - The event receives an optional `SpawnCommand` argument
+---   that corresponds to any arguments that may have been passed
+---   via `wezterm start`
+---
+---The intent is for you to use the information in the command object
+---to spawn a new window, but you can choose to use or ignore it
+---as suits your purpose.
+---
 ---@param event "gui-startup"
 ---@param callback fun(cmd?: SpawnCommand)
 function Wezterm.on(event, callback) end
