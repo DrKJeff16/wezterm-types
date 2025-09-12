@@ -2,7 +2,7 @@
 
 # wezterm-types
 
-[Wezterm](https://github.com/wezterm/wezterm) config types for [Lua Language Server](https://luals.github.io/)
+[WezTerm](https://github.com/wezterm/wezterm) config types for [Lua Language Server](https://luals.github.io/).
 
 </div>
 
