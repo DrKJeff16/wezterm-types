@@ -1,8 +1,50 @@
 ---@meta
 
+---The `WslDomain` struct specifies information about
+---an individual `WslDomain`, which is used to tell wezterm
+---how to interact with one of your locally installed
+---[WSL](https://docs.microsoft.com/en-us/windows/wsl/about) distributions.
+---
+---By mapping a distribution to a multiplexing domain,
+---wezterm is better able to support creating new tabs and panes
+---with the same working directory as an existing tab/pane
+---running in that same domain.
+---
+---By default, wezterm creates a list of `WslDomain` objects
+---based on parsing the output from `wsl -l -v` and assigns that
+---as the value of the following configuration option:
+--- -[`config.wsl_domains`](lua://Config.wsl_domains)
+---
 ---@class WslDomain
----@field name string
+---The current working directory to use when spawning commands,
+---if the [`SpawnCommand`](lua://SpawnCommand)
+---doesn't otherwise specify the directory.
+---
+---@field default_cwd? string
+---The default command to run, if the
+---[`SpawnCommand`](lua://SpawnCommand)
+---doesn't otherwise override it.
+---
+---Note that you may prefer to use `chsh` to set the
+---default shell for your user inside WSL to avoid needing to
+---specify it here.
+---
+---@field default_prog? string[]
+---The name of the distribution.
+---This identifies the WSL distribution.
+---
+---It must match a valid distribution from your `wsl -l -v` output
+---in order for the domain to be useful.
+---
 ---@field distribution string
----@field username string
----@field default_cwd string
----@field default_prog string[]
+---The name of this specific domain.
+---
+---Must be unique amonst all types of domain
+---in the configuration file.
+---
+---@field name string
+---The username to use when spawning commands in the distribution.
+---
+---If omitted, the default user for that distribution will be used.
+---
+---@field username? string
