@@ -1,6 +1,6 @@
 <div align="center">
 
-# wezterm-types
+# wezterm-types [![Mentioned in Awesome WezTerm](https://awesome.re/mentioned-badge.svg)](https://github.com/michaelbrusegard/awesome-wezterm)
 
 [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
