@@ -2,7 +2,9 @@
 
 # wezterm-types
 
-[WezTerm](https://github.com/wezterm/wezterm) config types for [Lua Language Server](https://luals.github.io/).
+[Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
+
+[WezTerm](https://github.com/wezterm/wezterm) config type annotations for [Lua Language Server](https://luals.github.io/).
 
 </div>
 
@@ -14,24 +16,13 @@ https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
 ## Table of Contents
 
-1. [Roadmap](#roadmap)
-2. [Installation](#installation)
+1. [Installation](#installation)
     1. [Neovim](#neovim)
-3. [Usage](#usage)
-4. [Credits](#credits)
+2. [Usage](#usage)
+3. [Credits](#credits)
     1. [Maintainers](#maintainers)
     2. [Maintainers](#maintainers)
-5. [Structure](#structure)
-
----
-
-## Roadmap
-
-<div align="center">
-
-<b><ins>You can find the current roadmap</ins> <i><a href="https://github.com/DrKJeff16/wezterm-types/discussions/48" target="_self" rel="noreferrer">here</a></i></b>
-
-</div>
+4. [Structure](#structure)
 
 ---
 
@@ -39,9 +30,8 @@ https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
 ### Neovim
 
-For [Neovim](https://github.com/neovim/neovim) users, we recommend the following install method.
-
-Using [`lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager, install this together with
+For [Neovim](https://github.com/neovim/neovim) users, we recommend using
+[`lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager, to be used with
 [`lazydev`](https://github.com/folke/lazydev.nvim):
 
 ```lua
@@ -64,34 +54,31 @@ require('lazy').setup({
 })
 ```
 
-<details>
-<summary><b><ins>NOTE: If you assign a custom `name` field for the plugin</ins></b></summary>
-
-```lua
-{
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    dependencies = {
-      {
-        'DrKJeff16/wezterm-types',
-        name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
-        lazy = true,
-      },
-    },
-    opts = {
-      library = {
-        -- Other library configs...
-
-        -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
-        { path = '<my_custom_name>', mods = { 'wezterm' } },
-      },
-    },
-  },
-}
-```
-
-</details>
+> [!TIP]
+> If you download this repo under a diferent name, you can use the following instead:
+>
+> ```lua
+> {
+>   {
+>     'folke/lazydev.nvim',
+>     ft = 'lua',
+>     dependencies = {
+>       {
+>         'DrKJeff16/wezterm-types',
+>         lazy = true,
+>         name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
+>         version = false, -- Get the latest version
+>       },
+>     },
+>     opts = {
+>       library = {
+>         -- Other library configs...
+>         { path = '<my_custom_name>', mods = { 'wezterm' } }, -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
+>       },
+>     },
+>   },
+> }
+> ```
 
 ---
 
