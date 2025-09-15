@@ -24,29 +24,29 @@
 ---@class Url
 ---The URL scheme such as `"file"`, or `"https"`.
 ---
----@field scheme string|"file"|"https"|"http"
+---@field scheme? string|"file"|"https"|"http"
 ---Decodes the path field and interprets it as a file path.
 ---
----@field file_path string
+---@field file_path? string
 ---The `username` portion of the URL, or an empty string
 ---if none is specified.
 ---
 ---@field username string|""
 ---The password portion of the URL, or `nil` if none is specified.
 ---
----@field password string|nil
+---@field password? string|nil
 ---The `hostname` portion of the URL, with IDNA decoded to UTF-8.
 ---
----@field host string
+---@field host? string
 ---The `path` portion of the URL, complete with percent encoding.
 ---
----@field path string
+---@field path? string
 ---The `fragment` portion of the URL.
 ---
----@field fragment string
+---@field fragment? string
 ---The `query` portion of the URL.
 ---
----@field query string
+---@field query? string
 
 ---The `wezterm.url` module exposes functions that
 ---allow working with URLs.
