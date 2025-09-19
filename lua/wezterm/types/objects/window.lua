@@ -124,14 +124,15 @@ function M:get_dimensions() end
 function M:get_selection_escapes_for_pane() end
 
 ---Returns the text that is currently selected
----within the specified pane, within the specified window.
+---within the specified `Pane`, within the specified window.
 ---
 ---This is the same text that would be copied to the clipboard
 ---if the `CopyTo` action were to be performed.
 ---
 ---@param self Window
+---@param pane Pane
 ---@return string text
-function M:get_selection_text_for_pane() end
+function M:get_selection_text_for_pane(pane) end
 
 ---Returns `true` if the window has focus.
 ---
