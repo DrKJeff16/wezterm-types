@@ -10,6 +10,21 @@
 
 </div>
 
+---
+
+> [!CAUTION]
+> Recently there's been incidents of suspicious accounts (very likely bots) commenting in Issues,
+> pasting links to what seems to be **malicious files**.
+>
+> _FOR YOUR OWN SAFETY, **DO NOT DOWNLOAD THESE FILES**._
+>
+> If you see this happening please report these users and `@` me (`@DrKJeff16`)
+> so that I can hide their comments as spam.
+>
+> Apologies for this notice, but I don't want anyone's system to get infected.
+
+---
+
 **Example in [Neovim](https://github.com/neovim/neovim)**:
 
 https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
