@@ -64,7 +64,11 @@ require('lazy').setup({
       'folke/lazydev.nvim',
       ft = 'lua',
       dependencies = {
-        { 'DrKJeff16/wezterm-types', lazy = true },
+        {
+          'DrKJeff16/wezterm-types',
+          lazy = true,
+          version = false, -- Get the latest version
+        },
       },
       opts = {
         library = {
