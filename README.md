@@ -192,3 +192,7 @@ The project is structured the following way:
 │   ├── time.lua  <==  `Wezterm.Time` module types
 └───└── url.lua  <==  `Wezterm.Url` module types
 ```
+
+## License
+
+[MIT](./LICENSE)
