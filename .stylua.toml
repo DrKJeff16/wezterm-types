@@ -1,12 +1,12 @@
-syntax = 'Lua54'
+call_parentheses           = "Always"
+collapse_simple_statement  = "FunctionOnly"
+column_width               = 100
+indent_type                = "Spaces"
+indent_width               = 4
+line_endings               = "Unix"
+quote_style                = "AutoPreferDouble"
 space_after_function_names = "Never"
-indent_type = "Spaces"
-indent_width = 4
-column_width = 100
-line_endings = "Unix"
-quote_style = "AutoPreferDouble"
-call_parentheses = "Always"
-collapse_simple_statement = "FunctionOnly"
+syntax                     = 'Lua54'
 
 [sort_requires]
 enabled = false
