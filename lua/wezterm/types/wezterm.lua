@@ -688,7 +688,7 @@
 ---@field wezterm_version? string
 ---@field aliases? string[]
 
----@alias ActionCallback fun(win: Window, pane: Pane, ...: any): (false|Action)?
+---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|Action|nil
 
 ---@alias CursorStyle
 ---|"BlinkingBar"
