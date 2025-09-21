@@ -688,22 +688,7 @@
 ---@field wezterm_version? string
 ---@field aliases? string[]
 
----@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false?
-
---- - `"Light"`: The normal appearance, with dark text on a light background
---- - `"Dark"`: Dark mode with predominantly dark colors
----           and probably a lighter, lower contrasting, text color
----           on a dark background
---- - `"LightHighContrast"`: Light mode but with high contrast colors
----                        (not reported on all systems)
---- - `"DarkHighContrast"`: Dark mode but with high contrast colors
----                       (not reported on all systems)
----
----@alias Appearance
----|"Dark"
----|"DarkHighContrast"
----|"Light"
----|"LightHighContrast"
+---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): (false|Action)?
 
 ---@alias CursorStyle
 ---|"BlinkingBar"
@@ -730,12 +715,6 @@
 ---|"Linear"
 ---|{ CubicBezier: number[] }
 
----@alias FreetypeLoadTarget
----|"Normal"
----|"HorizontalLcd"
----|"Light"
----|"Mono"
-
 ---@alias Stretch
 ---|"Normal"
 ---|"Condensed"
@@ -746,11 +725,6 @@
 ---|"SemiExpanded"
 ---|"UltraCondensed"
 ---|"UltraExpanded"
-
----@alias Style
----|"Normal"
----|"Italic"
----|"Oblique"
 
 ---@alias Weight
 ---|"Regular"

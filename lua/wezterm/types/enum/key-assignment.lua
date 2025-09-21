@@ -401,7 +401,7 @@
 ---@field ToggleFullScreen any
 ---@field TogglePaneZoomState any
 
----@alias KeyAssignFunction fun(param: any)
+---@alias KeyAssignFunction fun(param: any): Action
 
 ---Can also be called as function like older versions of wezterm did.
 ---
@@ -487,21 +487,27 @@ local ActionFunc = {}
 ---If instead of this you want the key presses to pass through to the terminal,
 ---look at [`DisableDefaultAssignment`](https://wezterm.org/config/lua/keyassignment/DisableDefaultAssignment.html).
 ---
+---@return Action
 function ActionFunc.Nop() end
 
 ---@param s "Line"|"Word"|"Cell"|"Block"
+---@return Action
 function ActionFunc.SelectTextAtMouseCursor(s) end
 
 ---@param s string
+---@return Action
 function ActionFunc.SendString(s) end
 
 ---@param param SendKey
+---@return Action
 function ActionFunc.SendKey(param) end
 
 ---@param act CopyMode
+---@return Action
 function ActionFunc.CopyMode(act) end
 
 ---@param destination CopyTo
+---@return Action
 function ActionFunc.CopyTo(destination) end
 
 ---Performs a sequence of multiple assignments.

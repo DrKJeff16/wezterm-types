@@ -86,7 +86,7 @@ function GUI.enumerate_gpus() end
 ---WezTerm is able to detect when the appearance has changed and
 ---will reload the configuration when that happens.
 ---
----@return Appearance
+---@return "Dark"|"DarkHighContrast"|"Light"|"LightHighContrast"
 function GUI.get_appearance() end
 
 ---Attempts to resolve a mux window to its corresponding GUI Window.
