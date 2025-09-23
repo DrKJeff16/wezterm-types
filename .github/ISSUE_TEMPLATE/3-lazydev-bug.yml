@@ -1,7 +1,7 @@
 name: Neovim Bug
 description: Is there anything wrong with the Neovim plugin? Tell us!
 title: "[NVIM]: <TITLE>"
-labels: ["bug", "important", "neovim"]
+labels: ["bug", "neovim"]
 assignees:
   - DrKJeff16
 

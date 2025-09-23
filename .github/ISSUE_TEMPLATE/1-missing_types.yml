@@ -1,5 +1,5 @@
-name: Missing or Bad Type
-description: A type is missing/badly implemented? Please tell us
+name: "Missing or Bad Type"
+description: "A type is missing/badly implemented? Please tell us!"
 title: "[TYPE]: <TITLE>"
 labels: ["missing-types", "wrong-types"]
 assignees:
@@ -8,48 +8,54 @@ assignees:
 body:
   - type: checkboxes
     attributes:
-      label: Before we begin...
+      label: "Conditions"
       description: "Make sure to read every checkbox and answer truthfully:"
       options:
-        - label: I have checked for existing issues related to this one, whether open or closed
+        - label: "I have checked for existing issues related to this one, whether open or closed."
           required: true
-        - label: I have checked for existing PRs and none address this, whether open or closed
+        - label: "I have checked for existing PRs and none address this, whether open or closed."
           required: true
-        - label: I have read the WezTerm Lua Reference and can confirm this type is not deprecated
+        - label: "I have read the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) and can confirm this type is not deprecated."
           required: true
+
   - type: input
     attributes:
       label: "What version of WezTerm are you using? (`wezterm --version`)"
-      placeholder: wezterm 20250725-073938-dd6e5bd2
+      placeholder: "wezterm 20250725-073938-dd6e5bd2"
     validations:
       required: true
+
   - type: input
     attributes:
-      label: "What's the text editor you're using?"
-      placeholder: "nvim|vscode|..."
+      label: "What text editor are you using?"
+      placeholder: "Neovim|VSCode|..."
     validations:
       required: false
+
   - type: input
     attributes:
       label: "Operating system and, if possible, what version?"
-      placeholder: Arch Linux 6.15.6-arch1-1
+      placeholder: "Arch Linux, Linux 6.15.6-arch1-1"
     validations:
       required: true
+
   - type: textarea
     attributes:
-      label: Describe the issue
-      description: Write down what's wrong, as detailed as you can. Avoid irrelevant info
+      label: "Describe The Issue"
+      description: "Write down what's wrong, as detailed as you can. Avoid irrelevant info."
     validations:
       required: true
+
   - type: textarea
     attributes:
-      label: Expected Types
-      description: Describe what were you expecting to happen
+      label: "Expected Types"
+      description: "Describe what were you expecting to happen."
     validations:
       required: true
+
   - type: textarea
     attributes:
-      label: Additional Info and/or Screenshots
-      description: If there's more info you could tell, please do. Screenshots too, if applicable
+      label: "Additional Info and/or Screenshots"
+      description: "If there's more info you could tell, please do. Screenshots too, if applicable."
     validations:
       required: false
