@@ -32,13 +32,6 @@
 ---@field saturation? number
 ---@field brightness? number
 
----@alias SystemBackdrop
----|"Auto"
----|"Disable"
----|"Acrylic"
----|"Mica"
----|"Tabbed"
-
 ---@class WindowPadding
 ---@field left? integer|string
 ---@field right? integer|string
@@ -2443,7 +2436,7 @@
 ---[`config.window_background_opacity`](lua://Config.window_background_opacity)
 ---it chooses from available window background effects provided by Windows.
 ---
----@field win32_system_backdrop? SystemBackdrop
+---@field win32_system_backdrop? "Auto"|"Disable"|"Acrylic"|"Mica"|"Tabbed"
 ---Dynamically generates a
 ---[`config.window_background_image`](lua://Config.window_background_image)
 ---from the provided gradient specification.

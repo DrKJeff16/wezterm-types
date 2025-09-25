@@ -28,10 +28,7 @@
 
 ---@alias FormatItem
 ---|"ResetAttributes"
----|{ Attribute: FormatItemAttribute }
----|{ Foreground: ColorSpec }
----|{ Background: ColorSpec }
----|{ Text: string }
+---|{ Attribute?: FormatItemAttribute, Foreground?: ColorSpec, Background?: ColorSpec, Text?: string}
 
 ---This is a virtual modifier used by wezterm
 ---@alias Modifiers
