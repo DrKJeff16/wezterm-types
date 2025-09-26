@@ -1,9 +1,10 @@
 ---@meta
 
----@module "wezterm.types.enum"
----@module "wezterm.types.events"
----@module "wezterm.types.objects"
----@module "wezterm.types.wezterm"
+---@module "colorschemes"
+---@module "enum"
+---@module "events"
+---@module "objects"
+---@module "wezterm"
 
 ---@alias QuickSelectAlphabet
 ---|"asdfqwerzxcvjklmiuopghtybn"
@@ -511,7 +512,7 @@
 ---For more info, see:
 --- - [Colors & Appearance](https://wezterm.org/config/appearance.html)
 ---
----@field color_scheme? string
+---@field color_scheme? Colorschemes
 ---If you wish to place your color scheme files in some other location,
 ---then you will need to instruct wezterm where to look for your scheme files.
 ---The `config.color_scheme_dirs` setting specifies a list of directories to be searched:
