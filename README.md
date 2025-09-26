@@ -12,40 +12,42 @@
 
 ---
 
-> [!CAUTION]
-> Recently there's been incidents of suspicious accounts (very likely bots) commenting in Issues,
-> pasting links to what seems to be **malicious files**.
->
-> _FOR YOUR OWN SAFETY, **DO NOT DOWNLOAD THESE FILES**._
->
-> [![Example](https://private-user-images.githubusercontent.com/72052712/491363652-fe672167-7f83-4fc0-85c2-7d95fe6fb7d5.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTgzMjI5MDQsIm5iZiI6MTc1ODMyMjYwNCwicGF0aCI6Ii83MjA1MjcxMi80OTEzNjM2NTItZmU2NzIxNjctN2Y4My00ZmMwLTg1YzItN2Q5NWZlNmZiN2Q1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA5MTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwOTE5VDIyNTY0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPThlY2Q0ZDhjOWMwYThjOTBjZjYxY2U5OTRiYmQ5Y2Y5ZmY1MTJmZjkwZjM2MWE2ZDI0ZjExODcxNDgwN2M5ODAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.kQ9gMxTPHa2tyHjpEkud2zjRJ973a6Mm-_MtY_Jk0Q8)](#)
->
-> If you see this happening please report these users and `@` me (`@DrKJeff16`)
-> so that I can hide their comments as spam.
->
-> Apologies for this notice, but I don't want anyone's system to get infected.
-
----
-
-**Example in [Neovim](https://github.com/neovim/neovim)**:
+<details>
+<summary><b><ins>Example in</ins> <a href="https://github.com/neovim/neovim">Neovim</a></b></summary>
 
 https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
-**Example in VSCodium (VSCode)**:
+</details>
+<br />
+<details>
+<summary><b><ins>Example in VSCodium (VSCode)</ins></b></summary>
 
 https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
+
+</details>
 
 ---
 
 ## Table of Contents
 
-1. [Installation](#installation)
+1. [Features](#features)
+2. [Installation](#installation)
     1. [Neovim](#neovim)
-2. [Usage](#usage)
-3. [Credits](#credits)
+3. [Usage](#usage)
+4. [Credits](#credits)
     1. [Maintainers](#maintainers)
     2. [Maintainers](#maintainers)
-4. [Structure](#structure)
+5. [Structure](#structure)
+
+---
+
+## Features
+
+- Built-in colorschemes included (`config.color_scheme`)
+- Up to date descriptions
+- Function overrides annotated
+- Neovim support through [`lazydev.nvim`](https://github.com/folke/lazydev.nvim)
+- VSCode support by cloning this into `~/.config/wezterm`, and editing your config in that directory
 
 ---
 
