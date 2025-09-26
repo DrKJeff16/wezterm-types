@@ -2026,3 +2026,5 @@ function Wezterm.has_action(action) end
 ---
 ---@param args string[]
 function Wezterm.background_child_process(args) end
+
+return Wezterm
