@@ -22,13 +22,13 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: |
-            ## Automated Greeting
+            ### Automated Greeting
 
             Thank you for your feedback!
 
             Your issue will be adressed **ASAP**.
           pr-message: |
-            ## Automated Greeting
+            ### Automated Greeting
 
             Many many thanks for your contributions!
 
