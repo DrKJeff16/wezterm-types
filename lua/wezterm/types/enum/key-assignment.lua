@@ -312,7 +312,7 @@
 ---You can also combine modifiers using the `|` symbol, like `"CMD|CTRL"`.
 ---
 ---@field mods? string
----@field action? KeyAssignment
+---@field action? KeyAssignment|Action
 
 ---@class ActionClass
 ---@field ActivateCommandPalette any
