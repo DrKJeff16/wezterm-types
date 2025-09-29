@@ -490,7 +490,7 @@ local ActionFunc = {}
 ---@return Action
 function ActionFunc.Nop() end
 
----@param s "Line"|"Word"|"Cell"|"Block"
+---@param s "Line"|"Word"|"Cell"|"Block"|"SemanticZone"
 ---@return Action
 function ActionFunc.SelectTextAtMouseCursor(s) end
 
