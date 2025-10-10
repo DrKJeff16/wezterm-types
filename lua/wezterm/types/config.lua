@@ -166,7 +166,7 @@
 ---[`height`](lua://BackgroundLayer.height),
 ---but applied to the x-direction.
 ---
----@field widtht? "Cover"|"Contain"|number|string
+---@field width? "Cover"|"Contain"|number|string
 
 ---@alias AllFontAttributes
 ---|Fonts
