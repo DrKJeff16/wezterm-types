@@ -138,14 +138,15 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 ### Maintainers
 
-- [@DrKJeff16](https://github.com/DrKJeff16) - **Maintainer, _(current owner)_**
-- [@justinsgithub](https://github.com/justinsgithub) - **The Author _(not active currently)_**
-- [@gonstoll](https://github.com/gonstoll) - **Maintainer**
+- [@DrKJeff16](https://github.com/DrKJeff16) **Current owner**
+- [@justinsgithub](https://github.com/justinsgithub) - **Author**
+- [@gonstoll](https://github.com/gonstoll)
 
 ### Contributors
 
-- [@TheLeoP](https://github.com/TheLeoP) - **Contributor**
-- [@reegnz](https://github.com/reegnz) - **Contributor**
+- [@TheLeoP](https://github.com/TheLeoP)
+- [@reegnz](https://github.com/reegnz)
+- [@Zuyoutoki](https://github.com/Zuyoutoki)
 
 ---
 
