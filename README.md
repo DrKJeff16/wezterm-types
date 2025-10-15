@@ -6,21 +6,27 @@
 
 [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
-[WezTerm](https://github.com/wezterm/wezterm) config type annotations for [Lua Language Server](https://luals.github.io/).
+This project aims to provide LuaCATS-like [Lua Language Server](https://luals.github.io/) type annotations
+for your [WezTerm](https://github.com/wezterm/wezterm) config.
 
 </div>
+
+> [!IMPORTANT]
+> While this was made with an aim to be thorough, you should always double-check
+> any unclear types in the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html), should
+> there be any missing/unclear types.
 
 ---
 
 <details>
-<summary><b><ins>Example in</ins> <a href="https://github.com/neovim/neovim">Neovim</a></b></summary>
+<summary><b>Example in <a href="https://github.com/neovim/neovim">Neovim</a></b></summary>
 
 https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
 </details>
 <br />
 <details>
-<summary><b><ins>Example in VSCodium (VSCode)</ins></b></summary>
+<summary><b>Example in VSCodium (VSCode)</b></summary>
 
 https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 
@@ -43,11 +49,12 @@ https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 
 ## Features
 
+- LuaCATS-like type annotations
 - Built-in colorschemes included (`config.color_scheme`)
 - Up to date descriptions
-- Function overrides annotated
+- Function overrides (_e.g. `wezterm.on()`_)
 - Neovim support through [`lazydev.nvim`](https://github.com/folke/lazydev.nvim)
-- VSCode support by cloning this into `~/.config/wezterm`, and editing your config in that directory
+- VSCode/VSCodium support by cloning this into `~/.config/wezterm`, and editing your config in that directory
 
 ---
 
