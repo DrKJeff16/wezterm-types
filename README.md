@@ -13,8 +13,8 @@ for your [WezTerm](https://github.com/wezterm/wezterm) config.
 
 > [!IMPORTANT]
 > While this was made with an aim to be thorough, you should always double-check
-> any unclear types in the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html), should
-> there be any missing/unclear types.
+> the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) for any
+> missing or unclear types.
 
 ---
 
