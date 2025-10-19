@@ -4,7 +4,6 @@ title: "[NVIM]: <TITLE>"
 labels: ["bug", "neovim"]
 assignees:
   - DrKJeff16
-
 body:
   - type: checkboxes
     attributes:

@@ -1,5 +1,4 @@
 name: Greetings
-
 on:
   pull_request:
     types:
@@ -7,16 +6,13 @@ on:
   issues:
     types:
       - opened
-
 jobs:
   greet:
     name: Greet First-Time Contributors
     runs-on: ubuntu-latest
-
     permissions:
       issues: write
       pull-requests: write
-
     steps:
       - uses: actions/first-interaction@v2.0.0
         with:

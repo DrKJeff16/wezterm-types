@@ -4,7 +4,6 @@ title: "[TYPE]: <TITLE>"
 labels: ["missing-types", "wrong-types"]
 assignees:
   - DrKJeff16
-
 body:
   - type: checkboxes
     attributes:
@@ -17,42 +16,36 @@ body:
           required: true
         - label: "I have read the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) and can confirm this type is not deprecated."
           required: true
-
   - type: input
     attributes:
       label: "What version of WezTerm are you using? (`wezterm --version`)"
       placeholder: "wezterm 20250725-073938-dd6e5bd2"
     validations:
       required: true
-
   - type: input
     attributes:
       label: "What text editor are you using?"
       placeholder: "Neovim|VSCode|..."
     validations:
       required: false
-
   - type: input
     attributes:
       label: "Operating system and, if possible, what version?"
       placeholder: "Arch Linux, Linux 6.15.6-arch1-1"
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: "Describe The Issue"
       description: "Write down what's wrong, as detailed as you can. Avoid irrelevant info."
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: "Expected Types"
       description: "Describe what were you expecting to happen."
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: "Additional Info and/or Screenshots"

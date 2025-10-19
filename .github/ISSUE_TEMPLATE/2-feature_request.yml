@@ -4,7 +4,6 @@ title: "[FEAT]: <TITLE>"
 labels: ["enhancement"]
 assignees:
   - DrKJeff16
-
 body:
   - type: checkboxes
     attributes:
