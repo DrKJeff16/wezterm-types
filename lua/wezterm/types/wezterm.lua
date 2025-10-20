@@ -90,46 +90,11 @@
 ---|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"
 ---|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"
 ---|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
----|string
 ---Add other valid combinations if needed
 
----@alias PaletteAnsi
----|"black"
----|"maroon"
----|"green"
----|"olive"
----|"navy"
----|"purple"
----|"teal"
----|"silver"
-
----@alias PaletteBrights
----|"grey"
----|"red"
----|"lime"
----|"yellow"
----|"blue"
----|"fuchsia"
----|"aqua"
----|"white"
-
----@alias AnsiColor
----|"Black"
----|"Maroon"
----|"Green"
----|"Olive"
----|"Navy"
----|"Purple"
----|"Teal"
----|"Silver"
----|"Grey"
----|"Red"
----|"Lime"
----|"Yellow"
----|"Blue"
----|"Fuchsia"
----|"Aqua"
----|"White"
+---@alias PaletteAnsi "black"|"maroon"|"green"|"olive"|"navy"|"purple"|"teal"|"silver"
+---@alias PaletteBrights "grey"|"red"|"lime"|"yellow"|"blue"|"fuchsia"|"aqua"|"white"
+---@alias AnsiColor "Black"|"Maroon"|"Green"|"Olive"|"Navy"|"Purple"|"Teal"|"Silver"|"Grey"|"Red"|"Lime"|"Yellow"|"Blue"|"Fuchsia"|"Aqua"|"White"
 
 ---@class TabBarColor
 ---The color of the background area for the tab.
@@ -1118,10 +1083,9 @@ function Wezterm.font_with_fallback(fonts) end
 ---@return string
 function Wezterm.format(...) end
 
----While this function is still valid,
----it is recommended to instead use:
+---While this function is still valid, it is recommended to use instead:
 ---
----[`wezterm.color.get_builtin_schemes`](lua://Wezterm.Color.get_builtin_schemes)
+--- - [`wezterm.color.get_builtin_schemes`](lua://Wezterm.Color.get_builtin_schemes)
 ---
 --- ---
 ---Returns a Lua table keyed by color scheme name and whose values are
@@ -1132,6 +1096,7 @@ function Wezterm.format(...) end
 ---a couple of entries from your `wezterm.lua` configuration file.
 ---
 ---@return table<string, Palette>
+---@deprecated
 function Wezterm.get_builtin_color_schemes() end
 
 ---This function evalutes the glob pattern and returns an array

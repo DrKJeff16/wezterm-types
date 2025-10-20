@@ -1,7 +1,5 @@
 ---@meta
 
---TODO: finish
-
 ---@class ImageExtractorParams
 ---@field fuzziness? number
 ---@field num_colors? number
@@ -50,12 +48,12 @@ local C = {}
 ---@return string[]
 function C.extract_colors_from_image(filename, params) end
 
----Constructs a new [`Color`](lua://Color)
----object from values in the HSL colorspace,
----plus `alpha`.
+---Constructs a new
+---[`Color`](lua://Color) object
+---from values in the HSL colorspace, plus `alpha`.
 ---
----[`wezterm.color.parse()`](lua://Wezterm.Color.parse) is
----a useful source for info on parsing.
+---A useful source for info on parsing can be:
+--- - [`wezterm.color.parse()`](lua://Wezterm.Color.parse)
 ---
 ---@param h string|number
 ---@param s string|number
