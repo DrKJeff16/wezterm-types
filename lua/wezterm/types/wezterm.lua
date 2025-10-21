@@ -994,7 +994,7 @@ function Wezterm.emit(event, ...) end
 ---You may optionally pass a list of ssh configuration files that should be read
 ---in case you have a special configuration.
 ---
----@param ssh_config_file_name? string[]|string
+---@param ssh_config_file_name string[]|string|nil
 ---@return table<string, SshHost>
 function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 
@@ -1025,7 +1025,7 @@ function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 ---and [`FontFamilyAttributes`](lua://FontFamilyAttributes).
 ---
 ---@param name string
----@param attributes? FontAttributes
+---@param attributes FontAttributes|nil
 ---@return Fonts|FontFamilyAttributes
 function Wezterm.font(name, attributes) end
 
@@ -1107,7 +1107,7 @@ function Wezterm.get_builtin_color_schemes() end
 ---as `UTF-8` or this function will generate an error.
 ---
 ---@param pattern string
----@param relative_to? string
+---@param relative_to string|nil
 ---@return string[]
 function Wezterm.glob(pattern, relative_to) end
 
@@ -1487,7 +1487,7 @@ function Wezterm.on(event, callback) end
 ---but if you register for this event you can co-opt the default behavior.
 ---
 ---@param event "open-uri"
----@param callback fun(window: Window, pane: Pane, uri: string): boolean?
+---@param callback fun(window: Window, pane: Pane, uri: string): boolean|nil
 function Wezterm.on(event, callback) end
 
 ---This event is considered to be deprecated and you should migrate to using `"update-status"`,
@@ -1650,7 +1650,7 @@ function Wezterm.on(event, callback) end
 ---```
 ---
 ---@param path_or_url string
----@param application? string
+---@param application string|nil
 function Wezterm.open_with(path_or_url, application) end
 
 ---Returns a copy of a string `s` that is at least
