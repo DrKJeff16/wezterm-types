@@ -1343,6 +1343,10 @@
 ---   IME preedit is always rendered by WezTerm itself.
 ---
 ---@field ime_preedit_rendering? "Builtin"|"System"
+---Specifies the Hue, Saturation, and Brightness transformation
+---applied to inactive panes.
+---
+---@field inactive_pane_hsb? HsbTransform
 ---Specifies the width of a new window, expressed in character cells.
 ---
 ---@field initial_cols? integer
