@@ -1,20 +1,37 @@
 {
     "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+    "hover": {
+        "enable": true,
+        "expandAlias": true,
+        "enumsLimit": 50,
+        "previewFields": 75
+    },
     "workspace": {
         "library": [
             "./lua/wezterm/types"
-        ]
+        ],
+        "preloadFileSize": 1000
     },
     "runtime": {
-        "version": "Lua 5.4"
+        "version": "Lua 5.4",
+        "path": [
+            "?.lua",
+            "?/init.lua"
+        ]
     },
     "hint": {
         "enable": true,
-        "setType": true
+        "setType": true,
+        "paramName": "Literal",
+        "paramType": true,
+        "semicolon": "Disable"
     },
     "completion": {
         "callSnippet": "Replace",
         "keywordSnippet": "Replace",
-        "displayContext": 8
+        "displayContext": 8,
+        "enable": true,
+        "showWord": "Enable",
+        "workspaceWord": true
     }
 }
