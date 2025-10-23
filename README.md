@@ -13,20 +13,18 @@ for your [WezTerm](https://github.com/wezterm/wezterm) config.
 
 > [!IMPORTANT]
 > While this was made with an aim to be thorough, you should always double-check
-> the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) for any
-> missing or unclear types.
+> the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) for any missing or unclear types.
 
 ---
 
 <details>
-<summary><b>Example in <a href="https://github.com/neovim/neovim">Neovim</a></b></summary>
+<summary>Example in <a href="https://github.com/neovim/neovim">Neovim</a></summary>
 
 https://github.com/user-attachments/assets/02c261ac-5744-4f34-b767-48095386e21b
 
 </details>
-<br />
 <details>
-<summary><b>Example in VSCodium (VSCode)</b></summary>
+<summary>Example in VSCodium/VSCode</summary>
 
 https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 
@@ -44,16 +42,17 @@ https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
     1. [Maintainers](#maintainers)
     2. [Maintainers](#maintainers)
 5. [Structure](#structure)
+6. [License](#license)
 
 ---
 
 ## Features
 
 - LuaCATS-like type annotations
-- Built-in colorschemes included (`config.color_scheme`)
-- Up to date descriptions
+- [Built-in colorschemes included](./lua/wezterm/types/colorschemes.lua) (`config.color_scheme`)
+- Up-to-date descriptions
 - Function overrides (_e.g. `wezterm.on()`_)
-- Neovim support through [`lazydev.nvim`](https://github.com/folke/lazydev.nvim)
+- Neovim support through [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim)
 - VSCode/VSCodium support by cloning this into `~/.config/wezterm`, and editing your config in that directory
 
 ---
@@ -63,8 +62,7 @@ https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 ### Neovim
 
 For [Neovim](https://github.com/neovim/neovim) users, we recommend using
-[`lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager, to be used with
-[`lazydev`](https://github.com/folke/lazydev.nvim):
+[`folke/lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager, to be used with [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim):
 
 ```lua
 require('lazy').setup({
@@ -121,16 +119,15 @@ require('lazy').setup({
 ## Usage
 
 After installing the types, add the type annotations to `wezterm` and `config` respectively
-when requiring wezterm in your configuration:
+when running `require("wezterm")` in your configuration.
+
+A useful example:
 
 ```lua
----@type Wezterm
-local wezterm = require("wezterm")
+local wezterm = require("wezterm") ---@type Wezterm
 
----@type Config
-local config = wezterm.config_builder()
+local config = wezterm.config_builder() ---@type Config
 
--- Your configuration here with full type support
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 
 return config
@@ -145,7 +142,7 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 ### Maintainers
 
-- [@DrKJeff16](https://github.com/DrKJeff16) **Current owner**
+- [@DrKJeff16](https://github.com/DrKJeff16) - **Current owner**
 - [@justinsgithub](https://github.com/justinsgithub) - **Author**
 - [@gonstoll](https://github.com/gonstoll)
 
@@ -160,10 +157,12 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 ## Structure
 
-The project is structured the following way:
+<details>
+<summary>The project is structured as such.</summary>
 
 ```
 /lua/wezterm/types/
+├── colorschemes.lua  <==  Contains the builtin `config.color_schemes` values
 ├── config.lua  <==  Contains the `Config` class and related data types
 ├── enum.lua  <==   Imports all the `enum/` files
 ├── enum/  <==   Enum types
@@ -204,6 +203,8 @@ The project is structured the following way:
 │   ├── time.lua  <==  `Wezterm.Time` module types
 └───└── url.lua  <==  `Wezterm.Url` module types
 ```
+
+</details>
 
 ## License
 
