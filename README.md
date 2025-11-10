@@ -6,7 +6,8 @@
 
 [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
-This project aims to provide LuaCATS-like [Lua Language Server](https://luals.github.io/) type annotations
+This project aims to provide <a href="https://github.com/LuaCATS" target="_blank" referrerpolicy="no-referrer">LuaCATS</a>-like
+<a href="https://luals.github.io/wiki/annotations/" target="_blank" referrerpolicy="no-referrer">Lua Language Server type annotations</a>
 for your [WezTerm](https://github.com/wezterm/wezterm) config.
 
 </div>
