@@ -893,7 +893,6 @@
 ---takes precedence over this option.
 ---
 ---@field enable_csi_u_key_encoding? boolean
----@field enable_kitty_graphics? boolean
 ---When set to `true`, wezterm will honor `kitty` keyboard protocol escape sequences
 ---that modify the [keyboard encoding](https://wezterm.org/config/key-encoding.html).
 ---
