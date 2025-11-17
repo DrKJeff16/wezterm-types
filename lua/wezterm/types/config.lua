@@ -1033,8 +1033,6 @@
 ---```
 ---
 ---@field font_dirs? string[]
----DEPRECATED
----@field font_hinting? Deprecated
 ---Specifies the method by which system fonts are located and loaded.
 ---You may specify `"ConfigDirsOnly"` to disable loading system fonts
 ---and use only the fonts found in the directories that you specify in your
@@ -1453,6 +1451,8 @@
 ---See the main [Key Tables docs](https://wezterm.org/config/key-tables.html).
 ---
 ---@field key_tables? table<string, Key[]>
+---Holds an array of tables that assign keys to WezTerm.
+---
 ---@field keys? Key[]
 ---Specify a string of unique characters.
 ---
@@ -1566,6 +1566,10 @@
 ---or numbers larger than one such as `"72pt"`.
 ---
 ---@field min_scroll_bar_height? string
+---A list containing [`MouseBindingBase`](lua://MouseBindingBase) tables.
+---
+---For more info please check the [Mouse Binding](https://wezterm.org/config/mouse.html?h=mouse_report#configuring-mouse-assignments) docs.
+---
 ---@field mouse_bindings? MouseBindingBase[]
 ---If `true`, the vertical mouse wheel will switch between tabs
 ---when the mouse cursor is over the tab bar.
@@ -1914,8 +1918,9 @@
 --- - [`wezterm.default_ssh_domains()`](lua://Wezterm.default_ssh_domains)
 ---
 ---@field ssh_domains? SshDomain[]
----Specifies the number of milliseconds that need to elapse between triggering the [`update-status`](https://wezterm.org/config/lua/window-events/update-status.html)
----and [`update-right-status`](https://wezterm.org/config/lua/window-events/update-right-status.html) hooks.
+---Specifies the number of milliseconds that need to elapse between triggering
+---the [`update-status`](https://wezterm.org/config/lua/window-events/update-status.html) and the [`update-right-status`](https://wezterm.org/config/lua/window-events/update-right-status.html)
+---hooks.
 ---
 ---@field status_update_interval? integer
 ---If specified, overrides the position of strikethrough lines.
@@ -2013,7 +2018,7 @@
 ---Defaults to `16` glyphs in width.
 ---
 ---@field tab_max_width? number
----What to set the `$TERM` variable to.
+---What to set the `TERM` variable to.
 ---
 ---@field term? string
 ---Specifies the
@@ -2484,6 +2489,9 @@
 ---The image will be scaled to fit the window.
 ---
 ---@field window_background_image? string
+---Generates a coloured background from an
+---[`HsbTransform`](lua://HsbTransform) object.
+---
 ---@field window_background_image_hsb? HsbTransform
 ---Specifies the alpha value to use when rendering the window background.
 ---
@@ -2601,7 +2609,7 @@
 ---Padding is measured in pixels.
 ---
 ---[`config.enable_scroll_bar`](lua://Config.enable_scroll_bar)
----set to `true` causes the value you set for right to control
+---being set to `true` causes the value you set for right to control
 ---the width of the scrollbar.
 ---
 ---If you have enabled the scrollbar and have set right to `0`
@@ -2619,7 +2627,7 @@
 ---
 ---The default is a list derived from parsing the output of `wsl -l -v`.
 ---
----for more about that list, and on how to override it, see:
+---For more info about that list, and how to override it, see:
 --- - [`wezterm.default_wsl_domains()`](lua://Wezterm.default_wsl_domains)
 ---
 ---@field wsl_domains? WslDomain[]

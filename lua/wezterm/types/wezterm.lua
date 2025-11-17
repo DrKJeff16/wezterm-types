@@ -707,12 +707,10 @@
 ---@field width number
 ---@field max_fps? number
 
----@class KeyBindingBase
+---@class KeyBinding
 ---@field key string
 ---@field action Action
-
----@class KeyBinding: KeyBindingBase
----@field mods string
+---@field mods? string
 
 ---@class MouseEventInfo
 ---@field streak number
@@ -727,10 +725,7 @@
 ---@class MouseDragEvent
 ---@field Drag MouseEventInfo
 
----@alias MouseEvent
----|MouseDownEvent
----|MouseDragEvent
----|MouseUpEvent
+---@alias MouseEvent MouseDownEvent|MouseDragEvent|MouseUpEvent
 
 ---@class MouseBindingBase
 ---@field event MouseEvent
