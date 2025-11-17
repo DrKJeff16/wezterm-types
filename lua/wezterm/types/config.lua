@@ -837,11 +837,11 @@
 ---The default value is `"RGB"`.
 ---
 ---@field display_pixel_geometry? "RGB"|"BGR"
----Override the detected DPI (dots per inch) for the display.
+---Override the detected DPI (_dots per inch_) for the display.
 ---
 ---This can be useful if the detected DPI is inaccurate and the text
----appears either blurry or too small
----(particularly if you are using a 4K display on X11 or Wayland).
+---appears either blurry or too small, particularly
+---if you are using a 4K display on X11 or Wayland.
 ---
 ---The default value is system specific:
 ---
