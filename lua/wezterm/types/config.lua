@@ -756,7 +756,7 @@
 ---your operating system shortcut or alias function to set up a shortcut
 ---that runs the subcommand you desire.
 ---
----@field default_gui_startup_args? string[]|table|{ [1]: "start" }
+---@field default_gui_startup_args? string[]|{ [1]: "start" }
 ---**Note: This option only applies to the standalone mux server.**
 ---
 ---For the equivalent option in the GUI, see:
