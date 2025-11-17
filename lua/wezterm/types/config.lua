@@ -58,6 +58,11 @@
 ---|"SuppressFromFocusedTab" Show the notification unless it was generated from the currently focused tab
 ---|"SuppressFromFocusedWindow" Show the notification unless it was generated from the currently focused window
 
+---@class CellWidth
+---@field first integer
+---@field last integer
+---@field width integer
+
 ---Represents the `BackgroundLayer` type.
 ---
 ---@class BackgroundLayer
@@ -439,14 +444,32 @@
 ---The `config.cell_widths` configuration parameter allows users
 ---to override the default character width.
 ---
----This setting takes priority over
----[`config.treat_east_asian_ambiguous_width_as_wide`](lua://Config.treat_east_asian_ambiguous_width_as_wide).
+---[Nerd Font](https://www.nerdfonts.com/) has square glyphs
+---and is an example of half advance width.
+---Below is a configuration example that treats these character widths
+---as full-width:
+---
+---```lua
+---config.cell_widths = {
+---  { first = 0xe000, last = 0xf8ff, width = 2 },
+---  { first = 0xf0000, last = 0xf1fff, width = 2 },
+---}
+---```
+---
+---This setting takes priority over `config.treat_east_asian_ambiguous_width_as_wide`.
 ---
 ---Note that changing this setting may have consequences for layout
 ---in text UI applications if their expectation of width differs
 ---from your choice of configuration.
 ---
----@field cell_widths? table
+---For example, Vim has a built-in function [`setcellwidths()`](https://vimhelp.org/builtin.txt.html#setcellwidths%28%29),
+---and shells like Bash or Zsh determine character width
+---based on the `glibc` locale.
+---
+---See also:
+--- - [`config.treat_east_asian_ambiguous_width_as_wide`](lua://Config.treat_east_asian_ambiguous_width_as_wide)
+---
+---@field cell_widths? CellWidth[]
 ---Specifies the background color used by [`CharSelect`](https://wezterm.org/config/lua/keyassignment/CharSelect.html).
 ---
 ---@field char_select_bg_color? string
