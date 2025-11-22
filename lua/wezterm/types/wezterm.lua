@@ -21,7 +21,10 @@
 
 ---@alias ColorSpec table<"AnsiColor", AnsiColor>|table<"Color", string>
 
----@alias FormatItemAttribute { Underline: "None"|"Single"|"Double"|"Curly"|"Dotted"|"Dashed", Intensity?: "Normal"|"Bold"|"Half", Italic?: boolean }
+---@class FormatItemAttribute
+---@field Underline "None"|"Single"|"Double"|"Curly"|"Dotted"|"Dashed"
+---@field Intensity? "Normal"|"Bold"|"Half"
+---@field Italic? boolean
 
 ---@alias FormatItem
 ---|"ResetAttributes"
