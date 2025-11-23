@@ -71,7 +71,7 @@ function C.from_hsla(h, s, l, a) end
 ---or for taking a scheme and overriding a couple of entries
 ---just from your `wezterm.lua` configuration file.
 ---
----@return table<string, Palette>
+---@return table<string, Palette> schemes
 function C.get_builtin_schemes() end
 
 ---Returns the set of colors that would be used by default.
@@ -79,7 +79,7 @@ function C.get_builtin_schemes() end
 ---This is useful if you want to reference those colors
 ---in a color scheme definition.
 ---
----@return Palette
+---@return Palette colors
 function C.get_default_colors() end
 
 ---Given a gradient spec and a number of colors,
@@ -101,7 +101,7 @@ function C.get_default_colors() end
 ---
 ---@param gradient Gradient
 ---@param num_colors number
----@return Color[]
+---@return Color[] colors
 function C.gradient(gradient, num_colors) end
 
 ---Loads a YAML file in `base16` format and returns it
@@ -118,8 +118,8 @@ function C.gradient(gradient, num_colors) end
 ---the color definitions and the metadata.
 ---
 ---@param file_name string
----@return Palette
----@return ColorSchemeMetaData
+---@return Palette colors
+---@return ColorSchemeMetaData metadata
 function C.load_base16_scheme(file_name) end
 
 ---Loads a wezterm color scheme from a TOML file.
@@ -193,4 +193,7 @@ function C.parse(color_name) end
 ---
 ---You may find examples [here](https://wezterm.org/config/lua/wezterm.color/save_scheme.html).
 ---
+---@param colors Palette
+---@param metadata PaneMetadata
+---@param file_name string
 function C.save_scheme(colors, metadata, file_name) end
