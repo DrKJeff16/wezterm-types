@@ -100,14 +100,12 @@
 --- - `"10cell"` to specify a size based on the terminal cell metrics
 ---
 ---@field repeat_x_size? string|number
----Same as
 ---[`repeat_x`](lua://BackgroundLayer.repeat_x)
----but affecting the y-direction.
+---is identical to this one, but it affects the y-direction.
 ---
 ---@field repeat_y? "Repeat"|"Mirror"|"NoRepeat"
----Same as
 ---[`repeat_x_size`](lua://BackgroundLayer.repeat_x_size)
----but affecting the y-direction.
+---is identical to this one, but it affects the y-direction.
 ---
 ---@field repeat_y_size? number|string
 ---Controls the initial vertical position of the layer, relative to the viewport:
@@ -131,9 +129,8 @@
 --- - `"Right"`
 ---
 ---@field horizontal_align? "Left"|"Center"|"Right"
----Same as
 ---[`vertical_offset`](lua://BackgroundLayer.vertical_offset),
----but applied to the x-direction.
+---is identical to this one, but it affects the y-direction.
 ---
 ---@field horizontal_offset? number|string
 ---A number in the range `0.0` through `1.0` inclusive that is multiplied
@@ -173,10 +170,7 @@
 ---
 ---@field width? "Cover"|"Contain"|number|string
 
----@alias AllFontAttributes
----|Fonts
----|FontAttributes
----|FontFamilyAttributes
+---@alias AllFontAttributes Fonts|FontAttributes|FontFamilyAttributes
 
 ---@class FontRules
 ---@field font? AllFontAttributes
@@ -270,8 +264,8 @@
 ---will increase GPU usage.
 ---
 ---If you are running with a CPU renderer (e.g. you have
----[`config.front_end`](lua://Config.front_end)
----set to `"Software"`, or your system doesn't have a GPU),
+---[`config.front_end`](lua://Config.front_end) set
+---to `"Software"`, or your system doesn't have a GPU),
 ---then setting this option to `1` is recommended,
 ---as doing so will disable easing effects and instead
 ---will use transitions.
@@ -490,7 +484,7 @@
 ---or [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
 ---to specify the font.
 ---
----@field char_select_font? AllFontAttributes
+---@field char_select_font? Fonts|FontFamilyAttributes
 ---Specifies the size of the font used with [`CharSelect`](https://wezterm.org/config/lua/keyassignment/CharSelect.html).
 ---
 ---@field char_select_font_size? number
@@ -597,7 +591,7 @@
 ---See:
 --- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
----@field command_palette_rows? integer?
+---@field command_palette_rows? integer|nil
 ---Specifies the easing function to use when computing the color
 ---for the text cursor when it is set to a blinking style.
 ---
@@ -644,7 +638,7 @@
 --- - `"0.1cell"`: takes the cell height, scales it by `0.1`
 ---              and uses that as the thickness
 ---
----@field cursor_thickness? number|integer|string
+---@field cursor_thickness? number|string
 ---When set to `true` (the default), WezTerm will compute its own idea
 ---of what the glyphs in the following unicode ranges should be,
 ---instead of using glyphs resolved from a font.
@@ -1330,7 +1324,8 @@
 ---If a second tab is created, the tab will be shown.
 ---
 ---@field hide_tab_bar_if_only_one_tab? boolean
----Defines rules to match text from the terminal output and generate clickable links.
+---Defines rules to match text from the terminal output
+---and generate clickable links.
 ---
 ---@field hyperlink_rules? HyperlinkRule[]
 ---Control IME preedit rendering. IME preedit is an area that is used to display the string being preedited in IME. WezTerm supports the following IME preedit rendering.
@@ -1358,8 +1353,8 @@
 ---
 ---Note:
 ---
---- - Changing `config.ime_preedit_rendering` usually requires re-launching WezTerm to take full effect.
---- - In macOS, `config.ime_preedit_rendering` has effected nothing yet.
+--- - Changing this option usually requires re-launching WezTerm to take full effect.
+--- - In macOS, this option has no effect currently.
 ---   IME preedit is always rendered by WezTerm itself.
 ---
 ---@field ime_preedit_rendering? "Builtin"|"System"
@@ -1374,7 +1369,8 @@
 ---
 ---@field initial_rows? integer
 ---Configures the alignment of the set of window management buttons when
----[`config.window_decorations`](lua://Config.window_decorations) has a value of `"INTEGRATED_BUTTONS|RESIZE"`.
+---[`config.window_decorations`](lua://Config.window_decorations) has
+---a value of `"INTEGRATED_BUTTONS|RESIZE"`.
 ---
 ---Possible values are:
 ---
@@ -1383,16 +1379,21 @@
 ---
 ---@field integrated_title_button_alignment? "Right"|"Left"
 ---Configures the color of the set of window management buttons when
----[`config.window_decorations`](lua://Config.window_decorations) has a value of `"INTEGRATED_BUTTONS|RESIZE"`.
+---[`config.window_decorations`](lua://Config.window_decorations) has
+---a value of `"INTEGRATED_BUTTONS|RESIZE"`.
 ---
 ---Possible values are:
 ---
 --- - `"Auto"`: Automatically compute the color
---- - A custom color, like `"red"` (see [`PaletteBrights`](lua://PaletteBrights))
+--- - A custom color, like `"red"`
+---
+--- See:
+--- - [`PaletteBrights`](lua://PaletteBrights)
 ---
 ---@field integrated_title_button_color? "Auto"|PaletteBrights
 ---Configures the visual style of the tabbar-integrated titlebar button replacements that are shown
----when [`config.window_decorations`](lua://Config.window_decorations) has a value of `"INTEGRATED_BUTTONS|RESIZE"`.
+---when [`config.window_decorations`](lua://Config.window_decorations) has
+---a value of `"INTEGRATED_BUTTONS|RESIZE"`.
 ---
 ---Possible styles are:
 ---
@@ -1405,7 +1406,8 @@
 ---
 ---@field integrated_title_button_style? "Windows"|"Gnome"|"MacOsNative"
 ---Configures the ordering and set of window management buttons to show
----when [`config.window_decorations`](lua://Config.window_decorations) has a value of `"INTEGRATED_BUTTONS|RESIZE"`.
+---when [`config.window_decorations`](lua://Config.window_decorations) has
+---a value of `"INTEGRATED_BUTTONS|RESIZE"`.
 ---
 ---The value is a table listing the buttons.
 ---Each element can have one of the following values:
@@ -1433,8 +1435,8 @@
 ---```
 ---
 ---@field integrated_title_buttons? ("Hide"|"Maximize"|"Close")[]
----When combined with [`config.window_background_opacity`](lua://Config.window_background_opacity),
----it enables background blur using the KDE Wayland blur protocol.
+---Combinined with [`config.window_background_opacity`](lua://Config.window_background_opacity),
+---enables background blur using the KDE Wayland blur protocol.
 ---
 ---This can be used to produce a translucent window effect rather than
 ---a crystal clear transparent window effect.
@@ -1466,7 +1468,8 @@
 ---You can define your own entries for the [Launcher Menu](https://wezterm.org/config/launch.html#the-launcher-menu)
 ---using this configuration setting.
 ---
----Each entry in `config.launch_menu` is an instance of a [`SpawnCommand`](lua://SpawnCommand) object.
+---Each entry in `config.launch_menu` is an instance
+---of a [`SpawnCommand`](lua://SpawnCommand) object.
 ---
 ---@field launch_menu? SpawnCommand[]
 ---A leader key is a a modal modifier key. If leader is specified in the configuration then pressing
@@ -1490,7 +1493,8 @@
 ---@field leader? LeaderKey
 ---Scales the computed line height to adjust the spacing between successive rows of text.
 ---
----The default line height is controlled by the [`config.font_size`](lua://Config.font_size) configuration option.
+---The default line height is controlled by
+---[`config.font_size`](lua://Config.font_size).
 ---
 ---If you feel that your chosen font feels too vertically cramped then you can set
 ---`config.line_height = 1.2` to increase the vertical spacing by 20%.
@@ -1504,7 +1508,8 @@
 ---
 ---@field log_unknown_escape_sequences? boolean
 ---On macOS systems, this option controls whether modified key presses are routed
----via the IME when [`config.use_ime`](lua://Config.use_ime) has a value of `true`.
+---via the IME when setting `true` to
+---[`config.use_ime`](lua://Config.use_ime).
 ---
 ---When processing a key event, if any modifiers are held,
 ---if the modifiers intersect with the value of `config.macos_forward_to_ime_modifier_mask`,
@@ -1520,7 +1525,8 @@
 ---
 ---The default value for `config.macos_fullscreen_extend_behind_notch` is `false`.
 ---
----Must be used with [`config.native_macos_fullscreen_mode`](lua://Config.native_macos_fullscreen_mode) set to `false`.
+---Must be used with a `false` value for
+---[`config.native_macos_fullscreen_mode`](lua://Config.native_macos_fullscreen_mode).
 ---
 ---Toggling full screen with the native macOS full screen button
 ---or a window manager command won't have any effect and you must use the
@@ -1535,8 +1541,8 @@
 ---```
 ---
 ---@field macos_fullscreen_extend_behind_notch? boolean
----When combined with [`config.window_background_opacity`](lua://Config.window_background_opacity) it configures the blur radius amount
----used by macOS when compositing the window on the screen.
+---Combined with [`config.window_background_opacity`](lua://Config.window_background_opacity)
+---will configure the blur radius amount used by macOS when compositing the window on the screen.
 ---
 ---This can be used to produce a translucent window effect rather than a crystal clear
 ---transparent window effect.
@@ -1566,7 +1572,8 @@
 ---or numbers larger than one such as `"72pt"`.
 ---
 ---@field min_scroll_bar_height? string
----A list containing [`MouseBindingBase`](lua://MouseBindingBase) tables.
+---A list containing tables of type
+---[`MouseBindingBase`](lua://MouseBindingBase).
 ---
 ---For more info please check the [Mouse Binding](https://wezterm.org/config/mouse.html?h=mouse_report#configuring-mouse-assignments) docs.
 ---
@@ -1663,12 +1670,14 @@
 ---The `config.pane_select_font` setting can specify a set of fallbacks and other options,
 ---and is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
 ---
----If not specified, the font is same as the font in [`config.window_frame.font`](lua://WindowFrameConfig.font).
+---If not specified, the font is same as the font
+---for [`config.window_frame.font`](lua://WindowFrameConfig.font).
 ---
----You will typically use [`wezterm.font`](lua://Wezterm.font) or
----[`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback) to specify the font.
+---Typically either [`wezterm.font`](lua://Wezterm.font) or
+---[`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback) are
+---used to specify the font.
 ---
----To specify `config.pane_select_font`:
+---An example:
 ---
 ---```lua
 ---config.pane_select_font = wezterm.font 'Roboto'
@@ -2435,9 +2444,8 @@
 ---rendering backend.
 ---The performance will not be as good as using a GPU.
 ---
----This option is only applicable when you have set
----[`config.front_end`](lua://Config.front_end)
----to `"WebGpu"`.
+---This option is only applicable when you have set `"WebGpu"` for
+---[`config.front_end`](lua://Config.front_end).
 ---
 ---A more fine grained control over which GPU is selected also relies on
 ---[`config.webgpu_preferred_adapter`](lua://Config.webgpu_preferred_adapter).
@@ -2489,8 +2497,8 @@
 ---The image will be scaled to fit the window.
 ---
 ---@field window_background_image? string
----Generates a coloured background from an
----[`HsbTransform`](lua://HsbTransform) object.
+---Generates a coloured background from an object of type
+---[`HsbTransform`](lua://HsbTransform).
 ---
 ---@field window_background_image_hsb? HsbTransform
 ---Specifies the alpha value to use when rendering the window background.
