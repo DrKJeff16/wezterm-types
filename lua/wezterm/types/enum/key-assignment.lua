@@ -2,6 +2,20 @@
 
 ---TODO: Make key and mods more specific
 
+---@alias CharSelect
+---|"RecentlyUsed"
+---|"SmileysAndEmotion"
+---|"PeopleAndBody"
+---|"AnimalsAndNature"
+---|"FoodAndDrink"
+---|"TravelAndPlaces"
+---|"Activities"
+---|"Objects"
+---|"Symbols"
+---|"Flags"
+---|"NerdFonts"
+---|"UnicodeNames"
+
 ---@alias CopyTo "Clipboard"|"ClipboardAndPrimarySelection"|"PrimarySelection"
 ---@alias CopyMode
 ---|"AcceptPattern"
