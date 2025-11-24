@@ -19,7 +19,7 @@ local Color = {}
 ---
 ---@param self Color
 ---@param degrees number
----@return Color
+---@return Color adjusted_color
 function Color:adjust_hue_fixed(degrees) end
 
 ---Adjust the hue angle by the specified number of degrees.
@@ -35,7 +35,7 @@ function Color:adjust_hue_fixed(degrees) end
 ---
 ---@param self Color
 ---@param degrees number
----@return Color
+---@return Color adjusted_color
 function Color:adjust_hue_fixed_ryb(degrees) end
 
 ---Returns the complement of the color.
@@ -44,7 +44,7 @@ function Color:adjust_hue_fixed_ryb(degrees) end
 ---rotating by 180 degrees and converting back to `RGBA`.
 ---
 ---@param self Color
----@return Color
+---@return Color complement
 function Color:complement() end
 
 ---Returns the complement of the color using
@@ -56,7 +56,7 @@ function Color:complement() end
 ---rotating by 180 degrees and and then converting back to `RGBA`.
 ---
 ---@param self Color
----@return Color
+---@return Color ryb_complement
 function Color:complement_ryb() end
 
 ---Computes the contrast ratio between the two colors.
@@ -71,7 +71,7 @@ function Color:complement_ryb() end
 ---
 ---@param self Color
 ---@param other Color
----@return number
+---@return number ratio
 function Color:contrast_ratio(other) end
 
 ---Scales the color towards the minimum lightness
@@ -80,7 +80,7 @@ function Color:contrast_ratio(other) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color darker_color
 function Color:darken(amount) end
 
 ---Decrease the lightness by `amount`,
@@ -88,7 +88,7 @@ function Color:darken(amount) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color darker_color
 function Color:darken_fixed(amount) end
 
 ---Computes the `CIEDE2000` `DeltaE` value
@@ -97,7 +97,7 @@ function Color:darken_fixed(amount) end
 ---
 ---@param self Color
 ---@param other Color
----@return number
+---@return number value
 function Color:delta_e(other) end
 
 ---Scales the color towards the minimum saturation
@@ -106,7 +106,7 @@ function Color:delta_e(other) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color desaturated
 function Color:desaturate(amount) end
 
 ---Decrease the saturation by `amount`,
@@ -114,7 +114,7 @@ function Color:desaturate(amount) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color desaturated
 function Color:desaturate_fixed(amount) end
 
 ---Converts the color to the `HSL` colorspace and
@@ -143,7 +143,7 @@ function Color:laba() end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color lighter_color
 function Color:lighten(amount) end
 
 ---Increase the lightness by `amount`, a value
@@ -151,7 +151,7 @@ function Color:lighten(amount) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color lighter_color
 function Color:lighten_fixed(amount) end
 
 ---Returns a tuple of the colors converted to
@@ -171,7 +171,7 @@ function Color:linear_rgba() end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color saturated
 function Color:saturate(amount) end
 
 ---Increase the saturation by amount, a value
@@ -179,7 +179,7 @@ function Color:saturate(amount) end
 ---
 ---@param self Color
 ---@param amount number
----@return Color
+---@return Color saturated
 function Color:saturate_fixed(amount) end
 
 ---Returns the other three colors that form a square.

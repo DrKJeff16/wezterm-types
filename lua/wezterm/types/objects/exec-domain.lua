@@ -37,4 +37,5 @@ local M = {}
 ---@param name string
 ---@param fixup fun(cmd: SpawnCommand): SpawnCommand
 ---@param label? string|fun(): string
+---@return ExecDomain new_domain
 function M.exec_domain(name, fixup, label) end

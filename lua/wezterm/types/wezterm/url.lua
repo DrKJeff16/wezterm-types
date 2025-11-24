@@ -5,14 +5,13 @@
 ---An example:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require('wezterm')
 ---
----local url = wezterm.url.parse 'file://myhost/some/path%20with%20spaces'
+---local url = wezterm.url.parse('file://myhost/some/path%20with%20spaces')
 ---assert(url.scheme == 'file')
 ---assert(url.file_path == '/some/path with spaces')
 ---
----local url =
----  wezterm.url.parse 'https://github.com/rust-lang/rust/issues?labels=E-easy&state=open'
+---local url = wezterm.url.parse('https://github.com/rust-lang/rust/issues?labels=E-easy&state=open')
 ---assert(url.scheme == 'https')
 ---assert(url.username == '')
 ---assert(url.password == nil)
@@ -62,5 +61,5 @@ local M = {}
 ---If successful, returns a `Url` object representing said URL.
 ---
 ---@param url_string string
----@return Url?
+---@return Url|nil data
 function M.parse(url_string) end

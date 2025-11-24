@@ -12,7 +12,7 @@ local Time = {}
 ---You can use fractional seconds to delay by more precise intervals.
 ---
 ---@param interval number
----@param callback fun()
+---@param callback function
 function Time.call_after(interval, callback) end
 
 ---Returns a `Time` object representing the time
@@ -20,7 +20,7 @@ function Time.call_after(interval, callback) end
 ---
 ---See [`Time`](lua://Time).
 ---
----@return Time
+---@return Time current
 function Time.now() end
 
 ---Parses a string that is formatted according to the supplied format string:
@@ -35,7 +35,7 @@ function Time.now() end
 ---
 ---@param str string
 ---@param format string
----@return Time
+---@return Time parsed
 function Time.parse(str, format) end
 
 ---Parses a string that is formatted according to `RFC 3339`
@@ -45,5 +45,5 @@ function Time.parse(str, format) end
 ---according to `RFC 3339`.
 ---
 ---@param str string
----@return Time
+---@return Time parsed
 function Time.parse_rfc3339(str) end

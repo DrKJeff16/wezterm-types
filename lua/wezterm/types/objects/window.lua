@@ -315,5 +315,5 @@ function M:window_id() end
 ---See [Key Tables](https://wezterm.org/config/key-tables.html) for a detailed example.
 ---
 ---@param self Window
----@return string? stack
+---@return string|nil stack
 function M:active_key_table() end

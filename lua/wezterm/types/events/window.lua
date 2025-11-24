@@ -7,7 +7,6 @@
 ---|"format-window-title"
 ---|"new-tab-button-click"
 ---|"open-uri"
----|"update-right-status" -- DEPRECATED
 ---|"update-status"
 ---|"user-var-changed"
 ---|"window-config-reloaded"

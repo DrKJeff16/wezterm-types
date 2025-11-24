@@ -1,6 +1,6 @@
 ---@meta
 
----@class PluginList
+---@class PluginSpec
 ---The URL of the plugin repo, as provided to the
 ---[`wezterm.plugin.require`](lua://Wezterm.Plugin.require)
 ---function.
@@ -26,9 +26,9 @@ local Plugin = {}
 ---the plugin repos in the plugin directory.
 ---
 ---For info on the returned array, see:
---- - [`PluginList`](lua://PluginList)
+--- - [`PluginSpec`](lua://PluginSpec)
 ---
----@return PluginList[]
+---@return PluginSpec[] list
 function Plugin.list() end
 
 ---Will clone the plugin repo if it doesn't
@@ -47,12 +47,11 @@ function Plugin.list() end
 ---
 ---```lua
 ---local remote_plugin = wezterm.plugin.require 'https://github.com/owner/repo'
----local local_plugin =
----  wezterm.plugin.require 'file:///Users/developer/projects/my.Plugin'
+---local local_plugin = wezterm.plugin.require 'file:///Users/developer/projects/my.Plugin'
 ---```
 ---
 ---@param url string
----@return any
+---@return unknown plugin
 function Plugin.require(url) end
 
 ---Attempt to fast-forward or run `git pull --rebase`

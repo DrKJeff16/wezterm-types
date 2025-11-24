@@ -1,7 +1,5 @@
 ---@meta
 
---TODO: finish
-
 ---@class SpawnPosition
 ---@field origin? "ScreenCoordinateSystem"|"MainScreen"|"ActiveScreen"|{ Named: string }
 ---@field x? integer

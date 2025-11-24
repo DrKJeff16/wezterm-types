@@ -1,18 +1,6 @@
 ---@meta
 
----@alias LocalProcessStatus
----|"Idle"
----|"Run"
----|"Sleep"
----|"Stop"
----|"Zombie"
----|"Tracing"
----|"Dead"
----|"Wakekill"
----|"Waking"
----|"Parked"
----|"LockBlocked"
----|"Unknown"
+---@alias LocalProcessStatus "Idle"|"Run"|"Sleep"|"Stop"|"Zombie"|"Tracing"|"Dead"|"Wakekill"|"Waking"|"Parked"|"LockBlocked"|"Unknown"
 
 ---Represents a process running on the local machine.
 ---

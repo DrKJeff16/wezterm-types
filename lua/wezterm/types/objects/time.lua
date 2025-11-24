@@ -63,5 +63,5 @@ function M:format_utc(format) end
 ---@param self Time
 ---@param lat number
 ---@param lon number
----@return Time.SunTimes
+---@return Time.SunTimes sun_times
 function M:sun_times(lat, lon) end

@@ -94,7 +94,7 @@ function M:activate() end
 ---which is why this method doesn't simply return a file path string
 ---
 ---@param self Pane
----@return string? cwd
+---@return string|nil cwd
 function M:get_current_working_dir() end
 
 ---Returns a Lua representation of the `StableCursorPosition` struct
@@ -146,7 +146,7 @@ function M:get_domain_name() end
 ---If the process cannot be determined then this method returns `nil`.
 ---
 ---@param self Pane
----@return LocalProcessInfo? proc_info
+---@return LocalProcessInfo|nil proc_info
 function M:get_foreground_process_info() end
 
 ---Returns the path to the executable image for the pane.
@@ -174,7 +174,7 @@ function M:get_foreground_process_info() end
 ---If the path is not known then this method returns `nil`.
 ---
 ---@param self Pane
----@return string? name
+---@return string|nil name
 function M:get_foreground_process_name() end
 
 ---Returns the textual representation
@@ -282,7 +282,7 @@ function M:get_logical_lines_as_text(nlines) end
 ---```
 ---
 ---@param self Pane
----@return PaneMetadata?
+---@return PaneMetadata|nil metadata
 function M:get_metadata() end
 
 ---Returns the progress state associated with the pane.
@@ -308,7 +308,7 @@ function M:get_progress() end
 ---@param self Pane
 ---@param x integer
 ---@param y integer
----@return table
+---@return table zone
 function M:get_semantic_zone_at(x, y) end
 
 ---When `zone_type` is omitted, returns the list of
@@ -325,7 +325,7 @@ function M:get_semantic_zone_at(x, y) end
 ---
 ---@param self Pane
 ---@param zone_type? "Input"|"Output"|"Prompt"
----@return table
+---@return table zones
 function M:get_semantic_zones(zone_type) end
 
 ---Returns the text from the specified region.
@@ -358,7 +358,7 @@ function M:get_text_from_region(start_x, start_y, end_x, end_y) end
 ---
 ---@param self Pane
 ---@param zone table
----@return any
+---@return any text
 function M:get_text_from_semantic_zone(zone) end
 
 ---Returns the title of the pane.
@@ -398,7 +398,7 @@ function M:get_title() end
 ---   Windows systems do not have an equivalent concept
 ---
 ---@param self Pane
----@return string? name
+---@return string|nil name
 function M:get_tty_name() end
 
 ---Returns a table holding the user variables that have been

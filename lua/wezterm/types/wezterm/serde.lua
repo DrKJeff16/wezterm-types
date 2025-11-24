@@ -9,43 +9,47 @@ local Serde = {}
 ---Parses the supplied string as JSON and returns the equivalent Lua values.
 ---
 ---@param value string
----@return table
+---@return table data
 function Serde.json_decode(value) end
 
 ---Encodes the supplied Lua value as JSON.
 ---
 ---@param value table
----@return string
+---@return string data
 function Serde.json_encode(value) end
 
 ---Encodes the supplied Lua value as a pretty-printed string of JSON.
 ---
 ---@param value table
----@return string
+---@return string data
 function Serde.json_encode_pretty(value) end
+
 ---Parses the supplied string as TOML and returns the equivalent Lua values.
 ---
 ---@param value string
----@return table
+---@return table data
 function Serde.toml_decode(value) end
+
 ---Encodes the supplied Lua value as TOML.
 ---
 ---@param value table
----@return string
+---@return string data
 function Serde.toml_encode(value) end
+
 ---Encodes the supplied Lua value as a pretty-printed string of TOML.
 ---
 ---@param value table
----@return string
+---@return string data
 function Serde.toml_encode_pretty(value) end
+
 ---Parses the supplied string as YAML and returns the equivalent Lua values.
 ---
 ---@param value string
----@return table
+---@return table data
 function Serde.yaml_decode(value) end
 
 ---Encodes the supplied Lua value as YAML.
 ---
 ---@param value table
----@return string
+---@return string data
 function Serde.yaml_encode(value) end

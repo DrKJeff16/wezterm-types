@@ -33,7 +33,7 @@ function M:active_pane() end
 ---
 ---@param self MuxTab
 ---@param direction "Down"|"Left"|"Next"|"Prev"|"Right"|"Up"
----@return Pane
+---@return Pane adjacent_pane
 function M:get_pane_direction(direction) end
 
 ---Returns the overall size of the tab,
@@ -58,7 +58,7 @@ function M:get_title() end
 ---contained by this tab.
 ---
 ---@param self MuxTab
----@return Pane[]
+---@return Pane[] panes
 function M:panes() end
 
 ---Returns an array table containing an extended info entry
@@ -68,7 +68,7 @@ function M:panes() end
 --- - [`PaneInformation`](lua://PaneInformation)
 ---
 ---@param self MuxTab
----@return PaneInformation[]
+---@return PaneInformation[] info_panes
 function M:panes_with_info() end
 
 ---Rotates the panes in the clockwise direction.
@@ -108,13 +108,11 @@ function M:set_zoomed(state) end
 ---Returns the tab ID.
 ---
 ---@param self MuxTab
----@return integer
+---@return integer id
 function M:tab_id() end
 
----Returns the
----[`MuxWindow`](lua://MuxWindow) object
----that contains this tab.
+---Returns the `MuxWindow` bject that contains this tab.
 ---
 ---@param self MuxTab
----@return MuxWindow
+---@return MuxWindow window
 function M:window() end

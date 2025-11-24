@@ -14,7 +14,7 @@ local ProcInfo = {}
 ---unable to return the info.
 ---
 ---@param pid integer
----@return string|nil
+---@return string|nil dir
 function ProcInfo.current_working_dir_for_pid(pid) end
 
 ---Returns the path to the executable image
@@ -24,7 +24,7 @@ function ProcInfo.current_working_dir_for_pid(pid) end
 ---unable to return the info.
 ---
 ---@param pid integer
----@return string|nil
+---@return string|nil path
 function ProcInfo.executable_path_for_pid(pid) end
 
 ---Returns a `LocalProcessInfo` object for
@@ -37,10 +37,10 @@ function ProcInfo.executable_path_for_pid(pid) end
 --- - [`LocalProcessInfo`](lua://LocalProcessInfo)
 ---
 ---@param pid integer
----@return LocalProcessInfo|nil
+---@return LocalProcessInfo|nil info
 function ProcInfo.get_info_for_pid(pid) end
 
 ---Returns the process ID for the current process.
 ---
----@return integer
+---@return integer pid
 function ProcInfo.pid() end

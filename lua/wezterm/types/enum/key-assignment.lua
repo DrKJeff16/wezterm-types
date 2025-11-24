@@ -2,11 +2,7 @@
 
 ---TODO: Make key and mods more specific
 
----@alias CopyTo
----|"Clipboard"
----|"ClipboardAndPrimarySelection"
----|"PrimarySelection"
-
+---@alias CopyTo "Clipboard"|"ClipboardAndPrimarySelection"|"PrimarySelection"
 ---@alias CopyMode
 ---|"AcceptPattern"
 ---|"ClearPattern"
@@ -51,7 +47,6 @@
 ---|{ SetSelectionMode: SelectionMode|"SemanticZone" }
 
 ---@alias SendKey Key
-
 ---@alias KeyAssignment
 ---|"ActivateCommandPalette"
 ---|"ActivateCopyMode"
@@ -487,27 +482,27 @@ local ActionFunc = {}
 ---If instead of this you want the key presses to pass through to the terminal,
 ---look at [`DisableDefaultAssignment`](https://wezterm.org/config/lua/keyassignment/DisableDefaultAssignment.html).
 ---
----@return Action
+---@return Action nop
 function ActionFunc.Nop() end
 
 ---@param s "Line"|"Word"|"Cell"|"Block"|"SemanticZone"
----@return Action
+---@return Action select_text_at_mouse_cursor
 function ActionFunc.SelectTextAtMouseCursor(s) end
 
 ---@param s string
----@return Action
+---@return Action send_string
 function ActionFunc.SendString(s) end
 
 ---@param param SendKey
----@return Action
+---@return Action send_key
 function ActionFunc.SendKey(param) end
 
 ---@param act CopyMode
----@return Action
+---@return Action copy_mode
 function ActionFunc.CopyMode(act) end
 
 ---@param destination CopyTo
----@return Action
+---@return Action copy_to
 function ActionFunc.CopyTo(destination) end
 
 ---Performs a sequence of multiple assignments.
