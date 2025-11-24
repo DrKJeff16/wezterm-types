@@ -1453,7 +1453,7 @@ function Wezterm.on(event, callback) end
 --- - [`wezterm.mux`](lua://Wezterm.Mux)
 ---
 ---@param event "mux-startup"
----@param callback fun()
+---@param callback function
 function Wezterm.on(event, callback) end
 
 --- - The first event parameter is a [`Window`](lua://Window)
