@@ -66,27 +66,23 @@ For [Neovim](https://github.com/neovim/neovim) users, we recommend using
 [`folke/lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager, to be used with [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim):
 
 ```lua
-require('lazy').setup({
-  spec = {
+{
+  'folke/lazydev.nvim',
+  ft = 'lua',
+  dependencies = {
     {
-      'folke/lazydev.nvim',
-      ft = 'lua',
-      dependencies = {
-        {
-          'DrKJeff16/wezterm-types',
-          lazy = true,
-          version = false, -- Get the latest version
-        },
-      },
-      opts = {
-        library = {
-          -- Other library configs...
-          { path = 'wezterm-types', mods = { 'wezterm' } },
-        },
-      },
+      'DrKJeff16/wezterm-types',
+      lazy = true,
+      version = false, -- Get the latest version
     },
   },
-})
+  opts = {
+    library = {
+      -- Other library configs...
+      { path = 'wezterm-types', mods = { 'wezterm' } },
+    },
+  },
+}
 ```
 
 > [!TIP]
@@ -94,22 +90,20 @@ require('lazy').setup({
 >
 > ```lua
 > {
->   {
->     'folke/lazydev.nvim',
->     ft = 'lua',
->     dependencies = {
->       {
->         'DrKJeff16/wezterm-types',
->         lazy = true,
->         name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
->         version = false, -- Get the latest version
->       },
+>   'folke/lazydev.nvim',
+>   ft = 'lua',
+>   dependencies = {
+>     {
+>       'DrKJeff16/wezterm-types',
+>       lazy = true,
+>       name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
+>       version = false, -- Get the latest version
 >     },
->     opts = {
->       library = {
->         -- Other library configs...
->         { path = '<my_custom_name>', mods = { 'wezterm' } }, -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
->       },
+>   },
+>   opts = {
+>     library = {
+>       -- Other library configs...
+>       { path = '<my_custom_name>', mods = { 'wezterm' } }, -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
 >     },
 >   },
 > }
