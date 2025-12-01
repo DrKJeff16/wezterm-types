@@ -1554,7 +1554,7 @@
 ---
 ---Defaults to `60`.
 ---
----Note that for Wayland it is ignored, instead using information
+---Note that for Wayland this is ignored, instead will use information
 ---from the compositor to schedule painting frames.
 ---
 ---@field max_fps? integer
