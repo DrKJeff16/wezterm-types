@@ -1554,6 +1554,9 @@
 ---
 ---Defaults to `60`.
 ---
+---Note that for Wayland it is ignored, instead using information
+---from the compositor to schedule painting frames.
+---
 ---@field max_fps? integer
 ---Controls the minimum size of the scroll bar "thumb".
 ---
