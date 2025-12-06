@@ -41,7 +41,7 @@ https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 3. [Usage](#usage)
 4. [Credits](#credits)
     1. [Maintainers](#maintainers)
-    2. [Maintainers](#maintainers)
+    2. [Contributors](#contributors)
 5. [Structure](#structure)
 6. [License](#license)
 
