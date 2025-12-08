@@ -62,3 +62,5 @@
 ---this command invocation.
 ---
 ---@field set_environment_variables? table<string, any>
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

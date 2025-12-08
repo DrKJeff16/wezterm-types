@@ -53,3 +53,5 @@ function Serde.yaml_decode(value) end
 ---@param value table
 ---@return string data
 function Serde.yaml_encode(value) end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

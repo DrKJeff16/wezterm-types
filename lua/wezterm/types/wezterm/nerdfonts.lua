@@ -9126,3 +9126,5 @@
 ---@field weather_wind_south_west string
 ---@field weather_wind_west string
 ---@field weather_windy string
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

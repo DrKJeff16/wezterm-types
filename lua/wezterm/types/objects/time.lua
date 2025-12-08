@@ -65,3 +65,5 @@ function M:format_utc(format) end
 ---@param lon number
 ---@return Time.SunTimes sun_times
 function M:sun_times(lat, lon) end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

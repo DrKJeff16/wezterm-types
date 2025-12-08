@@ -112,3 +112,5 @@ function GUI.gui_windows() end
 ---
 ---@return ScreenInformation
 function GUI.screens() end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

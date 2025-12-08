@@ -211,3 +211,5 @@ function Color:srgb_u8() end
 ---@return Color a
 ---@return Color b
 function Color:triad() end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

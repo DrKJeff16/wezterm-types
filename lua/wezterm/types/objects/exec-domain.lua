@@ -39,3 +39,5 @@ local M = {}
 ---@param label? string|fun(): string
 ---@return ExecDomain new_domain
 function M.exec_domain(name, fixup, label) end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

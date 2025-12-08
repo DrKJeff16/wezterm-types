@@ -32,3 +32,5 @@
 ---You can omit this if your `tls_client` is using `bootstrap_via_ssh`.
 ---
 ---@field pem_root_certs? string[]
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:
