@@ -16,3 +16,5 @@
 ---@module "wezterm.types.objects.tls-domain-server"
 ---@module "wezterm.types.objects.window"
 ---@module "wezterm.types.objects.wsl-domain"
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

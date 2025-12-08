@@ -130,3 +130,5 @@ function M:tabs_with_info() end
 ---@param self MuxWindow
 ---@return integer id
 function M:window_id() end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

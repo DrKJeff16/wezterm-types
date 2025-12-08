@@ -538,3 +538,5 @@ function ActionFunc.Multiple(action) end
 ---that makes it a bit easier to identify where syntax errors may exist
 ---in your configuration file
 ---@alias Action ActionFuncClass|ActionClass
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

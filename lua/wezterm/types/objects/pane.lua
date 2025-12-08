@@ -549,3 +549,5 @@ function M:tab() end
 ---@param self Pane
 ---@return MuxWindow window
 function M:window() end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

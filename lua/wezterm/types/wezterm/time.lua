@@ -47,3 +47,5 @@ function Time.parse(str, format) end
 ---@param str string
 ---@return Time parsed
 function Time.parse_rfc3339(str) end
+
+-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:
