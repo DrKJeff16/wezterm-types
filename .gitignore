@@ -1,5 +1,2 @@
 # Config file
 /wezterm.lua
-
-# Custom scripts directory (mostly for repo management)
-/scripts/
