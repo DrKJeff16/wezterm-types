@@ -1,2 +1,6 @@
 # Config file
 /wezterm.lua
+
+# Python Stuff
+.mypy_cache/
+.ropeproject/
