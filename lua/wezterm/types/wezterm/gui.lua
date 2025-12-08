@@ -52,7 +52,7 @@ local GUI = {}
 ---}
 ---```
 ---
----@return Key[]|{ copy_mode: Key[] }
+---@return Key[]|{ copy_mode: Key[], search_mode: Key[] }
 function GUI.default_key_tables() end
 
 ---Returns a table holding the effective default values

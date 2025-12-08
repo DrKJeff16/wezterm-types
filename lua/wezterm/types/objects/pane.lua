@@ -94,7 +94,7 @@ function M:activate() end
 ---which is why this method doesn't simply return a file path string
 ---
 ---@param self Pane
----@return string|nil cwd
+---@return Url|nil cwd
 function M:get_current_working_dir() end
 
 ---Returns a Lua representation of the `StableCursorPosition` struct
