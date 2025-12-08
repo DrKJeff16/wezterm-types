@@ -143,6 +143,8 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 ### Contributors
 
+Many thanks to these champs!
+
 - [@TheLeoP](https://github.com/TheLeoP)
 - [@reegnz](https://github.com/reegnz)
 - [@Zuyoutoki](https://github.com/Zuyoutoki)
