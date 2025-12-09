@@ -4,7 +4,7 @@
 
 [![Mentioned in Awesome WezTerm](https://awesome.re/mentioned-badge.svg)](https://github.com/michaelbrusegard/awesome-wezterm) | [![Mentioned in Awesome Neovim](https://awesome.re/mentioned-badge.svg)](https://github.com/rockerBOO/awesome-neovim)
 
-[Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
+[Credits](/CREDITS.md) | [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48) | [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
 This project aims to provide <a href="https://github.com/LuaCATS" target="_blank" referrerpolicy="no-referrer">LuaCATS</a>-like
 <a href="https://luals.github.io/wiki/annotations/" target="_blank" referrerpolicy="no-referrer">Lua Language Server type annotations</a>
@@ -35,15 +35,12 @@ https://github.com/user-attachments/assets/3693aedf-b790-4618-b969-1b712010bd4f
 
 ## Table of Contents
 
-1. [Features](#features)
-2. [Installation](#installation)
-    1. [Neovim](#neovim)
-3. [Usage](#usage)
-4. [Credits](#credits)
-    1. [Maintainers](#maintainers)
-    2. [Contributors](#contributors)
-5. [Structure](#structure)
-6. [License](#license)
+- [Features](#features)
+- [Installation](#installation)
+    - [Neovim](#neovim)
+- [Usage](#usage)
+- [Structure](#structure)
+- [License](#license)
 
 ---
 
@@ -130,26 +127,6 @@ return config
 
 These annotations enable the **Lua Language Server** to provide
 proper type checking and autocompletion for WezTerm configuration options.
-
----
-
-## Credits
-
-### Maintainers
-
-- [@DrKJeff16](https://github.com/DrKJeff16) - **Current owner**
-- [@justinsgithub](https://github.com/justinsgithub) - **Author**
-- [@gonstoll](https://github.com/gonstoll)
-
-### Contributors
-
-Many thanks to these champs!
-
-- [@TheLeoP](https://github.com/TheLeoP)
-- [@reegnz](https://github.com/reegnz)
-- [@Zuyoutoki](https://github.com/Zuyoutoki)
-- [@AtifChy](https://github.com/AtifChy)
-- [@chrisgrieser](https://github.com/chrisgrieser)
 
 ---
 
