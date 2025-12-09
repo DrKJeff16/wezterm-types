@@ -11,6 +11,64 @@ from typing import Dict, List, NoReturn, Tuple, Union
 COMMENT: str = "-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:"
 
 
+def error(*msg, end: str = "\n", sep: str = " ", flush: bool = False) -> NoReturn:
+    """Prints to stderr."""
+    try:
+        end = str(end)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        end = "\n"
+
+    try:
+        sep = str(sep)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        sep = " "
+
+    try:
+        flush = bool(flush)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        flush = False
+
+    print(*msg, end=end, sep=sep, flush=flush, file=STDERR)
+
+
+def die(*msg, code: int = 0, end: str = "\n", sep: str = " ", flush: bool = False) -> NoReturn:
+    """Kill program execution."""
+    try:
+        end = str(end)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        end = "\n"
+
+    try:
+        sep = str(sep)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        sep = " "
+
+    try:
+        flush = bool(flush)
+    except KeyboardInterrupt:
+        Exit(1)
+    except Exception:
+        flush = False
+
+    if msg and len(msg) > 0:
+        if code == 0:
+            print(*msg, end=end, sep=sep, flush=flush)
+        else:
+            error(*msg, end=end, sep=sep, flush=flush)
+
+    Exit(code)
+
+
 def bootstrap_paths() -> Tuple[str]:
     """Bootstraps all the matching paths in current dir and below."""
     result = list()
@@ -20,22 +78,6 @@ def bootstrap_paths() -> Tuple[str]:
                 result.append(join(root, file))
 
     return tuple(result)
-
-
-def die(*msg, code: int = 0) -> NoReturn:
-    """Kill program execution."""
-    if code == 0:
-        func = print
-    else:
-        func = error
-
-    func(*msg)
-    Exit(code)
-
-
-def error(*msg, end: str = "\n", sep: str = " ", flush: bool = False) -> NoReturn:
-    """Prints to stderr."""
-    print(*msg, end=end, sep=sep, flush=flush, file=STDERR)
 
 
 def open_batch_paths(paths: Tuple[str]) -> Dict[str, TextIOWrapper]:
@@ -60,7 +102,7 @@ def open_batch_paths(paths: Tuple[str]) -> Dict[str, TextIOWrapper]:
 
 def get_last_line(file: TextIOWrapper) -> str:
     """Returns the last line of a file."""
-    result = file.read().split("\n")[-2]
+    result: str = file.read().split("\n")[-2]
     file.close()
 
     return result
@@ -71,7 +113,6 @@ def eof_comment_search(
 ) -> Dict[str, List[Union[TextIOWrapper, bool]]]:
     """Searches through opened files."""
     result = dict()
-
     for path, file in files.items():
         last_line = get_last_line(file)
         if last_line not in (COMMENT,):
@@ -109,13 +150,11 @@ def append_eof_comment(files: Dict[str, List[Union[TextIOWrapper, bool]]]) -> No
 def main() -> int:
     """Execute main workflow."""
     files = open_batch_paths(bootstrap_paths())
-
     if len(files) == 0:
         error("No matching files found!")
         return 1
 
     results = eof_comment_search(files)
-
     if len(results) > 0:
         append_eof_comment(results)
 
