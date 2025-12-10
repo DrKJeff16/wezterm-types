@@ -993,8 +993,6 @@
 ---to specify the font.
 ---
 ---@field font? AllFontAttributes
----DEPRECATED
----@field font_antialias? Deprecated
 ---By default, wezterm will use an appropriate system-specific method
 ---for locating the fonts that you specify using the options below.
 ---Additionally, if you configure the `config.font_dirs` option,

@@ -14,11 +14,6 @@
 ---@module "wezterm.types.wezterm.time"
 ---@module "wezterm.types.wezterm.url"
 
----Deprecated data field
----
----@class Deprecated
----NOTE: THIS IS DELIBERATELY LEFT EMPTY
-
 ---@alias ColorSpec table<"AnsiColor", AnsiColor>|table<"Color", string>
 
 ---@class FormatItemAttribute
@@ -26,9 +21,13 @@
 ---@field Intensity? "Normal"|"Bold"|"Half"
 ---@field Italic? boolean
 
----@alias FormatItem
----|"ResetAttributes"
----|{ Attribute?: FormatItemAttribute, Foreground?: ColorSpec, Background?: ColorSpec, Text?: string}
+---@class FormatItemSpec
+---@field Attribute? FormatItemAttribute
+---@field Foreground? ColorSpec
+---@field Background? ColorSpec
+---@field Text? string
+
+---@alias FormatItem "ResetAttributes"|FormatItemSpec
 
 ---This is a virtual modifier used by wezterm
 ---@alias Modifiers
