@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """Ensure EOF Vim comment in Lua files."""
+import sys
 from io import TextIOWrapper
 from os import walk
 from os.path import join
-from sys import exit as Exit
-from sys import stderr as STDERR
 from typing import Dict, List, NoReturn, Tuple, Union
 
 COMMENT: str = "-- vim:ts=4:sts=4:sw=4:et:ai:si:sta:"
@@ -16,63 +15,64 @@ def error(*msg, end: str = "\n", sep: str = " ", flush: bool = False) -> NoRetur
     try:
         end = str(end)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         end = "\n"
 
     try:
         sep = str(sep)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         sep = " "
 
     try:
         flush = bool(flush)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         flush = False
 
-    print(*msg, end=end, sep=sep, flush=flush, file=STDERR)
+    print(*msg, end=end, sep=sep, flush=flush, file=sys.stderr)
 
 
 def die(*msg, code: int = 0, end: str = "\n", sep: str = " ", flush: bool = False) -> NoReturn:
     """Kill program execution."""
     try:
         code = int(code)
-    except KeyboardInterrupt:
-        Exit(1)
     except Exception:
         code = 1
 
     try:
         end = str(end)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         end = "\n"
+        code = 1
 
     try:
         sep = str(sep)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         sep = " "
+        code = 1
 
     try:
         flush = bool(flush)
     except KeyboardInterrupt:
-        Exit(1)
+        sys.exit(1)
     except Exception:
         flush = False
+        code = 1
 
     if msg and len(msg) > 0 and code == 0:
         print(*msg, end=end, sep=sep, flush=flush)
     elif msg and len(msg) > 0:
         error(*msg, end=end, sep=sep, flush=flush)
 
-    Exit(code)
+    sys.exit(code)
 
 
 def bootstrap_paths() -> Tuple[str]:
@@ -151,8 +151,7 @@ def main() -> int:
     """Execute main workflow."""
     files = open_batch_paths(bootstrap_paths())
     if len(files) == 0:
-        error("No matching files found!")
-        return 1
+        die("No matching files found!", code=1)
 
     results = eof_comment_search(files)
     if len(results) > 0:
@@ -162,4 +161,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    Exit(main())
+    sys.exit(main())
