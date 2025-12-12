@@ -110,7 +110,7 @@ function GUI.gui_windows() end
 
 ---Returns information about the screens connected to the system.
 ---
----@return ScreenInformation
+---@return GuiScreensInfo
 function GUI.screens() end
 
 -- vim:ts=4:sts=4:sw=4:et:ai:si:sta:

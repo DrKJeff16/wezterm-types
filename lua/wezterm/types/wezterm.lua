@@ -709,6 +709,15 @@
 ---@field width number
 ---@field max_fps? number
 
+---@class GuiScreensInfo
+---@field main ScreenInformation
+---@field active ScreenInformation
+---@field byName { [string]: ScreenInformation }
+---@field origin_x number
+---@field origin_y number
+---@field virtual_height number
+---@field virtual_width number
+
 ---@class KeyBinding
 ---@field key string
 ---@field action Action
