@@ -5,6 +5,13 @@
 
 ---
 
+## Source(s)
+
+If data types have been changed include either a source
+or an explanation of why data types have changed.
+
+---
+
 ## Description (Optional)
 
 Include a summary of what was changed/added/removed.
