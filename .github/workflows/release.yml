@@ -1,0 +1,52 @@
+name: Action Release
+on:
+  push:
+    tags:
+      - "v*.*.*"
+      - "v*.*.*-*"
+  merge_group:
+    branches:
+      - main
+  release:
+    types:
+      - created
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Build Project Assets
+        run: |
+          mkdir -pv wezterm-types
+          cp -rv lua README.md CREDITS.md LICENSE wezterm-types
+          zip -r -9 wezterm-types.zip wezterm-types
+          tar cvJf wezterm-types.tar.xz wezterm-types
+          sha512sum wezterm-types.zip wezterm-types.tar.xz >| sha512sums.txt
+          md5sum wezterm-types.zip wezterm-types.tar.xz >| md5sums.txt
+          rm -rfv wezterm-types
+      - name: Get Release
+        uses: joutvhu/get-release@v1.0.3
+        with:
+          latest: true
+          prerelease: true
+          pattern: '^v.*'
+          debug: true
+          throwing: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Release File
+        run: |
+          echo ${{ github.sha }} > Release.txt
+          cat Release.txt
+      - name: Release
+        uses: softprops/action-gh-release@v2.5.0
+        if: github.ref_type == 'tag'
+        with:
+          files: |
+            Release.txt
+            wezterm-types.tar.xz
+            wezterm-types.zip
+            md5sums.txt
+            sha512sums.txt
+          token: ${{ secrets.GITHUB_TOKEN }}
