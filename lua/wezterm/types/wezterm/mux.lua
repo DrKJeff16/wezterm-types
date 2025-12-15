@@ -169,5 +169,4 @@ function Mux.set_default_domain(domain) end
 ---@return Pane pane
 ---@return MuxWindow window
 function Mux.spawn_window(T) end
-
--- vim:ts=4:sts=4:sw=4:et:ai:si:sta:
+-- vim: set ts=4 sts=4 sw=4 et ai si sta:

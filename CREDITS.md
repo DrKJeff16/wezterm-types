@@ -30,3 +30,5 @@ Many thanks to these champs!
 [Zuyoutoki]: https://github.com/Zuyoutoki
 [AtifChy]: https://github.com/AtifChy
 [chrisgrieser]: https://github.com/chrisgrieser
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->

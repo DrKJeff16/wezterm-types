@@ -112,5 +112,4 @@ function GUI.gui_windows() end
 ---
 ---@return GuiScreensInfo
 function GUI.screens() end
-
--- vim:ts=4:sts=4:sw=4:et:ai:si:sta:
+-- vim: set ts=4 sts=4 sw=4 et ai si sta:

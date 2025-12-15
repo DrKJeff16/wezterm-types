@@ -155,3 +155,5 @@ proper type checking and autocompletion for WezTerm configuration options.
    />
  </picture>
 </a>
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->

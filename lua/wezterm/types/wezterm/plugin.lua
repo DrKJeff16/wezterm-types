@@ -64,5 +64,4 @@ function Plugin.require(url) end
 --- - [`wezterm.reload_configuration()`](lua://Wezterm.reload_configuration)
 ---
 function Plugin.update_all() end
-
--- vim:ts=4:sts=4:sw=4:et:ai:si:sta:
+-- vim: set ts=4 sts=4 sw=4 et ai si sta:
