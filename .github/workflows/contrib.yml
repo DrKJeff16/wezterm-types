@@ -13,5 +13,8 @@ jobs:
     steps:
       - name: Contribute List
         uses: akhilmhdh/contributors-readme-action@v2.3.11
+        with:
+          committer_username: "DrKJeff16"
+          committer_email: "g.maxc.fox@protonmail.com"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
