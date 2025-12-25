@@ -136,11 +136,102 @@ proper type checking and autocompletion for WezTerm configuration options.
 ## Collaborators
 
 <!-- readme: collaborators -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/gonstoll">
+                    <img src="https://avatars.githubusercontent.com/u/25900010?v=4" width="100;" alt="gonstoll"/>
+                    <br />
+                    <sub><b>Gonzalo Stoll</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/DrKJeff16">
+                    <img src="https://avatars.githubusercontent.com/u/72052712?v=4" width="100;" alt="DrKJeff16"/>
+                    <br />
+                    <sub><b>Guennadi Maximov C</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/justinsgithub">
+                    <img src="https://avatars.githubusercontent.com/u/74565194?v=4" width="100;" alt="justinsgithub"/>
+                    <br />
+                    <sub><b>Justin Angeles</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: collaborators -end -->
 
 ## Contributors
 
 <!-- readme: contributors -start -->
+<table>
+	<tbody>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/DrKJeff16">
+                    <img src="https://avatars.githubusercontent.com/u/72052712?v=4" width="100;" alt="DrKJeff16"/>
+                    <br />
+                    <sub><b>Guennadi Maximov C</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/justinsgithub">
+                    <img src="https://avatars.githubusercontent.com/u/74565194?v=4" width="100;" alt="justinsgithub"/>
+                    <br />
+                    <sub><b>Justin Angeles</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/craigmac">
+                    <img src="https://avatars.githubusercontent.com/u/7416158?v=4" width="100;" alt="craigmac"/>
+                    <br />
+                    <sub><b>C.D. MacEachern</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/chrisgrieser">
+                    <img src="https://avatars.githubusercontent.com/u/73286100?v=4" width="100;" alt="chrisgrieser"/>
+                    <br />
+                    <sub><b>Chris Grieser</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/AtifChy">
+                    <img src="https://avatars.githubusercontent.com/u/42291930?v=4" width="100;" alt="AtifChy"/>
+                    <br />
+                    <sub><b>Md. Iftakhar Awal Chowdhury</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/TheLeoP">
+                    <img src="https://avatars.githubusercontent.com/u/53507599?v=4" width="100;" alt="TheLeoP"/>
+                    <br />
+                    <sub><b>Luis Calle</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
+                <a href="https://github.com/reegnz">
+                    <img src="https://avatars.githubusercontent.com/u/5672001?v=4" width="100;" alt="reegnz"/>
+                    <br />
+                    <sub><b>Zoltán Reegn</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Zuyoutoki">
+                    <img src="https://avatars.githubusercontent.com/u/4701322?v=4" width="100;" alt="Zuyoutoki"/>
+                    <br />
+                    <sub><b>Zuyoutoki</b></sub>
+                </a>
+            </td>
+		</tr>
+	<tbody>
+</table>
 <!-- readme: contributors -end -->
 
 ---
