@@ -133,6 +133,18 @@ proper type checking and autocompletion for WezTerm configuration options.
 
 ---
 
+## Collaborators
+
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+---
+
 ## License
 
 [MIT](./LICENSE)
