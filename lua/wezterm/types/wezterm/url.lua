@@ -63,4 +63,5 @@ local M = {}
 ---@param url_string string
 ---@return Url|nil data
 function M.parse(url_string) end
--- vim: set ts=4 sts=4 sw=4 et ai si sta:
+
+-- vim: set ts=2 sts=2 sw=2 et ai si sta:
