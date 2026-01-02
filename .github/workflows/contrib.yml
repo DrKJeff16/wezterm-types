@@ -1,3 +1,4 @@
+name: Contributors
 on:
   workflow_dispatch:
   push:
