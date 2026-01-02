@@ -1,6 +1,8 @@
 # Config file
 /wezterm.lua
 
+/doc/tags
+
 # Python Stuff
 .mypy_cache/
 .ropeproject/
