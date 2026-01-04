@@ -6,6 +6,9 @@
 # Python Stuff
 .mypy_cache/
 .ropeproject/
+.venv
 Pipfile
 Pipfile.lock
 requirements.txt
+uv.lock
+venv

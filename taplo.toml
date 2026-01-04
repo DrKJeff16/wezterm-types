@@ -12,3 +12,4 @@ indent_entries        = false
 indent_tables         = true
 reorder_arrays        = true
 reorder_keys          = true
+# vim: set ts=4 sts=4 sw=4 et ai si sta:
