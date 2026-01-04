@@ -6,3 +6,6 @@
 # Python Stuff
 .mypy_cache/
 .ropeproject/
+Pipfile
+Pipfile.lock
+requirements.txt
