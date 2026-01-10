@@ -1,21 +1,12 @@
-CMD = nvim --clean --headless
+TAGS_CMD = nvim --clean --headless -c 'helptags doc/' -c 'qa!'
 
-TAGS_CMD = $(CMD) -c 'helptags doc/' -c 'qa!'
+.PHONY: all clean helptags
 
-.SUFFIXES:
-
-.PHONY: \
-	all \
-	clean \
-	helptags
-
-all:
-	@$(MAKE) helptags
+all: helptags
 
 helptags:
-	@echo -e "\nGenerating helptags...\n"
+	@echo -e "Generating helptags...\n"
 	@$(TAGS_CMD) > /dev/null 2>&1
-	@echo
 
 clean:
 	@rm -rf doc/tags
