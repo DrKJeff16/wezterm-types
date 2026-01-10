@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0       Last change: 2026 January 02
+*wezterm-types.txt*       For NVIM >=v0.5.0       Last change: 2026 January 10
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -23,7 +23,7 @@ Examples can be found here
 
 ------------------------------------------------------------------------------
 
-TABLE OF CONTENTS              *wezterm-types-wezterm-types-table-of-contents*
+TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
 
 - |wezterm-types-features|
 - |wezterm-types-installation|
@@ -35,7 +35,7 @@ TABLE OF CONTENTS              *wezterm-types-wezterm-types-table-of-contents*
 
 ------------------------------------------------------------------------------
 
-FEATURES                                *wezterm-types-wezterm-types-features*
+FEATURES                                              *wezterm-types-features*
 
 - LuaCATS-like type annotations
 - Built-in colorschemes included <./lua/wezterm/types/colorschemes.lua> (`config.color_scheme`)
@@ -46,7 +46,7 @@ FEATURES                                *wezterm-types-wezterm-types-features*
 
 ------------------------------------------------------------------------------
 
-INSTALLATION                        *wezterm-types-wezterm-types-installation*
+INSTALLATION                                      *wezterm-types-installation*
 
 
 NEOVIM ~
@@ -110,7 +110,7 @@ You can now install this with LuaRocks:
 
 ------------------------------------------------------------------------------
 
-USAGE                                      *wezterm-types-wezterm-types-usage*
+USAGE                                                    *wezterm-types-usage*
 
 After installing the types, add the type annotations to `wezterm` and `config`
 respectively when running `require("wezterm")` in your configuration.
@@ -132,7 +132,7 @@ checking and autocompletion for WezTerm configuration options.
 
 ------------------------------------------------------------------------------
 
-COLLABORATORS                      *wezterm-types-wezterm-types-collaborators*
+COLLABORATORS                                    *wezterm-types-collaborators*
 
 
 
@@ -147,7 +147,7 @@ Guennadi Maximov C
 
 Justin Angeles
 
-CONTRIBUTORS                        *wezterm-types-wezterm-types-contributors*
+CONTRIBUTORS                                      *wezterm-types-contributors*
 
 
 
@@ -183,7 +183,7 @@ Zoltán Reegn
 Zuyoutoki
 ------------------------------------------------------------------------------
 
-LICENSE                                  *wezterm-types-wezterm-types-license*
+LICENSE                                                *wezterm-types-license*
 
 MIT <./LICENSE>
 
