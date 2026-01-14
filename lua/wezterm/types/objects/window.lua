@@ -24,20 +24,17 @@ local M = {}
 ---for special overlay panes that are not visible
 ---to the mux layer of the API.
 ---
----@param self Window
 ---@return Pane pane
 function M:active_pane() end
 
 ---A convenience accessor for returning the active
 ---`tab` within the window.
 ---
----@param self Window
 ---@return MuxTab tab
 function M:active_tab() end
 
 ---Returns the name of the active workspace.
 ---
----@param self Window
 ---@return string name
 function M:active_workspace() end
 
@@ -48,22 +45,22 @@ function M:active_workspace() end
 ---This is the same text that is shown
 ---at the cursor position when composing.
 ---
----@param self Window
 ---@return string|nil status
 function M:composition_status() end
 
 ---Puts text into the specified clipboard.
 ---
----@param self Window
 ---@param text string
----@param target? "Clipboard"|"PrimarySelection"|"ClipboardAndPrimarySelection"
+function M:copy_to_clipboard(text) end
+
+---@param text string
+---@param target "Clipboard"|"PrimarySelection"|"ClipboardAndPrimarySelection"|nil
 function M:copy_to_clipboard(text, target) end
 
 ---Returns the current event.
 ---
 ---For now this is only implemented for mouse events.
 ---
----@param self Window
 ---@return WindowEvent event
 function M:current_event() end
 
@@ -79,19 +76,16 @@ function M:current_event() end
 ---the effective window config; it's just
 ---a copy of that information.
 ---
----@param self Window
 ---@return Config effective_cfg
 function M:effective_config() end
 
 ---Attempts to focus and activate the window.
 ---
----@param self Window
 function M:focus() end
 
 ---Returns the appearance of the window environment.
 ---
----@param self Window
----@return ("Light"|"Dark"|"LightHighContrast"|"DarkHighContrast") appearance
+---@return "Light"|"Dark"|"LightHighContrast"|"DarkHighContrast" appearance
 function M:get_appearance() end
 
 ---Returns a copy of the current set of configuration overrides
@@ -100,13 +94,11 @@ function M:get_appearance() end
 ---For examples, see:
 --- - [`set_config_overrides`](lua://Window.set_config_overrides)
 ---
----@param self Window
 ---@return Config config
 function M:get_config_overrides() end
 
 ---Returns a Lua table representing the dimensions for the `Window`.
 ---
----@param self Window
 ---@return WindowDimensions dimensions
 function M:get_dimensions() end
 
@@ -119,7 +111,6 @@ function M:get_dimensions() end
 ---[`window:get_selection_text_for_pane()`](lua://Window.get_selection_text_for_pane)
 ---would return, except that it includes escape sequences.
 ---
----@param self Window
 ---@return string text
 function M:get_selection_escapes_for_pane() end
 
@@ -129,7 +120,6 @@ function M:get_selection_escapes_for_pane() end
 ---This is the same text that would be copied to the clipboard
 ---if the `CopyTo` action were to be performed.
 ---
----@param self Window
 ---@param pane Pane
 ---@return string text
 function M:get_selection_text_for_pane(pane) end
@@ -139,7 +129,6 @@ function M:get_selection_text_for_pane(pane) end
 ---The `"update-status"` event is fired when
 ---the focus state changes.
 ---
----@param self Window
 ---@return boolean focused
 function M:is_focused() end
 
@@ -148,7 +137,6 @@ function M:is_focused() end
 ---
 ---Note that macOS doesn't have a num lock concept.
 ---
----@param self Window
 ---@return string mods
 ---@return "CAPS_LOCK"|"NUM_LOCK"|"CAPS_LOCK|NUM_LOCK" leds
 function M:keyboard_modifiers() end
@@ -156,7 +144,6 @@ function M:keyboard_modifiers() end
 ---Returns `true` if the Leader Key is active in the window,
 ---or `false` otherwise.
 ---
----@param self Window
 ---@return boolean active
 function M:leader_is_active() end
 
@@ -165,14 +152,12 @@ function M:leader_is_active() end
 ---To return to the normal/non-maximized state
 ---use [`window:restore()`](lua://Window.restore).
 ---
----@param self Window
 function M:maximize() end
 
 ---Returns the
 ---[`MuxWindow`](lua://MuxWindow)
 ---representation of this window.
 ---
----@param self Window
 ---@return MuxWindow mux_win
 function M:mux_window() end
 
@@ -181,7 +166,6 @@ function M:mux_window() end
 ---against a pane in a window when configured via the keys
 ---and mouse configuration options.
 ---
----@param self Window
 ---@param key_assignment Action
 ---@param pane Pane
 function M:perform_action(key_assignment, pane) end
@@ -190,7 +174,6 @@ function M:perform_action(key_assignment, pane) end
 ---
 ---See [`Window:maximize()`](lua://Window.maximize).
 ---
----@param self Window
 function M:restore() end
 
 ---Changes the set of configuration overrides for the window.
@@ -209,7 +192,6 @@ function M:restore() end
 ---only call `window:set_config_overrides()` if the actual
 ---override values have changed to avoid a loop.
 ---
----@param self Window
 ---@param overrides Config
 function M:set_config_overrides(overrides) end
 
@@ -217,7 +199,6 @@ function M:set_config_overrides(overrides) end
 ---(excluding any window decorations)
 ---to the specified width and height.
 ---
----@param self Window
 ---@param width number
 ---@param height number
 function M:set_inner_size(width, height) end
@@ -234,7 +215,6 @@ function M:set_inner_size(width, height) end
 ---To compose the string, it is recommended that you use
 ---[`wezterm.format()`](lua://Wezterm.format).
 ---
----@param self Window
 ---@param str string
 function M:set_left_status(str) end
 
@@ -244,7 +224,6 @@ function M:set_left_status(str) end
 ---Note that Wayland does not allow applications to directly control
 ---their window placement, so this method has no effect on Wayland.
 ---
----@param self Window
 ---@param x number
 ---@param y number
 function M:set_position(x, y) end
@@ -262,7 +241,6 @@ function M:set_position(x, y) end
 ---To compose the string, it is recommended that you use
 ---[`wezterm.format()`](lua://Wezterm.format).
 ---
----@param self Window
 ---@param str string
 function M:set_right_status(str) end
 
@@ -286,16 +264,23 @@ function M:set_right_status(str) end
 ---The notification will persist on screen until dismissed or clicked,
 ---or until its timeout duration elapses.
 ---
----@param self Window
 ---@param title string
 ---@param message string
----@param url? string|nil
----@param timeout? integer
+function M:toast_notification(title, message) end
+
+---@param title string
+---@param message string
+---@param url string|nil
+function M:toast_notification(title, message, url) end
+
+---@param title string
+---@param message string
+---@param url string|nil
+---@param timeout integer|nil
 function M:toast_notification(title, message, url, timeout) end
 
 ---Toggles full screen mode for the window.
 ---
----@param self Window
 function M:toggle_fullscreen() end
 
 ---Returns the ID number for the window.
@@ -305,7 +290,6 @@ function M:toggle_fullscreen() end
 ---when making API calls via wezterm CLI
 ---to indicate the subject of manipulation.
 ---
----@param self Window
 ---@return integer id
 function M:window_id() end
 
@@ -314,7 +298,6 @@ function M:window_id() end
 ---
 ---See [Key Tables](https://wezterm.org/config/key-tables.html) for a detailed example.
 ---
----@param self Window
 ---@return string|nil stack
 function M:active_key_table() end
 

@@ -44,8 +44,40 @@ local C = {}
 ---You can find more examples [here](https://wezterm.org/config/lua/wezterm.color/extract_colors_from_image.html).
 ---
 ---@param filename string
----@param params? ImageExtractorParams
----@return string[]
+---@return string[] colors
+function C.extract_colors_from_image(filename) end
+
+---This function loads an image from the specified filename
+---and analyzes it to determine a set of distinct colors present
+---in the image, ordered by how often a given color is found
+---in the image, descending.
+---
+---For example, if an image is predominantly black with
+---a bit of white, then `black` will be listed first
+---in the returned array.
+---
+---This is potentially useful if you wish to generate
+---a color scheme to match an image, for example.
+---
+---The default is to extract 16 colors from an image.
+---
+---For more info on the parameters you can use, see:
+--- - [`ImageExtractorParams`](lua://ImageExtractorParams)
+---
+--- ---
+---The analysis is relatively expensive and can take
+---several seconds if used on a full 4K image file.
+---To reduce the runtime, WezTerm will by default
+---scale the image down and skip over nearby pixels.
+---The results of the analysis will be cached to avoid
+---repeating the same work each time the configuration
+---is re-evaluated.
+---
+---You can find more examples [here](https://wezterm.org/config/lua/wezterm.color/extract_colors_from_image.html).
+---
+---@param filename string
+---@param params ImageExtractorParams|nil
+---@return string[] colors
 function C.extract_colors_from_image(filename, params) end
 
 ---Constructs a new
@@ -59,7 +91,7 @@ function C.extract_colors_from_image(filename, params) end
 ---@param s string|number
 ---@param l string|number
 ---@param a string|number
----@return Color
+---@return Color color
 function C.from_hsla(h, s, l, a) end
 
 ---Returns a Lua table keyed by color scheme name,

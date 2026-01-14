@@ -907,7 +907,7 @@ local Wezterm = {}
 ---This is useful for example to assemble status information
 ---for the status bar.
 ---
----@return BatteryInfo[]
+---@return BatteryInfo[] info
 function Wezterm.battery_info() end
 
 ---Given a `string` parameter, returns the number of columns
@@ -918,7 +918,7 @@ function Wezterm.battery_info() end
 ---and status information.
 ---
 ---@param value string
----@return number
+---@return number width
 function Wezterm.column_width(value) end
 
 ---Returns a [`Config`](lua://Config)
@@ -927,7 +927,7 @@ function Wezterm.column_width(value) end
 ---See the [`Config`](lua://Config)
 ---type for more info.
 ---
----@return Config
+---@return Config config
 function Wezterm.config_builder() end
 
 ---Returns the compiled-in default hyperlink rules as a table.
@@ -935,7 +935,7 @@ function Wezterm.config_builder() end
 ---See the [`HyperLinkRule`](lua://HyperLinkRule)
 ---type for more info.
 ---
----@return HyperLinkRule[]
+---@return HyperLinkRule[] rules
 function Wezterm.default_hyperlink_rules() end
 
 ---Computes a list of
@@ -951,7 +951,7 @@ function Wezterm.default_hyperlink_rules() end
 ---The intended purpose of this function is to give you the opportunity
 ---to edit/adjust the returned information before assigning it to your config.
 ---
----@return SshDomain[]
+---@return SshDomain[] domains
 function Wezterm.default_ssh_domains() end
 
 ---Computes a list of
@@ -967,7 +967,7 @@ function Wezterm.default_ssh_domains() end
 ---of the WSL distro and the `name` field set to name of the distro
 ---but with `"WSL:"` prefixed to it.
 ---
----@return WslDomain[]
+---@return WslDomain[] domains
 function Wezterm.default_wsl_domains() end
 
 ---`wezterm.emit` resolves the registered callback(s) for the specified event name
@@ -989,7 +989,7 @@ function Wezterm.default_wsl_domains() end
 ---
 ---@param event string
 ---@param ... any
----@return boolean
+---@return boolean result
 function Wezterm.emit(event, ...) end
 
 ---This function will parse your ssh configuration file(s) and extract from them
@@ -1000,8 +1000,19 @@ function Wezterm.emit(event, ...) end
 ---You may optionally pass a list of ssh configuration files that should be read
 ---in case you have a special configuration.
 ---
+---@return table<string, SshHost> ssh_hosts
+function Wezterm.enumerate_ssh_hosts() end
+
+---This function will parse your ssh configuration file(s) and extract from them
+---the set of literal (non-pattern, non-negated) host names that are specified
+---in `Host` and `Match` stanzas contained in those configuration files
+---and return a mapping from the hostname to the effective ssh config options for that host.
+---
+---You may optionally pass a list of ssh configuration files that should be read
+---in case you have a special configuration.
+---
 ---@param ssh_config_file_name string[]|string|nil
----@return table<string, SshHost>
+---@return table<string, SshHost> ssh_hosts
 function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 
 ---This function constructs a Lua table that corresponds to the internal
@@ -1068,7 +1079,7 @@ function Wezterm.font(name, attributes) end
 ---   for emoji
 ---
 ---@param attributes FontFamilyAttributes
----@return Fonts|FontFamilyAttributes
+---@return Fonts|FontFamilyAttributes fonts
 function Wezterm.font(attributes) end
 
 ---TODO: Complete description.
@@ -1077,7 +1088,7 @@ function Wezterm.font(attributes) end
 ---function.
 ---
 ---@param fonts (string|FontAttributes)[]
----@return Fonts
+---@return Fonts fallback_fonts
 function Wezterm.font_with_fallback(fonts) end
 
 ---Can be used to produce a formatted string with terminal graphic attributes
@@ -1086,7 +1097,7 @@ function Wezterm.font_with_fallback(fonts) end
 ---The result is a string with wezterm-compatible escape sequences embedded.
 ---
 ---@param ... FormatItem[]
----@return string
+---@return string str
 function Wezterm.format(...) end
 
 ---While this function is still valid, it is recommended to use instead:
@@ -1101,7 +1112,7 @@ function Wezterm.format(...) end
 ---to use based on its color, or for taking a scheme and overriding
 ---a couple of entries from your `wezterm.lua` configuration file.
 ---
----@return table<string, Palette>
+---@return table<string, Palette> builtin
 ---@deprecated
 function Wezterm.get_builtin_color_schemes() end
 
@@ -1113,8 +1124,19 @@ function Wezterm.get_builtin_color_schemes() end
 ---as `UTF-8` or this function will generate an error.
 ---
 ---@param pattern string
+---@return string[] file_names
+function Wezterm.glob(pattern) end
+
+---This function evalutes the glob pattern and returns an array
+---containing the absolute file names of the matching results.
+---
+---Due to limitations in the Lua bindings,
+---all of the paths must be able to be represented
+---as `UTF-8` or this function will generate an error.
+---
+---@param pattern string
 ---@param relative_to string|nil
----@return string[]
+---@return string[] file_names
 function Wezterm.glob(pattern, relative_to) end
 
 ---This function was moved to:
@@ -1145,11 +1167,11 @@ function Wezterm.gradient_colors(gradient, num_colors) end
 function Wezterm.hostname() end
 
 ---@param value any
----@return string
+---@return string json_str
 function Wezterm.json_encode(value) end
 
 ---@param value string
----@return any
+---@return any data
 function Wezterm.json_parse(value) end
 
 ---This function logs the provided message string through wezterm's logging layer
@@ -1656,6 +1678,21 @@ function Wezterm.on(event, callback) end
 ---```
 ---
 ---@param path_or_url string
+function Wezterm.open_with(path_or_url) end
+
+---This function opens the specified `path_or_url` with
+---either the specified application or the default application
+---if `application` was not passed in.
+---
+---```lua
+----- Opens a URL in your default browser
+---wezterm.open_with 'http://example.com'
+---
+----- Opens a URL specifically in firefox
+---wezterm.open_with('http://example.com', 'firefox')
+---```
+---
+---@param path_or_url string
 ---@param application string|nil
 function Wezterm.open_with(path_or_url, application) end
 
@@ -1674,7 +1711,7 @@ function Wezterm.open_with(path_or_url, application) end
 ---
 ---@param s string
 ---@param min_width integer
----@return string
+---@return string str
 function Wezterm.pad_left(s, min_width) end
 
 ---Returns a copy of a string `s` that is at least
@@ -1692,7 +1729,7 @@ function Wezterm.pad_left(s, min_width) end
 ---
 ---@param s string
 ---@param min_width integer
----@return string
+---@return string str
 function Wezterm.pad_right(s, min_width) end
 
 ---This function is intended to help with generating
@@ -1805,7 +1842,7 @@ function Wezterm.permute_any_or_no_mods(T) end
 ---as `UTF-8` or this function will generate an error.
 ---
 ---@param path string
----@return string[]
+---@return string[] fire_paths
 function Wezterm.read_dir(path) end
 
 ---Immediately causes the configuration to be reloaded and re-applied.
@@ -1860,7 +1897,7 @@ function Wezterm.run_child_process(args) end
 ---)
 ---```
 ---
----@return boolean
+---@return boolean wsl
 function Wezterm.running_under_wsl() end
 
 ---Joins together its array arguments by applying
@@ -1868,7 +1905,7 @@ function Wezterm.running_under_wsl() end
 ---and then adding a space.
 ---
 ---@param args string[]
----@return string
+---@return string joined_args
 function Wezterm.shell_join_args(args) end
 
 ---Quotes its single argument `s` using

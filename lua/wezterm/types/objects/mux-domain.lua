@@ -19,7 +19,6 @@ local M = {}
 ---If the domain is already attached,
 ---calling this method again has no effect.
 ---
----@param self MuxDomain
 function M:attach() end
 
 ---Attempts to detach the domain.
@@ -33,12 +32,10 @@ function M:attach() end
 ---Note that not every domain supports detaching,
 ---and will log an error to the error log/debug overlay.
 ---
----@param self MuxDomain
 function M:detach() end
 
 ---Returns the domain ID.
 ---
----@param self MuxDomain
 ---@return integer id
 function M:domain_id() end
 
@@ -48,7 +45,6 @@ function M:domain_id() end
 ---This can be useful when deciding whether to spawn
 ---additional panes after attaching to a domain.
 ---
----@param self MuxDomain
 ---@return boolean has_panes
 function M:has_any_panes() end
 
@@ -58,7 +54,6 @@ function M:has_any_panes() end
 ---Serial ports are represented by a serial domain
 ---that is not spawnable.
 ---
----@param self MuxDomain
 ---@return boolean spawnable
 function M:is_spawnable() end
 
@@ -68,7 +63,6 @@ function M:is_spawnable() end
 ---See also:
 --- - [`MuxDomain:name()`](lua://MuxDomain.name)
 ---
----@param self MuxDomain
 ---@return string label
 function M:label() end
 
@@ -79,7 +73,6 @@ function M:label() end
 ---See also:
 --- - [`MuxDomain:label()`](lua://MuxDomain.label)
 ---
----@param self MuxDomain
 ---@return string name
 function M:name() end
 
@@ -94,7 +87,6 @@ function M:name() end
 --- - [`MuxDomain:attach()`](lua://MuxDomain.attach)
 --- - [`MuxDomain:detach()`](lua://MuxDomain.detach)
 ---
----@param self MuxDomain
 ---@return "Attached"|"Detached" state
 function M:state() end
 

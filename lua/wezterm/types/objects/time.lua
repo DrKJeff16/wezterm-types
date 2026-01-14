@@ -21,7 +21,6 @@ local M = {}
 ---The format string supports the
 ---[set of formatting placeholders described here](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
 ---
----@param self Time
 ---@param format string
 ---@return string date
 function M:format(format) end
@@ -32,7 +31,6 @@ function M:format(format) end
 ---The format string supports the
 ---[set of formatting placeholders described here](https://docs.rs/chrono/latest/chrono/format/strftime/index.html).
 ---
----@param self Time
 ---@param format string
 ---@return string date
 function M:format_utc(format) end
@@ -60,7 +58,6 @@ function M:format_utc(format) end
 ---`progression` will be `0` and `up` will indicate either
 ---if it is polar daytime (`true`) or polar night time (`false`).
 ---
----@param self Time
 ---@param lat number
 ---@param lon number
 ---@return Time.SunTimes sun_times

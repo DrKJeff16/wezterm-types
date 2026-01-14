@@ -17,7 +17,6 @@ local Color = {}
 ---Three colors separated by 120 degrees form the triad.
 ---Four colors separated by 90 degrees form the square.
 ---
----@param self Color
 ---@param degrees number
 ---@return Color adjusted_color
 function Color:adjust_hue_fixed(degrees) end
@@ -33,7 +32,6 @@ function Color:adjust_hue_fixed(degrees) end
 ---Three colors separated by 120 degrees form the triad.
 ---Four colors separated by 90 degrees form the square.
 ---
----@param self Color
 ---@param degrees number
 ---@return Color adjusted_color
 function Color:adjust_hue_fixed_ryb(degrees) end
@@ -43,7 +41,6 @@ function Color:adjust_hue_fixed_ryb(degrees) end
 ---The complement is computed by converting to `HSL`,
 ---rotating by 180 degrees and converting back to `RGBA`.
 ---
----@param self Color
 ---@return Color complement
 function Color:complement() end
 
@@ -55,7 +52,6 @@ function Color:complement() end
 ---converting the hue angle to the equivalent `RYB` angle,
 ---rotating by 180 degrees and and then converting back to `RGBA`.
 ---
----@param self Color
 ---@return Color ryb_complement
 function Color:complement_ryb() end
 
@@ -69,7 +65,6 @@ function Color:complement_ryb() end
 ---
 ---Note: The maximum possible contrast ratio is `21`.
 ---
----@param self Color
 ---@param other Color
 ---@return number ratio
 function Color:contrast_ratio(other) end
@@ -78,7 +73,6 @@ function Color:contrast_ratio(other) end
 ---by the provided factor, which should be
 ---in the range `0.0` through `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color darker_color
 function Color:darken(amount) end
@@ -86,7 +80,6 @@ function Color:darken(amount) end
 ---Decrease the lightness by `amount`,
 ---a value ranging from `0.0` to `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color darker_color
 function Color:darken_fixed(amount) end
@@ -95,7 +88,6 @@ function Color:darken_fixed(amount) end
 ---representing the difference between
 ---the two colors.
 ---
----@param self Color
 ---@param other Color
 ---@return number value
 function Color:delta_e(other) end
@@ -104,7 +96,6 @@ function Color:delta_e(other) end
 ---by the provided factor, which should be
 ---in the range `0.0` through `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color desaturated
 function Color:desaturate(amount) end
@@ -112,7 +103,6 @@ function Color:desaturate(amount) end
 ---Decrease the saturation by `amount`,
 ---a value ranging from `0.0` to `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color desaturated
 function Color:desaturate_fixed(amount) end
@@ -120,7 +110,6 @@ function Color:desaturate_fixed(amount) end
 ---Converts the color to the `HSL` colorspace and
 ---returns those values + `alpha`.
 ---
----@param self Color
 ---@return number h
 ---@return number s
 ---@return number l
@@ -130,7 +119,6 @@ function Color:hsla() end
 ---Converts the color to the `LAB` colorspace and
 ---returns those values + `alpha`.
 ---
----@param self Color
 ---@return number l
 ---@return number a
 ---@return number b
@@ -141,7 +129,6 @@ function Color:laba() end
 ---by the provided factor, which should be
 ---in the range `0.0` through `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color lighter_color
 function Color:lighten(amount) end
@@ -149,7 +136,6 @@ function Color:lighten(amount) end
 ---Increase the lightness by `amount`, a value
 ---ranging from `0.0` to `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color lighter_color
 function Color:lighten_fixed(amount) end
@@ -158,7 +144,6 @@ function Color:lighten_fixed(amount) end
 ---linear `RGBA` and expressed as
 ---floating point numbers in the range `0.0-1.0`.
 ---
----@param self Color
 ---@return number r
 ---@return number g
 ---@return number b
@@ -169,7 +154,6 @@ function Color:linear_rgba() end
 ---by the provided factor, which should be
 ---in the range `0.0` through `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color saturated
 function Color:saturate(amount) end
@@ -177,7 +161,6 @@ function Color:saturate(amount) end
 ---Increase the saturation by amount, a value
 ---ranging from `0.0` to `1.0`.
 ---
----@param self Color
 ---@param amount number
 ---@return Color saturated
 function Color:saturate_fixed(amount) end
@@ -186,7 +169,6 @@ function Color:saturate_fixed(amount) end
 ---The other colors are `90` degrees apart
 ---on the `HSL` color wheel.
 ---
----@param self Color
 ---@return Color a
 ---@return Color b
 ---@return Color c
@@ -196,7 +178,6 @@ function Color:square() end
 ---expressed as unsigned 8-bit integers in
 ---the range `0-255`.
 ---
----@param self Color
 ---@return integer r
 ---@return integer g
 ---@return integer b
@@ -207,7 +188,6 @@ function Color:srgb_u8() end
 ---
 ---The other colors are at +/- 120 degrees in the `HSL` color wheel.
 ---
----@param self Color
 ---@return Color a
 ---@return Color b
 function Color:triad() end

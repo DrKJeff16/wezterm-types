@@ -104,8 +104,18 @@ function M:set_workspace(name) end
 ---
 ---When no arguments are passed, the default program is spawned.
 ---
----@param self MuxWindow
----@param args? SpawnTab
+---@return MuxTab tab
+---@return Pane pane
+---@return MuxWindow window
+function M:spawn_tab() end
+
+---Spawns a program into a new tab within this window,
+---returning the `MuxTab`, `Pane` and `MuxWindow` objects
+---associated with it.
+---
+---When no arguments are passed, the default program is spawned.
+---
+---@param args SpawnTab|nil
 ---@return MuxTab tab
 ---@return Pane pane
 ---@return MuxWindow window
@@ -114,20 +124,17 @@ function M:spawn_tab(args) end
 ---Returns an array table holding each of the `MuxTab` objects
 ---contained within this window.
 ---
----@param self MuxWindow
 ---@return MuxTab[] tabs
 function M:tabs() end
 
 ---Returns an array table holding an extended info entry
 ---for each of the tabs contained within this window.
 ---
----@param self MuxWindow
 ---@return MuxWindow.TabInfo[] tabs
 function M:tabs_with_info() end
 
 ---Returns the window multiplexer ID.
 ---
----@param self MuxWindow
 ---@return integer id
 function M:window_id() end
 

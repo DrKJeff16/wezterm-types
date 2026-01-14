@@ -65,7 +65,25 @@ function Mux.get_active_workspace() end
 ---If the name or id don't map to a valid domain,
 ---this function will return `nil`.
 ---
----@param name_or_id? string|integer|nil
+---@return MuxDomain|nil domain
+function Mux.get_domain() end
+
+---Resolves `name_or_id` to a domain and returns a
+---[`MuxDomain`](lua://MuxDomain) object
+---representation of it.
+---
+---`name_or_id` can be:
+---
+--- - A domain name string to resolve the domain by name
+--- - A domain id to resolve the domain by id
+--- - `nil` or omitted to return the current default domain
+---
+---> Other lua types will generate a lua error
+---
+---If the name or id don't map to a valid domain,
+---this function will return `nil`.
+---
+---@param name_or_id string|integer|nil
 ---@return MuxDomain|nil domain
 function Mux.get_domain(name_or_id) end
 
@@ -79,9 +97,9 @@ function Mux.get_domain(name_or_id) end
 ---want to use the various
 ---[`Pane`](lua://Pane) methods with it.
 ---
----@param PANE_ID integer
+---@param pane_id integer
 ---@return Pane pane
-function Mux.get_pane(PANE_ID) end
+function Mux.get_pane(pane_id) end
 
 ---Given a tab ID, verifies that it is a valid tab
 ---known to the mux and returns a
@@ -92,9 +110,9 @@ function Mux.get_pane(PANE_ID) end
 ---a tab id from some other source and want to use the various
 ---[`MuxTab`](lua://MuxTab) methods with it.
 ---
----@param TAB_ID integer
+---@param tab_id integer
 ---@return MuxTab tab
-function Mux.get_tab(TAB_ID) end
+function Mux.get_tab(tab_id) end
 
 ---Given a window ID, verifies that it is a valid window
 ---known to the mux and returns a
@@ -107,7 +125,7 @@ function Mux.get_tab(TAB_ID) end
 ---with it.
 ---
 ---@param id integer
----@return MuxWindow
+---@return MuxWindow window
 function Mux.get_window(id) end
 
 ---Returns a table containing the names of the workspaces
@@ -134,8 +152,8 @@ function Mux.rename_workspace(old, new) end
 ---If the requested name doesn't correspond to an existing workspace,
 ---then an error is raised.
 ---
----@param WORKSPACE string
-function Mux.set_active_workspace(WORKSPACE) end
+---@param workspace string
+function Mux.set_active_workspace(workspace) end
 
 ---Assign a new default domain in the mux.
 ---
@@ -164,7 +182,28 @@ function Mux.set_default_domain(domain) end
 ---For the parameter fields, see:
 --- - [`SpawnCommand`](lua://SpawnCommand)
 ---
----@param T? SpawnCommand
+---@return MuxTab tab
+---@return Pane pane
+---@return MuxWindow window
+function Mux.spawn_window() end
+
+---Spawns a program into a new window, returning the
+---associated objects:
+---
+---1. [`MuxTab`](lua://MuxTab)
+---2. [`Pane`](lua://Pane)
+---3. [`MuxWindow`](lua://MuxWindow)
+---
+---```lua
+---local tab, pane, window = wezterm.mux.spawn_window {}
+---```
+---
+---When no arguments are passed, the default program is spawned.
+---
+---For the parameter fields, see:
+--- - [`SpawnCommand`](lua://SpawnCommand)
+---
+---@param T SpawnCommand|nil
 ---@return MuxTab tab
 ---@return Pane pane
 ---@return MuxWindow window

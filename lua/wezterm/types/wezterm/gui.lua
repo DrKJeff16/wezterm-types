@@ -52,7 +52,7 @@ local GUI = {}
 ---}
 ---```
 ---
----@return Key[]|{ copy_mode: Key[], search_mode: Key[] }
+---@return Key[]|{ copy_mode: Key[], search_mode: Key[] } key_tables
 function GUI.default_key_tables() end
 
 ---Returns a table holding the effective default values
@@ -60,7 +60,7 @@ function GUI.default_key_tables() end
 ---That is the set of keys that is used as a base
 ---if there was no configuration file.
 ---
----@return Key[]
+---@return Key[] keys
 function GUI.default_keys() end
 
 ---Returns the list of available GPUs supported by WebGpu.
@@ -68,7 +68,7 @@ function GUI.default_keys() end
 ---[`config.webgpu_preferred_adapter`](lua://Config.webgpu_preferred_adapter)
 ---is useful in conjunction with this function.
 ---
----@return GpuInfo[]
+---@return GpuInfo[] gpu_enum
 function GUI.enumerate_gpus() end
 
 ---This function returns the appearance of the window environment.
@@ -86,7 +86,7 @@ function GUI.enumerate_gpus() end
 ---WezTerm is able to detect when the appearance has changed and
 ---will reload the configuration when that happens.
 ---
----@return "Dark"|"DarkHighContrast"|"Light"|"LightHighContrast"
+---@return "Dark"|"DarkHighContrast"|"Light"|"LightHighContrast" appearance
 function GUI.get_appearance() end
 
 ---Attempts to resolve a mux window to its corresponding GUI Window.
@@ -99,18 +99,18 @@ function GUI.get_appearance() end
 ---   the active workspace
 ---
 ---@param window_id integer
----@return userdata
+---@return userdata data
 function GUI.gui_window_for_mux_window(window_id) end
 
 ---Returns an array table listing all `GUI Window` objects
 ---in a stable/consistent order.
 ---
----@return Window[]
+---@return Window[] windows
 function GUI.gui_windows() end
 
 ---Returns information about the screens connected to the system.
 ---
----@return GuiScreensInfo
+---@return GuiScreensInfo info
 function GUI.screens() end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

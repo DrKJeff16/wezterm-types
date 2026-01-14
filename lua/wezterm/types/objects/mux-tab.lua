@@ -15,13 +15,11 @@ local M = {}
 
 ---Activates (focuses) the tab.
 ---
----@param self MuxTab
 function M:activate() end
 
 ---A convenience accessor for returning the active pane
 ---in the tab.
 ---
----@param self MuxTab
 ---@return Pane active_pane
 function M:active_pane() end
 
@@ -31,7 +29,6 @@ function M:active_pane() end
 ---See [`ActivatePaneDirection`](https://wezterm.org/config/lua/keyassignment/ActivatePaneDirection.html) for more information
 ---about how panes are selected given direction.
 ---
----@param self MuxTab
 ---@param direction "Down"|"Left"|"Next"|"Prev"|"Right"|"Up"
 ---@return Pane adjacent_pane
 function M:get_pane_direction(direction) end
@@ -42,14 +39,12 @@ function M:get_pane_direction(direction) end
 ---See:
 --- - [`MuxSize`](lua://MuxSize)
 ---
----@param self MuxTab
 ---@return MuxSize size
 function M:get_size() end
 
 ---Returns the tab title as set by
 ---[`MuxTab:set_title()`](lua://MuxTab.set_title).
 ---
----@param self MuxTab
 ---@return string title
 function M:get_title() end
 
@@ -57,7 +52,6 @@ function M:get_title() end
 ---[`Pane`](lua://Pane) objects
 ---contained by this tab.
 ---
----@param self MuxTab
 ---@return Pane[] panes
 function M:panes() end
 
@@ -67,23 +61,19 @@ function M:panes() end
 ---See:
 --- - [`PaneInformation`](lua://PaneInformation)
 ---
----@param self MuxTab
 ---@return PaneInformation[] info_panes
 function M:panes_with_info() end
 
 ---Rotates the panes in the clockwise direction.
 ---
----@param self MuxTab
 function M:rotate_clockwise() end
 
 ---Rotates the panes in the counter-clockwise direction.
 ---
----@param self MuxTab
 function M:rotate_counter_clockwise() end
 
 ---Sets the tab title to the provided string.
 ---
----@param self MuxTab
 ---@param title string
 function M:set_title(title) end
 
@@ -100,20 +90,17 @@ function M:set_title(title) end
 ---
 ---Returns the prior zoom state.
 ---
----@param self MuxTab
 ---@param state boolean
 ---@return boolean previous_state
 function M:set_zoomed(state) end
 
 ---Returns the tab ID.
 ---
----@param self MuxTab
 ---@return integer id
 function M:tab_id() end
 
 ---Returns the `MuxWindow` bject that contains this tab.
 ---
----@param self MuxTab
 ---@return MuxWindow window
 function M:window() end
 

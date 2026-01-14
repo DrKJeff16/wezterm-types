@@ -36,7 +36,25 @@ local M = {}
 ---
 ---@param name string
 ---@param fixup fun(cmd: SpawnCommand): SpawnCommand
----@param label? string|fun(): string
+---@return ExecDomain new_domain
+function M.exec_domain(name, fixup) end
+
+---You must use the wezterm.exec_domain function to define a domain.
+---
+---It accepts the following parameters:
+---
+--- - `name`: Uniquely identifies the domain.
+---         Must be different from any other multiplexer domains
+--- - `fixup`: A Lua function that will be called to fixup the requested command
+---          and return the revised command
+--- - `label` (optional): Can be either a `string` to serve as a label in the Launcher Menu,
+---                     or a lua function that will return the label
+---
+---See `https://wezterm.org/config/lua/ExecDomain.html` for more info.
+---
+---@param name string
+---@param fixup fun(cmd: SpawnCommand): SpawnCommand
+---@param label nil|string|fun(): string
 ---@return ExecDomain new_domain
 function M.exec_domain(name, fixup, label) end
 

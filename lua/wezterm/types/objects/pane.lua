@@ -61,7 +61,6 @@ local M = {}
 
 ---Activates (focuses) the pane and its containing tab.
 ---
----@param self Pane
 function M:activate() end
 
 ---~Returns the current working directory of the pane, if known.~
@@ -93,14 +92,12 @@ function M:activate() end
 ---to set it to an FTP URL or some other kind of URL,
 ---which is why this method doesn't simply return a file path string
 ---
----@param self Pane
 ---@return Url|nil cwd
 function M:get_current_working_dir() end
 
 ---Returns a Lua representation of the `StableCursorPosition` struct
 ---that identifies the cursor's position, visibility and shape.
 ---
----@param self Pane
 ---@return StableCursorPosition position
 function M:get_cursor_position() end
 
@@ -108,14 +105,12 @@ function M:get_cursor_position() end
 ---that identifies the dimensions and position of the viewport
 ---as well as the scrollback for the pane.
 ---
----@param self Pane
 ---@return RenderableDimensions dimensions
 function M:get_dimensions() end
 
 ---Returns the name of the domain with which the pane instance
 ---is associated to.
 ---
----@param self Pane
 ---@return string domain_name
 function M:get_domain_name() end
 
@@ -145,7 +140,6 @@ function M:get_domain_name() end
 ---
 ---If the process cannot be determined then this method returns `nil`.
 ---
----@param self Pane
 ---@return LocalProcessInfo|nil proc_info
 function M:get_foreground_process_info() end
 
@@ -173,7 +167,6 @@ function M:get_foreground_process_info() end
 ---
 ---If the path is not known then this method returns `nil`.
 ---
----@param self Pane
 ---@return string|nil name
 function M:get_foreground_process_name() end
 
@@ -199,8 +192,32 @@ function M:get_foreground_process_name() end
 ---pane:get_lines_as_escapes(pane:get_dimensions().scrollback_rows)
 ---```
 ---
----@param self Pane
----@param nlines? integer
+---@return string output
+function M:get_lines_as_escapes() end
+
+---Returns the textual representation
+---(including color and other attributes)
+---of the physical lines of text in the viewport
+---as a string with embedded ANSI escape sequences
+---to preserve the color and style of the text.
+---
+---A physical line is a possibly-wrapped line that composes a row
+---in the terminal display matrix.
+---
+---If the optional `nlines` argument is specified then
+---it is used to determine how many lines of text
+---should be retrieved.
+---The default (if `nlines` is not specified) is
+---to retrieve the number of lines in the viewport
+---(the height of the pane).
+---
+---To obtain the entire scrollback, you can do something like this:
+---
+---```lua
+---pane:get_lines_as_escapes(pane:get_dimensions().scrollback_rows)
+---```
+---
+---@param nlines integer|nil
 ---@return string output
 function M:get_lines_as_escapes(nlines) end
 
@@ -228,8 +245,34 @@ function M:get_lines_as_escapes(nlines) end
 ---than you might expect if the pane only had
 ---a couple of lines of output.
 ---
----@param self Pane
----@param nlines? integer
+---@return string text
+function M:get_lines_as_text() end
+
+---Returns the textual representation
+---(not including color or other attributes)
+---of the physical lines of text in the viewport as a string.
+---
+---A physical line is a possibly-wrapped line that composes a row
+---in the terminal display matrix.
+---If you'd rather operate on logical lines,
+---see `pane:get_logical_lines_as_text()`.
+---
+---If the optional `nlines` argument is specified
+---then it is used to determine how many lines of text
+---should be retrieved.
+---The default (if `nlines` is not specified) is
+---to retrieve the number of lines in the viewport
+---(the height of the pane).
+---
+---The lines have trailing space removed from each line.
+---They will be joined together in the returned string
+---separated by a `\n` character.
+---Trailing blank lines are stripped, which may result in
+---fewer lines being returned
+---than you might expect if the pane only had
+---a couple of lines of output.
+---
+---@param nlines integer|nil
 ---@return string text
 function M:get_lines_as_text(nlines) end
 
@@ -261,8 +304,38 @@ function M:get_lines_as_text(nlines) end
 ---pane:get_logical_lines_as_text(pane:get_dimensions().scrollback_rows)
 ---```
 ---
----@param self Pane
----@param nlines? integer
+---@return string text
+function M:get_logical_lines_as_text() end
+
+---Returns the textual representation (not including color or other attributes)
+---of the logical lines of text in the viewport as a string.
+---
+---A logical line is an original input line prior to being wrapped into physical lines
+---to composes rows in the terminal display matrix.
+---WezTerm doesn't store logical lines, but can recompute them from metadata stored
+---in physical lines.
+---Excessively long logical lines are force-wrapped to constrain the cost of rewrapping
+---on resize and selection operations.
+---
+---If you'd rather operate on physical lines, see `pane:get_lines_as_text()`.
+---
+---If the optional `nlines` argument is specified then it is used to determine
+---how many lines of text should be retrieved.
+---The default (if `nlines` is not specified) is to retrieve the number of lines
+---in the viewport (the height of the pane).
+---
+---The lines have trailing space removed from each line.
+---They will be joined together in the returned string separated by a `\n` character.
+---Trailing blank lines are stripped, which may result in fewer lines being returned
+---than you might expect if the pane only had a couple of lines of output.
+---
+---To obtain the entire scrollback, you can do something like this:
+---
+---```lua
+---pane:get_logical_lines_as_text(pane:get_dimensions().scrollback_rows)
+---```
+---
+---@param nlines integer|nil
 ---@return string text
 function M:get_logical_lines_as_text(nlines) end
 
@@ -281,7 +354,6 @@ function M:get_logical_lines_as_text(nlines) end
 ---local meta = pane:get_metadata() or {}
 ---```
 ---
----@param self Pane
 ---@return PaneMetadata|nil metadata
 function M:get_metadata() end
 
@@ -291,7 +363,6 @@ function M:get_metadata() end
 ---will be `"None"` to indicate that
 ---no progress has been reported.
 ---
----@param self Pane
 ---@return string|"None" progress
 function M:get_progress() end
 
@@ -305,7 +376,6 @@ function M:get_progress() end
 ---currently valid stable index values
 ---for the top of scrollback and top of viewport.
 ---
----@param self Pane
 ---@param x integer
 ---@param y integer
 ---@return table zone
@@ -323,8 +393,10 @@ function M:get_semantic_zone_at(x, y) end
 --- - `"Output"`
 --- - `"Prompt"`
 ---
----@param self Pane
----@param zone_type? "Input"|"Output"|"Prompt"
+---@return table zones
+function M:get_semantic_zones() end
+
+---@param zone_type "Input"|"Output"|"Prompt"|nil
 ---@return table zones
 function M:get_semantic_zones(zone_type) end
 
@@ -342,7 +414,6 @@ function M:get_semantic_zones(zone_type) end
 ---line representation, rather than the
 ---_wrapped-to-physical-display-width_.
 ---
----@param self Pane
 ---@param start_x integer
 ---@param start_y integer
 ---@param end_x integer
@@ -356,7 +427,6 @@ function M:get_text_from_region(start_x, start_y, end_x, end_y) end
 ---Use `Pane:get_semantic_zone_at()` or `Pane:get_semantic_zones()`
 ---to obtain a zone.
 ---
----@param self Pane
 ---@param zone table
 ---@return any text
 function M:get_text_from_semantic_zone(zone) end
@@ -383,7 +453,6 @@ function M:get_text_from_semantic_zone(zone) end
 ---of the foreground process that is associated with the pane
 ---and will use that instead of `wezterm`.
 ---
----@param self Pane
 ---@return string title
 function M:get_title() end
 
@@ -397,7 +466,6 @@ function M:get_title() end
 --- - This information is only available on UNIX systems.
 ---   Windows systems do not have an equivalent concept
 ---
----@param self Pane
 ---@return string|nil name
 function M:get_tty_name() end
 
@@ -407,7 +475,6 @@ function M:get_tty_name() end
 ---User variables are set using an escape sequence defined by `iterm2`,
 ---but also recognized by wezterm.
 ---
----@param self Pane
 ---@return table<string, string> env
 function M:get_user_vars() end
 
@@ -417,7 +484,6 @@ function M:get_user_vars() end
 ---See also `PaneInformation.has_unseen_output` for an example
 ---using equivalent information to color tabs based on this state.
 ---
----@param self Pane
 ---@return boolean unseen
 function M:has_unseen_output() end
 
@@ -433,7 +499,6 @@ function M:has_unseen_output() end
 ---of using this method, you should expect the display to change
 ---and for text UI programs to get confused.
 ---
----@param self Pane
 ---@param text string
 function M:inject_output(text) end
 
@@ -447,7 +512,6 @@ function M:inject_output(text) end
 ---Those programs emit escape codes to return to the normal screen
 ---when they exit.
 ---
----@param self Pane
 ---@return boolean active
 function M:is_alt_screen_active() end
 
@@ -458,7 +522,6 @@ function M:is_alt_screen_active() end
 --- 1. [`MuxTab`](lua://MuxTab)
 --- 2. [`MuxWindow`](MuxWindow)
 ---
----@param self Pane
 ---@return MuxTab tab
 ---@return MuxWindow window
 function M:move_to_new_tab() end
@@ -474,8 +537,11 @@ function M:move_to_new_tab() end
 --- 1. [`MuxTab`](lua://MuxTab)
 --- 2. [`MuxWindow`](MuxWindow)
 ---
----@param self Pane
----@param workspace? string
+---@return MuxTab tab
+---@return MuxWindow window
+function M:move_to_new_window() end
+
+---@param workspace string|nil
 ---@return MuxTab tab
 ---@return MuxWindow window
 function M:move_to_new_window(workspace) end
@@ -486,14 +552,12 @@ function M:move_to_new_window(workspace) end
 ---and can be used when making API calls via wezterm CLI
 ---to indicate the subject of manipulation.
 ---
----@param self Pane
 ---@return integer id
 function M:pane_id() end
 
 ---Alias of `Pane:send_paste()` for backwards
 ---compatibility with prior releases.
 ---
----@param self Pane
 ---@param text string
 function M:paste(text) end
 
@@ -508,13 +572,11 @@ function M:paste(text) end
 ---then the text will be sent as a bracketed paste,
 ---and newlines will not be rewritten.
 ---
----@param self Pane
 ---@param text string
 function M:send_paste(text) end
 
 ---Sends text to the pane as-is.
 ---
----@param self Pane
 ---@param text string
 function M:send_text(text) end
 
@@ -527,8 +589,10 @@ function M:send_text(text) end
 ---For available args, see:
 --- - [`SpawnSplit`](lua://SpawnSplit)
 ---
----@param self Pane
----@param args? SpawnSplit
+---@return Pane split_pane
+function M:split() end
+
+---@param args SpawnSplit|nil
 ---@return Pane split_pane
 function M:split(args) end
 
@@ -538,15 +602,13 @@ function M:split(args) end
 ---a GUI-managed overlay pane (such as the debug overlay),
 ---because those panes are not managed by the mux layer.
 ---
----@param self Pane
----@return MuxTab? tab
+---@return MuxTab|nil tab
 function M:tab() end
 
 ---Returns
 ---the [`MuxWindow`](lua://MuxWindow)
 ---that contains the tab this pane is in.
 ---
----@param self Pane
 ---@return MuxWindow window
 function M:window() end
 
