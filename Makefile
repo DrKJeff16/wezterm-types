@@ -13,4 +13,5 @@ clean:
 
 distclean: clean
 	@rm -rf .ropeproject .mypy_cache
+
 # vim: set ts=4 sts=4 sw=0 noet ai si sta:
