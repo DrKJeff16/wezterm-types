@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0       Last change: 2026 January 10
+*wezterm-types.txt*       For NVIM >=v0.5.0       Last change: 2026 January 23
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -6,9 +6,9 @@
 <https://github.com/michaelbrusegard/awesome-wezterm> |
 <https://github.com/rockerBOO/awesome-neovim>
 
-Credits </CREDITS.md> | Roadmap
-<https://github.com/DrKJeff16/wezterm-types/discussions/48> | Discussions
-<https://github.com/DrKJeff16/wezterm-types/discussions>
+- Credits <https://github.com/DrKJeff16/wezterm-types/blob/main/CREDITS.md>
+- Roadmap <https://github.com/DrKJeff16/wezterm-types/discussions/48>
+- Discussions <https://github.com/DrKJeff16/wezterm-types/discussions>
 
 This project aims to provide LuaCATS <https://github.com/LuaCATS>-like Lua
 Language Server type annotations <https://luals.github.io/wiki/annotations/>
@@ -18,7 +18,7 @@ for your WezTerm <https://github.com/wezterm/wezterm> config.
 double-check the WezTerm Lua Reference
 <https://wezterm.org/config/lua/general.html> for any missing or unclear types.
 
-Examples can be found here
+**Examples can be found in** EXAMPLES.md
 <https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md>.
 
 ------------------------------------------------------------------------------
@@ -42,7 +42,8 @@ FEATURES                                              *wezterm-types-features*
 - Up-to-date descriptions
 - Function overrides (_e.g. wezterm.on()_)
 - Neovim support through `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>
-- VSCode/VSCodium support by cloning this into `~/.config/wezterm`, and editing your config in that directory
+- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
+    and editing your config in that directory
 
 ------------------------------------------------------------------------------
 
@@ -75,29 +76,30 @@ be used with `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>:
     }
 <
 
+If you download this repo under a diferent name, you can use the following
+instead:
 
-  [!TIP] If you download this repo under a diferent name, you can use the
-  following instead:
-  >lua
-      {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        dependencies = {
-          {
-            'DrKJeff16/wezterm-types',
-            lazy = true,
-            name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
-            version = false, -- Get the latest version
-          },
+>lua
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      dependencies = {
+        {
+          'DrKJeff16/wezterm-types',
+          lazy = true,
+          name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
+          version = false, -- Get the latest version
         },
-        opts = {
-          library = {
-            -- Other library configs...
-            { path = '<my_custom_name>', mods = { 'wezterm' } }, -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
-          },
+      },
+      opts = {
+        library = {
+          -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
+          { path = '<my_custom_name>', mods = { 'wezterm' } },
         },
-      }
-  <
+      },
+    }
+<
+
 
 LUAROCKS ~
 
@@ -185,7 +187,7 @@ Zuyoutoki
 
 LICENSE                                                *wezterm-types-license*
 
-MIT <./LICENSE>
+MIT <https://github.com/DrKJeff16/wezterm-types/blob/main/LICENSE>
 
 ------------------------------------------------------------------------------
 
