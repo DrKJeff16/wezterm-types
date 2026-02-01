@@ -758,6 +758,8 @@
 
 ---@alias AugmentCallbackWindowPane fun(window: Window, pane: Pane): AugmentCommandPaletteReturn
 
+---@alias WezTerm Wezterm
+
 ---The `wezterm` module is the primary module that exposes
 ---WezTerm configuration and control to your config file.
 ---

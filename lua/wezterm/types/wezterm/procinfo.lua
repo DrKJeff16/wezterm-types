@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.ProcInfo Wezterm.ProcInfo
+
 ---The `wezterm.procinfo` module exposes functions
 ---that allow querying information about processes
 ---that are running on the local system.

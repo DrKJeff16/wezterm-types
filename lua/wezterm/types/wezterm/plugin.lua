@@ -16,6 +16,8 @@
 ---Use this to set the plugin path if needed.
 ---@field plugin_dir string
 
+---@alias WezTerm.Plugin Wezterm.Plugin
+
 ---The `wezterm.plugin` module provides functions
 ---to manage WezTerm plugins.
 ---

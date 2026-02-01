@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.Url Wezterm.Url
+
 ---The `Url` object represents a parsed URL.
 ---
 ---An example:

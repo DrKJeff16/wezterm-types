@@ -10,6 +10,8 @@
 ---@field threshold? number
 ---@field min_contrast? number
 
+---@alias WezTerm.Color Wezterm.Color
+
 ---The `wezterm.color` module exposes functions that work with colors.
 ---
 ---@class Wezterm.Color

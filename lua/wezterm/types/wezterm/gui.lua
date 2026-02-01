@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.Gui Wezterm.Gui
+
 ---The `wezterm.gui` module exposes functions that operate on the GUI layer.
 ---
 ---The multiplexer may not be connected to a GUI, so attempting to
