@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.Serde Wezterm.Serde
+
 ---The `wezterm.serde` module provides functions for parsing the given string as
 ---JSON, YAML, or TOML, returning the corresponding Lua values, and vice versa.
 ---

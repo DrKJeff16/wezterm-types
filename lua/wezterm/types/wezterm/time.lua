@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.Time Wezterm.Time
+
 ---The `wezterm.time` module exposes functions that
 ---allow working with time.
 ---

@@ -1,5 +1,7 @@
 ---@meta
 
+---@alias WezTerm.Mux Wezterm.Mux
+
 ---The `wezterm.mux` module exposes functions that operate
 ---on the multiplexer layer.
 ---
