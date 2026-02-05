@@ -1,1006 +1,1008 @@
 ---@meta
 
----@alias Colorschemes
----|"3024 (base16)"
----|"3024 (dark) (terminal.sexy)"
----|"3024 (light) (terminal.sexy)"
----|"3024 Day (Gogh)"
----|"3024 Day"
----|"3024 Night (Gogh)"
----|"3024 Night"
----|"Aardvark Blue"
----|"Abernathy"
----|"Aci (Gogh)"
----|"Aco (Gogh)"
----|"Adventure Time (Gogh)"
----|"Adventure"
----|"AdventureTime"
----|"Afterglow (Gogh)"
----|"Afterglow"
----|"Alabaster"
----|"Alien Blood (Gogh)"
----|"AlienBlood"
----|"Andromeda"
----|"Apathy (base16)"
----|"Apple Classic"
----|"Apple System Colors"
----|"Apprentice (Gogh)"
----|"Apprentice (base16)"
----|"Argonaut (Gogh)"
----|"Argonaut"
----|"Arthur (Gogh)"
----|"Arthur"
----|"Ashes (base16)"
----|"Ashes (dark) (terminal.sexy)"
----|"Ashes (light) (terminal.sexy)"
----|"Astrodark (Gogh)"
----|"Atelier Cave (base16)"
----|"Atelier Cave Light (base16)"
----|"Atelier Dune (base16)"
----|"Atelier Dune Light (base16)"
----|"Atelier Estuary (base16)"
----|"Atelier Estuary Light (base16)"
----|"Atelier Forest (base16)"
----|"Atelier Forest Light (base16)"
----|"Atelier Heath (base16)"
----|"Atelier Heath Light (base16)"
----|"Atelier Lakeside (base16)"
----|"Atelier Lakeside Light (base16)"
----|"Atelier Plateau (base16)"
----|"Atelier Plateau Light (base16)"
----|"Atelier Savanna (base16)"
----|"Atelier Savanna Light (base16)"
----|"Atelier Seaside (base16)"
----|"Atelier Seaside Light (base16)"
----|"Atelier Sulphurpool (base16)"
----|"Atelier Sulphurpool Light (base16)"
----|"AtelierSulphurpool"
----|"Atelierdune (dark) (terminal.sexy)"
----|"Atelierdune (light) (terminal.sexy)"
----|"Atelierforest (dark) (terminal.sexy)"
----|"Atelierforest (light) (terminal.sexy)"
----|"Atelierheath (dark) (terminal.sexy)"
----|"Atelierheath (light) (terminal.sexy)"
----|"Atelierlakeside (dark) (terminal.sexy)"
----|"Atelierlakeside (light) (terminal.sexy)"
----|"Atelierseaside (dark) (terminal.sexy)"
----|"Atelierseaside (light) (terminal.sexy)"
----|"Atlas (base16)"
----|"Atom (Gogh)"
----|"Atom"
----|"AtomOneLight"
----|"Aura (Gogh)"
----|"Aurora"
----|"Ayu Dark (Gogh)"
----|"Ayu Light (Gogh)"
----|"Ayu Mirage (Gogh)"
----|"Ayu Mirage"
----|"Azu (Gogh)"
----|"Bamboo Light"
----|"Bamboo Multiplex"
----|"Bamboo"
----|"Banana Blueberry"
----|"Batman"
----|"Belafonte Day (Gogh)"
----|"Belafonte Day"
----|"Belafonte Night (Gogh)"
----|"Belafonte Night"
----|"Belge (terminal.sexy)"
----|"Bespin (base16)"
----|"Bespin (dark) (terminal.sexy)"
----|"Bespin (light) (terminal.sexy)"
----|"Bim (Gogh)"
----|"Birds Of Paradise (Gogh)"
----|"BirdsOfParadise"
----|"Bitmute (terminal.sexy)"
----|"Black Metal (Bathory) (base16)"
----|"Black Metal (Burzum) (base16)"
----|"Black Metal (Dark Funeral) (base16)"
----|"Black Metal (Gorgoroth) (base16)"
----|"Black Metal (Immortal) (base16)"
----|"Black Metal (Khold) (base16)"
----|"Black Metal (Marduk) (base16)"
----|"Black Metal (Mayhem) (base16)"
----|"Black Metal (Nile) (base16)"
----|"Black Metal (Venom) (base16)"
----|"Black Metal (base16)"
----|"Blazer (Gogh)"
----|"Blazer"
----|"Bleh-1 (terminal.sexy)"
----|"Blue Dolphin (Gogh)"
----|"Blue Matrix"
----|"BlueBerryPie"
----|"BlueDolphin"
----|"Bluloco Light (Gogh)"
----|"Bluloco Zsh Light (Gogh)"
----|"BlulocoDark"
----|"BlulocoLight"
----|"Borland (Gogh)"
----|"Borland"
----|"Breadog (Gogh)"
----|"Breath (Gogh)"
----|"Breath Darker (Gogh)"
----|"Breath Light (Gogh)"
----|"Breath Silverfox (Gogh)"
----|"Breeze (Gogh)"
----|"Breeze"
----|"Brewer (base16)"
----|"Brewer (dark) (terminal.sexy)"
----|"Brewer (light) (terminal.sexy)"
----|"Bright (base16)"
----|"Bright Lights"
----|"Broadcast (Gogh)"
----|"Broadcast"
----|"Brogrammer (Gogh)"
----|"Brogrammer (base16)"
----|"Brogrammer"
----|"Brush Trees (base16)"
----|"Brush Trees Dark (base16)"
----|"Builtin Dark"
----|"Builtin Light"
----|"Builtin Pastel Dark"
----|"Builtin Solarized Dark"
----|"Builtin Solarized Light"
----|"Builtin Tango Dark"
----|"Builtin Tango Light"
----|"Butrin (Gogh)"
----|"C64 (Gogh)"
----|"C64"
----|"CGA"
----|"CLRS"
----|"Cai (Gogh)"
----|"Calamity"
----|"Campbell (Gogh)"
----|"Canvased Pastel (terminal.sexy)"
----|"Catch Me If You Can (terminal.sexy)"
----|"Catppuccin Frappe"
----|"Catppuccin Frappé (Gogh)"
----|"Catppuccin Latte (Gogh)"
----|"Catppuccin Latte"
----|"Catppuccin Macchiato (Gogh)"
----|"Catppuccin Macchiato"
----|"Catppuccin Mocha (Gogh)"
----|"Catppuccin Mocha"
----|"Chalk (Gogh)"
----|"Chalk (base16)"
----|"Chalk (dark) (terminal.sexy)"
----|"Chalk (light) (terminal.sexy)"
----|"Chalk"
----|"Chalkboard (Gogh)"
----|"Chalkboard"
----|"ChallengerDeep"
----|"Chameleon (Gogh)"
----|"Chester"
----|"Ciapre (Gogh)"
----|"Ciapre"
----|"Circus (base16)"
----|"City Lights (Gogh)"
----|"City Streets (terminal.sexy)"
----|"Classic Dark (base16)"
----|"Classic Light (base16)"
----|"Clone Of Ubuntu (Gogh)"
----|"Cloud (terminal.sexy)"
----|"Clrs (Gogh)"
----|"Cobalt 2 (Gogh)"
----|"Cobalt Neon (Gogh)"
----|"Cobalt Neon"
----|"Cobalt2"
----|"Codeschool (base16)"
----|"Codeschool (dark) (terminal.sexy)"
----|"Codeschool (light) (terminal.sexy)"
----|"Color Star (terminal.sexy)"
----|"Colorcli (Gogh)"
----|"Colorful Colors (terminal.sexy)"
----|"Colors (base16)"
----|"Count Von Count (terminal.sexy)"
----|"Crayon Pony Fish (Gogh)"
----|"CrayonPonyFish"
----|"Cupcake (base16)"
----|"Cupertino (base16)"
----|"CutiePro"
----|"Cyberdyne"
----|"DWM rob (terminal.sexy)"
----|"DanQing (base16)"
----|"DanQing Light (base16)"
----|"Darcula (base16)"
----|"Dark Ocean (terminal.sexy)"
----|"Dark Pastel (Gogh)"
----|"Dark Pastel"
----|"Dark Violet (base16)"
----|"Dark+"
----|"Darkside (Gogh)"
----|"Darkside"
----|"Darktooth (base16)"
----|"Dawn (terminal.sexy)"
----|"Deafened (terminal.sexy)"
----|"Decaf (base16)"
----|"Default (dark) (terminal.sexy)"
----|"Default (light) (terminal.sexy)"
----|"Default Dark (base16)"
----|"Default Light (base16)"
----|"Dehydration (Gogh)"
----|"Derp (terminal.sexy)"
----|"Desert (Gogh)"
----|"Desert"
----|"Digerati (terminal.sexy)"
----|"Dimmed Monokai (Gogh)"
----|"DimmedMonokai"
----|"Dissonance (Gogh)"
----|"Django"
----|"DjangoRebornAgain"
----|"DjangoSmooth"
----|"Doom Peacock"
----|"DoomOne"
----|"DotGov"
----|"Dotshare (terminal.sexy)"
----|"Dracula (Gogh)"
----|"Dracula (Official)"
----|"Dracula (base16)"
----|"Dracula"
----|"Dracula+"
----|"Duotone Dark"
----|"ENCOM"
----|"Earthsong (Gogh)"
----|"Earthsong"
----|"Edge Dark (base16)"
----|"Edge Light (base16)"
----|"Ef-Arbutus"
----|"Ef-Autumn"
----|"Ef-Bio"
----|"Ef-Cherie"
----|"Ef-Cyprus"
----|"Ef-Dark"
----|"Ef-Day"
----|"Ef-Deuteranopia-Dark"
----|"Ef-Deuteranopia-Light"
----|"Ef-Dream"
----|"Ef-Duo-Dark"
----|"Ef-Duo-Light"
----|"Ef-Elea-Dark"
----|"Ef-Elea-Light"
----|"Ef-Frost"
----|"Ef-Kassio"
----|"Ef-Light"
----|"Ef-Maris-Dark"
----|"Ef-Maris-Light"
----|"Ef-Melissa-Dark"
----|"Ef-Melissa-Light"
----|"Ef-Night"
----|"Ef-Reverie"
----|"Ef-Rosa"
----|"Ef-Spring"
----|"Ef-Summer"
----|"Ef-Symbiosis"
----|"Ef-Trio-Dark"
----|"Ef-Trio-Light"
----|"Ef-Tritanopia-Dark"
----|"Ef-Tritanopia-Light"
----|"Ef-Winter"
----|"Eighties (base16)"
----|"Eighties (dark) (terminal.sexy)"
----|"Eighties (light) (terminal.sexy)"
----|"Eldorado dark (terminal.sexy)"
----|"Eldritch"
----|"Elemental (Gogh)"
----|"Elemental"
----|"Elementary (Gogh)"
----|"Elementary"
----|"Elic (Gogh)"
----|"Elio (Gogh)"
----|"Embers (base16)"
----|"Embers (dark) (terminal.sexy)"
----|"Embers (light) (terminal.sexy)"
----|"Epiphany (terminal.sexy)"
----|"Eqie6 (terminal.sexy)"
----|"Equilibrium Dark (base16)"
----|"Equilibrium Gray Dark (base16)"
----|"Equilibrium Gray Light (base16)"
----|"Equilibrium Light (base16)"
----|"Erebus (terminal.sexy)"
----|"Espresso (Gogh)"
----|"Espresso (base16)"
----|"Espresso Libre (Gogh)"
----|"Espresso Libre"
----|"Espresso"
----|"Euphrasia (terminal.sexy)"
----|"Eva (base16)"
----|"Eva Dim (base16)"
----|"Everblush (Gogh)"
----|"Everblush"
----|"Everforest Dark (Gogh)"
----|"Everforest Dark Hard (Gogh)"
----|"Everforest Dark Medium (Gogh)"
----|"Everforest Dark Soft (Gogh)"
----|"Everforest Light (Gogh)"
----|"Everforest Light Hard (Gogh)"
----|"Everforest Light Medium (Gogh)"
----|"Everforest Light Soft (Gogh)"
----|"Fahrenheit"
----|"Fairy Floss (Gogh)"
----|"Fairy Floss Dark (Gogh)"
----|"Fairyfloss"
----|"FarSide (terminal.sexy)"
----|"Fideloper"
----|"Firefly Traditional"
----|"FirefoxDev"
----|"Firewatch"
----|"FishTank"
----|"Fishbone (terminal.sexy)"
----|"Fishtank (Gogh)"
----|"Flat (Gogh)"
----|"Flat (base16)"
----|"Flat Remix (Gogh)"
----|"Flat"
----|"Flatland (Gogh)"
----|"Flatland"
----|"Floraverse"
----|"ForestBlue"
----|"Foxnightly (Gogh)"
----|"Framer (base16)"
----|"Framer"
----|"Freya (Gogh)"
----|"FrontEndDelight"
----|"Frontend Delight (Gogh)"
----|"Frontend Fun Forrest (Gogh)"
----|"Frontend Galaxy (Gogh)"
----|"Fruit Soda (base16)"
----|"FunForrest"
----|"GJM (terminal.sexy)"
----|"Galaxy"
----|"Galizur"
----|"Geohot (Gogh)"
----|"Gigavolt (base16)"
----|"GitHub Dark"
----|"Github (Gogh)"
----|"Github (base16)"
----|"Github Dark (Gogh)"
----|"Github Light (Gogh)"
----|"Github"
----|"Glacier"
----|"Gnometerm (terminal.sexy)"
----|"Gogh (Gogh)"
----|"Gooey (Gogh)"
----|"Google (dark) (terminal.sexy)"
----|"Google (light) (terminal.sexy)"
----|"Google Dark (Gogh)"
----|"Google Dark (base16)"
----|"Google Light (Gogh)"
----|"Google Light (base16)"
----|"Gotham (Gogh)"
----|"Gotham (terminal.sexy)"
----|"Grandshell (terminal.sexy)"
----|"Grape (Gogh)"
----|"Grape"
----|"Grass (Gogh)"
----|"Grass"
----|"Grayscale (dark) (terminal.sexy)"
----|"Grayscale (light) (terminal.sexy)"
----|"Grayscale Dark (base16)"
----|"Grayscale Light (base16)"
----|"Green Screen (base16)"
----|"Greenscreen (dark) (terminal.sexy)"
----|"Greenscreen (light) (terminal.sexy)"
----|"Grey-green"
----|"Gruber (base16)"
----|"Gruvbox (Gogh)"
----|"Gruvbox Dark (Gogh)"
----|"Gruvbox Material (Gogh)"
----|"Gruvbox dark, hard (base16)"
----|"Gruvbox dark, medium (base16)"
----|"Gruvbox dark, pale (base16)"
----|"Gruvbox dark, soft (base16)"
----|"Gruvbox light, hard (base16)"
----|"Gruvbox light, medium (base16)"
----|"Gruvbox light, soft (base16)"
----|"GruvboxDark"
----|"GruvboxDarkHard"
----|"GruvboxLight"
----|"Guezwhoz"
----|"HaX0R_BLUE"
----|"HaX0R_GR33N"
----|"HaX0R_R3D"
----|"Hacktober"
----|"Hardcore (Gogh)"
----|"Hardcore (base16)"
----|"Hardcore"
----|"Harmonic16 Dark (base16)"
----|"Harmonic16 Light (base16)"
----|"Harper (Gogh)"
----|"Harper"
----|"Heetch Dark (base16)"
----|"Heetch Light (base16)"
----|"Helios (base16)"
----|"Hemisu Dark (Gogh)"
----|"Hemisu Light (Gogh)"
----|"Highway (Gogh)"
----|"Highway"
----|"Hipster Green (Gogh)"
----|"Hipster Green"
----|"Hivacruz"
----|"Homebrew (Gogh)"
----|"Homebrew Light (Gogh)"
----|"Homebrew Ocean (Gogh)"
----|"Homebrew"
----|"Hopscotch (base16)"
----|"Hopscotch"
----|"Hopscotch.256"
----|"Horizon Bright (Gogh)"
----|"Horizon Dark (Gogh)"
----|"Horizon Dark (base16)"
----|"Horizon Light (base16)"
----|"Humanoid dark (base16)"
----|"Humanoid light (base16)"
----|"Hurtado (Gogh)"
----|"Hurtado"
----|"Hybrid (Gogh)"
----|"Hybrid (terminal.sexy)"
----|"Hybrid"
----|"IC_Green_PPL"
----|"IC_Orange_PPL"
----|"IR Black (base16)"
----|"IR_Black"
----|"Ibm 3270 (High Contrast) (Gogh)"
----|"Ibm3270 (Gogh)"
----|"Ic Green Ppl (Gogh)"
----|"Ic Orange Ppl (Gogh)"
----|"Iceberg (Gogh)"
----|"Icy Dark (base16)"
----|"Idle Toes (Gogh)"
----|"Iiamblack (terminal.sexy)"
----|"Insignificato (terminal.sexy)"
----|"Invisibone (terminal.sexy)"
----|"Ir Black (Gogh)"
----|"Isotope (base16)"
----|"Isotope (dark) (terminal.sexy)"
----|"Isotope (light) (terminal.sexy)"
----|"Ivory Dark (terminal.sexy)"
----|"Ivory Light (terminal.sexy)"
----|"JWR dark (terminal.sexy)"
----|"Jackie Brown (Gogh)"
----|"Jackie Brown"
----|"Japanesque (Gogh)"
----|"Japanesque"
----|"Jason Wryan (terminal.sexy)"
----|"Jellybeans (Gogh)"
----|"Jellybeans"
----|"JetBrains Darcula"
----|"Jup (Gogh)"
----|"Kanagawa (Gogh)"
----|"Kanagawa Dragon (Gogh)"
----|"Kasugano (terminal.sexy)"
----|"Kibble (Gogh)"
----|"Kibble"
----|"Kimber (base16)"
----|"Kokuban (Gogh)"
----|"Kolorit"
----|"Konsolas"
----|"Lab Fox"
----|"Laser"
----|"Laserwave (Gogh)"
----|"Later This Evening (Gogh)"
----|"Later This Evening"
----|"Lavandula (Gogh)"
----|"Lavandula"
----|"Light White (terminal.sexy)"
----|"Liquid Carbon (Gogh)"
----|"Liquid Carbon Transparent (Gogh)"
----|"LiquidCarbon"
----|"LiquidCarbonTransparent"
----|"LiquidCarbonTransparentInverse"
----|"London Tube (base16)"
----|"Londontube (dark) (terminal.sexy)"
----|"Londontube (light) (terminal.sexy)"
----|"Lost Woods (terminal.sexy)"
----|"Low Contrast (terminal.sexy)"
----|"Lumifoo (terminal.sexy)"
----|"Lunaria Dark (Gogh)"
----|"Lunaria Eclipse (Gogh)"
----|"Lunaria Light (Gogh)"
----|"Macintosh (base16)"
----|"Maia (Gogh)"
----|"Man Page (Gogh)"
----|"Man Page"
----|"Mar (Gogh)"
----|"Mariana"
----|"Marrakesh (base16)"
----|"Marrakesh (dark) (terminal.sexy)"
----|"Marrakesh (light) (terminal.sexy)"
----|"Mashup Colors (terminal.sexy)"
----|"Materia (base16)"
----|"Material (Gogh)"
----|"Material (base16)"
----|"Material (terminal.sexy)"
----|"Material Darker (base16)"
----|"Material Lighter (base16)"
----|"Material Palenight (base16)"
----|"Material Vivid (base16)"
----|"Material"
----|"MaterialDark"
----|"MaterialDarker"
----|"MaterialDesignColors"
----|"MaterialOcean"
----|"Mathias (Gogh)"
----|"Mathias"
----|"Matrix (terminal.sexy)"
----|"Medallion (Gogh)"
----|"Medallion"
----|"Mellifluous"
----|"Mellow Purple (base16)"
----|"Mexico Light (base16)"
----|"Mikado (terminal.sexy)"
----|"Mikazuki (terminal.sexy)"
----|"Mirage"
----|"Miramare (Gogh)"
----|"Misterioso (Gogh)"
----|"Misterioso"
----|"Mocha (base16)"
----|"Mocha (dark) (terminal.sexy)"
----|"Mocha (light) (terminal.sexy)"
----|"Modus Operandi (Gogh)"
----|"Modus Operandi Tinted (Gogh)"
----|"Modus Vivendi (Gogh)"
----|"Modus Vivendi Tinted (Gogh)"
----|"Modus-Operandi"
----|"Modus-Operandi-Deuteranopia"
----|"Modus-Operandi-Tinted"
----|"Modus-Vivendi"
----|"Modus-Vivendi-Deuteranopia"
----|"Modus-Vivendi-Tinted"
----|"Modus-Vivendi-Tritanopia"
----|"Molokai (Gogh)"
----|"Molokai"
----|"Mona Lisa (Gogh)"
----|"MonaLisa"
----|"Mono (terminal.sexy)"
----|"Mono Amber (Gogh)"
----|"Mono Cyan (Gogh)"
----|"Mono Green (Gogh)"
----|"Mono Red (Gogh)"
----|"Mono Theme (terminal.sexy)"
----|"Mono White (Gogh)"
----|"Mono Yellow (Gogh)"
----|"Monokai (base16)"
----|"Monokai (dark) (terminal.sexy)"
----|"Monokai (light) (terminal.sexy)"
----|"Monokai (terminal.sexy)"
----|"Monokai Dark (Gogh)"
----|"Monokai Pro (Gogh)"
----|"Monokai Pro Ristretto (Gogh)"
----|"Monokai Remastered"
----|"Monokai Soda (Gogh)"
----|"Monokai Soda"
----|"Monokai Vivid"
----|"Moonfly (Gogh)"
----|"Morada (Gogh)"
----|"Mostly Bright (terminal.sexy)"
----|"Muse (terminal.sexy)"
----|"N0Tch2K (Gogh)"
----|"N0tch2k"
----|"Nancy (terminal.sexy)"
----|"Nature Suede (terminal.sexy)"
----|"Navy and Ivory (terminal.sexy)"
----|"Nebula (base16)"
----|"Neon (terminal.sexy)"
----|"Neon Night (Gogh)"
----|"Neon"
----|"Neopolitan (Gogh)"
----|"Neopolitan"
----|"Nep (Gogh)"
----|"Neutron (Gogh)"
----|"Neutron"
----|"Night Owl (Gogh)"
----|"Night Owlish Light"
----|"NightLion v1"
----|"NightLion v2"
----|"Nightfly (Gogh)"
----|"Nightlion V1 (Gogh)"
----|"Nightlion V2 (Gogh)"
----|"Nighty (Gogh)"
----|"Nocturnal Winter"
----|"Nord (Gogh)"
----|"Nord (base16)"
----|"Nord Light (Gogh)"
----|"Nova (base16)"
----|"Novel (Gogh)"
----|"Novel"
----|"Nucolors (terminal.sexy)"
----|"Nudge (terminal.sexy)"
----|"Numix Darkest (terminal.sexy)"
----|"NvimDark"
----|"NvimLight"
----|"Obsidian (Gogh)"
----|"Obsidian"
----|"Ocean (base16)"
----|"Ocean (dark) (terminal.sexy)"
----|"Ocean (light) (terminal.sexy)"
----|"Ocean Dark (Gogh)"
----|"Ocean"
----|"Oceanic Next (Gogh)"
----|"Oceanic-Next"
----|"OceanicMaterial"
----|"OceanicNext (base16)"
----|"Ollie (Gogh)"
----|"Ollie"
----|"Omni (Gogh)"
----|"One Dark (Gogh)"
----|"One Half Black (Gogh)"
----|"One Light (Gogh)"
----|"One Light (base16)"
----|"OneDark (base16)"
----|"OneHalfDark"
----|"OneHalfLight"
----|"Operator Mono Dark"
----|"Orangish (terminal.sexy)"
----|"Outrun Dark (base16)"
----|"Overnight Slumber"
----|"Oxocarbon Dark (Gogh)"
----|"PaleNightHC"
----|"Palenight (Gogh)"
----|"Pali (Gogh)"
----|"Panda (Gogh)"
----|"Pandora"
----|"Panels (terminal.sexy)"
----|"Paper (Gogh)"
----|"PaperColor Dark (base16)"
----|"PaperColor Light (base16)"
----|"Papercolor Dark (Gogh)"
----|"Papercolor Light (Gogh)"
----|"Paraiso (base16)"
----|"Paraiso (dark) (terminal.sexy)"
----|"Paraiso (light) (terminal.sexy)"
----|"Paraiso Dark (Gogh)"
----|"Paraiso Dark"
----|"Parker Brothers (terminal.sexy)"
----|"Pasque (base16)"
----|"Pastel White (terminal.sexy)"
----|"Paul Millr (Gogh)"
----|"PaulMillr"
----|"Pencil Dark (Gogh)"
----|"Pencil Light (Gogh)"
----|"PencilDark"
----|"PencilLight"
----|"Peppermint (Gogh)"
----|"Peppermint"
----|"PhD (base16)"
----|"Phrak1 (terminal.sexy)"
----|"Piatto Light"
----|"Pico (base16)"
----|"Pixiefloss (Gogh)"
----|"Pnevma (Gogh)"
----|"Pnevma"
----|"Poimandres Storm"
----|"Poimandres"
----|"Pop (base16)"
----|"Popping and Locking"
----|"Porple (base16)"
----|"Powershell (Gogh)"
----|"Predawn (Gogh)"
----|"Pretty and Pastel (terminal.sexy)"
----|"Pro (Gogh)"
----|"Pro Light"
----|"Pro"
----|"Pulp (terminal.sexy)"
----|"Purple People Eater (Gogh)"
----|"Purple Rain"
----|"Purpledream (base16)"
----|"Qualia (base16)"
----|"Quiet (Gogh)"
----|"Railscasts (base16)"
----|"Railscasts (dark) (terminal.sexy)"
----|"Railscasts (light) (terminal.sexy)"
----|"Rapture"
----|"Rasi (terminal.sexy)"
----|"Raycast_Dark"
----|"Raycast_Light"
----|"Rebecca (base16)"
----|"Red Alert (Gogh)"
----|"Red Alert"
----|"Red Phoenix (terminal.sexy)"
----|"Red Planet"
----|"Red Sands (Gogh)"
----|"Red Sands"
----|"Relaxed (Gogh)"
----|"Relaxed"
----|"Retro"
----|"Rezza (terminal.sexy)"
----|"Rippedcasts (Gogh)"
----|"Rippedcasts"
----|"Rosé Pine (Gogh)"
----|"Rosé Pine (base16)"
----|"Rosé Pine Dawn (Gogh)"
----|"Rosé Pine Dawn (base16)"
----|"Rosé Pine Moon (Gogh)"
----|"Rosé Pine Moon (base16)"
----|"Rouge 2"
----|"Royal (Gogh)"
----|"Royal"
----|"Rydgel (terminal.sexy)"
----|"Ryuuko"
----|"SOS (terminal.sexy)"
----|"Sagelight (base16)"
----|"Sakura (base16)"
----|"Sakura"
----|"Sandcastle (base16)"
----|"Sat (Gogh)"
----|"Scarlet Protocol"
----|"Sea Shells (Gogh)"
----|"SeaShells"
----|"Seafoam Pastel (Gogh)"
----|"Seafoam Pastel"
----|"Selenized Black (Gogh)"
----|"Selenized Dark (Gogh)"
----|"Selenized Light (Gogh)"
----|"Selenized White (Gogh)"
----|"Seoul256 (Gogh)"
----|"Seoul256 Light (Gogh)"
----|"Sequoia Monochrome"
----|"Sequoia Moonlight"
----|"Seti (Gogh)"
----|"Seti UI (base16)"
----|"Seti"
----|"Sex Colors (terminal.sexy)"
----|"Shades of Purple (base16)"
----|"Shaman (Gogh)"
----|"Shaman"
----|"Shapeshifter (base16)"
----|"Shapeshifter (dark) (terminal.sexy)"
----|"Shapeshifter (light) (terminal.sexy)"
----|"Shel (Gogh)"
----|"Shic (terminal.sexy)"
----|"Silk Dark (base16)"
----|"Silk Light (base16)"
----|"Simple Rainbow (terminal.sexy)"
----|"Slate (Gogh)"
----|"Slate"
----|"SleepyHollow"
----|"Smyck (Gogh)"
----|"Smyck"
----|"Snazzy (Gogh)"
----|"Snazzy (base16)"
----|"Snazzy"
----|"Soft Server (Gogh)"
----|"SoftServer"
----|"Solar Flare (base16)"
----|"Solar Flare Light (base16)"
----|"Solarized (dark) (terminal.sexy)"
----|"Solarized (light) (terminal.sexy)"
----|"Solarized Darcula (Gogh)"
----|"Solarized Darcula"
----|"Solarized Dark (Gogh)"
----|"Solarized Dark - Patched"
----|"Solarized Dark Higher Contrast (Gogh)"
----|"Solarized Dark Higher Contrast"
----|"Solarized Light (Gogh)"
----|"Sonokai (Gogh)"
----|"SpaceGray Eighties Dull"
----|"SpaceGray Eighties"
----|"SpaceGray"
----|"Spacedust (Gogh)"
----|"Spacedust"
----|"Spacegray (Gogh)"
----|"Spacegray Eighties (Gogh)"
----|"Spacegray Eighties Dull (Gogh)"
----|"Spacemacs (base16)"
----|"Sparky (Gogh)"
----|"Spiderman"
----|"Splurge (terminal.sexy)"
----|"Spring (Gogh)"
----|"Spring"
----|"Square (Gogh)"
----|"Square"
----|"Srcery (Gogh)"
----|"Sublette"
----|"Subliminal"
----|"Sugarplum"
----|"Summer Pop (Gogh)"
----|"Summerfruit Dark (base16)"
----|"Summerfruit Light (base16)"
----|"Sundried (Gogh)"
----|"Sundried"
----|"Swayr (terminal.sexy)"
----|"Sweet Eliverlara (Gogh)"
----|"Sweet Love (terminal.sexy)"
----|"Sweet Terminal (Gogh)"
----|"Symfonic"
----|"Symphonic (Gogh)"
----|"Synth Midnight Terminal Dark (base16)"
----|"Synth Midnight Terminal Light (base16)"
----|"Synthwave (Gogh)"
----|"Synthwave Alpha (Gogh)"
----|"SynthwaveAlpha"
----|"Tango (base16)"
----|"Tango (terminal.sexy)"
----|"Tango Adapted"
----|"Tango Half Adapted"
----|"Tangoesque (terminal.sexy)"
----|"Tartan (terminal.sexy)"
----|"Teerb (Gogh)"
----|"Teerb"
----|"Tender (Gogh)"
----|"Terminal Basic (Gogh)"
----|"Terminal Basic"
----|"Terminix Dark (Gogh)"
----|"Teva (terminal.sexy)"
----|"Thayer Bright (Gogh)"
----|"Thayer Bright"
----|"The Hulk"
----|"Tin (Gogh)"
----|"Tinacious Design (Dark)"
----|"Tinacious Design (Light)"
----|"Tokyo Night (Gogh)"
----|"Tokyo Night Day"
----|"Tokyo Night Light (Gogh)"
----|"Tokyo Night Moon"
----|"Tokyo Night Storm (Gogh)"
----|"Tokyo Night Storm"
----|"Tokyo Night"
----|"Tomorrow (Gogh)"
----|"Tomorrow (dark) (terminal.sexy)"
----|"Tomorrow (light) (terminal.sexy)"
----|"Tomorrow Night (Gogh)"
----|"Tomorrow Night Blue (Gogh)"
----|"Tomorrow Night Blue"
----|"Tomorrow Night Bright (Gogh)"
----|"Tomorrow Night Bright"
----|"Tomorrow Night Burns"
----|"Tomorrow Night Eighties (Gogh)"
----|"Tomorrow Night Eighties"
----|"Tomorrow Night"
----|"Tomorrow"
----|"Toy Chest (Gogh)"
----|"ToyChest"
----|"Treehouse (Gogh)"
----|"Treehouse"
----|"Trim Yer Beard (terminal.sexy)"
----|"Twilight (Gogh)"
----|"Twilight (base16)"
----|"Twilight (dark) (terminal.sexy)"
----|"Twilight (light) (terminal.sexy)"
----|"Twilight"
----|"Ubuntu"
----|"UltraDark"
----|"UltraViolent"
----|"UnderTheSea"
----|"Unikitty Dark (base16)"
----|"Unikitty Light (base16)"
----|"Unikitty Reversible (base16)"
----|"Unikitty"
----|"Unsifted Wheat (terminal.sexy)"
----|"Ura (Gogh)"
----|"Urple (Gogh)"
----|"Urple"
----|"VWbug (terminal.sexy)"
----|"Vacuous 2 (terminal.sexy)"
----|"Vag (Gogh)"
----|"Vaughn (Gogh)"
----|"Vaughn"
----|"Vesper"
----|"Vibrant Ink (Gogh)"
----|"VibrantInk"
----|"Vice Alt (base16)"
----|"Vice Dark (base16)"
----|"Violet Dark"
----|"Violet Light"
----|"VisiBlue (terminal.sexy)"
----|"VisiBone (terminal.sexy)"
----|"Visibone Alt. 2 (terminal.sexy)"
----|"Vs Code Dark+ (Gogh)"
----|"Vs Code Light+ (Gogh)"
----|"Warm Neon (Gogh)"
----|"WarmNeon"
----|"Website (Gogh)"
----|"Wez (Gogh)"
----|"Wez"
----|"Whimsy"
----|"Wild Cherry (Gogh)"
----|"WildCherry"
----|"Windows 10 (base16)"
----|"Windows 10 Light (base16)"
----|"Windows 95 (base16)"
----|"Windows 95 Light (base16)"
----|"Windows High Contrast (base16)"
----|"Windows High Contrast Light (base16)"
----|"Windows NT (base16)"
----|"Windows NT Light (base16)"
----|"Wombat (Gogh)"
----|"Wombat"
----|"Woodland (base16)"
----|"Wryan (Gogh)"
----|"Wryan"
----|"Wzoreck (Gogh)"
----|"X::DotShare (terminal.sexy)"
----|"X::Erosion (terminal.sexy)"
----|"XCode Dusk (base16)"
----|"Yousai (terminal.sexy)"
----|"Zenburn (Gogh)"
----|"Zenburn (base16)"
----|"Zenburn"
----|"aikofog (terminal.sexy)"
----|"arcoiris"
----|"astromouse (terminal.sexy)"
----|"ayu"
----|"ayu_light"
----|"carbonfox"
----|"catppuccin-frappe"
----|"catppuccin-latte"
----|"catppuccin-macchiato"
----|"catppuccin-mocha"
----|"coffee_theme"
----|"cyberpunk"
----|"darkermatrix"
----|"darkmatrix"
----|"darkmoss (base16)"
----|"dawnfox"
----|"dayfox"
----|"deep"
----|"dirtysea (base16)"
----|"duckbones"
----|"duskfox"
----|"farmhouse-dark"
----|"farmhouse-light"
----|"flexoki-dark"
----|"flexoki-light"
----|"hardhacker"
----|"hund (terminal.sexy)"
----|"iTerm2 Dark Background"
----|"iTerm2 Default"
----|"iTerm2 Light Background"
----|"iTerm2 Pastel Dark Background"
----|"iTerm2 Smoooooth"
----|"iTerm2 Tango Dark"
----|"iTerm2 Tango Light"
----|"iceberg-dark"
----|"iceberg-light"
----|"idea"
----|"idleToes"
----|"jmbi (terminal.sexy)"
----|"jubi"
----|"kanagawabones"
----|"kurokula"
----|"lovelace"
----|"matrix"
----|"midnight-in-mojave"
----|"neobones_dark"
----|"neobones_light"
----|"nightfox"
----|"niji"
----|"nord"
----|"nord-light"
----|"nordfox"
----|"pinky (base16)"
----|"primary"
----|"purplepeter"
----|"rebecca"
----|"rose-pine"
----|"rose-pine-dawn"
----|"rose-pine-moon"
----|"s3r0 modified (terminal.sexy)"
----|"seoulbones_dark"
----|"seoulbones_light"
----|"shades-of-purple"
----|"summercamp (base16)"
----|"synthwave"
----|"synthwave-everything"
----|"tender (base16)"
----|"terafox"
----|"theme2 (terminal.sexy)"
----|"thwump (terminal.sexy)"
----|"tlh (terminal.sexy)"
----|"tokyonight"
----|"tokyonight-day"
----|"tokyonight-storm"
----|"tokyonight_day"
----|"tokyonight_moon"
----|"tokyonight_night"
----|"tokyonight_storm"
----|"vimbones"
----|"vulcan (base16)"
----|"wilmersdorf"
----|"zenbones"
----|"zenbones_dark"
----|"zenburn (terminal.sexy)"
----|"zenburned"
----|"zenwritten_dark"
----|"zenwritten_light"
+---@enum (key) Colorschemes
+local Colorschemes = { ---@diagnostic disable-line:unused-local
+  ["3024 (base16)"] = 1,
+  ["3024 (dark) (terminal.sexy)"] = 1,
+  ["3024 (light) (terminal.sexy)"] = 1,
+  ["3024 Day (Gogh)"] = 1,
+  ["3024 Day"] = 1,
+  ["3024 Night (Gogh)"] = 1,
+  ["3024 Night"] = 1,
+  ["Aardvark Blue"] = 1,
+  ["Abernathy"] = 1,
+  ["Aci (Gogh)"] = 1,
+  ["Aco (Gogh)"] = 1,
+  ["Adventure Time (Gogh)"] = 1,
+  ["Adventure"] = 1,
+  ["AdventureTime"] = 1,
+  ["Afterglow (Gogh)"] = 1,
+  ["Afterglow"] = 1,
+  ["Alabaster"] = 1,
+  ["Alien Blood (Gogh)"] = 1,
+  ["AlienBlood"] = 1,
+  ["Andromeda"] = 1,
+  ["Apathy (base16)"] = 1,
+  ["Apple Classic"] = 1,
+  ["Apple System Colors"] = 1,
+  ["Apprentice (Gogh)"] = 1,
+  ["Apprentice (base16)"] = 1,
+  ["Argonaut (Gogh)"] = 1,
+  ["Argonaut"] = 1,
+  ["Arthur (Gogh)"] = 1,
+  ["Arthur"] = 1,
+  ["Ashes (base16)"] = 1,
+  ["Ashes (dark) (terminal.sexy)"] = 1,
+  ["Ashes (light) (terminal.sexy)"] = 1,
+  ["Astrodark (Gogh)"] = 1,
+  ["Atelier Cave (base16)"] = 1,
+  ["Atelier Cave Light (base16)"] = 1,
+  ["Atelier Dune (base16)"] = 1,
+  ["Atelier Dune Light (base16)"] = 1,
+  ["Atelier Estuary (base16)"] = 1,
+  ["Atelier Estuary Light (base16)"] = 1,
+  ["Atelier Forest (base16)"] = 1,
+  ["Atelier Forest Light (base16)"] = 1,
+  ["Atelier Heath (base16)"] = 1,
+  ["Atelier Heath Light (base16)"] = 1,
+  ["Atelier Lakeside (base16)"] = 1,
+  ["Atelier Lakeside Light (base16)"] = 1,
+  ["Atelier Plateau (base16)"] = 1,
+  ["Atelier Plateau Light (base16)"] = 1,
+  ["Atelier Savanna (base16)"] = 1,
+  ["Atelier Savanna Light (base16)"] = 1,
+  ["Atelier Seaside (base16)"] = 1,
+  ["Atelier Seaside Light (base16)"] = 1,
+  ["Atelier Sulphurpool (base16)"] = 1,
+  ["Atelier Sulphurpool Light (base16)"] = 1,
+  ["AtelierSulphurpool"] = 1,
+  ["Atelierdune (dark) (terminal.sexy)"] = 1,
+  ["Atelierdune (light) (terminal.sexy)"] = 1,
+  ["Atelierforest (dark) (terminal.sexy)"] = 1,
+  ["Atelierforest (light) (terminal.sexy)"] = 1,
+  ["Atelierheath (dark) (terminal.sexy)"] = 1,
+  ["Atelierheath (light) (terminal.sexy)"] = 1,
+  ["Atelierlakeside (dark) (terminal.sexy)"] = 1,
+  ["Atelierlakeside (light) (terminal.sexy)"] = 1,
+  ["Atelierseaside (dark) (terminal.sexy)"] = 1,
+  ["Atelierseaside (light) (terminal.sexy)"] = 1,
+  ["Atlas (base16)"] = 1,
+  ["Atom (Gogh)"] = 1,
+  ["Atom"] = 1,
+  ["AtomOneLight"] = 1,
+  ["Aura (Gogh)"] = 1,
+  ["Aurora"] = 1,
+  ["Ayu Dark (Gogh)"] = 1,
+  ["Ayu Light (Gogh)"] = 1,
+  ["Ayu Mirage (Gogh)"] = 1,
+  ["Ayu Mirage"] = 1,
+  ["Azu (Gogh)"] = 1,
+  ["Bamboo Light"] = 1,
+  ["Bamboo Multiplex"] = 1,
+  ["Bamboo"] = 1,
+  ["Banana Blueberry"] = 1,
+  ["Batman"] = 1,
+  ["Belafonte Day (Gogh)"] = 1,
+  ["Belafonte Day"] = 1,
+  ["Belafonte Night (Gogh)"] = 1,
+  ["Belafonte Night"] = 1,
+  ["Belge (terminal.sexy)"] = 1,
+  ["Bespin (base16)"] = 1,
+  ["Bespin (dark) (terminal.sexy)"] = 1,
+  ["Bespin (light) (terminal.sexy)"] = 1,
+  ["Bim (Gogh)"] = 1,
+  ["Birds Of Paradise (Gogh)"] = 1,
+  ["BirdsOfParadise"] = 1,
+  ["Bitmute (terminal.sexy)"] = 1,
+  ["Black Metal (Bathory) (base16)"] = 1,
+  ["Black Metal (Burzum) (base16)"] = 1,
+  ["Black Metal (Dark Funeral) (base16)"] = 1,
+  ["Black Metal (Gorgoroth) (base16)"] = 1,
+  ["Black Metal (Immortal) (base16)"] = 1,
+  ["Black Metal (Khold) (base16)"] = 1,
+  ["Black Metal (Marduk) (base16)"] = 1,
+  ["Black Metal (Mayhem) (base16)"] = 1,
+  ["Black Metal (Nile) (base16)"] = 1,
+  ["Black Metal (Venom) (base16)"] = 1,
+  ["Black Metal (base16)"] = 1,
+  ["Blazer (Gogh)"] = 1,
+  ["Blazer"] = 1,
+  ["Bleh-1 (terminal.sexy)"] = 1,
+  ["Blue Dolphin (Gogh)"] = 1,
+  ["Blue Matrix"] = 1,
+  ["BlueBerryPie"] = 1,
+  ["BlueDolphin"] = 1,
+  ["Bluloco Light (Gogh)"] = 1,
+  ["Bluloco Zsh Light (Gogh)"] = 1,
+  ["BlulocoDark"] = 1,
+  ["BlulocoLight"] = 1,
+  ["Borland (Gogh)"] = 1,
+  ["Borland"] = 1,
+  ["Breadog (Gogh)"] = 1,
+  ["Breath (Gogh)"] = 1,
+  ["Breath Darker (Gogh)"] = 1,
+  ["Breath Light (Gogh)"] = 1,
+  ["Breath Silverfox (Gogh)"] = 1,
+  ["Breeze (Gogh)"] = 1,
+  ["Breeze"] = 1,
+  ["Brewer (base16)"] = 1,
+  ["Brewer (dark) (terminal.sexy)"] = 1,
+  ["Brewer (light) (terminal.sexy)"] = 1,
+  ["Bright (base16)"] = 1,
+  ["Bright Lights"] = 1,
+  ["Broadcast (Gogh)"] = 1,
+  ["Broadcast"] = 1,
+  ["Brogrammer (Gogh)"] = 1,
+  ["Brogrammer (base16)"] = 1,
+  ["Brogrammer"] = 1,
+  ["Brush Trees (base16)"] = 1,
+  ["Brush Trees Dark (base16)"] = 1,
+  ["Builtin Dark"] = 1,
+  ["Builtin Light"] = 1,
+  ["Builtin Pastel Dark"] = 1,
+  ["Builtin Solarized Dark"] = 1,
+  ["Builtin Solarized Light"] = 1,
+  ["Builtin Tango Dark"] = 1,
+  ["Builtin Tango Light"] = 1,
+  ["Butrin (Gogh)"] = 1,
+  ["C64 (Gogh)"] = 1,
+  ["C64"] = 1,
+  ["CGA"] = 1,
+  ["CLRS"] = 1,
+  ["Cai (Gogh)"] = 1,
+  ["Calamity"] = 1,
+  ["Campbell (Gogh)"] = 1,
+  ["Canvased Pastel (terminal.sexy)"] = 1,
+  ["Catch Me If You Can (terminal.sexy)"] = 1,
+  ["Catppuccin Frappe"] = 1,
+  ["Catppuccin Frappé (Gogh)"] = 1,
+  ["Catppuccin Latte (Gogh)"] = 1,
+  ["Catppuccin Latte"] = 1,
+  ["Catppuccin Macchiato (Gogh)"] = 1,
+  ["Catppuccin Macchiato"] = 1,
+  ["Catppuccin Mocha (Gogh)"] = 1,
+  ["Catppuccin Mocha"] = 1,
+  ["Chalk (Gogh)"] = 1,
+  ["Chalk (base16)"] = 1,
+  ["Chalk (dark) (terminal.sexy)"] = 1,
+  ["Chalk (light) (terminal.sexy)"] = 1,
+  ["Chalk"] = 1,
+  ["Chalkboard (Gogh)"] = 1,
+  ["Chalkboard"] = 1,
+  ["ChallengerDeep"] = 1,
+  ["Chameleon (Gogh)"] = 1,
+  ["Chester"] = 1,
+  ["Ciapre (Gogh)"] = 1,
+  ["Ciapre"] = 1,
+  ["Circus (base16)"] = 1,
+  ["City Lights (Gogh)"] = 1,
+  ["City Streets (terminal.sexy)"] = 1,
+  ["Classic Dark (base16)"] = 1,
+  ["Classic Light (base16)"] = 1,
+  ["Clone Of Ubuntu (Gogh)"] = 1,
+  ["Cloud (terminal.sexy)"] = 1,
+  ["Clrs (Gogh)"] = 1,
+  ["Cobalt 2 (Gogh)"] = 1,
+  ["Cobalt Neon (Gogh)"] = 1,
+  ["Cobalt Neon"] = 1,
+  ["Cobalt2"] = 1,
+  ["Codeschool (base16)"] = 1,
+  ["Codeschool (dark) (terminal.sexy)"] = 1,
+  ["Codeschool (light) (terminal.sexy)"] = 1,
+  ["Color Star (terminal.sexy)"] = 1,
+  ["Colorcli (Gogh)"] = 1,
+  ["Colorful Colors (terminal.sexy)"] = 1,
+  ["Colors (base16)"] = 1,
+  ["Count Von Count (terminal.sexy)"] = 1,
+  ["Crayon Pony Fish (Gogh)"] = 1,
+  ["CrayonPonyFish"] = 1,
+  ["Cupcake (base16)"] = 1,
+  ["Cupertino (base16)"] = 1,
+  ["CutiePro"] = 1,
+  ["Cyberdyne"] = 1,
+  ["DWM rob (terminal.sexy)"] = 1,
+  ["DanQing (base16)"] = 1,
+  ["DanQing Light (base16)"] = 1,
+  ["Darcula (base16)"] = 1,
+  ["Dark Ocean (terminal.sexy)"] = 1,
+  ["Dark Pastel (Gogh)"] = 1,
+  ["Dark Pastel"] = 1,
+  ["Dark Violet (base16)"] = 1,
+  ["Dark+"] = 1,
+  ["Darkside (Gogh)"] = 1,
+  ["Darkside"] = 1,
+  ["Darktooth (base16)"] = 1,
+  ["Dawn (terminal.sexy)"] = 1,
+  ["Deafened (terminal.sexy)"] = 1,
+  ["Decaf (base16)"] = 1,
+  ["Default (dark) (terminal.sexy)"] = 1,
+  ["Default (light) (terminal.sexy)"] = 1,
+  ["Default Dark (base16)"] = 1,
+  ["Default Light (base16)"] = 1,
+  ["Dehydration (Gogh)"] = 1,
+  ["Derp (terminal.sexy)"] = 1,
+  ["Desert (Gogh)"] = 1,
+  ["Desert"] = 1,
+  ["Digerati (terminal.sexy)"] = 1,
+  ["Dimmed Monokai (Gogh)"] = 1,
+  ["DimmedMonokai"] = 1,
+  ["Dissonance (Gogh)"] = 1,
+  ["Django"] = 1,
+  ["DjangoRebornAgain"] = 1,
+  ["DjangoSmooth"] = 1,
+  ["Doom Peacock"] = 1,
+  ["DoomOne"] = 1,
+  ["DotGov"] = 1,
+  ["Dotshare (terminal.sexy)"] = 1,
+  ["Dracula (Gogh)"] = 1,
+  ["Dracula (Official)"] = 1,
+  ["Dracula (base16)"] = 1,
+  ["Dracula"] = 1,
+  ["Dracula+"] = 1,
+  ["Duotone Dark"] = 1,
+  ["ENCOM"] = 1,
+  ["Earthsong (Gogh)"] = 1,
+  ["Earthsong"] = 1,
+  ["Edge Dark (base16)"] = 1,
+  ["Edge Light (base16)"] = 1,
+  ["Ef-Arbutus"] = 1,
+  ["Ef-Autumn"] = 1,
+  ["Ef-Bio"] = 1,
+  ["Ef-Cherie"] = 1,
+  ["Ef-Cyprus"] = 1,
+  ["Ef-Dark"] = 1,
+  ["Ef-Day"] = 1,
+  ["Ef-Deuteranopia-Dark"] = 1,
+  ["Ef-Deuteranopia-Light"] = 1,
+  ["Ef-Dream"] = 1,
+  ["Ef-Duo-Dark"] = 1,
+  ["Ef-Duo-Light"] = 1,
+  ["Ef-Elea-Dark"] = 1,
+  ["Ef-Elea-Light"] = 1,
+  ["Ef-Frost"] = 1,
+  ["Ef-Kassio"] = 1,
+  ["Ef-Light"] = 1,
+  ["Ef-Maris-Dark"] = 1,
+  ["Ef-Maris-Light"] = 1,
+  ["Ef-Melissa-Dark"] = 1,
+  ["Ef-Melissa-Light"] = 1,
+  ["Ef-Night"] = 1,
+  ["Ef-Reverie"] = 1,
+  ["Ef-Rosa"] = 1,
+  ["Ef-Spring"] = 1,
+  ["Ef-Summer"] = 1,
+  ["Ef-Symbiosis"] = 1,
+  ["Ef-Trio-Dark"] = 1,
+  ["Ef-Trio-Light"] = 1,
+  ["Ef-Tritanopia-Dark"] = 1,
+  ["Ef-Tritanopia-Light"] = 1,
+  ["Ef-Winter"] = 1,
+  ["Eighties (base16)"] = 1,
+  ["Eighties (dark) (terminal.sexy)"] = 1,
+  ["Eighties (light) (terminal.sexy)"] = 1,
+  ["Eldorado dark (terminal.sexy)"] = 1,
+  ["Eldritch"] = 1,
+  ["Elemental (Gogh)"] = 1,
+  ["Elemental"] = 1,
+  ["Elementary (Gogh)"] = 1,
+  ["Elementary"] = 1,
+  ["Elic (Gogh)"] = 1,
+  ["Elio (Gogh)"] = 1,
+  ["Embers (base16)"] = 1,
+  ["Embers (dark) (terminal.sexy)"] = 1,
+  ["Embers (light) (terminal.sexy)"] = 1,
+  ["Epiphany (terminal.sexy)"] = 1,
+  ["Eqie6 (terminal.sexy)"] = 1,
+  ["Equilibrium Dark (base16)"] = 1,
+  ["Equilibrium Gray Dark (base16)"] = 1,
+  ["Equilibrium Gray Light (base16)"] = 1,
+  ["Equilibrium Light (base16)"] = 1,
+  ["Erebus (terminal.sexy)"] = 1,
+  ["Espresso (Gogh)"] = 1,
+  ["Espresso (base16)"] = 1,
+  ["Espresso Libre (Gogh)"] = 1,
+  ["Espresso Libre"] = 1,
+  ["Espresso"] = 1,
+  ["Euphrasia (terminal.sexy)"] = 1,
+  ["Eva (base16)"] = 1,
+  ["Eva Dim (base16)"] = 1,
+  ["Everblush (Gogh)"] = 1,
+  ["Everblush"] = 1,
+  ["Everforest Dark (Gogh)"] = 1,
+  ["Everforest Dark Hard (Gogh)"] = 1,
+  ["Everforest Dark Medium (Gogh)"] = 1,
+  ["Everforest Dark Soft (Gogh)"] = 1,
+  ["Everforest Light (Gogh)"] = 1,
+  ["Everforest Light Hard (Gogh)"] = 1,
+  ["Everforest Light Medium (Gogh)"] = 1,
+  ["Everforest Light Soft (Gogh)"] = 1,
+  ["Fahrenheit"] = 1,
+  ["Fairy Floss (Gogh)"] = 1,
+  ["Fairy Floss Dark (Gogh)"] = 1,
+  ["Fairyfloss"] = 1,
+  ["FarSide (terminal.sexy)"] = 1,
+  ["Fideloper"] = 1,
+  ["Firefly Traditional"] = 1,
+  ["FirefoxDev"] = 1,
+  ["Firewatch"] = 1,
+  ["FishTank"] = 1,
+  ["Fishbone (terminal.sexy)"] = 1,
+  ["Fishtank (Gogh)"] = 1,
+  ["Flat (Gogh)"] = 1,
+  ["Flat (base16)"] = 1,
+  ["Flat Remix (Gogh)"] = 1,
+  ["Flat"] = 1,
+  ["Flatland (Gogh)"] = 1,
+  ["Flatland"] = 1,
+  ["Floraverse"] = 1,
+  ["ForestBlue"] = 1,
+  ["Foxnightly (Gogh)"] = 1,
+  ["Framer (base16)"] = 1,
+  ["Framer"] = 1,
+  ["Freya (Gogh)"] = 1,
+  ["FrontEndDelight"] = 1,
+  ["Frontend Delight (Gogh)"] = 1,
+  ["Frontend Fun Forrest (Gogh)"] = 1,
+  ["Frontend Galaxy (Gogh)"] = 1,
+  ["Fruit Soda (base16)"] = 1,
+  ["FunForrest"] = 1,
+  ["GJM (terminal.sexy)"] = 1,
+  ["Galaxy"] = 1,
+  ["Galizur"] = 1,
+  ["Geohot (Gogh)"] = 1,
+  ["Gigavolt (base16)"] = 1,
+  ["GitHub Dark"] = 1,
+  ["Github (Gogh)"] = 1,
+  ["Github (base16)"] = 1,
+  ["Github Dark (Gogh)"] = 1,
+  ["Github Light (Gogh)"] = 1,
+  ["Github"] = 1,
+  ["Glacier"] = 1,
+  ["Gnometerm (terminal.sexy)"] = 1,
+  ["Gogh (Gogh)"] = 1,
+  ["Gooey (Gogh)"] = 1,
+  ["Google (dark) (terminal.sexy)"] = 1,
+  ["Google (light) (terminal.sexy)"] = 1,
+  ["Google Dark (Gogh)"] = 1,
+  ["Google Dark (base16)"] = 1,
+  ["Google Light (Gogh)"] = 1,
+  ["Google Light (base16)"] = 1,
+  ["Gotham (Gogh)"] = 1,
+  ["Gotham (terminal.sexy)"] = 1,
+  ["Grandshell (terminal.sexy)"] = 1,
+  ["Grape (Gogh)"] = 1,
+  ["Grape"] = 1,
+  ["Grass (Gogh)"] = 1,
+  ["Grass"] = 1,
+  ["Grayscale (dark) (terminal.sexy)"] = 1,
+  ["Grayscale (light) (terminal.sexy)"] = 1,
+  ["Grayscale Dark (base16)"] = 1,
+  ["Grayscale Light (base16)"] = 1,
+  ["Green Screen (base16)"] = 1,
+  ["Greenscreen (dark) (terminal.sexy)"] = 1,
+  ["Greenscreen (light) (terminal.sexy)"] = 1,
+  ["Grey-green"] = 1,
+  ["Gruber (base16)"] = 1,
+  ["Gruvbox (Gogh)"] = 1,
+  ["Gruvbox Dark (Gogh)"] = 1,
+  ["Gruvbox Material (Gogh)"] = 1,
+  ["Gruvbox dark, hard (base16)"] = 1,
+  ["Gruvbox dark, medium (base16)"] = 1,
+  ["Gruvbox dark, pale (base16)"] = 1,
+  ["Gruvbox dark, soft (base16)"] = 1,
+  ["Gruvbox light, hard (base16)"] = 1,
+  ["Gruvbox light, medium (base16)"] = 1,
+  ["Gruvbox light, soft (base16)"] = 1,
+  ["GruvboxDark"] = 1,
+  ["GruvboxDarkHard"] = 1,
+  ["GruvboxLight"] = 1,
+  ["Guezwhoz"] = 1,
+  ["HaX0R_BLUE"] = 1,
+  ["HaX0R_GR33N"] = 1,
+  ["HaX0R_R3D"] = 1,
+  ["Hacktober"] = 1,
+  ["Hardcore (Gogh)"] = 1,
+  ["Hardcore (base16)"] = 1,
+  ["Hardcore"] = 1,
+  ["Harmonic16 Dark (base16)"] = 1,
+  ["Harmonic16 Light (base16)"] = 1,
+  ["Harper (Gogh)"] = 1,
+  ["Harper"] = 1,
+  ["Heetch Dark (base16)"] = 1,
+  ["Heetch Light (base16)"] = 1,
+  ["Helios (base16)"] = 1,
+  ["Hemisu Dark (Gogh)"] = 1,
+  ["Hemisu Light (Gogh)"] = 1,
+  ["Highway (Gogh)"] = 1,
+  ["Highway"] = 1,
+  ["Hipster Green (Gogh)"] = 1,
+  ["Hipster Green"] = 1,
+  ["Hivacruz"] = 1,
+  ["Homebrew (Gogh)"] = 1,
+  ["Homebrew Light (Gogh)"] = 1,
+  ["Homebrew Ocean (Gogh)"] = 1,
+  ["Homebrew"] = 1,
+  ["Hopscotch (base16)"] = 1,
+  ["Hopscotch"] = 1,
+  ["Hopscotch.256"] = 1,
+  ["Horizon Bright (Gogh)"] = 1,
+  ["Horizon Dark (Gogh)"] = 1,
+  ["Horizon Dark (base16)"] = 1,
+  ["Horizon Light (base16)"] = 1,
+  ["Humanoid dark (base16)"] = 1,
+  ["Humanoid light (base16)"] = 1,
+  ["Hurtado (Gogh)"] = 1,
+  ["Hurtado"] = 1,
+  ["Hybrid (Gogh)"] = 1,
+  ["Hybrid (terminal.sexy)"] = 1,
+  ["Hybrid"] = 1,
+  ["IC_Green_PPL"] = 1,
+  ["IC_Orange_PPL"] = 1,
+  ["IR Black (base16)"] = 1,
+  ["IR_Black"] = 1,
+  ["Ibm 3270 (High Contrast) (Gogh)"] = 1,
+  ["Ibm3270 (Gogh)"] = 1,
+  ["Ic Green Ppl (Gogh)"] = 1,
+  ["Ic Orange Ppl (Gogh)"] = 1,
+  ["Iceberg (Gogh)"] = 1,
+  ["Icy Dark (base16)"] = 1,
+  ["Idle Toes (Gogh)"] = 1,
+  ["Iiamblack (terminal.sexy)"] = 1,
+  ["Insignificato (terminal.sexy)"] = 1,
+  ["Invisibone (terminal.sexy)"] = 1,
+  ["Ir Black (Gogh)"] = 1,
+  ["Isotope (base16)"] = 1,
+  ["Isotope (dark) (terminal.sexy)"] = 1,
+  ["Isotope (light) (terminal.sexy)"] = 1,
+  ["Ivory Dark (terminal.sexy)"] = 1,
+  ["Ivory Light (terminal.sexy)"] = 1,
+  ["JWR dark (terminal.sexy)"] = 1,
+  ["Jackie Brown (Gogh)"] = 1,
+  ["Jackie Brown"] = 1,
+  ["Japanesque (Gogh)"] = 1,
+  ["Japanesque"] = 1,
+  ["Jason Wryan (terminal.sexy)"] = 1,
+  ["Jellybeans (Gogh)"] = 1,
+  ["Jellybeans"] = 1,
+  ["JetBrains Darcula"] = 1,
+  ["Jup (Gogh)"] = 1,
+  ["Kanagawa (Gogh)"] = 1,
+  ["Kanagawa Dragon (Gogh)"] = 1,
+  ["Kasugano (terminal.sexy)"] = 1,
+  ["Kibble (Gogh)"] = 1,
+  ["Kibble"] = 1,
+  ["Kimber (base16)"] = 1,
+  ["Kokuban (Gogh)"] = 1,
+  ["Kolorit"] = 1,
+  ["Konsolas"] = 1,
+  ["Lab Fox"] = 1,
+  ["Laser"] = 1,
+  ["Laserwave (Gogh)"] = 1,
+  ["Later This Evening (Gogh)"] = 1,
+  ["Later This Evening"] = 1,
+  ["Lavandula (Gogh)"] = 1,
+  ["Lavandula"] = 1,
+  ["Light White (terminal.sexy)"] = 1,
+  ["Liquid Carbon (Gogh)"] = 1,
+  ["Liquid Carbon Transparent (Gogh)"] = 1,
+  ["LiquidCarbon"] = 1,
+  ["LiquidCarbonTransparent"] = 1,
+  ["LiquidCarbonTransparentInverse"] = 1,
+  ["London Tube (base16)"] = 1,
+  ["Londontube (dark) (terminal.sexy)"] = 1,
+  ["Londontube (light) (terminal.sexy)"] = 1,
+  ["Lost Woods (terminal.sexy)"] = 1,
+  ["Low Contrast (terminal.sexy)"] = 1,
+  ["Lumifoo (terminal.sexy)"] = 1,
+  ["Lunaria Dark (Gogh)"] = 1,
+  ["Lunaria Eclipse (Gogh)"] = 1,
+  ["Lunaria Light (Gogh)"] = 1,
+  ["Macintosh (base16)"] = 1,
+  ["Maia (Gogh)"] = 1,
+  ["Man Page (Gogh)"] = 1,
+  ["Man Page"] = 1,
+  ["Mar (Gogh)"] = 1,
+  ["Mariana"] = 1,
+  ["Marrakesh (base16)"] = 1,
+  ["Marrakesh (dark) (terminal.sexy)"] = 1,
+  ["Marrakesh (light) (terminal.sexy)"] = 1,
+  ["Mashup Colors (terminal.sexy)"] = 1,
+  ["Materia (base16)"] = 1,
+  ["Material (Gogh)"] = 1,
+  ["Material (base16)"] = 1,
+  ["Material (terminal.sexy)"] = 1,
+  ["Material Darker (base16)"] = 1,
+  ["Material Lighter (base16)"] = 1,
+  ["Material Palenight (base16)"] = 1,
+  ["Material Vivid (base16)"] = 1,
+  ["Material"] = 1,
+  ["MaterialDark"] = 1,
+  ["MaterialDarker"] = 1,
+  ["MaterialDesignColors"] = 1,
+  ["MaterialOcean"] = 1,
+  ["Mathias (Gogh)"] = 1,
+  ["Mathias"] = 1,
+  ["Matrix (terminal.sexy)"] = 1,
+  ["Medallion (Gogh)"] = 1,
+  ["Medallion"] = 1,
+  ["Mellifluous"] = 1,
+  ["Mellow Purple (base16)"] = 1,
+  ["Mexico Light (base16)"] = 1,
+  ["Mikado (terminal.sexy)"] = 1,
+  ["Mikazuki (terminal.sexy)"] = 1,
+  ["Mirage"] = 1,
+  ["Miramare (Gogh)"] = 1,
+  ["Misterioso (Gogh)"] = 1,
+  ["Misterioso"] = 1,
+  ["Mocha (base16)"] = 1,
+  ["Mocha (dark) (terminal.sexy)"] = 1,
+  ["Mocha (light) (terminal.sexy)"] = 1,
+  ["Modus Operandi (Gogh)"] = 1,
+  ["Modus Operandi Tinted (Gogh)"] = 1,
+  ["Modus Vivendi (Gogh)"] = 1,
+  ["Modus Vivendi Tinted (Gogh)"] = 1,
+  ["Modus-Operandi"] = 1,
+  ["Modus-Operandi-Deuteranopia"] = 1,
+  ["Modus-Operandi-Tinted"] = 1,
+  ["Modus-Vivendi"] = 1,
+  ["Modus-Vivendi-Deuteranopia"] = 1,
+  ["Modus-Vivendi-Tinted"] = 1,
+  ["Modus-Vivendi-Tritanopia"] = 1,
+  ["Molokai (Gogh)"] = 1,
+  ["Molokai"] = 1,
+  ["Mona Lisa (Gogh)"] = 1,
+  ["MonaLisa"] = 1,
+  ["Mono (terminal.sexy)"] = 1,
+  ["Mono Amber (Gogh)"] = 1,
+  ["Mono Cyan (Gogh)"] = 1,
+  ["Mono Green (Gogh)"] = 1,
+  ["Mono Red (Gogh)"] = 1,
+  ["Mono Theme (terminal.sexy)"] = 1,
+  ["Mono White (Gogh)"] = 1,
+  ["Mono Yellow (Gogh)"] = 1,
+  ["Monokai (base16)"] = 1,
+  ["Monokai (dark) (terminal.sexy)"] = 1,
+  ["Monokai (light) (terminal.sexy)"] = 1,
+  ["Monokai (terminal.sexy)"] = 1,
+  ["Monokai Dark (Gogh)"] = 1,
+  ["Monokai Pro (Gogh)"] = 1,
+  ["Monokai Pro Ristretto (Gogh)"] = 1,
+  ["Monokai Remastered"] = 1,
+  ["Monokai Soda (Gogh)"] = 1,
+  ["Monokai Soda"] = 1,
+  ["Monokai Vivid"] = 1,
+  ["Moonfly (Gogh)"] = 1,
+  ["Morada (Gogh)"] = 1,
+  ["Mostly Bright (terminal.sexy)"] = 1,
+  ["Muse (terminal.sexy)"] = 1,
+  ["N0Tch2K (Gogh)"] = 1,
+  ["N0tch2k"] = 1,
+  ["Nancy (terminal.sexy)"] = 1,
+  ["Nature Suede (terminal.sexy)"] = 1,
+  ["Navy and Ivory (terminal.sexy)"] = 1,
+  ["Nebula (base16)"] = 1,
+  ["Neon (terminal.sexy)"] = 1,
+  ["Neon Night (Gogh)"] = 1,
+  ["Neon"] = 1,
+  ["Neopolitan (Gogh)"] = 1,
+  ["Neopolitan"] = 1,
+  ["Nep (Gogh)"] = 1,
+  ["Neutron (Gogh)"] = 1,
+  ["Neutron"] = 1,
+  ["Night Owl (Gogh)"] = 1,
+  ["Night Owlish Light"] = 1,
+  ["NightLion v1"] = 1,
+  ["NightLion v2"] = 1,
+  ["Nightfly (Gogh)"] = 1,
+  ["Nightlion V1 (Gogh)"] = 1,
+  ["Nightlion V2 (Gogh)"] = 1,
+  ["Nighty (Gogh)"] = 1,
+  ["Nocturnal Winter"] = 1,
+  ["Nord (Gogh)"] = 1,
+  ["Nord (base16)"] = 1,
+  ["Nord Light (Gogh)"] = 1,
+  ["Nova (base16)"] = 1,
+  ["Novel (Gogh)"] = 1,
+  ["Novel"] = 1,
+  ["Nucolors (terminal.sexy)"] = 1,
+  ["Nudge (terminal.sexy)"] = 1,
+  ["Numix Darkest (terminal.sexy)"] = 1,
+  ["NvimDark"] = 1,
+  ["NvimLight"] = 1,
+  ["Obsidian (Gogh)"] = 1,
+  ["Obsidian"] = 1,
+  ["Ocean (base16)"] = 1,
+  ["Ocean (dark) (terminal.sexy)"] = 1,
+  ["Ocean (light) (terminal.sexy)"] = 1,
+  ["Ocean Dark (Gogh)"] = 1,
+  ["Ocean"] = 1,
+  ["Oceanic Next (Gogh)"] = 1,
+  ["Oceanic-Next"] = 1,
+  ["OceanicMaterial"] = 1,
+  ["OceanicNext (base16)"] = 1,
+  ["Ollie (Gogh)"] = 1,
+  ["Ollie"] = 1,
+  ["Omni (Gogh)"] = 1,
+  ["One Dark (Gogh)"] = 1,
+  ["One Half Black (Gogh)"] = 1,
+  ["One Light (Gogh)"] = 1,
+  ["One Light (base16)"] = 1,
+  ["OneDark (base16)"] = 1,
+  ["OneHalfDark"] = 1,
+  ["OneHalfLight"] = 1,
+  ["Operator Mono Dark"] = 1,
+  ["Orangish (terminal.sexy)"] = 1,
+  ["Outrun Dark (base16)"] = 1,
+  ["Overnight Slumber"] = 1,
+  ["Oxocarbon Dark (Gogh)"] = 1,
+  ["PaleNightHC"] = 1,
+  ["Palenight (Gogh)"] = 1,
+  ["Pali (Gogh)"] = 1,
+  ["Panda (Gogh)"] = 1,
+  ["Pandora"] = 1,
+  ["Panels (terminal.sexy)"] = 1,
+  ["Paper (Gogh)"] = 1,
+  ["PaperColor Dark (base16)"] = 1,
+  ["PaperColor Light (base16)"] = 1,
+  ["Papercolor Dark (Gogh)"] = 1,
+  ["Papercolor Light (Gogh)"] = 1,
+  ["Paraiso (base16)"] = 1,
+  ["Paraiso (dark) (terminal.sexy)"] = 1,
+  ["Paraiso (light) (terminal.sexy)"] = 1,
+  ["Paraiso Dark (Gogh)"] = 1,
+  ["Paraiso Dark"] = 1,
+  ["Parker Brothers (terminal.sexy)"] = 1,
+  ["Pasque (base16)"] = 1,
+  ["Pastel White (terminal.sexy)"] = 1,
+  ["Paul Millr (Gogh)"] = 1,
+  ["PaulMillr"] = 1,
+  ["Pencil Dark (Gogh)"] = 1,
+  ["Pencil Light (Gogh)"] = 1,
+  ["PencilDark"] = 1,
+  ["PencilLight"] = 1,
+  ["Peppermint (Gogh)"] = 1,
+  ["Peppermint"] = 1,
+  ["PhD (base16)"] = 1,
+  ["Phrak1 (terminal.sexy)"] = 1,
+  ["Piatto Light"] = 1,
+  ["Pico (base16)"] = 1,
+  ["Pixiefloss (Gogh)"] = 1,
+  ["Pnevma (Gogh)"] = 1,
+  ["Pnevma"] = 1,
+  ["Poimandres Storm"] = 1,
+  ["Poimandres"] = 1,
+  ["Pop (base16)"] = 1,
+  ["Popping and Locking"] = 1,
+  ["Porple (base16)"] = 1,
+  ["Powershell (Gogh)"] = 1,
+  ["Predawn (Gogh)"] = 1,
+  ["Pretty and Pastel (terminal.sexy)"] = 1,
+  ["Pro (Gogh)"] = 1,
+  ["Pro Light"] = 1,
+  ["Pro"] = 1,
+  ["Pulp (terminal.sexy)"] = 1,
+  ["Purple People Eater (Gogh)"] = 1,
+  ["Purple Rain"] = 1,
+  ["Purpledream (base16)"] = 1,
+  ["Qualia (base16)"] = 1,
+  ["Quiet (Gogh)"] = 1,
+  ["Railscasts (base16)"] = 1,
+  ["Railscasts (dark) (terminal.sexy)"] = 1,
+  ["Railscasts (light) (terminal.sexy)"] = 1,
+  ["Rapture"] = 1,
+  ["Rasi (terminal.sexy)"] = 1,
+  ["Raycast_Dark"] = 1,
+  ["Raycast_Light"] = 1,
+  ["Rebecca (base16)"] = 1,
+  ["Red Alert (Gogh)"] = 1,
+  ["Red Alert"] = 1,
+  ["Red Phoenix (terminal.sexy)"] = 1,
+  ["Red Planet"] = 1,
+  ["Red Sands (Gogh)"] = 1,
+  ["Red Sands"] = 1,
+  ["Relaxed (Gogh)"] = 1,
+  ["Relaxed"] = 1,
+  ["Retro"] = 1,
+  ["Rezza (terminal.sexy)"] = 1,
+  ["Rippedcasts (Gogh)"] = 1,
+  ["Rippedcasts"] = 1,
+  ["Rosé Pine (Gogh)"] = 1,
+  ["Rosé Pine (base16)"] = 1,
+  ["Rosé Pine Dawn (Gogh)"] = 1,
+  ["Rosé Pine Dawn (base16)"] = 1,
+  ["Rosé Pine Moon (Gogh)"] = 1,
+  ["Rosé Pine Moon (base16)"] = 1,
+  ["Rouge 2"] = 1,
+  ["Royal (Gogh)"] = 1,
+  ["Royal"] = 1,
+  ["Rydgel (terminal.sexy)"] = 1,
+  ["Ryuuko"] = 1,
+  ["SOS (terminal.sexy)"] = 1,
+  ["Sagelight (base16)"] = 1,
+  ["Sakura (base16)"] = 1,
+  ["Sakura"] = 1,
+  ["Sandcastle (base16)"] = 1,
+  ["Sat (Gogh)"] = 1,
+  ["Scarlet Protocol"] = 1,
+  ["Sea Shells (Gogh)"] = 1,
+  ["SeaShells"] = 1,
+  ["Seafoam Pastel (Gogh)"] = 1,
+  ["Seafoam Pastel"] = 1,
+  ["Selenized Black (Gogh)"] = 1,
+  ["Selenized Dark (Gogh)"] = 1,
+  ["Selenized Light (Gogh)"] = 1,
+  ["Selenized White (Gogh)"] = 1,
+  ["Seoul256 (Gogh)"] = 1,
+  ["Seoul256 Light (Gogh)"] = 1,
+  ["Sequoia Monochrome"] = 1,
+  ["Sequoia Moonlight"] = 1,
+  ["Seti (Gogh)"] = 1,
+  ["Seti UI (base16)"] = 1,
+  ["Seti"] = 1,
+  ["Sex Colors (terminal.sexy)"] = 1,
+  ["Shades of Purple (base16)"] = 1,
+  ["Shaman (Gogh)"] = 1,
+  ["Shaman"] = 1,
+  ["Shapeshifter (base16)"] = 1,
+  ["Shapeshifter (dark) (terminal.sexy)"] = 1,
+  ["Shapeshifter (light) (terminal.sexy)"] = 1,
+  ["Shel (Gogh)"] = 1,
+  ["Shic (terminal.sexy)"] = 1,
+  ["Silk Dark (base16)"] = 1,
+  ["Silk Light (base16)"] = 1,
+  ["Simple Rainbow (terminal.sexy)"] = 1,
+  ["Slate (Gogh)"] = 1,
+  ["Slate"] = 1,
+  ["SleepyHollow"] = 1,
+  ["Smyck (Gogh)"] = 1,
+  ["Smyck"] = 1,
+  ["Snazzy (Gogh)"] = 1,
+  ["Snazzy (base16)"] = 1,
+  ["Snazzy"] = 1,
+  ["Soft Server (Gogh)"] = 1,
+  ["SoftServer"] = 1,
+  ["Solar Flare (base16)"] = 1,
+  ["Solar Flare Light (base16)"] = 1,
+  ["Solarized (dark) (terminal.sexy)"] = 1,
+  ["Solarized (light) (terminal.sexy)"] = 1,
+  ["Solarized Darcula (Gogh)"] = 1,
+  ["Solarized Darcula"] = 1,
+  ["Solarized Dark (Gogh)"] = 1,
+  ["Solarized Dark - Patched"] = 1,
+  ["Solarized Dark Higher Contrast (Gogh)"] = 1,
+  ["Solarized Dark Higher Contrast"] = 1,
+  ["Solarized Light (Gogh)"] = 1,
+  ["Sonokai (Gogh)"] = 1,
+  ["SpaceGray Eighties Dull"] = 1,
+  ["SpaceGray Eighties"] = 1,
+  ["SpaceGray"] = 1,
+  ["Spacedust (Gogh)"] = 1,
+  ["Spacedust"] = 1,
+  ["Spacegray (Gogh)"] = 1,
+  ["Spacegray Eighties (Gogh)"] = 1,
+  ["Spacegray Eighties Dull (Gogh)"] = 1,
+  ["Spacemacs (base16)"] = 1,
+  ["Sparky (Gogh)"] = 1,
+  ["Spiderman"] = 1,
+  ["Splurge (terminal.sexy)"] = 1,
+  ["Spring (Gogh)"] = 1,
+  ["Spring"] = 1,
+  ["Square (Gogh)"] = 1,
+  ["Square"] = 1,
+  ["Srcery (Gogh)"] = 1,
+  ["Sublette"] = 1,
+  ["Subliminal"] = 1,
+  ["Sugarplum"] = 1,
+  ["Summer Pop (Gogh)"] = 1,
+  ["Summerfruit Dark (base16)"] = 1,
+  ["Summerfruit Light (base16)"] = 1,
+  ["Sundried (Gogh)"] = 1,
+  ["Sundried"] = 1,
+  ["Swayr (terminal.sexy)"] = 1,
+  ["Sweet Eliverlara (Gogh)"] = 1,
+  ["Sweet Love (terminal.sexy)"] = 1,
+  ["Sweet Terminal (Gogh)"] = 1,
+  ["Symfonic"] = 1,
+  ["Symphonic (Gogh)"] = 1,
+  ["Synth Midnight Terminal Dark (base16)"] = 1,
+  ["Synth Midnight Terminal Light (base16)"] = 1,
+  ["Synthwave (Gogh)"] = 1,
+  ["Synthwave Alpha (Gogh)"] = 1,
+  ["SynthwaveAlpha"] = 1,
+  ["Tango (base16)"] = 1,
+  ["Tango (terminal.sexy)"] = 1,
+  ["Tango Adapted"] = 1,
+  ["Tango Half Adapted"] = 1,
+  ["Tangoesque (terminal.sexy)"] = 1,
+  ["Tartan (terminal.sexy)"] = 1,
+  ["Teerb (Gogh)"] = 1,
+  ["Teerb"] = 1,
+  ["Tender (Gogh)"] = 1,
+  ["Terminal Basic (Gogh)"] = 1,
+  ["Terminal Basic"] = 1,
+  ["Terminix Dark (Gogh)"] = 1,
+  ["Teva (terminal.sexy)"] = 1,
+  ["Thayer Bright (Gogh)"] = 1,
+  ["Thayer Bright"] = 1,
+  ["The Hulk"] = 1,
+  ["Tin (Gogh)"] = 1,
+  ["Tinacious Design (Dark)"] = 1,
+  ["Tinacious Design (Light)"] = 1,
+  ["Tokyo Night (Gogh)"] = 1,
+  ["Tokyo Night Day"] = 1,
+  ["Tokyo Night Light (Gogh)"] = 1,
+  ["Tokyo Night Moon"] = 1,
+  ["Tokyo Night Storm (Gogh)"] = 1,
+  ["Tokyo Night Storm"] = 1,
+  ["Tokyo Night"] = 1,
+  ["Tomorrow (Gogh)"] = 1,
+  ["Tomorrow (dark) (terminal.sexy)"] = 1,
+  ["Tomorrow (light) (terminal.sexy)"] = 1,
+  ["Tomorrow Night (Gogh)"] = 1,
+  ["Tomorrow Night Blue (Gogh)"] = 1,
+  ["Tomorrow Night Blue"] = 1,
+  ["Tomorrow Night Bright (Gogh)"] = 1,
+  ["Tomorrow Night Bright"] = 1,
+  ["Tomorrow Night Burns"] = 1,
+  ["Tomorrow Night Eighties (Gogh)"] = 1,
+  ["Tomorrow Night Eighties"] = 1,
+  ["Tomorrow Night"] = 1,
+  ["Tomorrow"] = 1,
+  ["Toy Chest (Gogh)"] = 1,
+  ["ToyChest"] = 1,
+  ["Treehouse (Gogh)"] = 1,
+  ["Treehouse"] = 1,
+  ["Trim Yer Beard (terminal.sexy)"] = 1,
+  ["Twilight (Gogh)"] = 1,
+  ["Twilight (base16)"] = 1,
+  ["Twilight (dark) (terminal.sexy)"] = 1,
+  ["Twilight (light) (terminal.sexy)"] = 1,
+  ["Twilight"] = 1,
+  ["Ubuntu"] = 1,
+  ["UltraDark"] = 1,
+  ["UltraViolent"] = 1,
+  ["UnderTheSea"] = 1,
+  ["Unikitty Dark (base16)"] = 1,
+  ["Unikitty Light (base16)"] = 1,
+  ["Unikitty Reversible (base16)"] = 1,
+  ["Unikitty"] = 1,
+  ["Unsifted Wheat (terminal.sexy)"] = 1,
+  ["Ura (Gogh)"] = 1,
+  ["Urple (Gogh)"] = 1,
+  ["Urple"] = 1,
+  ["VWbug (terminal.sexy)"] = 1,
+  ["Vacuous 2 (terminal.sexy)"] = 1,
+  ["Vag (Gogh)"] = 1,
+  ["Vaughn (Gogh)"] = 1,
+  ["Vaughn"] = 1,
+  ["Vesper"] = 1,
+  ["Vibrant Ink (Gogh)"] = 1,
+  ["VibrantInk"] = 1,
+  ["Vice Alt (base16)"] = 1,
+  ["Vice Dark (base16)"] = 1,
+  ["Violet Dark"] = 1,
+  ["Violet Light"] = 1,
+  ["VisiBlue (terminal.sexy)"] = 1,
+  ["VisiBone (terminal.sexy)"] = 1,
+  ["Visibone Alt. 2 (terminal.sexy)"] = 1,
+  ["Vs Code Dark+ (Gogh)"] = 1,
+  ["Vs Code Light+ (Gogh)"] = 1,
+  ["Warm Neon (Gogh)"] = 1,
+  ["WarmNeon"] = 1,
+  ["Website (Gogh)"] = 1,
+  ["Wez (Gogh)"] = 1,
+  ["Wez"] = 1,
+  ["Whimsy"] = 1,
+  ["Wild Cherry (Gogh)"] = 1,
+  ["WildCherry"] = 1,
+  ["Windows 10 (base16)"] = 1,
+  ["Windows 10 Light (base16)"] = 1,
+  ["Windows 95 (base16)"] = 1,
+  ["Windows 95 Light (base16)"] = 1,
+  ["Windows High Contrast (base16)"] = 1,
+  ["Windows High Contrast Light (base16)"] = 1,
+  ["Windows NT (base16)"] = 1,
+  ["Windows NT Light (base16)"] = 1,
+  ["Wombat (Gogh)"] = 1,
+  ["Wombat"] = 1,
+  ["Woodland (base16)"] = 1,
+  ["Wryan (Gogh)"] = 1,
+  ["Wryan"] = 1,
+  ["Wzoreck (Gogh)"] = 1,
+  ["X::DotShare (terminal.sexy)"] = 1,
+  ["X::Erosion (terminal.sexy)"] = 1,
+  ["XCode Dusk (base16)"] = 1,
+  ["Yousai (terminal.sexy)"] = 1,
+  ["Zenburn (Gogh)"] = 1,
+  ["Zenburn (base16)"] = 1,
+  ["Zenburn"] = 1,
+  ["aikofog (terminal.sexy)"] = 1,
+  ["arcoiris"] = 1,
+  ["astromouse (terminal.sexy)"] = 1,
+  ["ayu"] = 1,
+  ["ayu_light"] = 1,
+  ["carbonfox"] = 1,
+  ["catppuccin-frappe"] = 1,
+  ["catppuccin-latte"] = 1,
+  ["catppuccin-macchiato"] = 1,
+  ["catppuccin-mocha"] = 1,
+  ["coffee_theme"] = 1,
+  ["cyberpunk"] = 1,
+  ["darkermatrix"] = 1,
+  ["darkmatrix"] = 1,
+  ["darkmoss (base16)"] = 1,
+  ["dawnfox"] = 1,
+  ["dayfox"] = 1,
+  ["deep"] = 1,
+  ["dirtysea (base16)"] = 1,
+  ["duckbones"] = 1,
+  ["duskfox"] = 1,
+  ["farmhouse-dark"] = 1,
+  ["farmhouse-light"] = 1,
+  ["flexoki-dark"] = 1,
+  ["flexoki-light"] = 1,
+  ["hardhacker"] = 1,
+  ["hund (terminal.sexy)"] = 1,
+  ["iTerm2 Dark Background"] = 1,
+  ["iTerm2 Default"] = 1,
+  ["iTerm2 Light Background"] = 1,
+  ["iTerm2 Pastel Dark Background"] = 1,
+  ["iTerm2 Smoooooth"] = 1,
+  ["iTerm2 Tango Dark"] = 1,
+  ["iTerm2 Tango Light"] = 1,
+  ["iceberg-dark"] = 1,
+  ["iceberg-light"] = 1,
+  ["idea"] = 1,
+  ["idleToes"] = 1,
+  ["jmbi (terminal.sexy)"] = 1,
+  ["jubi"] = 1,
+  ["kanagawabones"] = 1,
+  ["kurokula"] = 1,
+  ["lovelace"] = 1,
+  ["matrix"] = 1,
+  ["midnight-in-mojave"] = 1,
+  ["neobones_dark"] = 1,
+  ["neobones_light"] = 1,
+  ["nightfox"] = 1,
+  ["niji"] = 1,
+  ["nord"] = 1,
+  ["nord-light"] = 1,
+  ["nordfox"] = 1,
+  ["pinky (base16)"] = 1,
+  ["primary"] = 1,
+  ["purplepeter"] = 1,
+  ["rebecca"] = 1,
+  ["rose-pine"] = 1,
+  ["rose-pine-dawn"] = 1,
+  ["rose-pine-moon"] = 1,
+  ["s3r0 modified (terminal.sexy)"] = 1,
+  ["seoulbones_dark"] = 1,
+  ["seoulbones_light"] = 1,
+  ["shades-of-purple"] = 1,
+  ["summercamp (base16)"] = 1,
+  ["synthwave"] = 1,
+  ["synthwave-everything"] = 1,
+  ["tender (base16)"] = 1,
+  ["terafox"] = 1,
+  ["theme2 (terminal.sexy)"] = 1,
+  ["thwump (terminal.sexy)"] = 1,
+  ["tlh (terminal.sexy)"] = 1,
+  ["tokyonight"] = 1,
+  ["tokyonight-day"] = 1,
+  ["tokyonight-storm"] = 1,
+  ["tokyonight_day"] = 1,
+  ["tokyonight_moon"] = 1,
+  ["tokyonight_night"] = 1,
+  ["tokyonight_storm"] = 1,
+  ["vimbones"] = 1,
+  ["vulcan (base16)"] = 1,
+  ["wilmersdorf"] = 1,
+  ["zenbones"] = 1,
+  ["zenbones_dark"] = 1,
+  ["zenburn (terminal.sexy)"] = 1,
+  ["zenburned"] = 1,
+  ["zenwritten_dark"] = 1,
+  ["zenwritten_light"] = 1,
+}
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
