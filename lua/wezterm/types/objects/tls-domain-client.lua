@@ -1,3 +1,5 @@
+---@meta
+
 ---The TlsDomainClient struct specifies information
 ---about how to connect to a [TLS Domain](https://wezterm.org/multiplexing.html#tls-domains).
 ---

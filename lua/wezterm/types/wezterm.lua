@@ -1,4 +1,5 @@
 ---@meta
+---@diagnostic disable:unused-local
 
 ---@module "wezterm.types.config"
 ---@module "wezterm.types.enum"
@@ -30,20 +31,22 @@
 ---@alias FormatItem "ResetAttributes"|FormatItemSpec
 
 ---This is a virtual modifier used by wezterm
----@alias Modifiers
----|"ALT"
----|"CTRL"
----|"ENHANCED_KEY"
----|"LEADER"
----|"LEFT_ALT"
----|"LEFT_CTRL"
----|"LEFT_SHIFT"
----|"NONE"
----|"RIGHT_ALT"
----|"RIGHT_CTRL"
----|"RIGHT_SHIFT"
----|"SHIFT"
----|"SUPER"
+---@enum (key) Modifiers
+local modifiers = {
+  ALT = 1,
+  CTRL = 1,
+  ENHANCED_KEY = 1,
+  LEADER = 1,
+  LEFT_ALT = 1,
+  LEFT_CTRL = 1,
+  LEFT_SHIFT = 1,
+  NONE = 1,
+  RIGHT_ALT = 1,
+  RIGHT_CTRL = 1,
+  RIGHT_SHIFT = 1,
+  SHIFT = 1,
+  SUPER = 1,
+}
 
 ---Configures whether the window has a title bar and/or resizable border.
 ---
@@ -70,33 +73,125 @@
 ---                                                    This option doesn't make sense to use without
 ---                                                    also including `"TITLE|RESIZE"` in the set of decorations
 ---
----@alias WindowDecorations
----|"NONE"
----|"TITLE"
----|"RESIZE"
----|"MACOS_FORCE_DISABLE_SHADOW"
----|"MACOS_FORCE_ENABLE_SHADOW"
----|"MACOS_FORCE_SQUARE_CORNERS"
----|"TITLE|RESIZE"
----|"TITLE|MACOS_FORCE_DISABLE_SHADOW"
----|"TITLE|MACOS_FORCE_ENABLE_SHADOW"
----|"RESIZE|INTEGRATED_BUTTONS"
----|"RESIZE|MACOS_FORCE_DISABLE_SHADOW"
----|"RESIZE|MACOS_FORCE_ENABLE_SHADOW"
----|"RESIZE|MACOS_FORCE_SQUARE_CORNERS"
----|"TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
----|"TITLE|RESIZE|MACOS_FORCE_ENABLE_SHADOW"
----|"TITLE|RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
----|"RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"
----|"RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"
----|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"
----|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"
----|"TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
----Add other valid combinations if needed
+---@enum (key) WindowDecorations
+local window_decorations = {
+  NONE = 1,
 
----@alias PaletteAnsi "black"|"maroon"|"green"|"olive"|"navy"|"purple"|"teal"|"silver"
----@alias PaletteBrights "grey"|"red"|"lime"|"yellow"|"blue"|"fuchsia"|"aqua"|"white"
----@alias AnsiColor "Black"|"Maroon"|"Green"|"Olive"|"Navy"|"Purple"|"Teal"|"Silver"|"Grey"|"Red"|"Lime"|"Yellow"|"Blue"|"Fuchsia"|"Aqua"|"White"
+  TITLE = 1,
+
+  RESIZE = 1,
+
+  MACOS_FORCE_DISABLE_SHADOW = 1,
+  MACOS_FORCE_ENABLE_SHADOW = 1,
+  MACOS_FORCE_SQUARE_CORNERS = 1,
+
+  ["TITLE|RESIZE"] = 1,
+  ["RESIZE|TITLE"] = 1,
+
+  ["TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
+
+  ["TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
+
+  ["RESIZE|INTEGRATED_BUTTONS"] = 1,
+  ["INTEGRATED_BUTTONS|RESIZE"] = 1,
+
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["RESIZE|MACOS_FORCE_SQUARE_CORNERS"] = 1,
+
+  ["MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["MACOS_FORCE_SQUARE_CORNERS|RESIZE"] = 1,
+
+  ["TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["RESIZE|TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["TITLE|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|RESIZE|TITLE"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|TITLE|RESIZE"] = 1,
+
+  ["TITLE|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["RESIZE|TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["TITLE|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE|TITLE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|TITLE|RESIZE"] = 1,
+
+  ["TITLE|RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
+  ["RESIZE|TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
+  ["TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|RESIZE"] = 1,
+  ["RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|TITLE"] = 1,
+  ["MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|RESIZE|TITLE"] = 1,
+  ["MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|TITLE|RESIZE"] = 1,
+
+  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
+
+  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW|INTEGRATED_BUTTONS"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
+
+  -- TODO: Do the 24 combinations for each of the remaining elements
+  ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+
+  ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+
+  ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
+  ---Add other valid combinations if needed
+}
+
+---@enum (key) PaletteAnsi
+local palette_ansi = {
+  black = 1,
+  green = 1,
+  maroon = 1,
+  navy = 1,
+  olive = 1,
+  purple = 1,
+  silver = 1,
+  teal = 1,
+}
+
+---@enum (key) PaletteBrights
+local palette_brights = {
+  aqua = 1,
+  blue = 1,
+  fuchsia = 1,
+  grey = 1,
+  lime = 1,
+  red = 1,
+  white = 1,
+  yellow = 1,
+}
+
+---@enum (key) AnsiColor
+local ansi_color = {
+  Aqua = 1,
+  Black = 1,
+  Blue = 1,
+  Fuchsia = 1,
+  Green = 1,
+  Grey = 1,
+  Lime = 1,
+  Maroon = 1,
+  Navy = 1,
+  Olive = 1,
+  Purple = 1,
+  Red = 1,
+  Silver = 1,
+  Teal = 1,
+  White = 1,
+  Yellow = 1,
+}
 
 ---@class TabBarColor
 ---The color of the background area for the tab.
@@ -185,8 +280,7 @@
 --- 2. `selection` otherwise
 ---
 ---@field copy_mode_active_highlight_bg? ColorSpec
----Use [`AnsiColor`](lua://AnsiColor)
----to specify one of the ANSI color palette values
+---Use `AnsiColor` to specify one of the ANSI color palette values
 ---(index 0-15), using one of the following values:
 ---
 --- - `"Black"`
@@ -205,19 +299,21 @@
 --- - `"Fuchsia"`
 --- - `"Aqua"`
 --- - `"White"`
+---
+---For more information, see:
+--- - [`AnsiColor`](lua://AnsiColor)
 ---
 ---@field copy_mode_active_highlight_fg? ColorSpec
 ---Colors for `copy_mode` and `quick_select`.
 ---
 ---In `copy_mode`, the color of the active text is:
 ---
---- 1. `copy_mode_active_highlight` if additional text
----                               was selected using the mouse
---- 2. `selection` otherwise
+--- - `copy_mode_active_highlight` if additional text
+---   was selected using the mouse
+--- - `selection` otherwise
 ---
 ---@field copy_mode_inactive_highlight_bg? ColorSpec
----Use [`AnsiColor`](lua://AnsiColor)
----to specify one of the ANSI color palette values
+---Use `AnsiColor` to specify one of the ANSI color palette values
 ---(index 0-15), using one of the following values:
 ---
 --- - `"Black"`
@@ -236,6 +332,9 @@
 --- - `"Fuchsia"`
 --- - `"Aqua"`
 --- - `"White"`
+---
+---For more information, see:
+--- - [`AnsiColor`](lua://AnsiColor)
 ---
 ---@field copy_mode_inactive_highlight_fg? ColorSpec
 ---The background color of the cursor.
@@ -283,90 +382,98 @@
 ---
 ---@field visual_bell? string
 
----@alias FontWeight
----|"Regular"
----|"Black"
----|"Bold"
----|"Book"
----|"DemiBold"
----|"DemiLight"
----|"ExtraBlack"
----|"ExtraBold"
----|"ExtraLight"
----|"Light"
----|"Medium"
----|"Thin"
+---@enum (key) FontWeight
+local font_weight = {
+  Black = 1,
+  Bold = 1,
+  Book = 1,
+  DemiBold = 1,
+  DemiLight = 1,
+  ExtraBlack = 1,
+  ExtraBold = 1,
+  ExtraLight = 1,
+  Light = 1,
+  Medium = 1,
+  Regular = 1,
+  Thin = 1,
+}
 
----@alias FontStretch
----|"Normal"
----|"Condensed"
----|"Expanded"
----|"ExtraCondensed"
----|"ExtraExpanded"
----|"SemiCondensed"
----|"SemiExpanded"
----|"UltraCondensed"
----|"UltraExpanded"
+---@enum (key) FontStretch
+local font_stretch = {
+  Condensed = 1,
+  Expanded = 1,
+  ExtraCondensed = 1,
+  ExtraExpanded = 1,
+  Normal = 1,
+  SemiCondensed = 1,
+  SemiExpanded = 1,
+  UltraCondensed = 1,
+  UltraExpanded = 1,
+}
 
----@alias FreeTypeLoadFlags
----|"DEFAUlT"
----|"NO_HINTING"
----|"NO_BITMAP"
----|"FORCE_AUTOHINT"
----|"MONOCHROME"
----|"NO_AUTOHINT"
+---@enum (key) FreeTypeLoadFlags
+local freetype_load_flags = {
+  DEFAUlT = 1,
+  FORCE_AUTOHINT = 1,
+  MONOCHROME = 1,
+  NO_AUTOHINT = 1,
+  NO_BITMAP = 1,
+  NO_HINTING = 1,
+}
 
----@alias HarfbuzzFeatures
----|"calt=0"
----|"clig=0"
----|"liga=0"
----|"calt=1"
----|"clig=1"
----|"liga=1"
----|"zero" -- `0`
----|"onum" -- numbers
----|"cv01"
----|"cv02"
----|"cv03"
----|"cv04"
----|"cv05"
----|"cv06"
----|"cv07"
----|"cv08"
----|"cv09"
----|"cv10"
----|"cv11" -- numbers
----|"cv12" -- numbers
----|"cv13" -- numbers
----|"cv14" -- numbers
----|"cv15" -- `*`
----|"cv16" -- `*`
----|"cv17" -- `~`
----|"cv18" -- `%`
----|"cv19" -- `<=`
----|"cv20" -- `<=`
----|"cv21"
----|"cv22"
----|"cv23" -- `>=`
----|"cv24" -- `/=`
----|"cv25" -- `.-`
----|"cv26" -- `:-`
----|"cv27" -- `[]`
----|"cv28" -- `{. .}`
----|"cv29" -- `{}`
----|"cv30" -- `|`
----|"cv31" -- `()`
----|"cv32" -- `.=`
----|"ss01"
----|"ss02" -- `<=`, `>=`
----|"ss03" -- `&`
----|"ss04" -- `$`
----|"ss05" -- `@`
----|"ss06" -- `\\`
----|"ss07" -- `=~`, `!~`
----|"ss08" -- `==`, `===`, `!=`, `!==`
----|"ss09" -- `>>=`, `<<=`, `||=`, `|=`
----|"ss10"
+---@enum (key) HarfbuzzFeatures
+local harfbuzz_features = {
+  ["calt=0"] = 1,
+  ["calt=1"] = 1,
+  ["clig=0"] = 1,
+  ["clig=1"] = 1,
+  ["liga=0"] = 1,
+  ["liga=1"] = 1,
+  cv01 = 1,
+  cv02 = 1,
+  cv03 = 1,
+  cv04 = 1,
+  cv05 = 1,
+  cv06 = 1,
+  cv07 = 1,
+  cv08 = 1,
+  cv09 = 1,
+  cv10 = 1,
+  cv11 = 1, -- numbers
+  cv12 = 1, -- numbers
+  cv13 = 1, -- numbers
+  cv14 = 1, -- numbers
+  cv15 = 1, -- `*`
+  cv16 = 1, -- `*`
+  cv17 = 1, -- `~`
+  cv18 = 1, -- `%`
+  cv19 = 1, -- `<=`
+  cv20 = 1, -- `<=`
+  cv21 = 1,
+  cv22 = 1,
+  cv23 = 1, -- `>=`
+  cv24 = 1, -- `/=`
+  cv25 = 1, -- `.-`
+  cv26 = 1, -- `:-`
+  cv27 = 1, -- `[]`
+  cv28 = 1, -- `{. .}`
+  cv29 = 1, -- `{}`
+  cv30 = 1, -- `|`
+  cv31 = 1, -- `()`
+  cv32 = 1, -- `.=`
+  onum = 1, -- numbers
+  ss01 = 1,
+  ss02 = 1, -- `<=`, `>=`
+  ss03 = 1, -- `&`
+  ss04 = 1, -- `$`
+  ss05 = 1, -- `@`
+  ss06 = 1, -- `\\`
+  ss07 = 1, -- `=~`, `!~`
+  ss08 = 1, -- `==`, `===`, `!=`, `!==`
+  ss09 = 1, -- `>>=`, `<<=`, `||=`, `|=`
+  ss10 = 1,
+  zero = 1, -- `0`
+}
 
 ---@class FontAttributes
 ---Whether the font should be a bold variant.
@@ -651,21 +758,25 @@
 
 ---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|Action|nil
 
----@alias CursorStyle
----|"BlinkingBar"
----|"BlinkingBlock"
----|"BlinkingUnderline"
----|"SteadyBar"
----|"SteadyBlock"
----|"SteadyUnderline"
+---@enum (key) CursorStyle
+local cursor_style = {
+  BlinkingBar = 1,
+  BlinkingBlock = 1,
+  BlinkingUnderline = 1,
+  SteadyBar = 1,
+  SteadyBlock = 1,
+  SteadyUnderline = 1,
+}
 
----@alias Direction
----|"Left"
----|"Right"
----|"Up"
----|"Down"
----|"Next"
----|"Prev"
+---@enum (key) Direction
+local direction = {
+  Down = 1,
+  Left = 1,
+  Next = 1,
+  Prev = 1,
+  Right = 1,
+  Up = 1,
+}
 
 ---@alias EasingFunction
 ---|"Constant"
@@ -676,30 +787,34 @@
 ---|"Linear"
 ---|{ CubicBezier: number[] }
 
----@alias Stretch
----|"Normal"
----|"Condensed"
----|"Expanded"
----|"ExtraCondensed"
----|"ExtraExpanded"
----|"SemiCondensed"
----|"SemiExpanded"
----|"UltraCondensed"
----|"UltraExpanded"
+---@enum (key) Stretch
+local stretch = {
+  Condensed = 1,
+  Expanded = 1,
+  ExtraCondensed = 1,
+  ExtraExpanded = 1,
+  Normal = 1,
+  SemiCondensed = 1,
+  SemiExpanded = 1,
+  UltraCondensed = 1,
+  UltraExpanded = 1,
+}
 
----@alias Weight
----|"Regular"
----|"Black"
----|"Bold"
----|"Book"
----|"DemiBold"
----|"DemiLight"
----|"ExtraBlack"
----|"ExtraBold"
----|"ExtraLight"
----|"Light"
----|"Medium"
----|"Thin"
+---@enum (key) Weight
+local weight = {
+  Black = 1,
+  Bold = 1,
+  Book = 1,
+  DemiBold = 1,
+  DemiLight = 1,
+  ExtraBlack = 1,
+  ExtraBold = 1,
+  ExtraLight = 1,
+  Light = 1,
+  Medium = 1,
+  Regular = 1,
+  Thin = 1,
+}
 
 ---@class ScreenInformation
 ---@field name string
@@ -712,7 +827,7 @@
 ---@class GuiScreensInfo
 ---@field main ScreenInformation
 ---@field active ScreenInformation
----@field byName { [string]: ScreenInformation }
+---@field byName table<string, ScreenInformation>
 ---@field origin_x number
 ---@field origin_y number
 ---@field virtual_height number

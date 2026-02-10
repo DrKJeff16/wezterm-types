@@ -1,6 +1,21 @@
 ---@meta
+---@diagnostic disable:unused-local
 
----@alias LocalProcessStatus "Idle"|"Run"|"Sleep"|"Stop"|"Zombie"|"Tracing"|"Dead"|"Wakekill"|"Waking"|"Parked"|"LockBlocked"|"Unknown"
+---@enum (key) LocalProcessStatus
+local local_process_status = {
+  Dead = 1,
+  Idle = 1,
+  LockBlocked = 1,
+  Parked = 1,
+  Run = 1,
+  Sleep = 1,
+  Stop = 1,
+  Tracing = 1,
+  Unknown = 1,
+  Wakekill = 1,
+  Waking = 1,
+  Zombie = 1,
+}
 
 ---Represents a process running on the local machine.
 ---

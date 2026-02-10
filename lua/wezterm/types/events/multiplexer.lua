@@ -1,5 +1,9 @@
 ---@meta
+---@diagnostic disable:unused-local
 
----@alias MultiplexerEvent "mux-is-process-stateful"|"mux-startup"
-
+---@enum (key) MultiplexerEvent
+local mux_event = {
+  ["mux-is-process-stateful"] = 1,
+  ["mux-startup"] = 1,
+}
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
