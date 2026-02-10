@@ -1,8 +1,4 @@
-<div align="center">
-
 # Credits
-
-</div>
 
 ## Maintainers
 
