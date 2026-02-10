@@ -6,101 +6,68 @@
 - [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48)
 - [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
+<img alt="Showcase" src="https://github.com/user-attachments/assets/f17a51b0-65dc-44de-bc51-c19ef0ee1798" />
+
 This project aims to provide [LuaCATS](https://github.com/LuaCATS)-like
 [Lua Language Server type annotations](https://luals.github.io/wiki/annotations/) for your
 [WezTerm](https://github.com/wezterm/wezterm) config.
 
 **NOTE**: While this was made with an aim to be thorough you should always double-check
-the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html) for any missing
-or unclear types.
+the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html)
+for any missing or unclear types.
 
-**Examples can be found in**
-[EXAMPLES.md](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
+Examples can be found [here](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
+
+## Features
+
+- LuaCATS-like type annotations
+- [Built-in colorschemes included](https://github.com/DrKJeff16/wezterm-types/blob/main/lua/wezterm/types/colorschemes.lua) (`config.color_scheme`)
+- Up-to-date descriptions
+- Function overrides (e.g. `wezterm.on()`)
+- [Neovim](https://neovim.io/) support:
+  - Through [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim)
+  - Through the built-in LSP API
+- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
+  then editing your config in that directory
 
 ---
 
 ## Table of Contents
 
-- [Features](#features)
 - [Installation](#installation)
-  - [Neovim](#neovim)
   - [LuaRocks](#luarocks)
+  - [Neovim](#neovim)
 - [Usage](#usage)
+  - [Using `lazydev.nvim`](#using-lazydevnvim)
+  - [Using The Built-in Neovim LSP](#using-the-built-in-neovim-lsp)
 - [Structure](#structure)
 - [License](#license)
 
 ---
 
-## Features
-
-- LuaCATS-like type annotations
-- [Built-in colorschemes included](./lua/wezterm/types/colorschemes.lua) (`config.color_scheme`)
-- Up-to-date descriptions
-- Function overrides (_e.g. `wezterm.on()`_)
-- Neovim support through [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim)
-- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
-  and editing your config in that directory
-
----
-
 ## Installation
-
-### Neovim
-
-For [Neovim](https://github.com/neovim/neovim) users, we recommend using
-[`folke/lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager,
-to be used with [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim):
-
-```lua
-{
-  'folke/lazydev.nvim',
-  ft = 'lua',
-  dependencies = {
-    {
-      'DrKJeff16/wezterm-types',
-      lazy = true,
-      version = false, -- Get the latest version
-    },
-  },
-  opts = {
-    library = {
-      -- Other library configs...
-      { path = 'wezterm-types', mods = { 'wezterm' } },
-    },
-  },
-}
-```
-
-If you download this repo under a diferent name, you can use the following instead:
-
-```lua
-{
-  'folke/lazydev.nvim',
-  ft = 'lua',
-  dependencies = {
-    {
-      'DrKJeff16/wezterm-types',
-      lazy = true,
-      name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
-      version = false, -- Get the latest version
-    },
-  },
-  opts = {
-    library = {
-      -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
-      { path = '<my_custom_name>', mods = { 'wezterm' } },
-    },
-  },
-}
-```
 
 ### LuaRocks
 
-You can now install this with LuaRocks:
+You can install `wezterm-types` using LuaRocks:
 
 ```bash
 luarocks install wezterm-types # Global install
 luarocks install --local wezterm-types # Local install
+```
+
+To get it running in Neovim please refer to
+[this discussion](https://github.com/DrKJeff16/wezterm-types/discussions/93).
+
+### Neovim
+
+We recommend using [`folke/lazy.nvim`](https://github.com/folke/lazy.nvim) as a package manager:
+
+```lua
+{
+  'DrKJeff16/wezterm-types',
+  version = false, -- Get the latest version
+},
 ```
 
 ---
@@ -124,6 +91,66 @@ return config
 
 These annotations enable the **Lua Language Server** to provide proper type checking
 and autocompletion for WezTerm configuration options.
+
+### Using `lazydev.nvim`
+
+Install [`lazydev.nvim`](https://github.com/folke/lazydev.nvim) as suggested:
+
+```lua
+{
+  'folke/lazydev.nvim',
+  ft = 'lua',
+  dependencies = { 'DrKJeff16/wezterm-types' },
+  opts = {
+    library = {
+      -- Other library configs...
+      { path = 'wezterm-types', mods = { 'wezterm' } },
+    },
+  },
+}
+```
+
+If you download this repo under a diferent name, you can use the following instead:
+
+```lua
+{
+  'folke/lazydev.nvim',
+  ft = 'lua',
+  dependencies = {
+    {
+      'DrKJeff16/wezterm-types',
+      name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
+    },
+  },
+  opts = {
+    library = {
+      -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
+      { path = '<my_custom_name>', mods = { 'wezterm' } },
+    },
+  },
+}
+```
+
+### Using The Built-in Neovim LSP
+
+Add the install path of `wezterm-types` in your `lua_ls` config.
+
+```lua
+return {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  settings = {
+    Lua = {
+      workspace = {
+        library = {
+          -- Other library paths...
+          '</path/to/wezterm-types>',
+        },
+      },
+    },
+  },
+}
+```
 
 ---
 
@@ -236,21 +263,19 @@ and autocompletion for WezTerm configuration options.
 
 ---
 
-<a href="https://www.star-history.com/#DrKJeff16/wezterm-types&type=date&legend=bottom-right">
 <picture>
-<source
-media="(prefers-color-scheme: dark)"
-srcset="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&theme=dark&legend=bottom-right"
-/>
-<source
-media="(prefers-color-scheme: light)"
-srcset="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&legend=bottom-right"
-/>
-<img
-alt="Star History Chart"
-src="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&legend=bottom-right"
-/>
+  <source
+  media="(prefers-color-scheme: dark)"
+  srcset="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&theme=dark&legend=bottom-right"
+  />
+  <source
+  media="(prefers-color-scheme: light)"
+  srcset="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&legend=bottom-right"
+  />
+  <img
+  alt="Star History Chart"
+  src="https://api.star-history.com/svg?repos=DrKJeff16/wezterm-types&type=date&legend=bottom-right"
+  />
 </picture>
-</a>
 
 <!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->

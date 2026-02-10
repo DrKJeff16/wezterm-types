@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0       Last change: 2026 January 23
+*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 10
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -10,6 +10,8 @@
 - Roadmap <https://github.com/DrKJeff16/wezterm-types/discussions/48>
 - Discussions <https://github.com/DrKJeff16/wezterm-types/discussions>
 
+
+
 This project aims to provide LuaCATS <https://github.com/LuaCATS>-like Lua
 Language Server type annotations <https://luals.github.io/wiki/annotations/>
 for your WezTerm <https://github.com/wezterm/wezterm> config.
@@ -18,96 +20,63 @@ for your WezTerm <https://github.com/wezterm/wezterm> config.
 double-check the WezTerm Lua Reference
 <https://wezterm.org/config/lua/general.html> for any missing or unclear types.
 
-**Examples can be found in** EXAMPLES.md
+Examples can be found here
 <https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md>.
+
+
+FEATURES                                              *wezterm-types-features*
+
+- LuaCATS-like type annotations
+- Built-in colorschemes included <https://github.com/DrKJeff16/wezterm-types/blob/main/lua/wezterm/types/colorschemes.lua> (`config.color_scheme`)
+- Up-to-date descriptions
+- Function overrides (e.g. `wezterm.on()`)
+- Neovim <https://neovim.io/> support:
+    - Through `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>
+    - Through the built-in LSP API
+- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
+    then editing your config in that directory
 
 ------------------------------------------------------------------------------
 
 TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
 
-- |wezterm-types-features|
 - |wezterm-types-installation|
-    - |wezterm-types-neovim|
     - |wezterm-types-luarocks|
+    - |wezterm-types-neovim|
 - |wezterm-types-usage|
+    - |wezterm-types-using-`lazydev.nvim`|
+    - |wezterm-types-using-the-built-in-neovim-lsp|
 - |wezterm-types-structure|
 - |wezterm-types-license|
-
-------------------------------------------------------------------------------
-
-FEATURES                                              *wezterm-types-features*
-
-- LuaCATS-like type annotations
-- Built-in colorschemes included <./lua/wezterm/types/colorschemes.lua> (`config.color_scheme`)
-- Up-to-date descriptions
-- Function overrides (_e.g. wezterm.on()_)
-- Neovim support through `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>
-- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
-    and editing your config in that directory
 
 ------------------------------------------------------------------------------
 
 INSTALLATION                                      *wezterm-types-installation*
 
 
-NEOVIM ~
-
-For Neovim <https://github.com/neovim/neovim> users, we recommend using
-`folke/lazy.nvim` <https://github.com/folke/lazy.nvim> as a package manager, to
-be used with `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>:
-
->lua
-    {
-      'folke/lazydev.nvim',
-      ft = 'lua',
-      dependencies = {
-        {
-          'DrKJeff16/wezterm-types',
-          lazy = true,
-          version = false, -- Get the latest version
-        },
-      },
-      opts = {
-        library = {
-          -- Other library configs...
-          { path = 'wezterm-types', mods = { 'wezterm' } },
-        },
-      },
-    }
-<
-
-If you download this repo under a diferent name, you can use the following
-instead:
-
->lua
-    {
-      'folke/lazydev.nvim',
-      ft = 'lua',
-      dependencies = {
-        {
-          'DrKJeff16/wezterm-types',
-          lazy = true,
-          name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
-          version = false, -- Get the latest version
-        },
-      },
-      opts = {
-        library = {
-          -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
-          { path = '<my_custom_name>', mods = { 'wezterm' } },
-        },
-      },
-    }
-<
-
-
 LUAROCKS ~
 
-You can now install this with LuaRocks:
+You can install `wezterm-types` using LuaRocks:
 
 >bash
     luarocks install wezterm-types # Global install
     luarocks install --local wezterm-types # Local install
+<
+
+To get it running in Neovim please refer to this discussion
+<https://github.com/DrKJeff16/wezterm-types/discussions/93>.
+
+
+NEOVIM ~
+
+We recommend using `folke/lazy.nvim` <https://github.com/folke/lazy.nvim> as a
+package manager:
+
+>lua
+    {
+      'DrKJeff16/wezterm-types',
+      version = false, -- Get the latest version
+    },
 <
 
 ------------------------------------------------------------------------------
@@ -131,6 +100,69 @@ A useful example:
 
 These annotations enable the **Lua Language Server** to provide proper type
 checking and autocompletion for WezTerm configuration options.
+
+
+USING LAZYDEV.NVIM ~
+
+Install `lazydev.nvim` <https://github.com/folke/lazydev.nvim> as suggested:
+
+>lua
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      dependencies = { 'DrKJeff16/wezterm-types' },
+      opts = {
+        library = {
+          -- Other library configs...
+          { path = 'wezterm-types', mods = { 'wezterm' } },
+        },
+      },
+    }
+<
+
+If you download this repo under a diferent name, you can use the following
+instead:
+
+>lua
+    {
+      'folke/lazydev.nvim',
+      ft = 'lua',
+      dependencies = {
+        {
+          'DrKJeff16/wezterm-types',
+          name = '<my_custom_name>', -- CUSTOM DIRECTORY NAME
+        },
+      },
+      opts = {
+        library = {
+          -- MAKE SURE TO MATCH THE PLUGIN DIRECTORY'S NAME
+          { path = '<my_custom_name>', mods = { 'wezterm' } },
+        },
+      },
+    }
+<
+
+
+USING THE BUILT-IN NEOVIM LSP ~
+
+Add the install path of `wezterm-types` in your `lua_ls` config.
+
+>lua
+    return {
+      cmd = { 'lua-language-server' },
+      filetypes = { 'lua' },
+      settings = {
+        Lua = {
+          workspace = {
+            library = {
+              -- Other library paths...
+              '</path/to/wezterm-types>',
+            },
+          },
+        },
+      },
+    }
+<
 
 ------------------------------------------------------------------------------
 
