@@ -1,32 +1,40 @@
 ---@meta
 
+---@diagnostic disable:unused-local
+
 ---@module "wezterm.types.colorschemes"
 ---@module "wezterm.types.enum"
 ---@module "wezterm.types.events"
 ---@module "wezterm.types.objects"
 ---@module "wezterm.types.wezterm"
 
----@alias QuickSelectAlphabet
----|"asdfqwerzxcvjklmiuopghtybn"
----|"asdfqweryxcvjkluiopmghtzbn"
----|"qsdfazerwxcvjklmuiopghtybn"
----|"aoeuqjkxpyhtnsgcrlmwvzfidb"
----|"arstqwfpzxcvneioluymdhgjbk"
+---@enum (key) QuickSelectAlphabet
+local QSA = {
+  asdfqwerzxcvjklmiuopghtybn = 1,
+  asdfqweryxcvjkluiopmghtzbn = 1,
+  qsdfazerwxcvjklmuiopghtybn = 1,
+  aoeuqjkxpyhtnsgcrlmwvzfidb = 1,
+  arstqwfpzxcvneioluymdhgjbk = 1,
+}
 
----@alias DroppedFileQuoting
----|"None"
----|"Posix"
----|"SpacesOnly"
----|"Windows"
----|"WindowsAlwaysQuoted"
+---@enum (key) DroppedFileQuoting
+local DFQ = {
+  None = 1,
+  Posix = 1,
+  SpacesOnly = 1,
+  Windows = 1,
+  WindowsAlwaysQuoted = 1,
+}
 
----@alias DefaultCursorStyle
----|"BlinkingBar"
----|"BlinkingBlock"
----|"BlinkingUnderline"
----|"SteadyBar"
----|"SteadyBlock"
----|"SteadyUnderline"
+---@enum (key) DefaultCursorStyle
+local DCS = {
+  BlinkingBar = 1,
+  BlinkingBlock = 1,
+  BlinkingUnderline = 1,
+  SteadyBar = 1,
+  SteadyBlock = 1,
+  SteadyUnderline = 1,
+}
 
 ---@class HsbTransform
 ---@field hue? number
@@ -51,12 +59,14 @@
 ---@field fade_out_function? EasingFunction
 ---@field target? "BackgroundColor"|"CursorColor"
 
----@alias NotifyHandler
----|"AlwaysShow" Show the notification regardless of the current focus
----|"NeverShow" Never show the notification
----|"SuppressFromFocusedPane" Show the notification unless it was generated from the currently focused pane
----|"SuppressFromFocusedTab" Show the notification unless it was generated from the currently focused tab
----|"SuppressFromFocusedWindow" Show the notification unless it was generated from the currently focused window
+---@enum (key) NotifyHandler
+local NH = {
+  AlwaysShow = 1,
+  NeverShow = 1,
+  SuppressFromFocusedPane = 1,
+  SuppressFromFocusedTab = 1,
+  SuppressFromFocusedWindow = 1,
+}
 
 ---@class CellWidth
 ---@field first integer
@@ -68,7 +78,7 @@
 ---@class BackgroundLayer
 ---Defines the source of the layer texture data.
 ---
----@field source? { File: string, speed: number? }|{ Gradient: Gradient, Color: string }
+---@field source? { File: string, speed?: number }|{ Gradient: Gradient, Color: string }
 ---Controls whether the layer is fixed to the viewport or moves as it scrolls:
 ---
 --- - `"Fixed"`: (default) to not move as the window scrolls
