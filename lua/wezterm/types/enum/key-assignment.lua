@@ -1,58 +1,72 @@
 ---@meta
+---@diagnostic disable:unused-local
 
 ---TODO: Make key and mods more specific
 
----@alias CharSelect
----|"RecentlyUsed"
----|"SmileysAndEmotion"
----|"PeopleAndBody"
----|"AnimalsAndNature"
----|"FoodAndDrink"
----|"TravelAndPlaces"
----|"Activities"
----|"Objects"
----|"Symbols"
----|"Flags"
----|"NerdFonts"
----|"UnicodeNames"
+---@enum (key) CharSelect
+local charselect = {
+  RecentlyUsed = 1,
+  SmileysAndEmotion = 1,
+  PeopleAndBody = 1,
+  AnimalsAndNature = 1,
+  FoodAndDrink = 1,
+  TravelAndPlaces = 1,
+  Activities = 1,
+  Objects = 1,
+  Symbols = 1,
+  Flags = 1,
+  NerdFonts = 1,
+  UnicodeNames = 1,
+}
 
----@alias CopyTo "Clipboard"|"ClipboardAndPrimarySelection"|"PrimarySelection"
+---@enum (key) CopyTo
+local copy_to = {
+  Clipboard = 1,
+  ClipboardAndPrimarySelection = 1,
+  PrimarySelection = 1,
+}
+
+---@enum (key) CopyModeStr
+local copy_mode = {
+  AcceptPattern = 1,
+  ClearPattern = 1,
+  ClearSelectionMode = 1,
+  Close = 1,
+  CycleMatchType = 1,
+  EditPattern = 1,
+  JumpReverse = 1,
+  MoveBackwardSemanticZone = 1,
+  MoveBackwardWord = 1,
+  MoveBackwardWordEnd = 1,
+  MoveDown = 1,
+  MoveForwardSemanticZone = 1,
+  MoveForwardWord = 1,
+  MoveForwardWordEnd = 1,
+  MoveLeft = 1,
+  MoveRight = 1,
+  MoveToEndOfLineContent = 1,
+  MoveToScrollbackBottom = 1,
+  MoveToScrollbackTop = 1,
+  MoveToSelectionOtherEnd = 1,
+  MoveToSelectionOtherEndHoriz = 1,
+  MoveToStartOfLine = 1,
+  MoveToStartOfLineContent = 1,
+  MoveToStartOfNextLine = 1,
+  MoveToViewportBottom = 1,
+  MoveToViewportMiddle = 1,
+  MoveToViewportTop = 1,
+  MoveUp = 1,
+  NextMatch = 1,
+  NextMatchPage = 1,
+  PageDown = 1,
+  PageUp = 1,
+  PriorMatch = 1,
+  PriorMatchPage = 1,
+  ScrollToBottom = 1,
+}
+
 ---@alias CopyMode
----|"AcceptPattern"
----|"ClearPattern"
----|"ClearSelectionMode"
----|"Close"
----|"CycleMatchType"
----|"EditPattern"
----|"JumpReverse"
----|"MoveBackwardSemanticZone"
----|"MoveBackwardWord"
----|"MoveBackwardWordEnd"
----|"MoveDown"
----|"MoveForwardSemanticZone"
----|"MoveForwardWord"
----|"MoveForwardWordEnd"
----|"MoveLeft"
----|"MoveRight"
----|"MoveToEndOfLineContent"
----|"MoveToScrollbackBottom"
----|"MoveToScrollbackTop"
----|"MoveToSelectionOtherEnd"
----|"MoveToSelectionOtherEndHoriz"
----|"MoveToStartOfLine"
----|"MoveToStartOfLineContent"
----|"MoveToStartOfNextLine"
----|"MoveToViewportBottom"
----|"MoveToViewportMiddle"
----|"MoveToViewportTop"
----|"MoveUp"
----|"NextMatch"
----|"NextMatchPage"
----|"PageDown"
----|"PageUp"
----|"PriorMatch"
----|"PriorMatchPage"
----|"ScrollToBottom"
+---|CopyModeStr
 ---|{ JumpBackward: { prev_char: boolean } }
 ---|{ JumpForward: { prev_char: boolean } }
 ---|{ MoveBackwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
@@ -61,88 +75,91 @@
 ---|{ SetSelectionMode: SelectionMode|"SemanticZone" }
 
 ---@alias SendKey Key
----@alias KeyAssignment
----|"ActivateCommandPalette"
----|"ActivateCopyMode"
----|"ActivateKeyTable"
----|"ActivateLastTab"
----|"ActivatePaneByIndex"
----|"ActivatePaneDirection"
----|"ActivateTab"
----|"ActivateTabRelative"
----|"ActivateTabRelativeNoWrap"
----|"ActivateWindow"
----|"ActivateWindowRelative"
----|"ActivateWindowRelativeNoWrap"
----|"AdjustPaneSize"
----|"AttachDomain"
----|"CharSelect"
----|"ClearKeyTableStack"
----|"ClearScrollback"
----|"ClearSelection"
----|"CloseCurrentPane"
----|"CloseCurrentTab"
----|"CompleteSelection"
----|"CompleteSelectionOrOpenLinkAtMouseCursor"
----|"Copy"
----|"CopyMode"
----|"CopyTo"
----|"DecreaseFontSize"
----|"DetachDomain"
----|"DisableDefaultAssignment"
----|"EmitEvent"
----|"ExtendSelectionToMouseCursor"
----|"Hide"
----|"HideApplication"
----|"IncreaseFontSize"
----|"InputSelector"
----|"MoveTab"
----|"MoveTabRelative"
----|"Multiple"
----|"Nop"
----|"OpenLinkAtMouseCursor"
----|"PaneSelect"
----|"Paste"
----|"PasteFrom"
----|"PastePrimarySelection"
----|"PopKeyTable"
----|"PromptInputLine"
----|"QuickSelect"
----|"QuickSelectArgs"
----|"QuitApplication"
----|"ReloadConfiguration"
----|"ResetFontAndWindowSize"
----|"ResetFontSize"
----|"ResetTerminal"
----|"RotatePanes"
----|"ScrollByCurrentEventWheelDelta"
----|"ScrollByLine"
----|"ScrollByPage"
----|"ScrollToBottom"
----|"ScrollToPrompt"
----|"ScrollToTop"
----|"Search"
----|"SelectTextAtMouseCursor"
----|"SendKey"
----|"SendString"
----|"SetPaneZoomState"
----|"Show"
----|"ShowDebugOverlay"
----|"ShowLauncher"
----|"ShowLauncherArgs"
----|"ShowTabNavigator"
----|"SpawnCommandInNewTab"
----|"SpawnCommandInNewWindow"
----|"SpawnTab"
----|"SpawnWindow"
----|"SplitHorizontal"
----|"SplitPane"
----|"SplitVertical"
----|"StartWindowDrag"
----|"SwitchToWorkspace"
----|"SwitchWorkspaceRelative"
----|"ToggleFullScreen"
----|"TogglePaneZoomState"
+
+---@enum (key) KeyAssignment
+local key_assignment = {
+  ActivateCommandPalette = 1,
+  ActivateCopyMode = 1,
+  ActivateKeyTable = 1,
+  ActivateLastTab = 1,
+  ActivatePaneByIndex = 1,
+  ActivatePaneDirection = 1,
+  ActivateTab = 1,
+  ActivateTabRelative = 1,
+  ActivateTabRelativeNoWrap = 1,
+  ActivateWindow = 1,
+  ActivateWindowRelative = 1,
+  ActivateWindowRelativeNoWrap = 1,
+  AdjustPaneSize = 1,
+  AttachDomain = 1,
+  CharSelect = 1,
+  ClearKeyTableStack = 1,
+  ClearScrollback = 1,
+  ClearSelection = 1,
+  CloseCurrentPane = 1,
+  CloseCurrentTab = 1,
+  CompleteSelection = 1,
+  CompleteSelectionOrOpenLinkAtMouseCursor = 1,
+  Copy = 1,
+  CopyMode = 1,
+  CopyTo = 1,
+  DecreaseFontSize = 1,
+  DetachDomain = 1,
+  DisableDefaultAssignment = 1,
+  EmitEvent = 1,
+  ExtendSelectionToMouseCursor = 1,
+  Hide = 1,
+  HideApplication = 1,
+  IncreaseFontSize = 1,
+  InputSelector = 1,
+  MoveTab = 1,
+  MoveTabRelative = 1,
+  Multiple = 1,
+  Nop = 1,
+  OpenLinkAtMouseCursor = 1,
+  PaneSelect = 1,
+  Paste = 1,
+  PasteFrom = 1,
+  PastePrimarySelection = 1,
+  PopKeyTable = 1,
+  PromptInputLine = 1,
+  QuickSelect = 1,
+  QuickSelectArgs = 1,
+  QuitApplication = 1,
+  ReloadConfiguration = 1,
+  ResetFontAndWindowSize = 1,
+  ResetFontSize = 1,
+  ResetTerminal = 1,
+  RotatePanes = 1,
+  ScrollByCurrentEventWheelDelta = 1,
+  ScrollByLine = 1,
+  ScrollByPage = 1,
+  ScrollToBottom = 1,
+  ScrollToPrompt = 1,
+  ScrollToTop = 1,
+  Search = 1,
+  SelectTextAtMouseCursor = 1,
+  SendKey = 1,
+  SendString = 1,
+  SetPaneZoomState = 1,
+  Show = 1,
+  ShowDebugOverlay = 1,
+  ShowLauncher = 1,
+  ShowLauncherArgs = 1,
+  ShowTabNavigator = 1,
+  SpawnCommandInNewTab = 1,
+  SpawnCommandInNewWindow = 1,
+  SpawnTab = 1,
+  SpawnWindow = 1,
+  SplitHorizontal = 1,
+  SplitPane = 1,
+  SplitVertical = 1,
+  StartWindowDrag = 1,
+  SwitchToWorkspace = 1,
+  SwitchWorkspaceRelative = 1,
+  ToggleFullScreen = 1,
+  TogglePaneZoomState = 1,
+}
 
 ---@class Key
 ---A single unicode character, like 'A' or 'a'. Pay attention to the case of the text that you use
