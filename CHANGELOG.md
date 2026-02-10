@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.5.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.5.0-1) (2026-02-10)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.4.0-1...v1.5.0-1)
+
 ## [v1.4.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.4.0-1) (2026-02-01)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.3.0-1...v1.4.0-1)
@@ -10,11 +14,7 @@
 
 ## [v1.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.3.0-1) (2026-01-15)
 
-[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/vv1.2.0-1...v1.3.0-1)
-
-## [vv1.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/vv1.2.0-1) (2026-01-08)
-
-[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.1.0-1...vv1.2.0-1)
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.1.0-1...v1.3.0-1)
 
 **Merged pull requests:**
 
