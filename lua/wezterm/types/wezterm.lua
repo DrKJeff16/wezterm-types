@@ -392,8 +392,8 @@
 ---The _OpenType_ spec lists a number of features
 ---[here](https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist).
 ---
----See [Font Shaping](https://wezterm.org/config/font-shaping.html)
----for more information and examples.
+---For more information and examples, see:
+--- - [Font Shaping](https://wezterm.org/config/font-shaping.html)
 ---
 ---@field harfbuzz_features? HarfbuzzFeatures[]
 ---@field freetype_load_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"
@@ -598,14 +598,14 @@
 ---
 ---Can be any key assignment action.
 ---
----See [`KeyAssignment`](lua://KeyAssignment)
----for more information.
+---For more information, see:
+--- - [`KeyAssignment`](lua://KeyAssignment)
 ---
 ---@field action KeyAssignment
 ---**(OPTIONAL)** Nerd Fonts glyph name to use for the icon for the entry.
 ---
----See [`Wezterm.NerdFont`](lua://Wezterm.NerdFont)
----for a list of icon names.
+---For a list of icon names, see:
+--- - [`Wezterm.NerdFont`](lua://Wezterm.NerdFont)
 ---
 ---@field icon? Wezterm.NerdFont
 
@@ -803,8 +803,8 @@
 ---The `wezterm.color` module exposes functions
 ---that work with colors.
 ---
----See [`Wezterm.Color`](lua://Wezterm.Color)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Color`](lua://Wezterm.Color)
 ---
 ---@field color Wezterm.Color
 ---The `wezterm.gui` module exposes functions that operate
@@ -814,53 +814,53 @@
 ---so attempting to resolve this module from the mux server
 ---will return `nil`.
 ---
----See [`Wezterm.Gui`](lua://Wezterm.Gui)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Gui`](lua://Wezterm.Gui)
 ---
 ---@field gui Wezterm.Gui
----See [`Wezterm.Mux`](lua://Wezterm.Mux)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Mux`](lua://Wezterm.Mux)
 ---
 ---@field mux Wezterm.Mux
----See [`Wezterm.NerdFont`](lua://Wezterm.NerdFont)
----for more info.
+---For more information, see:
+--- - [`Wezterm.NerdFont`](lua://Wezterm.NerdFont)
 ---
 ---@field nerdfonts Wezterm.NerdFont
 ---The `wezterm.plugin` module provides functions
 ---to manage WezTerm plugins.
 ---
----See [`Wezterm.Plugin`](lua://Wezterm.Plugin)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Plugin`](lua://Wezterm.Plugin)
 ---
 ---@field plugin Wezterm.Plugin
 ---The `wezterm.procinfo` module exposes functions
 ---that allow querying information about processes
 ---that are running on the local system.
 ---
----See [`Wezterm.ProcInfo`](lua://Wezterm.ProcInfo)
----for more info.
+---For more information, see:
+--- - [`Wezterm.ProcInfo`](lua://Wezterm.ProcInfo)
 ---
 ---@field procinfo Wezterm.ProcInfo
 ---The `wezterm.serde` module provides functions for parsing
 ---the given string as JSON, YAML, or TOML, returning
 ---the corresponding Lua values, and vice versa.
 ---
----See [`Wezterm.Serde`](lua://Wezterm.Serde)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Serde`](lua://Wezterm.Serde)
 ---
 ---@field serde Wezterm.Serde
 ---The `wezterm.time` module exposes functions that allow
 ---working with time.
 ---
----See [`Wezterm.Time`](lua://Wezterm.Time)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Time`](lua://Wezterm.Time)
 ---
 ---@field time Wezterm.Time
 ---The `wezterm.url` module exposes functions that allow
 ---working with URLs.
 ---
----See [`Wezterm.Url`](lua://Wezterm.Url)
----for more info.
+---For more information, see:
+--- - [`Wezterm.Url`](lua://Wezterm.Url)
 ---
 ---@field url Wezterm.Url
 ---Helper for defining key assignment actions
@@ -870,8 +870,8 @@
 ---deserialation mapping that makes it a bit easier to identify
 ---where syntax errors may exist in your configuration file.
 ---
----See the [`Action`](lua://Action)
----type for more info.
+---For more information, see:
+--- - [`Action`](lua://Action)
 ---
 ---@field action Action
 ---This constant is set to the path to the directory
@@ -926,23 +926,21 @@ function Wezterm.column_width(value) end
 ---Returns a [`Config`](lua://Config)
 ---object that can be used to define your configuration.
 ---
----See the [`Config`](lua://Config)
----type for more info.
+---For more information, see:
+--- - [`Config`](lua://Config)
 ---
 ---@return Config config
 function Wezterm.config_builder() end
 
 ---Returns the compiled-in default hyperlink rules as a table.
 ---
----See the [`HyperLinkRule`](lua://HyperLinkRule)
----type for more info.
+---For more information, see:
+--- - [`HyperLinkRule`](lua://HyperLinkRule)
 ---
 ---@return HyperLinkRule[] rules
 function Wezterm.default_hyperlink_rules() end
 
----Computes a list of
----[`SshDomain`](lua://SshDomain)
----objects based on the set of hosts
+---Computes a list of `SshDomain` objects based on the set of hosts
 ---discovered in `~/.ssh/config`.
 ---
 ---Each host will have both a plain SSH and a multiplexing SSH domain
@@ -952,6 +950,9 @@ function Wezterm.default_hyperlink_rules() end
 ---
 ---The intended purpose of this function is to give you the opportunity
 ---to edit/adjust the returned information before assigning it to your config.
+---
+---For more information, see:
+--- - [SshDomain](lua://SshDomain)
 ---
 ---@return SshDomain[] domains
 function Wezterm.default_ssh_domains() end
@@ -986,8 +987,8 @@ function Wezterm.default_wsl_domains() end
 ---This function has no special knowledge of which events are defined by wezterm,
 ---or what their required arguments might be.
 ---
----See [`wezterm.on`](lua://Wezterm.on)
----for more information on event handling.
+---For more information on event handling, see:
+---- [`wezterm.on`](lua://Wezterm.on)
 ---
 ---@param event string
 ---@param ... any
@@ -1040,8 +1041,9 @@ function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 --- - The postscript name, which is an ostensibly unique name identifying a given font and style
 ---   that is encoded into the font by the font designer.
 ---
----See [`FontAttributes`](lua://FontAttributes)
----and [`FontFamilyAttributes`](lua://FontFamilyAttributes).
+---See also:
+--- - [`FontAttributes`](lua://FontAttributes)
+--- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
 ---
 ---@param name string
 ---@param attributes FontAttributes|nil
@@ -1596,8 +1598,8 @@ function Wezterm.on(event, callback) end
 ---
 ---your event handler will be called with `name = 'foo'` and `value = 'bar'`.
 ---
----See [`Pane:get_user_vars()`](lua://Pane.get_user_vars)
----for more info.
+---For more info, see:
+--- - [`Pane:get_user_vars()`](lua://Pane.get_user_vars)
 ---
 ------
 ---The `"user-var-changed"` event is emitted when a _user var escape sequence_
@@ -1964,9 +1966,8 @@ function Wezterm.strftime_utc(format) end
 ---returns `"llo"`.
 ---
 ---See also:
----
----[`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
----[`wezterm.pad_right()`](lua://Wezterm.pad_right)
+--- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
+--- - [`wezterm.pad_right()`](lua://Wezterm.pad_right)
 ---
 ---@param s string
 ---@param max_width integer
@@ -1983,9 +1984,8 @@ function Wezterm.truncate_left(s, max_width) end
 ---returns `"hel"`.
 ---
 ---See also:
----
----[`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
----[`wezterm.pad_left()`](lua://Wezterm.pad_left)
+--- - [`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
+--- - [`wezterm.pad_left()`](lua://Wezterm.pad_left)
 ---
 ---@param s string
 ---@param max_width integer
