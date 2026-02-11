@@ -12,11 +12,11 @@ This project aims to provide [LuaCATS](https://github.com/LuaCATS)-like
 [Lua Language Server type annotations](https://luals.github.io/wiki/annotations/) for your
 [WezTerm](https://github.com/wezterm/wezterm) config.
 
-**NOTE**: While this was made with an aim to be thorough you should always double-check
-the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html)
-for any missing or unclear types.
+Example videos can be found in
+[`EXAMPLES.md`](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
 
-Examples can be found [here](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
+**NOTE**: For any missing or unclear types you should always double-check the
+[WezTerm Lua Reference](https://wezterm.org/config/lua/general.html).
 
 ## Features
 
