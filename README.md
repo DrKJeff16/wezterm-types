@@ -17,12 +17,15 @@ Example videos can be found in
 
 **NOTE**: For any missing or unclear types you should always double-check the
 [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html).
+If using an annotated plugin featured in this repository please refer to its author
+for any unclear types.
 
 ## Features
 
 - LuaCATS-like type annotations
 - [Built-in colorschemes included](https://github.com/DrKJeff16/wezterm-types/blob/main/lua/wezterm/types/colorschemes.lua) (`config.color_scheme`)
 - Up-to-date descriptions
+- WezTerm plugin annotations (see the [Featured Plugins section](#featured-plugins))
 - Function overrides (e.g. `wezterm.on()`)
 - [Neovim](https://neovim.io/) support:
   - Through [`folke/lazydev.nvim`](https://github.com/folke/lazydev.nvim)
@@ -40,7 +43,8 @@ Example videos can be found in
 - [Usage](#usage)
   - [Using `lazydev.nvim`](#using-lazydevnvim)
   - [Using The Built-in Neovim LSP](#using-the-built-in-neovim-lsp)
-- [Structure](#structure)
+- [Featured Plugins](#featured-plugins)
+  - [`tabline.wez`](#tablinewez)
 - [License](#license)
 
 ---
@@ -150,6 +154,24 @@ return {
     },
   },
 }
+```
+
+---
+
+## Featured Plugins
+
+This project also features type annotations for various WezTerm plugins.
+
+**_If you want to have your plugin featured please request it through an issue._**
+
+### `tabline.wez`
+
+You can import type annotations for
+[`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:
+
+```lua
+---@type TablineWez
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 ```
 
 ---
