@@ -1,26 +1,35 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) TablineWezComponent
-local components = {
+---@enum (key) TablineWezWinComponent
+local win_components = {
   battery = 1,
   cpu = 1,
-  cwd = 1,
   datetime = 1,
   domain = 1,
-  index = 1,
+  hostname = 1,
   mode = 1,
   parent = 1,
   ram = 1,
+  window = 1,
   workspace = 1,
+}
+
+---@enum (key) TablineWezTabComponent
+local tab_components = {
+  cwd = 1,
+  index = 1,
+  output = 1,
+  parent = 1,
+  process = 1,
+  tab = 1,
   zoomed = 1,
 }
 
+---@alias TablineWezComponent TablineWezWinComponent|TablineWezTabComponent|string
 ---@alias TablineWezSectionPadding integer|{ left?: integer, right?: integer }
 
----@alias TablineWezSection
----|{ [1]: 'index' }
----|table<integer, { [1]: TablineWezComponent, padding?: TablineWezSectionPadding }|string>
+---@alias TablineWezSection { [1]: TablineWezComponent, padding?: TablineWezSectionPadding }
 
 ---@alias TablineWezSeparators { left?: string, right?: string }
 
@@ -33,14 +42,14 @@ local components = {
 ---@field tab_separators? TablineWezSeparators|''
 
 ---@class TablineWezOpts.Sections
----@field tabline_a? TablineWezComponent[]|TablineWezSection
----@field tabline_b? TablineWezComponent[]|TablineWezSection
----@field tabline_c? TablineWezComponent[]|TablineWezSection
----@field tabline_x? TablineWezComponent[]|TablineWezSection
----@field tabline_y? TablineWezComponent[]|TablineWezSection
----@field tabline_z? TablineWezComponent[]|TablineWezSection
----@field tab_active? TablineWezComponent[]|TablineWezSection
----@field tab_inactive? TablineWezComponent[]|TablineWezSection
+---@field tabline_a? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tabline_b? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tabline_c? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tabline_x? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tabline_y? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tabline_z? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tab_active? (TablineWezComponent|TablineWezSection|fun(): string)[]
+---@field tab_inactive? (TablineWezComponent|TablineWezSection|fun(): string)[]
 
 ---@alias TablineWezSectionOverrides { fg?: string, bg?: string }
 
