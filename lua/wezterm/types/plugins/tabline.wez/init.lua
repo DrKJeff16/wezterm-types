@@ -1,6 +1,34 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
+---@enum (key) HourStrings
+local hours = {
+  ["00"] = 1,
+  ["01"] = 1,
+  ["02"] = 1,
+  ["03"] = 1,
+  ["04"] = 1,
+  ["05"] = 1,
+  ["06"] = 1,
+  ["07"] = 1,
+  ["08"] = 1,
+  ["09"] = 1,
+  ["10"] = 1,
+  ["11"] = 1,
+  ["12"] = 1,
+  ["13"] = 1,
+  ["14"] = 1,
+  ["15"] = 1,
+  ["16"] = 1,
+  ["17"] = 1,
+  ["18"] = 1,
+  ["19"] = 1,
+  ["20"] = 1,
+  ["21"] = 1,
+  ["22"] = 1,
+  ["23"] = 1,
+}
+
 ---@enum (key) TablineWezWinComponent
 local win_components = {
   battery = 1,
@@ -9,7 +37,6 @@ local win_components = {
   domain = 1,
   hostname = 1,
   mode = 1,
-  parent = 1,
   ram = 1,
   window = 1,
   workspace = 1,
@@ -26,12 +53,16 @@ local tab_components = {
   zoomed = 1,
 }
 
----@alias TablineWezComponent TablineWezWinComponent|TablineWezTabComponent|string
 ---@alias TablineWezSectionPadding integer|{ left?: integer, right?: integer }
 
----@class TablineWezSection
+---@class TablineWezComponentSpec
 ---@field [1] string
 ---@field padding? TablineWezSectionPadding
+---@field icons_enabled? boolean
+---@field icons_only? boolean
+---@field icon? nil|string|{ [1]: string, align?: 'left'|'right', color?: { fg?: string } }
+---@field cond? nil|fun(): boolean
+---@field fmt? nil|fun(str: string, win: Window|TabInformation): string
 
 ---@alias TablineWezSeparators { left?: string, right?: string }
 
@@ -57,7 +88,7 @@ local extensions = {
 ---@field docker? string
 ---@field unix? string
 
----@class TablineWezCPUComponent: TablineWezSection
+---@class TablineWezCPUComponent: TablineWezComponentSpec
 ---@field [1] 'cpu'
 ---How often in seconds the component updates, set to 0 to disable throttling
 ---
@@ -70,17 +101,80 @@ local extensions = {
 ---@class TablineWezRAMComponent: TablineWezCPUComponent
 ---@field [1] 'ram'
 
----@class TablineWezBatteryComponent: TablineWezSection
+---@class TablineWezBatteryComponent: TablineWezComponentSpec
 ---@field [1] 'battery'
 ---@field battery_to_icon? BatteryToIcon
 
----@class TablineWezDomainComponent: TablineWezSection
+---@class TablineWezDatetimeComponent: TablineWezComponentSpec
+---@field [1] 'datetime'
+---@field style? string
+---@field hour_to_icon? nil|table<HourStrings, string>
+
+---@class TablineWezDomainComponent: TablineWezComponentSpec
 ---@field [1] 'domain'
 ---@field domain_to_icon? DomainToIcon
 
----@class TablineWezProcessComponent: TablineWezSection
+---@class TablineWezModeComponent: TablineWezComponentSpec
+---@field [1] 'mode'
+
+---@class TablineWezCWDComponent: TablineWezComponentSpec
+---@field [1] 'cwd'
+---@field max_length? integer
+
+---@class TablineWezParentComponent: TablineWezCWDComponent
+---@field [1] 'parent'
+
+---@class TablineWezHostnameComponent: TablineWezComponentSpec
+---@field [1] 'hostname'
+
+---@class TablineWezWindowComponent: TablineWezComponentSpec
+---@field [1] 'window'
+
+---@class TablineWezWorkspaceComponent: TablineWezComponentSpec
+---@field [1] 'workspace'
+
+---@class TablineWezIndexComponent: TablineWezComponentSpec
+---@field [1] 'index'
+---@field zero_indexed? boolean
+
+---@class TablineWezProcessComponent: TablineWezComponentSpec
 ---@field [1] 'process'
 ---@field process_to_icon? string|table<string, { [1]: string, color?: { fg?: string } }>
+
+---@class TablineWezOutputComponent: TablineWezComponentSpec
+---@field [1] 'output'
+---@field icon_no_output? string
+
+---@alias TablineWezWinComponents
+---|TablineWezBatteryComponent
+---|TablineWezCPUComponent
+---|TablineWezDatetimeComponent
+---|TablineWezDomainComponent
+---|TablineWezHostnameComponent
+---|TablineWezModeComponent
+---|TablineWezRAMComponent
+---|TablineWezWindowComponent
+---|TablineWezWorkspaceComponent
+
+---@alias TablineWezTabComponents
+---|TablineWezCWDComponent
+---|TablineWezIndexComponent
+---|TablineWezOutputComponent
+---|TablineWezParentComponent
+---|TablineWezProcessComponent
+
+---@alias TablineWezWin (string|TablineWezWinComponent|TablineWezWinComponents)
+---@alias TablineWezTab (string|TablineWezTabComponent|TablineWezTabComponents)
+
+---@class TablineWezOpts.Sections
+---@field tabline_a?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tabline_b?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tabline_c?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tabline_x?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tabline_y?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tabline_z?    (TablineWezWin|FormatItemSpec|fun(): string)[]
+---@field tab_active?   (TablineWezTab|FormatItemSpec|fun(): string)[]
+---@field tab_inactive? (TablineWezTab|FormatItemSpec|fun(): string)[]
 
 ---@class TablineWezExtensionSpec.Events
 ---@field show? string[]|string
@@ -95,30 +189,13 @@ local extensions = {
 ---@field colors? TablineWezThemeColors
 
 ---@class TablineWezOpts.Options
----@field theme? string|Colorschemes
+---@field theme? string|Colorschemes|Palette
 ---@field theme_overrides? TablineWezThemeOverrides
 ---@field tabs_enabled? boolean
+---@field icons_enabled? boolean
 ---@field section_separators? TablineWezSeparators|''
 ---@field component_separators? TablineWezSeparators|''
 ---@field tab_separators? TablineWezSeparators|''
-
----@alias TablineWezComponents
----|TablineWezSection
----|TablineWezBatteryComponent
----|TablineWezCPUComponent
----|TablineWezDomainComponent
----|TablineWezProcessComponent
----|TablineWezRAMComponent
-
----@class TablineWezOpts.Sections
----@field tabline_a? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tabline_b? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tabline_c? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tabline_x? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tabline_y? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tabline_z? (TablineWezComponent|TablineWezComponents|fun(): string)[]
----@field tab_active? (TablineWezComponent|TablineWezComponents|TablineWezSection|fun(): string)[]
----@field tab_inactive? (TablineWezComponent|TablineWezComponents|TablineWezSection|fun(): string)[]
 
 ---@alias TablineWezSectionOverrides { fg?: string, bg?: string }
 
@@ -153,10 +230,10 @@ local M = {}
 
 function M.setup() end
 
----@param theme Colorschemes
+---@param theme string|Colorschemes|Palette
 function M.set_theme(theme) end
 
----@param theme Colorschemes
+---@param theme string|Colorschemes|Palette
 ---@param overrides TablineWezThemeOverrides
 function M.set_theme(theme, overrides) end
 
@@ -168,5 +245,12 @@ function M.get_config() end
 
 ---@return TablineWezThemeOverrides theme
 function M.get_theme() end
+
+---@param config Config
+function M.apply_to_config(config) end
+
+---@param window Window
+---@param tab TabInformation
+function M.window(window, tab) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
