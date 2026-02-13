@@ -68,6 +68,9 @@ local components = {
 ---@class TablineWezOpts
 ---@field options? TablineWezOpts.Options
 ---@field sections? TablineWezOpts.Sections
+---TODO: Annotate extensions:
+---
+---https://github.com/michaelbrusegard/tabline.wez#extensions
 ---@field extensions? table
 
 ---@class TablineWez
