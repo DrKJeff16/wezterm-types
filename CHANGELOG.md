@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.7.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.7.0-1) (2026-02-14)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.6.0-1...v1.7.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-config\): add plugin type annotations [\#95](https://github.com/DrKJeff16/wezterm-types/pull/95) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v1.6.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.6.0-1) (2026-02-13)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.5.0-1...v1.6.0-1)
