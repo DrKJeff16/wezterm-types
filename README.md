@@ -6,7 +6,7 @@
 - [Roadmap](https://github.com/DrKJeff16/wezterm-types/discussions/48)
 - [Discussions](https://github.com/DrKJeff16/wezterm-types/discussions)
 
-<img alt="Showcase" src="https://github.com/user-attachments/assets/f17a51b0-65dc-44de-bc51-c19ef0ee1798" />
+<img alt="Showcase" src="https://github.com/DrKJeff16/wezterm-types/blob/main/assets/showcase.png" />
 
 This project aims to provide [LuaCATS](https://github.com/LuaCATS)-like
 [Lua Language Server type annotations](https://luals.github.io/wiki/annotations/) for your
