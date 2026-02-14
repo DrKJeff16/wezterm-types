@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.7.1-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.7.1-1) (2026-02-14)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.7.0-1...v1.7.1-1)
+
 ## [v1.7.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.7.0-1) (2026-02-14)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.6.0-1...v1.7.0-1)
@@ -50,6 +54,7 @@
 - \[actions\]: Incorrect type when using actions [\#78](https://github.com/DrKJeff16/wezterm-types/issues/78)
 - Request: make mentions of other annotations clickable links using workspace links [\#59](https://github.com/DrKJeff16/wezterm-types/issues/59)
 - \[FEATURE\] Discussions tab? [\#37](https://github.com/DrKJeff16/wezterm-types/issues/37)
+- feat\(config\): add `inactive_pane_hsb` type [\#86](https://github.com/DrKJeff16/wezterm-types/pull/86) ([AtifChy](https://github.com/AtifChy))
 - fix\(objects/color\): did a remake of meta file [\#71](https://github.com/DrKJeff16/wezterm-types/pull/71) ([DrKJeff16](https://github.com/DrKJeff16))
 - fix\(wezterm\): filling out `wezterm.lua` and other files [\#70](https://github.com/DrKJeff16/wezterm-types/pull/70) ([DrKJeff16](https://github.com/DrKJeff16))
 - fix\(wezterm\): overhaul [\#69](https://github.com/DrKJeff16/wezterm-types/pull/69) ([DrKJeff16](https://github.com/DrKJeff16))
@@ -91,7 +96,6 @@
 
 **Merged pull requests:**
 
-- feat\(config\): add `inactive_pane_hsb` type [\#86](https://github.com/DrKJeff16/wezterm-types/pull/86) ([AtifChy](https://github.com/AtifChy))
 - docs: improved `README.md` [\#85](https://github.com/DrKJeff16/wezterm-types/pull/85) ([DrKJeff16](https://github.com/DrKJeff16))
 - fix: reordered and fixed pane-information [\#75](https://github.com/DrKJeff16/wezterm-types/pull/75) ([DrKJeff16](https://github.com/DrKJeff16))
 - Remove maintainer from README.md [\#72](https://github.com/DrKJeff16/wezterm-types/pull/72) ([craigmac](https://github.com/craigmac))
