@@ -133,6 +133,9 @@ local extensions = {
 ---@class TablineWezWorkspaceComponent: TablineWezComponentSpec
 ---@field [1] 'workspace'
 
+---@class TablineWezZoomedComponent: TablineWezComponentSpec
+---@field [1] 'zoomed'
+
 ---@class TablineWezIndexComponent: TablineWezComponentSpec
 ---@field [1] 'index'
 ---@field zero_indexed? boolean
@@ -162,6 +165,7 @@ local extensions = {
 ---|TablineWezOutputComponent
 ---|TablineWezParentComponent
 ---|TablineWezProcessComponent
+---|TablineWezZoomedComponent
 
 ---@alias TablineWezWin (string|TablineWezWinComponent|TablineWezWinComponents)
 ---@alias TablineWezTab (string|TablineWezTabComponent|TablineWezTabComponents)
