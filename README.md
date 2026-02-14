@@ -46,6 +46,7 @@ for any unclear types.
 - [Featured Plugins](#featured-plugins)
   - [`tabline.wez`](#tablinewez)
   - [`wezterm-config.nvim`](#wezterm-confignvim)
+  - [`modal.wezterm`](#modalwezterm)
 - [License](#license)
 
 ---
@@ -184,6 +185,16 @@ as shown below:
 ```lua
 ---@type weztermConfig
 local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
+```
+
+### `modal.wezterm`
+
+You can import type annotations for
+[`MLFlexer/modal.wezterm`](https://github.com/MLFlexer/modal.wezterm) as shown below:
+
+```lua
+---@type ModalWezterm
+local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 ```
 
 ---
