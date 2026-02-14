@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 13
+*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 14
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -50,6 +50,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-using-the-built-in-neovim-lsp|
 - |wezterm-types-featured-plugins|
     - |wezterm-types-`tabline.wez`|
+    - |wezterm-types-`wezterm-config.nvim`|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -185,6 +186,17 @@ You can import type annotations for `michaelbrusegard/tabline.wez`
 >lua
     ---@type TablineWez
     local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+<
+
+
+WEZTERM-CONFIG.NVIM ~
+
+You can import type annotations for `winter-again/wezterm-config.nvim`
+<https://github.com/winter-again/wezterm-config.nvim> as shown below:
+
+>lua
+    ---@type weztermConfig
+    local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
 <
 
 ------------------------------------------------------------------------------
