@@ -88,6 +88,10 @@ local extensions = {
 ---@field docker? string
 ---@field unix? string
 
+---@class TablineWezBatteryComponent: TablineWezComponentSpec
+---@field [1] 'battery'
+---@field battery_to_icon? BatteryToIcon
+
 ---@class TablineWezCPUComponent: TablineWezComponentSpec
 ---@field [1] 'cpu'
 ---How often in seconds the component updates, set to 0 to disable throttling
@@ -98,12 +102,9 @@ local extensions = {
 ---Default is `false`.
 ---@field use_pwsh? boolean
 
----@class TablineWezRAMComponent: TablineWezCPUComponent
----@field [1] 'ram'
-
----@class TablineWezBatteryComponent: TablineWezComponentSpec
----@field [1] 'battery'
----@field battery_to_icon? BatteryToIcon
+---@class TablineWezCWDComponent: TablineWezComponentSpec
+---@field [1] 'cwd'
+---@field max_length? integer
 
 ---@class TablineWezDatetimeComponent: TablineWezComponentSpec
 ---@field [1] 'datetime'
@@ -114,18 +115,29 @@ local extensions = {
 ---@field [1] 'domain'
 ---@field domain_to_icon? DomainToIcon
 
+---@class TablineWezHostnameComponent: TablineWezComponentSpec
+---@field [1] 'hostname'
+
+---@class TablineWezIndexComponent: TablineWezComponentSpec
+---@field [1] 'index'
+---@field zero_indexed? boolean
+
 ---@class TablineWezModeComponent: TablineWezComponentSpec
 ---@field [1] 'mode'
 
----@class TablineWezCWDComponent: TablineWezComponentSpec
----@field [1] 'cwd'
----@field max_length? integer
+---@class TablineWezOutputComponent: TablineWezComponentSpec
+---@field [1] 'output'
+---@field icon_no_output? string
 
 ---@class TablineWezParentComponent: TablineWezCWDComponent
 ---@field [1] 'parent'
 
----@class TablineWezHostnameComponent: TablineWezComponentSpec
----@field [1] 'hostname'
+---@class TablineWezProcessComponent: TablineWezComponentSpec
+---@field [1] 'process'
+---@field process_to_icon? string|table<string, { [1]: string, color?: { fg?: string } }>
+
+---@class TablineWezRAMComponent: TablineWezCPUComponent
+---@field [1] 'ram'
 
 ---@class TablineWezWindowComponent: TablineWezComponentSpec
 ---@field [1] 'window'
@@ -135,18 +147,6 @@ local extensions = {
 
 ---@class TablineWezZoomedComponent: TablineWezComponentSpec
 ---@field [1] 'zoomed'
-
----@class TablineWezIndexComponent: TablineWezComponentSpec
----@field [1] 'index'
----@field zero_indexed? boolean
-
----@class TablineWezProcessComponent: TablineWezComponentSpec
----@field [1] 'process'
----@field process_to_icon? string|table<string, { [1]: string, color?: { fg?: string } }>
-
----@class TablineWezOutputComponent: TablineWezComponentSpec
----@field [1] 'output'
----@field icon_no_output? string
 
 ---@alias TablineWezWinComponents
 ---|TablineWezBatteryComponent
