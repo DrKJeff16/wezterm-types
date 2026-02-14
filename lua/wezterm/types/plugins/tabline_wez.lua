@@ -193,6 +193,7 @@ local extensions = {
 ---@field colors? TablineWezThemeColors
 
 ---@class TablineWezOpts.Options
+---@field fmt? fun(s: string|number): string
 ---@field theme? string|Colorschemes|Palette
 ---@field theme_overrides? TablineWezThemeOverrides
 ---@field tabs_enabled? boolean
