@@ -12,7 +12,7 @@ jobs:
       - name: LuaRocks Upload
         uses: nvim-neorocks/luarocks-tag-release@v7.2.0
         with:
-          version: "1.7.0"
+          version: "1.7.1"
           license: "MIT"
           detailed_description: |
             LuaCATS-like Lua Language Server type annotations for your WezTerm config
