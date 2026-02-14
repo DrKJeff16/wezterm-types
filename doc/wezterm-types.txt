@@ -51,6 +51,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
 - |wezterm-types-featured-plugins|
     - |wezterm-types-`tabline.wez`|
     - |wezterm-types-`wezterm-config.nvim`|
+    - |wezterm-types-`modal.wezterm`|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -197,6 +198,17 @@ You can import type annotations for `winter-again/wezterm-config.nvim`
 >lua
     ---@type weztermConfig
     local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
+<
+
+
+MODAL.WEZTERM ~
+
+You can import type annotations for `MLFlexer/modal.wezterm`
+<https://github.com/MLFlexer/modal.wezterm> as shown below:
+
+>lua
+    ---@type ModalWezterm
+    local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 <
 
 ------------------------------------------------------------------------------
