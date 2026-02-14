@@ -45,6 +45,7 @@ for any unclear types.
   - [Using The Built-in Neovim LSP](#using-the-built-in-neovim-lsp)
 - [Featured Plugins](#featured-plugins)
   - [`tabline.wez`](#tablinewez)
+  - [`wezterm-config.nvim`](#wezterm-confignvim)
 - [License](#license)
 
 ---
@@ -172,6 +173,17 @@ You can import type annotations for
 ```lua
 ---@type TablineWez
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+```
+
+### `wezterm-config.nvim`
+
+You can import type annotations for
+[`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)
+as shown below:
+
+```lua
+---@type weztermConfig
+local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
 ```
 
 ---
