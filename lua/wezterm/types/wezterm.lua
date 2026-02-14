@@ -862,12 +862,16 @@ local weight = {
 ---@class MouseBinding: MouseBindingBase
 ---@field mods string
 
---- - The first event parameter is a [`Window`](lua://Window)
+--- - The first event parameter is a `Window`
 ---   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
+--- - The second event parameter is a `Pane`
 ---   object that represents the pane in which
 ---   the bell was rung, which may not be active pane;
 ---   it could be in an unfocused pane or tab
+---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
 ---
 ---@alias CallbackWindowPane fun(window: Window, pane: Pane)
 
@@ -1038,10 +1042,9 @@ function Wezterm.battery_info() end
 ---@return number width
 function Wezterm.column_width(value) end
 
----Returns a [`Config`](lua://Config)
----object that can be used to define your configuration.
+---Returns a `Config` object that can be used to define your configuration.
 ---
----For more information, see:
+---See:
 --- - [`Config`](lua://Config)
 ---
 ---@return Config config
@@ -1072,18 +1075,17 @@ function Wezterm.default_hyperlink_rules() end
 ---@return SshDomain[] domains
 function Wezterm.default_ssh_domains() end
 
----Computes a list of
----[`WslDomain`](lua://WslDomain)
----objects, each one representing an installed
----WSL distribution on your system.
+---Computes a list of `WslDomain` objects, each one representing
+---an installed WSL distribution on your system.
 ---
----This list is the same as the default value for the
----[`config.wsl_domains`](lua://Config.wsl_domains)
----configuration option, which is to make a
----[`WslDomain`](lua://WslDomain)
----with the `distribution` field set to the name
----of the WSL distro and the `name` field set to name of the distro
----but with `"WSL:"` prefixed to it.
+---This list is the same as the default value for the `config.wsl_domains`
+---configuration option, which is to make a `WslDomain` object
+---with the `distribution` field set to the name of the WSL distro
+---and the `name` field set to name of the distro with `"WSL:"` prefixed to it.
+---
+---See:
+--- - [`WslDomain`](lua://WslDomain)
+--- - [`config.wsl_domains`](lua://Config.wsl_domains)
 ---
 ---@return WslDomain[] domains
 function Wezterm.default_wsl_domains() end
@@ -1134,8 +1136,7 @@ function Wezterm.enumerate_ssh_hosts() end
 function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 
 ---This function constructs a Lua table that corresponds to the internal
----[`FontFamilyAttributes`](lua://FontFamilyAttributes)
----struct that is used to select a single named font:
+---`FontFamilyAttributes` struct that is used to select a single named font:
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
@@ -1166,8 +1167,7 @@ function Wezterm.enumerate_ssh_hosts(ssh_config_file_name) end
 function Wezterm.font(name, attributes) end
 
 ---This function constructs a Lua table that corresponds to the internal
----[`FontFamilyAttributes`](lua://FontFamilyAttributes)
----struct that is used to select a single named font.
+---`FontFamilyAttributes` struct that is used to select a single named font.
 ---
 ---When specifying a font using its family name, the second attributes parameter is
 ---an **optional** table that can be used to specify style attributes.
@@ -1196,6 +1196,9 @@ function Wezterm.font(name, attributes) end
 --- - [`assume_emoji_presentation`](lua://FontFamilyAttributes.assume_emoji_presentation)
 ---   to control whether a font is considered to have emoji (rather than text) presentation glyphs
 ---   for emoji
+---
+--- See:
+---  - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
 ---
 ---@param attributes FontFamilyAttributes
 ---@return Fonts|FontFamilyAttributes fonts
@@ -1258,23 +1261,21 @@ function Wezterm.glob(pattern) end
 ---@return string[] file_names
 function Wezterm.glob(pattern, relative_to) end
 
----This function was moved to:
----
----[`wezterm.color.gradient`](lua://Wezterm.Color.gradient)
----
----In addition, the returned colors are now of type:
----
----[`Color`](lua://Color)
+---This function was moved to `wezterm.color.gradient`.
+---In addition, the returned colors are now of `Color` type.
 ---
 --- ---
 ---Given a gradient spec (`gradient`) and a number of colors
 ---(`num_colors`), returns a table holding that many colors
 ---spaced evenly across the range of the gradient.
 ---
----This is useful, for instance, for generating colors
----for tabs, or doing something fancy like
----interpolating colors across a gradient
+---This is useful, for instance, for generating colors for tabs,
+---or doing something fancy like interpolating colors across a gradient
 ---based on the time of the day.
+---
+---See:
+--- - [`Color`](lua://Color)
+--- - [`wezterm.color.gradient`](lua://Wezterm.Color.gradient)
 ---
 ---@param gradient Gradient
 ---@param num_colors number
@@ -1296,8 +1297,9 @@ function Wezterm.json_parse(value) end
 ---This function logs the provided message string through wezterm's logging layer
 ---at `'ERROR'` level, which can be displayed via the
 ---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
----If you started wezterm from a terminal that text will print
----to the `stdout` of that terminal.
+---
+---If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---
 ---If running as a daemon for the multiplexer server then it will be logged
 ---to the daemon output path.
 ---
@@ -1317,10 +1319,10 @@ function Wezterm.log_error(msg, ...) end
 ---This function logs the provided message string through wezterm's logging layer
 ---at the `'INFO'` level, which can be displayed via the
 ---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
----If you started wezterm from a terminal that text will print
----to the `stdout` of that terminal.
----If running as a daemon for the multiplexer server then it will be logged
----to the daemon output path.
+---
+---If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---
+---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
@@ -1338,10 +1340,10 @@ function Wezterm.log_info(msg, ...) end
 ---This function logs the provided message string through wezterm's logging layer
 ---at the `'WARN'` level, which can be displayed via the
 ---[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
----If you started wezterm from a terminal that text will print
----to the `stdout` of that terminal.
----If running as a daemon for the multiplexer server then it will be logged
----to the daemon output path.
+---
+---If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---
+---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
@@ -1362,28 +1364,26 @@ function Wezterm.log_warn(msg, ...) end
 ---
 ---This hook is synchronous; calling asynchronous functions will not succeed.
 ------
----The `"augment-command-palette"` event is emitted when
----the `Command Palette` is shown.
+---The `"augment-command-palette"` event is emitted when the `Command Palette` is shown.
 ---
----Its purpose is to enable you to add additional entries
----to the list of commands shown in the palette.
+---Its purpose is to enable you to add additional entries to the list of commands
+---shown in the palette.
 ---
 ---This hook is synchronous; calling asynchronous functions will not succeed.
 ---
----The return value is an
----[`AugmentCommandPaletteReturn`](lua://AugmentCommandPaletteReturn)
----table.
+---The return value is an `AugmentCommandPaletteReturn` table.
+---
+---See:
+--- - [`AugmentCommandPaletteReturn`](lua://AugmentCommandPaletteReturn)
 ---
 ---@param event "augment-command-palette"
 ---@param callback AugmentCallbackWindowPane
 function Wezterm.on(event, callback) end
 
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the pane in which the bell was rung,
----   which may not be active pane;
----   it could be in an unfocused pane or tab
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the pane
+---   in which the bell was rung, which may not be active pane;
+---   rather it could be in an unfocused pane or tab
 ---
 ------
 ---The `"bell"` event is emitted when the ASCII `BEL` sequence
@@ -1393,6 +1393,10 @@ function Wezterm.on(event, callback) end
 ---the event supplements it and allows you
 ---to take additional action over the configured behavior.
 ---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+---
 ---@param event "bell"
 ---@param callback CallbackWindowPane
 function Wezterm.on(event, callback) end
@@ -1400,21 +1404,17 @@ function Wezterm.on(event, callback) end
 ---The parameters to the event are:
 ---
 --- - `tab`: The `TabInformation` for the active tab
---- - `tabs`: An array containing `TabInformation` objects
----         for each of the tabs in the window
---- - `panes`: An array containing `PaneInformation` objects
----          for each of the panes in the active tab
+--- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
+--- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
 --- - `config`: The effective configuration for the window
 --- - `hover`: `true` if the current tab is in the hover state
---- - `max_width`: The maximum number of cells available
----              to draw this tab when using the retro tab bar style
+--- - `max_width`: The maximum number of cells available to draw this tab
+---              when using the retro tab bar style
 ---
 ---The return value of the event can be:
 ---
 --- - A string, holding the text to use for the tab title
---- - A [`FormatItem`](lua://FormatItem)
----   object as used in the
----   [`wezterm.format()`](lua://Wezterm.format) function.
+--- - A `FormatItem` object as used in the `wezterm.format()` function.
 ---   This allows formatting style and color information
 ---   for individual elements within the tab
 ---
@@ -1440,9 +1440,17 @@ function Wezterm.on(event, callback) end
 ---as quickly as possible in order to avoid blocking the GUI thread.
 ---
 ---The most notable consequence of this is that some functions that are asynchronous
----(e.g. [`wezterm.run_child_process()`](lua://Wezterm.run_child_process))
----are not possible to call from inside the event handler and will generate a
----`format-tab-title: runtime error: attempt to yield from outside a coroutine` error.
+---(e.g. `wezterm.run_child_process()`) are not possible to call
+---from inside the event handler and will generate the following error:
+---
+---```
+---format-tab-title: runtime error: attempt to yield from outside a coroutine
+---```
+---
+---See:
+--- - [`FormatItem`](lua://FormatItem)
+--- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
+--- - [`wezterm.format()`](lua://Wezterm.format)
 ---
 ---@param event "format-tab-title"
 ---@param callback fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: number): string|FormatItem
@@ -1457,14 +1465,10 @@ function Wezterm.on(event, callback) end
 
 ---The parameters to the event are:
 ---
---- - `tab`: The [`TabInformation`](lua://TabInformation)
----        object for the active tab
---- - `pane`: The [`PaneInformation`](lua://PaneInformation)
----         object for the active pane
---- - `tabs`: An array containing [`TabInformation`](lua://TabInformation)
----         objects for each of the tabs in the window
---- - `panes`: An array containing [`PaneInformation`](lua://PaneInformation)
----          objects for each of the panes in the active tab
+--- - `tab`: The `TabInformation` object for the active tab
+--- - `pane`: The `PaneInformation` object for the active pane
+--- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
+--- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
 --- - `config`: The effective configuration for the window
 ---
 ---The return value of the event should be a `string`,
@@ -1493,16 +1497,12 @@ function Wezterm.on(event, callback) end
 ---@param callback fun(window: Window, pane: Pane, tabs: MuxTab[], panes: Pane[], config: Config): string
 function Wezterm.on(event, callback) end
 
----This event is triggered when the GUI is starting up
----after attaching the selected domain.
----For example, when you use `wezterm connect DOMAIN` or
----`wezterm start --domain DOMAIN` to start the GUI,
----the `gui-attached` event will be triggered and passed the
----[`MuxDomain`](lua://MuxDomain) object
+---This event is triggered when the GUI is starting up after attaching the selected domain.
+---For example, when running `wezterm connect DOMAIN` or `wezterm start --domain DOMAIN`
+---to start the GUI, the `gui-attached` event will be triggered and passed the `MuxDomain` object
 ---associated with `DOMAIN`.
 ---
----In cases where you don't specify the domain,
----the default domain will be passed instead.
+---In cases where you don't specify the domain, the default domain will be passed instead.
 ---
 ---This event fires after the `gui-startup` event.
 ---
@@ -1542,9 +1542,7 @@ function Wezterm.on(event, callback) end
 function Wezterm.on(event, callback) end
 
 ---The `mux-is-process-stateful` event is emitted when the multiplexer layer
----wants to determine whether a given
----[`Pane`](lua://Pane) can be
----closed without prompting the user.
+---wants to determine whether a given `Pane` can be closed without prompting the user.
 ---
 ---This event is synchronous and must return as quickly as possible
 ---in order to avoid blocking the multiplexer.
