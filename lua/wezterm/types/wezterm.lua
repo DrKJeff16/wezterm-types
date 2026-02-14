@@ -14,6 +14,7 @@
 ---@module "wezterm.types.wezterm.serde"
 ---@module "wezterm.types.wezterm.time"
 ---@module "wezterm.types.wezterm.url"
+---@module "wezterm.types.harfbuzz"
 
 ---@alias ColorSpec table<"AnsiColor", AnsiColor>|table<"Color", string>
 
@@ -421,59 +422,14 @@ local freetype_load_flags = {
   NO_HINTING = 1,
 }
 
----@enum (key) HarfbuzzFeatures
-local harfbuzz_features = {
-  ["calt=0"] = 1,
-  ["calt=1"] = 1,
-  ["clig=0"] = 1,
-  ["clig=1"] = 1,
-  ["liga=0"] = 1,
-  ["liga=1"] = 1,
-  cv01 = 1,
-  cv02 = 1,
-  cv03 = 1,
-  cv04 = 1,
-  cv05 = 1,
-  cv06 = 1,
-  cv07 = 1,
-  cv08 = 1,
-  cv09 = 1,
-  cv10 = 1,
-  cv11 = 1, -- numbers
-  cv12 = 1, -- numbers
-  cv13 = 1, -- numbers
-  cv14 = 1, -- numbers
-  cv15 = 1, -- `*`
-  cv16 = 1, -- `*`
-  cv17 = 1, -- `~`
-  cv18 = 1, -- `%`
-  cv19 = 1, -- `<=`
-  cv20 = 1, -- `<=`
-  cv21 = 1,
-  cv22 = 1,
-  cv23 = 1, -- `>=`
-  cv24 = 1, -- `/=`
-  cv25 = 1, -- `.-`
-  cv26 = 1, -- `:-`
-  cv27 = 1, -- `[]`
-  cv28 = 1, -- `{. .}`
-  cv29 = 1, -- `{}`
-  cv30 = 1, -- `|`
-  cv31 = 1, -- `()`
-  cv32 = 1, -- `.=`
-  onum = 1, -- numbers
-  ss01 = 1,
-  ss02 = 1, -- `<=`, `>=`
-  ss03 = 1, -- `&`
-  ss04 = 1, -- `$`
-  ss05 = 1, -- `@`
-  ss06 = 1, -- `\\`
-  ss07 = 1, -- `=~`, `!~`
-  ss08 = 1, -- `==`, `===`, `!=`, `!==`
-  ss09 = 1, -- `>>=`, `<<=`, `||=`, `|=`
-  ss10 = 1,
-  zero = 1, -- `0`
-}
+msg = ""
+for i = 33, 99, 1 do
+  msg = ("%scv%s\n"):format(msg, i)
+end
+
+for i = 11, 20 do
+  msg = ("%sss%s\n"):format(msg, i)
+end
 
 ---@class FontAttributes
 ---Whether the font should be a bold variant.
@@ -492,7 +448,7 @@ local harfbuzz_features = {
 ---
 ---@class FontFamilyAttributes: FontAttributes
 ---@field family string
----When [`config.font_shaper`](lua://Config.font_shaper) is
+---When `config.font_shaper` is
 ---set to `"Harfbuzz"`, this setting affects
 ---how font shaping takes place.
 ---
@@ -501,6 +457,7 @@ local harfbuzz_features = {
 ---
 ---For more information and examples, see:
 --- - [Font Shaping](https://wezterm.org/config/font-shaping.html)
+--- - [`config.font_shaper`](lua://Config.font_shaper)
 ---
 ---@field harfbuzz_features? HarfbuzzFeatures[]
 ---@field freetype_load_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"

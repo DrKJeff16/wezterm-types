@@ -7,6 +7,7 @@
 ---@module "wezterm.types.events"
 ---@module "wezterm.types.objects"
 ---@module "wezterm.types.wezterm"
+---@module "wezterm.types.harfbuzz"
 
 ---@enum (key) QuickSelectAlphabet
 local QSA = {
