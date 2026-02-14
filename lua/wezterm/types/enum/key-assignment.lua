@@ -76,6 +76,66 @@ local copy_mode = {
 
 ---@alias SendKey Key
 
+---Activates a named key table.
+---
+---@class ActivateKeyTableParams
+---The name of the table to activate.
+---
+---The name must match up to an entry in the `config.key_tables` configuration.
+---
+---See:
+--- - [`config.key_tables`](lua://Config.key_tables)
+---
+---@field name string
+---An optional duration expressed in milliseconds. If specified, then the activation
+---will automatically expire and pop itself from the key table stack once that duration elapses.
+---
+---If omitted, this activation will not expire due to time.
+---
+---@field timeout_milliseconds? integer
+---An optional boolean that controls whether the activation will pop itself
+---after a single additional key press.
+---
+---The default if left unspecified is `true`.
+---
+---When set to `false`, pressing a key will not automatically pop the activation
+---and you will need to use either a timeout or an explicit key assignment
+---that triggers `PopKeyTable` to cancel the activation.
+---
+---@field one_shot? boolean
+---An optional boolean.
+---Defaults to `false` if unspecified.
+---
+---If set to `true` then it will behave as though `PopKeyTable` was triggered
+---before pushing this new activation on the stack.
+---This is most useful for key assignments in a table that was activated
+---with `one_shot` set to `false`.
+---
+---@field replace_current? boolean
+---An optional boolean.
+---Defaults to `false` if unspecified.
+---
+---If set to `true` then a key press that doesn't match any entries
+---in the named key table will implicitly pop this entry from the stack.
+---This can be used together with `timeout_milliseconds`.
+---
+---@field until_unknown? boolean
+---An optional boolean.
+---Defaults to `false` if unspecified.
+---
+---If set to `true` then a key press that doesn't match any entries
+---in the named key table will halt any further key table stack matching,
+---allowing only key assignments that are defined in the current key table activation to match.
+---
+---**Use with care**: If you haven't defined an explicit `PopKeyTable` assignment
+---in the key table you may lock yourself out of the keyboard
+---and will need to reload the configuration file
+---(e.g. by re-saving it) to get back in.
+---
+---@field prevent_fallback? boolean
+
+---@alias ActivateKeyTable fun(params: ActivateKeyTableParams)
+
 ---@enum (key) KeyAssignment
 local key_assignment = {
   ActivateCommandPalette = 1,
@@ -434,7 +494,7 @@ local key_assignment = {
 ---@class ActionFuncClass
 ---@field ActivateCommandPalette KeyAssignFunction
 ---@field ActivateCopyMode KeyAssignFunction
----@field ActivateKeyTable KeyAssignFunction
+---@field ActivateKeyTable ActivateKeyTable
 ---@field ActivateLastTab KeyAssignFunction
 ---@field ActivatePaneByIndex KeyAssignFunction
 ---@field ActivatePaneDirection KeyAssignFunction
