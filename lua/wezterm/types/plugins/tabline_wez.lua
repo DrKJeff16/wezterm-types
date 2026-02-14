@@ -62,7 +62,7 @@ local tab_components = {
 ---@field icons_only? boolean
 ---@field icon? nil|string|{ [1]: string, align?: 'left'|'right', color?: { fg?: string } }
 ---@field cond? nil|fun(): boolean
----@field fmt? nil|fun(str: string, win: Window|TabInformation): string
+---@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
 
 ---@alias TablineWezSeparators { left?: string, right?: string }
 
@@ -193,7 +193,7 @@ local extensions = {
 ---@field colors? TablineWezThemeColors
 
 ---@class TablineWezOpts.Options
----@field fmt? fun(s: string|number): string
+---@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
 ---@field theme? string|Colorschemes|Palette
 ---@field theme_overrides? TablineWezThemeOverrides
 ---@field tabs_enabled? boolean
