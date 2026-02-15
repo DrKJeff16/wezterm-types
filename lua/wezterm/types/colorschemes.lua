@@ -1005,4 +1005,5 @@ local colorschemes = {
   ["vulcan (base16)"] = 1,
   ["zenburn (terminal.sexy)"] = 1,
 }
+
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
