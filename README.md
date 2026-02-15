@@ -47,6 +47,7 @@ for any unclear types.
   - [`tabline.wez`](#tablinewez)
   - [`wezterm-config.nvim`](#wezterm-confignvim)
   - [`modal.wezterm`](#modalwezterm)
+  - [`presentation.wez`](#presentationwez)
 - [License](#license)
 
 ---
@@ -195,6 +196,16 @@ You can import type annotations for
 ```lua
 ---@type ModalWezterm
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
+```
+
+### `presentation.wez`
+
+You can import type annotations for
+[`xarvex/presentation.wez`](https://github.com/xarvex/presentation.wez) as shown below:
+
+```lua
+---@type PresentationWez
+local modal = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 ```
 
 ---
