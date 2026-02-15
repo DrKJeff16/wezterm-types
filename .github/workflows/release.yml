@@ -19,12 +19,13 @@ jobs:
       - name: Build Project Assets
         run: |
           mkdir -pv wezterm-types
-          cp -rv lua README.md CREDITS.md LICENSE wezterm-types
-          zip -r -9 wezterm-types.zip wezterm-types
+          cp -rv assets lua doc README.md CREDITS.md LICENSE wezterm-types
           tar cvJf wezterm-types.tar.xz wezterm-types
-          sha512sum wezterm-types.zip wezterm-types.tar.xz >| sha512sums.txt
-          md5sum wezterm-types.zip wezterm-types.tar.xz >| md5sums.txt
-          rm -rfv wezterm-types
+          tar cvzf wezterm-types.tar.gz wezterm-types
+          zip -r -9 wezterm-types.zip wezterm-types
+          7z a -mx9 -mmt -sdel wezterm-types.7z wezterm-types
+          sha512sum wezterm-types.7z wezterm-types.zip wezterm-types.tar.gz wezterm-types.tar.xz >| sha512sums.txt
+          md5sum wezterm-types.7z wezterm-types.zip wezterm-types.tar.gz wezterm-types.tar.xz >| md5sums.txt
       - name: Get Release
         uses: joutvhu/get-release@v1.0.3
         with:
@@ -45,8 +46,10 @@ jobs:
         with:
           files: |
             Release.txt
-            wezterm-types.tar.xz
-            wezterm-types.zip
             md5sums.txt
             sha512sums.txt
+            wezterm-types.7z
+            wezterm-types.tar.gz
+            wezterm-types.tar.xz
+            wezterm-types.zip
           token: ${{ secrets.GITHUB_TOKEN }}
