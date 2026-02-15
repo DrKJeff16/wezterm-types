@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 14
+*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 15
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -52,6 +52,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-`tabline.wez`|
     - |wezterm-types-`wezterm-config.nvim`|
     - |wezterm-types-`modal.wezterm`|
+    - |wezterm-types-`presentation.wez`|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -209,6 +210,17 @@ You can import type annotations for `MLFlexer/modal.wezterm`
 >lua
     ---@type ModalWezterm
     local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
+<
+
+
+PRESENTATION.WEZ ~
+
+You can import type annotations for `xarvex/presentation.wez`
+<https://github.com/xarvex/presentation.wez> as shown below:
+
+>lua
+    ---@type PresentationWez
+    local modal = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 <
 
 ------------------------------------------------------------------------------
