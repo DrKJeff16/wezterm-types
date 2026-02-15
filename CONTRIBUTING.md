@@ -247,3 +247,5 @@ local choices = {
 [conventional_commits]: https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13
 [signing_guide]: https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key
 [pre-commit-install]: https://pre-commit.com/#install
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->
