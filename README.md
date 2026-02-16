@@ -205,7 +205,7 @@ You can import type annotations for
 
 ```lua
 ---@type PresentationWez
-local modal = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
+local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 ```
 
 ---
