@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 15
+*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 16
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -220,7 +220,7 @@ You can import type annotations for `xarvex/presentation.wez`
 
 >lua
     ---@type PresentationWez
-    local modal = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
+    local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 <
 
 ------------------------------------------------------------------------------
