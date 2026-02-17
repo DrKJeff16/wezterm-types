@@ -1,5 +1,29 @@
 # Changelog
 
+## [v1.8.3-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.3-1) (2026-02-17)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.2-1...v1.8.3-1)
+
+**Implemented enhancements:**
+
+- feat\(dev-wezterm\): add type annotations [\#102](https://github.com/DrKJeff16/wezterm-types/pull/102) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wez-tmux\): add type annotations [\#101](https://github.com/DrKJeff16/wezterm-types/pull/101) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v1.8.2-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.2-1) (2026-02-17)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.1-1...v1.8.2-1)
+
+**Implemented enhancements:**
+
+- feat\(wez-pain-control\): add annotation types [\#100](https://github.com/DrKJeff16/wezterm-types/pull/100) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(ai-commander\): add type annotations [\#99](https://github.com/DrKJeff16/wezterm-types/pull/99) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(ai-helper\): add annotations for plugin [\#98](https://github.com/DrKJeff16/wezterm-types/pull/98) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(presentation.wez\): add type annotations [\#97](https://github.com/DrKJeff16/wezterm-types/pull/97) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v1.8.1-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.1-1) (2026-02-15)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.0-1...v1.8.1-1)
+
 ## [v1.8.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.0-1) (2026-02-14)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.7.1-1...v1.8.0-1)
