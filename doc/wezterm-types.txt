@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 16
+*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 17
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -53,6 +53,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-`wezterm-config.nvim`|
     - |wezterm-types-`modal.wezterm`|
     - |wezterm-types-`presentation.wez`|
+    - |wezterm-types-`ai-helper.wezterm`|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -221,6 +222,17 @@ You can import type annotations for `xarvex/presentation.wez`
 >lua
     ---@type PresentationWez
     local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
+<
+
+
+AI-HELPER.WEZTERM ~
+
+You can import type annotations for `Michal1993r/ai-helper.wezterm`
+<https://github.com/Michal1993r/ai-helper.wezterm> as shown below:
+
+>lua
+    ---@type AIHelper
+    local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
 <
 
 ------------------------------------------------------------------------------
