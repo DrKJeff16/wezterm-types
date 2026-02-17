@@ -215,7 +215,6 @@ function Wezterm.on(event, callback) end
 
 </details>
 <br />
-<br />
 <details>
 <summary><code>ai-commander.wezterm</code></summary>
 
