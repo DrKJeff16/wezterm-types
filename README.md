@@ -44,12 +44,13 @@ for any unclear types.
   - [Using lazydev.nvim](#using-lazydevnvim)
   - [Using The Built-in Neovim LSP](#using-the-built-in-neovim-lsp)
 - [Featured Plugins](#featured-plugins)
-  - [tabline.wez](#tablinewez)
-  - [wezterm-config.nvim](#wezterm-confignvim)
+  - [ai-commander.wezterm](#ai-commanderwezterm)
+  - [ai-helper.wezterm](#ai-helperwezterm)
   - [modal.wezterm](#modalwezterm)
   - [presentation.wez](#presentationwez)
-  - [ai-helper.wezterm](#ai-helperwezterm)
-  - [ai-commander.wezterm](#ai-commanderwezterm)
+  - [tabline.wez](#tablinewez)
+  - [wez-pain-control](#wez-pain-control)
+  - [wezterm-config.nvim](#wezterm-confignvim)
 - [License](#license)
 
 ---
@@ -90,7 +91,6 @@ A useful example:
 
 ```lua
 local wezterm = require("wezterm") ---@type Wezterm
-
 local config = wezterm.config_builder() ---@type Config
 
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
@@ -169,25 +169,24 @@ This project also features type annotations for various WezTerm plugins.
 
 **_If you want to have your plugin featured please request it through an issue._**
 
-### tabline.wez
+### ai-commander.wezterm
 
 You can import type annotations for
-[`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:
+[`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm) as shown below:
 
 ```lua
----@type TablineWez
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+---@type AICommander
+local ai_commander = wezterm.plugin.require("https://github.com/dimao/ai-commander.wezterm")
 ```
 
-### wezterm-config.nvim
+### ai-helper.wezterm
 
 You can import type annotations for
-[`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)
-as shown below:
+[`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm) as shown below:
 
 ```lua
----@type weztermConfig
-local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
+---@type AIHelper
+local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
 ```
 
 ### modal.wezterm
@@ -210,24 +209,42 @@ You can import type annotations for
 local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 ```
 
-### ai-helper.wezterm
+### tabline.wez
 
 You can import type annotations for
-[`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm) as shown below:
+[`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:
 
 ```lua
----@type AIHelper
-local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
+---@type TablineWez
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 ```
 
-### ai-commander.wezterm
+### wez-pain-control
 
 You can import type annotations for
-[`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm) as shown below:
+[`sei40kr/wez-pain-control`](https://github.com/sei40kr/wez-pain-control) as shown below:
 
 ```lua
----@type AICommander
-local ai_commander = wezterm.plugin.require("https://github.com/dimao/ai-commander.wezterm")
+---@type WezPainControl
+local wez_pain_control = wezterm.plugin.require("https://github.com/sei40kr/wez-pain-control")
+```
+
+Or, if you've installed it locally:
+
+```lua
+---@type WezPainControl
+local wez_pain_control = require("wez-pain-control.plugin")
+```
+
+### wezterm-config.nvim
+
+You can import type annotations for
+[`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)
+as shown below:
+
+```lua
+---@type weztermConfig
+local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
 ```
 
 ---
