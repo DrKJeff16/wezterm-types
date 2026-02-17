@@ -100,7 +100,7 @@ return config
 These annotations enable the **Lua Language Server** to provide proper type checking
 and autocompletion for WezTerm configuration options.
 
-### Using `lazydev.nvim`
+### Using lazydev.nvim
 
 Install [`lazydev.nvim`](https://github.com/folke/lazydev.nvim) as suggested:
 
@@ -168,7 +168,7 @@ This project also features type annotations for various WezTerm plugins.
 
 **_If you want to have your plugin featured please request it through an issue._**
 
-### `tabline.wez`
+### tabline.wez
 
 You can import type annotations for
 [`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:
@@ -178,7 +178,7 @@ You can import type annotations for
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 ```
 
-### `wezterm-config.nvim`
+### wezterm-config.nvim
 
 You can import type annotations for
 [`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)
@@ -189,7 +189,7 @@ as shown below:
 local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
 ```
 
-### `modal.wezterm`
+### modal.wezterm
 
 You can import type annotations for
 [`MLFlexer/modal.wezterm`](https://github.com/MLFlexer/modal.wezterm) as shown below:
@@ -199,7 +199,7 @@ You can import type annotations for
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 ```
 
-### `presentation.wez`
+### presentation.wez
 
 You can import type annotations for
 [`xarvex/presentation.wez`](https://github.com/xarvex/presentation.wez) as shown below:
@@ -209,7 +209,7 @@ You can import type annotations for
 local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 ```
 
-### `ai-helper.wezterm`
+### ai-helper.wezterm
 
 You can import type annotations for
 [`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm) as shown below:
