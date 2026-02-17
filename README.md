@@ -44,14 +44,6 @@ for any unclear types.
   - [Using lazydev.nvim](#using-lazydevnvim)
   - [Using The Built-in Neovim LSP](#using-the-built-in-neovim-lsp)
 - [Featured Plugins](#featured-plugins)
-  - [ai-commander.wezterm](#ai-commanderwezterm)
-  - [ai-helper.wezterm](#ai-helperwezterm)
-  - [modal.wezterm](#modalwezterm)
-  - [presentation.wez](#presentationwez)
-  - [tabline.wez](#tablinewez)
-  - [wez-pain-control](#wez-pain-control)
-  - [wez-tmux](#wez-tmux)
-  - [wezterm-config.nvim](#wezterm-confignvim)
 - [License](#license)
 
 ---
@@ -170,7 +162,62 @@ This project also features type annotations for various WezTerm plugins.
 
 **_If you want to have your plugin featured please request it through an issue._**
 
-### ai-commander.wezterm
+<details>
+<summary><code>dev.wezterm</code> <b>(SPECIAL CASE)</b></summary>
+
+You can import type annotations for
+[`ChrisGVE/dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm) as shown below:
+
+```lua
+---@type Dev
+local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
+```
+
+This integration also adds the following events to `wezterm.on()`:
+
+- `dev.wezterm-plugin-not-found`
+- `dev.wezterm.invalid_hashkey`
+- `dev.wezterm.invalid_opts`
+- `dev.wezterm.no_keywords`
+- `dev.wezterm.require_path_not_set`
+
+```lua
+---Either no `hashkey` or an invalid one provided.
+---
+---@param event "dev.wezterm.invalid_hashkey" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---Invalid options provided to plugin setup.
+---
+---@param event "dev.wezterm.invalid_opts" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---No keywords were provided for searching the plugin.
+---
+---@param event "dev.wezterm.no_keywords" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---The plugin was not found and thus `package.path` could not be set.
+---
+---@param event "dev.wezterm.require_path_not_set" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---The provided keywords did not allow for the plugin to be found.
+---
+---@param event "dev.wezterm-plugin-not-found" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+```
+
+</details>
+<br />
+<br />
+<details>
+<summary><code>ai-commander.wezterm</code></summary>
 
 You can import type annotations for
 [`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm) as shown below:
@@ -180,7 +227,10 @@ You can import type annotations for
 local ai_commander = wezterm.plugin.require("https://github.com/dimao/ai-commander.wezterm")
 ```
 
-### ai-helper.wezterm
+</details>
+
+<details>
+<summary><code>ai-helper.wezterm</code></summary>
 
 You can import type annotations for
 [`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm) as shown below:
@@ -190,7 +240,10 @@ You can import type annotations for
 local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
 ```
 
-### modal.wezterm
+</details>
+
+<details>
+<summary><code>modal.wezterm</code></summary>
 
 You can import type annotations for
 [`MLFlexer/modal.wezterm`](https://github.com/MLFlexer/modal.wezterm) as shown below:
@@ -200,7 +253,10 @@ You can import type annotations for
 local modal = wezterm.plugin.require("https://github.com/MLFlexer/modal.wezterm")
 ```
 
-### presentation.wez
+</details>
+
+<details>
+<summary><code>presentation.wez</code></summary>
 
 You can import type annotations for
 [`xarvex/presentation.wez`](https://github.com/xarvex/presentation.wez) as shown below:
@@ -210,7 +266,10 @@ You can import type annotations for
 local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
 ```
 
-### tabline.wez
+</details>
+
+<details>
+<summary><code>tabline.wez</code></summary>
 
 You can import type annotations for
 [`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:
@@ -220,7 +279,10 @@ You can import type annotations for
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 ```
 
-### wez-pain-control
+</details>
+
+<details>
+<summary><code>wez-pain-control</code></summary>
 
 You can import type annotations for
 [`sei40kr/wez-pain-control`](https://github.com/sei40kr/wez-pain-control) as shown below:
@@ -237,7 +299,10 @@ Or, if you've installed it locally:
 local wez_pain_control = require("wez-pain-control.plugin")
 ```
 
-### wez-tmux
+</details>
+
+<details>
+<summary><code>wez-tmux</code></summary>
 
 You can import type annotations for [`sei40kr/wez-tmux`](https://github.com/sei40kr/wez-tmux)
 as shown below:
@@ -254,7 +319,10 @@ Or, if you've installed it locally:
 local wez_tmux = require("plugins.wez-tmux.plugin")
 ```
 
-### wezterm-config.nvim
+</details>
+
+<details>
+<summary><code>wezterm-config.nvim</code></summary>
 
 You can import type annotations for
 [`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)
@@ -264,6 +332,8 @@ as shown below:
 ---@type weztermConfig
 local wezterm_config_nvim = wezterm.plugin.require('https://github.com/winter-again/wezterm-config.nvim')
 ```
+
+</details>
 
 ---
 
