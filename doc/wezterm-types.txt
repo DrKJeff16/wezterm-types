@@ -46,14 +46,14 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-luarocks|
     - |wezterm-types-neovim|
 - |wezterm-types-usage|
-    - |wezterm-types-using-`lazydev.nvim`|
+    - |wezterm-types-using-lazydev.nvim|
     - |wezterm-types-using-the-built-in-neovim-lsp|
 - |wezterm-types-featured-plugins|
-    - |wezterm-types-`tabline.wez`|
-    - |wezterm-types-`wezterm-config.nvim`|
-    - |wezterm-types-`modal.wezterm`|
-    - |wezterm-types-`presentation.wez`|
-    - |wezterm-types-`ai-helper.wezterm`|
+    - |wezterm-types-tabline.wez|
+    - |wezterm-types-wezterm-config.nvim|
+    - |wezterm-types-modal.wezterm|
+    - |wezterm-types-presentation.wez|
+    - |wezterm-types-ai-helper.wezterm|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
