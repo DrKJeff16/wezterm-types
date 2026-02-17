@@ -50,6 +50,7 @@ for any unclear types.
   - [presentation.wez](#presentationwez)
   - [tabline.wez](#tablinewez)
   - [wez-pain-control](#wez-pain-control)
+  - [wez-tmux](#wez-tmux)
   - [wezterm-config.nvim](#wezterm-confignvim)
 - [License](#license)
 
@@ -234,6 +235,23 @@ Or, if you've installed it locally:
 ```lua
 ---@type WezPainControl
 local wez_pain_control = require("wez-pain-control.plugin")
+```
+
+### wez-tmux
+
+You can import type annotations for [`sei40kr/wez-tmux`](https://github.com/sei40kr/wez-tmux)
+as shown below:
+
+```lua
+---@type WezTmux
+local wez_tmux = wezterm.plugin.require("https://github.com/sei40kr/wez-tmux")
+```
+
+Or, if you've installed it locally:
+
+```lua
+---@type WezTmux
+local wez_tmux = require("plugins.wez-tmux.plugin")
 ```
 
 ### wezterm-config.nvim
