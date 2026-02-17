@@ -49,6 +49,7 @@ for any unclear types.
   - [modal.wezterm](#modalwezterm)
   - [presentation.wez](#presentationwez)
   - [ai-helper.wezterm](#ai-helperwezterm)
+  - [ai-commander.wezterm](#ai-commanderwezterm)
 - [License](#license)
 
 ---
@@ -217,6 +218,16 @@ You can import type annotations for
 ```lua
 ---@type AIHelper
 local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
+```
+
+### ai-commander.wezterm
+
+You can import type annotations for
+[`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm) as shown below:
+
+```lua
+---@type AICommander
+local ai_commander = wezterm.plugin.require("https://github.com/dimao/ai-commander.wezterm")
 ```
 
 ---
