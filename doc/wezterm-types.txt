@@ -55,6 +55,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-presentation.wez|
     - |wezterm-types-tabline.wez|
     - |wezterm-types-wez-pain-control|
+    - |wezterm-types-wez-tmux|
     - |wezterm-types-wezterm-config.nvim|
 - |wezterm-types-license|
 
@@ -252,6 +253,24 @@ Or, if you’ve installed it locally:
 >lua
     ---@type WezPainControl
     local wez_pain_control = require("wez-pain-control.plugin")
+<
+
+
+WEZ-TMUX ~
+
+You can import type annotations for `sei40kr/wez-tmux`
+<https://github.com/sei40kr/wez-tmux> as shown below:
+
+>lua
+    ---@type WezTmux
+    local wez_tmux = wezterm.plugin.require("https://github.com/sei40kr/wez-tmux")
+<
+
+Or, if you’ve installed it locally:
+
+>lua
+    ---@type WezTmux
+    local wez_tmux = require("plugins.wez-tmux.plugin")
 <
 
 
