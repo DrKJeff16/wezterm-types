@@ -54,6 +54,7 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
     - |wezterm-types-modal.wezterm|
     - |wezterm-types-presentation.wez|
     - |wezterm-types-ai-helper.wezterm|
+    - |wezterm-types-ai-commander.wezterm|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -233,6 +234,17 @@ You can import type annotations for `Michal1993r/ai-helper.wezterm`
 >lua
     ---@type AIHelper
     local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
+<
+
+
+AI-COMMANDER.WEZTERM ~
+
+You can import type annotations for `dimao/ai-commander.wezterm`
+<https://github.com/dimao/ai-commander.wezterm> as shown below:
+
+>lua
+    ---@type AICommander
+    local ai_commander = wezterm.plugin.require("https://github.com/dimao/ai-commander.wezterm")
 <
 
 ------------------------------------------------------------------------------
