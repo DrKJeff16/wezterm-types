@@ -48,6 +48,7 @@ for any unclear types.
   - [`wezterm-config.nvim`](#wezterm-confignvim)
   - [`modal.wezterm`](#modalwezterm)
   - [`presentation.wez`](#presentationwez)
+  - [`ai-helper.wezterm`](#ai-helperwezterm)
 - [License](#license)
 
 ---
@@ -206,6 +207,16 @@ You can import type annotations for
 ```lua
 ---@type PresentationWez
 local presentation = wezterm.plugin.require("https://github.com/xarvex/presentation.wez")
+```
+
+### `ai-helper.wezterm`
+
+You can import type annotations for
+[`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm) as shown below:
+
+```lua
+---@type AIHelper
+local ai_helper = wezterm.plugin.require("https://github.com/Michal1993r/ai-helper.wezterm")
 ```
 
 ---
