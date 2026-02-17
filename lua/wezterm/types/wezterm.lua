@@ -1739,6 +1739,50 @@ function Wezterm.on(event, callback) end
 ---@param callback CallbackWindowPane
 function Wezterm.on(event, callback) end
 
+---============================= dev.wezterm =======================================
+
+---This is for `dev.wezterm` only!
+------
+---Either no `hashkey` or an invalid one provided.
+---
+---@param event "dev.wezterm.invalid_hashkey" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---This is for `dev.wezterm` only!
+------
+---Invalid options provided to plugin setup.
+---
+---@param event "dev.wezterm.invalid_opts" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---This is for `dev.wezterm` only!
+------
+---No keywords were provided for searching the plugin.
+---
+---@param event "dev.wezterm.no_keywords" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---This is for `dev.wezterm` only!
+------
+---The plugin was not found and thus `package.path` could not be set.
+---
+---@param event "dev.wezterm.require_path_not_set" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---This is for `dev.wezterm` only!
+------
+---The provided keywords did not allow for the plugin to be found.
+---
+---@param event "dev.wezterm-plugin-not-found" This is for `dev.wezterm` only!
+---@param callback function
+function Wezterm.on(event, callback) end
+
+---=================================================================================
+
 ---This function opens the specified `path_or_url` with
 ---either the specified application or the default application
 ---if `application` was not passed in.
