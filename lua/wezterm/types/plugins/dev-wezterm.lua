@@ -25,7 +25,7 @@ local behavior = {
 ---@field branch? string
 ---@field file? string
 
----@class DevWezterm
+---@class Dev
 ---@field dev_cache_element CacheElement
 ---@field cache table<string, CacheElement>
 ---@field substitutions table<string, string>|nil
