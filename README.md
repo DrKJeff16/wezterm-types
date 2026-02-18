@@ -81,17 +81,17 @@ This project also features type annotations for various WezTerm plugins.
 
 **_If you want to have your plugin featured please request it through an issue._**
 
-| Plugin                                                                                    | Documentation                                            |
-|-------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| [`ChrisGVE/dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm)                         | [`docs/dev-wezterm.md`](./docs/dev-wezterm.md)           |
-| [`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm)             | [`docs/ai-commander.md`](./docs/ai-commander.md)         |
-| [`Michal1993r/ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm)       | [`docs/ai-helper.md`](./docs/ai-helper.md)               |
-| [`MLFlexer/modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                     | [`docs/modal_wezterm.md`](/docs/modal_wezterm.md)        |
-| [`xarvex/presentation.wez`](https://github.com/xarvex/presentation.wez)                   | [`docs/presentation_wez.md`](./docs/presentation_wez.md) |
-| [`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez)         | [`docs/tabline_wez.md`](./docs/tabline_wez.md)           |
-| [`sei40kr/wez-pain-control`](https://github.com/sei40kr/wez-pain-control)                 | [`docs/wez-pain-control.md`](./docs/wez-pain-control.md) |
-| [`sei40kr/wez-tmux`](https://github.com/sei40kr/wez-tmux)                                 | [`docs/wez-tmux.md`](./docs/wez-tmux.md)                 |
-| [`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim) | [`docs/wezterm-config.md`](./docs/wezterm-config.md)     |
+| Plugin                                                                       | Documentation                                            | Comment                           |
+|------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------|
+| [`dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm)                     | [`docs/dev-wezterm.md`](./docs/dev-wezterm.md)           | **_This one is a special case!_** |
+| [`ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm)      | [`docs/ai-commander.md`](./docs/ai-commander.md)         |                                   |
+| [`ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm)      | [`docs/ai-helper.md`](./docs/ai-helper.md)               |                                   |
+| [`modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                 | [`docs/modal_wezterm.md`](/docs/modal_wezterm.md)        |                                   |
+| [`presentation.wez`](https://github.com/xarvex/presentation.wez)             | [`docs/presentation_wez.md`](./docs/presentation_wez.md) |                                   |
+| [`tabline.wez`](https://github.com/michaelbrusegard/tabline.wez)             | [`docs/tabline_wez.md`](./docs/tabline_wez.md)           |                                   |
+| [`wez-pain-control`](https://github.com/sei40kr/wez-pain-control)            | [`docs/wez-pain-control.md`](./docs/wez-pain-control.md) |                                   |
+| [`wez-tmux`](https://github.com/sei40kr/wez-tmux)                            | [`docs/wez-tmux.md`](./docs/wez-tmux.md)                 |                                   |
+| [`wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim) | [`docs/wezterm-config.md`](./docs/wezterm-config.md)     |                                   |
 
 ---
 
