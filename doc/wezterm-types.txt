@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.5.0      Last change: 2026 February 18
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 18
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -19,7 +19,7 @@ for your WezTerm <https://github.com/wezterm/wezterm> config.
 Example videos can be found in `EXAMPLES.md`
 <https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md>.
 
-**NOTE**: For any missing or unclear types you should always double-check the
+**NOTE**For any missing or unclear types you should always double-check the
 WezTerm Lua Reference <https://wezterm.org/config/lua/general.html>. If using
 an annotated plugin featured in this repository please refer to its author for
 any unclear types.
