@@ -102,6 +102,8 @@ issue.**
 
   modal.wezterm                    docs/modal_wezterm.md      
 
+  pinned-tabs.wezterm              docs/pinned-tabs.md        
+
   presentation.wez                 docs/presentation_wez.md   
 
   tabline.wez                      docs/tabline_wez.md        
