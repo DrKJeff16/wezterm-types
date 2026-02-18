@@ -1,11 +1,23 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@class PinnedTabsOpts
+---@class PinnedTabsCreateOpts
 ---@field name? string
 ---@field program? string
 ---@field cwd? string
 ---@field args? string[]
+
+---@class PinnedTabsKey: Key
+---@field tab? PinnedTabsCreateOpts
+
+---@class PinnedTabsOpts
+---Instead of WezTerm startup, you can do the cleanup on config reload.
+---
+---@field create? boolean
+---You don't want any debug logs (errors will still be logged).
+---
+---@field debug? boolean
+---@field keys? PinnedTabsKey[]
 
 ---@class PinnedTabs
 local M = {}
@@ -18,7 +30,7 @@ function M.apply_to_config(config, opts) end
 ---
 ---Use this to configure the keybindings in your `wezterm.lua`.
 ---
----@param opts PinnedTabsOpts
+---@param opts PinnedTabsCreateOpts
 function M.create(opts) end
 
 ---Clean up stale state files.
