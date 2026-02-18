@@ -24,3 +24,4 @@ function M.create(opts) end
 ---Clean up stale state files.
 ---
 function M.cleanup() end
+-- vim: set ts=2 sts=2 sw=2 et ai si sta:
