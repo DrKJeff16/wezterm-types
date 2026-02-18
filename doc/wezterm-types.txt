@@ -90,27 +90,28 @@ This project also features type annotations for various WezTerm plugins.
 **If you want to have your plugin featured please request it through an
 issue.**
 
-  -----------------------------------------------------------------------
-  Plugin                                      Documentation
-  ------------------------------------------- ---------------------------
-  ChrisGVE/dev.wezterm                        docs/dev-wezterm.md
+  --------------------------------------------------------------------------
+  Plugin                           Documentation              Comment
+  -------------------------------- -------------------------- --------------
+  dev.wezterm                      docs/dev-wezterm.md        This one is a
+                                                              special case!
 
-  dimao/ai-commander.wezterm                  docs/ai-commander.md
+  ai-commander.wezterm             docs/ai-commander.md       
 
-  Michal1993r/ai-helper.wezterm               docs/ai-helper.md
+  ai-helper.wezterm                docs/ai-helper.md          
 
-  MLFlexer/modal.wezterm                      docs/modal_wezterm.md
+  modal.wezterm                    docs/modal_wezterm.md      
 
-  xarvex/presentation.wez                     docs/presentation_wez.md
+  presentation.wez                 docs/presentation_wez.md   
 
-  michaelbrusegard/tabline.wez                docs/tabline_wez.md
+  tabline.wez                      docs/tabline_wez.md        
 
-  sei40kr/wez-pain-control                    docs/wez-pain-control.md
+  wez-pain-control                 docs/wez-pain-control.md   
 
-  sei40kr/wez-tmux                            docs/wez-tmux.md
+  wez-tmux                         docs/wez-tmux.md           
 
-  winter-again/wezterm-config.nvim            docs/wezterm-config.md
-  -----------------------------------------------------------------------
+  wezterm-config.nvim              docs/wezterm-config.md     
+  --------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
