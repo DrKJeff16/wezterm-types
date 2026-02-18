@@ -86,7 +86,8 @@ This project also features type annotations for various WezTerm plugins.
 | [`dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm)                     | [`docs/dev-wezterm.md`](./docs/dev-wezterm.md)           | **_This one is a special case!_** |
 | [`ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm)      | [`docs/ai-commander.md`](./docs/ai-commander.md)         |                                   |
 | [`ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm)      | [`docs/ai-helper.md`](./docs/ai-helper.md)               |                                   |
-| [`modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                 | [`docs/modal_wezterm.md`](/docs/modal_wezterm.md)        |                                   |
+| [`modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                 | [`docs/modal_wezterm.md`](./docs/modal_wezterm.md)       |                                   |
+| [`pinned-tabs.wezterm`](https://github.com/selectnull/pinned-tabs.wezterm)   | [`docs/pinned-tabs.md`](./docs/pinned-tabs.md)           |                                   |
 | [`presentation.wez`](https://github.com/xarvex/presentation.wez)             | [`docs/presentation_wez.md`](./docs/presentation_wez.md) |                                   |
 | [`tabline.wez`](https://github.com/michaelbrusegard/tabline.wez)             | [`docs/tabline_wez.md`](./docs/tabline_wez.md)           |                                   |
 | [`wez-pain-control`](https://github.com/sei40kr/wez-pain-control)            | [`docs/wez-pain-control.md`](./docs/wez-pain-control.md) |                                   |
