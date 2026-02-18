@@ -45,10 +45,10 @@ TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
 - |wezterm-types-installation|
     - |wezterm-types-luarocks|
     - |wezterm-types-neovim|
+- |wezterm-types-featured-plugins|
 - |wezterm-types-usage|
     - |wezterm-types-using-lazydev.nvim|
     - |wezterm-types-using-the-built-in-neovim-lsp|
-- |wezterm-types-featured-plugins|
 - |wezterm-types-license|
 
 ------------------------------------------------------------------------------
@@ -81,6 +81,36 @@ package manager:
     },
 <
 
+------------------------------------------------------------------------------
+
+FEATURED PLUGINS                              *wezterm-types-featured-plugins*
+
+This project also features type annotations for various WezTerm plugins.
+
+**If you want to have your plugin featured please request it through an
+issue.**
+
+  -----------------------------------------------------------------------
+  Plugin                                      Documentation
+  ------------------------------------------- ---------------------------
+  ChrisGVE/dev.wezterm                        docs/dev-wezterm.md
+
+  dimao/ai-commander.wezterm                  docs/ai-commander.md
+
+  Michal1993r/ai-helper.wezterm               docs/ai-helper.md
+
+  MLFlexer/modal.wezterm                      docs/modal_wezterm.md
+
+  xarvex/presentation.wez                     docs/presentation_wez.md
+
+  michaelbrusegard/tabline.wez                docs/tabline_wez.md
+
+  sei40kr/wez-pain-control                    docs/wez-pain-control.md
+
+  sei40kr/wez-tmux                            docs/wez-tmux.md
+
+  winter-again/wezterm-config.nvim            docs/wezterm-config.md
+  -----------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
@@ -165,36 +195,6 @@ Add the install path of `wezterm-types` in your `lua_ls` config.
     }
 <
 
-------------------------------------------------------------------------------
-
-FEATURED PLUGINS                              *wezterm-types-featured-plugins*
-
-This project also features type annotations for various WezTerm plugins.
-
-**If you want to have your plugin featured please request it through an
-issue.**
-
-  -----------------------------------------------------------------------
-  Plugin                                      Documentation
-  ------------------------------------------- ---------------------------
-  ChrisGVE/dev.wezterm                        docs/dev-wezterm.md
-
-  dimao/ai-commander.wezterm                  docs/ai-commander.md
-
-  Michal1993r/ai-helper.wezterm               docs/ai-helper.md
-
-  MLFlexer/modal.wezterm                      docs/modal_wezterm.md
-
-  xarvex/presentation.wez                     docs/presentation_wez.md
-
-  michaelbrusegard/tabline.wez                docs/tabline_wez.md
-
-  sei40kr/wez-pain-control                    docs/wez-pain-control.md
-
-  sei40kr/wez-tmux                            docs/wez-tmux.md
-
-  winter-again/wezterm-config.nvim            docs/wezterm-config.md
-  -----------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 COLLABORATORS                                    *wezterm-types-collaborators*
