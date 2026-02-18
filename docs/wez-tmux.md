@@ -14,3 +14,5 @@ Or, if you've installed it locally:
 ---@type WezTmux
 local wez_tmux = require("plugins.wez-tmux.plugin")
 ```
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->

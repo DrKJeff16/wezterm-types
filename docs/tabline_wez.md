@@ -7,3 +7,5 @@ You can import type annotations for
 ---@type TablineWez
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 ```
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->

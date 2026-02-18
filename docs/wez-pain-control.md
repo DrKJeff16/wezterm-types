@@ -14,3 +14,5 @@ Or, if you've installed it locally:
 ---@type WezPainControl
 local wez_pain_control = require("wez-pain-control.plugin")
 ```
+
+<!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->
