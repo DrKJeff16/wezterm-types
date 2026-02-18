@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/panvimdoc.yml
       - README.md
+      - docs/*.md
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,12 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Run panvimdoc
-        uses: kdheepak/panvimdoc@main
+      - name: Run panvimdoc for README
+        uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types
           pandoc: README.md
-          version: "NVIM >=v0.5.0"
+          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -29,7 +30,137 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Auto Commit
+      - name: Run panvimdoc for ai-commander.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-ai-commander
+          pandoc: docs/ai-commander.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for ai-helper.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-ai-helper
+          pandoc: docs/ai-helper.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for dev-wezterm.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-dev-wezterm
+          pandoc: docs/dev-wezterm.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for modal_wezterm.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-modal_wezterm
+          pandoc: docs/modal_wezterm.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for pinned-tabs.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-pinned-tabs
+          pandoc: docs/pinned-tabs.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for presentation_wez.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-presentation_wez
+          pandoc: docs/presentation_wez.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for tabline_wez.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-tabline_wez
+          pandoc: docs/tabline_wez.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for wez-pain-control.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wez-pain-control
+          pandoc: docs/wez-pain-control.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for wez-tmux.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wez-tmux
+          pandoc: docs/wez-tmux.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for wezterm-config.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wezterm-config
+          pandoc: docs/wezterm-config.md
+          version: "NVIM >=v0.7.0"
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Auto-Commit
         uses: stefanzweifel/git-auto-commit-action@v7.1.0
         with:
           commit_message: "docs: auto generate docs"
