@@ -273,8 +273,18 @@ local pane_select_mode = {
 ---
 ---@field scope_lines? integer
 
+---@generic T
 ---@alias ActivateKeyTable fun(params: ActivateKeyTableParams): { ActivateKeyTable: ActivateKeyTableParams }
+---@alias ActivatePaneByIndex fun(params: T<integer>): { ActivatePaneByIndex: T<integer> }
+---@alias ActivatePaneDirection fun(params: T<PaneDirection>): { ActivatePaneDirection: T<PaneDirection> }
+---@alias ActivateTab fun(params: T<integer>): { ActivateTab: T<integer> }
+---@alias ActivateTabRelative fun(params: T<integer>): { ActivateTabRelative: T<integer> }
+---@alias ActivateTabRelativeNoWrap fun(params: T<integer>): { ActivateTabRelativeNoWrap: T<integer> }
+---@alias ActivateWindow fun(params: T<integer>): { ActivateWindow: T<integer> }
+---@alias ActivateWindowRelative fun(params: T<integer>): { ActivateWindowRelative: T<integer> }
+---@alias ActivateWindowRelativeNoWrap fun(params: T<integer>): { ActivateWindowRelativeNoWrap: T<integer> }
 ---@alias AdjustPaneSize fun(params: { [1]: PaneDirection, [2]: integer }): { AdjustPaneSize: { [1]: PaneDirection, [2]: integer } }
+---@alias AttachDomain fun(domain: T<string>): { AttachDomain: T<string> }
 ---@alias CharSelect fun(params: CharSelectParams): { CharSelect: CharSelectParams }
 ---@alias ClearScrollback fun(params: ScrollbackEraseMode): { ClearScrollback: ScrollbackEraseMode }
 ---@alias CloseCurrentPane fun(params: { confirm: boolean }): { CloseCurrentPane: { confirm: boolean } }
@@ -285,27 +295,16 @@ local pane_select_mode = {
 ---@alias CopyMode fun(params: CopyModeParams): { CopyMode: CopyModeParams }
 ---@alias CopyTo fun(params: ClipboardCopyDestination): { CopyTo: ClipboardCopyDestination }
 ---@alias DetachDomain fun(params: SpawnTabDomain): { DetachDomain: SpawnTabDomain }
+---@alias EmitEvent fun(event_id: T<string>): { EmitEvent: T<string> }
 ---@alias ExtendSelectionToMouseCursor fun(params: SelectionMode): { ExtendSelectionToMouseCursor: SelectionMode }
 ---@alias InputSelector fun(params: InputSelectorParams): { InputSelector: InputSelectorParams }
+---@alias MoveTab fun(index: T<integer>): { MoveTab: T<integer> }
+---@alias MoveTabRelative fun(index: T<integer>): { MoveTabRelative: T<integer> }
+---@alias Multiple fun(events: (Actions|KeyAssignmentLiterals)[]): { Multiple: (Actions|KeyAssignment)[] }
 ---@alias PaneSelect PaneSelectParams|fun(params: PaneSelectParams): { PaneSelect: PaneSelectParams }
 ---@alias PasteFrom fun(source: ClipboardPasteDestination): { PasteFrom: ClipboardPasteDestination }
 ---@alias PromptInputLine fun(params: PromptInputLineParams): { PromptInputLine: PromptInputLineParams }
 ---@alias QuickSelectArgs fun(params: QuickSelectArgsParams): { QuickSelectArgs: QuickSelectArgsParams }
-
----@generic T
----@alias ActivatePaneByIndex fun(params: T<integer>): { ActivatePaneByIndex: T<integer> }
----@alias ActivatePaneDirection fun(params: T<PaneDirection>): { ActivatePaneDirection: T<PaneDirection> }
----@alias ActivateTab fun(params: T<integer>): { ActivateTab: T<integer> }
----@alias ActivateTabRelative fun(params: T<integer>): { ActivateTabRelative: T<integer> }
----@alias ActivateTabRelativeNoWrap fun(params: T<integer>): { ActivateTabRelativeNoWrap: T<integer> }
----@alias ActivateWindow fun(params: T<integer>): { ActivateWindow: T<integer> }
----@alias ActivateWindowRelative fun(params: T<integer>): { ActivateWindowRelative: T<integer> }
----@alias ActivateWindowRelativeNoWrap fun(params: T<integer>): { ActivateWindowRelativeNoWrap: T<integer> }
----@alias AttachDomain fun(domain: T<string>): { AttachDomain: T<string> }
----@alias EmitEvent fun(event_id: T<string>): { EmitEvent: T<string> }
----@alias MoveTab fun(index: T<integer>): { MoveTab: T<integer> }
----@alias MoveTabRelative fun(index: T<integer>): { MoveTabRelative: T<integer> }
----@alias Multiple fun(events: ({ [string]: any }|KeyAssignment)[]): { Multiple: ({ [string]: any }|KeyAssignment)[] }
 
 ---@generic T
 ---@alias Actions
@@ -574,7 +573,7 @@ local pane_direction = {
 ---that makes it a bit easier to identify where syntax errors may exist
 ---in your configuration file.
 ---
----@class KeyAssignments
+---@class KeyAssignment
 ---@field ActivateCommandPalette "ActivateCommandPalette"
 ---@field ActivateCopyMode "ActivateCopyMode"
 ---@field ActivateKeyTable ActivateKeyTable
@@ -747,7 +746,5 @@ local key_assignment = {
   ToggleFullScreen = 1,
   TogglePaneZoomState = 1,
 }
-
----@alias KeyAssignment KeyAssignments|KeyAssignmentLiterals|Actions
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
