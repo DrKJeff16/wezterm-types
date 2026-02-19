@@ -2,16 +2,16 @@
 ---@diagnostic disable:unused-local
 
 ---@class WezTmuxAction
----@field ClearPattern ActionClass|KeyAssignFunction
----@field ClearSelectionOrClearPatternOrClose ActionClass|KeyAssignFunction
----@field MovePaneToNewTab ActionClass|KeyAssignFunction
----@field NextMatch ActionClass|KeyAssignFunction
----@field PriorMatch ActionClass|KeyAssignFunction
----@field RenameCurrentTab ActionClass|KeyAssignFunction
----@field RenameWorkspace ActionClass|KeyAssignFunction
----@field SearchBackward ActionClass|KeyAssignFunction
----@field SearchForward ActionClass|KeyAssignFunction
----@field WorkspaceSelect ActionClass|KeyAssignFunction
+---@field ClearPattern "ClearPattern"|fun(params: any): { ClearPattern: any }
+---@field ClearSelectionOrClearPatternOrClose "ClearSelectionOrClearPatternOrClose"|fun(params: any): { ClearSelectionOrClearPatternOrClose: any }
+---@field MovePaneToNewTab "MovePaneToNewTab"|fun(params: any): { MovePaneToNewTab: any }
+---@field NextMatch "NextMatch"|fun(params: any): { NextMatch: any }
+---@field PriorMatch "PriorMatch"|fun(params: any): { PriorMatch: any }
+---@field RenameCurrentTab "RenameCurrent"|fun(params: any): { RenameCurrent: any }
+---@field RenameWorkspace "RenameWorkspace"|fun(params: any): { RenameWorkspace: any }
+---@field SearchBackward  "SearchBackward"|fun(params: any): { SearchBackward: any }
+---@field SearchForward   "SearchForward"|fun(params: any): { SearchForward: any }
+---@field WorkspaceSelect "WorkspaceSelect"|fun(params: any): { WorkspaceSelect: any }
 
 ---@alias WezTmuxOpts { tab_and_split_indices_are_zero_based?: boolean }
 

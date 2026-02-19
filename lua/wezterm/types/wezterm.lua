@@ -713,7 +713,7 @@ end
 ---@field wezterm_version? string
 ---@field aliases? string[]
 
----@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|Action|nil
+---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|KeyAssignment|nil
 
 ---@enum (key) CursorStyle
 local cursor_style = {
@@ -792,7 +792,7 @@ local weight = {
 
 ---@class KeyBinding
 ---@field key string
----@field action Action
+---@field action KeyAssignment
 ---@field mods? string
 
 ---@class MouseEventInfo
@@ -812,7 +812,7 @@ local weight = {
 
 ---@class MouseBindingBase
 ---@field event MouseEvent
----@field action Action
+---@field action KeyAssignment
 ---@field mouse_reporting? boolean
 ---@field alt_screen? boolean|"Any"
 
@@ -947,9 +947,9 @@ local weight = {
 ---where syntax errors may exist in your configuration file.
 ---
 ---For more information, see:
---- - [`Action`](lua://Action)
+--- - [`KeyAssignment`](lua://KeyAssignment)
 ---
----@field action Action
+---@field action KeyAssignment
 ---This constant is set to the path to the directory
 ---in which your `wezterm.lua` configuration file was found.
 ---
