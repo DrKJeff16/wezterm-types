@@ -30,12 +30,22 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Auto-Commit
+        uses: stefanzweifel/git-auto-commit-action@v7.1.0
+        with:
+          commit_message: "docs: auto generate docs"
+          branch: ${{ github.head_ref }}
+  plugins:
+    needs: docs
+    runs-on: ubuntu-latest
+    name: pandoc to vimdoc (plugins)
+    steps:
       - name: Run panvimdoc for ai-commander.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-ai-commander
+          description: "ai-commander types"
           pandoc: docs/ai-commander.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -47,8 +57,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-ai-helper
+          description: "ai-helper types"
           pandoc: docs/ai-helper.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -60,8 +70,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-dev-wezterm
+          description: "dev-wezterm types"
           pandoc: docs/dev-wezterm.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -73,8 +83,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-modal_wezterm
+          description: "modal_wezterm types"
           pandoc: docs/modal_wezterm.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -86,8 +96,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-pinned-tabs
+          description: "pinned-tabs types"
           pandoc: docs/pinned-tabs.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -99,8 +109,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-presentation_wez
+          description: "presentation_wez types"
           pandoc: docs/presentation_wez.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -112,8 +122,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-smart-splits
+          description: "smart-splits types"
           pandoc: docs/smart-splits.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -125,8 +135,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-tabline_wez
+          description: "tabline_wez types"
           pandoc: docs/tabline_wez.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -138,8 +148,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wez-pain-control
+          description: "wez-pain-control types"
           pandoc: docs/wez-pain-control.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -151,8 +161,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wez-tmux
+          description: "wez-tmux types"
           pandoc: docs/wez-tmux.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -164,8 +174,8 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wezterm-config
+          description: "wezterm-config types"
           pandoc: docs/wezterm-config.md
-          version: "NVIM >=v0.7.0"
           toc: false
           demojify: true
           dedupsubheadings: false
