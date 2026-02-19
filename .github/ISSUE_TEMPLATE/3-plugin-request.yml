@@ -1,0 +1,51 @@
+name: Request a plugin
+description: Click here if you have a WezTerm plugin you'd like to add!
+title: "feat(plugin): add `<PLUGIN_NAME>`"
+labels:
+  - feature-request
+  - plugin-request
+assignees:
+  - DrKJeff16
+body:
+  - type: checkboxes
+    attributes:
+      label: Checks
+      options:
+        - label: The plugin is not in `wezterm-types`
+          required: true
+        - label: I have checked for existing issues related to this one, whether open or closed
+          required: true
+        - label: I have checked for existing PRs and none address this, whether open or closed
+          required: true
+  - type: input
+    attributes:
+      label: The Plugin To Add
+      placeholder: e.g. DrKJeff16/wezterm-types
+      description: |
+        Input the name of the plugin.
+
+        - If hosted on GitHub, please format as `username/repo`.
+        - Otherwise, paste the full URL to the plugin.
+    validations:
+      required: true
+  - type: dropdown
+    id: is_owner
+    attributes:
+      label: Is the plugin yours?
+      multiple: true
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  - type: dropdown
+    id: is_annotated
+    attributes:
+      label: Is the plugin annotated?
+      multiple: true
+      options:
+        - "Yes"
+        - "No"
+        - "Don't Know"
+    validations:
+      required: true
