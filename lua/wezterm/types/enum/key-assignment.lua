@@ -516,7 +516,7 @@ local launcher_args_flags = {
 ---@alias InputSelector fun(params: InputSelectorParams): { InputSelector: InputSelectorParams }
 ---@alias MoveTab fun(index: T<integer>): { MoveTab: T<integer> }
 ---@alias MoveTabRelative fun(index: T<integer>): { MoveTabRelative: T<integer> }
----@alias Multiple fun(events: (Actions|KeyAssignmentLiterals)[]): { Multiple: (Actions|KeyAssignment)[] }
+---@alias Multiple fun(events: Action[]): { Multiple: Action[] }
 ---@alias PaneSelect PaneSelectParams|fun(params: PaneSelectParams): { PaneSelect: PaneSelectParams }
 ---@alias PasteFrom fun(source: ClipboardPasteDestination): { PasteFrom: ClipboardPasteDestination }
 ---@alias PromptInputLine fun(params: PromptInputLineParams): { PromptInputLine: PromptInputLineParams }
@@ -560,7 +560,7 @@ local launcher_args_flags = {
 ---|{ InputSelector: InputSelectorParams }
 ---|{ MoveTab: integer }
 ---|{ MoveTabRelative: integer }
----|{ Multiple: (Actions|KeyAssignment)[] }
+---|{ Multiple: Action[] }
 ---|{ PaneSelect: PaneSelectParams }
 ---|{ PasteFrom: ClipboardPasteDestination }
 ---|{ PromptInputLine: PromptInputLineParams }
@@ -986,5 +986,7 @@ local key_assignment = {
   ToggleFullScreen = 1,
   TogglePaneZoomState = 1,
 }
+
+---@alias Action (Actions|KeyAssignmentLiterals)
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

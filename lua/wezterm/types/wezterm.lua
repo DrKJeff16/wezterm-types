@@ -663,10 +663,9 @@ end
 ---Can be any key assignment action.
 ---
 ---For more information, see:
---- - [`KeyAssignmentLiterals`](lua://KeyAssignmentLiterals)
---- - [`Actions`](lua://Actions)
+--- - [`Action`](lua://Action)
 ---
----@field action KeyAssignmentLiterals|Actions
+---@field action Action
 ---**(OPTIONAL)** Nerd Fonts glyph name to use for the icon for the entry.
 ---
 ---For a list of icon names, see:
@@ -714,7 +713,7 @@ end
 ---@field wezterm_version? string
 ---@field aliases? string[]
 
----@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|KeyAssignmentLiterals|Actions|nil
+---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): any
 
 ---@enum (key) CursorStyle
 local cursor_style = {
@@ -793,7 +792,7 @@ local weight = {
 
 ---@class KeyBinding
 ---@field key string
----@field action KeyAssignmentLiterals|Actions
+---@field action Action
 ---@field mods? string
 
 ---@class MouseEventInfo
@@ -813,7 +812,7 @@ local weight = {
 
 ---@class MouseBindingBase
 ---@field event MouseEvent
----@field action KeyAssignmentLiterals|Actions
+---@field action Action
 ---@field mouse_reporting? boolean
 ---@field alt_screen? boolean|"Any"
 
@@ -1577,7 +1576,7 @@ function Wezterm.on(event, callback) end
 ---This is the `+` button that is drawn to the right of the last tab.
 ---
 ---@param event "new-tab-button-click"
----@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: KeyAssignmentLiterals|Actions)
+---@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action)
 function Wezterm.on(event, callback) end
 
 --- - The first event parameter is a [`Window`](lua://Window)

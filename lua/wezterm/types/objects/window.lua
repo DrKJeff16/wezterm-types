@@ -170,7 +170,7 @@ function M:mux_window() end
 ---against a pane in a window when configured via the keys
 ---and mouse configuration options.
 ---
----@param key_assignment KeyAssignmentLiterals|Actions
+---@param key_assignment Action
 ---@param pane Pane
 function M:perform_action(key_assignment, pane) end
 
