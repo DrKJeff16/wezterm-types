@@ -1,7 +1,6 @@
 *wezterm-types-presentation_wez.txt*For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. presentation.wez          *wezterm-types-presentation_wez-presentation.wez*
+`presentation.wez`
 
 You can import type annotations for `xarvex/presentation.wez`
 <https://github.com/xarvex/presentation.wez> as shown below:

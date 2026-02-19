@@ -1,7 +1,6 @@
 *wezterm-types-tabline_wez.txt* For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. tabline.wez                         *wezterm-types-tabline_wez-tabline.wez*
+`tabline.wez`
 
 You can import type annotations for `michaelbrusegard/tabline.wez`
 <https://github.com/michaelbrusegard/tabline.wez> as show below:

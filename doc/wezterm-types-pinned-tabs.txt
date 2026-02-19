@@ -1,7 +1,6 @@
 *wezterm-types-pinned-tabs.txt* For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. pinned-tabs.wezterm         *wezterm-types-pinned-tabs-pinned-tabs.wezterm*
+`pinned-tabs.wezterm`
 
 You can import type annotations for `selectnull/pinned-tabs.wezterm`
 <https://github.com/selectnull/pinned-tabs.wezterm> as shown below:

@@ -1,7 +1,6 @@
 *wezterm-types-wez-pain-control.txt*For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. wez-pain-control          *wezterm-types-wez-pain-control-wez-pain-control*
+`wez-pain-control`
 
 You can import type annotations for `sei40kr/wez-pain-control`
 <https://github.com/sei40kr/wez-pain-control> as shown below:

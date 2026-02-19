@@ -1,7 +1,6 @@
 *wezterm-types-modal_wezterm.txt*For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. modal.wezterm                   *wezterm-types-modal_wezterm-modal.wezterm*
+`modal.wezterm`
 
 You can import type annotations for `MLFlexer/modal.wezterm`
 <https://github.com/MLFlexer/modal.wezterm> as shown below:

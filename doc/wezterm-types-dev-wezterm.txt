@@ -1,7 +1,6 @@
 *wezterm-types-dev-wezterm.txt* For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. dev.wezterm                         *wezterm-types-dev-wezterm-dev.wezterm*
+`dev.wezterm`
 
 You can import type annotations for `ChrisGVE/dev.wezterm`
 <https://github.com/ChrisGVE/dev.wezterm> as shown below:

@@ -1,7 +1,6 @@
 *wezterm-types-ai-commander.txt*For NVIM >=v0.7.0Last change: 2026 February 19
 
-==============================================================================
-1. ai-commander.wezterm      *wezterm-types-ai-commander-ai-commander.wezterm*
+`ai-commander.wezterm`
 
 You can import type annotations for `dimao/ai-commander.wezterm`
 <https://github.com/dimao/ai-commander.wezterm> as shown below:
