@@ -532,6 +532,10 @@ local launcher_args_flags = {
 ---@alias SetPaneZoomState fun(state: boolean): { SetPaneZoomState: boolean }
 ---@alias SetWindowLevel fun(level: SetWindowLevelParams): { SetWindowLevel: SetWindowLevelParams }
 ---@alias ShowLauncherArgs fun(params: ShowLauncherArgsParams): { ShowLauncherArgs: ShowLauncherArgsParams }
+---@alias SpawnCommandInNewTab fun(params: SpawnCommand): { SpawnCommandInNewTab: SpawnCommand }
+---@alias SpawnCommandInNewWindow fun(params: SpawnCommand): { SpawnCommandInNewWindow: SpawnCommand }
+---@alias SpawnTabAction fun(params: SpawnCommand|SpawnTabDomain): { SpawnTab: SpawnTabDomain|SpawnCommand }
+---@alias SplitHorizontal fun(params: SpawnCommand): { SplitHorizontal: SpawnCommand }
 
 ---@alias Actions
 ---|{ ActivateKeyTable: ActivateKeyTableParams }
@@ -576,6 +580,10 @@ local launcher_args_flags = {
 ---|{ SetPaneZoomState: boolean }
 ---|{ SetWindowLevel: SetWindowLevelParams }
 ---|{ ShowLauncherArgs: ShowLauncherArgsParams }
+---|{ SpawnCommandInNewTab: SpawnCommand }
+---|{ SpawnCommandInNewWindow: SpawnCommand }
+---|{ SpawnTab: SpawnTab|SpawnTabDomain }
+---|{ SplitHorizontal: SpawnCommand }
 
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
@@ -885,11 +893,11 @@ local pane_direction = {
 ---@field ShowLauncher "ShowLauncher"
 ---@field ShowLauncherArgs ShowLauncherArgs
 ---@field ShowTabNavigator "ShowTabNavigator"
----@field SpawnCommandInNewTab any
----@field SpawnCommandInNewWindow any
----@field SpawnTab any
+---@field SpawnCommandInNewTab SpawnCommandInNewTab
+---@field SpawnCommandInNewWindow SpawnCommandInNewWindow
+---@field SpawnTab SpawnTabAction
 ---@field SpawnWindow "SpawnWindow"
----@field SplitHorizontal any
+---@field SplitHorizontal SplitHorizontal
 ---@field SplitPane any
 ---@field SplitVertical any
 ---@field StartWindowDrag "StartWindowDrag"
