@@ -19,6 +19,15 @@ local char_groups = {
   UnicodeNames = 1,
 }
 
+---@enum (key) SelectTextAtMouseCursorParams
+local select_text_at_mouse_cursor = {
+  Block = 1,
+  Cell = 1,
+  Line = 1,
+  SemanticZone = 1,
+  Word = 1,
+}
+
 ---@enum (key) ClipboardCopyDestination
 local copy_to = {
   Clipboard = 1,
@@ -85,6 +94,13 @@ local scrollback_erase_mode = {
   ScrollbackOnly = 1,
 }
 
+---@enum (key) SetWindowLevelParams
+local set_window_level = {
+  AlwaysOnBottom = 1,
+  AlwaysOnTop = 1,
+  Normal = 1,
+}
+
 ---@alias CopyModeParams
 ---|CopyModeStr
 ---|{ JumpBackward: { prev_char: boolean } }
@@ -133,8 +149,6 @@ local scrollback_erase_mode = {
 ---```
 ---
 ---@field cancel? { EmitEvent: string }
-
----@alias SendKey Key
 
 ---Activates a named key table.
 ---
@@ -201,6 +215,170 @@ local pane_select_mode = {
   MoveToNewWindow = 1,
   SwapWithActive = 1,
   SwapWithActiveKeepFocus = 1,
+}
+
+---@enum (key) LauncherArgsFlags
+local launcher_args_flags = {
+  COMMANDS = 1,
+  DOMAINS = 1,
+  FUZZY = 1,
+  KEY_ASSIGNMENTS = 1,
+  LAUNCH_MENU_ITEMS = 1,
+  TABS = 1,
+  WORKSPACES = 1,
+
+  ["COMMANDS|DOMAINS"] = 1,
+  ["COMMANDS|FUZZY"] = 1,
+  ["COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  ["COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  ["COMMANDS|TABS"] = 1,
+  ["COMMANDS|WORKSPACES"] = 1,
+  ["DOMAINS|COMMANDS"] = 1,
+  ["DOMAINS|FUZZY"] = 1,
+  ["DOMAINS|KEY_ASSIGNMENTS"] = 1,
+  ["DOMAINS|LAUNCH_MENU_ITEMS"] = 1,
+  ["DOMAINS|TABS"] = 1,
+  ["DOMAINS|WORKSPACES"] = 1,
+  ["FUZZY|COMMANDS"] = 1,
+  ["FUZZY|DOMAINS"] = 1,
+  ["FUZZY|KEY_ASSIGNMENTS"] = 1,
+  ["FUZZY|LAUNCH_MENU_ITEMS"] = 1,
+  ["FUZZY|TABS"] = 1,
+  ["FUZZY|WORKSPACES"] = 1,
+  ["KEY_ASSIGNMENTS|COMMANDS"] = 1,
+  ["KEY_ASSIGNMENTS|DOMAINS"] = 1,
+  ["KEY_ASSIGNMENTS|FUZZY"] = 1,
+  ["KEY_ASSIGNMENTS|LAUNCH_MENU_ITEMS"] = 1,
+  ["KEY_ASSIGNMENTS|TABS"] = 1,
+  ["KEY_ASSIGNMENTS|WORKSPACES"] = 1,
+  ["LAUNCH_MENU_ITEMS|COMMANDS"] = 1,
+  ["LAUNCH_MENU_ITEMS|DOMAINS"] = 1,
+  ["LAUNCH_MENU_ITEMS|FUZZY"] = 1,
+  ["LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS"] = 1,
+  ["LAUNCH_MENU_ITEMS|TABS"] = 1,
+  ["LAUNCH_MENU_ITEMS|WORKSPACES"] = 1,
+  ["TABS|COMMANDS"] = 1,
+  ["TABS|DOMAINS"] = 1,
+  ["TABS|FUZZY"] = 1,
+  ["TABS|KEY_ASSIGNMENTS"] = 1,
+  ["TABS|LAUNCH_MENU_ITEMS"] = 1,
+  ["TABS|WORKSPACES"] = 1,
+  ["WORKSPACES|COMMANDS"] = 1,
+  ["WORKSPACES|DOMAINS"] = 1,
+  ["WORKSPACES|FUZZY"] = 1,
+  ["WORKSPACES|KEY_ASSIGNMENTS"] = 1,
+  ["WORKSPACES|LAUNCH_MENU_ITEMS"] = 1,
+  ["WORKSPACES|TABS"] = 1,
+
+  -- ["COMMANDS|DOMAINS|FUZZY"] = 1,
+  -- ["COMMANDS|DOMAINS|KEY_ASSIGNMENTS"] = 1,
+  -- ["COMMANDS|DOMAINS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["COMMANDS|DOMAINS|TABS"] = 1,
+  -- ["COMMANDS|DOMAINS|WORKSPACES"] = 1,
+  -- ["COMMANDS|FUZZY|KEY_ASSIGNMENTS"] = 1,
+  -- ["COMMANDS|FUZZY|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["COMMANDS|FUZZY|TABS"] = 1,
+  -- ["COMMANDS|FUZZY|WORKSPACES"] = 1,
+  -- ["COMMANDS|KEY_ASSIGNMENTS|DOMAINS"] = 1,
+  -- ["COMMANDS|KEY_ASSIGNMENTS|FUZZY"] = 1,
+  -- ["COMMANDS|KEY_ASSIGNMENTS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["COMMANDS|KEY_ASSIGNMENTS|TABS"] = 1,
+  -- ["COMMANDS|KEY_ASSIGNMENTS|WORKSPACES"] = 1,
+  -- ["COMMANDS|LAUNCH_MENU_ITEMS|DOMAINS"] = 1,
+  -- ["COMMANDS|LAUNCH_MENU_ITEMS|FUZZY"] = 1,
+  -- ["COMMANDS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS"] = 1,
+  -- ["COMMANDS|LAUNCH_MENU_ITEMS|TABS"] = 1,
+  -- ["COMMANDS|LAUNCH_MENU_ITEMS|WORKSPACES"] = 1,
+  -- ["COMMANDS|TABS|DOMAINS"] = 1,
+  -- ["COMMANDS|TABS|FUZZY"] = 1,
+  -- ["COMMANDS|TABS|KEY_ASSIGNMENTS"] = 1,
+  -- ["COMMANDS|TABS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["COMMANDS|TABS|WORKSPACES"] = 1,
+  -- ["COMMANDS|WORKSPACES|DOMAINS"] = 1,
+  -- ["COMMANDS|WORKSPACES|FUZZY"] = 1,
+  -- ["COMMANDS|WORKSPACES|KEY_ASSIGNMENTS"] = 1,
+  -- ["COMMANDS|WORKSPACES|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["COMMANDS|WORKSPACES|TABS"] = 1,
+  -- ["DOMAINS|COMMANDS|FUZZY"] = 1,
+  -- ["DOMAINS|COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  -- ["DOMAINS|COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["DOMAINS|COMMANDS|TABS"] = 1,
+  -- ["DOMAINS|COMMANDS|WORKSPACES"] = 1,
+  -- ["DOMAINS|FUZZY|COMMANDS"] = 1,
+  -- ["DOMAINS|FUZZY|KEY_ASSIGNMENTS"] = 1,
+  -- ["DOMAINS|FUZZY|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["DOMAINS|FUZZY|TABS"] = 1,
+  -- ["DOMAINS|FUZZY|WORKSPACES"] = 1,
+  -- ["DOMAINS|KEY_ASSIGNMENTS|COMMANDS"] = 1,
+  -- ["DOMAINS|KEY_ASSIGNMENTS|FUZZY"] = 1,
+  -- ["DOMAINS|KEY_ASSIGNMENTS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["DOMAINS|KEY_ASSIGNMENTS|TABS"] = 1,
+  -- ["DOMAINS|KEY_ASSIGNMENTS|WORKSPACES"] = 1,
+  -- ["DOMAINS|LAUNCH_MENU_ITEMS|COMMANDS"] = 1,
+  -- ["DOMAINS|LAUNCH_MENU_ITEMS|FUZZY"] = 1,
+  -- ["DOMAINS|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS"] = 1,
+  -- ["DOMAINS|LAUNCH_MENU_ITEMS|TABS"] = 1,
+  -- ["DOMAINS|LAUNCH_MENU_ITEMS|WORKSPACES"] = 1,
+  -- ["DOMAINS|TABS|COMMANDS"] = 1,
+  -- ["DOMAINS|TABS|FUZZY"] = 1,
+  -- ["DOMAINS|TABS|KEY_ASSIGNMENTS"] = 1,
+  -- ["DOMAINS|TABS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["DOMAINS|TABS|WORKSPACES"] = 1,
+  -- ["DOMAINS|WORKSPACES|COMMANDS"] = 1,
+  -- ["DOMAINS|WORKSPACES|FUZZY"] = 1,
+  -- ["DOMAINS|WORKSPACES|KEY_ASSIGNMENTS"] = 1,
+  -- ["DOMAINS|WORKSPACES|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["DOMAINS|WORKSPACES|TABS"] = 1,
+  -- ["FUZZY|COMMANDS|DOMAINS"] = 1,
+  -- ["FUZZY|COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  -- ["FUZZY|COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["FUZZY|COMMANDS|TABS"] = 1,
+  -- ["FUZZY|COMMANDS|WORKSPACES"] = 1,
+  -- ["FUZZY|DOMAINS|COMMANDS"] = 1,
+  -- ["FUZZY|DOMAINS|KEY_ASSIGNMENTS"] = 1,
+  -- ["FUZZY|DOMAINS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["FUZZY|DOMAINS|TABS"] = 1,
+  -- ["FUZZY|DOMAINS|WORKSPACES"] = 1,
+  -- ["FUZZY|KEY_ASSIGNMENTS|COMMANDS"] = 1,
+  -- ["FUZZY|KEY_ASSIGNMENTS|DOMAINS"] = 1,
+  -- ["FUZZY|KEY_ASSIGNMENTS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["FUZZY|KEY_ASSIGNMENTS|TABS"] = 1,
+  -- ["FUZZY|KEY_ASSIGNMENTS|WORKSPACES"] = 1,
+  -- ["FUZZY|LAUNCH_MENU_ITEMS|COMMANDS"] = 1,
+  -- ["FUZZY|LAUNCH_MENU_ITEMS|DOMAINS"] = 1,
+  -- ["FUZZY|LAUNCH_MENU_ITEMS|KEY_ASSIGNMENTS"] = 1,
+  -- ["FUZZY|LAUNCH_MENU_ITEMS|TABS"] = 1,
+  -- ["FUZZY|LAUNCH_MENU_ITEMS|WORKSPACES"] = 1,
+  -- ["FUZZY|TABS|COMMANDS"] = 1,
+  -- ["FUZZY|TABS|DOMAINS"] = 1,
+  -- ["FUZZY|TABS|KEY_ASSIGNMENTS"] = 1,
+  -- ["FUZZY|TABS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["FUZZY|TABS|WORKSPACES"] = 1,
+  -- ["FUZZY|WORKSPACES|COMMANDS"] = 1,
+  -- ["FUZZY|WORKSPACES|DOMAINS"] = 1,
+  -- ["FUZZY|WORKSPACES|KEY_ASSIGNMENTS"] = 1,
+  -- ["FUZZY|WORKSPACES|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["FUZZY|WORKSPACES|TABS"] = 1,
+  -- ["KEY_ASSIGNMENTS|COMMANDS|DOMAINS"] = 1,
+  -- ["KEY_ASSIGNMENTS|COMMANDS|FUZZY"] = 1,
+  -- ["KEY_ASSIGNMENTS|COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["KEY_ASSIGNMENTS|COMMANDS|TABS"] = 1,
+  -- ["KEY_ASSIGNMENTS|COMMANDS|WORKSPACES"] = 1,
+  -- ["LAUNCH_MENU_ITEMS|COMMANDS|DOMAINS"] = 1,
+  -- ["LAUNCH_MENU_ITEMS|COMMANDS|FUZZY"] = 1,
+  -- ["LAUNCH_MENU_ITEMS|COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  -- ["LAUNCH_MENU_ITEMS|COMMANDS|TABS"] = 1,
+  -- ["LAUNCH_MENU_ITEMS|COMMANDS|WORKSPACES"] = 1,
+  -- ["TABS|COMMANDS|DOMAINS"] = 1,
+  -- ["TABS|COMMANDS|FUZZY"] = 1,
+  -- ["TABS|COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  -- ["TABS|COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["TABS|COMMANDS|WORKSPACES"] = 1,
+  -- ["WORKSPACES|COMMANDS|DOMAINS"] = 1,
+  -- ["WORKSPACES|COMMANDS|FUZZY"] = 1,
+  -- ["WORKSPACES|COMMANDS|KEY_ASSIGNMENTS"] = 1,
+  -- ["WORKSPACES|COMMANDS|LAUNCH_MENU_ITEMS"] = 1,
+  -- ["WORKSPACES|COMMANDS|TABS"] = 1,
 }
 
 ---@class PaneSelectParams
@@ -273,6 +451,44 @@ local pane_select_mode = {
 ---
 ---@field scope_lines? integer
 
+---@alias SearchParams
+---|{ Regex: string }
+---|{ CaseSensitiveString: string }
+---|{ CaseInSensitiveString: string }
+
+---@class ShowLauncherArgsParams
+---The set of flags that specifies what to show in the launcher.
+---
+---The flags can be joined together using a `|` character,
+---so `"TABS|DOMAINS"` is an example of a set of flags that will
+---include both tabs and domains in the list.
+---
+---@field flags LauncherArgsFlags|string
+---The title to show in the tab while the launcher is active.
+---
+---@field title? string
+---A string to display when in the default mode.
+---
+---Defaults to: `"Select an item and press Enter=launch Esc=cancel /=filter"`.
+---
+---@field help_text? string
+---A string to display when in fuzzy finding mode.
+---
+---Defaults to: `"Fuzzy matching: "`.
+---
+---@field fuzzy_help_text? string
+---A string of unique characters.
+---
+---The characters in the string are used to calculate one or two key press shortcuts
+---that can be used to quickly choose from the Launcher when in the default mode.
+---
+---Defaults to the same value as `config.launcher_alphabet` (`"1234567890abcdefghilmnopqrstuvwxyz"`).
+---
+---See:
+--- - [`config.launcher_alphabet`](lua://Config.launcher_alphabet)
+---
+---@field alphabet? QuickSelectAlphabet
+
 ---@generic T
 ---@alias ActivateKeyTable fun(params: ActivateKeyTableParams): { ActivateKeyTable: ActivateKeyTableParams }
 ---@alias ActivatePaneByIndex fun(params: T<integer>): { ActivatePaneByIndex: T<integer> }
@@ -305,20 +521,30 @@ local pane_select_mode = {
 ---@alias PasteFrom fun(source: ClipboardPasteDestination): { PasteFrom: ClipboardPasteDestination }
 ---@alias PromptInputLine fun(params: PromptInputLineParams): { PromptInputLine: PromptInputLineParams }
 ---@alias QuickSelectArgs fun(params: QuickSelectArgsParams): { QuickSelectArgs: QuickSelectArgsParams }
+---@alias RotatePanes fun(params: PaneSelectMode): { RotatePanes: PaneSelectMode }
+---@alias ScrollByLine fun(amount: T<integer>): { ScrollByLine: T<integer> }
+---@alias ScrollByPage fun(amount: T<number>): { ScrollByPage: T<number> }
+---@alias ScrollToPrompt fun(amount: T<integer>): { ScrollToPrompt: T<integer> }
+---@alias Search fun(params: "CurrentSelectionOrEmptyString"|SearchParams): { Search: "CurrentSelectionOrEmptyString"|SearchParams }
+---@alias SelectTextAtMouseCursor fun(params: SelectTextAtMouseCursorParams): { SelectTextAtMouseCursor: SelectTextAtMouseCursorParams }
+---@alias SendKey fun(params: SendKeyParams): { SendKey: SendKeyParams }
+---@alias SendString fun(params: T<string>): { SendString: T<string> }
+---@alias SetPaneZoomState fun(state: boolean): { SetPaneZoomState: boolean }
+---@alias SetWindowLevel fun(level: SetWindowLevelParams): { SetWindowLevel: SetWindowLevelParams }
+---@alias ShowLauncherArgs fun(params: ShowLauncherArgsParams): { ShowLauncherArgs: ShowLauncherArgsParams }
 
----@generic T
 ---@alias Actions
 ---|{ ActivateKeyTable: ActivateKeyTableParams }
----|{ ActivatePaneByIndex: T<integer> }
----|{ ActivatePaneDirection: T<PaneDirection> }
----|{ ActivateTab: T<integer> }
----|{ ActivateTabRelative: T<integer> }
----|{ ActivateTabRelativeNoWrap: T<integer> }
----|{ ActivateWindow: T<integer> }
----|{ ActivateWindowRelative: T<integer> }
----|{ ActivateWindowRelativeNoWrap: T<integer> }
+---|{ ActivatePaneByIndex: integer }
+---|{ ActivatePaneDirection: PaneDirection }
+---|{ ActivateTab: integer }
+---|{ ActivateTabRelative: integer }
+---|{ ActivateTabRelativeNoWrap: integer }
+---|{ ActivateWindow: integer }
+---|{ ActivateWindowRelative: integer }
+---|{ ActivateWindowRelativeNoWrap: integer }
 ---|{ AdjustPaneSize: { [1]: PaneDirection, [2]: integer } }
----|{ AttachDomain: T<string> }
+---|{ AttachDomain: string }
 ---|{ CharSelect: CharSelectParams }
 ---|{ ClearScrollback: ScrollbackEraseMode }
 ---|{ CloseCurrentPane: { confirm: boolean } }
@@ -329,16 +555,27 @@ local pane_select_mode = {
 ---|{ CopyMode: CopyModeParams }
 ---|{ CopyTo: ClipboardCopyDestination }
 ---|{ DetachDomain: SpawnTabDomain }
----|{ EmitEvent: T<string> }
+---|{ EmitEvent: string }
 ---|{ ExtendSelectionToMouseCursor: SelectionMode }
 ---|{ InputSelector: InputSelectorParams }
----|{ MoveTab: T<integer> }
----|{ MoveTabRelative: T<integer> }
----|{ Multiple: ({ [string]: any }|KeyAssignment)[] }
+---|{ MoveTab: integer }
+---|{ MoveTabRelative: integer }
+---|{ Multiple: (Actions|KeyAssignment)[] }
 ---|{ PaneSelect: PaneSelectParams }
 ---|{ PasteFrom: ClipboardPasteDestination }
 ---|{ PromptInputLine: PromptInputLineParams }
 ---|{ QuickSelectArgs: QuickSelectArgsParams }
+---|{ RotatePanes: PaneSelectMode }
+---|{ ScrollByLine: integer }
+---|{ ScrollByPage: number }
+---|{ ScrollToPrompt: integer }
+---|{ Search: "CurrentSelectionOrEmptyString"|SearchParams }
+---|{ SelectTextAtMouseCursor: SelectTextAtMouseCursorParams }
+---|{ SendKey: SendKeyParams }
+---|{ SendString: string }
+---|{ SetPaneZoomState: boolean }
+---|{ SetWindowLevel: SetWindowLevelParams }
+---|{ ShowLauncherArgs: ShowLauncherArgsParams }
 
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
@@ -389,7 +626,7 @@ local pane_direction = {
   Right = 1,
 }
 
----@class Key
+---@class SendKeyParams
 ---A single unicode character, like 'A' or 'a'. Pay attention to the case of the text that you use
 ---and the state of the SHIFT modifier, as this matters whether 'A' or 'a' is matched.
 ---
@@ -566,6 +803,8 @@ local pane_direction = {
 ---You can also combine modifiers using the `|` symbol, like `"CMD|CTRL"`.
 ---
 ---@field mods? string
+
+---@class Key: SendKeyParams
 ---@field action? KeyAssignment
 
 ---Helper for defining key assignment actions in your configuration file.
@@ -628,22 +867,23 @@ local pane_direction = {
 ---@field ResetFontAndWindowSize "ResetFontAndWindowSize"
 ---@field ResetFontSize "ResetFontSize"
 ---@field ResetTerminal "ResetTerminal"
----@field RotatePanes any
+---@field RotatePanes RotatePanes
 ---@field ScrollByCurrentEventWheelDelta "ScrollByCurrentEventWheelDelta"
----@field ScrollByLine any
----@field ScrollByPage any
+---@field ScrollByLine ScrollByLine
+---@field ScrollByPage ScrollByPage
 ---@field ScrollToBottom "ScrollToBottom"
----@field ScrollToPrompt any
+---@field ScrollToPrompt ScrollToPrompt
 ---@field ScrollToTop "ScrollToTop"
----@field Search any
----@field SelectTextAtMouseCursor any
+---@field Search Search
+---@field SelectTextAtMouseCursor SelectTextAtMouseCursor
 ---@field SendKey SendKey
----@field SendString string
----@field SetPaneZoomState any
+---@field SendString SendString
+---@field SetPaneZoomState SetPaneZoomState
+---@field SetWindowLevel SetWindowLevel
 ---@field Show "Show"
 ---@field ShowDebugOverlay "ShowDebugOverlay"
 ---@field ShowLauncher "ShowLauncher"
----@field ShowLauncherArgs any
+---@field ShowLauncherArgs ShowLauncherArgs
 ---@field ShowTabNavigator "ShowTabNavigator"
 ---@field SpawnCommandInNewTab any
 ---@field SpawnCommandInNewWindow any
