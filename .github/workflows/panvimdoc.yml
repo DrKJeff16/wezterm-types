@@ -40,6 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     name: pandoc to vimdoc (plugins)
     steps:
+      - name: Checkout
+        uses: actions/checkout@v6
       - name: Run panvimdoc for ai-commander.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
