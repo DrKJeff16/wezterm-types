@@ -1,4 +1,4 @@
-# `ai-commander.wezterm`
+`ai-commander.wezterm`
 
 You can import type annotations for
 [`dimao/ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm) as shown below:

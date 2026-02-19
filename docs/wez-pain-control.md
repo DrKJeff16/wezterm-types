@@ -1,4 +1,4 @@
-# `wez-pain-control`
+`wez-pain-control`
 
 You can import type annotations for
 [`sei40kr/wez-pain-control`](https://github.com/sei40kr/wez-pain-control) as shown below:

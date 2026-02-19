@@ -1,4 +1,4 @@
-# `pinned-tabs.wezterm`
+`pinned-tabs.wezterm`
 
 You can import type annotations for
 [`selectnull/pinned-tabs.wezterm`](https://github.com/selectnull/pinned-tabs.wezterm)

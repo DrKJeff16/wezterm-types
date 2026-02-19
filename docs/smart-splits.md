@@ -1,4 +1,4 @@
-# `smart-splits.nvim`
+`smart-splits.nvim`
 
 You can import type annotations for
 [`mrjones2014/smart-splits.nvim`](https://github.com/mrjones2014/smart-splits.nvim) as shown below:
