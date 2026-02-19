@@ -1,4 +1,4 @@
-*wezterm-types-presentation_wez.txt*For NVIM >=v0.7.0Last change: 2026 February 19
+*wezterm-types-presentation_wez.txt*                    presentation_wez types
 
 `presentation.wez`
 

@@ -1,4 +1,4 @@
-*wezterm-types-smart-splits.txt*For NVIM >=v0.7.0Last change: 2026 February 19
+*wezterm-types-smart-splits.txt*                            smart-splits types
 
 `smart-splits.nvim`
 

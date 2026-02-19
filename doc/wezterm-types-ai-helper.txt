@@ -1,4 +1,4 @@
-*wezterm-types-ai-helper.txt*  For NVIM >=v0.7.0 Last change: 2026 February 19
+*wezterm-types-ai-helper.txt*                                  ai-helper types
 
 `ai-helper.wezterm`
 

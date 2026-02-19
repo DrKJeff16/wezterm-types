@@ -1,4 +1,4 @@
-*wezterm-types-pinned-tabs.txt* For NVIM >=v0.7.0Last change: 2026 February 19
+*wezterm-types-pinned-tabs.txt*                              pinned-tabs types
 
 `pinned-tabs.wezterm`
 

@@ -1,4 +1,4 @@
-*wezterm-types-wez-pain-control.txt*For NVIM >=v0.7.0Last change: 2026 February 19
+*wezterm-types-wez-pain-control.txt*                    wez-pain-control types
 
 `wez-pain-control`
 
