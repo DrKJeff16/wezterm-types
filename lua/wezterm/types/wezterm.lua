@@ -1442,7 +1442,7 @@ function Wezterm.on(event, callback) end
 --- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
 ---
 ---@param event "format-window-title"
----@param callback fun(window: Window, pane: Pane, tabs: MuxTab[], panes: Pane[], config: Config): string
+---@param callback fun(tab: TabInformation, pane: PaneInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config): string
 function Wezterm.on(event, callback) end
 
 ---This event is triggered when the GUI is starting up after attaching the selected domain.

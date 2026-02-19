@@ -363,7 +363,7 @@ function M:get_metadata() end
 ---will be `"None"` to indicate that
 ---no progress has been reported.
 ---
----@return string|"None" progress
+---@return PaneProgress progress
 function M:get_progress() end
 
 ---Resolves the semantic zone that encapsulates

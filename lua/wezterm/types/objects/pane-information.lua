@@ -1,5 +1,13 @@
 ---@meta
 
+---@class PaneProgress.Percentage
+---@field Percentage integer
+
+---@class PaneProgress.Error
+---@field Error integer
+
+---@alias PaneProgress "None"|"Indeterminate"|PaneProgress.Percentage|PaneProgress.Error
+
 ---Describes a [`Pane`](lua://Pane).
 ---
 ---Unlike the `Pane` object, `PaneInformation` is a snapshot of
@@ -28,7 +36,7 @@
 ---@field pane_id integer
 ---The logical position of the pane within its containing layout.
 ---
----@field pane_index number
+---@field pane_index integer
 ---The width of the pane in pixels.
 ---
 ---@field pixel_width number
@@ -36,7 +44,7 @@
 ---per [`Pane:get_progress()`](lua://Pane.get_progress)
 ---at the time the pane information was captured.
 ---
----@field progress string
+---@field progress PaneProgress
 ---The title of the pane,
 ---per [`Pane:get_title()`](lua://Pane.get_title)
 ---at the time the pane information was captured.
@@ -53,5 +61,29 @@
 ---The width of the pane in cells.
 ---
 ---@field width number
+---The path to the executable image,
+---per [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name).
+---
+---If the path is unavailable, this field is an empty string.
+---
+---@field foreground_process_name string|""
+---The current working directory,
+---per [`Pane:get_current_working_dir()`](lua://Pane.get_current_working_dir).
+---
+---@field current_working_dir Url|nil
+---Returns `true` if there has been output in the pane
+---since the last time the pane was focused.
+---
+---@field has_unseen_output boolean
+---The name of the domain with which the pane is associated,
+---per [`Pane:get_domain_name()`](lua://Pane.get_domain_name).
+---
+---If the domain name is unavailable, this field is an empty string.
+---
+---@field domain_name string|""
+---The tty device name,
+---per [`Pane:get_tty_name()`](lua://Pane.get_tty_name).
+---
+---@field tty_name string|nil
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

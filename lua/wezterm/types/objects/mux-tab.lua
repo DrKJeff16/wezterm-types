@@ -7,6 +7,40 @@
 ---@field pixel_height integer
 ---@field dpi number
 
+---@class MuxTab.PaneInfo
+---The topological pane index.
+---
+---@field index integer
+---Is `true` if the pane is the active pane within this tab.
+---
+---@field is_active boolean
+---Is `true` if the pane is in the zoomed state.
+---
+---@field is_zoomed boolean
+---The offset from the top left corner of the containing tab
+---to the top left corner of this pane, in cells.
+---
+---@field left number
+---The offset from the top left corner of the containing tab
+---to the top left corner of this pane, in cells.
+---
+---@field top number
+---The width of the pane in cells.
+---
+---@field width number
+---The height of the pane in cells.
+---
+---@field height number
+---The width of the pane in pixels.
+---
+---@field pixel_width number
+---The height of the pane in pixels.
+---
+---@field pixel_height number
+---A `Pane` object.
+---
+---@field pane Pane
+
 ---`MuxTab` represents a tab that is managed
 ---by the multiplexer.
 ---
@@ -59,9 +93,9 @@ function M:panes() end
 ---for each of the panes contained by this tab.
 ---
 ---See:
---- - [`PaneInformation`](lua://PaneInformation)
+--- - [`MuxTab.PaneInfo`](lua://MuxTab.PaneInfo)
 ---
----@return PaneInformation[] info_panes
+---@return MuxTab.PaneInfo[] info_panes
 function M:panes_with_info() end
 
 ---Rotates the panes in the clockwise direction.
