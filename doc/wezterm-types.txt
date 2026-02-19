@@ -103,6 +103,8 @@ issue.**
 
   pinned-tabs.wezterm       docs/pinned-tabs.md        :h wezterm-types-pinned-tabs.txt
 
+  pivot_panes.wezterm       docs/pivot_panes.md        :h wezterm-types-pivot_panes.txt
+
   presentation.wez          docs/presentation_wez.md   :h wezterm-types-presentation_wez.txt
 
   smart-splits.nvim         docs/smart-splits.md       :h wezterm-types-smart-splits.txt
