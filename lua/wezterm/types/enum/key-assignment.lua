@@ -307,6 +307,40 @@ local pane_select_mode = {
 ---@alias MoveTabRelative fun(index: T<integer>): { MoveTabRelative: T<integer> }
 ---@alias Multiple fun(events: ({ [string]: any }|KeyAssignment)[]): { Multiple: ({ [string]: any }|KeyAssignment)[] }
 
+---@generic T
+---@alias Actions
+---|{ ActivateKeyTable: ActivateKeyTableParams }
+---|{ ActivatePaneByIndex: T<integer> }
+---|{ ActivatePaneDirection: T<PaneDirection> }
+---|{ ActivateTab: T<integer> }
+---|{ ActivateTabRelative: T<integer> }
+---|{ ActivateTabRelativeNoWrap: T<integer> }
+---|{ ActivateWindow: T<integer> }
+---|{ ActivateWindowRelative: T<integer> }
+---|{ ActivateWindowRelativeNoWrap: T<integer> }
+---|{ AdjustPaneSize: { [1]: PaneDirection, [2]: integer } }
+---|{ AttachDomain: T<string> }
+---|{ CharSelect: CharSelectParams }
+---|{ ClearScrollback: ScrollbackEraseMode }
+---|{ CloseCurrentPane: { confirm: boolean } }
+---|{ CloseCurrentTab: { confirm: boolean } }
+---|{ CompleteSelection: ClipboardCopyDestination }
+---|{ CompleteSelectionOrOpenLinkAtMouseCursor: ClipboardCopyDestination }
+---|{ Confirmation: ConfirmationParams }
+---|{ CopyMode: CopyModeParams }
+---|{ CopyTo: ClipboardCopyDestination }
+---|{ DetachDomain: SpawnTabDomain }
+---|{ EmitEvent: T<string> }
+---|{ ExtendSelectionToMouseCursor: SelectionMode }
+---|{ InputSelector: InputSelectorParams }
+---|{ MoveTab: T<integer> }
+---|{ MoveTabRelative: T<integer> }
+---|{ Multiple: ({ [string]: any }|KeyAssignment)[] }
+---|{ PaneSelect: PaneSelectParams }
+---|{ PasteFrom: ClipboardPasteDestination }
+---|{ PromptInputLine: PromptInputLineParams }
+---|{ QuickSelectArgs: QuickSelectArgsParams }
+
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
 ---
@@ -540,7 +574,7 @@ local pane_direction = {
 ---that makes it a bit easier to identify where syntax errors may exist
 ---in your configuration file.
 ---
----@class KeyAssignment
+---@class KeyAssignments
 ---@field ActivateCommandPalette "ActivateCommandPalette"
 ---@field ActivateCopyMode "ActivateCopyMode"
 ---@field ActivateKeyTable ActivateKeyTable
@@ -626,5 +660,94 @@ local pane_direction = {
 ---@field ToggleAlwaysOnTop "ToggleAlwaysOnTop"
 ---@field ToggleFullScreen "ToggleFullScreen"
 ---@field TogglePaneZoomState "TogglePaneZoomState"
+
+---@enum (key) KeyAssignmentLiterals
+local key_assignment = {
+  ActivateCommandPalette = 1,
+  ActivateCopyMode = 1,
+  ActivateKeyTable = 1,
+  ActivateLastTab = 1,
+  ActivatePaneByIndex = 1,
+  ActivatePaneDirection = 1,
+  ActivateTab = 1,
+  ActivateTabRelative = 1,
+  ActivateTabRelativeNoWrap = 1,
+  ActivateWindow = 1,
+  ActivateWindowRelative = 1,
+  ActivateWindowRelativeNoWrap = 1,
+  AdjustPaneSize = 1,
+  AttachDomain = 1,
+  CharSelect = 1,
+  ClearKeyTableStack = 1,
+  ClearScrollback = 1,
+  ClearSelection = 1,
+  CloseCurrentPane = 1,
+  CloseCurrentTab = 1,
+  CompleteSelection = 1,
+  CompleteSelectionOrOpenLinkAtMouseCursor = 1,
+  Copy = 1,
+  CopyMode = 1,
+  CopyTo = 1,
+  DecreaseFontSize = 1,
+  DetachDomain = 1,
+  DisableDefaultAssignment = 1,
+  EmitEvent = 1,
+  ExtendSelectionToMouseCursor = 1,
+  Hide = 1,
+  HideApplication = 1,
+  IncreaseFontSize = 1,
+  InputSelector = 1,
+  MoveTab = 1,
+  MoveTabRelative = 1,
+  Multiple = 1,
+  Nop = 1,
+  OpenLinkAtMouseCursor = 1,
+  PaneSelect = 1,
+  Paste = 1,
+  PasteFrom = 1,
+  PastePrimarySelection = 1,
+  PopKeyTable = 1,
+  PromptInputLine = 1,
+  QuickSelect = 1,
+  QuickSelectArgs = 1,
+  QuitApplication = 1,
+  ReloadConfiguration = 1,
+  ResetFontAndWindowSize = 1,
+  ResetFontSize = 1,
+  ResetTerminal = 1,
+  RotatePanes = 1,
+  ScrollByCurrentEventWheelDelta = 1,
+  ScrollByLine = 1,
+  ScrollByPage = 1,
+  ScrollToBottom = 1,
+  ScrollToPrompt = 1,
+  ScrollToTop = 1,
+  Search = 1,
+  SelectTextAtMouseCursor = 1,
+  SendKey = 1,
+  SendString = 1,
+  SetPaneZoomState = 1,
+  Show = 1,
+  ShowDebugOverlay = 1,
+  ShowLauncher = 1,
+  ShowLauncherArgs = 1,
+  ShowTabNavigator = 1,
+  SpawnCommandInNewTab = 1,
+  SpawnCommandInNewWindow = 1,
+  SpawnTab = 1,
+  SpawnWindow = 1,
+  SplitHorizontal = 1,
+  SplitPane = 1,
+  SplitVertical = 1,
+  StartWindowDrag = 1,
+  SwitchToWorkspace = 1,
+  SwitchWorkspaceRelative = 1,
+  ToggleAlwaysOnBottom = 1,
+  ToggleAlwaysOnTop = 1,
+  ToggleFullScreen = 1,
+  TogglePaneZoomState = 1,
+}
+
+---@alias KeyAssignment KeyAssignment|KeyAssignmentLiterals|Actions
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
