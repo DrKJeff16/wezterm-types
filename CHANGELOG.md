@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.8.4-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.4-1) (2026-02-19)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.3-1...v1.8.4-1)
+
+**Implemented enhancements:**
+
+- feat\(pinned-tabs\): add type annotations [\#103](https://github.com/DrKJeff16/wezterm-types/pull/103) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v1.8.3-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.3-1) (2026-02-17)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.2-1...v1.8.3-1)
