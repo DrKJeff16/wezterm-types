@@ -107,6 +107,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for pivot_panes.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-pivot_panes
+          description: "pivot_panes types"
+          pandoc: docs/pivot_panes.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for presentation_wez.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
