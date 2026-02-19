@@ -81,18 +81,19 @@ This project also features type annotations for various WezTerm plugins.
 
 **_If you want to have your plugin featured please request it through an issue._**
 
-| Plugin                                                                       | Documentation                                            | Comment                           |
-|------------------------------------------------------------------------------|----------------------------------------------------------|-----------------------------------|
-| [`dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm)                     | [`docs/dev-wezterm.md`](./docs/dev-wezterm.md)           | **_This one is a special case!_** |
-| [`ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm)      | [`docs/ai-commander.md`](./docs/ai-commander.md)         |                                   |
-| [`ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm)      | [`docs/ai-helper.md`](./docs/ai-helper.md)               |                                   |
-| [`modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                 | [`docs/modal_wezterm.md`](./docs/modal_wezterm.md)       |                                   |
-| [`pinned-tabs.wezterm`](https://github.com/selectnull/pinned-tabs.wezterm)   | [`docs/pinned-tabs.md`](./docs/pinned-tabs.md)           |                                   |
-| [`presentation.wez`](https://github.com/xarvex/presentation.wez)             | [`docs/presentation_wez.md`](./docs/presentation_wez.md) |                                   |
-| [`tabline.wez`](https://github.com/michaelbrusegard/tabline.wez)             | [`docs/tabline_wez.md`](./docs/tabline_wez.md)           |                                   |
-| [`wez-pain-control`](https://github.com/sei40kr/wez-pain-control)            | [`docs/wez-pain-control.md`](./docs/wez-pain-control.md) |                                   |
-| [`wez-tmux`](https://github.com/sei40kr/wez-tmux)                            | [`docs/wez-tmux.md`](./docs/wez-tmux.md)                 |                                   |
-| [`wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim) | [`docs/wezterm-config.md`](./docs/wezterm-config.md)     |                                   |
+| Plugin                                                                       | Documentation                                            | Neovim Help                                                                         |
+|------------------------------------------------------------------------------|----------------------------------------------------------|-------------------------------------------------------------------------------------|
+| [`ai-commander.wezterm`](https://github.com/dimao/ai-commander.wezterm)      | [`docs/ai-commander.md`](./docs/ai-commander.md)         | [`:h wezterm-types-ai-commander.txt`](./doc/wezterm-types-ai-commander.txt)         |
+| [`ai-helper.wezterm`](https://github.com/Michal1993r/ai-helper.wezterm)      | [`docs/ai-helper.md`](./docs/ai-helper.md)               | [`:h wezterm-types-ai-helper.txt`](./doc/wezterm-types-ai-helper.txt)               |
+| [`dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm)                     | [`docs/dev-wezterm.md`](./docs/dev-wezterm.md)           | [`:h wezterm-types-dev-wezterm.txt`](./doc/wezterm-types-dev-wezterm.txt)           |
+| [`modal.wezterm`](https://github.com/MLFlexer/modal.wezterm)                 | [`docs/modal_wezterm.md`](./docs/modal_wezterm.md)       | [`:h wezterm-types-modal_wezterm.txt`](./doc/wezterm-types-modal_wezterm.txt)       |
+| [`pinned-tabs.wezterm`](https://github.com/selectnull/pinned-tabs.wezterm)   | [`docs/pinned-tabs.md`](./docs/pinned-tabs.md)           | [`:h wezterm-types-pinned-tabs.txt`](./doc/wezterm-types-pinned-tabs.txt)           |
+| [`presentation.wez`](https://github.com/xarvex/presentation.wez)             | [`docs/presentation_wez.md`](./docs/presentation_wez.md) | [`:h wezterm-types-presentation_wez.txt`](./doc/wezterm-types-presentation_wez.txt) |
+| [`smart-splits.nvim`](https://github.com/mrjones2014/smart-splits.nvim)      | [`docs/smart-splits.md`](./docs/smart-splits.md)         | [`:h wezterm-types-smart-splits.txt`](./doc/wezterm-types-smart-splits.txt)         |
+| [`tabline.wez`](https://github.com/michaelbrusegard/tabline.wez)             | [`docs/tabline_wez.md`](./docs/tabline_wez.md)           | [`:h wezterm-types-tabline_wez.txt`](./doc/wezterm-types-tabline_wez.txt)           |
+| [`wez-pain-control`](https://github.com/sei40kr/wez-pain-control)            | [`docs/wez-pain-control.md`](./docs/wez-pain-control.md) | [`:h wezterm-types-wez-pain-control.txt`](./doc/wezterm-types-wez-pain-control.txt) |
+| [`wez-tmux`](https://github.com/sei40kr/wez-tmux)                            | [`docs/wez-tmux.md`](./docs/wez-tmux.md)                 | [`:h wezterm-types-wez-tmux.txt`](./doc/wezterm-types-wez-tmux.txt)                 |
+| [`wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim) | [`docs/wezterm-config.md`](./docs/wezterm-config.md)     | [`:h wezterm-types-wezterm-config.txt`](./doc/wezterm-types-wezterm-config.txt)     |
 
 ---
 
