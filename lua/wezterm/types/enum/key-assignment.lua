@@ -748,6 +748,6 @@ local key_assignment = {
   TogglePaneZoomState = 1,
 }
 
----@alias KeyAssignment KeyAssignment|KeyAssignmentLiterals|Actions
+---@alias KeyAssignment KeyAssignments|KeyAssignmentLiterals|Actions
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
