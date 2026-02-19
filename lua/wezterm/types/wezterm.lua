@@ -1315,6 +1315,10 @@ function Wezterm.log_info(msg, ...) end
 ---@param ... any
 function Wezterm.log_warn(msg, ...) end
 
+---@param event string
+---@param callback function
+function Wezterm.on(event, callback) end
+
 ---This event is emitted when the Command Palette is shown.
 ---
 ---Its purpose is to enable you to add additional entries to the list of commands shown in the palette.
@@ -1742,6 +1746,11 @@ function Wezterm.on(event, callback) end
 ---============================= dev.wezterm =======================================
 
 ---This is for `dev.wezterm` only!
+---
+---@param event DevWeztermEvent
+function Wezterm.on(event, callback) end
+
+---This is for `dev.wezterm` only!
 ------
 ---Either no `hashkey` or an invalid one provided.
 ---
@@ -2130,7 +2139,7 @@ function Wezterm.utf16_to_utf8(s) end
 ---```
 ---
 ---@param callback ActionCallback
----@return Action
+---@return { EmitEvent: string }
 function Wezterm.action_callback(callback) end
 
 ---Adds path to the list of files that are watched for config changes.

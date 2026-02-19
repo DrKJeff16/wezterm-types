@@ -3,19 +3,19 @@
 
 ---TODO: Make key and mods more specific
 
----@enum (key) CharSelect
-local charselect = {
+---@enum (key) CharGroup
+local char_groups = {
+  Activities = 1,
+  AnimalsAndNature = 1,
+  Flags = 1,
+  FoodAndDrink = 1,
+  NerdFonts = 1,
+  Objects = 1,
+  PeopleAndBody = 1,
   RecentlyUsed = 1,
   SmileysAndEmotion = 1,
-  PeopleAndBody = 1,
-  AnimalsAndNature = 1,
-  FoodAndDrink = 1,
-  TravelAndPlaces = 1,
-  Activities = 1,
-  Objects = 1,
   Symbols = 1,
-  Flags = 1,
-  NerdFonts = 1,
+  TravelAndPlaces = 1,
   UnicodeNames = 1,
 }
 
