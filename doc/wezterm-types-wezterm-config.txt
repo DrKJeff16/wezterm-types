@@ -1,4 +1,4 @@
-*wezterm-types-wezterm-config.txt*For NVIM >=v0.7.0Last change: 2026 February 18
+*wezterm-types-wezterm-config.txt*For NVIM >=v0.7.0Last change: 2026 February 19
 
 ==============================================================================
 1. wezterm-config.nvim      *wezterm-types-wezterm-config-wezterm-config.nvim*

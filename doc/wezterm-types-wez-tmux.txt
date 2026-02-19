@@ -1,4 +1,4 @@
-*wezterm-types-wez-tmux.txt*  For NVIM >=v0.7.0  Last change: 2026 February 18
+*wezterm-types-wez-tmux.txt*  For NVIM >=v0.7.0  Last change: 2026 February 19
 
 ==============================================================================
 1. wez-tmux                                  *wezterm-types-wez-tmux-wez-tmux*

@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 18
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 19
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -90,30 +90,31 @@ This project also features type annotations for various WezTerm plugins.
 **If you want to have your plugin featured please request it through an
 issue.**
 
-  --------------------------------------------------------------------------
-  Plugin                           Documentation              Comment
-  -------------------------------- -------------------------- --------------
-  dev.wezterm                      docs/dev-wezterm.md        This one is a
-                                                              special case!
+  --------------------------------------------------------------------------------------------
+  Plugin                    Documentation              Neovim Help
+  ------------------------- -------------------------- ---------------------------------------
+  ai-commander.wezterm      docs/ai-commander.md       :h wezterm-types-ai-commander.txt
 
-  ai-commander.wezterm             docs/ai-commander.md       
+  ai-helper.wezterm         docs/ai-helper.md          :h wezterm-types-ai-helper.txt
 
-  ai-helper.wezterm                docs/ai-helper.md          
+  dev.wezterm               docs/dev-wezterm.md        :h wezterm-types-dev-wezterm.txt
 
-  modal.wezterm                    docs/modal_wezterm.md      
+  modal.wezterm             docs/modal_wezterm.md      :h wezterm-types-modal_wezterm.txt
 
-  pinned-tabs.wezterm              docs/pinned-tabs.md        
+  pinned-tabs.wezterm       docs/pinned-tabs.md        :h wezterm-types-pinned-tabs.txt
 
-  presentation.wez                 docs/presentation_wez.md   
+  presentation.wez          docs/presentation_wez.md   :h wezterm-types-presentation_wez.txt
 
-  tabline.wez                      docs/tabline_wez.md        
+  smart-splits.nvim         docs/smart-splits.md       :h wezterm-types-smart-splits.txt
 
-  wez-pain-control                 docs/wez-pain-control.md   
+  tabline.wez               docs/tabline_wez.md        :h wezterm-types-tabline_wez.txt
 
-  wez-tmux                         docs/wez-tmux.md           
+  wez-pain-control          docs/wez-pain-control.md   :h wezterm-types-wez-pain-control.txt
 
-  wezterm-config.nvim              docs/wezterm-config.md     
-  --------------------------------------------------------------------------
+  wez-tmux                  docs/wez-tmux.md           :h wezterm-types-wez-tmux.txt
+
+  wezterm-config.nvim       docs/wezterm-config.md     :h wezterm-types-wezterm-config.txt
+  --------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
