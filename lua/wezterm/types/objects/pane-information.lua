@@ -69,8 +69,10 @@
 --- - [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name)
 ---
 ---@field foreground_process_name string|""
----The current working directory,
----per [`Pane:get_current_working_dir()`](lua://Pane.get_current_working_dir).
+---The current working directory, per `Pane:get_current_working_dir()`.
+---
+---For more information, see:
+--- -[`Pane:get_current_working_dir()`](lua://Pane.get_current_working_dir)
 ---
 ---@field current_working_dir Url|nil
 ---Returns `true` if there has been output in the pane
