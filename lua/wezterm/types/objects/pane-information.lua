@@ -61,10 +61,12 @@
 ---The width of the pane in cells.
 ---
 ---@field width number
----The path to the executable image,
----per [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name).
+---The path to the executable image, per `Pane:get_foreground_process_name()`.
 ---
----If the path is unavailable, this field is an empty string.
+---If the path is unavailable then this field will be an empty string.
+---
+---For more information, see:
+--- - [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name)
 ---
 ---@field foreground_process_name string|""
 ---The current working directory,
