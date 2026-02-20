@@ -79,10 +79,12 @@
 ---since the last time the pane was focused.
 ---
 ---@field has_unseen_output boolean
----The name of the domain with which the pane is associated,
----per [`Pane:get_domain_name()`](lua://Pane.get_domain_name).
+---The name of the domain with which the pane is associated, per `Pane:get_domain_name()`.
 ---
----If the domain name is unavailable, this field is an empty string.
+---If the domain name is unavailable then this field will be an empty string.
+---
+---For more information, see:
+--- - [`Pane:get_domain_name()`](lua://Pane.get_domain_name)
 ---
 ---@field domain_name string|""
 ---The tty device name,
