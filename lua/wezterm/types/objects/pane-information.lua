@@ -1,12 +1,10 @@
 ---@meta
 
----@class PaneProgress.Percentage
----@field Percentage integer
-
----@class PaneProgress.Error
----@field Error integer
-
----@alias PaneProgress "None"|"Indeterminate"|PaneProgress.Percentage|PaneProgress.Error
+---@alias PaneProgress
+---|"None"
+---|"Indeterminate"
+---|{ Percentage: integer }
+---|{ Error: integer }
 
 ---Describes a [`Pane`](lua://Pane).
 ---
