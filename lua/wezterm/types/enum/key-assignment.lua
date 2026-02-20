@@ -1,8 +1,6 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----TODO: Make key and mods more specific
-
 ---@enum (key) CharGroup
 local char_groups = {
   Activities = 1,
@@ -157,7 +155,7 @@ local set_window_level = {
 ---
 ---The name must match up to an entry in the `config.key_tables` configuration.
 ---
----See:
+---For more information, see:
 --- - [`config.key_tables`](lua://Config.key_tables)
 ---
 ---@field name string
@@ -489,6 +487,53 @@ local launcher_args_flags = {
 ---
 ---@field alphabet? QuickSelectAlphabet
 
+---@class SplitPaneParams
+---Specifies where the new pane will end up.
+---This field is required.
+---
+---@field direction PaneDirection
+---Controls the size of the new pane.
+---
+---Can be either:
+--- - `{ Cells = 10 }` (i.e. 10 cells)
+--- - `{ Percent = 50 }` (i.e. 50% of the available space)
+---
+---If omitted, `{ Percent = 50 }` is the default.
+---
+---@field size? { Cells: integer }|{ Percent: integer }
+---The `SpawnCommand` specifying what program to launch into the new pane.
+---
+---If omitted, `config.default_prog` will be used.
+---
+---For more information, see:
+--- - [`SpawnCommand`](lua://SpawnCommand)
+--- - [`config.default_prog`](lua://Config.default_prog)
+---
+---@field command? SpawnCommand
+---If set to true, rather than splitting the active pane, the split will be made
+---at the root of the tab and effectively split the entire tab
+---across the fullest possible extent.
+---
+---The default is `false`.
+---
+---@field top_level? boolean
+
+---@class SwitchToWorkspaceParams
+---The name of the workspace.
+---
+---If omitted, a randomly generated name will be chosen.
+---
+---@field name? string
+---A `SpawnCommand` describing the command that should be started in the workspace
+---if it doesn't already exist.
+---
+---If omitted, the default program will be spawned in the newly created workspace.
+---
+---For more information, see:
+--- - [`SpawnCommand`](lua://SpawnCommand)
+---
+---@field spawn? SpawnCommand
+
 ---@generic T
 ---@alias ActivateKeyTable fun(params: ActivateKeyTableParams): { ActivateKeyTable: ActivateKeyTableParams }
 ---@alias ActivatePaneByIndex fun(params: T<integer>): { ActivatePaneByIndex: T<integer> }
@@ -536,6 +581,10 @@ local launcher_args_flags = {
 ---@alias SpawnCommandInNewWindow fun(params: SpawnCommand): { SpawnCommandInNewWindow: SpawnCommand }
 ---@alias SpawnTabAction fun(params: SpawnCommand|SpawnTabDomain): { SpawnTab: SpawnTabDomain|SpawnCommand }
 ---@alias SplitHorizontal fun(params: SpawnCommand): { SplitHorizontal: SpawnCommand }
+---@alias SplitPane fun(params: SplitPaneParams): { SplitPane: SplitPaneParams }
+---@alias SplitVertical fun(params: SpawnCommand): { SplitVertical: SpawnCommand }
+---@alias SwitchToWorkspace fun(params: SwitchToWorkspaceParams): { SwitchToWorkspace: SwitchToWorkspaceParams }
+---@alias SwitchToWorkspaceRelative fun(params: T<integer>): { SwitchToWorkspaceRelative: T<integer> }
 
 ---@alias Actions
 ---|{ ActivateKeyTable: ActivateKeyTableParams }
@@ -584,6 +633,141 @@ local launcher_args_flags = {
 ---|{ SpawnCommandInNewWindow: SpawnCommand }
 ---|{ SpawnTab: SpawnTab|SpawnTabDomain }
 ---|{ SplitHorizontal: SpawnCommand }
+---|{ SplitPane: SplitPaneParams }
+---|{ SplitVertical: SpawnCommand }
+---|{ SwitchToWorkspace: SwitchToWorkspaceParams }
+---|{ SwitchToWorkspaceRelative: integer }
+
+---Helper for defining key assignment actions in your configuration file.
+---This is really just sugar for the underlying Lua -> Rust deserialation mapping
+---that makes it a bit easier to identify where syntax errors may exist
+---in your configuration file.
+---
+---@class KeyAssignment
+---@field ActivateCommandPalette "ActivateCommandPalette"
+---@field ActivateCopyMode "ActivateCopyMode"
+---@field ActivateKeyTable ActivateKeyTable
+---@field ActivateLastTab "ActivateLastTab"
+---@field ActivatePaneByIndex ActivatePaneByIndex
+---@field ActivatePaneDirection ActivatePaneDirection
+---@field ActivateTab ActivateTab
+---@field ActivateTabRelative ActivateTabRelative
+---@field ActivateTabRelativeNoWrap ActivateTabRelativeNoWrap
+---@field ActivateWindow ActivateWindow
+---@field ActivateWindowRelative ActivateWindowRelative
+---@field ActivateWindowRelativeNoWrap ActivateWindowRelativeNoWrap
+---@field AdjustPaneSize AdjustPaneSize
+---@field AttachDomain AttachDomain
+---@field CharSelect CharSelect
+---@field ClearKeyTableStack "ClearKeyTableStack"
+---@field ClearScrollback ClearScrollback
+---@field ClearSelection "ClearSelection"
+---@field CloseCurrentPane CloseCurrentPane
+---@field CloseCurrentTab CloseCurrentTab
+---@field CompleteSelection CompleteSelection
+---@field CompleteSelectionOrOpenLinkAtMouseCursor CompleteSelectionOrOpenLinkAtMouseCursor
+---@field Confirmation Confirmation
+---@field CopyMode CopyMode
+---@field CopyTo CopyTo
+---@field DecreaseFontSize "DecreaseFontSize"
+---@field DetachDomain DetachDomain
+---@field DisableDefaultAssignment "DisableDefaultAssignment"
+---@field EmitEvent EmitEvent
+---@field ExtendSelectionToMouseCursor ExtendSelectionToMouseCursor
+---@field Hide "Hide"
+---@field HideApplication "HideApplication"
+---@field IncreaseFontSize "IncreaseFontSize"
+---@field InputSelector InputSelector
+---@field MoveTab MoveTab
+---@field MoveTabRelative MoveTabRelative
+---Performs a sequence of multiple assignments.
+---
+---This is useful when you want a single key press to trigger multiple actions.
+---
+---@field Multiple Multiple
+---@field Nop "Nop"
+---@field OpenLinkAtMouseCursor "OpenLinkAtMouseCursor"
+---@field PaneSelect PaneSelect
+---@field PasteFrom PasteFrom
+---@field PopKeyTable "PopKeyTable"
+---@field PromptInputLine PromptInputLine
+---@field QuickSelect "QuickSelect"
+---@field QuickSelectArgs QuickSelectArgs
+---@field QuitApplication "QuitApplication"
+---@field ReloadConfiguration "ReloadConfiguration"
+---@field ResetFontAndWindowSize "ResetFontAndWindowSize"
+---@field ResetFontSize "ResetFontSize"
+---@field ResetTerminal "ResetTerminal"
+---@field RotatePanes RotatePanes
+---@field ScrollByCurrentEventWheelDelta "ScrollByCurrentEventWheelDelta"
+---@field ScrollByLine ScrollByLine
+---@field ScrollByPage ScrollByPage
+---@field ScrollToBottom "ScrollToBottom"
+---@field ScrollToPrompt ScrollToPrompt
+---@field ScrollToTop "ScrollToTop"
+---@field Search Search
+---@field SelectTextAtMouseCursor SelectTextAtMouseCursor
+---@field SendKey SendKey
+---@field SendString SendString
+---@field SetPaneZoomState SetPaneZoomState
+---@field SetWindowLevel SetWindowLevel
+---@field Show "Show"
+---@field ShowDebugOverlay "ShowDebugOverlay"
+---@field ShowLauncher "ShowLauncher"
+---@field ShowLauncherArgs ShowLauncherArgs
+---@field ShowTabNavigator "ShowTabNavigator"
+---@field SpawnCommandInNewTab SpawnCommandInNewTab
+---@field SpawnCommandInNewWindow SpawnCommandInNewWindow
+---@field SpawnTab SpawnTabAction
+---@field SpawnWindow "SpawnWindow"
+---@field SplitHorizontal SplitHorizontal
+---@field SplitPane SplitPane
+---@field SplitVertical SplitVertical
+---@field StartWindowDrag "StartWindowDrag"
+---@field SwitchToWorkspace SwitchToWorkspace
+---@field SwitchWorkspaceRelative SwitchToWorkspaceRelative
+---@field ToggleAlwaysOnBottom "ToggleAlwaysOnBottom"
+---@field ToggleAlwaysOnTop "ToggleAlwaysOnTop"
+---@field ToggleFullScreen "ToggleFullScreen"
+---@field TogglePaneZoomState "TogglePaneZoomState"
+
+---@enum (key) KeyAssignmentLiterals
+local key_assignment = {
+  ActivateCommandPalette = 1,
+  ActivateCopyMode = 1,
+  ActivateLastTab = 1,
+  ClearKeyTableStack = 1,
+  ClearSelection = 1,
+  DecreaseFontSize = 1,
+  DisableDefaultAssignment = 1,
+  Hide = 1,
+  HideApplication = 1,
+  IncreaseFontSize = 1,
+  Nop = 1,
+  OpenLinkAtMouseCursor = 1,
+  PopKeyTable = 1,
+  QuickSelect = 1,
+  QuitApplication = 1,
+  ReloadConfiguration = 1,
+  ResetFontAndWindowSize = 1,
+  ResetFontSize = 1,
+  ResetTerminal = 1,
+  ScrollByCurrentEventWheelDelta = 1,
+  ScrollToBottom = 1,
+  ScrollToTop = 1,
+  Show = 1,
+  ShowDebugOverlay = 1,
+  ShowLauncher = 1,
+  ShowTabNavigator = 1,
+  SpawnWindow = 1,
+  StartWindowDrag = 1,
+  ToggleAlwaysOnBottom = 1,
+  ToggleAlwaysOnTop = 1,
+  ToggleFullScreen = 1,
+  TogglePaneZoomState = 1,
+}
+
+---@alias Action (Actions|KeyAssignmentLiterals)
 
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
@@ -814,187 +998,5 @@ local pane_direction = {
 
 ---@class Key: SendKeyParams
 ---@field action? KeyAssignment
-
----Helper for defining key assignment actions in your configuration file.
----This is really just sugar for the underlying Lua -> Rust deserialation mapping
----that makes it a bit easier to identify where syntax errors may exist
----in your configuration file.
----
----@class KeyAssignment
----@field ActivateCommandPalette "ActivateCommandPalette"
----@field ActivateCopyMode "ActivateCopyMode"
----@field ActivateKeyTable ActivateKeyTable
----@field ActivateLastTab "ActivateLastTab"
----@field ActivatePaneByIndex ActivatePaneByIndex
----@field ActivatePaneDirection ActivatePaneDirection
----@field ActivateTab ActivateTab
----@field ActivateTabRelative ActivateTabRelative
----@field ActivateTabRelativeNoWrap ActivateTabRelativeNoWrap
----@field ActivateWindow ActivateWindow
----@field ActivateWindowRelative ActivateWindowRelative
----@field ActivateWindowRelativeNoWrap ActivateWindowRelativeNoWrap
----@field AdjustPaneSize AdjustPaneSize
----@field AttachDomain AttachDomain
----@field CharSelect CharSelect
----@field ClearKeyTableStack "ClearKeyTableStack"
----@field ClearScrollback ClearScrollback
----@field ClearSelection "ClearSelection"
----@field CloseCurrentPane CloseCurrentPane
----@field CloseCurrentTab CloseCurrentTab
----@field CompleteSelection CompleteSelection
----@field CompleteSelectionOrOpenLinkAtMouseCursor CompleteSelectionOrOpenLinkAtMouseCursor
----@field Confirmation Confirmation
----@field CopyMode CopyMode
----@field CopyTo CopyTo
----@field DecreaseFontSize "DecreaseFontSize"
----@field DetachDomain DetachDomain
----@field DisableDefaultAssignment "DisableDefaultAssignment"
----@field EmitEvent EmitEvent
----@field ExtendSelectionToMouseCursor ExtendSelectionToMouseCursor
----@field Hide "Hide"
----@field HideApplication "HideApplication"
----@field IncreaseFontSize "IncreaseFontSize"
----@field InputSelector InputSelector
----@field MoveTab MoveTab
----@field MoveTabRelative MoveTabRelative
----Performs a sequence of multiple assignments.
----
----This is useful when you want a single key press to trigger multiple actions.
----
----@field Multiple Multiple
----@field Nop "Nop"
----@field OpenLinkAtMouseCursor "OpenLinkAtMouseCursor"
----@field PaneSelect PaneSelect
----@field PasteFrom PasteFrom
----@field PopKeyTable "PopKeyTable"
----@field PromptInputLine PromptInputLine
----@field QuickSelect "QuickSelect"
----@field QuickSelectArgs QuickSelectArgs
----@field QuitApplication "QuitApplication"
----@field ReloadConfiguration "ReloadConfiguration"
----@field ResetFontAndWindowSize "ResetFontAndWindowSize"
----@field ResetFontSize "ResetFontSize"
----@field ResetTerminal "ResetTerminal"
----@field RotatePanes RotatePanes
----@field ScrollByCurrentEventWheelDelta "ScrollByCurrentEventWheelDelta"
----@field ScrollByLine ScrollByLine
----@field ScrollByPage ScrollByPage
----@field ScrollToBottom "ScrollToBottom"
----@field ScrollToPrompt ScrollToPrompt
----@field ScrollToTop "ScrollToTop"
----@field Search Search
----@field SelectTextAtMouseCursor SelectTextAtMouseCursor
----@field SendKey SendKey
----@field SendString SendString
----@field SetPaneZoomState SetPaneZoomState
----@field SetWindowLevel SetWindowLevel
----@field Show "Show"
----@field ShowDebugOverlay "ShowDebugOverlay"
----@field ShowLauncher "ShowLauncher"
----@field ShowLauncherArgs ShowLauncherArgs
----@field ShowTabNavigator "ShowTabNavigator"
----@field SpawnCommandInNewTab SpawnCommandInNewTab
----@field SpawnCommandInNewWindow SpawnCommandInNewWindow
----@field SpawnTab SpawnTabAction
----@field SpawnWindow "SpawnWindow"
----@field SplitHorizontal SplitHorizontal
----@field SplitPane any
----@field SplitVertical any
----@field StartWindowDrag "StartWindowDrag"
----@field SwitchToWorkspace any
----@field SwitchWorkspaceRelative any
----@field ToggleAlwaysOnBottom "ToggleAlwaysOnBottom"
----@field ToggleAlwaysOnTop "ToggleAlwaysOnTop"
----@field ToggleFullScreen "ToggleFullScreen"
----@field TogglePaneZoomState "TogglePaneZoomState"
-
----@enum (key) KeyAssignmentLiterals
-local key_assignment = {
-  ActivateCommandPalette = 1,
-  ActivateCopyMode = 1,
-  ActivateKeyTable = 1,
-  ActivateLastTab = 1,
-  ActivatePaneByIndex = 1,
-  ActivatePaneDirection = 1,
-  ActivateTab = 1,
-  ActivateTabRelative = 1,
-  ActivateTabRelativeNoWrap = 1,
-  ActivateWindow = 1,
-  ActivateWindowRelative = 1,
-  ActivateWindowRelativeNoWrap = 1,
-  AdjustPaneSize = 1,
-  AttachDomain = 1,
-  CharSelect = 1,
-  ClearKeyTableStack = 1,
-  ClearScrollback = 1,
-  ClearSelection = 1,
-  CloseCurrentPane = 1,
-  CloseCurrentTab = 1,
-  CompleteSelection = 1,
-  CompleteSelectionOrOpenLinkAtMouseCursor = 1,
-  Copy = 1,
-  CopyMode = 1,
-  CopyTo = 1,
-  DecreaseFontSize = 1,
-  DetachDomain = 1,
-  DisableDefaultAssignment = 1,
-  EmitEvent = 1,
-  ExtendSelectionToMouseCursor = 1,
-  Hide = 1,
-  HideApplication = 1,
-  IncreaseFontSize = 1,
-  InputSelector = 1,
-  MoveTab = 1,
-  MoveTabRelative = 1,
-  Multiple = 1,
-  Nop = 1,
-  OpenLinkAtMouseCursor = 1,
-  PaneSelect = 1,
-  Paste = 1,
-  PasteFrom = 1,
-  PastePrimarySelection = 1,
-  PopKeyTable = 1,
-  PromptInputLine = 1,
-  QuickSelect = 1,
-  QuickSelectArgs = 1,
-  QuitApplication = 1,
-  ReloadConfiguration = 1,
-  ResetFontAndWindowSize = 1,
-  ResetFontSize = 1,
-  ResetTerminal = 1,
-  RotatePanes = 1,
-  ScrollByCurrentEventWheelDelta = 1,
-  ScrollByLine = 1,
-  ScrollByPage = 1,
-  ScrollToBottom = 1,
-  ScrollToPrompt = 1,
-  ScrollToTop = 1,
-  Search = 1,
-  SelectTextAtMouseCursor = 1,
-  SendKey = 1,
-  SendString = 1,
-  SetPaneZoomState = 1,
-  Show = 1,
-  ShowDebugOverlay = 1,
-  ShowLauncher = 1,
-  ShowLauncherArgs = 1,
-  ShowTabNavigator = 1,
-  SpawnCommandInNewTab = 1,
-  SpawnCommandInNewWindow = 1,
-  SpawnTab = 1,
-  SpawnWindow = 1,
-  SplitHorizontal = 1,
-  SplitPane = 1,
-  SplitVertical = 1,
-  StartWindowDrag = 1,
-  SwitchToWorkspace = 1,
-  SwitchWorkspaceRelative = 1,
-  ToggleAlwaysOnBottom = 1,
-  ToggleAlwaysOnTop = 1,
-  ToggleFullScreen = 1,
-  TogglePaneZoomState = 1,
-}
-
----@alias Action (Actions|KeyAssignmentLiterals)
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
