@@ -17,15 +17,6 @@ local char_groups = {
   UnicodeNames = 1,
 }
 
----@enum (key) SelectTextAtMouseCursorParams
-local select_text_at_mouse_cursor = {
-  Block = 1,
-  Cell = 1,
-  Line = 1,
-  SemanticZone = 1,
-  Word = 1,
-}
-
 ---@enum (key) ClipboardCopyDestination
 local copy_to = {
   Clipboard = 1,
@@ -571,7 +562,7 @@ local launcher_args_flags = {
 ---@alias ScrollByPage fun(amount: T<number>): { ScrollByPage: T<number> }
 ---@alias ScrollToPrompt fun(amount: T<integer>): { ScrollToPrompt: T<integer> }
 ---@alias Search fun(params: "CurrentSelectionOrEmptyString"|SearchParams): { Search: "CurrentSelectionOrEmptyString"|SearchParams }
----@alias SelectTextAtMouseCursor fun(params: SelectTextAtMouseCursorParams): { SelectTextAtMouseCursor: SelectTextAtMouseCursorParams }
+---@alias SelectTextAtMouseCursor fun(params: SelectionMode): { SelectTextAtMouseCursor: SelectionMode }
 ---@alias SendKey fun(params: SendKeyParams): { SendKey: SendKeyParams }
 ---@alias SendString fun(params: T<string>): { SendString: T<string> }
 ---@alias SetPaneZoomState fun(state: boolean): { SetPaneZoomState: boolean }
@@ -623,7 +614,7 @@ local launcher_args_flags = {
 ---|{ ScrollByPage: number }
 ---|{ ScrollToPrompt: integer }
 ---|{ Search: "CurrentSelectionOrEmptyString"|SearchParams }
----|{ SelectTextAtMouseCursor: SelectTextAtMouseCursorParams }
+---|{ SelectTextAtMouseCursor: SelectionMode }
 ---|{ SendKey: SendKeyParams }
 ---|{ SendString: string }
 ---|{ SetPaneZoomState: boolean }
