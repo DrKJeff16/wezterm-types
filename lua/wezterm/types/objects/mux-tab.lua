@@ -11,7 +11,7 @@
 ---The topological pane index.
 ---
 ---@field index integer
----Is `true` if the pane is the active pane within this tab.
+---If `true` then this is the active pane within this tab.
 ---
 ---@field is_active boolean
 ---Is `true` if the pane is in the zoomed state.
