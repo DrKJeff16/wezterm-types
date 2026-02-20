@@ -1,5 +1,14 @@
 ---@meta
 
+---Mirrors `Progress` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/term/src/terminal.rs
+---
+---@alias PaneProgress
+---|"None"
+---|"Indeterminate"
+---|{ Percentage: integer }
+---|{ Error: integer }
+
 ---Describes a [`Pane`](lua://Pane).
 ---
 ---Unlike the `Pane` object, `PaneInformation` is a snapshot of
@@ -7,10 +16,13 @@
 ---intended for use in synchronous, fast, event callbacks
 ---that format GUI elements such as the window and tab title bars.
 ---
+---Mirrors `PaneInformation` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/wezterm-gui/src/termwindow/mod.rs
+---
 ---@class PaneInformation
 ---The height of the pane in cells.
 ---
----@field height number
+---@field height integer
 ---Is `true` if the pane is the active pane within its containing tab.
 ---
 ---@field is_active boolean
@@ -19,24 +31,24 @@
 ---@field is_zoomed boolean
 ---The cell `x` coordinate of the left edge of the pane.
 ---
----@field left number
+---@field left integer
 ---The height of the pane in pixels.
 ---
----@field pixel_height number
+---@field pixel_height integer
 ---The pane ID.
 ---
 ---@field pane_id integer
 ---The logical position of the pane within its containing layout.
 ---
----@field pane_index number
+---@field pane_index integer
 ---The width of the pane in pixels.
 ---
----@field pixel_width number
+---@field pixel_width integer
 ---The progress state,
 ---per [`Pane:get_progress()`](lua://Pane.get_progress)
 ---at the time the pane information was captured.
 ---
----@field progress string
+---@field progress PaneProgress
 ---The title of the pane,
 ---per [`Pane:get_title()`](lua://Pane.get_title)
 ---at the time the pane information was captured.
@@ -44,7 +56,7 @@
 ---@field title string
 ---The cell `y` coordinate of the top edge of the pane.
 ---
----@field top number
+---@field top integer
 ---The user variables defined for the pane,
 ---per [`Pane:get_user_vars()`](lua://Pane.get_user_vars)
 ---at the time the pane information was captured.
@@ -52,6 +64,38 @@
 ---@field user_vars table<string, string>
 ---The width of the pane in cells.
 ---
----@field width number
+---@field width integer
+---The path to the executable image, per `Pane:get_foreground_process_name()`.
+---
+---If the path is unavailable then this field will be an empty string.
+---
+---For more information, see:
+--- - [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name)
+---
+---@field foreground_process_name string|""
+---The current working directory, per `Pane:get_current_working_dir()`.
+---
+---For more information, see:
+--- -[`Pane:get_current_working_dir()`](lua://Pane.get_current_working_dir)
+---
+---@field current_working_dir Url|nil
+---Returns `true` if there has been output in the pane
+---since the last time the pane was focused.
+---
+---@field has_unseen_output boolean
+---The name of the domain with which the pane is associated, per `Pane:get_domain_name()`.
+---
+---If the domain name is unavailable then this field will be an empty string.
+---
+---For more information, see:
+--- - [`Pane:get_domain_name()`](lua://Pane.get_domain_name)
+---
+---@field domain_name string|""
+---The tty device name, per `Pane:get_tty_name()`.
+---
+---For more information, see:
+--- - [`Pane:get_tty_name()`](lua://Pane.get_tty_name)
+---
+---@field tty_name string|nil
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

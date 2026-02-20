@@ -1426,7 +1426,6 @@ function Wezterm.on(event, callback) end
 ---it doesn't make sense to define multiple instances of the event
 ---with multiple `wezterm.on("format-window-title", ...)` calls.
 ---
---- ---
 ---The `"format-window-title"` event is emitted when the text for the window title
 ---needs to be recomputed.
 ---
@@ -1441,8 +1440,11 @@ function Wezterm.on(event, callback) end
 ---For more information, see:
 --- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
 ---
+---Mirrors the `format-window-title` callback arguments in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/wezterm-gui/src/termwindow/mod.rs
+---
 ---@param event "format-window-title"
----@param callback fun(window: Window, pane: Pane, tabs: MuxTab[], panes: Pane[], config: Config): string
+---@param callback fun(tab: TabInformation, pane: PaneInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config): string
 function Wezterm.on(event, callback) end
 
 ---This event is triggered when the GUI is starting up after attaching the selected domain.

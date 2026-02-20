@@ -7,6 +7,43 @@
 ---@field pixel_height integer
 ---@field dpi number
 
+---Mirrors `MuxPaneInfo` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/lua-api-crates/mux/src/lib.rs
+---
+---@class MuxTab.PaneInfo
+---The topological pane index.
+---
+---@field index integer
+---If `true` then this is the active pane within this tab.
+---
+---@field is_active boolean
+---Is `true` if the pane is in the zoomed state.
+---
+---@field is_zoomed boolean
+---The offset from the top left corner of the containing tab
+---to the top left corner of this pane, in cells.
+---
+---@field left integer
+---The offset from the top left corner of the containing tab
+---to the top left corner of this pane, in cells.
+---
+---@field top integer
+---The width of the pane in cells.
+---
+---@field width integer
+---The height of the pane in cells.
+---
+---@field height integer
+---The width of the pane in pixels.
+---
+---@field pixel_width integer
+---The height of the pane in pixels.
+---
+---@field pixel_height integer
+---A `Pane` object.
+---
+---@field pane Pane
+
 ---`MuxTab` represents a tab that is managed
 ---by the multiplexer.
 ---
@@ -59,9 +96,9 @@ function M:panes() end
 ---for each of the panes contained by this tab.
 ---
 ---See:
---- - [`PaneInformation`](lua://PaneInformation)
+--- - [`MuxTab.PaneInfo`](lua://MuxTab.PaneInfo)
 ---
----@return PaneInformation[] info_panes
+---@return MuxTab.PaneInfo[] info_panes
 function M:panes_with_info() end
 
 ---Rotates the panes in the clockwise direction.
