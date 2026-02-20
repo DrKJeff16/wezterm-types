@@ -246,12 +246,21 @@ return {
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/lalvarezt">
+                    <img src="https://avatars.githubusercontent.com/u/16566531?v=4" width="100;" alt="lalvarezt"/>
+                    <br />
+                    <sub><b>LM</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/AtifChy">
                     <img src="https://avatars.githubusercontent.com/u/42291930?v=4" width="100;" alt="AtifChy"/>
                     <br />
                     <sub><b>Md. Iftakhar Awal Chowdhury</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/TheLeoP">
                     <img src="https://avatars.githubusercontent.com/u/53507599?v=4" width="100;" alt="TheLeoP"/>
@@ -259,8 +268,6 @@ return {
                     <sub><b>Luis Calle</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/reegnz">
                     <img src="https://avatars.githubusercontent.com/u/5672001?v=4" width="100;" alt="reegnz"/>
