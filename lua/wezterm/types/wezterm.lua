@@ -2,9 +2,8 @@
 ---@diagnostic disable:unused-local
 
 ---@module "wezterm.types.config"
----@module "wezterm.types.enum"
 ---@module "wezterm.types.events"
----@module "wezterm.types.objects"
+---@module "wezterm.types.harfbuzz"
 ---@module "wezterm.types.wezterm.color"
 ---@module "wezterm.types.wezterm.gui"
 ---@module "wezterm.types.wezterm.mux"
@@ -14,9 +13,8 @@
 ---@module "wezterm.types.wezterm.serde"
 ---@module "wezterm.types.wezterm.time"
 ---@module "wezterm.types.wezterm.url"
----@module "wezterm.types.harfbuzz"
 
----@alias ColorSpec table<"AnsiColor", AnsiColor>|table<"Color", string>
+---@alias ColorSpec { AnsiColor: AnsiColor }|{ Color: string }
 
 ---@class FormatItemAttribute
 ---@field Underline "None"|"Single"|"Double"|"Curly"|"Dotted"|"Dashed"
@@ -76,76 +74,62 @@ local modifiers = {
 ---
 ---@enum (key) WindowDecorations
 local window_decorations = {
-  NONE = 1,
-
-  TITLE = 1,
-
-  RESIZE = 1,
-
   MACOS_FORCE_DISABLE_SHADOW = 1,
   MACOS_FORCE_ENABLE_SHADOW = 1,
   MACOS_FORCE_SQUARE_CORNERS = 1,
+  NONE = 1,
+  RESIZE = 1,
+  TITLE = 1,
 
-  ["TITLE|RESIZE"] = 1,
-  ["RESIZE|TITLE"] = 1,
-
-  ["TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-  ["MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
-
-  ["TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-  ["MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
-
-  ["RESIZE|INTEGRATED_BUTTONS"] = 1,
   ["INTEGRATED_BUTTONS|RESIZE"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
+  ["RESIZE|INTEGRATED_BUTTONS"] = 1,
+  ["RESIZE|TITLE"] = 1,
+  ["TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["TITLE|RESIZE"] = 1,
 
-  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-  ["RESIZE|MACOS_FORCE_SQUARE_CORNERS"] = 1,
-
+  ["INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
+  ["INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
   ["MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
-  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
-  ["MACOS_FORCE_SQUARE_CORNERS|RESIZE"] = 1,
-
-  ["TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-  ["RESIZE|TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-  ["TITLE|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
-  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
+  ["MACOS_FORCE_DISABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
   ["MACOS_FORCE_DISABLE_SHADOW|RESIZE|TITLE"] = 1,
   ["MACOS_FORCE_DISABLE_SHADOW|TITLE|RESIZE"] = 1,
-
-  ["TITLE|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-  ["RESIZE|TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-  ["TITLE|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
-  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
   ["MACOS_FORCE_ENABLE_SHADOW|RESIZE|TITLE"] = 1,
   ["MACOS_FORCE_ENABLE_SHADOW|TITLE|RESIZE"] = 1,
-
-  ["TITLE|RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
-  ["RESIZE|TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
-  ["TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|RESIZE"] = 1,
-  ["RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|TITLE"] = 1,
+  ["MACOS_FORCE_SQUARE_CORNERS|RESIZE"] = 1,
   ["MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|RESIZE|TITLE"] = 1,
   ["MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|TITLE|RESIZE"] = 1,
-
-  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
   ["RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-  ["INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
-  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS"] = 1,
-  ["MACOS_FORCE_DISABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
-  ["MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
-
-  ["INTEGRATED_BUTTONS|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
   ["RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-  ["INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|INTEGRATED_BUTTONS"] = 1,
+  ["RESIZE|MACOS_FORCE_DISABLE_SHADOW|TITLE"] = 1,
+  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
   ["RESIZE|MACOS_FORCE_ENABLE_SHADOW|INTEGRATED_BUTTONS"] = 1,
-  ["MACOS_FORCE_ENABLE_SHADOW|RESIZE|INTEGRATED_BUTTONS"] = 1,
-  ["MACOS_FORCE_ENABLE_SHADOW|INTEGRATED_BUTTONS|RESIZE"] = 1,
+  ["RESIZE|MACOS_FORCE_ENABLE_SHADOW|TITLE"] = 1,
+  ["RESIZE|MACOS_FORCE_SQUARE_CORNERS"] = 1,
+  ["RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|TITLE"] = 1,
+  ["RESIZE|TITLE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["RESIZE|TITLE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["RESIZE|TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
+  ["TITLE|MACOS_FORCE_DISABLE_SHADOW|RESIZE"] = 1,
+  ["TITLE|MACOS_FORCE_ENABLE_SHADOW|RESIZE"] = 1,
+  ["TITLE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR|RESIZE"] = 1,
+  ["TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"] = 1,
+  ["TITLE|RESIZE|MACOS_FORCE_ENABLE_SHADOW"] = 1,
+  ["TITLE|RESIZE|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
 
   -- TODO: Do the 24 combinations for each of the remaining elements
   ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_DISABLE_SHADOW"] = 1,
-
   ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_FORCE_ENABLE_SHADOW"] = 1,
-
   ["TITLE|RESIZE|INTEGRATED_BUTTONS|MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"] = 1,
   ---Add other valid combinations if needed
 }
@@ -948,6 +932,7 @@ local weight = {
 ---
 ---For more information, see:
 --- - [`KeyAssignment`](lua://KeyAssignment)
+--- - [`Action`](lua://Action)
 ---
 ---@field action KeyAssignment
 ---This constant is set to the path to the directory
@@ -1145,7 +1130,6 @@ function Wezterm.font(name, attributes) end
 ---```
 ---
 ---The following options can be specified in the same way:
----
 --- - [`harfbuzz_features`](lua://FontFamilyAttributes.harfbuzz_features)
 --- - [`freetype_load_target`](lua://FontFamilyAttributes.freetype_load_target)
 --- - [`freetype_render_target`](lua://FontFamilyAttributes.freetype_render_target)
@@ -1450,9 +1434,12 @@ function Wezterm.on(event, callback) end
 ---as quickly as possible in order to avoid blocking the GUI thread.
 ---
 ---The most notable consequence of this is that some functions that are asynchronous
----(e.g. [`wezterm.run_child_process()`](lua://Wezterm.run_child_process))
----are not possible to call from inside the event handler and will generate
----a `format-window-title: runtime error: attempt to yield from outside a coroutine` error.
+---(e.g. `wezterm.run_child_process()`) are not possible to call from inside
+---the event handler and will generate a
+---`format-window-title: runtime error: attempt to yield from outside a coroutine` error.
+---
+---For more information, see:
+--- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
 ---
 ---@param event "format-window-title"
 ---@param callback fun(window: Window, pane: Pane, tabs: MuxTab[], panes: Pane[], config: Config): string
@@ -1564,10 +1551,8 @@ function Wezterm.on(event, callback) end
 ---@param callback function
 function Wezterm.on(event, callback) end
 
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the active pane in the window
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the active pane in the window
 ---
 --- ---
 ---The `"new-tab-button-click"` event is emitted when the user clicks on the
@@ -1575,14 +1560,16 @@ function Wezterm.on(event, callback) end
 ---
 ---This is the `+` button that is drawn to the right of the last tab.
 ---
+---For more information, see:
+--- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
+---
 ---@param event "new-tab-button-click"
 ---@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action)
 function Wezterm.on(event, callback) end
 
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the pane
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the pane
 --- - The third event parameter is the URI string
 ---
 ------
@@ -1592,6 +1579,10 @@ function Wezterm.on(event, callback) end
 ---The default action is to open the active URI in your browser,
 ---but if you register for this event you can co-opt the default behavior.
 ---
+---For more information, see:
+--- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
+---
 ---@param event "open-uri"
 ---@param callback fun(window: Window, pane: Pane, uri: string): boolean|nil
 function Wezterm.on(event, callback) end
@@ -1600,52 +1591,54 @@ function Wezterm.on(event, callback) end
 ---which behaves the same way, but doesn't overly focus on the right status area.
 ---
 ------
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the active pane in that window
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
 ---There is no defined return value for the event, but its purpose is
 ---to allow you the chance to carry out some activity and then ultimately call
----[`Window:set_right_status()`](lua://Window.set_right_status).
+---`Window:set_right_status()`.
 ---
 ---WezTerm will ensure that only a single instance of this event is outstanding;
 ---if the hook takes longer than the `config.status_update_interval` to complete,
----`wezterm` won't schedule another call until
----[`config.status_update_interval_milliseconds`](lua://Config.status_update_interval)
----have elapsed since the last call completed.
+---`wezterm` won't schedule another call until `config.status_update_interval` time
+---has elapsed since the last call completed.
 ---
 ------
 ---The `"update-right-status"` event is emitted periodically
----(based on the interval specified by
----[`config.status_update_interval`](lua://Config.status_update_interval)).
+---(based on the interval specified by `config.status_update_interval`).
+---
+---For more information, see:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`Window:set_right_status()`](lua://Window.set_right_status)
+--- - [`config.status_update_interval`](lua://Config.status_update_interval)
 ---
 ---@param event "update-right-status"
 ---@param callback CallbackWindowPane
 ---@deprecated
 function Wezterm.on(event, callback) end
 
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the active pane in that window
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
 ---There is no defined return value for the event, but its purpose is
----to allow you the chance to carry out some activity and then ultimately call either
----[`Window:set_right_status()`](lua://Window.set_right_status)
----or [`Window:set_left_status()`](lua://Window.set_left_status).
+---to allow you the chance to carry out some activity and then ultimately call
+---`Window:set_left_status()`.
 ---
 ---WezTerm will ensure that only a single instance of this event is outstanding;
 ---if the hook takes longer than the `config.status_update_interval` to complete,
----`wezterm` won't schedule another call until
----[`config.status_update_interval`](lua://Config.status_update_interval)
----milliseconds have elapsed since the last call completed.
+---`wezterm` won't schedule another call until `config.status_update_interval` time
+---has elapsed since the last call completed.
 ---
 ------
----The `"update-status"` event is emitted periodically
----(based on the interval specified by the
----[`config.status_update_interval`](lua://Config.status_update_interval)
----configuration value).
+---The `"update-left-status"` event is emitted periodically
+---(based on the interval specified by `config.status_update_interval`).
+---
+---For more information, see:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`Window:set_left_status()`](lua://Window.set_left_status)
+--- - [`config.status_update_interval`](lua://Config.status_update_interval)
 ---
 ---@param event "update-status"
 ---@param callback CallbackWindowPane
@@ -1686,29 +1679,29 @@ function Wezterm.on(event, callback) end
 ---This event is _fire-and-forget_ from the perspective of wezterm;
 ---it fires the event to advise of the config change, but has no other expectations.
 ---
----If you call [`Window:set_config_overrides()`](lua://Window.set_config_overrides)
----from inside this event callback
+---If you call `Window:set_config_overrides()` from inside this event callback
 ---then an additional `window-config-reloaded` event will be triggered.
 ---
----You should take care to avoid creating a loop by only calling
----[`Window:set_config_overrides()`](lua://Window.set_config_overrides)
+---You should take care to avoid creating a loop by only calling `Window:set_config_overrides()`
 ---when the actual override values are changed.
 ---
---- - The first event parameter is a [`Window`](lua://Window)
----   object that represents the GUI window
---- - The second event parameter is a [`Pane`](lua://Pane)
----   object that represents the active pane in that window
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
 ------
 ---The `"window-config-reloaded"` event is emitted when the configuration for
 ---a window has been reloaded.
 ---
 ---This can occur when the configuration file is detected as changed
----(when [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
----is enabled), when the configuration is explicitly reloaded via
----the `ReloadConfiguration` key action, and when
----[`Window:set_config_overrides()`](lua://Window.set_config_overrides)
----is called for the window.
+---(when `config.automatically_reload_config` is enabled), when the configuration
+---is explicitly reloaded via the `ReloadConfiguration` key action, and when
+---`Window:set_config_overrides()` is called for the window.
+---
+---For more information, see:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`Window:set_config_overrides()`](lua://Window.set_config_overrides)
+--- - [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
 ---
 ---@param event "window-config-reloaded"
 ---@param callback CallbackWindowPane
@@ -1724,6 +1717,10 @@ function Wezterm.on(event, callback) end
 ---The `"window-focus-changed"` event is emitted when the focus state
 ---for a window is changed.
 ---
+---For more information, see:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+---
 ---@param event "window-focus-changed"
 ---@param callback CallbackWindowPane
 function Wezterm.on(event, callback) end
@@ -1738,6 +1735,10 @@ function Wezterm.on(event, callback) end
 ---live resize operation. `wezterm` will coalesce the stream of multiple events
 ---generated by a live resize such that there can be
 ---a maximum of 1 event executing and 1 event buffered.
+---
+---For more information, see:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
 ---
 ---@param event "window-resized"
 ---@param callback CallbackWindowPane
@@ -1798,7 +1799,7 @@ function Wezterm.on(event, callback) end
 ---
 ---```lua
 ----- Opens a URL in your default browser
----wezterm.open_with 'http://example.com'
+---wezterm.open_with('http://example.com')
 ---
 ----- Opens a URL specifically in firefox
 ---wezterm.open_with('http://example.com', 'firefox')
@@ -1813,7 +1814,7 @@ function Wezterm.open_with(path_or_url) end
 ---
 ---```lua
 ----- Opens a URL in your default browser
----wezterm.open_with 'http://example.com'
+---wezterm.open_with('http://example.com')
 ---
 ----- Opens a URL specifically in firefox
 ---wezterm.open_with('http://example.com', 'firefox')
@@ -1859,50 +1860,30 @@ function Wezterm.pad_left(s, min_width) end
 ---@return string str
 function Wezterm.pad_right(s, min_width) end
 
----This function is intended to help with generating
----[`KeyBinding`](lua://KeyBinding)
----entries.
----These should apply regardless of
----the combination of modifier keys pressed.
+---This function is intended to help with generating `KeyBinding` entries.
+---These should apply regardless of the combination of modifier keys pressed.
 ---
----For each combination of modifiers
----`CTRL`, `ALT`, `SHIFT` and `SUPER`,
----the supplied `table` value `T`
----is copied with a `mods = <value>` entry.
+---For each combination of modifiers, the supplied `table` value `T`
+---is copied with a `mods = <value>` entry:
 ---
----An entry for `NONE` is **NOT** generated
----(this is the only difference between
----[`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
----and `wezterm.permute_any_mods`).
+--- - `CTRL`
+--- - `ALT`
+--- - `SHIFT`
+--- - `SUPER`
 ---
----A [`KeyBinding`](lua://KeyBinding)
----array is returned.
+---An entry for `NONE` is **NOT** generated.
+---This is the only difference between
+---`wezterm.permute_any_or_no_mods` `wezterm.permute_any_mods`.
 ---
----@param T table
----@return KeyBinding[]
-function Wezterm.permute_any_mods(T) end
-
----This function is intended to help with generating
----[`MouseBinding`](lua://MouseBinding)
----entries.
----These should apply regardless of
----the combination of modifier keys pressed.
+---Either a `KeyBinding` array or a `MouseBinding` is returned.
 ---
----For each combination of modifiers
----`CTRL`, `ALT`, `SHIFT` and `SUPER`,
----the supplied `table` value `T`
----is copied with a `mods = <value>` entry.
----
----An entry for `NONE` is **NOT** generated
----(this is the only difference between
----[`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
----and `wezterm.permute_any_mods`).
----
----A [`MouseBinding`](lua://MouseBinding)
----array is returned.
+---For more information, see:
+--- - [`KeyBinding`](lua://KeyBinding)
+--- - [`MouseBinding`](lua://MouseBinding)
+--- - [`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
 ---
 ---@param T table
----@return MouseBinding[]
+---@return MouseBinding[]|KeyBinding[]
 function Wezterm.permute_any_mods(T) end
 
 ---This function is intended to help with generating
