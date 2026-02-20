@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 19
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 20
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -236,6 +236,10 @@ C.D. MacEachern
 
 
 Chris Grieser
+
+
+
+LM
 
 
 
