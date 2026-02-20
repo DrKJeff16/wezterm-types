@@ -663,9 +663,9 @@ end
 ---Can be any key assignment action.
 ---
 ---For more information, see:
---- - [`KeyAssignment`](lua://KeyAssignment)
+--- - [`Action`](lua://Action)
 ---
----@field action KeyAssignment
+---@field action Action
 ---**(OPTIONAL)** Nerd Fonts glyph name to use for the icon for the entry.
 ---
 ---For a list of icon names, see:
@@ -713,7 +713,7 @@ end
 ---@field wezterm_version? string
 ---@field aliases? string[]
 
----@alias ActionCallback fun(win: Window, pane: Pane, ...: any): false|Action|nil
+---@alias ActionCallback fun(win: Window, pane: Pane, ...: any): any
 
 ---@enum (key) CursorStyle
 local cursor_style = {
@@ -947,9 +947,9 @@ local weight = {
 ---where syntax errors may exist in your configuration file.
 ---
 ---For more information, see:
---- - [`Action`](lua://Action)
+--- - [`KeyAssignment`](lua://KeyAssignment)
 ---
----@field action Action
+---@field action KeyAssignment
 ---This constant is set to the path to the directory
 ---in which your `wezterm.lua` configuration file was found.
 ---
@@ -1576,7 +1576,7 @@ function Wezterm.on(event, callback) end
 ---This is the `+` button that is drawn to the right of the last tab.
 ---
 ---@param event "new-tab-button-click"
----@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: KeyAssignment)
+---@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action)
 function Wezterm.on(event, callback) end
 
 --- - The first event parameter is a [`Window`](lua://Window)

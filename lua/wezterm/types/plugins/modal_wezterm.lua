@@ -47,18 +47,18 @@ function M.reset_window_title(pane) end
 ---
 ---@param name string
 ---@param activate_key_table_params? ActivateKeyTableParams
----@return KeyAssignment|KeyAssignFunction|ActivateKeyTable
+---@return Action key_assignment
 function M.activate_mode(name, activate_key_table_params) end
 
 ---Exits active mode.
 ---
 ---@param name string
----@return KeyAssignment|KeyAssignFunction
+---@return Action key_assignment
 function M.exit_mode(name) end
 
 ---Exits all active modes
 ---@param name string
----@return KeyAssignment|KeyAssignFunction
+---@return Action key_assignment
 function M.exit_all_modes(name) end
 
 ---@param config Config

@@ -40,7 +40,7 @@
 ---of the currently active pane should be used
 ---to start this process.
 ---
----@field domain? "DefaultDomain"
+---@field domain? "DefaultDomain"|"local"|"CurrentPaneDomain"|{ DomainName: string }
 ---An optional label.
 ---
 ---The `label` is only used for `SpawnCommand` instances

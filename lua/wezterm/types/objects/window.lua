@@ -150,13 +150,17 @@ function M:leader_is_active() end
 ---Puts the window into the maximized state.
 ---
 ---To return to the normal/non-maximized state
----use [`window:restore()`](lua://Window.restore).
+---use `window:restore()`.
+---
+---See:
+--- - [`window:restore()`](lua://Window.restore)
 ---
 function M:maximize() end
 
----Returns the
----[`MuxWindow`](lua://MuxWindow)
----representation of this window.
+---Returns the `MuxWindow` representation of this window.
+---
+---For more information, see:
+--- - [`MuxWindow`](lua://MuxWindow)
 ---
 ---@return MuxWindow mux_win
 function M:mux_window() end
@@ -172,7 +176,8 @@ function M:perform_action(key_assignment, pane) end
 
 ---Restores the window from the maximized state.
 ---
----See [`Window:maximize()`](lua://Window.maximize).
+---For more information, see:
+--- - [`Window:maximize()`](lua://Window.maximize)
 ---
 function M:restore() end
 
