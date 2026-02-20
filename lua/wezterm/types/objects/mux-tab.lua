@@ -7,6 +7,9 @@
 ---@field pixel_height integer
 ---@field dpi number
 
+---Mirrors `MuxPaneInfo` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/lua-api-crates/mux/src/lib.rs
+---
 ---@class MuxTab.PaneInfo
 ---The topological pane index.
 ---
@@ -20,23 +23,23 @@
 ---The offset from the top left corner of the containing tab
 ---to the top left corner of this pane, in cells.
 ---
----@field left number
+---@field left integer
 ---The offset from the top left corner of the containing tab
 ---to the top left corner of this pane, in cells.
 ---
----@field top number
+---@field top integer
 ---The width of the pane in cells.
 ---
----@field width number
+---@field width integer
 ---The height of the pane in cells.
 ---
----@field height number
+---@field height integer
 ---The width of the pane in pixels.
 ---
----@field pixel_width number
+---@field pixel_width integer
 ---The height of the pane in pixels.
 ---
----@field pixel_height number
+---@field pixel_height integer
 ---A `Pane` object.
 ---
 ---@field pane Pane

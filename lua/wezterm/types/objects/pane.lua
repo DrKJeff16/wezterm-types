@@ -363,6 +363,9 @@ function M:get_metadata() end
 ---will be `"None"` to indicate that
 ---no progress has been reported.
 ---
+---Mirrors the `get_progress` Lua binding in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/lua-api-crates/mux/src/pane.rs
+---
 ---@return PaneProgress progress
 function M:get_progress() end
 

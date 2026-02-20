@@ -1,5 +1,8 @@
 ---@meta
 
+---Mirrors `Progress` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/term/src/terminal.rs
+---
 ---@alias PaneProgress
 ---|"None"
 ---|"Indeterminate"
@@ -13,10 +16,13 @@
 ---intended for use in synchronous, fast, event callbacks
 ---that format GUI elements such as the window and tab title bars.
 ---
+---Mirrors `PaneInformation` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/wezterm-gui/src/termwindow/mod.rs
+---
 ---@class PaneInformation
 ---The height of the pane in cells.
 ---
----@field height number
+---@field height integer
 ---Is `true` if the pane is the active pane within its containing tab.
 ---
 ---@field is_active boolean
@@ -25,10 +31,10 @@
 ---@field is_zoomed boolean
 ---The cell `x` coordinate of the left edge of the pane.
 ---
----@field left number
+---@field left integer
 ---The height of the pane in pixels.
 ---
----@field pixel_height number
+---@field pixel_height integer
 ---The pane ID.
 ---
 ---@field pane_id integer
@@ -37,7 +43,7 @@
 ---@field pane_index integer
 ---The width of the pane in pixels.
 ---
----@field pixel_width number
+---@field pixel_width integer
 ---The progress state,
 ---per [`Pane:get_progress()`](lua://Pane.get_progress)
 ---at the time the pane information was captured.
@@ -50,7 +56,7 @@
 ---@field title string
 ---The cell `y` coordinate of the top edge of the pane.
 ---
----@field top number
+---@field top integer
 ---The user variables defined for the pane,
 ---per [`Pane:get_user_vars()`](lua://Pane.get_user_vars)
 ---at the time the pane information was captured.
@@ -58,7 +64,7 @@
 ---@field user_vars table<string, string>
 ---The width of the pane in cells.
 ---
----@field width number
+---@field width integer
 ---The path to the executable image, per `Pane:get_foreground_process_name()`.
 ---
 ---If the path is unavailable then this field will be an empty string.
