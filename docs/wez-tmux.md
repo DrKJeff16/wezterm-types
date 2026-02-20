@@ -12,7 +12,7 @@ Or, if you've installed it locally:
 
 ```lua
 ---@type WezTmux
-local wez_tmux = require("plugins.wez-tmux.plugin")
+local wez_tmux = require("wez-tmux.plugin")
 ```
 
 ---
@@ -29,7 +29,7 @@ you can put this in your setup:
     library = {
       -- Other library configs...
       { path = 'wezterm-types', mods = { 'wezterm' } },
-      { path = 'plugins/wez-tmux', mods = { 'wez-tmux' } },
+      { path = 'wez-tmux', mods = { 'wez-tmux' } },
     },
   },
 }
