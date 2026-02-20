@@ -87,8 +87,10 @@
 --- - [`Pane:get_domain_name()`](lua://Pane.get_domain_name)
 ---
 ---@field domain_name string|""
----The tty device name,
----per [`Pane:get_tty_name()`](lua://Pane.get_tty_name).
+---The tty device name, per `Pane:get_tty_name()`.
+---
+---For more information, see:
+--- - [`Pane:get_tty_name()`](lua://Pane.get_tty_name)
 ---
 ---@field tty_name string|nil
 
