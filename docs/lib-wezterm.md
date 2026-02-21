@@ -5,7 +5,7 @@ You can import type annotations for
 
 ```lua
 ---@type LibWezterm
-local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
+local lib = wezterm.plugin.require("https://github.com/ChrisGVE/lib.wezterm")
 ```
 
 <!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->
