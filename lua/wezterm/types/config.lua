@@ -230,6 +230,7 @@ local NH = {
 ---
 ---See also [IncreaseFontSize](https://wezterm.org/config/lua/keyassignment/IncreaseFontSize.html) and [DecreaseFontSize](https://wezterm.org/config/lua/keyassignment/DecreaseFontSize.html).
 ---@field adjust_window_size_when_changing_font_size? boolean|nil
+---@field allow_download_protocols? boolean
 ---Configures how square symbol glyph's cell is rendered:
 ---
 --- - `"WhenFollowedBySpace"`: (default) Deliberately overflow the cell width when
@@ -241,7 +242,6 @@ local NH = {
 ---which covers more symbol glyphs than in earlier releases.
 ---
 ---@field allow_square_glyphs_to_overflow_width? "Always"|"Never"|"WhenFollowedBySpace"
----@field allow_download_protocols? boolean
 ---When set to `true`, wezterm will honor an escape sequence generated
 ---by the Windows ConPTY layer to switch the keyboard encoding to
 ---a proprietary scheme that has maximum compatibility with
@@ -332,6 +332,8 @@ local NH = {
 ---Subsequent layers are composited over the top of preceding layers.
 ---
 ---@field background? BackgroundLayer[]
+---@field bidi_direction? "LeftToRight"|"RightToLeft"|"AutoLeftToRight"|"AutoRightToLeft"
+---@field bidi_enabled? boolean
 ---When `true` (the default), PaletteIndex 0-7 are shifted to **bright**
 ---when the font intensity is bold.
 ---
@@ -563,7 +565,6 @@ local NH = {
 ---Described in more detail in [Colors & Appearance](https://wezterm.org/config/appearance.html).
 ---
 ---@field colors? Palette
----@field resolved_palette? Palette
 ---Specifies the background color used by
 ---[`ActivateCommandPalette`](lua://ActionFuncClass.ActivateCommandPalette).
 ---
@@ -681,8 +682,6 @@ local NH = {
 ---           or `$HOME/.local/share/wezterm/stderr`
 ---
 ---@field daemon_options? DaemonOptions
----@field send_composed_key_when_left_alt_is_pressed? boolean
----@field send_composed_key_when_right_alt_is_pressed? boolean
 ---When set to `true`, each key event will be logged by the GUI layer
 ---as an `INFO` level log message on the `stderr` stream from wezterm.
 ---
@@ -809,8 +808,6 @@ local NH = {
 ---The default value is `"default"`.
 ---
 ---@field default_workspace? string|"default"
----@field xcursor_theme? string
----@field xcursor_size? integer
 ---When set to `true`, on UNIX systems, for local panes,
 ---WezTerm will query the _termios_ associated with the PTY to see
 ---whether local echo is disabled and canonical input is enabled.
@@ -941,6 +938,7 @@ local NH = {
 ---
 ---@field enable_wayland? boolean
 ---@field enable_zwlr_output_manager? boolean
+---@field enq_answerback? string
 ---An array of tables of type
 ---[`ExecDomain`](lua://ExecDomain).
 ---
@@ -1001,6 +999,7 @@ local NH = {
 ---Examples can be found [here](https://wezterm.org/config/lua/config/exit_behavior_messaging.html).
 ---
 ---@field exit_behavior_messaging? "Verbose"|"Brief"|"Terse"|"None"
+---@field experimental_pixel_positioning? boolean
 ---Configures the font to use by default.
 ---
 ---The font setting can specify a set of fallbacks and other options,
@@ -1012,6 +1011,7 @@ local NH = {
 ---to specify the font.
 ---
 ---@field font? AllFontAttributes
+---@field font_colr_rasterizer? "FreeType"|"Harfbuzz"
 ---By default, wezterm will use an appropriate system-specific method
 ---for locating the fonts that you specify using the options below.
 ---Additionally, if you configure the `config.font_dirs` option,
@@ -1044,8 +1044,6 @@ local NH = {
 ---```
 ---
 ---@field font_dirs? string[]
----@field sort_fallback_fonts_by_coverage? boolean
----@field search_font_dirs_for_fallback? boolean
 ---Specifies the method by which system fonts are located and loaded.
 ---You may specify `"ConfigDirsOnly"` to disable loading system fonts
 ---and use only the fonts found in the directories that you specify in your
@@ -1059,8 +1057,6 @@ local NH = {
 ---Possible values are `"FreeType"` and `"Harfbuzz"`.
 ---
 ---@field font_rasterizer? "FreeType"|"Harfbuzz"
----@field font_colr_rasterizer? "FreeType"|"Harfbuzz"
----@field ignore_svg_fonts? boolean
 ---When textual output in the terminal is styled with `bold`, `italic`
 ---or other attributes, wezterm uses `config.font_rules` to decide
 ---how to render that text.
@@ -1324,6 +1320,7 @@ local NH = {
 --- - DirectX 12 (on Windows)
 ---
 ---@field front_end? "OpenGL"|"WebGpu"|"Software"
+---@field glyph_cache_image_cache_size? integer
 ---When `config.font_shaper = "Harfbuzz"`, this setting affects how font shaping takes place.
 ---
 ---See [Font Shaping](https://wezterm.org/config/font-shaping.html)
@@ -1349,6 +1346,7 @@ local NH = {
 ---and generate clickable links.
 ---
 ---@field hyperlink_rules? HyperlinkRule[]
+---@field ignore_svg_fonts? boolean
 ---Control IME preedit rendering. IME preedit is an area that is used to display the string being preedited in IME. WezTerm supports the following IME preedit rendering.
 ---
 --- - `"Builtin"`: (Default) IME preedit is rendered by WezTerm itself
@@ -1522,8 +1520,9 @@ local NH = {
 ---Conversely, setting `config.line_height = 0.9` will decrease the vertical spacing by 10%.
 ---
 ---@field line_height? number
----@field experimental_pixel_positioning? boolean
----@field use_box_model_render? boolean
+---@field line_quad_cache_size? integer
+---@field line_state_cache_size? integer
+---@field line_to_ele_shape_cache_size? integer
 ---When set to `true`, WezTerm will log warnings when it receives escape sequences
 ---which it does not understand.
 ---Those warnings are harmless and are useful primarily by the maintainer
@@ -1581,11 +1580,6 @@ local NH = {
 ---from the compositor to schedule painting frames.
 ---
 ---@field max_fps? integer
----@field shape_cache_size? integer
----@field line_state_cache_size? integer
----@field line_quad_cache_size? integer
----@field line_to_ele_shape_cache_size? integer
----@field glyph_cache_image_cache_size? integer
 ---Controls the minimum size of the scroll bar "thumb".
 ---
 --The value can be a number to specify the number of pixels, or a string with a unit suffix:
@@ -1632,21 +1626,6 @@ local NH = {
 ---or updating the symlink.
 ---
 ---@field mux_enable_ssh_agent? boolean
----Constrains the rate at which the multiplexer client speculatively prefetches lines.
----
----This helps avoid saturating the client/server link when the server
----is producing a large amount of output.
----
----@field ratelimit_mux_line_prefetches_per_second? integer
----The buffer size used by `parse_buffered_data` in the mux output parser.
----
----Values that are too large can make output application less responsive.
----
----@field mux_output_parser_buffer_size? integer
----How many milliseconds to delay after reading a chunk of output,
----to coalesce fragmented writes into a single larger chunk.
----
----@field mux_output_parser_coalesce_delay_ms? integer
 ---Specifies a list of environment variables that should be removed from the environment
 ---in the multiplexer server.
 ---
@@ -1664,6 +1643,15 @@ local NH = {
 ---```
 ---
 ---@field mux_env_remove? string[]
+---The buffer size used by `parse_buffered_data` in the mux output parser.
+---
+---Values that are too large can make output application less responsive.
+---
+---@field mux_output_parser_buffer_size? integer
+---How many milliseconds to delay after reading a chunk of output,
+---to coalesce fragmented writes into a single larger chunk.
+---
+---@field mux_output_parser_coalesce_delay_ms? integer
 ---Specifies whether the [`ToggleFullScreen`](https://wezterm.org/config/lua/keyassignment/ToggleFullScreen.html) key assignment
 ---uses the native macOS full-screen application support or not.
 ---
@@ -1705,12 +1693,15 @@ local NH = {
 ---```
 ---
 ---@field notification_handling? NotifyHandler
+---@field palette_max_key_assigments_for_action? integer
 ---When `true`, moving the mouse pointer over an inactive pane will cause that pane to activate;
 ---this behavior is known as "focus follows mouse".
 ---
 ---When `false` (the default), you need to click on an inactive pane to activate it.
 ---
 ---@field pane_focus_follows_mouse? boolean
+---@field pane_select_bg_color? string
+---@field pane_select_fg_color? string
 ---Configures the font to use for pane selection mode.
 ---
 ---The `config.pane_select_font` setting can specify a set of fallbacks and other options,
@@ -1731,8 +1722,6 @@ local NH = {
 ---
 ---@field pane_select_font? AllFontAttributes
 ---@field pane_select_font_size? number
----@field pane_select_fg_color? string
----@field pane_select_bg_color? string
 ---If non-zero, specifies the period (in seconds) at which various statistics are logged.
 ---
 ---Note that there is a minimum period of 10 seconds.
@@ -1819,6 +1808,13 @@ local NH = {
 --- - `"WindowsAlwaysQuoted"`: Like `"Windows"`, while always double-quoting the filename
 ---
 ---@field quote_dropped_files? DroppedFileQuoting
+---Constrains the rate at which the multiplexer client speculatively prefetches lines.
+---
+---This helps avoid saturating the client/server link when the server
+---is producing a large amount of output.
+---
+---@field ratelimit_mux_line_prefetches_per_second? integer
+---@field resolved_palette? Palette
 ---The minimum contrast ratio required to use the reverse video cursor.
 ---
 ---When the contrast ratio between the reverse video cursor foreground and background
@@ -1836,6 +1832,7 @@ local NH = {
 ---How many lines of scrollback you want to retain.
 ---
 ---@field scrollback_lines? integer
+---@field search_font_dirs_for_fallback? boolean
 ---Configures the boundaries of a word, thus what is selected when doing a word selection with the mouse.
 ---(See mouse actions [`SelectTextAtMouseCursor`](https://wezterm.org/config/lua/keyassignment/SelectTextAtMouseCursor.html)
 ---and [`ExtendSelectionToMouseCursor`](https://wezterm.org/config/lua/keyassignment/ExtendSelectionToMouseCursor.html) with the mode argument set to `Word`).
@@ -1850,6 +1847,8 @@ local NH = {
 ---```
 ---
 ---@field selection_word_boundary? string
+---@field send_composed_key_when_left_alt_is_pressed? boolean
+---@field send_composed_key_when_right_alt_is_pressed? boolean
 ---Define a list of serial port(s) that you use regularly.
 ---Each entry defines
 ---a [`SerialDomain`](lua://SerialDomain)
@@ -1884,6 +1883,7 @@ local NH = {
 ---This is not used when working with remote domains.
 ---
 ---@field set_environment_variables? table<string, string>
+---@field shape_cache_size? integer
 ---When set to `false`, the close-tab button will not be drawn in tabs
 ---when the fancy tab bar is in use.
 ---
@@ -1944,6 +1944,7 @@ local NH = {
 ---[`"mux-is-process-stateful"`](https://wezterm.org/config/lua/mux-events/mux-is-process-stateful.html) event handler.
 ---
 ---@field skip_close_confirmation_for_processes_named? string[]
+---@field sort_fallback_fonts_by_coverage? boolean
 ---Sets which ssh backend should be used by default for the integrated ssh client.
 ---
 ---Possible values are:
@@ -2076,21 +2077,18 @@ local NH = {
 ---Defaults to `16` glyphs in width.
 ---
 ---@field tab_max_width? integer
----@field enq_answerback? string
 ---What to set the `TERM` variable to.
 ---
 ---@field term? string
----Specifies the
----[`EasingFunction`](lua://EasingFunction)
----to use when computing the color for text that has the blinking attribute
----in the fading-in phase when the text is fading from the background color
----to the foreground color.
+---@field text_background_opacity? number
+---Specifies the `EasingFunction` to use when computing the color
+---for text that has the blinking attribute in the fading-in phase
+---when the text is fading from the background color to the foreground color.
 ---
----See:
+---For more information, see:
+--- - [`EasingFunction`](lua://EasingFunction)
 --- - [`config.visual_bell`](lua://Config.visual_bell)
----   for more information about easing functions
 --- - [`config.cursor_blink_rate`](lua://Config.cursor_blink_rate)
----   to control the rate at which the cursor blinks
 ---
 ---@field text_blink_ease_in? EasingFunction
 ---Specifies the easing function to use when computing the color
@@ -2245,8 +2243,6 @@ local NH = {
 ---your choice of configuration.
 ---
 ---@field treat_east_asian_ambiguous_width_as_wide? boolean
----@field bidi_enabled? boolean
----@field bidi_direction? "LeftToRight"|"RightToLeft"|"AutoLeftToRight"|"AutoRightToLeft"
 ---If you are using a layout with an `AltGr` key, you may experience issues
 ---when running inside a VNC session, because VNC emulates the `AltGr` keypresses
 ---by sending plain `Ctrl-Alt` keys, which won't be understood as `AltGr`.
@@ -2271,7 +2267,6 @@ local NH = {
 ---The default is the platform-appropriate value.
 ---
 ---@field ui_key_cap_rendering? "AppleSymbols"|"Emacs"|"UnixLong"|"WindowsLong"|"WindowsSymbols"
----@field palette_max_key_assigments_for_action? integer
 ---On UNIX systems, specifies the minimum desirable value for the
 ---`RLIMIT_NOFILE` soft limit.
 ---
@@ -2369,6 +2364,7 @@ local NH = {
 ---See also [`TogglePaneZoomState`](https://wezterm.org/config/lua/keyassignment/TogglePaneZoomState.html).
 ---
 ---@field unzoom_on_switch_pane? boolean
+---@field use_box_model_render? boolean
 ---When set to `true`, use the cap-height font metrics of the base
 ---and the current font to adjust the size of secondary fonts
 ---(such as bold or italic faces) to visually match the size
@@ -2569,7 +2565,6 @@ local NH = {
 ---Setting opacity to a value other than `1.0` can impact render performance.
 ---
 ---@field window_background_opacity? number
----@field text_background_opacity? number
 ---Whether to display a confirmation prompt when the window is closed
 ---by the windowing environment, either because the user closed it
 ---with the window decorations, or instructed their window manager to do so.
@@ -2693,6 +2688,8 @@ local NH = {
 --- - [`wezterm.default_wsl_domains()`](lua://Wezterm.default_wsl_domains)
 ---
 ---@field wsl_domains? WslDomain[]
+---@field xcursor_size? integer
+---@field xcursor_theme? string
 ---Explicitly set the name of the IME server to which wezterm
 ---will connect via the `XIM` protocol when using X11 and
 ---setting `true` to
