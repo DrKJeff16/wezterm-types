@@ -207,7 +207,7 @@ local NH = {
 ---
 ------
 ---At the time of writing, it is not a complete list.
----Mirrors `Config` in wezterm upstream:
+---Mirrors `Config` in upstream WezTerm:
 ---https://github.com/wezterm/wezterm/blob/main/config/src/config.rs
 ---
 ---@class Config
