@@ -50,12 +50,18 @@ local DCS = {
 ---@field stderr? string
 ---@field pid_file? string
 
+---@enum (key) VBTarget
+local vb_target = {
+  BackgroundColor = 1,
+  CursorColor = 1,
+}
+
 ---@class VisualBell
 ---@field fade_in_duration_ms? integer
 ---@field fade_out_duration_ms? integer
 ---@field fade_in_function? EasingFunction
 ---@field fade_out_function? EasingFunction
----@field target? "BackgroundColor"|"CursorColor"
+---@field target? VBTarget
 
 ---@enum (key) NotifyHandler
 local NH = {
@@ -64,6 +70,33 @@ local NH = {
   SuppressFromFocusedPane = 1,
   SuppressFromFocusedTab = 1,
   SuppressFromFocusedWindow = 1,
+}
+
+---@enum (key) BackgroundLayerAttachments
+local bgl_attachments = {
+  Fixed = 1,
+  Scroll = 1,
+}
+
+---@enum (key) BackgroundLayerRepeat
+local bgl_repeat = {
+  Mirror = 1,
+  NoRepeat = 1,
+  Repeat = 1,
+}
+
+---@enum (key) VerticalAlign
+local vert_align = {
+  Bottom = 1,
+  Middle = 1,
+  Top = 1,
+}
+
+---@enum (key) HorizontalAlign
+local horiz_align = {
+  Center = 1,
+  Left = 1,
+  Right = 1,
 }
 
 ---@class CellWidth
@@ -85,7 +118,7 @@ local NH = {
 --- - `{ Parallax = 0.1 }`: To scroll `1:10` with the number of pixels
 ---                       scrolled in the viewport
 ---
----@field attachment? "Fixed"|"Scroll"|{ Parallax: number }
+---@field attachment? BackgroundLayerAttachments|{ Parallax: number }
 ---Controls whether the image is repeated in the x-direction:
 ---
 --- - `"Repeat"`: Repeat as much as possible to cover the area.
@@ -95,7 +128,7 @@ local NH = {
 ---             make images that don't tile seamlessly look a bit better when repeated
 --- - `"NoRepeat"`: The image is not repeated
 ---
----@field repeat_x? "Repeat"|"Mirror"|"NoRepeat"
+---@field repeat_x? BackgroundLayerRepeat
 ---Normally, when repeating, the image is tiled based on its width
 ---such that each copy of the image is immediately adjacent to
 ---the preceding instance.
@@ -108,12 +141,16 @@ local NH = {
 --- - `"10cell"` to specify a size based on the terminal cell metrics
 ---
 ---@field repeat_x_size? string|number
----[`repeat_x`](lua://BackgroundLayer.repeat_x)
----is identical to this one, but it affects the y-direction.
+---`repeat_x` is identical to this one, but it affects the y-direction.
 ---
----@field repeat_y? "Repeat"|"Mirror"|"NoRepeat"
----[`repeat_x_size`](lua://BackgroundLayer.repeat_x_size)
----is identical to this one, but it affects the y-direction.
+---See:
+--- - [`repeat_x`](lua://BackgroundLayer.repeat_x)
+---
+---@field repeat_y? BackgroundLayerRepeat
+---`repeat_x_size` is identical to this one, but it affects the y-direction.
+---
+---See:
+--- - [`repeat_x_size`](lua://BackgroundLayer.repeat_x_size)
 ---
 ---@field repeat_y_size? number|string
 ---Controls the initial vertical position of the layer, relative to the viewport:
@@ -122,7 +159,7 @@ local NH = {
 --- - `"Middle"`
 --- - `"Bottom"`
 ---
----@field vertical_align? "Top"|"Middle"|"Bottom"
+---@field vertical_align? VerticalAlign
 ---Specifies an offset from the initial vertical position:
 ---
 --- - number values in pixels
@@ -136,9 +173,11 @@ local NH = {
 --- - `"Center"`
 --- - `"Right"`
 ---
----@field horizontal_align? "Left"|"Center"|"Right"
----[`vertical_offset`](lua://BackgroundLayer.vertical_offset),
----is identical to this one, but it affects the y-direction.
+---@field horizontal_align? HorizontalAlign
+---`vertical_offset` is identical to this one, but it affects the y-direction.
+---
+---See:
+--- - [`vertical_offset`](lua://BackgroundLayer.vertical_offset)
 ---
 ---@field horizontal_offset? number|string
 ---A number in the range `0.0` through `1.0` inclusive that is multiplied
@@ -172,9 +211,10 @@ local NH = {
 ---@field height? "Cover"|"Contain"|number|string
 ---Controls the width of the image.
 ---
----Same details as
----[`height`](lua://BackgroundLayer.height),
----but applied to the x-direction.
+---Same details as `height` but applied to the x-direction.
+---
+---See:
+--- - [`height`](lua://BackgroundLayer.height)
 ---
 ---@field width? "Cover"|"Contain"|number|string
 
@@ -221,14 +261,17 @@ local NH = {
 ---The default value is now `nil` which causes wezterm to match
 ---the name of the connected window environment
 ---(which you can see if you open the debug overlay) against
----the list of known tiling environments configured by
----[`config.tiling_desktop_environments`](lua://Config.tiling_desktop_environments).
+---the list of known tiling environments configured by `config.tiling_desktop_environments`.
 ---
 ---If the environment is known to be tiling then the effective value of
 ---`config.adjust_window_size_when_changing_font_size` is `false`,
 ---and `true` if that's not the case.
 ---
----See also [IncreaseFontSize](https://wezterm.org/config/lua/keyassignment/IncreaseFontSize.html) and [DecreaseFontSize](https://wezterm.org/config/lua/keyassignment/DecreaseFontSize.html).
+---See also:
+--- - [DecreaseFontSize](https://wezterm.org/config/lua/keyassignment/DecreaseFontSize.html)
+--- - [IncreaseFontSize](https://wezterm.org/config/lua/keyassignment/IncreaseFontSize.html)
+--- - [`config.tiling_desktop_environments`](lua://Config.tiling_desktop_environments)
+---
 ---@field adjust_window_size_when_changing_font_size? boolean|nil
 ---@field allow_download_protocols? boolean
 ---Configures how square symbol glyph's cell is rendered:
@@ -274,11 +317,9 @@ local NH = {
 ---Setting it larger will result in smoother easing effects, but
 ---will increase GPU usage.
 ---
----If you are running with a CPU renderer (e.g. you have
----[`config.front_end`](lua://Config.front_end) set
----to `"Software"`, or your system doesn't have a GPU),
----then setting this option to `1` is recommended,
----as doing so will disable easing effects and instead
+---If you are running with a CPU renderer (e.g. you have `config.front_end` set to
+---`"Software"`, or your system doesn't have a GPU), then setting this option
+---to `1` is recommended, as doing so will disable easing effects and instead
 ---will use transitions.
 ---
 ---```lua
@@ -287,13 +328,18 @@ local NH = {
 ---config.cursor_blink_ease_out = "Constant"
 ---```
 ---
+---See:
+--- - [`config.front_end`](lua://Config.front_end)
+---
 ---@field animation_fps? integer
----Controls whether the glyphs set in
----[`config.custom_block_glyphs`](lua://Config.custom_block_glyphs)
+---Controls whether the glyphs set in `config.custom_block_glyphs`
 ---are rendered using anti-aliasing or not.
 ---
 ---Anti-aliasing makes lines look smoother but may not
 ---look so nice at smaller font sizes.
+---
+---See:
+--- - [`config.custom_block_glyphs`](lua://Config.custom_block_glyphs)
 ---
 ---@field anti_alias_custom_block_glyphs? boolean
 ---When the BEL ascii sequence is sent to a pane, the bell is "rung"
@@ -386,18 +432,15 @@ local NH = {
 ---
 ---If possible, you should prefer to specify the stretch parameter
 ---when selecting a font using either
----[`wezterm.font`](lua://Wezterm.font) or
----[`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback),
+---`wezterm.font` or `wezterm.font_with_fallback`,
 ---as that will generally look better and have fewer undesirable side effects.
 ---
 ---If your preferred font doesn't have variations with different stretches,
 ---or if the font spacing still doesn't look right to you,
 ---then `config.cell_width` gives you a simple way to influence the spacing.
 ---
----The default cell width is indirectly controlled by the
----[`config.font`](lua://Config.font)
----and [`config.font_size`](lua://Config.font_size)
----configuration options.
+---The default cell width is indirectly controlled by the `config.font`
+---and `config.font_size` configuration options.
 ---The selected font and font size controls the height of the font,
 ---while the font designer controls the aspect ratio
 ---of the glyphs in the font.
@@ -436,6 +479,10 @@ local NH = {
 ---will have this sort of side effect.
 ---
 ---See also:
+--- - [`wezterm.font`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
+--- - [`config.font`](lua://Config.font)
+--- - [`config.font_size`](lua://Config.font_size)
 --- - [`config.line_height`](lua://Config.line_height)
 ---
 ---@field cell_width? number
@@ -489,13 +536,15 @@ local NH = {
 ---and other options.
 ---It is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
 ---
----If not specified, the font is same as the font in
----[`config.window_frame.font`](lua://WindowFrameConfig.font).
+---If not specified, the font is same as the font in `config.window_frame.font`.
 ---
----You will typically use either
----[`wezterm.font`](lua://Wezterm.font)
----or [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
+---You will typically use either `wezterm.font` or `wezterm.font_with_fallback`
 ---to specify the font.
+---
+---See:
+--- - [`wezterm.font`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
+--- - [`config.window_frame.font`](lua://WindowFrameConfig.font)
 ---
 ---@field char_select_font? Fonts|FontFamilyAttributes
 ---Specifies the size of the font used with [`CharSelect`](https://wezterm.org/config/lua/keyassignment/CharSelect.html).
@@ -518,8 +567,7 @@ local NH = {
 ---
 ---@field check_for_updates_interval_seconds? integer
 ---Defines the set of exit codes that are considered to be a "clean" exit by
----[`config.exit_behavior`](lua://Config.exit_behavior)
----when the program running in the terminal completes.
+---`config.exit_behavior` when the program running in the terminal completes.
 ---
 ---Acceptable values are an array of integer exit codes that you wish
 ---to treat as successful.
@@ -535,6 +583,9 @@ local NH = {
 ---
 ---Note that `0` is always treated as a clean exit code
 ---and can be omitted from the list.
+---
+---See:
+--- - [`config.exit_behavior`](lua://Config.exit_behavior)
 ---
 ---@field clean_exit_codes? integer[]
 ---The color scheme to be used.
@@ -565,12 +616,16 @@ local NH = {
 ---Described in more detail in [Colors & Appearance](https://wezterm.org/config/appearance.html).
 ---
 ---@field colors? Palette
----Specifies the background color used by
----[`ActivateCommandPalette`](lua://ActionFuncClass.ActivateCommandPalette).
+---Specifies the background color used by `ActivateCommandPalette`.
+---
+---See:
+--- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
 ---@field command_palette_bg_color? string
----Specifies the text color used by
----[`ActivateCommandPalette`](lua://ActionFuncClass.ActivateCommandPalette).
+---Specifies the text color used by `ActivateCommandPalette`.
+---
+---See:
+--- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
 ---@field command_palette_fg_color? string
 ---Configures the font to use for command palette.
@@ -578,12 +633,9 @@ local NH = {
 ---The `config.command_palette_font` setting can specify a set of fallbacks
 ---and other options, and is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
 ---
----If not specified, the font is same as the font in
----[`config.window_frame.font`](lua://WindowFrameConfig.font).
+---If not specified, the font is same as the font in `config.window_frame.font`.
 ---
----You will typically use
----[`wezterm.font`](lua://Wezterm.font)
----or [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
+---You will typically use `wezterm.font` or `wezterm.font_with_fallback`
 ---to specify the font.
 ---
 ---To specify `config.command_palette_font`:
@@ -592,9 +644,16 @@ local NH = {
 ---config.command_palette_font = wezterm.font 'Roboto'
 ---```
 ---
+---See:
+--- - [`wezterm.font`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
+--- - [`config.window_frame.font`](lua://WindowFrameConfig.font)
+---
 ---@field command_palette_font? AllFontAttributes
----Specifies the size of the font used with
----[`ActivateCommandPalette`](lua://ActionFuncClass.ActivateCommandPalette).
+---Specifies the size of the font used with `ActivateCommandPalette`.
+---
+---See:
+--- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
 ---@field command_palette_font_size? number
 ---Specifies the number of rows displayed by the command palette.
@@ -635,8 +694,7 @@ local NH = {
 ---If specified, overrides the base thickness of the lines used to render
 ---the textual cursor glyph.
 ---
----The default is to use
----[`config.underline_thickness`](lua://Config.underline_thickness).
+---The default is to use `config.underline_thickness`.
 ---
 ---This config option accepts different units that have
 ---slightly different interpretations:
@@ -650,6 +708,9 @@ local NH = {
 ---           at a thickness double the normal size
 --- - `"0.1cell"`: takes the cell height, scales it by `0.1`
 ---              and uses that as the thickness
+---
+---See:
+--- - [`config.underline_thickness`](lua://Config.underline_thickness)
 ---
 ---@field cursor_thickness? number|string
 ---When set to `true` (the default), WezTerm will compute its own idea
@@ -731,11 +792,12 @@ local NH = {
 ---override the default domain to instead use a particular
 ---WSL distribution so that wezterm launches directly
 ---into a Linux shell rather than having to manually invoke `wsl.exe`.
----Using a
----[`WslDomain`](lua://WslDomain)
----for this has the advantage that wezterm can then use [shell integration](https://wezterm.org/shell-integration.html)
----to track the current directory inside WSL
----and use it when splitting new panes or spawning new tabs.
+---Using a `WslDomain` for this has the advantage that wezterm can then use
+---[shell integration](https://wezterm.org/shell-integration.html) to track the current directory
+---inside WSL and use it when splitting new panes or spawning new tabs.
+---
+---See:
+--- - [`Wsldomain`](lua://WslDomain)
 ---
 ---@field default_domain? string
 ---When launching the GUI using either `wezterm` or `wezterm-gui`
@@ -776,13 +838,15 @@ local NH = {
 ---on the local system.
 ---
 ---This option allows you to change the default domain to some other domain,
----such as an
----[`ExecDomain`](lua://ExecDomain).
+---such as an `ExecDomain`.
 ---
 ---It is not possible to configure a client multiplexing domain such as a TLS,
 ---SSH or UNIX domain as the default for the multiplexer server.
 ---That is prohibited in order to prevent recursion when a client
 ---connects to the server.
+---
+---See:
+--- - [`ExecDomain`](lua://ExecDomain)
 ---
 ---@field default_mux_server_domain? string
 ---If no `prog` is specified on the command line, use this
@@ -828,10 +892,13 @@ local NH = {
 ---
 ---@field disable_default_mouse_bindings? boolean
 ---When set to `true`, the default set of quick select patterns are omitted, and
----[`config.quick_select_patterns`](lua://Config.quick_select_patterns)
----specifies the total set of patterns used for quick select mode.
+---`config.quick_select_patterns` specifies the total set of patterns used
+---for quick select mode.
 ---
 ---Defaults to `false`.
+---
+---See:
+--- - [`config.quick_select_patterns`](lua://Config.quick_select_patterns)
 ---
 ---@field disable_default_quick_select_patterns? boolean
 ---Configures whether subpixel anti-aliasing should produce either
@@ -897,8 +964,10 @@ local NH = {
 ---
 ---The default for this option is `false`.
 ---
----[`config.allow_win32_input_mode`](lua://Config.allow_win32_input_mode)
----takes precedence over this option.
+---`config.allow_win32_input_mode` takes precedence over this option.
+---
+---See:
+--- - [`config.allow_win32_input_mode`](lua://Config.allow_win32_input_mode)
 ---
 ---@field enable_csi_u_key_encoding? boolean
 ---@field enable_kitty_graphics? boolean
@@ -911,8 +980,7 @@ local NH = {
 ---**This is currently disabled by default.**
 ---It will occupy the right window padding space.
 ---
----If right padding is set to `0` then it will be increased
----to a single cell width.
+---If right padding is set to `0` then it will be increased to a single cell width.
 ---
 ---@field enable_scroll_bar? boolean
 ---Controls whether the tab bar is enabled.
@@ -939,8 +1007,7 @@ local NH = {
 ---@field enable_wayland? boolean
 ---@field enable_zwlr_output_manager? boolean
 ---@field enq_answerback? string
----An array of tables of type
----[`ExecDomain`](lua://ExecDomain).
+---An array of `ExecDomain` tables.
 ---
 ---For more info read the [`ExecDomain`](https://wezterm.org/config/lua/ExecDomain.html) docs.
 ---
