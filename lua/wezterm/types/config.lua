@@ -207,6 +207,8 @@ local NH = {
 ---
 ------
 ---At the time of writing, it is not a complete list.
+---Mirrors `Config` in upstream WezTerm:
+---https://github.com/wezterm/wezterm/blob/main/config/src/config.rs
 ---
 ---@class Config
 ---Control whether changing the font size adjusts the dimensions
@@ -228,6 +230,7 @@ local NH = {
 ---
 ---See also [IncreaseFontSize](https://wezterm.org/config/lua/keyassignment/IncreaseFontSize.html) and [DecreaseFontSize](https://wezterm.org/config/lua/keyassignment/DecreaseFontSize.html).
 ---@field adjust_window_size_when_changing_font_size? boolean|nil
+---@field allow_download_protocols? boolean
 ---Configures how square symbol glyph's cell is rendered:
 ---
 --- - `"WhenFollowedBySpace"`: (default) Deliberately overflow the cell width when
@@ -329,6 +332,8 @@ local NH = {
 ---Subsequent layers are composited over the top of preceding layers.
 ---
 ---@field background? BackgroundLayer[]
+---@field bidi_direction? "LeftToRight"|"RightToLeft"|"AutoLeftToRight"|"AutoRightToLeft"
+---@field bidi_enabled? boolean
 ---When `true` (the default), PaletteIndex 0-7 are shifted to **bright**
 ---when the font intensity is bold.
 ---
@@ -881,7 +886,8 @@ local NH = {
 ---While that is a reasonable workaround for a single-monitor system,
 ---it isn't ideal for a multi-monitor setup where the monitors have varying DPIs.
 ---
----@field dpi? integer
+---@field dpi? number
+---@field dpi_by_screen? table<string, number>
 ---When set to `true`, the [keyboard encoding](https://wezterm.org/config/key-encoding.html) will be changed
 ---to use the scheme that is [described here](http://www.leonerd.org.uk/hacks/fixterms/).
 ---
@@ -895,6 +901,7 @@ local NH = {
 ---takes precedence over this option.
 ---
 ---@field enable_csi_u_key_encoding? boolean
+---@field enable_kitty_graphics? boolean
 ---When set to `true`, wezterm will honor `kitty` keyboard protocol escape sequences
 ---that modify the [keyboard encoding](https://wezterm.org/config/key-encoding.html).
 ---
@@ -930,6 +937,8 @@ local NH = {
 ---The default is `true`.
 ---
 ---@field enable_wayland? boolean
+---@field enable_zwlr_output_manager? boolean
+---@field enq_answerback? string
 ---An array of tables of type
 ---[`ExecDomain`](lua://ExecDomain).
 ---
@@ -990,6 +999,7 @@ local NH = {
 ---Examples can be found [here](https://wezterm.org/config/lua/config/exit_behavior_messaging.html).
 ---
 ---@field exit_behavior_messaging? "Verbose"|"Brief"|"Terse"|"None"
+---@field experimental_pixel_positioning? boolean
 ---Configures the font to use by default.
 ---
 ---The font setting can specify a set of fallbacks and other options,
@@ -1001,6 +1011,7 @@ local NH = {
 ---to specify the font.
 ---
 ---@field font? AllFontAttributes
+---@field font_colr_rasterizer? "FreeType"|"Harfbuzz"
 ---By default, wezterm will use an appropriate system-specific method
 ---for locating the fonts that you specify using the options below.
 ---Additionally, if you configure the `config.font_dirs` option,
@@ -1043,9 +1054,9 @@ local NH = {
 ---
 ---@field font_locator? "FontConfig"|"Gdi"|"CoreText"|"ConfigDirsOnly"
 ---Specifies the method by which fonts are rendered on screen.
----The only available implementation is `"FreeType"`.
+---Possible values are `"FreeType"` and `"Harfbuzz"`.
 ---
----@field font_rasterizer? "FreeType"
+---@field font_rasterizer? "FreeType"|"Harfbuzz"
 ---When textual output in the terminal is styled with `bold`, `italic`
 ---or other attributes, wezterm uses `config.font_rules` to decide
 ---how to render that text.
@@ -1077,16 +1088,16 @@ local NH = {
 ---See:
 --- - [`FontRules`](lua://FontRules).
 ---
----@field font_rules? FontRules
+---@field font_rules? FontRules[]
 ---Specifies the method by which text is mapped to glyphs
 ---in the available fonts.
 ---
 ---The shaper is responsible for handling kerning, ligatures
 ---and emoji composition.
 ---
----The only option is `"Harfbuzz"`.
+---Possible values are `"Harfbuzz"` and `"Allsorts"`.
 ---
----@field font_shaper? "Harfbuzz"
+---@field font_shaper? "Harfbuzz"|"Allsorts"
 ---Specifies the size of the font, measured in points.
 ---
 ---You may use fractional point sizes, such as `13.3`,
@@ -1309,6 +1320,7 @@ local NH = {
 --- - DirectX 12 (on Windows)
 ---
 ---@field front_end? "OpenGL"|"WebGpu"|"Software"
+---@field glyph_cache_image_cache_size? integer
 ---When `config.font_shaper = "Harfbuzz"`, this setting affects how font shaping takes place.
 ---
 ---See [Font Shaping](https://wezterm.org/config/font-shaping.html)
@@ -1334,6 +1346,7 @@ local NH = {
 ---and generate clickable links.
 ---
 ---@field hyperlink_rules? HyperlinkRule[]
+---@field ignore_svg_fonts? boolean
 ---Control IME preedit rendering. IME preedit is an area that is used to display the string being preedited in IME. WezTerm supports the following IME preedit rendering.
 ---
 --- - `"Builtin"`: (Default) IME preedit is rendered by WezTerm itself
@@ -1507,6 +1520,9 @@ local NH = {
 ---Conversely, setting `config.line_height = 0.9` will decrease the vertical spacing by 10%.
 ---
 ---@field line_height? number
+---@field line_quad_cache_size? integer
+---@field line_state_cache_size? integer
+---@field line_to_ele_shape_cache_size? integer
 ---When set to `true`, WezTerm will log warnings when it receives escape sequences
 ---which it does not understand.
 ---Those warnings are harmless and are useful primarily by the maintainer
@@ -1580,7 +1596,7 @@ local NH = {
 ---You may use a fractional number such as `"0.5cell"`
 ---or numbers larger than one such as `"72pt"`.
 ---
----@field min_scroll_bar_height? string
+---@field min_scroll_bar_height? number|string
 ---A list containing tables of type
 ---[`MouseBindingBase`](lua://MouseBindingBase).
 ---
@@ -1627,6 +1643,15 @@ local NH = {
 ---```
 ---
 ---@field mux_env_remove? string[]
+---The buffer size used by `parse_buffered_data` in the mux output parser.
+---
+---Values that are too large can make output application less responsive.
+---
+---@field mux_output_parser_buffer_size? integer
+---How many milliseconds to delay after reading a chunk of output,
+---to coalesce fragmented writes into a single larger chunk.
+---
+---@field mux_output_parser_coalesce_delay_ms? integer
 ---Specifies whether the [`ToggleFullScreen`](https://wezterm.org/config/lua/keyassignment/ToggleFullScreen.html) key assignment
 ---uses the native macOS full-screen application support or not.
 ---
@@ -1668,12 +1693,15 @@ local NH = {
 ---```
 ---
 ---@field notification_handling? NotifyHandler
+---@field palette_max_key_assigments_for_action? integer
 ---When `true`, moving the mouse pointer over an inactive pane will cause that pane to activate;
 ---this behavior is known as "focus follows mouse".
 ---
 ---When `false` (the default), you need to click on an inactive pane to activate it.
 ---
 ---@field pane_focus_follows_mouse? boolean
+---@field pane_select_bg_color? string
+---@field pane_select_fg_color? string
 ---Configures the font to use for pane selection mode.
 ---
 ---The `config.pane_select_font` setting can specify a set of fallbacks and other options,
@@ -1693,6 +1721,7 @@ local NH = {
 ---```
 ---
 ---@field pane_select_font? AllFontAttributes
+---@field pane_select_font_size? number
 ---If non-zero, specifies the period (in seconds) at which various statistics are logged.
 ---
 ---Note that there is a minimum period of 10 seconds.
@@ -1779,6 +1808,13 @@ local NH = {
 --- - `"WindowsAlwaysQuoted"`: Like `"Windows"`, while always double-quoting the filename
 ---
 ---@field quote_dropped_files? DroppedFileQuoting
+---Constrains the rate at which the multiplexer client speculatively prefetches lines.
+---
+---This helps avoid saturating the client/server link when the server
+---is producing a large amount of output.
+---
+---@field ratelimit_mux_line_prefetches_per_second? integer
+---@field resolved_palette? Palette
 ---The minimum contrast ratio required to use the reverse video cursor.
 ---
 ---When the contrast ratio between the reverse video cursor foreground and background
@@ -1795,7 +1831,8 @@ local NH = {
 ---@field scroll_to_bottom_on_input? boolean
 ---How many lines of scrollback you want to retain.
 ---
----@field scrollback_lines? number
+---@field scrollback_lines? integer
+---@field search_font_dirs_for_fallback? boolean
 ---Configures the boundaries of a word, thus what is selected when doing a word selection with the mouse.
 ---(See mouse actions [`SelectTextAtMouseCursor`](https://wezterm.org/config/lua/keyassignment/SelectTextAtMouseCursor.html)
 ---and [`ExtendSelectionToMouseCursor`](https://wezterm.org/config/lua/keyassignment/ExtendSelectionToMouseCursor.html) with the mode argument set to `Word`).
@@ -1810,6 +1847,8 @@ local NH = {
 ---```
 ---
 ---@field selection_word_boundary? string
+---@field send_composed_key_when_left_alt_is_pressed? boolean
+---@field send_composed_key_when_right_alt_is_pressed? boolean
 ---Define a list of serial port(s) that you use regularly.
 ---Each entry defines
 ---a [`SerialDomain`](lua://SerialDomain)
@@ -1844,6 +1883,7 @@ local NH = {
 ---This is not used when working with remote domains.
 ---
 ---@field set_environment_variables? table<string, string>
+---@field shape_cache_size? integer
 ---When set to `false`, the close-tab button will not be drawn in tabs
 ---when the fancy tab bar is in use.
 ---
@@ -1904,6 +1944,7 @@ local NH = {
 ---[`"mux-is-process-stateful"`](https://wezterm.org/config/lua/mux-events/mux-is-process-stateful.html) event handler.
 ---
 ---@field skip_close_confirmation_for_processes_named? string[]
+---@field sort_fallback_fonts_by_coverage? boolean
 ---Sets which ssh backend should be used by default for the integrated ssh client.
 ---
 ---Possible values are:
@@ -2035,21 +2076,19 @@ local NH = {
 ---
 ---Defaults to `16` glyphs in width.
 ---
----@field tab_max_width? number
+---@field tab_max_width? integer
 ---What to set the `TERM` variable to.
 ---
 ---@field term? string
----Specifies the
----[`EasingFunction`](lua://EasingFunction)
----to use when computing the color for text that has the blinking attribute
----in the fading-in phase when the text is fading from the background color
----to the foreground color.
+---@field text_background_opacity? number
+---Specifies the `EasingFunction` to use when computing the color
+---for text that has the blinking attribute in the fading-in phase
+---when the text is fading from the background color to the foreground color.
 ---
----See:
+---For more information, see:
+--- - [`EasingFunction`](lua://EasingFunction)
 --- - [`config.visual_bell`](lua://Config.visual_bell)
----   for more information about easing functions
 --- - [`config.cursor_blink_rate`](lua://Config.cursor_blink_rate)
----   to control the rate at which the cursor blinks
 ---
 ---@field text_blink_ease_in? EasingFunction
 ---Specifies the easing function to use when computing the color
@@ -2325,6 +2364,7 @@ local NH = {
 ---See also [`TogglePaneZoomState`](https://wezterm.org/config/lua/keyassignment/TogglePaneZoomState.html).
 ---
 ---@field unzoom_on_switch_pane? boolean
+---@field use_box_model_render? boolean
 ---When set to `true`, use the cap-height font metrics of the base
 ---and the current font to adjust the size of secondary fonts
 ---(such as bold or italic faces) to visually match the size
@@ -2648,6 +2688,8 @@ local NH = {
 --- - [`wezterm.default_wsl_domains()`](lua://Wezterm.default_wsl_domains)
 ---
 ---@field wsl_domains? WslDomain[]
+---@field xcursor_size? integer
+---@field xcursor_theme? string
 ---Explicitly set the name of the IME server to which wezterm
 ---will connect via the `XIM` protocol when using X11 and
 ---setting `true` to
