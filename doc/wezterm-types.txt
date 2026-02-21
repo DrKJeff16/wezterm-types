@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 20
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 21
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -98,6 +98,8 @@ issue.**
   ai-helper.wezterm         docs/ai-helper.md          :h wezterm-types-ai-helper.txt
 
   dev.wezterm               docs/dev-wezterm.md        :h wezterm-types-dev-wezterm.txt
+
+  lib.wezterm               docs/lib-wezterm.md        :h wezterm-types-lib-wezterm.txt
 
   modal.wezterm             docs/modal_wezterm.md      :h wezterm-types-modal_wezterm.txt
 
