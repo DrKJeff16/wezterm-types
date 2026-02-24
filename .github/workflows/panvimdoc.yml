@@ -159,6 +159,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for stack-wez.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-stack-wez
+          description: "stack-wez types"
+          pandoc: docs/stack-wez.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for tabline_wez.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
