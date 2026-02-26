@@ -146,6 +146,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for quick_domains.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-quick_domains
+          description: "quick_domains types"
+          pandoc: docs/quick_domains.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for smart-splits.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
