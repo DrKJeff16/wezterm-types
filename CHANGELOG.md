@@ -1,5 +1,48 @@
 # Changelog
 
+## [v2.0.2-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.0.2-1) (2026-02-26)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.0.1-1...v2.0.2-1)
+
+**Implemented enhancements:**
+
+- feat\(bar.wezterm\): add type annotations [\#117](https://github.com/DrKJeff16/wezterm-types/pull/117) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(quick\_domains\): add type annotations [\#116](https://github.com/DrKJeff16/wezterm-types/pull/116) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(stack wez\): add type annotations [\#115](https://github.com/DrKJeff16/wezterm-types/pull/115) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v2.0.1-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.0.1-1) (2026-02-22)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.0.0-1...v2.0.1-1)
+
+**Implemented enhancements:**
+
+- feat\(lib-wezterm\): add type annotations [\#114](https://github.com/DrKJeff16/wezterm-types/pull/114) ([DrKJeff16](https://github.com/DrKJeff16))
+
+**Merged pull requests:**
+
+- feat: add missing config fields [\#112](https://github.com/DrKJeff16/wezterm-types/pull/112) ([lalvarezt](https://github.com/lalvarezt))
+
+## [v2.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.0.0-1) (2026-02-20)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.4-1...v2.0.0-1)
+
+**Implemented enhancements:**
+
+- Annotations for `KeyAssignment` types [\#106](https://github.com/DrKJeff16/wezterm-types/issues/106)
+- \[actions\]: Incorrect type when using actions [\#78](https://github.com/DrKJeff16/wezterm-types/issues/78)
+- feat\(pivot\_panes\): add type annotations and docs [\#105](https://github.com/DrKJeff16/wezterm-types/pull/105) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(smart-splits\): add type annotations and docs [\#104](https://github.com/DrKJeff16/wezterm-types/pull/104) ([DrKJeff16](https://github.com/DrKJeff16))
+- fix: type definitions for `MuxTab` pane info and `PaneInformation` [\#108](https://github.com/DrKJeff16/wezterm-types/pull/108) ([lalvarezt](https://github.com/lalvarezt))
+- refactor: annotate the `KeyAssignment` types correctly [\#107](https://github.com/DrKJeff16/wezterm-types/pull/107) ([DrKJeff16](https://github.com/DrKJeff16))
+
+**Closed issues:**
+
+- \[config.keys\]: Cannot assign `ActionClass|ActionFuncClass` to .... [\#82](https://github.com/DrKJeff16/wezterm-types/issues/82)
+
+**Merged pull requests:**
+
+- docs\(contributor\): contributors readme action update [\#110](https://github.com/DrKJeff16/wezterm-types/pull/110) ([github-actions[bot]](https://github.com/apps/github-actions))
+
 ## [v1.8.4-1](https://github.com/DrKJeff16/wezterm-types/tree/v1.8.4-1) (2026-02-19)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v1.8.3-1...v1.8.4-1)
@@ -87,7 +130,6 @@
 **Implemented enhancements:**
 
 - \[feature\] support non-lazydev config [\#80](https://github.com/DrKJeff16/wezterm-types/issues/80)
-- \[actions\]: Incorrect type when using actions [\#78](https://github.com/DrKJeff16/wezterm-types/issues/78)
 - Request: make mentions of other annotations clickable links using workspace links [\#59](https://github.com/DrKJeff16/wezterm-types/issues/59)
 - \[FEATURE\] Discussions tab? [\#37](https://github.com/DrKJeff16/wezterm-types/issues/37)
 - feat\(config\): add `inactive_pane_hsb` type [\#86](https://github.com/DrKJeff16/wezterm-types/pull/86) ([AtifChy](https://github.com/AtifChy))
@@ -122,7 +164,6 @@
 
 **Closed issues:**
 
-- \[config.keys\]: Cannot assign `ActionClass|ActionFuncClass` to .... [\#82](https://github.com/DrKJeff16/wezterm-types/issues/82)
 - \[WARNING\]: Malware being posted in issue comments [\#79](https://github.com/DrKJeff16/wezterm-types/issues/79)
 - \[window:get\_selection\_text\_for\_pane\]: Incorrect number of arguments given [\#77](https://github.com/DrKJeff16/wezterm-types/issues/77)
 - README: Fix dependency reference and add type annotation usage instructions [\#10](https://github.com/DrKJeff16/wezterm-types/issues/10)
