@@ -97,6 +97,8 @@ issue.**
 
   ai-helper.wezterm         docs/ai-helper.md          :h wezterm-types-ai-helper.txt
 
+  bar.wezterm               docs/bar_wezterm.md        :h wezterm-types-bar_wezterm.txt
+
   dev.wezterm               docs/dev-wezterm.md        :h wezterm-types-dev-wezterm.txt
 
   lib.wezterm               docs/lib-wezterm.md        :h wezterm-types-lib-wezterm.txt
