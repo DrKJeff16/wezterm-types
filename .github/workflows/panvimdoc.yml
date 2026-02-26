@@ -1,8 +1,6 @@
 name: panvimdoc
 on:
   push:
-    branches:
-      - main
     paths:
       - .github/workflows/panvimdoc.yml
       - README.md
