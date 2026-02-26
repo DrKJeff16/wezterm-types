@@ -66,6 +66,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for bar_wezterm.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-bar_wezterm
+          description: "bar_wezterm types"
+          pandoc: docs/bar_wezterm.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for dev-wezterm.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
