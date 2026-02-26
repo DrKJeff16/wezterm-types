@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 24
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 26
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -108,6 +108,8 @@ issue.**
   pivot_panes.wezterm       docs/pivot_panes.md        :h wezterm-types-pivot_panes.txt
 
   presentation.wez          docs/presentation_wez.md   :h wezterm-types-presentation_wez.txt
+
+  quick_domains.wezterm     docs/quick_domains.md      :h wezterm-types-quick_domains.txt
 
   smart-splits.nvim         docs/smart-splits.md       :h wezterm-types-smart-splits.txt
 
