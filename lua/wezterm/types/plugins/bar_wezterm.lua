@@ -22,11 +22,11 @@ local positions = {
 ---@field icon? string
 ---@field color? integer
 
----@class BarWeztermOpts.Spotify : BarWeztermOpts.Module
+---@class BarWeztermOpts.Spotify: BarWeztermOpts.Module
 ---@field max_width? integer
 ---@field throttle? integer
 
----@class BarWeztermOpts.Clock : BarWeztermOpts.Module
+---@class BarWeztermOpts.Clock: BarWeztermOpts.Module
 ---@field format? string
 
 ---@class BarWeztermOpts.Modules
