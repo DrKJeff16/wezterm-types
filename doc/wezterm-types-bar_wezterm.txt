@@ -1,4 +1,4 @@
-*wezterm-types-bar_wezterm.txt*                              bar_wezterm types
+*wezterm-types-bar_wezterm.txt*                            `bar_wezterm` types
 
 `bar.wezterm`
 

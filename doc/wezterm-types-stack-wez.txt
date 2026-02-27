@@ -1,4 +1,4 @@
-*wezterm-types-stack-wez.txt*                                  stack-wez types
+*wezterm-types-stack-wez.txt*                                `stack-wez` types
 
 `stack.wez`
 

@@ -1,4 +1,4 @@
-*wezterm-types-resurrect.txt*                                  resurrect types
+*wezterm-types-resurrect.txt*                                `resurrect` types
 
 `resurrect.wezterm`
 

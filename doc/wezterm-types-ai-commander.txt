@@ -1,4 +1,4 @@
-*wezterm-types-ai-commander.txt*                            ai-commander types
+*wezterm-types-ai-commander.txt*                          `ai-commander` types
 
 `ai-commander.wezterm`
 

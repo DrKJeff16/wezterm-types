@@ -1,4 +1,4 @@
-*wezterm-types-lib-wezterm.txt*                              lib-wezterm types
+*wezterm-types-lib-wezterm.txt*                            `lib-wezterm` types
 
 `lib.wezterm`
 

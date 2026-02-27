@@ -1,4 +1,4 @@
-*wezterm-types-pivot_panes.txt*                              pivot_panes types
+*wezterm-types-pivot_panes.txt*                            `pivot_panes` types
 
 `pivot_panes.wezterm`
 

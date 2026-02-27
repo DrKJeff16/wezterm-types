@@ -1,4 +1,4 @@
-*wezterm-types-wezterm-config.txt*                        wezterm-config types
+*wezterm-types-wezterm-config.txt*                      `wezterm-config` types
 
 `wezterm-config.nvim`
 
