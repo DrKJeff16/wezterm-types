@@ -117,6 +117,8 @@ issue.**
 
   rosepine                   docs/rosepine.md                :h wezterm-types-rosepine.txt
 
+  sessionizer.wezterm        docs/sessionizer.md             :h wezterm-types-sessionizer.txt
+
   smart-splits.nvim          docs/smart-splits.md            :h wezterm-types-smart-splits.txt
 
   stack.wez                  docs/stack-wez.md               :h wezterm-types-stack-wez.txt
