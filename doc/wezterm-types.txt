@@ -115,6 +115,8 @@ issue.**
 
   resurrect.wezterm          docs/resurrect.md          :h wezterm-types-resurrect.txt
 
+  rosepine                   docs/rosepine.md           :h wezterm-types-rosepine.txt
+
   smart-splits.nvim          docs/smart-splits.md       :h wezterm-types-smart-splits.txt
 
   stack.wez                  docs/stack-wez.md          :h wezterm-types-stack-wez.txt
