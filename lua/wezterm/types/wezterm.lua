@@ -660,10 +660,10 @@ end
 ---@class StableCursorPosition
 ---The horizontal cell index.
 ---
----@field x number
+---@field x integer
 ---The vertical stable row index.
 ---
----@field y number
+---@field y integer
 ---@field shape "BlinkingBlock"|"BlinkingBar"|"BlinkingUnderline"|"SteadyBar"|"SteadyBlock"|"SteadyUnderline"
 ---@field visibility "Visible"|"Hidden"
 
