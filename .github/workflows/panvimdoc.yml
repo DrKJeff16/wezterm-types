@@ -44,7 +44,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-ai-commander
-          description: "ai-commander types"
+          description: "`ai-commander` types"
           pandoc: docs/ai-commander.md
           toc: false
           demojify: true
@@ -57,7 +57,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-ai-helper
-          description: "ai-helper types"
+          description: "`ai-helper` types"
           pandoc: docs/ai-helper.md
           toc: false
           demojify: true
@@ -70,7 +70,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-bar_wezterm
-          description: "bar_wezterm types"
+          description: "`bar_wezterm` types"
           pandoc: docs/bar_wezterm.md
           toc: false
           demojify: true
@@ -83,7 +83,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-dev-wezterm
-          description: "dev-wezterm types"
+          description: "`dev-wezterm` types"
           pandoc: docs/dev-wezterm.md
           toc: false
           demojify: true
@@ -96,7 +96,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-lib-wezterm
-          description: "lib-wezterm types"
+          description: "`lib-wezterm` types"
           pandoc: docs/lib-wezterm.md
           toc: false
           demojify: true
@@ -109,7 +109,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-modal_wezterm
-          description: "modal_wezterm types"
+          description: "`modal_wezterm` types"
           pandoc: docs/modal_wezterm.md
           toc: false
           demojify: true
@@ -122,7 +122,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-pinned-tabs
-          description: "pinned-tabs types"
+          description: "`pinned-tabs` types"
           pandoc: docs/pinned-tabs.md
           toc: false
           demojify: true
@@ -135,7 +135,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-pivot_panes
-          description: "pivot_panes types"
+          description: "`pivot_panes` types"
           pandoc: docs/pivot_panes.md
           toc: false
           demojify: true
@@ -148,7 +148,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-presentation_wez
-          description: "presentation_wez types"
+          description: "`presentation_wez` types"
           pandoc: docs/presentation_wez.md
           toc: false
           demojify: true
@@ -161,7 +161,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-quick_domains
-          description: "quick_domains types"
+          description: "`quick_domains` types"
           pandoc: docs/quick_domains.md
           toc: false
           demojify: true
@@ -174,7 +174,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-resurrect
-          description: "resurrect types"
+          description: "`resurrect` types"
           pandoc: docs/resurrect.md
           toc: false
           demojify: true
@@ -187,7 +187,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-rosepine
-          description: "rosepine types"
+          description: "`rosepine` types"
           pandoc: docs/rosepine.md
           toc: false
           demojify: true
@@ -200,7 +200,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-smart-splits
-          description: "smart-splits types"
+          description: "`smart-splits` types"
           pandoc: docs/smart-splits.md
           toc: false
           demojify: true
@@ -213,7 +213,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-stack-wez
-          description: "stack-wez types"
+          description: "`stack-wez` types"
           pandoc: docs/stack-wez.md
           toc: false
           demojify: true
@@ -226,7 +226,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-tabline_wez
-          description: "tabline_wez types"
+          description: "`tabline_wez` types"
           pandoc: docs/tabline_wez.md
           toc: false
           demojify: true
@@ -239,7 +239,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wez-pain-control
-          description: "wez-pain-control types"
+          description: "`wez-pain-control` types"
           pandoc: docs/wez-pain-control.md
           toc: false
           demojify: true
@@ -252,7 +252,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wez-tmux
-          description: "wez-tmux types"
+          description: "`wez-tmux` types"
           pandoc: docs/wez-tmux.md
           toc: false
           demojify: true
@@ -265,7 +265,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wezterm-config
-          description: "wezterm-config types"
+          description: "`wezterm-config` types"
           pandoc: docs/wezterm-config.md
           toc: false
           demojify: true
@@ -278,7 +278,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-wezterm-theme-rotator
-          description: "wezterm-theme-rotator types"
+          description: "`wezterm-theme-rotator` types"
           pandoc: docs/wezterm-theme-rotator.md
           toc: false
           demojify: true
@@ -291,7 +291,7 @@ jobs:
         uses: kdheepak/panvimdoc@v4.0.1
         with:
           vimdoc: wezterm-types-workspace-picker
-          description: "workspace-picker types"
+          description: "`workspace-picker` types"
           pandoc: docs/workspace-picker.md
           toc: false
           demojify: true
