@@ -16,12 +16,12 @@
 ---|"Close" Closes the copy mode
 ---|"CycleMatchType" Move the `CopyMode` / `SearchMode` cycle between `case-sensitive`, `case-insensitive` and `regular expression match types`
 ---|"EditPattern" Put `CopyMode` / `SearchMode` into editing mode: keyboard input will be directed to the search pattern editor
+---|"JumpAgain" Repeat the last `JumpForward` or `JumpBackward` movement
+---|"JumpReverse" Repeat the last jump in the opposite direction
 ---|"MoveBackwardSemanticZone" Moves the `CopyMode` cursor position one semantic zone to the left
----|"MoveBackwardSemanticZoneOfType" Moves the `CopyMode` cursor position to the first semantic zone of the specified type that precedes the current zone
 ---|"MoveBackwardWord" Moves the `CopyMode` cursor position one word to the left
 ---|"MoveDown" Moves the `CopyMode` cursor position one cell down
 ---|"MoveForwardSemanticZone" Moves the `CopyMode` cursor position one semantic zone to the right
----|"MoveForwardSemanticZoneOfType" Moves the `CopyMode` cursor position to the next semantic zone of the specified type that follows the current zone
 ---|"MoveForwardWord" Moves the `CopyMode` cursor position one word to the right
 ---|"MoveForwardWordEnd" Moves the `CopyMode` cursor position forward to the end of word
 ---|"MoveLeft" Moves the `CopyMode` cursor position one cell to the left
@@ -40,11 +40,15 @@
 ---|"MoveUp" Moves the `CopyMode` cursor position one cell up
 ---|"NextMatch" Move the `CopyMode` / `SearchMode` selection to the next matching text, if any
 ---|"NextMatchPage" Move the `CopyMode` / `SearchMode` selection to the next matching text on the next page of the screen, if any
+---|"PageDown" Move down by one page
+---|"PageUp" Move up by one page
 ---|"PriorMatch" Move the `CopyMode` / `SearchMode` selection to the previous matching text, if any
 ---|"PriorMatchPage" Move the `CopyMode` / `SearchMode` selection to the previous matching text on the previous page of the screen, if any
----|"SetSelectionMode" Sets the `CopyMode` selection mode
----|{ MoveBackwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
----|{ MoveForwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
+---|{ JumpBackward: { prev_char: boolean } }
+---|{ JumpForward: { prev_char: boolean } }
+---|{ MoveBackwardZoneOfType: "Input"|"Output"|"Prompt" }
+---|{ MoveByPage: number }
+---|{ MoveForwardZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ SetSelectionMode: SelectionMode }
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
