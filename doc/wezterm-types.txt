@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 27
+*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 28
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -226,6 +226,10 @@ COLLABORATORS                                    *wezterm-types-collaborators*
 
 
 
+LM
+
+
+
 Gonzalo Stoll
 
 
@@ -249,15 +253,15 @@ Justin Angeles
 
 
 
+LM
+
+
+
 C.D. MacEachern
 
 
 
 Chris Grieser
-
-
-
-LM
 
 
 
