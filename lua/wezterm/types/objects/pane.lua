@@ -25,6 +25,10 @@
 ---
 ---@field since_last_response_ms integer
 
+---Mirrors `RenderableDimensions` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/mux/src/renderable.rs
+---
+
 ---@class RenderableDimensions
 ---The number of columns.
 ---
@@ -54,10 +58,18 @@
 ---
 ---@field reverse_video boolean
 
+---Mirrors `SemanticType` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/wezterm-cell/src/lib.rs
+---
+
 ---@alias SemanticZoneType
 ---|"Input"
 ---|"Output"
 ---|"Prompt"
+
+---Mirrors `SemanticZone` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/term/src/lib.rs
+---
 
 ---@class SemanticZone
 ---@field start_x integer
