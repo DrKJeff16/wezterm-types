@@ -1,5 +1,9 @@
 ---@meta
 
+---Mirrors `SelectionMode` and `CopyModeAssignment` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/config/src/keyassignment.rs
+---
+
 ---@alias SelectionMode
 ---|"Block" Selection expands to define a rectangular block using the starting point and current cursor position as the corners
 ---|"Cell" Selection expands a single cell at a time

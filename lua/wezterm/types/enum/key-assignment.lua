@@ -1,6 +1,10 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
+---Mirrors `KeyAssignment`-related types in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/config/src/keyassignment.rs
+---
+
 ---@enum (key) CharGroup
 local char_groups = {
   Activities = 1,

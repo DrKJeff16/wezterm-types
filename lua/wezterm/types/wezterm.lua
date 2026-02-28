@@ -657,6 +657,10 @@ end
 ---
 ---@field icon? Wezterm.NerdFont
 
+---Mirrors `StableCursorPosition` in wezterm upstream:
+---https://github.com/wezterm/wezterm/blob/main/mux/src/renderable.rs
+---
+
 ---@class StableCursorPosition
 ---The horizontal cell index.
 ---
