@@ -195,6 +195,13 @@ return {
 	<tbody>
 		<tr>
             <td align="center">
+                <a href="https://github.com/lalvarezt">
+                    <img src="https://avatars.githubusercontent.com/u/16566531?v=4" width="100;" alt="lalvarezt"/>
+                    <br />
+                    <sub><b>LM</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/gonstoll">
                     <img src="https://avatars.githubusercontent.com/u/25900010?v=4" width="100;" alt="gonstoll"/>
                     <br />
@@ -241,6 +248,13 @@ return {
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/lalvarezt">
+                    <img src="https://avatars.githubusercontent.com/u/16566531?v=4" width="100;" alt="lalvarezt"/>
+                    <br />
+                    <sub><b>LM</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/craigmac">
                     <img src="https://avatars.githubusercontent.com/u/7416158?v=4" width="100;" alt="craigmac"/>
                     <br />
@@ -252,13 +266,6 @@ return {
                     <img src="https://avatars.githubusercontent.com/u/73286100?v=4" width="100;" alt="chrisgrieser"/>
                     <br />
                     <sub><b>Chris Grieser</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/lalvarezt">
-                    <img src="https://avatars.githubusercontent.com/u/16566531?v=4" width="100;" alt="lalvarezt"/>
-                    <br />
-                    <sub><b>LM</b></sub>
                 </a>
             </td>
             <td align="center">
