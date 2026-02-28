@@ -28,19 +28,43 @@
 ---@class RenderableDimensions
 ---The number of columns.
 ---
----@field cols number
+---@field cols integer
 ---The top of the physical non-scrollback screen expressed as a stable index.
 ---
 ---@field physical_top integer
 ---The total number of lines in the scrollback and viewport.
 ---
----@field scrollback_rows number
+---@field scrollback_rows integer
 ---The top of the scrollback; the earliest row remembered by wezterm.
 ---
 ---@field scrollback_top integer
 ---The number of vertical cells in the visible portion of the window.
 ---
----@field viewport_rows number
+---@field viewport_rows integer
+---The effective DPI for this pane.
+---
+---@field dpi integer
+---The width of the pane in pixels.
+---
+---@field pixel_width integer
+---The height of the pane in pixels.
+---
+---@field pixel_height integer
+---Whether the lines should be rendered with reverse video.
+---
+---@field reverse_video boolean
+
+---@alias SemanticZoneType
+---|"Input"
+---|"Output"
+---|"Prompt"
+
+---@class SemanticZone
+---@field start_x integer
+---@field start_y integer
+---@field end_x integer
+---@field end_y integer
+---@field semantic_type SemanticZoneType
 
 ---A handle to a live instance of a Pane that is known to the wezterm process.
 ---
@@ -381,7 +405,7 @@ function M:get_progress() end
 ---
 ---@param x integer
 ---@param y integer
----@return table zone
+---@return SemanticZone zone
 function M:get_semantic_zone_at(x, y) end
 
 ---When `zone_type` is omitted, returns the list of
@@ -396,11 +420,11 @@ function M:get_semantic_zone_at(x, y) end
 --- - `"Output"`
 --- - `"Prompt"`
 ---
----@return table zones
+---@return SemanticZone[] zones
 function M:get_semantic_zones() end
 
----@param zone_type "Input"|"Output"|"Prompt"|nil
----@return table zones
+---@param zone_type SemanticZoneType
+---@return SemanticZone[] zones
 function M:get_semantic_zones(zone_type) end
 
 ---Returns the text from the specified region.
@@ -430,8 +454,8 @@ function M:get_text_from_region(start_x, start_y, end_x, end_y) end
 ---Use `Pane:get_semantic_zone_at()` or `Pane:get_semantic_zones()`
 ---to obtain a zone.
 ---
----@param zone table
----@return any text
+---@param zone SemanticZone
+---@return string text
 function M:get_text_from_semantic_zone(zone) end
 
 ---Returns the title of the pane.
