@@ -11,6 +11,7 @@ local char_groups = {
   Objects = 1,
   PeopleAndBody = 1,
   RecentlyUsed = 1,
+  ShortCodes = 1,
   SmileysAndEmotion = 1,
   Symbols = 1,
   TravelAndPlaces = 1,
@@ -38,10 +39,10 @@ local copy_mode = {
   Close = 1,
   CycleMatchType = 1,
   EditPattern = 1,
+  JumpAgain = 1,
   JumpReverse = 1,
   MoveBackwardSemanticZone = 1,
   MoveBackwardWord = 1,
-  MoveBackwardWordEnd = 1,
   MoveDown = 1,
   MoveForwardSemanticZone = 1,
   MoveForwardWord = 1,
@@ -66,7 +67,6 @@ local copy_mode = {
   PageUp = 1,
   PriorMatch = 1,
   PriorMatchPage = 1,
-  ScrollToBottom = 1,
 }
 
 ---@enum (key) SpawnTabDomain
@@ -94,10 +94,10 @@ local set_window_level = {
 ---|CopyModeStr
 ---|{ JumpBackward: { prev_char: boolean } }
 ---|{ JumpForward: { prev_char: boolean } }
----|{ MoveBackwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
+---|{ MoveBackwardZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ MoveByPage: number }
----|{ MoveForwardSemanticZoneOfType: "Input"|"Output"|"Prompt" }
----|{ SetSelectionMode: SelectionMode|"SemanticZone" }
+---|{ MoveForwardZoneOfType: "Input"|"Output"|"Prompt" }
+---|{ SetSelectionMode: SelectionMode }
 
 ---@class ConfirmationParams
 ---Event callback registered via `wezterm.action_callback()`.
@@ -204,6 +204,12 @@ local pane_select_mode = {
   MoveToNewWindow = 1,
   SwapWithActive = 1,
   SwapWithActiveKeepFocus = 1,
+}
+
+---@enum (key) RotationDirection
+local rotation_direction = {
+  Clockwise = 1,
+  CounterClockwise = 1,
 }
 
 ---@enum (key) LauncherArgsFlags
@@ -371,7 +377,7 @@ local launcher_args_flags = {
 }
 
 ---@class PaneSelectParams
----@field alphabet? string
+---@field alphabet? QuickSelectAlphabet|string
 ---@field mode? PaneSelectMode
 ---@field show_pane_ids? boolean
 
@@ -424,7 +430,7 @@ local launcher_args_flags = {
 ---
 ---The normal clipboard action is NOT performed in this case.
 ---
----@field action? { EmitEvent: string }
+---@field action? Action
 ---Overrides whether `action` is performed after an item is selected
 ---using a capital value (when paste occurs).
 ---
@@ -444,6 +450,10 @@ local launcher_args_flags = {
 ---|{ Regex: string }
 ---|{ CaseSensitiveString: string }
 ---|{ CaseInSensitiveString: string }
+
+---@class CopyTextToParams
+---@field text string
+---@field destination ClipboardCopyDestination
 
 ---@class ShowLauncherArgsParams
 ---The set of flags that specifies what to show in the launcher.
@@ -476,7 +486,7 @@ local launcher_args_flags = {
 ---See:
 --- - [`config.launcher_alphabet`](lua://Config.launcher_alphabet)
 ---
----@field alphabet? QuickSelectAlphabet
+---@field alphabet? QuickSelectAlphabet|string
 
 ---@class SplitPaneParams
 ---Specifies where the new pane will end up.
@@ -537,7 +547,7 @@ local launcher_args_flags = {
 ---@alias ActivateWindowRelativeNoWrap fun(params: T<integer>): { ActivateWindowRelativeNoWrap: T<integer> }
 ---@alias AdjustPaneSize fun(params: { [1]: PaneDirection, [2]: integer }): { AdjustPaneSize: { [1]: PaneDirection, [2]: integer } }
 ---@alias AttachDomain fun(domain: T<string>): { AttachDomain: T<string> }
----@alias CharSelect fun(params: CharSelectParams): { CharSelect: CharSelectParams }
+---@alias CharSelect { CharSelect: CharSelectParams }|fun(params: CharSelectParams): { CharSelect: CharSelectParams }
 ---@alias ClearScrollback fun(params: ScrollbackEraseMode): { ClearScrollback: ScrollbackEraseMode }
 ---@alias CloseCurrentPane fun(params: { confirm: boolean }): { CloseCurrentPane: { confirm: boolean } }
 ---@alias CloseCurrentTab fun(params: { confirm: boolean }): { CloseCurrentTab: { confirm: boolean } }
@@ -546,18 +556,20 @@ local launcher_args_flags = {
 ---@alias Confirmation fun(params: ConfirmationParams): { Confirmation: ConfirmationParams }
 ---@alias CopyMode fun(params: CopyModeParams): { CopyMode: CopyModeParams }
 ---@alias CopyTo fun(params: ClipboardCopyDestination): { CopyTo: ClipboardCopyDestination }
+---@alias CopyTextTo fun(params: CopyTextToParams): { CopyTextTo: CopyTextToParams }
 ---@alias DetachDomain fun(params: SpawnTabDomain): { DetachDomain: SpawnTabDomain }
 ---@alias EmitEvent fun(event_id: T<string>): { EmitEvent: T<string> }
 ---@alias ExtendSelectionToMouseCursor fun(params: SelectionMode): { ExtendSelectionToMouseCursor: SelectionMode }
 ---@alias InputSelector fun(params: InputSelectorParams): { InputSelector: InputSelectorParams }
 ---@alias MoveTab fun(index: T<integer>): { MoveTab: T<integer> }
 ---@alias MoveTabRelative fun(index: T<integer>): { MoveTabRelative: T<integer> }
----@alias Multiple fun(events: Action[]): { Multiple: Action[] }
----@alias PaneSelect PaneSelectParams|fun(params: PaneSelectParams): { PaneSelect: PaneSelectParams }
+---@alias Multiple { Multiple: Action[] }|fun(events: Action[]): { Multiple: Action[] }
+---@alias OpenUri fun(uri: T<string>): { OpenUri: T<string> }
+---@alias PaneSelect { PaneSelect: PaneSelectParams }|fun(params: PaneSelectParams): { PaneSelect: PaneSelectParams }
 ---@alias PasteFrom fun(source: ClipboardPasteDestination): { PasteFrom: ClipboardPasteDestination }
 ---@alias PromptInputLine fun(params: PromptInputLineParams): { PromptInputLine: PromptInputLineParams }
----@alias QuickSelectArgs fun(params: QuickSelectArgsParams): { QuickSelectArgs: QuickSelectArgsParams }
----@alias RotatePanes fun(params: PaneSelectMode): { RotatePanes: PaneSelectMode }
+---@alias QuickSelectArgs { QuickSelectArgs: QuickSelectArgsParams }|fun(params: QuickSelectArgsParams): { QuickSelectArgs: QuickSelectArgsParams }
+---@alias RotatePanes fun(params: RotationDirection): { RotatePanes: RotationDirection }
 ---@alias ScrollByLine fun(amount: T<integer>): { ScrollByLine: T<integer> }
 ---@alias ScrollByPage fun(amount: T<number>): { ScrollByPage: T<number> }
 ---@alias ScrollToPrompt fun(amount: T<integer>): { ScrollToPrompt: T<integer> }
@@ -568,14 +580,14 @@ local launcher_args_flags = {
 ---@alias SetPaneZoomState fun(state: boolean): { SetPaneZoomState: boolean }
 ---@alias SetWindowLevel fun(level: SetWindowLevelParams): { SetWindowLevel: SetWindowLevelParams }
 ---@alias ShowLauncherArgs fun(params: ShowLauncherArgsParams): { ShowLauncherArgs: ShowLauncherArgsParams }
----@alias SpawnCommandInNewTab fun(params: SpawnCommand): { SpawnCommandInNewTab: SpawnCommand }
----@alias SpawnCommandInNewWindow fun(params: SpawnCommand): { SpawnCommandInNewWindow: SpawnCommand }
----@alias SpawnTabAction fun(params: SpawnCommand|SpawnTabDomain): { SpawnTab: SpawnTabDomain|SpawnCommand }
----@alias SplitHorizontal fun(params: SpawnCommand): { SplitHorizontal: SpawnCommand }
+---@alias SpawnCommandInNewTab { SpawnCommandInNewTab: SpawnCommand }|fun(params: SpawnCommand): { SpawnCommandInNewTab: SpawnCommand }
+---@alias SpawnCommandInNewWindow { SpawnCommandInNewWindow: SpawnCommand }|fun(params: SpawnCommand): { SpawnCommandInNewWindow: SpawnCommand }
+---@alias SpawnTabAction fun(params: SpawnTabDomain): { SpawnTab: SpawnTabDomain }
+---@alias SplitHorizontal { SplitHorizontal: SpawnCommand }|fun(params: SpawnCommand): { SplitHorizontal: SpawnCommand }
 ---@alias SplitPane fun(params: SplitPaneParams): { SplitPane: SplitPaneParams }
----@alias SplitVertical fun(params: SpawnCommand): { SplitVertical: SpawnCommand }
----@alias SwitchToWorkspace fun(params: SwitchToWorkspaceParams): { SwitchToWorkspace: SwitchToWorkspaceParams }
----@alias SwitchToWorkspaceRelative fun(params: T<integer>): { SwitchToWorkspaceRelative: T<integer> }
+---@alias SplitVertical { SplitVertical: SpawnCommand }|fun(params: SpawnCommand): { SplitVertical: SpawnCommand }
+---@alias SwitchToWorkspace { SwitchToWorkspace: SwitchToWorkspaceParams }|fun(params: SwitchToWorkspaceParams): { SwitchToWorkspace: SwitchToWorkspaceParams }
+---@alias SwitchWorkspaceRelative fun(params: T<integer>): { SwitchWorkspaceRelative: T<integer> }
 
 ---@alias Actions
 ---|{ ActivateKeyTable: ActivateKeyTableParams }
@@ -598,6 +610,7 @@ local launcher_args_flags = {
 ---|{ Confirmation: ConfirmationParams }
 ---|{ CopyMode: CopyModeParams }
 ---|{ CopyTo: ClipboardCopyDestination }
+---|{ CopyTextTo: CopyTextToParams }
 ---|{ DetachDomain: SpawnTabDomain }
 ---|{ EmitEvent: string }
 ---|{ ExtendSelectionToMouseCursor: SelectionMode }
@@ -605,11 +618,12 @@ local launcher_args_flags = {
 ---|{ MoveTab: integer }
 ---|{ MoveTabRelative: integer }
 ---|{ Multiple: Action[] }
+---|{ OpenUri: string }
 ---|{ PaneSelect: PaneSelectParams }
 ---|{ PasteFrom: ClipboardPasteDestination }
 ---|{ PromptInputLine: PromptInputLineParams }
 ---|{ QuickSelectArgs: QuickSelectArgsParams }
----|{ RotatePanes: PaneSelectMode }
+---|{ RotatePanes: RotationDirection }
 ---|{ ScrollByLine: integer }
 ---|{ ScrollByPage: number }
 ---|{ ScrollToPrompt: integer }
@@ -622,12 +636,12 @@ local launcher_args_flags = {
 ---|{ ShowLauncherArgs: ShowLauncherArgsParams }
 ---|{ SpawnCommandInNewTab: SpawnCommand }
 ---|{ SpawnCommandInNewWindow: SpawnCommand }
----|{ SpawnTab: SpawnTab|SpawnTabDomain }
+---|{ SpawnTab: SpawnTabDomain }
 ---|{ SplitHorizontal: SpawnCommand }
 ---|{ SplitPane: SplitPaneParams }
 ---|{ SplitVertical: SpawnCommand }
 ---|{ SwitchToWorkspace: SwitchToWorkspaceParams }
----|{ SwitchToWorkspaceRelative: integer }
+---|{ SwitchWorkspaceRelative: integer }
 
 ---Helper for defining key assignment actions in your configuration file.
 ---This is really just sugar for the underlying Lua -> Rust deserialation mapping
@@ -660,6 +674,7 @@ local launcher_args_flags = {
 ---@field Confirmation Confirmation
 ---@field CopyMode CopyMode
 ---@field CopyTo CopyTo
+---@field CopyTextTo CopyTextTo
 ---@field DecreaseFontSize "DecreaseFontSize"
 ---@field DetachDomain DetachDomain
 ---@field DisableDefaultAssignment "DisableDefaultAssignment"
@@ -678,6 +693,7 @@ local launcher_args_flags = {
 ---@field Multiple Multiple
 ---@field Nop "Nop"
 ---@field OpenLinkAtMouseCursor "OpenLinkAtMouseCursor"
+---@field OpenUri OpenUri
 ---@field PaneSelect PaneSelect
 ---@field PasteFrom PasteFrom
 ---@field PopKeyTable "PopKeyTable"
@@ -716,7 +732,7 @@ local launcher_args_flags = {
 ---@field SplitVertical SplitVertical
 ---@field StartWindowDrag "StartWindowDrag"
 ---@field SwitchToWorkspace SwitchToWorkspace
----@field SwitchWorkspaceRelative SwitchToWorkspaceRelative
+---@field SwitchWorkspaceRelative SwitchWorkspaceRelative
 ---@field ToggleAlwaysOnBottom "ToggleAlwaysOnBottom"
 ---@field ToggleAlwaysOnTop "ToggleAlwaysOnTop"
 ---@field ToggleFullScreen "ToggleFullScreen"
@@ -758,7 +774,7 @@ local key_assignment = {
   TogglePaneZoomState = 1,
 }
 
----@alias Action (Actions|KeyAssignmentLiterals)
+---@alias Action (Actions|KeyAssignmentLiterals|CharSelect|Multiple|PaneSelect|QuickSelectArgs|SpawnCommandInNewTab|SpawnCommandInNewWindow|SplitHorizontal|SplitVertical|SwitchToWorkspace)
 
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
@@ -794,7 +810,16 @@ local key_assignment = {
 ---If `true`, `InputSelector` will start in its fuzzy finding mode,
 ---equivalent to starting the `InputSelector` and pressing `/` in the default mode.
 ---
----@field fuzzy? boolean
+---@field fuzzy boolean
+---A string of unique characters.
+---
+---@field alphabet? QuickSelectAlphabet|string
+---A string to display when in the default mode.
+---
+---@field description string
+---A string to display when in fuzzy finding mode.
+---
+---@field fuzzy_description string
 
 ---@class CharSelectParams
 ---@field copy_on_select boolean
@@ -807,6 +832,8 @@ local pane_direction = {
   Down = 1,
   Left = 1,
   Right = 1,
+  Next = 1,
+  Prev = 1,
 }
 
 ---@class SendKeyParams
@@ -988,6 +1015,6 @@ local pane_direction = {
 ---@field mods? string
 
 ---@class Key: SendKeyParams
----@field action? KeyAssignment
+---@field action? Action
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
