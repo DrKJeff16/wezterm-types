@@ -8,6 +8,7 @@ We will keep adding more community plugins as we find them.
 - [ai-commander.wezterm](./ai-commander.md)
 - [ai-helper.wezterm](./ai-helper.md)
 - [bar.wezterm](./bar_wezterm.md)
+- [battery.wez](./battery_wez.md)
 - [dev.wezterm](./dev-wezterm.md)
 - [lib.wezterm](./lib-wezterm.md)
 - [modal.wezterm](./modal_wezterm.md)
