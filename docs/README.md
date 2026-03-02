@@ -26,6 +26,7 @@ We will keep adding more community plugins as we find them.
 - [wez-pain-control](./wez-pain-control.md)
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-config.nvim](./wezterm-config.md)
+- [wezterm-status](./wezterm-status.md)
 - [wezterm-theme-rotator](./wezterm-theme-rotator.md)
 - [workspace-picker.wezterm](./workspace-picker.md)
 - [wsinit.wezterm](./wsinit.md)
