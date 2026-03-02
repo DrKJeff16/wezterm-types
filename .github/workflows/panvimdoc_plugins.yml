@@ -196,6 +196,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for smart_workspace_switcher.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-smart_workspace_switcher
+          description: "`smart_workspace_switcher` types"
+          pandoc: docs/smart_workspace_switcher.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for stack-wez.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
