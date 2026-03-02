@@ -136,6 +136,8 @@ issue.**
   wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-wezterm-theme-rotator.txt
 
   workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-workspace-picker.txt
+
+  wsinit.wezterm                     docs/wsinit.md                     :h wezterm-types-wsinit.txt
   ---------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
