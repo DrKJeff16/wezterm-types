@@ -300,6 +300,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for wsinit.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wsinit
+          description: "`wsinit` types"
+          pandoc: docs/wsinit.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Auto-Commit
         uses: stefanzweifel/git-auto-commit-action@v7.1.0
         with:
