@@ -287,6 +287,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for wezterm-status.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wezterm-status
+          description: "`wezterm-status` types"
+          pandoc: docs/wezterm-status.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wezterm-theme-rotator.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
