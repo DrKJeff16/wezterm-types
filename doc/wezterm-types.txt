@@ -135,6 +135,8 @@ issue.**
 
   wezterm-config.nvim                docs/wezterm-config.md             :h wezterm-types-wezterm-config.txt
 
+  wezterm-status                     docs/wezterm-status.md             :h wezterm-types-wezterm-status.txt
+
   wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-wezterm-theme-rotator.txt
 
   workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-workspace-picker.txt
