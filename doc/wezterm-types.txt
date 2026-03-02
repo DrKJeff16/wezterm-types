@@ -99,6 +99,8 @@ issue.**
 
   bar.wezterm                        docs/bar_wezterm.md                :h wezterm-types-bar_wezterm.txt
 
+  battery.wez                        docs/battery_wez.md                :h wezterm-types-battery_wez.txt
+
   dev.wezterm                        docs/dev-wezterm.md                :h wezterm-types-dev-wezterm.txt
 
   lib.wezterm                        docs/lib-wezterm.md                :h wezterm-types-lib-wezterm.txt
