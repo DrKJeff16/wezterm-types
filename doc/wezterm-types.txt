@@ -1,4 +1,4 @@
-*wezterm-types.txt*       For NVIM >=v0.7.0      Last change: 2026 February 28
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 02
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -90,51 +90,53 @@ This project also features type annotations for various WezTerm plugins.
 **If you want to have your plugin featured please request it through an
 issue.**
 
-  -------------------------------------------------------------------------------------------------------
-  Plugin                     Documentation                   Neovim Help
-  -------------------------- ------------------------------- --------------------------------------------
-  ai-commander.wezterm       docs/ai-commander.md            :h wezterm-types-ai-commander.txt
+  ---------------------------------------------------------------------------------------------------------------------
+  Plugin                             Documentation                      Neovim Help
+  ---------------------------------- ---------------------------------- -----------------------------------------------
+  ai-commander.wezterm               docs/ai-commander.md               :h wezterm-types-ai-commander.txt
 
-  ai-helper.wezterm          docs/ai-helper.md               :h wezterm-types-ai-helper.txt
+  ai-helper.wezterm                  docs/ai-helper.md                  :h wezterm-types-ai-helper.txt
 
-  bar.wezterm                docs/bar_wezterm.md             :h wezterm-types-bar_wezterm.txt
+  bar.wezterm                        docs/bar_wezterm.md                :h wezterm-types-bar_wezterm.txt
 
-  dev.wezterm                docs/dev-wezterm.md             :h wezterm-types-dev-wezterm.txt
+  dev.wezterm                        docs/dev-wezterm.md                :h wezterm-types-dev-wezterm.txt
 
-  lib.wezterm                docs/lib-wezterm.md             :h wezterm-types-lib-wezterm.txt
+  lib.wezterm                        docs/lib-wezterm.md                :h wezterm-types-lib-wezterm.txt
 
-  modal.wezterm              docs/modal_wezterm.md           :h wezterm-types-modal_wezterm.txt
+  modal.wezterm                      docs/modal_wezterm.md              :h wezterm-types-modal_wezterm.txt
 
-  pinned-tabs.wezterm        docs/pinned-tabs.md             :h wezterm-types-pinned-tabs.txt
+  pinned-tabs.wezterm                docs/pinned-tabs.md                :h wezterm-types-pinned-tabs.txt
 
-  pivot_panes.wezterm        docs/pivot_panes.md             :h wezterm-types-pivot_panes.txt
+  pivot_panes.wezterm                docs/pivot_panes.md                :h wezterm-types-pivot_panes.txt
 
-  presentation.wez           docs/presentation_wez.md        :h wezterm-types-presentation_wez.txt
+  presentation.wez                   docs/presentation_wez.md           :h wezterm-types-presentation_wez.txt
 
-  quick_domains.wezterm      docs/quick_domains.md           :h wezterm-types-quick_domains.txt
+  quick_domains.wezterm              docs/quick_domains.md              :h wezterm-types-quick_domains.txt
 
-  resurrect.wezterm          docs/resurrect.md               :h wezterm-types-resurrect.txt
+  resurrect.wezterm                  docs/resurrect.md                  :h wezterm-types-resurrect.txt
 
-  rosepine                   docs/rosepine.md                :h wezterm-types-rosepine.txt
+  rosepine                           docs/rosepine.md                   :h wezterm-types-rosepine.txt
 
-  sessionizer.wezterm        docs/sessionizer.md             :h wezterm-types-sessionizer.txt
+  sessionizer.wezterm                docs/sessionizer.md                :h wezterm-types-sessionizer.txt
 
-  smart-splits.nvim          docs/smart-splits.md            :h wezterm-types-smart-splits.txt
+  smart-splits.nvim                  docs/smart-splits.md               :h wezterm-types-smart-splits.txt
 
-  stack.wez                  docs/stack-wez.md               :h wezterm-types-stack-wez.txt
+  smart_workspace_switcher.wezterm   docs/smart_workspace_switcher.md   :h wezterm-types-smart_workspace_switcher.txt
 
-  tabline.wez                docs/tabline_wez.md             :h wezterm-types-tabline_wez.txt
+  stack.wez                          docs/stack-wez.md                  :h wezterm-types-stack-wez.txt
 
-  wez-pain-control           docs/wez-pain-control.md        :h wezterm-types-wez-pain-control.txt
+  tabline.wez                        docs/tabline_wez.md                :h wezterm-types-tabline_wez.txt
 
-  wez-tmux                   docs/wez-tmux.md                :h wezterm-types-wez-tmux.txt
+  wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-wez-pain-control.txt
 
-  wezterm-config.nvim        docs/wezterm-config.md          :h wezterm-types-wezterm-config.txt
+  wez-tmux                           docs/wez-tmux.md                   :h wezterm-types-wez-tmux.txt
 
-  wezterm-theme-rotator      docs/wezterm-theme-rotator.md   :h wezterm-types-wezterm-theme-rotator.txt
+  wezterm-config.nvim                docs/wezterm-config.md             :h wezterm-types-wezterm-config.txt
 
-  workspace-picker.wezterm   docs/workspace-picker.md        :h wezterm-types-workspace-picker.txt
-  -------------------------------------------------------------------------------------------------------
+  wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-wezterm-theme-rotator.txt
+
+  workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-workspace-picker.txt
+  ---------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
