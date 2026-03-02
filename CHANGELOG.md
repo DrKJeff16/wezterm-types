@@ -1,5 +1,30 @@
 # Changelog
 
+## [v2.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.2.0-1) (2026-03-02)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.1.0-1...v2.2.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wsinit.wezterm\): add type annotations [\#126](https://github.com/DrKJeff16/wezterm-types/pull/126) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(smart\_workspace\_switcher.wezterm\): add type annotations [\#125](https://github.com/DrKJeff16/wezterm-types/pull/125) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat: sync wezterm Lua type annotations with upstream [\#123](https://github.com/DrKJeff16/wezterm-types/pull/123) ([lalvarezt](https://github.com/lalvarezt))
+
+**Merged pull requests:**
+
+- docs\(contributor\): contributors readme action update [\#124](https://github.com/DrKJeff16/wezterm-types/pull/124) ([github-actions[bot]](https://github.com/apps/github-actions))
+
+## [v2.1.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.1.0-1) (2026-02-27)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.0.2-1...v2.1.0-1)
+
+**Implemented enhancements:**
+
+- feat\(sessionizer.wezterm\): add type annotations [\#122](https://github.com/DrKJeff16/wezterm-types/pull/122) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-theme-rotator\): add type annotations [\#121](https://github.com/DrKJeff16/wezterm-types/pull/121) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(resurrect\): add type annotations [\#119](https://github.com/DrKJeff16/wezterm-types/pull/119) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(workspace-picker\): add type annotations [\#118](https://github.com/DrKJeff16/wezterm-types/pull/118) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.0.2-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.0.2-1) (2026-02-26)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.0.1-1...v2.0.2-1)
@@ -17,9 +42,6 @@
 **Implemented enhancements:**
 
 - feat\(lib-wezterm\): add type annotations [\#114](https://github.com/DrKJeff16/wezterm-types/pull/114) ([DrKJeff16](https://github.com/DrKJeff16))
-
-**Merged pull requests:**
-
 - feat: add missing config fields [\#112](https://github.com/DrKJeff16/wezterm-types/pull/112) ([lalvarezt](https://github.com/lalvarezt))
 
 ## [v2.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.0.0-1) (2026-02-20)
