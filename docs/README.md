@@ -29,6 +29,7 @@ We will keep adding more community plugins as we find them.
 - [wezterm-status](./wezterm-status.md)
 - [wezterm-theme-rotator](./wezterm-theme-rotator.md)
 - [workspace-picker.wezterm](./workspace-picker.md)
+- [workspacesionizer.wezterm](./workspacesionizer.md)
 - [wsinit.wezterm](./wsinit.md)
 
 <!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->
