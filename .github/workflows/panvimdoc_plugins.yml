@@ -1,6 +1,8 @@
 name: panvimdoc
 on:
   push:
+    branches:
+      - main
     paths:
       - .github/workflows/panvimdoc_plugins.yml
       - docs/*.md
