@@ -31,6 +31,14 @@ local dev_event = {
   ["dev.wezterm.require_path_not_set"] = 1,
 }
 
+---@enum (key) TabsetsEvent
+local tabsets_event = {
+  delete_tabset = 1,
+  load_tabset = 1,
+  rename_tabset = 1,
+  save_tabset = 1,
+}
+
 ---@enum (key) MultiplexerEvent
 local mux_event = {
   ["mux-is-process-stateful"] = 1,
