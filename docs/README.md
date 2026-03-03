@@ -28,6 +28,7 @@ We will keep adding more community plugins as we find them.
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-config.nvim](./wezterm-config.md)
 - [wezterm-status](./wezterm-status.md)
+- [wezterm-tabs](./wezterm-tabs.md)
 - [wezterm-theme-rotator](./wezterm-theme-rotator.md)
 - [workspace-picker.wezterm](./workspace-picker.md)
 - [workspacesionizer.wezterm](./workspacesionizer.md)
