@@ -1,37 +1,83 @@
 {
     "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+    "addonManager": {
+        "enable": true
+    },
+    "codeLens": {
+        "enable": true
+    },
+    "completion": {
+        "enable": true,
+        "autoRequire": false,
+        "callSnippet": "Replace",
+        "displayContext": 16,
+        "keywordSnippet": "Replace",
+        "postfix": "@",
+        "requireSeparator": ".",
+        "showParams": true,
+        "showWord": "Enable",
+        "workspaceWord": true
+    },
+    "diagnostics": {
+        "enable": true,
+        "libraryFiles": "Opened"
+    },
+    "format": {
+        "enable": false
+    },
+    "hint": {
+        "arrayIndex": "Auto",
+        "await": true,
+        "enable": true,
+        "paramName": "Literal",
+        "paramType": true,
+        "semicolon": "Disable",
+        "setType": true
+    },
     "hover": {
         "enable": true,
         "expandAlias": true,
-        "enumsLimit": 50,
-        "previewFields": 75
-    },
-    "workspace": {
-        "library": [
-            "./lua/wezterm/types"
-        ],
-        "preloadFileSize": 1000
+        "enumsLimit": 80,
+        "previewFields": 75,
+        "viewNumber": true,
+        "viewString": true,
+        "viewStringMax": 1000
     },
     "runtime": {
         "version": "Lua 5.4",
+        "fileEncoding": "utf8",
+        "pathStrict": false,
+        "unicodeName": false,
         "path": [
             "?.lua",
             "?/init.lua"
         ]
     },
-    "hint": {
+    "semantic": {
+        "annotation": true,
         "enable": true,
-        "setType": true,
-        "paramName": "Literal",
-        "paramType": true,
-        "semicolon": "Disable"
+        "keyword": true,
+        "variable": true
     },
-    "completion": {
-        "callSnippet": "Replace",
-        "keywordSnippet": "Replace",
-        "displayContext": 8,
-        "enable": true,
-        "showWord": "Enable",
-        "workspaceWord": true
+    "signatureHelp": {
+        "enable": true
+    },
+    "type": {
+        "castNumberToInteger": false,
+        "inferParamType": true,
+        "weakNilCheck": true,
+        "weakUnionCheck": true
+    },
+    "window": {
+        "progressBar": false,
+        "statusBar": false
+    },
+    "workspace": {
+        "checkThirdParty": false,
+        "useGitIgnore": true,
+        "preloadFileSize": 2000,
+        "library": [
+            "./lua"
+        ]
     }
 }
