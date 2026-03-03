@@ -129,6 +129,8 @@ issue.**
 
   tabline.wez                        docs/tabline_wez.md                :h wezterm-types-tabline_wez.txt
 
+  tabsets.wezterm                    docs/tabsets.md                    :h wezterm-types-tabsets.txt
+
   wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-wez-pain-control.txt
 
   wez-tmux                           docs/wez-tmux.md                   :h wezterm-types-wez-tmux.txt
