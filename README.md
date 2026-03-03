@@ -107,6 +107,7 @@ This project also features type annotations for various WezTerm plugins.
 | [`wezterm-status`](https://github.com/yriveiro/wezterm-status)                                        | [`docs/wezterm-status.md`](./docs/wezterm-status.md)                     | [`:h wezterm-types-wezterm-status.txt`](./doc/wezterm-types-wezterm-status.txt)                     |
 | [`wezterm-theme-rotator`](https://github.com/koh-sh/wezterm-theme-rotator)                            | [`docs/wezterm-theme-rotator.md`](./docs/wezterm-theme-rotator.md)       | [`:h wezterm-types-wezterm-theme-rotator.txt`](./doc/wezterm-types-wezterm-theme-rotator.txt)       |
 | [`workspace-picker.wezterm`](https://github.com/isseii10/workspace-picker.wezterm)                    | [`docs/workspace-picker.md`](./docs/workspace-picker.md)                 | [`:h wezterm-types-workspace-picker.txt`](./doc/wezterm-types-workspace-picker.txt)                 |
+| [`workspacesionizer.wezterm`](https://github.com/vieitesss/workspacesionizer.wezterm)                 | [`docs/workspacesionizer.md`](./docs/workspacesionizer.md)               | [`:h wezterm-types-workspacesionizer.txt`](./doc/wezterm-types-workspacesionizer.txt)               |
 | [`wsinit.wezterm`](https://github.com/JuanraCM/wsinit.wezterm)                                        | [`docs/wsinit.md`](./docs/wsinit.md)                                     | [`:h wezterm-types-wsinit.txt`](./doc/wezterm-types-wsinit.txt)                                     |
 
 ---
