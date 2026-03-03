@@ -4,12 +4,12 @@
 ---@class WeztermStatus.UiConfig
 ---Visual separators used in the status bar.
 ---
----@field separators? SeparatorConfig
+---@field separators? WeztermStatus.SeparatorConfig
 ---Theme for the status bar.
 ---
 ---@field theme? TabBarColor
 
----@class SeparatorConfig
+---@class WeztermStatus.SeparatorConfig
 ---Unicode character for solid left arrow.
 ---
 ---@field arrow_solid_left? string
