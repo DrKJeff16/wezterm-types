@@ -315,6 +315,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for wezterm-tabs.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-wezterm-tabs
+          description: "`wezterm-tabs` types"
+          pandoc: docs/wezterm-tabs.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wezterm-theme-rotator.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
