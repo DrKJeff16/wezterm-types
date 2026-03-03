@@ -328,6 +328,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for workspacesionizer.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-workspacesionizer
+          description: "`workspacesionizer` types"
+          pandoc: docs/workspacesionizer.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wsinit.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
