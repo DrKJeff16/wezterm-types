@@ -1,5 +1,23 @@
 # Changelog
 
+## [v2.4.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.4.0-1) (2026-03-03)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.3.0-1...v2.4.0-1)
+
+**Implemented enhancements:**
+
+- feat\(tabsets.wezterm\): add type annotations [\#130](https://github.com/DrKJeff16/wezterm-types/pull/130) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(workspacesionizer.wezterm\): add type annotations [\#129](https://github.com/DrKJeff16/wezterm-types/pull/129) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v2.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.3.0-1) (2026-03-03)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.2.0-1...v2.3.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-status\): add type annotations [\#128](https://github.com/DrKJeff16/wezterm-types/pull/128) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(battery.wez\): add type annotations [\#127](https://github.com/DrKJeff16/wezterm-types/pull/127) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.2.0-1) (2026-03-02)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.1.0-1...v2.2.0-1)
