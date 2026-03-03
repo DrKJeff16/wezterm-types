@@ -139,6 +139,8 @@ issue.**
 
   wezterm-status                     docs/wezterm-status.md             :h wezterm-types-wezterm-status.txt
 
+  wezterm-tabs                       docs/wezterm-tabs.md               :h wezterm-types-wezterm-tabs.txt
+
   wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-wezterm-theme-rotator.txt
 
   workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-workspace-picker.txt
