@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 02
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 03
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -140,6 +140,8 @@ issue.**
   wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-wezterm-theme-rotator.txt
 
   workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-workspace-picker.txt
+
+  workspacesionizer.wezterm          docs/workspacesionizer.md          :h wezterm-types-workspacesionizer.txt
 
   wsinit.wezterm                     docs/wsinit.md                     :h wezterm-types-wsinit.txt
   ---------------------------------------------------------------------------------------------------------------------
