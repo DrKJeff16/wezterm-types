@@ -1750,12 +1750,7 @@ function Wezterm.on(event, callback) end
 ---@param callback CallbackWindowPane
 function Wezterm.on(event, callback) end
 
----============================= dev.wezterm =======================================
-
----This is for `dev.wezterm` only!
----
----@param event DevWeztermEvent
-function Wezterm.on(event, callback) end
+---=============================== dev.wezterm =====================================
 
 ---This is for `dev.wezterm` only!
 ------
@@ -1795,6 +1790,34 @@ function Wezterm.on(event, callback) end
 ---
 ---@param event "dev.wezterm-plugin-not-found" This is for `dev.wezterm` only!
 ---@param callback function
+function Wezterm.on(event, callback) end
+
+---=================================================================================
+
+---============================= tabsets.wezterm ===================================
+
+---This is for `tabsets.wezterm` only!
+---
+---@param event "delete_tabset"
+---@param callback fun(window: Window)
+function Wezterm.on(event, callback) end
+
+---This is for `tabsets.wezterm` only!
+---
+---@param event "load_tabset"
+---@param callback fun(window: Window)
+function Wezterm.on(event, callback) end
+
+---This is for `tabsets.wezterm` only!
+---
+---@param event "rename_tabset"
+---@param callback fun(window: Window)
+function Wezterm.on(event, callback) end
+
+---This is for `tabsets.wezterm` only!
+---
+---@param event "save_tabset"
+---@param callback fun(window: Window)
 function Wezterm.on(event, callback) end
 
 ---=================================================================================

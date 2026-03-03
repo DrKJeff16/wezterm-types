@@ -23,6 +23,7 @@ We will keep adding more community plugins as we find them.
 - [smart_workspace_switcher.wezterm](./smart_workspace_switcher.md)
 - [stack.wez](./stack-wez.md)
 - [tabline.wez](./tabline_wez.md)
+- [tabsets.wezterm](./tabsets.md)
 - [wez-pain-control](./wez-pain-control.md)
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-config.nvim](./wezterm-config.md)
