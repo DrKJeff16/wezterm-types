@@ -1,6 +1,6 @@
 *wezterm-types-wez-tmux.txt*                                  `wez-tmux` types
 
-`wez-tmux`
+WEZ-TMUX ~
 
 You can import type annotations for `sei40kr/wez-tmux`
 <https://github.com/sei40kr/wez-tmux> as shown below:

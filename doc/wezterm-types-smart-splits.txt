@@ -1,6 +1,6 @@
 *wezterm-types-smart-splits.txt*                          `smart-splits` types
 
-`smart-splits.nvim`
+SMART-SPLITS.NVIM ~
 
 You can import type annotations for `mrjones2014/smart-splits.nvim`
 <https://github.com/mrjones2014/smart-splits.nvim> as shown below:

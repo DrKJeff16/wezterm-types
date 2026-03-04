@@ -1,6 +1,6 @@
 *wezterm-types-wez-pain-control.txt*                  `wez-pain-control` types
 
-`wez-pain-control`
+WEZ-PAIN-CONTROL ~
 
 You can import type annotations for `sei40kr/wez-pain-control`
 <https://github.com/sei40kr/wez-pain-control> as shown below:

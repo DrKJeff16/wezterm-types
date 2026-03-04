@@ -1,6 +1,6 @@
 *wezterm-types-battery_wez.txt*                            `battery_wez` types
 
-`battery.wez`
+BATTERY.WEZ ~
 
 You can import type annotations for `rootiest/battery.wez`
 <https://github.com/rootiest/battery.wez> as shown below:

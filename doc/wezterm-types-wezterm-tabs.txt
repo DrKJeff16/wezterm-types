@@ -1,6 +1,6 @@
 *wezterm-types-wezterm-tabs.txt*                          `wezterm-tabs` types
 
-`wezterm-tabs`
+WEZTERM-TABS ~
 
 You can import type annotations for `yriveiro/wezterm-tabs`
 <https://github.com/yriveiro/wezterm-tabs> as shown below:

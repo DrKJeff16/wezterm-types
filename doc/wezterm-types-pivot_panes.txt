@@ -1,6 +1,6 @@
 *wezterm-types-pivot_panes.txt*                            `pivot_panes` types
 
-`pivot_panes.wezterm`
+PIVOT_PANES.WEZTERM ~
 
 You can import type annotations for `ChrisGVE/pivot_panes.wezterm`
 <https://github.com/ChrisGVE/pivot_panes.wezterm> as shown below:

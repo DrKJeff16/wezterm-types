@@ -1,6 +1,6 @@
 *wezterm-types-quick_domains.txt*                        `quick_domains` types
 
-`quick_domains.wezterm`
+QUICK_DOMAINS.WEZTERM ~
 
 You can import type annotations for `DavidRR-F/quick_domains.wezterm`
 <https://github.com/DavidRR-F/quick_domains.wezterm> as shown below:

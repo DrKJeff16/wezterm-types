@@ -1,6 +1,6 @@
 *wezterm-types-rosepine.txt*                                  `rosepine` types
 
-`rosepine`
+ROSEPINE ~
 
 You can import type annotations for `neapsix/wezterm`
 <https://github.com/neapsix/wezterm> as shown below:

@@ -1,6 +1,6 @@
 *wezterm-types-sessionizer.txt*                            `sessionizer` types
 
-`sessionizer.wezterm`
+SESSIONIZER.WEZTERM ~
 
 You can import type annotations for `mikkasendke/sessionizer.wezterm`
 <https://github.com/mikkasendke/sessionizer.wezterm> as shown below:

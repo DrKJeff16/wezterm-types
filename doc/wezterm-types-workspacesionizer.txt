@@ -1,6 +1,6 @@
 *wezterm-types-workspacesionizer.txt*                `workspacesionizer` types
 
-`workspacesionizer.wezterm`
+WORKSPACESIONIZER.WEZTERM ~
 
 You can import type annotations for `vieitesss/workspacesionizer.wezterm`
 <https://github.com/vieitesss/workspacesionizer.wezterm> as shown below:

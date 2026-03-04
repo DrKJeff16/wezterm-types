@@ -1,6 +1,6 @@
 *wezterm-types-wezterm-theme-rotator.txt*        `wezterm-theme-rotator` types
 
-`wezterm-theme-rotator`
+WEZTERM-THEME-ROTATOR ~
 
 You can import type annotations for `koh-sh/wezterm-theme-rotator`
 <https://github.com/koh-sh/wezterm-theme-rotator> as shown below:

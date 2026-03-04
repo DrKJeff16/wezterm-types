@@ -1,6 +1,6 @@
 *wezterm-types-tabline_wez.txt*                            `tabline_wez` types
 
-`tabline.wez`
+TABLINE.WEZ ~
 
 You can import type annotations for `michaelbrusegard/tabline.wez`
 <https://github.com/michaelbrusegard/tabline.wez> as show below:

@@ -1,6 +1,6 @@
 *wezterm-types-ai-commander.txt*                          `ai-commander` types
 
-`ai-commander.wezterm`
+AI-COMMANDER.WEZTERM ~
 
 You can import type annotations for `dimao/ai-commander.wezterm`
 <https://github.com/dimao/ai-commander.wezterm> as shown below:

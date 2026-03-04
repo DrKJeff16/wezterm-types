@@ -1,6 +1,6 @@
 *wezterm-types-smart_workspace_switcher.txt*  `smart_workspace_switcher` types
 
-`smart_workspace_switcher.wezterm`
+SMART_WORKSPACE_SWITCHER.WEZTERM ~
 
 You can import type annotations for `MLFlexer/smart_workspace_switcher.wezterm`
 <https://github.com/MLFlexer/smart_workspace_switcher.wezterm> as shown below:

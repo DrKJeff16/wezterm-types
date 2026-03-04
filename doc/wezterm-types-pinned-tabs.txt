@@ -1,6 +1,6 @@
 *wezterm-types-pinned-tabs.txt*                            `pinned-tabs` types
 
-`pinned-tabs.wezterm`
+PINNED-TABS.WEZTERM ~
 
 You can import type annotations for `selectnull/pinned-tabs.wezterm`
 <https://github.com/selectnull/pinned-tabs.wezterm> as shown below:

@@ -1,6 +1,6 @@
 *wezterm-types-workspace-picker.txt*                  `workspace-picker` types
 
-`workspace-picker.wezterm`
+WORKSPACE-PICKER.WEZTERM ~
 
 You can import type annotations for `isseii10/workspace-picker.wezterm`
 <https://github.com/isseii10/workspace-picker.wezterm> as shown below:

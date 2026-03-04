@@ -1,6 +1,6 @@
 *wezterm-types-tabsets.txt*                                    `tabsets` types
 
-`tabsets.wezterm`
+TABSETS.WEZTERM ~
 
 You can import type annotations for `srackham/tabsets.wezterm`
 <https://github.com/srackham/tabsets.wezterm> as shown below:

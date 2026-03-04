@@ -1,6 +1,6 @@
 *wezterm-types-wezterm-status.txt*                      `wezterm-status` types
 
-`wezterm-status`
+WEZTERM-STATUS ~
 
 You can import type annotations for `yriveiro/wezterm-status`
 <https://github.com/yriveiro/wezterm-status> as shown below:

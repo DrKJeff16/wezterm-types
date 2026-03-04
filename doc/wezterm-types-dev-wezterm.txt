@@ -1,6 +1,6 @@
 *wezterm-types-dev-wezterm.txt*                            `dev-wezterm` types
 
-`dev.wezterm`
+DEV.WEZTERM ~
 
 You can import type annotations for `ChrisGVE/dev.wezterm`
 <https://github.com/ChrisGVE/dev.wezterm> as shown below:
