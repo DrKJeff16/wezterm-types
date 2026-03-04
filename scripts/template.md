@@ -1,4 +1,4 @@
-`repository`
+### `repository`
 
 You can import type annotations for
 [`username/repository`](https://github.com/username/repository) as shown below:
