@@ -25,6 +25,7 @@ We will keep adding more community plugins as we find them.
 - [stack.wez](./stack-wez.md)
 - [tabline.wez](./tabline_wez.md)
 - [tabsets.wezterm](./tabsets.md)
+- [toggle_terminal.wez](./toggle_terminal.md)
 - [wez-pain-control](./wez-pain-control.md)
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-cmd-sender](./cmd-sender.md)
