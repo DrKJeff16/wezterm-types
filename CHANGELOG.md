@@ -1,5 +1,16 @@
 # Changelog
 
+## [v2.5.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.5.0-1) (2026-03-04)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.4.0-1...v2.5.0-1)
+
+**Implemented enhancements:**
+
+- feat\(toggle\_terminal.wez\): add type annotations [\#134](https://github.com/DrKJeff16/wezterm-types/pull/134) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(listeners.wezterm\): add type annotations [\#133](https://github.com/DrKJeff16/wezterm-types/pull/133) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-cmd-sender\): add type annotations [\#132](https://github.com/DrKJeff16/wezterm-types/pull/132) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-tabs\): add type annotations [\#131](https://github.com/DrKJeff16/wezterm-types/pull/131) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.4.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.4.0-1) (2026-03-03)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.3.0-1...v2.4.0-1)
