@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 03
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 04
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -134,6 +134,8 @@ issue.**
   wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-wez-pain-control.txt
 
   wez-tmux                           docs/wez-tmux.md                   :h wezterm-types-wez-tmux.txt
+
+  wezterm-cmd-sender                 docs/cmd-sender.md                 :h wezterm-types-cmd-sender.txt
 
   wezterm-config.nvim                docs/wezterm-config.md             :h wezterm-types-wezterm-config.txt
 
