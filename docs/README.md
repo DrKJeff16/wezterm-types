@@ -17,6 +17,7 @@ We will keep adding more community plugins as we find them.
 - [pivot_panes.wezterm](./pivot_panes.md)
 - [presentation.wez](./presentation_wez.md)
 - [quick_domains.wezterm](./quick_domains.md)
+- [quickselect.wezterm](./quickselect.md)
 - [resurrect.wezterm](./resurrect.md)
 - [rosepine](./rosepine.md)
 - [sessionizer.wezterm](./sessionizer.md)
