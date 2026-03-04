@@ -3,23 +3,16 @@
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
 
-<https://github.com/michaelbrusegard/awesome-wezterm> |
-<https://github.com/rockerBOO/awesome-neovim>
-
-- Credits <https://github.com/DrKJeff16/wezterm-types/blob/main/CREDITS.md>
-- Roadmap <https://github.com/DrKJeff16/wezterm-types/discussions/48>
-- Discussions <https://github.com/DrKJeff16/wezterm-types/discussions>
 
 
+This project aims to provide LuaCATS-like LuaLS type annotations
+<https://luals.github.io/wiki/annotations/> for your WezTerm
+<https://github.com/wezterm/wezterm> config.
 
-This project aims to provide LuaCATS <https://github.com/LuaCATS>-like Lua
-Language Server type annotations <https://luals.github.io/wiki/annotations/>
-for your WezTerm <https://github.com/wezterm/wezterm> config.
-
-Example videos can be found in `EXAMPLES.md`
+Example videos can be found in EXAMPLES.md
 <https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md>.
 
-**NOTE**For any missing or unclear types you should always double-check the
+NOTE: For any missing or unclear types you should always double-check the
 WezTerm Lua Reference <https://wezterm.org/config/lua/general.html>. If using
 an annotated plugin featured in this repository please refer to its author for
 any unclear types.
@@ -28,28 +21,22 @@ any unclear types.
 FEATURES                                              *wezterm-types-features*
 
 - LuaCATS-like type annotations
-- Built-in colorschemes included <https://github.com/DrKJeff16/wezterm-types/blob/main/lua/wezterm/types/colorschemes.lua> (`config.color_scheme`)
+- Built-in colorschemes included (`config.color_scheme`)
 - Up-to-date descriptions
-- WezTerm plugin annotations (see the |wezterm-types-featured-plugins-section|)
-- Function overrides (e.g. `wezterm.on()`)
-- Neovim <https://neovim.io/> support:
-    - Through `folke/lazydev.nvim` <https://github.com/folke/lazydev.nvim>
+- Community plugin annotations
+- Neovim support
+    - Through lazydev.nvim
     - Through the built-in LSP API
-- VSCode/VSCodium support by cloning this into `~/.config/wezterm`,
-    then editing your config in that directory
+- VSCode/VSCodium support by cloning this into `~/.config/wezterm`, then editing your config
+    in that directory
 
 ------------------------------------------------------------------------------
 
 TABLE OF CONTENTS                            *wezterm-types-table-of-contents*
 
 - |wezterm-types-installation|
-    - |wezterm-types-luarocks|
-    - |wezterm-types-neovim|
 - |wezterm-types-featured-plugins|
 - |wezterm-types-usage|
-    - |wezterm-types-using-lazydev.nvim|
-    - |wezterm-types-using-the-built-in-neovim-lsp|
-- |wezterm-types-license|
 
 ------------------------------------------------------------------------------
 
@@ -71,7 +58,7 @@ To get it running in Neovim please refer to this discussion
 
 NEOVIM ~
 
-We recommend using `folke/lazy.nvim` <https://github.com/folke/lazy.nvim> as a
+We recommend using folke/lazy.nvim <https://github.com/folke/lazy.nvim> as a
 package manager:
 
 >lua
@@ -90,9 +77,9 @@ This project also features type annotations for various WezTerm plugins.
 **If you want to have your plugin featured please request it through an
 issue.**
 
-  ---------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------
   Plugin                             Documentation                      Neovim Help
-  ---------------------------------- ---------------------------------- -----------------------------------------------
+  ---------------------------------- ---------------------------------- --------------------------------------------
   ai-commander.wezterm               docs/ai-commander.md               :h wezterm-types-ai-commander.txt
 
   ai-helper.wezterm                  docs/ai-helper.md                  :h wezterm-types-ai-helper.txt
@@ -125,7 +112,8 @@ issue.**
 
   smart-splits.nvim                  docs/smart-splits.md               :h wezterm-types-smart-splits.txt
 
-  smart_workspace_switcher.wezterm   docs/smart_workspace_switcher.md   :h wezterm-types-smart_workspace_switcher.txt
+  smart_workspace_switcher.wezterm   docs/smart_workspace_switcher.md   :h
+                                                                        wezterm-types-smart_workspace_switcher.txt
 
   stack.wez                          docs/stack-wez.md                  :h wezterm-types-stack-wez.txt
 
@@ -154,7 +142,7 @@ issue.**
   workspacesionizer.wezterm          docs/workspacesionizer.md          :h wezterm-types-workspacesionizer.txt
 
   wsinit.wezterm                     docs/wsinit.md                     :h wezterm-types-wsinit.txt
-  ---------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
@@ -179,7 +167,7 @@ checking and autocompletion for WezTerm configuration options.
 
 USING LAZYDEV.NVIM ~
 
-Install `lazydev.nvim` <https://github.com/folke/lazydev.nvim> as suggested:
+Install lazydev.nvim <https://github.com/folke/lazydev.nvim> as suggested:
 
 >lua
     {
@@ -241,77 +229,6 @@ Add the install path of `wezterm-types` in your `lua_ls` config.
 
 ------------------------------------------------------------------------------
 
-COLLABORATORS                                    *wezterm-types-collaborators*
-
-
-
-
-LM
-
-
-
-Gonzalo Stoll
-
-
-
-Guennadi Maximov C
-
-
-
-Justin Angeles
-
-CONTRIBUTORS                                      *wezterm-types-contributors*
-
-
-
-
-Guennadi Maximov C
-
-
-
-Justin Angeles
-
-
-
-LM
-
-
-
-C.D. MacEachern
-
-
-
-Chris Grieser
-
-
-
-Md. Iftakhar Awal Chowdhury
-
-
-
-Luis Calle
-
-
-
-Zoltán Reegn
-
-
-
-Zuyoutoki
-------------------------------------------------------------------------------
-
-LICENSE                                                *wezterm-types-license*
-
-MIT <https://github.com/DrKJeff16/wezterm-types/blob/main/LICENSE>
-
-------------------------------------------------------------------------------
-
-
-==============================================================================
-2. Links                                                 *wezterm-types-links*
-
-1. *Mentioned in Awesome WezTerm*: https://awesome.re/mentioned-badge.svg
-2. *Mentioned in Awesome Neovim*: https://awesome.re/mentioned-badge.svg
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
