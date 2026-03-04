@@ -849,7 +849,7 @@ local weight = {
 ---
 ---**Attempting to assign other types will raise an error.**
 ---
----@field GLOBAL userdata
+---@field GLOBAL userdata|table
 ---Helper for defining key assignment actions
 ---in your configuration file.
 ---
