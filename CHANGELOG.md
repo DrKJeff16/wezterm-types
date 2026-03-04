@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.6.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.6.0-1) (2026-03-04)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.5.2-1...v2.6.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-replay\): add type annotations [\#138](https://github.com/DrKJeff16/wezterm-types/pull/138) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(quickselect.wezterm\): add type annotations [\#137](https://github.com/DrKJeff16/wezterm-types/pull/137) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.5.2-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.5.2-1) (2026-03-04)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.5.1-1...v2.5.2-1)
