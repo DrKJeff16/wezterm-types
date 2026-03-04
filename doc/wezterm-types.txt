@@ -105,6 +105,8 @@ issue.**
 
   lib.wezterm                        docs/lib-wezterm.md                :h wezterm-types-lib-wezterm.txt
 
+  listeners.wezterm                  docs/listeners-wezterm.md          :h wezterm-types-listeners-wezterm.txt
+
   modal.wezterm                      docs/modal_wezterm.md              :h wezterm-types-modal_wezterm.txt
 
   pinned-tabs.wezterm                docs/pinned-tabs.md                :h wezterm-types-pinned-tabs.txt
