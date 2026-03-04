@@ -289,6 +289,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for toggle_terminal.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-toggle_terminal
+          description: "`toggle_terminal` types"
+          pandoc: docs/toggle_terminal.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wez-pain-control.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
