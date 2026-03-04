@@ -133,6 +133,8 @@ issue.**
 
   wezterm-config.nvim                docs/wezterm-config.md             :h wezterm-types-wezterm-config.txt
 
+  wezterm-replay                     docs/replay.md                     :h wezterm-types-replay.txt
+
   wezterm-status                     docs/wezterm-status.md             :h wezterm-types-wezterm-status.txt
 
   wezterm-tabs                       docs/wezterm-tabs.md               :h wezterm-types-wezterm-tabs.txt
