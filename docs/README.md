@@ -11,6 +11,7 @@ We will keep adding more community plugins as we find them.
 - [battery.wez](./battery_wez.md)
 - [dev.wezterm](./dev-wezterm.md)
 - [lib.wezterm](./lib-wezterm.md)
+- [listeners.wezterm](./listeners-wezterm.md)
 - [modal.wezterm](./modal_wezterm.md)
 - [pinned-tabs.wezterm](./pinned-tabs.md)
 - [pivot_panes.wezterm](./pivot_panes.md)
