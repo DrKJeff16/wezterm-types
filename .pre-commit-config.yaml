@@ -3,11 +3,19 @@ repos:
     rev: v6.0.0
     hooks:
       - id: end-of-file-fixer
+        verbose: true
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.6
     hooks:
       - id: remove-crlf
+        verbose: true
       - id: forbid-crlf
+        verbose: true
+  - repo: https://github.com/qoomon/git-conventional-commits
+    rev: v2.7.2
+    hooks:
+      - id: conventional-commits
+        verbose: true
   - repo: local
     hooks:
       - id: stylua
