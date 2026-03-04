@@ -104,6 +104,8 @@ issue.**
 
   quick_domains.wezterm              docs/quick_domains.md              :h wezterm-types-quick_domains.txt
 
+  quickselect.wezterm                docs/quickselect.md                :h wezterm-types-quickselect.txt
+
   resurrect.wezterm                  docs/resurrect.md                  :h wezterm-types-resurrect.txt
 
   rosepine                           docs/rosepine.md                   :h wezterm-types-rosepine.txt
