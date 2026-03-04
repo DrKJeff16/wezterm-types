@@ -185,6 +185,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for quickselect.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-quickselect
+          description: "`quickselect` types"
+          pandoc: docs/quickselect.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for resurrect.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
