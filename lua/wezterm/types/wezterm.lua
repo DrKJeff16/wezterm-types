@@ -822,6 +822,11 @@ local weight = {
 ---at the top of your configuration file to enable it.
 ---
 ---@class Wezterm: ExecDomain
+---`wezterm.GLOBAL` is a special `userdata` value that acts
+---like a table.
+---Writing to keys will copy the data that you assign
+---into a global in-memory table and allow it to be read back later.
+---
 ---Provides global, in-process, in-memory, data storage
 ---for JSON-like variables that persists across config reloads.
 ---
@@ -830,11 +835,6 @@ local weight = {
 ---If you'd like to keep track of state that lasts
 ---for the lifetime of your wezterm process then
 ---you cannot simply use global variables in the Lua script.
----
----`wezterm.GLOBAL` is a special `userdata` value that acts
----like a table.
----Writing to keys will copy the data that you assign
----into a global in-memory table and allow it to be read back later.
 ---
 ---Reads and writes from/to `wezterm.GLOBAL` are thread-safe
 ---but don't currently provide synchronization primitives for managing
@@ -849,7 +849,7 @@ local weight = {
 ---
 ---**Attempting to assign other types will raise an error.**
 ---
----@field GLOBAL userdata|table
+---@field GLOBAL table<string, string|number|table|boolean>
 ---Helper for defining key assignment actions
 ---in your configuration file.
 ---
