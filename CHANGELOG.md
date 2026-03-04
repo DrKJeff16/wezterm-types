@@ -1,5 +1,21 @@
 # Changelog
 
+## [v2.5.2-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.5.2-1) (2026-03-04)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.5.1-1...v2.5.2-1)
+
+**Merged pull requests:**
+
+- fix\(docs\): update broken link in `README.md` [\#136](https://github.com/DrKJeff16/wezterm-types/pull/136) ([zsh-sage](https://github.com/zsh-sage))
+
+## [v2.5.1-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.5.1-1) (2026-03-04)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.5.0-1...v2.5.1-1)
+
+**Merged pull requests:**
+
+- fix\(docs\): update broken link in README.md [\#135](https://github.com/DrKJeff16/wezterm-types/pull/135) ([zsh-sage](https://github.com/zsh-sage))
+
 ## [v2.5.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.5.0-1) (2026-03-04)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.4.0-1...v2.5.0-1)
