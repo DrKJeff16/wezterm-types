@@ -1,4 +1,4 @@
-`sessionizer.wezterm`
+### `sessionizer.wezterm`
 
 You can import type annotations for
 [`mikkasendke/sessionizer.wezterm`](https://github.com/mikkasendke/sessionizer.wezterm) as shown below:

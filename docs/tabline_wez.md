@@ -1,4 +1,4 @@
-`tabline.wez`
+### `tabline.wez`
 
 You can import type annotations for
 [`michaelbrusegard/tabline.wez`](https://github.com/michaelbrusegard/tabline.wez) as show below:

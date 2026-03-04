@@ -1,4 +1,4 @@
-`bar.wezterm`
+### `bar.wezterm`
 
 You can import type annotations for
 [`adriankarlen/bar.wezterm`](https://github.com/adriankarlen/bar.wezterm) as shown below:

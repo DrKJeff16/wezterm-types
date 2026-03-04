@@ -1,4 +1,4 @@
-`quick_domains.wezterm`
+### `quick_domains.wezterm`
 
 You can import type annotations for
 [`DavidRR-F/quick_domains.wezterm`](https://github.com/DavidRR-F/quick_domains.wezterm) as shown below:

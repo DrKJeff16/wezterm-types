@@ -1,4 +1,4 @@
-`stack.wez`
+### `stack.wez`
 
 You can import type annotations for
 [`bad-noodles/stack.wez`](https://github.com/bad-noodles/stack.wez) as shown below:

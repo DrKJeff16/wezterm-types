@@ -1,4 +1,4 @@
-`wezterm-tabs`
+### `wezterm-tabs`
 
 You can import type annotations for
 [`yriveiro/wezterm-tabs`](https://github.com/yriveiro/wezterm-tabs) as shown below:

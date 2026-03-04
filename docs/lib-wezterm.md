@@ -1,4 +1,4 @@
-`lib.wezterm`
+### `lib.wezterm`
 
 You can import type annotations for
 [`ChrisGVE/lib.wezterm`](https://github.com/ChrisGVE/lib.wezterm) as shown below:

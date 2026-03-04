@@ -1,4 +1,4 @@
-`toggle_terminal.wez`
+### `toggle_terminal.wez`
 
 You can import type annotations for
 [`zsh-sage/toggle_terminal.wez`](https://github.com/zsh-sage/toggle_terminal.wez) as shown below:

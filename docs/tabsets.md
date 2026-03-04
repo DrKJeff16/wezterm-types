@@ -1,4 +1,4 @@
-`tabsets.wezterm`
+### `tabsets.wezterm`
 
 You can import type annotations for
 [`srackham/tabsets.wezterm`](https://github.com/srackham/tabsets.wezterm) as shown below:

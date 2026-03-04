@@ -1,4 +1,4 @@
-`wez-tmux`
+### `wez-tmux`
 
 You can import type annotations for [`sei40kr/wez-tmux`](https://github.com/sei40kr/wez-tmux)
 as shown below:

@@ -1,4 +1,4 @@
-`wezterm-cmd-sender`
+### `wezterm-cmd-sender`
 
 You can import type annotations for
 [`aureolebigben/wezterm-cmd-sender`](https://github.com/aureolebigben/wezterm-cmd-sender) as shown below:

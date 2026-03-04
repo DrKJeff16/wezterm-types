@@ -1,4 +1,4 @@
-`workspacesionizer.wezterm`
+### `workspacesionizer.wezterm`
 
 You can import type annotations for
 [`vieitesss/workspacesionizer.wezterm`](https://github.com/vieitesss/workspacesionizer.wezterm)

@@ -1,4 +1,4 @@
-`dev.wezterm`
+### `dev.wezterm`
 
 You can import type annotations for
 [`ChrisGVE/dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm) as shown below:

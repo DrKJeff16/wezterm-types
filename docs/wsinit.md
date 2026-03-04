@@ -1,4 +1,4 @@
-`wsinit.wezterm`
+### `wsinit.wezterm`
 
 You can import type annotations for
 [`JuanraCM/wsinit.wezterm`](https://github.com/JuanraCM/wsinit.wezterm) as shown below:

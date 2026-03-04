@@ -1,4 +1,4 @@
-`pivot_panes.wezterm`
+### `pivot_panes.wezterm`
 
 You can import type annotations for
 [`ChrisGVE/pivot_panes.wezterm`](https://github.com/ChrisGVE/pivot_panes.wezterm) as shown below:

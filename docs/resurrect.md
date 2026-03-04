@@ -1,4 +1,4 @@
-`resurrect.wezterm`
+### `resurrect.wezterm`
 
 You can import type annotations for
 [`MLFlexer/resurrect.wezterm`](https://github.com/MLFlexer/resurrect.wezterm) as shown below:

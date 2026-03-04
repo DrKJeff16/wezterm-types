@@ -1,4 +1,4 @@
-`rosepine`
+### `rosepine`
 
 You can import type annotations for [`neapsix/wezterm`](https://github.com/neapsix/wezterm)
 as shown below:

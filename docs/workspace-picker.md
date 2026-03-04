@@ -1,4 +1,4 @@
-`workspace-picker.wezterm`
+### `workspace-picker.wezterm`
 
 You can import type annotations for
 [`isseii10/workspace-picker.wezterm`](https://github.com/isseii10/workspace-picker.wezterm) as shown below:

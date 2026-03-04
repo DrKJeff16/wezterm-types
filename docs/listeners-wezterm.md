@@ -1,4 +1,4 @@
-`listeners.wezterm`
+### `listeners.wezterm`
 
 You can import type annotations for
 [`ChrisGVE/listeners.wezterm`](https://github.com/ChrisGVE/listeners.wezterm) as shown below:

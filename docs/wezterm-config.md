@@ -1,4 +1,4 @@
-`wezterm-config.nvim`
+### `wezterm-config.nvim`
 
 You can import type annotations for
 [`winter-again/wezterm-config.nvim`](https://github.com/winter-again/wezterm-config.nvim)

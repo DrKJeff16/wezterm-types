@@ -1,4 +1,4 @@
-`battery.wez`
+### `battery.wez`
 
 You can import type annotations for
 [`rootiest/battery.wez`](https://github.com/rootiest/battery.wez) as shown below:

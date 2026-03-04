@@ -1,4 +1,4 @@
-`wezterm-theme-rotator`
+### `wezterm-theme-rotator`
 
 You can import type annotations for
 [`koh-sh/wezterm-theme-rotator`](https://github.com/koh-sh/wezterm-theme-rotator) as shown below:

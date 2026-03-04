@@ -1,4 +1,4 @@
-`wezterm-status`
+### `wezterm-status`
 
 You can import type annotations for
 [`yriveiro/wezterm-status`](https://github.com/yriveiro/wezterm-status) as shown below:

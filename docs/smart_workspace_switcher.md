@@ -1,4 +1,4 @@
-`smart_workspace_switcher.wezterm`
+### `smart_workspace_switcher.wezterm`
 
 You can import type annotations for
 [`MLFlexer/smart_workspace_switcher.wezterm`](https://github.com/MLFlexer/smart_workspace_switcher.wezterm) as shown below:
