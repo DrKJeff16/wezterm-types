@@ -254,7 +254,7 @@ function M.get_theme() end
 ---@param config Config
 function M.apply_to_config(config) end
 
----@param window Window
+---@param window Window The `Window` object.
 ---@param tab TabInformation
 function M.window(window, tab) end
 

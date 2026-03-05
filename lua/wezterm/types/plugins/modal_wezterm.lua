@@ -8,7 +8,7 @@
 ---@field key_tables Key[]
 local M = {}
 
----@param window Window
+---@param window Window The `Window` object.
 function M.get_mode(window) end
 
 ---@param name string
@@ -30,17 +30,17 @@ function M.enable_defaults(url) end
 
 ---Sets the current modal status to the right status.
 ---
----@param window Window
+---@param window Window The `Window` object.
 function M.set_right_status(window) end
 
 ---Sets the window title by emitting a OSC 2 escape sequence.
----@param pane Pane
+---@param pane Pane The `Pane` object.
 ---@param name? string
 function M.set_window_title(pane, name) end
 
 ---Resets the window title to the foreground process by emitting a OSC 2 escape sequence.
 ---
----@param pane Pane
+---@param pane Pane The `Pane` object.
 function M.reset_window_title(pane) end
 
 ---Activates mode.

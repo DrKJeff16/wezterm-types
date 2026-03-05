@@ -108,7 +108,7 @@ local F = {}
 ---A fuzzy finder to restore saved state.
 ---
 ---@param window MuxWindow
----@param pane Pane
+---@param pane Pane The `Pane` object.
 ---@param callback fun(id: string, label: string, save_state_dir: string)
 ---@param opts? Resurrect.FuzzyLoadOpts
 function F.fuzzy_load(window, pane, callback, opts) end

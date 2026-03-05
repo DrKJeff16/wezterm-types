@@ -45,13 +45,13 @@ local Pivot = {}
 
 ---Capture state of a pane.
 ---
----@param pane Pane
+---@param pane Pane The `Pane` object.
 ---@return PivotPaneState pane_state
 function Pivot.capture_pane_state(pane) end
 
 ---Restore pane state.
 ---
----@param pane Pane
+---@param pane Pane The `Pane` object.
 ---@param state PivotPaneState
 function Pivot.restore_pane_state(pane, state) end
 

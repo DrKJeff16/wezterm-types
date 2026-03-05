@@ -42,12 +42,12 @@ local M = {}
 ---@param plugin_config AICommanderConfig
 function M.apply_to_config(wezterm_config, plugin_config) end
 
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 function M.show_history(window, pane) end
 
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 function M.show_prompt(window, pane) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

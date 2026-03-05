@@ -5,8 +5,8 @@
 ---@field filter string
 local A = {}
 
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 ---@param selection string
 ---@param opts Quick_SelectOpts
 function A.action(window, pane, selection, opts) end
@@ -38,8 +38,8 @@ local M = {}
 ---@param opts? Quick_SelectOpts
 function M.apply_to_config(config, opts) end
 
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 ---@param url string
 ---@param opts Quick_SelectOpts
 function M.open_with_hx(window, pane, url, opts) end

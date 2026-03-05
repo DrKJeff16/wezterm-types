@@ -120,7 +120,7 @@ function M:get_selection_escapes_for_pane() end
 ---This is the same text that would be copied to the clipboard
 ---if the `CopyTo` action were to be performed.
 ---
----@param pane Pane
+---@param pane Pane The `Pane` object.
 ---@return string text
 function M:get_selection_text_for_pane(pane) end
 
@@ -171,7 +171,7 @@ function M:mux_window() end
 ---and mouse configuration options.
 ---
 ---@param key_assignment Action
----@param pane Pane
+---@param pane Pane The `Pane` object.
 function M:perform_action(key_assignment, pane) end
 
 ---Restores the window from the maximized state.

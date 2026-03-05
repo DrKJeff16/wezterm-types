@@ -38,8 +38,8 @@ function M.setup(opts) end
 
 ---Display workspace selector.
 ---
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 function M.show_workspace_selector(window, pane) end
 
 ---Rename workspace.

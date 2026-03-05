@@ -48,8 +48,8 @@ function M.show(schema) end
 ---@return fun(entries: Entry[]) func
 function M.for_each_entry(f) end
 
----@param window Window
----@param pane Pane
+---@param window Window The `Window` object.
+---@param pane Pane The `Pane` object.
 ---@param id string
 ---@param label string
 function M.DefaultCallback(window, pane, id, label) end
