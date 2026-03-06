@@ -1,4 +1,4 @@
-*wezterm-types-ai-helper.txt*                                `ai-helper` types
+*wezterm-types-plugin.ai-helper.txt*                         `ai-helper` types
 
 AI-HELPER.WEZTERM ~
 

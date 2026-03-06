@@ -1,4 +1,4 @@
-*wezterm-types-wezterm-theme-rotator.txt*        `wezterm-theme-rotator` types
+*wezterm-types-plugin.wezterm-theme-rotator.txt* `wezterm-theme-rotator` types
 
 WEZTERM-THEME-ROTATOR ~
 

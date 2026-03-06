@@ -1,4 +1,4 @@
-*wezterm-types-wez-tmux.txt*                                  `wez-tmux` types
+*wezterm-types-plugin.wez-tmux.txt*                           `wez-tmux` types
 
 WEZ-TMUX ~
 

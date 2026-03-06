@@ -1,4 +1,4 @@
-*wezterm-types-quickselect.txt*                            `quickselect` types
+*wezterm-types-plugin.quickselect.txt*                     `quickselect` types
 
 QUICKSELECT.WEZTERM ~
 

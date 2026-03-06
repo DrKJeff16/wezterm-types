@@ -1,4 +1,4 @@
-*wezterm-types-smart_workspace_switcher.txt*  `smart_workspace_switcher` types
+*wezterm-types-plugin.smart-workspace-switcher.txt*`smart-workspace-switcher` types
 
 SMART_WORKSPACE_SWITCHER.WEZTERM ~
 

@@ -1,4 +1,4 @@
-*wezterm-types-battery_wez.txt*                            `battery_wez` types
+*wezterm-types-plugin.battery.txt*                             `battery` types
 
 BATTERY.WEZ ~
 

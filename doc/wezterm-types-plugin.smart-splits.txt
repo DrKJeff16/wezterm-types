@@ -1,4 +1,4 @@
-*wezterm-types-smart-splits.txt*                          `smart-splits` types
+*wezterm-types-plugin.smart-splits.txt*                   `smart-splits` types
 
 SMART-SPLITS.NVIM ~
 

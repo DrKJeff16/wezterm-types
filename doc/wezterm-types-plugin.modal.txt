@@ -1,4 +1,4 @@
-*wezterm-types-modal_wezterm.txt*                        `modal_wezterm` types
+*wezterm-types-plugin.modal.txt*                                 `modal` types
 
 MODAL.WEZTERM ~
 

@@ -1,4 +1,4 @@
-*wezterm-types-wezterm-status.txt*                      `wezterm-status` types
+*wezterm-types-plugin.wezterm-status.txt*               `wezterm-status` types
 
 WEZTERM-STATUS ~
 

@@ -1,4 +1,4 @@
-*wezterm-types-resurrect.txt*                                `resurrect` types
+*wezterm-types-plugin.resurrect.txt*                         `resurrect` types
 
 RESURRECT.WEZTERM ~
 

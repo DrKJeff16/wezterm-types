@@ -1,4 +1,4 @@
-*wezterm-types-wez-pain-control.txt*                  `wez-pain-control` types
+*wezterm-types-plugin.wez-pain-control.txt*           `wez-pain-control` types
 
 WEZ-PAIN-CONTROL ~
 

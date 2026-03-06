@@ -1,4 +1,4 @@
-*wezterm-types-dev-wezterm.txt*                            `dev-wezterm` types
+*wezterm-types-plugin.dev.txt*                                     `dev` types
 
 DEV.WEZTERM ~
 

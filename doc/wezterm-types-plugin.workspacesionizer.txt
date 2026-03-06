@@ -1,4 +1,4 @@
-*wezterm-types-workspacesionizer.txt*                `workspacesionizer` types
+*wezterm-types-plugin.workspacesionizer.txt*         `workspacesionizer` types
 
 WORKSPACESIONIZER.WEZTERM ~
 

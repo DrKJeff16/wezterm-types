@@ -1,4 +1,4 @@
-*wezterm-types-tabsets.txt*                                    `tabsets` types
+*wezterm-types-plugin.tabsets.txt*                             `tabsets` types
 
 TABSETS.WEZTERM ~
 

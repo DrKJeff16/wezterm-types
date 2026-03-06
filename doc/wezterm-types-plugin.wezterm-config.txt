@@ -1,4 +1,4 @@
-*wezterm-types-wezterm-config.txt*                      `wezterm-config` types
+*wezterm-types-plugin.wezterm-config.txt*               `wezterm-config` types
 
 WEZTERM-CONFIG.NVIM ~
 

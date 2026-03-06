@@ -1,4 +1,4 @@
-*wezterm-types-presentation_wez.txt*                  `presentation_wez` types
+*wezterm-types-plugin.presentation.txt*                   `presentation` types
 
 PRESENTATION.WEZ ~
 

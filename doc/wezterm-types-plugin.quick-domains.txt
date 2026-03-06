@@ -1,4 +1,4 @@
-*wezterm-types-quick_domains.txt*                        `quick_domains` types
+*wezterm-types-plugin.quick-domains.txt*                 `quick-domains` types
 
 QUICK_DOMAINS.WEZTERM ~
 
