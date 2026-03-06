@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 04
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 06
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -84,25 +84,25 @@ issue.**
 
   ai-helper.wezterm                  docs/ai-helper.md                  :h wezterm-types-ai-helper.txt
 
-  bar.wezterm                        docs/bar_wezterm.md                :h wezterm-types-bar_wezterm.txt
+  bar.wezterm                        docs/bar.md                        :h wezterm-types-bar.txt
 
-  battery.wez                        docs/battery_wez.md                :h wezterm-types-battery_wez.txt
+  battery.wez                        docs/battery.md                    :h wezterm-types-battery.txt
 
-  dev.wezterm                        docs/dev-wezterm.md                :h wezterm-types-dev-wezterm.txt
+  dev.wezterm                        docs/dev.md                        :h wezterm-types-dev.txt
 
-  lib.wezterm                        docs/lib-wezterm.md                :h wezterm-types-lib-wezterm.txt
+  lib.wezterm                        docs/lib.md                        :h wezterm-types-lib.txt
 
-  listeners.wezterm                  docs/listeners-wezterm.md          :h wezterm-types-listeners-wezterm.txt
+  listeners.wezterm                  docs/listeners.md                  :h wezterm-types-listeners.txt
 
-  modal.wezterm                      docs/modal_wezterm.md              :h wezterm-types-modal_wezterm.txt
+  modal.wezterm                      docs/modal.md                      :h wezterm-types-modal.txt
 
   pinned-tabs.wezterm                docs/pinned-tabs.md                :h wezterm-types-pinned-tabs.txt
 
-  pivot_panes.wezterm                docs/pivot_panes.md                :h wezterm-types-pivot_panes.txt
+  pivot_panes.wezterm                docs/pivot-panes.md                :h wezterm-types-pivot-panes.txt
 
-  presentation.wez                   docs/presentation_wez.md           :h wezterm-types-presentation_wez.txt
+  presentation.wez                   docs/presentation.md               :h wezterm-types-presentation.txt
 
-  quick_domains.wezterm              docs/quick_domains.md              :h wezterm-types-quick_domains.txt
+  quick_domains.wezterm              docs/quick-domains.md              :h wezterm-types-quick_domains.txt
 
   quickselect.wezterm                docs/quickselect.md                :h wezterm-types-quickselect.txt
 
@@ -114,16 +114,16 @@ issue.**
 
   smart-splits.nvim                  docs/smart-splits.md               :h wezterm-types-smart-splits.txt
 
-  smart_workspace_switcher.wezterm   docs/smart_workspace_switcher.md   :h
+  smart_workspace_switcher.wezterm   docs/smart-workspace-switcher.md   :h
                                                                         wezterm-types-smart_workspace_switcher.txt
 
-  stack.wez                          docs/stack-wez.md                  :h wezterm-types-stack-wez.txt
+  stack.wez                          docs/stack.md                      :h wezterm-types-stack.txt
 
-  tabline.wez                        docs/tabline_wez.md                :h wezterm-types-tabline_wez.txt
+  tabline.wez                        docs/tabline.md                    :h wezterm-types-tabline.txt
 
   tabsets.wezterm                    docs/tabsets.md                    :h wezterm-types-tabsets.txt
 
-  toggle_terminal.wez                docs/toggle_terminal.md            :h wezterm-types-toggle_terminal.txt
+  toggle_terminal.wez                docs/toggle-terminal.md            :h wezterm-types-toggle-terminal.txt
 
   wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-wez-pain-control.txt
 
