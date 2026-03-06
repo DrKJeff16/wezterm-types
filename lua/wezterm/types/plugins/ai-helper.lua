@@ -2,11 +2,11 @@
 ---@diagnostic disable:unused-local
 
 ---@class AIHelperConfigSpec
----@field luarocks_path? string
 ---@field keybinding_with_pane? Key
----@field timeout? integer
----@field show_loading? boolean
+---@field luarocks_path? string
 ---@field share_n_lines? integer
+---@field show_loading? boolean
+---@field timeout? integer
 
 ---@class AIHelperConfigLocal: AIHelperConfigSpec
 ---@field lms_path string
@@ -17,20 +17,20 @@
 ---@field type 'google'
 
 ---@class AIHelperConfigOllama: AIHelperConfigSpec
+---@field model? string
 ---@field ollama_path string,
 ---@field type 'ollama'
----@field model? string
 
 ---@class AIHelperConfigOpenAI: AIHelperConfigSpec
----@field type 'http'
----@field api_url string
 ---@field api_key string
----@field model string
+---@field api_url string
 ---@field headers? table<string, string>
+---@field model string
+---@field type 'http'
 
 ---@alias AIHelperConfig
----|AIHelperConfigLocal
 ---|AIHelperConfigGemini
+---|AIHelperConfigLocal
 ---|AIHelperConfigOllama
 ---|AIHelperConfigOpenAI
 

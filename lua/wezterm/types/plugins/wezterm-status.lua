@@ -132,8 +132,8 @@ local M = {}
 
 ---Applies configuration to Wezterm's status bar.
 ---
----@param wezterm_config Config The Wezterm configuration table
----@param opts? WeztermStatusConfig Optional configuration overrides
+---@param wezterm_config Config The Wezterm configuration table.
+---@param opts? WeztermStatusConfig Optional configuration overrides.
 function M.apply_to_config(wezterm_config, opts) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

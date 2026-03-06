@@ -12,23 +12,23 @@ local A = {}
 function A.action(window, pane, selection, opts) end
 
 ---@class Quick_SelectOpts
----@field key? string
----@field mods? string
----@field text_extensions? table<string, boolean>
----@field patterns? string[]
 ---@field actions? Quick_SelectOpts.Action[]
 ---@field direction? PaneDirection
+---@field key? string
+---@field mods? string
+---@field patterns? string[]
+---@field text_extensions? table<string, boolean>
 
 ---@class Quick_Select.Filters
 local F = {}
 
 ---@param str string
----@return fun(selection: string): startswith: boolean
-function F.startswith(str) end
-
----@param str string
 ---@return fun(selection: string): ...: any
 function F.match(str) end
+
+---@param str string
+---@return fun(selection: string): startswith: boolean
+function F.startswith(str) end
 
 ---@class Quick_Select
 ---@field filters Quick_Select.Filters

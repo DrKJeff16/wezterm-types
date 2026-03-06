@@ -5,7 +5,8 @@
 ---@field SpawnPane { EmitEvent: string }
 local Action = {}
 
----@return { EmitEvent: string }
+---@param direction integer
+---@return { EmitEvent: string } action_callback
 function Action.ActivatePaneRelative(direction) end
 
 ---@enum (key) SpawnDirection
@@ -17,13 +18,13 @@ local spawn_direction = {
 }
 
 ---@class StackWezTabInfo
----@field index integer
 ---@field count integer
+---@field index integer
 
 ---@class StackWezOpts
+---@field enrich_tab_title? boolean
 ---@field spawn_direction SpawnDirection
 ---@field spawn_domain? "CurrentPaneDomain"
----@field enrich_tab_title? boolean
 
 ---@class StackWez
 ---@field action StackWezAction

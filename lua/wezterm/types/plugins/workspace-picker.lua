@@ -2,33 +2,50 @@
 ---@diagnostic disable:unused-local
 
 ---@class WorkspacePickerColors
+---@field current_indicator? string
+---@field path? string
+---@field text? string
 ---@field workspace_prefix? string
 ---@field zoxide_prefix? string
----@field current_indicator? string
----@field text? string
----@field path? string
 
 ---@class WorkspacePickerKeybind: SendKeyParams
 ---@field mods string
 
 ---@class WorkspacePickerKeybinds
----@field show_picker? WorkspacePickerKeybind
 ---@field create_workspace? WorkspacePickerKeybind
 ---@field rename_workspace? WorkspacePickerKeybind
+---@field show_picker? WorkspacePickerKeybind
 
 ---@class WorkspacePickerLabels
+---@field current? string
 ---@field workspace? string
 ---@field zoxide? string
----@field current? string
 
 ---@class WorkspacePickerConfig
----@field zoxide_path? string
 ---@field colors? WorkspacePickerColors
----@field labels? WorkspacePickerLabels
 ---@field keybinds? WorkspacePickerKeybinds
+---@field labels? WorkspacePickerLabels
+---@field zoxide_path? string
 
 ---@class WorkspacePicker
 local M = {}
+
+---Add keybindings to your WezTerm config.
+---
+---@param config Config
+---@param opts? WorkspacePickerConfig
+---@return Config config
+function M.apply_to_config(config, opts) end
+
+---Create new workspace manually.
+---
+---@return { PromptInputLine: PromptInputLineParams } action
+function M.create_workspace_manually() end
+
+---Rename workspace.
+---
+---@return { PromptInputLine: PromptInputLineParams } action
+function M.rename_workspace() end
 
 ---Initialize configuration.
 ---
@@ -41,22 +58,5 @@ function M.setup(opts) end
 ---@param window Window The `Window` object.
 ---@param pane Pane The `Pane` object.
 function M.show_workspace_selector(window, pane) end
-
----Rename workspace.
----
----@return { PromptInputLine: PromptInputLineParams } action
-function M.rename_workspace() end
-
----Create new workspace manually.
----
----@return { PromptInputLine: PromptInputLineParams } action
-function M.create_workspace_manually() end
-
----Add keybindings to your WezTerm config.
----
----@param config Config
----@param opts? WorkspacePickerConfig
----@return Config config
-function M.apply_to_config(config, opts) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

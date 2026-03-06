@@ -1,6 +1,12 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
+---@enum (key) AICommanderConfig.Provider
+local provider = {
+  anthropic = 1,
+  openai = 1,
+}
+
 ---@class AICommanderConfig.APIKey
 ---Your Anthropic API key.
 ---
@@ -9,22 +15,10 @@
 ---
 ---@field openai? string
 
----@class AICommanderConfig.Model
----@field anthropic? string
----@field openai? string
+---@class AICommanderConfig.Model: AICommanderConfig.APIKey
 
 ---@class AICommanderConfig
----`"anthropic"` or `"openai"` (default: `"anthropic"`).
----
----@field provider? 'anthropic'|'openai'
----@field model? AICommanderConfig.Model
 ---@field api_key? AICommanderConfig.APIKey
----Maximum response length.
----
----@field max_tokens? integer
----Response creativity (`0.0` - `1.0`).
----
----@field temperature? number
 ---Number of commands to generate (default: `5`).
 ---
 ---@field command_count? integer
@@ -34,6 +28,16 @@
 ---Maximum number of history items.
 ---
 ---@field max_history? integer
+---Maximum response length.
+---
+---@field max_tokens? integer
+---@field model? AICommanderConfig.Model
+---`"anthropic"` or `"openai"` (default: `"anthropic"`).
+---
+---@field provider? AICommanderConfig.Provider
+---Response creativity (`0.0` - `1.0`).
+---
+---@field temperature? number
 
 ---@class AICommander
 local M = {}

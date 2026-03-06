@@ -55,13 +55,13 @@
 ---@class QuickDomains
 local M = {}
 
+---@param config Config
+---@param user_settings? QuickDomainsOpts
+function M.apply_to_config(config, user_settings) end
+
 ---@param icon string
 ---@param name string
 ---@return string str
 function M.formatter(icon, name) end
-
----@param config Config
----@param user_settings? QuickDomainsOpts
-function M.apply_to_config(config, user_settings) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

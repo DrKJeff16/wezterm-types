@@ -21,21 +21,21 @@ local log_level = {
 ---Process information returned from `get_pane_process()`.
 ---
 ---@class LibWeztermProcessInfo
----The process name.
----
----@field name string
 ---Process arguments (if available).
 ---
 ---@field args string[]
----Whether this appears to be a shell process.
----
----@field is_shell boolean
----Process ID if available.
----
----@field pid? integer
 ---Current working directory if available.
 ---
 ---@field cwd string
+---Whether this appears to be a shell process.
+---
+---@field is_shell boolean
+---The process name.
+---
+---@field name string
+---Process ID if available.
+---
+---@field pid? integer
 
 ---@class LibWezterm.Table
 local T = {}
@@ -63,6 +63,13 @@ function T.tbl_deep_extend(behavior, ...) end
 ---@class LibWezterm.FileIO
 local F = {}
 
+---Create the folder if it does not exist.
+---
+---@param path string
+---@return boolean|nil success
+---@return number|nil signal
+function F.ensure_folder_exists(path) end
+
 ---Execute a cmd and return its stdout.
 ---
 ---@param cmd string command
@@ -70,12 +77,12 @@ local F = {}
 ---@return string|nil error
 function F.execute(cmd) end
 
----Create the folder if it does not exist.
+---Read a file and return its content.
 ---
----@param path string
----@return boolean|nil success
----@return number|nil signal
-function F.ensure_folder_exists(path) end
+---@param file_path string full filename
+---@return boolean success result
+---@return string|nil content_or_error
+function F.read_file(file_path) end
 
 ---Write a file with the content of a string.
 ---
@@ -85,17 +92,30 @@ function F.ensure_folder_exists(path) end
 ---@return string|nil error
 function F.write_file(file_path, str) end
 
----Read a file and return its content.
----
----@param file_path string full filename
----@return boolean success result
----@return string|nil content_or_error
-function F.read_file(file_path) end
-
 ---@class LibWezterm.Math
 
 ---@class LibWezterm.String
 local S = {}
+
+---Generate a hash from an array by concatenating elements with commas
+---then applying the DJB2 hashing algorithm.
+--
+---@generic T
+---@param arr T[] Array of values to hash
+---@return string hashkey Hexadecimal representation of the hash
+function S.array_hash(arr) end
+
+---Get basename for dir/file.
+---
+---@param str string string with the dir/file
+---@return string|nil basename
+function S.basename(str) end
+
+---WezTerm module name decoder.
+---
+---@param encoded string
+---@return string decoded_str
+function S.decode_wezterm_dir(encoded) end
 
 ---Compute a hash key from a string using the DJB2 algorithm (Dan Bernstein).
 ---The DJB2 is a simple and fast non-cryptographic hash function.
@@ -108,11 +128,11 @@ local S = {}
 ---@return string hashkey Hexadecimal representation of the hash
 function S.hash(str) end
 
----Helper function to remove formatting esc sequences in the string.
+---Helper function to normalize path separator to `/`.
 ---
----@param str string Input string that may contain ANSI escape sequences
----@return string clean_str Clean string with escape sequences removed
-function S.strip_format_esc_seq(str) end
+---@param str string string with path
+---@return string normalized_path
+function S.norm_path(str) end
 
 ---Replace the center of a string with another string.
 ---
@@ -122,11 +142,11 @@ function S.strip_format_esc_seq(str) end
 ---@return string new_str Modified string with center replaced
 function S.replace_center(str, len, pad) end
 
----WezTerm module name decoder.
+---Helper function to remove formatting esc sequences in the string.
 ---
----@param encoded string
----@return string decoded_str
-function S.decode_wezterm_dir(encoded) end
+---@param str string Input string that may contain ANSI escape sequences
+---@return string clean_str Clean string with escape sequences removed
+function S.strip_format_esc_seq(str) end
 
 ---Returns the length of a UTF-8 string, correctly counting multi-byte characters.
 ---
@@ -134,28 +154,28 @@ function S.decode_wezterm_dir(encoded) end
 ---@return integer len Count of UTF-8 characters (not bytes)
 function S.utf8len(str) end
 
----Helper function to normalize path separator to `/`.
----
----@param str string string with path
----@return string normalized_path
-function S.norm_path(str) end
-
----Get basename for dir/file.
----
----@param str string string with the dir/file
----@return string|nil basename
-function S.basename(str) end
-
----Generate a hash from an array by concatenating elements with commas
----then applying the DJB2 hashing algorithm.
---
----@generic T
----@param arr T[] Array of values to hash
----@return string hashkey Hexadecimal representation of the hash
-function S.array_hash(arr) end
-
 ---@class LibWezterm.Wezterm
 local W = {}
+
+---Capture scrollback buffer from a pane.
+---
+---@param pane Pane WezTerm pane object
+---@param max_lines? integer Maximum number of lines to capture (`nil` for all available)
+---@return string|nil scrollback
+function W.capture_scrollback(pane, max_lines) end
+
+---Get current working directory from a pane.
+---
+---@param pane Pane WezTerm pane object
+---@return string cwd
+function W.get_cwd(pane) end
+
+---Determines the process running in a pane.
+---
+---@param pane Pane WezTerm pane object
+---@param shell_list? string[] Optional list of shell names to check against
+---@return LibWeztermProcessInfo procinfo
+function W.get_pane_process(pane, shell_list) end
 
 ---Determines if two panes are adjacent and their split orientation.
 ---
@@ -165,78 +185,51 @@ local W = {}
 ---@return Orientation orientation
 function W.get_panes_orientation(pane1, pane2) end
 
----Determines the process running in a pane.
----
----@param pane Pane WezTerm pane object
----@param shell_list? string[] Optional list of shell names to check against
----@return LibWeztermProcessInfo procinfo
-function W.get_pane_process(pane, shell_list) end
-
----Get current working directory from a pane.
----
----@param pane Pane WezTerm pane object
----@return string cwd
-function W.get_cwd(pane) end
-
----Capture scrollback buffer from a pane.
----
----@param pane Pane WezTerm pane object
----@param max_lines? integer Maximum number of lines to capture (`nil` for all available)
----@return string|nil scrollback
-function W.capture_scrollback(pane, max_lines) end
+---@class LibWezterm.LoggerOpts
+---@field debug_enabled boolean
+---@field prefix string
 
 ---Logger module providing consistent logging with customizable prefix and debug level control.
 ---
 ---@class LibWezterm.Logger
----The prefix to prepend to all log messages.
----
----@field prefix string
 ---Whether debug messages should be displayed.
 ---
 ---@field debug_enabled boolean
+---The prefix to prepend to all log messages.
+---
+---@field prefix string
 local L = {}
 
 ---Create a new logger instance.
 ---
----@param opts { prefix: string, debug_enabled: boolean }
+---@param opts LibWezterm.LoggerOpts
 ---@return LibWezterm.Logger logger
 function L.new(opts) end
-
----Enable debug mode for this logger.
----
----@return LibWezterm.Logger logger
-function L:enable_debug() end
-
----Disable debug mode for this logger.
----
----@return LibWezterm.Logger logger
-function L:disable_debug() end
-
----Set the prefix for this logger.
----
----@param prefix string
----@return LibWezterm.Logger logger
-function L:set_prefix(prefix) end
 
 ---Log a debug message (only if debug is enabled).
 ---
 ---@param ... any
 function L:debug(...) end
 
----Log an info message.
+---Disable debug mode for this logger.
 ---
----@param ... any
-function L:info(...) end
+---@return LibWezterm.Logger logger
+function L:disable_debug() end
 
----Log a warning message.
+---Enable debug mode for this logger.
 ---
----@param ... any
-function L:warn(...) end
+---@return LibWezterm.Logger logger
+function L:enable_debug() end
 
 ---Log an error message.
 ---
 ---@param ... any
 function L:error(...) end
+
+---Log an info message.
+---
+---@param ... any
+function L:info(...) end
 
 ---Log a message at the specified level.
 ---
@@ -244,11 +237,28 @@ function L:error(...) end
 ---@param ... any
 function L:log(level, ...) end
 
+---Set the prefix for this logger.
+---
+---@param prefix string
+---@return LibWezterm.Logger logger
+function L:set_prefix(prefix) end
+
+---Log a warning message.
+---
+---@param ... any
+function L:warn(...) end
+
+---@enum (key) LibWezterm.Env.Separator
+local separator = {
+  ["/"] = 1,
+  ["\\"] = 1,
+}
+
 ---@class LibWezterm.Env
----@field is_windows boolean
----@field is_mac boolean
----@field separator "\\"|"/""
 ---@field home string
+---@field is_mac boolean
+---@field is_windows boolean
+---@field separator LibWezterm.Env.Separator
 
 ---@class LibWezterm
 ---@field env LibWezterm.Env

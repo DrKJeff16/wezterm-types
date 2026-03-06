@@ -2,10 +2,10 @@
 ---@diagnostic disable:unused-local
 
 ---@class ListenersOpts
----@field toast_timeout? integer
 ---Default options for state functions.
 ---
 ---@field function_options? Listeners.FunctionOpts
+---@field toast_timeout? integer
 
 ---@generic T
 ---@class Listeners.EventListener

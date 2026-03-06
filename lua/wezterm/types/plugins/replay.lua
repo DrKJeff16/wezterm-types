@@ -3,8 +3,8 @@
 
 ---@class Replay.Extractors.Spec
 ---@field label string
----@field prefix? string
 ---@field postfix? string
+---@field prefix? string
 local E = {}
 
 ---@param s string
@@ -12,10 +12,10 @@ local E = {}
 function E.extractor(s) end
 
 ---@class ReplayOpts
----@field replay_key? string
----@field recall_key? string
----@field skip_keybinds? boolean
 ---@field extractors? Replay.Extractors.Spec[]
+---@field recall_key? string
+---@field replay_key? string
+---@field skip_keybinds? boolean
 
 ---@class Replay
 local M = {}

@@ -1,11 +1,12 @@
 ---@meta
+---@diagnostic disable:unused-local
 
 ---@class weztermConfig
 local M = {}
 
----Interpret the WezTerm user var that is passed in and make the appropriate
----changes to the given overrides table; for use within a callback function
----in WezTerm config for the `user-var-changed` event.
+---Interpret the WezTerm user var that is passed in and make the appropriate changes
+---to the given overrides table; for use within a callback function in the WezTerm config
+---for the `user-var-changed` event.
 ---
 ---@param overrides Config
 ---@param name string

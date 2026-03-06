@@ -54,17 +54,17 @@ local tab_components = {
 }
 
 ---@alias TablineWezSectionPadding integer|{ left?: integer, right?: integer }
+---@alias TablineWezSeparators { left?: string, right?: string }
+---@alias TablineWezSectionOverrides { fg?: string, bg?: string }
 
 ---@class TablineWezComponentSpec
 ---@field [1] string
----@field padding? TablineWezSectionPadding
----@field icons_enabled? boolean
----@field icons_only? boolean
----@field icon? nil|string|{ [1]: string, align?: 'left'|'right', color?: { fg?: string } }
 ---@field cond? nil|fun(): boolean
 ---@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
-
----@alias TablineWezSeparators { left?: string, right?: string }
+---@field icon? nil|string|{ [1]: string, align?: 'left'|'right', color?: { fg?: string } }
+---@field icons_enabled? boolean
+---@field icons_only? boolean
+---@field padding? TablineWezSectionPadding
 
 ---@enum (key) TablineWezExtension
 local extensions = {
@@ -76,17 +76,17 @@ local extensions = {
 
 ---@class BatteryToIcon
 ---@field empty? string
----@field quarter? string
----@field half? string
----@field three_quarters? string
 ---@field full? string
+---@field half? string
+---@field quarter? string
+---@field three_quarters? string
 
 ---@class DomainToIcon
 ---@field default? string
----@field ssh? string
----@field wsl? string
 ---@field docker? string
+---@field ssh? string
 ---@field unix? string
+---@field wsl? string
 
 ---@class TablineWezBatteryComponent: TablineWezComponentSpec
 ---@field [1] 'battery'
@@ -108,8 +108,8 @@ local extensions = {
 
 ---@class TablineWezDatetimeComponent: TablineWezComponentSpec
 ---@field [1] 'datetime'
----@field style? string
 ---@field hour_to_icon? nil|table<HourStrings, string>
+---@field style? string
 
 ---@class TablineWezDomainComponent: TablineWezComponentSpec
 ---@field [1] 'domain'
@@ -171,38 +171,36 @@ local extensions = {
 ---@alias TablineWezTab (string|TablineWezTabComponent|TablineWezTabComponents)
 
 ---@class TablineWezOpts.Sections
+---@field tab_active?   (TablineWezTab|FormatItemSpec|fun(): string)[]
+---@field tab_inactive? (TablineWezTab|FormatItemSpec|fun(): string)[]
 ---@field tabline_a?    (TablineWezWin|FormatItemSpec|fun(): string)[]
 ---@field tabline_b?    (TablineWezWin|FormatItemSpec|fun(): string)[]
 ---@field tabline_c?    (TablineWezWin|FormatItemSpec|fun(): string)[]
 ---@field tabline_x?    (TablineWezWin|FormatItemSpec|fun(): string)[]
 ---@field tabline_y?    (TablineWezWin|FormatItemSpec|fun(): string)[]
 ---@field tabline_z?    (TablineWezWin|FormatItemSpec|fun(): string)[]
----@field tab_active?   (TablineWezTab|FormatItemSpec|fun(): string)[]
----@field tab_inactive? (TablineWezTab|FormatItemSpec|fun(): string)[]
 
 ---@class TablineWezExtensionSpec.Events
----@field show? string[]|string
----@field hide? string[]|string
----@field delay? integer
 ---@field callback? fun(window: Window)
+---@field delay? integer
+---@field hide? string[]|string
+---@field show? string[]|string
 
 ---@class TablineWezExtensionSpec
 ---@field [1] string
+---@field colors? TablineWezThemeColors
 ---@field events TablineWezExtensionSpec.Events
 ---@field sections? TablineWezOpts.Sections
----@field colors? TablineWezThemeColors
 
 ---@class TablineWezOpts.Options
+---@field component_separators? TablineWezSeparators|''
 ---@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
----@field theme? string|Colorschemes|Palette
----@field theme_overrides? TablineWezThemeOverrides
----@field tabs_enabled? boolean
 ---@field icons_enabled? boolean
 ---@field section_separators? TablineWezSeparators|''
----@field component_separators? TablineWezSeparators|''
 ---@field tab_separators? TablineWezSeparators|''
-
----@alias TablineWezSectionOverrides { fg?: string, bg?: string }
+---@field tabs_enabled? boolean
+---@field theme? string|Colorschemes|Palette
+---@field theme_overrides? TablineWezThemeOverrides
 
 ---@class TablineWezThemeColors
 ---@field a? TablineWezSectionOverrides
@@ -218,32 +216,23 @@ local extensions = {
 ---@field inactive_hover? TablineWezSectionOverrides
 
 ---@class TablineWezThemeOverrides
----@field normal_mode? TablineWezThemeColors
----@field copy_mode? TablineWezThemeColors
----@field search_mode? TablineWezThemeColors
----@field window_mode? TablineWezThemeColors
----@field tab? TablineWezTabOverrides
 ---@field colors? Palette
+---@field copy_mode? TablineWezThemeColors
+---@field normal_mode? TablineWezThemeColors
+---@field search_mode? TablineWezThemeColors
+---@field tab? TablineWezTabOverrides
+---@field window_mode? TablineWezThemeColors
 
 ---@class TablineWezOpts
+---@field extensions? (TablineWezExtension|TablineWezExtensionSpec)[]
 ---@field options? TablineWezOpts.Options
 ---@field sections? TablineWezOpts.Sections
----@field extensions? (TablineWezExtension|TablineWezExtensionSpec)[]
 
 ---@class TablineWez
 local M = {}
 
-function M.setup() end
-
----@param theme string|Colorschemes|Palette
-function M.set_theme(theme) end
-
----@param theme string|Colorschemes|Palette
----@param overrides TablineWezThemeOverrides
-function M.set_theme(theme, overrides) end
-
----@param opts TablineWezOpts
-function M.setup(opts) end
+---@param config Config
+function M.apply_to_config(config) end
 
 ---@return TablineWezOpts config
 function M.get_config() end
@@ -251,8 +240,12 @@ function M.get_config() end
 ---@return TablineWezThemeOverrides theme
 function M.get_theme() end
 
----@param config Config
-function M.apply_to_config(config) end
+---@param theme string|Colorschemes|Palette
+---@param overrides? TablineWezThemeOverrides
+function M.set_theme(theme, overrides) end
+
+---@param opts? TablineWezOpts
+function M.setup(opts) end
 
 ---@param window Window The `Window` object.
 ---@param tab TabInformation

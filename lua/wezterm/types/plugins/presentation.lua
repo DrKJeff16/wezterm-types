@@ -2,15 +2,15 @@
 
 ---@class PresentationWezConfigMode
 ---@field enabled? boolean
----@field keybind? Key
----@field font_weight? FontWeight
 ---@field font_size_multiplier? number
+---@field font_weight? FontWeight
+---@field keybind? Key
 
 ---@class PresentationWezConfig
+---@field font_size_multiplier? number
+---@field font_weight? FontWeight
 ---@field presentation? PresentationWezConfigMode
 ---@field presentation_full? PresentationWezConfigMode
----@field font_weight? FontWeight
----@field font_size_multiplier? number
 
 ---@class PresentationWez
 local M = {}

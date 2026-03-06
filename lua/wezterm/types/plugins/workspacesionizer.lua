@@ -16,17 +16,17 @@ local show = {
 ---@field mods? string
 
 ---@class WorkspacesionizerOpts
+---@field binding? WorkspacesionizerOpts
+---Set to `false` if you don't want to include the git repositories from your `HOME` directory
+---in the directories to switch into.
+---
+---@field git_repos? boolean
 ---The paths that contains the directories you want to switch into.
 ---
 ---@field paths? string[]
----Set to `false` if you don't want to include the git repositories from your
----`HOME` directory in the directories to switch into.
----
----@field git_repos? boolean
 ---Wether to show directories base or full name.
 ---
 ---@field show? WorkspacesionizerOpts.Show
----@field binding? WorkspacesionizerOpts
 
 ---@class Workspacesionizer
 local M = {}

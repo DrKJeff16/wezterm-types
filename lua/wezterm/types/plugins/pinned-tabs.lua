@@ -2,10 +2,10 @@
 ---@diagnostic disable:unused-local
 
 ---@class PinnedTabsCreateOpts
+---@field args? string[]
+---@field cwd? string
 ---@field name? string
 ---@field program? string
----@field cwd? string
----@field args? string[]
 
 ---@class PinnedTabsKey: Key
 ---@field tab? PinnedTabsCreateOpts
@@ -26,6 +26,10 @@ local M = {}
 ---@param opts? PinnedTabsOpts
 function M.apply_to_config(config, opts) end
 
+---Clean up stale state files.
+---
+function M.cleanup() end
+
 ---Creates a pinned tab.
 ---
 ---Use this to configure the keybindings in your `wezterm.lua`.
@@ -33,7 +37,4 @@ function M.apply_to_config(config, opts) end
 ---@param opts PinnedTabsCreateOpts
 function M.create(opts) end
 
----Clean up stale state files.
----
-function M.cleanup() end
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

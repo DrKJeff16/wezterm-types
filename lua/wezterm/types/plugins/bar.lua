@@ -8,19 +8,19 @@ local positions = {
 }
 
 ---@class BarWeztermOpts.Separator
----@field space? integer
+---@field field_icon? string
 ---@field left_icon? string
 ---@field right_icon? string
----@field field_icon? string
+---@field space? integer
 
 ---@class BarWeztermOpts.Tabs
 ---@field active_tab_fg? integer
 ---@field inactive_tab_fg? integer
 
 ---@class BarWeztermOpts.Module
+---@field color? integer
 ---@field enabled? boolean
 ---@field icon? string
----@field color? integer
 
 ---@class BarWeztermOpts.Spotify: BarWeztermOpts.Module
 ---@field max_width? integer
@@ -30,15 +30,15 @@ local positions = {
 ---@field format? string
 
 ---@class BarWeztermOpts.Modules
----@field tabs? BarWeztermOpts.Tabs
----@field workspace? BarWeztermOpts.Module
----@field leader? BarWeztermOpts.Module
----@field pane? BarWeztermOpts.Module
----@field username? BarWeztermOpts.Module
----@field hostname? BarWeztermOpts.Module
 ---@field clock? BarWeztermOpts.Clock
 ---@field cwd? BarWeztermOpts.Module
+---@field hostname? BarWeztermOpts.Module
+---@field leader? BarWeztermOpts.Module
+---@field pane? BarWeztermOpts.Module
 ---@field spotify? BarWeztermOpts.Spotify
+---@field tabs? BarWeztermOpts.Tabs
+---@field username? BarWeztermOpts.Module
+---@field workspace? BarWeztermOpts.Module
 
 ---@class BarWeztermOpts.Padding.Tabs
 ---@field left? integer
@@ -48,11 +48,11 @@ local positions = {
 ---@field tabs? BarWeztermOpts.Padding.Tabs
 
 ---@class BarWeztermOpts
----@field position? BarWeztermOpts.Position
 ---@field max_width? integer
----@field separator? BarWeztermOpts.Separator
 ---@field modules? BarWeztermOpts.Modules
 ---@field padding? BarWeztermOpts.Padding
+---@field position? BarWeztermOpts.Position
+---@field separator? BarWeztermOpts.Separator
 
 ---@class BarWezterm
 local M = {}

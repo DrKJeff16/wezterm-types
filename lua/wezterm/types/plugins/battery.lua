@@ -15,6 +15,9 @@ local condition = {
 ---The battery icon and percentage (e.g. `"󰂉  100%"`).
 ---
 ---@field battery string
+---The battery condition ("Full", "Empty", "Charging", "Discharging", "Unknown").
+---
+---@field condition BatteryCondition
 ---The icon representing the battery status (e.g. `"󰢜 "`).
 ---
 ---@field icon string
@@ -24,9 +27,6 @@ local condition = {
 ---The remaining time in minutes.
 ---
 ---@field time integer
----The battery condition ("Full", "Empty", "Charging", "Discharging", "Unknown").
----
----@field condition BatteryCondition
 local B = {}
 
 ---The remaining time as a string (e.g. `"10:00"`).
@@ -39,6 +39,11 @@ function B.remaining() end
 ---@class BatteryWez
 ---@field invert boolean Whether to invert colors
 local M = {}
+
+---Apply plugin configuration.
+---
+---@param config Config WezTerm configuration table
+function M.apply_to_config(config) end
 
 ---Returns battery components for each battery.
 ---
@@ -60,10 +65,5 @@ function M.get_battery_icons() end
 ---
 ---@return string battery_stats A formatted string containing the battery stats.
 function M.get_battery_stats() end
-
----Apply plugin configuration.
----
----@param config Config WezTerm configuration table
-function M.apply_to_config(config) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

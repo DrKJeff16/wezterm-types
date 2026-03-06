@@ -9,11 +9,12 @@
 ---@field PriorMatch "PriorMatch"|fun(params: any): { PriorMatch: any }
 ---@field RenameCurrentTab "RenameCurrent"|fun(params: any): { RenameCurrent: any }
 ---@field RenameWorkspace "RenameWorkspace"|fun(params: any): { RenameWorkspace: any }
----@field SearchBackward  "SearchBackward"|fun(params: any): { SearchBackward: any }
----@field SearchForward   "SearchForward"|fun(params: any): { SearchForward: any }
+---@field SearchBackward "SearchBackward"|fun(params: any): { SearchBackward: any }
+---@field SearchForward "SearchForward"|fun(params: any): { SearchForward: any }
 ---@field WorkspaceSelect "WorkspaceSelect"|fun(params: any): { WorkspaceSelect: any }
 
----@alias WezTmuxOpts { tab_and_split_indices_are_zero_based?: boolean }
+---@class WezTmuxOpts
+---@field tab_and_split_indices_are_zero_based? boolean
 
 ---@class WezTmux
 ---@field action WezTmuxAction

@@ -2,37 +2,51 @@
 ---@diagnostic disable:unused-local
 
 ---@class TabsetsData
----@field window_width integer
----@field window_height integer
 ---@field colors table
 ---@field tabs Tabsets.TabData[]
+---@field window_height integer
+---@field window_width integer
 
 ---@class Tabsets.TabData
----@field title string
 ---@field panes TabsetPaneData[]
+---@field title string
 
 ---@class TabsetPaneData
----@field left integer
 ---@field cwd string
 ---@field exe string
+---@field left integer
 
 ---@class TabsetsOpts
----Path to the directory containing tabset JSON files.
+---Fuzzy match tabset name selection.
 ---
----@field tabsets_dir? string
+---@field fuzzy_selector? boolean
 ---Restore custom colors when loading empty window.
 ---
 ---@field restore_colors? boolean
 ---Restore window dimensions when loading empty window.
 ---
 ---@field restore_dimensions? boolean
----Fuzzy match tabset name selection.
+---Path to the directory containing tabset JSON files.
 ---
----@field fuzzy_selector? boolean
+---@field tabsets_dir? string
 
 ---@class Tabsets
 ---@field options TabsetsOpts
 local M = {}
+
+---Interactively delete a saved tabset.
+---
+---Prompts for a tabset, deletes the corresponding JSON file and notifies the user.
+---
+---@param window Window Active WezTerm window.
+function M.delete_tabset(window) end
+
+---Interactively load a saved tabset.
+---
+---Shows a selector of available tabsets, then calls @{load_tabset_by_name} on the chosen entry.
+---
+---@param window Window Active WezTerm window.
+function M.load_tabset(window) end
 
 ---Load and restore a tabset by its logical name.
 ---
@@ -42,19 +56,10 @@ local M = {}
 ---@param tabset_name string Tabset name (without extension), defaults to `"default"`.
 function M.load_tabset_by_name(window, tabset_name) end
 
----Interactively load a saved tabset.
----
----Shows a selector of available tabsets, then calls @{load_tabset_by_name} on the chosen entry.
+---Rename a tabset.
 ---
 ---@param window Window Active WezTerm window.
-function M.load_tabset(window) end
-
----Interactively delete a saved tabset.
----
----Prompts for a tabset, deletes the corresponding JSON file and notifies the user.
----
----@param window Window Active WezTerm window.
-function M.delete_tabset(window) end
+function M.rename_tabset(window) end
 
 ---Interactively save the current window layout as a tabset.
 ---
@@ -62,11 +67,6 @@ function M.delete_tabset(window) end
 ---
 ---@param window Window Active WezTerm window.
 function M.save_tabset(window) end
-
----Rename a tabset.
----
----@param window Window Active WezTerm window
-function M.rename_tabset(window) end
 
 ---Initialize plugin and set configuration options.
 ---
