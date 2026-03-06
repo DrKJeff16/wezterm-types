@@ -331,7 +331,7 @@ jobs:
       - name: Run panvimdoc for wez-pain-control.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.pain-control
+          vimdoc: wezterm-types-plugin.wez-pain-control
           description: "`wez-pain-control` types"
           pandoc: docs/wez-pain-control.md
           toc: false
@@ -344,7 +344,7 @@ jobs:
       - name: Run panvimdoc for wez-tmux.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.tmux
+          vimdoc: wezterm-types-plugin.wez-tmux
           description: "`wez-tmux` types"
           pandoc: docs/wez-tmux.md
           toc: false
@@ -357,7 +357,7 @@ jobs:
       - name: Run panvimdoc for wezterm-config.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.config
+          vimdoc: wezterm-types-plugin.wezterm-config
           description: "`wezterm-config` types"
           pandoc: docs/wezterm-config.md
           toc: false
@@ -370,7 +370,7 @@ jobs:
       - name: Run panvimdoc for wezterm-status.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.status
+          vimdoc: wezterm-types-plugin.wezterm-status
           description: "`wezterm-status` types"
           pandoc: docs/wezterm-status.md
           toc: false
@@ -383,7 +383,7 @@ jobs:
       - name: Run panvimdoc for wezterm-tabs.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.tabs
+          vimdoc: wezterm-types-plugin.wezterm-tabs
           description: "`wezterm-tabs` types"
           pandoc: docs/wezterm-tabs.md
           toc: false
@@ -396,7 +396,7 @@ jobs:
       - name: Run panvimdoc for wezterm-theme-rotator.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.theme-rotator
+          vimdoc: wezterm-types-plugin.wezterm-theme-rotator
           description: "`wezterm-theme-rotator` types"
           pandoc: docs/wezterm-theme-rotator.md
           toc: false
