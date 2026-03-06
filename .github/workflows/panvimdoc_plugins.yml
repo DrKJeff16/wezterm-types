@@ -19,7 +19,7 @@ jobs:
       - name: Run panvimdoc for ai-commander.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-ai-commander
+          vimdoc: wezterm-types-plugin.ai-commander
           description: "`ai-commander` types"
           pandoc: docs/ai-commander.md
           toc: false
@@ -32,7 +32,7 @@ jobs:
       - name: Run panvimdoc for ai-helper.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-ai-helper
+          vimdoc: wezterm-types-plugin.ai-helper
           description: "`ai-helper` types"
           pandoc: docs/ai-helper.md
           toc: false
@@ -42,12 +42,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for bar_wezterm.md
+      - name: Run panvimdoc for bar.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-bar_wezterm
-          description: "`bar_wezterm` types"
-          pandoc: docs/bar_wezterm.md
+          vimdoc: wezterm-types-plugin.bar
+          description: "`bar` types"
+          pandoc: docs/bar.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -55,12 +55,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for battery_wez.md
+      - name: Run panvimdoc for battery.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-battery_wez
-          description: "`battery_wez` types"
-          pandoc: docs/battery_wez.md
+          vimdoc: wezterm-types-plugin.battery
+          description: "`battery` types"
+          pandoc: docs/battery.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -71,7 +71,7 @@ jobs:
       - name: Run panvimdoc for cmd-sender.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-cmd-sender
+          vimdoc: wezterm-types-plugin.cmd-sender
           description: "`cmd-sender` types"
           pandoc: docs/cmd-sender.md
           toc: false
@@ -81,12 +81,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for dev-wezterm.md
+      - name: Run panvimdoc for dev.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-dev-wezterm
-          description: "`dev-wezterm` types"
-          pandoc: docs/dev-wezterm.md
+          vimdoc: wezterm-types-plugin.dev
+          description: "`dev` types"
+          pandoc: docs/dev.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -94,12 +94,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for lib-wezterm.md
+      - name: Run panvimdoc for lib.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-lib-wezterm
-          description: "`lib-wezterm` types"
-          pandoc: docs/lib-wezterm.md
+          vimdoc: wezterm-types-plugin.lib
+          description: "`lib` types"
+          pandoc: docs/lib.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -107,12 +107,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for listeners-wezterm.md
+      - name: Run panvimdoc for listeners.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-listeners-wezterm
-          description: "`listeners-wezterm` types"
-          pandoc: docs/listeners-wezterm.md
+          vimdoc: wezterm-types-plugin.listeners
+          description: "`listeners` types"
+          pandoc: docs/listeners.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -120,12 +120,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for modal_wezterm.md
+      - name: Run panvimdoc for modal.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-modal_wezterm
-          description: "`modal_wezterm` types"
-          pandoc: docs/modal_wezterm.md
+          vimdoc: wezterm-types-plugin.modal
+          description: "`modal` types"
+          pandoc: docs/modal.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -136,7 +136,7 @@ jobs:
       - name: Run panvimdoc for pinned-tabs.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-pinned-tabs
+          vimdoc: wezterm-types-plugin.pinned-tabs
           description: "`pinned-tabs` types"
           pandoc: docs/pinned-tabs.md
           toc: false
@@ -146,12 +146,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for pivot_panes.md
+      - name: Run panvimdoc for pivot-panes.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-pivot_panes
-          description: "`pivot_panes` types"
-          pandoc: docs/pivot_panes.md
+          vimdoc: wezterm-types-plugin.pivot-panes
+          description: "`pivot-panes` types"
+          pandoc: docs/pivot-panes.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -159,12 +159,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for presentation_wez.md
+      - name: Run panvimdoc for presentation.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-presentation_wez
-          description: "`presentation_wez` types"
-          pandoc: docs/presentation_wez.md
+          vimdoc: wezterm-types-plugin.presentation
+          description: "`presentation` types"
+          pandoc: docs/presentation.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -172,12 +172,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for quick_domains.md
+      - name: Run panvimdoc for quick-domains.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-quick_domains
-          description: "`quick_domains` types"
-          pandoc: docs/quick_domains.md
+          vimdoc: wezterm-types-plugin.quick-domains
+          description: "`quick-domains` types"
+          pandoc: docs/quick-domains.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -188,7 +188,7 @@ jobs:
       - name: Run panvimdoc for quickselect.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-quickselect
+          vimdoc: wezterm-types-plugin.quickselect
           description: "`quickselect` types"
           pandoc: docs/quickselect.md
           toc: false
@@ -201,7 +201,7 @@ jobs:
       - name: Run panvimdoc for replay.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-replay
+          vimdoc: wezterm-types-plugin.replay
           description: "`replay` types"
           pandoc: docs/replay.md
           toc: false
@@ -214,7 +214,7 @@ jobs:
       - name: Run panvimdoc for resurrect.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-resurrect
+          vimdoc: wezterm-types-plugin.resurrect
           description: "`resurrect` types"
           pandoc: docs/resurrect.md
           toc: false
@@ -227,7 +227,7 @@ jobs:
       - name: Run panvimdoc for rosepine.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-rosepine
+          vimdoc: wezterm-types-plugin.rosepine
           description: "`rosepine` types"
           pandoc: docs/rosepine.md
           toc: false
@@ -240,7 +240,7 @@ jobs:
       - name: Run panvimdoc for sessionizer.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-sessionizer
+          vimdoc: wezterm-types-plugin.sessionizer
           description: "`sessionizer` types"
           pandoc: docs/sessionizer.md
           toc: false
@@ -253,7 +253,7 @@ jobs:
       - name: Run panvimdoc for smart-splits.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-smart-splits
+          vimdoc: wezterm-types-plugin.smart-splits
           description: "`smart-splits` types"
           pandoc: docs/smart-splits.md
           toc: false
@@ -263,12 +263,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for smart_workspace_switcher.md
+      - name: Run panvimdoc for smart-workspace-switcher.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-smart_workspace_switcher
-          description: "`smart_workspace_switcher` types"
-          pandoc: docs/smart_workspace_switcher.md
+          vimdoc: wezterm-types-plugin.smart-workspace-switcher
+          description: "`smart-workspace-switcher` types"
+          pandoc: docs/smart-workspace-switcher.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -276,12 +276,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for stack-wez.md
+      - name: Run panvimdoc for stack.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-stack-wez
-          description: "`stack-wez` types"
-          pandoc: docs/stack-wez.md
+          vimdoc: wezterm-types-plugin.stack
+          description: "`stack` types"
+          pandoc: docs/stack.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -289,12 +289,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for tabline_wez.md
+      - name: Run panvimdoc for tabline.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-tabline_wez
-          description: "`tabline_wez` types"
-          pandoc: docs/tabline_wez.md
+          vimdoc: wezterm-types-plugin.tabline
+          description: "`tabline` types"
+          pandoc: docs/tabline.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -305,7 +305,7 @@ jobs:
       - name: Run panvimdoc for tabsets.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-tabsets
+          vimdoc: wezterm-types-plugin.tabsets
           description: "`tabsets` types"
           pandoc: docs/tabsets.md
           toc: false
@@ -315,12 +315,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for toggle_terminal.md
+      - name: Run panvimdoc for toggle-terminal.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-toggle_terminal
-          description: "`toggle_terminal` types"
-          pandoc: docs/toggle_terminal.md
+          vimdoc: wezterm-types-plugin.toggle-terminal
+          description: "`toggle-terminal` types"
+          pandoc: docs/toggle-terminal.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -331,7 +331,7 @@ jobs:
       - name: Run panvimdoc for wez-pain-control.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wez-pain-control
+          vimdoc: wezterm-types-plugin.pain-control
           description: "`wez-pain-control` types"
           pandoc: docs/wez-pain-control.md
           toc: false
@@ -344,7 +344,7 @@ jobs:
       - name: Run panvimdoc for wez-tmux.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wez-tmux
+          vimdoc: wezterm-types-plugin.tmux
           description: "`wez-tmux` types"
           pandoc: docs/wez-tmux.md
           toc: false
@@ -357,7 +357,7 @@ jobs:
       - name: Run panvimdoc for wezterm-config.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wezterm-config
+          vimdoc: wezterm-types-plugin.config
           description: "`wezterm-config` types"
           pandoc: docs/wezterm-config.md
           toc: false
@@ -370,7 +370,7 @@ jobs:
       - name: Run panvimdoc for wezterm-status.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wezterm-status
+          vimdoc: wezterm-types-plugin.status
           description: "`wezterm-status` types"
           pandoc: docs/wezterm-status.md
           toc: false
@@ -383,7 +383,7 @@ jobs:
       - name: Run panvimdoc for wezterm-tabs.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wezterm-tabs
+          vimdoc: wezterm-types-plugin.tabs
           description: "`wezterm-tabs` types"
           pandoc: docs/wezterm-tabs.md
           toc: false
@@ -396,7 +396,7 @@ jobs:
       - name: Run panvimdoc for wezterm-theme-rotator.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wezterm-theme-rotator
+          vimdoc: wezterm-types-plugin.theme-rotator
           description: "`wezterm-theme-rotator` types"
           pandoc: docs/wezterm-theme-rotator.md
           toc: false
@@ -409,7 +409,7 @@ jobs:
       - name: Run panvimdoc for workspace-picker.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-workspace-picker
+          vimdoc: wezterm-types-plugin.workspace-picker
           description: "`workspace-picker` types"
           pandoc: docs/workspace-picker.md
           toc: false
@@ -422,7 +422,7 @@ jobs:
       - name: Run panvimdoc for workspacesionizer.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-workspacesionizer
+          vimdoc: wezterm-types-plugin.workspacesionizer
           description: "`workspacesionizer` types"
           pandoc: docs/workspacesionizer.md
           toc: false
@@ -435,7 +435,7 @@ jobs:
       - name: Run panvimdoc for wsinit.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-wsinit
+          vimdoc: wezterm-types-plugin.wsinit
           description: "`wsinit` types"
           pandoc: docs/wsinit.md
           toc: false
