@@ -14,17 +14,68 @@
 ---@module "wezterm.types.wezterm.time"
 ---@module "wezterm.types.wezterm.url"
 
+---@module "wezterm.types.plugins.ai-commander"
+---@module "wezterm.types.plugins.ai-helper"
+---@module "wezterm.types.plugins.bar"
+---@module "wezterm.types.plugins.battery"
+---@module "wezterm.types.plugins.cmd-sender"
+---@module "wezterm.types.plugins.dev"
+---@module "wezterm.types.plugins.lib"
+---@module "wezterm.types.plugins.listeners"
+---@module "wezterm.types.plugins.modal"
+---@module "wezterm.types.plugins.pinned-tabs"
+---@module "wezterm.types.plugins.pivot-panes"
+---@module "wezterm.types.plugins.presentation"
+---@module "wezterm.types.plugins.quick-domains"
+---@module "wezterm.types.plugins.quickselect"
+---@module "wezterm.types.plugins.replay"
+---@module "wezterm.types.plugins.resurrect"
+---@module "wezterm.types.plugins.rosepine"
+---@module "wezterm.types.plugins.sessionizer"
+---@module "wezterm.types.plugins.smart-splits"
+---@module "wezterm.types.plugins.smart-workspace-switcher"
+---@module "wezterm.types.plugins.stack"
+---@module "wezterm.types.plugins.tabline"
+---@module "wezterm.types.plugins.tabsets"
+---@module "wezterm.types.plugins.toggle-terminal"
+---@module "wezterm.types.plugins.wez-pain-control"
+---@module "wezterm.types.plugins.wezterm-config"
+---@module "wezterm.types.plugins.wezterm-status"
+---@module "wezterm.types.plugins.wezterm-tabs"
+---@module "wezterm.types.plugins.wezterm-theme-rotator"
+---@module "wezterm.types.plugins.wez-tmux"
+---@module "wezterm.types.plugins.workspace-picker"
+---@module "wezterm.types.plugins.workspacesionizer"
+---@module "wezterm.types.plugins.wsinit"
+
 ---@alias ColorSpec { AnsiColor: AnsiColor }|{ Color: string }
 
+---@enum (key) FormatItemAttribute.Underline
+local format_item_underline = {
+  Curly = 1,
+  Dashed = 1,
+  Dotted = 1,
+  Double = 1,
+  None = 1,
+  Single = 1,
+}
+
+---@enum (key) FormatItemAttribute.Intensity
+local format_item_intensity = {
+  Bold = 1,
+  Half = 1,
+  Normal = 1,
+}
+
 ---@class FormatItemAttribute
----@field Underline "None"|"Single"|"Double"|"Curly"|"Dotted"|"Dashed"
----@field Intensity? "Normal"|"Bold"|"Half"
+---@field Intensity? FormatItemAttribute.Intensity
 ---@field Italic? boolean
+---@field Underline FormatItemAttribute.Underline
 
 ---@class FormatItemSpec
 ---@field Attribute? FormatItemAttribute
----@field Foreground? ColorSpec
 ---@field Background? ColorSpec
+---@field Foreground? ColorSpec
 ---@field Text? string
 
 ---@alias FormatItem "ResetAttributes"|FormatItemSpec
@@ -74,6 +125,7 @@ local modifiers = {
 ---
 ---@enum (key) WindowDecorations
 local window_decorations = {
+  INTEGRATED_BUTTONS = 1,
   MACOS_FORCE_DISABLE_SHADOW = 1,
   MACOS_FORCE_ENABLE_SHADOW = 1,
   MACOS_FORCE_SQUARE_CORNERS = 1,
@@ -178,6 +230,13 @@ local ansi_color = {
   Yellow = 1,
 }
 
+---@enum (key) TabBarColor.Underline
+local tab_bar_underline = {
+  Double = 1,
+  None = 1,
+  Single = 1,
+}
+
 ---@class TabBarColor
 ---The color of the background area for the tab.
 ---
@@ -190,7 +249,7 @@ local ansi_color = {
 ---
 ---The default is `"Normal"`.
 ---
----@field intensity? "Normal"|"Half"|"Bold"
+---@field intensity? FormatItemAttribute.Intensity
 ---Specify whether you want the text to be italic for this tab.
 ---
 ---The default is `false`.
@@ -207,7 +266,7 @@ local ansi_color = {
 ---
 ---The default is `"None"`.
 ---
----@field underline? "None"|"Single"|"Double"
+---@field underline? TabBarColor.Underline
 
 ---@class TabBarColors
 ---The text color to use when the attributes are reset to default.
@@ -418,6 +477,15 @@ local freetype_load_flags = {
 ---
 ---@field weight? FontWeight
 
+---@enum (key) FreeTypeTarget
+local freetype_target = {
+  HorizontalLcd = 1,
+  Light = 1,
+  Mono = 1,
+  Normal = 1,
+  VerticalLcd = 1,
+}
+
 ---`FontAttributes`-like class but with font family
 ---and other extensions included.
 ---
@@ -428,8 +496,8 @@ local freetype_load_flags = {
 ---**(you probably wouldn't want to do this)**.
 ---
 ---@field freetype_load_flags? FreeTypeLoadFlags
----@field freetype_load_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"
----@field freetype_render_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"
+---@field freetype_load_target? FreeTypeTarget
+---@field freetype_render_target? FreeTypeTarget
 ---When `config.font_shaper` is
 ---set to `"Harfbuzz"`, this setting affects
 ---how font shaping takes place.
@@ -451,13 +519,13 @@ local freetype_load_flags = {
 ---@field active_titlebar_border_bottom? string
 ---@field active_titlebar_fg? string
 ---@field border_bottom_color? string
----@field border_bottom_height? string|number
+---@field border_bottom_height? string|integer
 ---@field border_left_color? string
----@field border_left_width? string|number
+---@field border_left_width? string|integer
 ---@field border_right_color? string
----@field border_right_width? string|number
+---@field border_right_width? string|integer
 ---@field border_top_color? string
----@field border_top_height? string|number
+---@field border_top_height? string|integer
 ---@field button_bg? string
 ---@field button_fg? string
 ---@field button_hover_bg? string
@@ -488,7 +556,7 @@ local freetype_load_flags = {
 ---
 ---The default is `9600` baud.
 ---
----@field baud integer|9600
+---@field baud integer
 ---The name of this specific domain.
 ---
 ---Must be unique amongst all types of domain
@@ -602,14 +670,23 @@ local freetype_load_flags = {
 ---
 ---@field regex string
 
+---@enum (key) BatteryInfo.State
+local battery_info_state = {
+  Charging = 1,
+  Discharging = 1,
+  Empty = 1,
+  Full = 1,
+  Unknown = 1,
+}
+
 ---@class BatteryInfo
 ---If known, shows the battery model string or `"unknown"` otherwise.
 ---
----@field model string|"unknown"
+---@field model string
 ---If known, shows the battery serial number or `"unknown"` otherwise.
 ---
----@field serial string|"unknown"
----@field state "Charging"|"Discharging"|"Empty"|"Full"|"Unknown"
+---@field serial string
+---@field state BatteryInfo.State
 ---The battery level expressed as a number between `0.0` (empty)
 ---and `1.0` (full).
 ---
@@ -622,7 +699,7 @@ local freetype_load_flags = {
 ---@field time_to_full? integer
 ---If known, shows battery manufacturer name or `"unknown"` otherwise.
 ---
----@field vendor string|"unknown"
+---@field vendor string
 
 ---@class AugmentCommandPaletteReturn
 ---The action to take when the item is activated.
@@ -648,11 +725,21 @@ local freetype_load_flags = {
 ---
 ---@field icon? Wezterm.NerdFont
 
+---@enum (key) StableCursorPosition.Shape
+local shape = {
+  BlinkingBar = 1,
+  BlinkingBlock = 1,
+  BlinkingUnderline = 1,
+  SteadyBar = 1,
+  SteadyBlock = 1,
+  SteadyUnderline = 1,
+}
+
 ---Mirrors `StableCursorPosition` in wezterm upstream:
 ---https://github.com/wezterm/wezterm/blob/main/mux/src/renderable.rs
 ---
 ---@class StableCursorPosition
----@field shape "BlinkingBlock"|"BlinkingBar"|"BlinkingUnderline"|"SteadyBar"|"SteadyBlock"|"SteadyUnderline"
+---@field shape StableCursorPosition.Shape
 ---@field visibility "Visible"|"Hidden"
 ---The horizontal cell index.
 ---
@@ -675,10 +762,25 @@ local freetype_load_flags = {
 ---|{ Linear: LinearGradientOrientation }
 ---|{ Radial: RadialGradientOrientation }
 
+---@enum (key) Gradient.Blend
+local blend = {
+  Hsv = 1,
+  LinearRgb = 1,
+  Oklab = 1,
+  Rgb = 1,
+}
+
+---@enum (key) Gradient.Interpolation
+local interpolation = {
+  Basis = 1,
+  CatmullRom = 1,
+  Linear = 1,
+}
+
 ---@class Gradient
----@field blend? "Rgb"|"LinearRgb"|"Hsv"|"Oklab"
+---@field blend? Gradient.Blend
 ---@field colors string[]
----@field interpolation? "Linear"|"Basis"|"CatmullRom"
+---@field interpolation? Gradient.Interpolation
 ---@field noise? number
 ---@field orientation? GradientOrientation
 ---@field segment_size? number
@@ -750,47 +852,41 @@ local weight = {
 }
 
 ---@class ScreenInformation
+---@field height number
+---@field max_fps? number
 ---@field name string
+---@field width number
 ---@field x number
 ---@field y number
----@field height number
----@field width number
----@field max_fps? number
 
 ---@class GuiScreensInfo
----@field main ScreenInformation
 ---@field active ScreenInformation
 ---@field byName table<string, ScreenInformation>
+---@field main ScreenInformation
 ---@field origin_x number
 ---@field origin_y number
 ---@field virtual_height number
 ---@field virtual_width number
 
----@class KeyBinding
----@field key string
+---@class KeyBinding: Key
 ---@field action Action
+---@field key string
 ---@field mods? string
 
 ---@class MouseEventInfo
----@field streak number
 ---@field button "Left"|"Right"|"Middle"|{ WheelDown: number }|{ WheelUp: number }
+---@field streak number
 
----@class MouseDownEvent
----@field Down MouseEventInfo
-
----@class MouseUpEvent
----@field Up MouseEventInfo
-
----@class MouseDragEvent
----@field Drag MouseEventInfo
-
----@alias MouseEvent MouseDownEvent|MouseDragEvent|MouseUpEvent
+---@alias MouseEvent
+---|{ Down: MouseEventInfo }
+---|{ Drag: MouseEventInfo }
+---|{ Up: MouseEventInfo }
 
 ---@class MouseBindingBase
----@field event MouseEvent
 ---@field action Action
----@field mouse_reporting? boolean
 ---@field alt_screen? boolean|"Any"
+---@field event MouseEvent
+---@field mouse_reporting? boolean
 
 ---@class MouseBinding: MouseBindingBase
 ---@field mods string
@@ -953,6 +1049,40 @@ local weight = {
 ---
 ---@field version string
 local M = {}
+
+---This function is a helper to register a custom event and return
+---an action triggering it.
+---
+---It is helpful to write custom key bindings directly, without having to declare
+---the event and use it in a different place.
+---
+---The implementation is essentially the same as:
+---
+---```lua
+---function wezterm.action_callback(callback)
+---  local event_id = '...' -- the function generates a unique event id
+---  wezterm.on(event_id, callback)
+---  return wezterm.action.EmitEvent(event_id)
+---end
+---```
+---
+---@param callback function
+---@return { EmitEvent: string } event
+function M.action_callback(callback) end
+
+---Adds path to the list of files that are watched for config changes.
+---
+---If [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
+---is enabled, then the config will be reloaded
+---when any of the files that have been added to the watch list have changed.
+---
+---@param path string
+function M.add_to_config_reload_watch_list(path) end
+
+---Accepts an argument list; it will attempt to spawn that command in the background.
+---
+---@param args string[]
+function M.background_child_process(args) end
 
 ---Returns the battery information for each of the
 ---installed batteries on the system.
@@ -1191,6 +1321,10 @@ function M.glob(pattern, relative_to) end
 ---@return Color[]
 ---@deprecated
 function M.gradient_colors(gradient, num_colors) end
+
+---@param action string
+---@return boolean has
+function M.has_action(action) end
 
 ---@return string host_name
 function M.hostname() end
@@ -1844,83 +1978,70 @@ function M.pad_right(s, min_width) end
 --- - `SHIFT`
 --- - `SUPER`
 ---
----An entry for `NONE` is **NOT** generated.
----This is the only difference between
----`wezterm.permute_any_or_no_mods` `wezterm.permute_any_mods`.
+---An entry for `NONE` is **NOT** generated. This is the only difference
+---between `wezterm.permute_any_or_no_mods()` `wezterm.permute_any_mods()`.
 ---
 ---Either a `KeyBinding` array or a `MouseBinding` is returned.
 ---
----For more information, see:
+---See:
 --- - [`KeyBinding`](lua://KeyBinding)
 --- - [`MouseBinding`](lua://MouseBinding)
---- - [`wezterm.permute_any_or_no_mods`](lua://Wezterm.permute_any_or_no_mods)
+--- - [`wezterm.permute_any_or_no_mods()`](lua://Wezterm.permute_any_or_no_mods)
 ---
 ---@param T table
 ---@return (MouseBinding|KeyBinding)[] bindings
 function M.permute_any_mods(T) end
 
----This function is intended to help with generating
----[`KeyBinding`](lua://KeyBinding)
----entries.
----These should apply regardless of
----the combination of modifier keys pressed.
+---This function is intended to help with generating `KeyBinding` entries.
+---These should apply regardless of the combination of modifier keys pressed.
 ---
----For each combination of modifiers
----`CTRL`, `ALT`, `SHIFT` and `SUPER`,
----the supplied `table` value `T`
----is copied with a `mods = <value>` entry.
+---For each combination of modifiers (`CTRL`, `ALT`, `SHIFT` and `SUPER`)
+---the supplied `table` value `T` is copied with a `mods = <value>` entry.
+---In addition, an entry for `NONE` is generated. This is the only difference
+---between `wezterm.permute_any_mods()` and `wezterm.permute_any_or_no_mods()`.
 ---
----In addition, an entry for `NONE` is generated
----(this is the only difference between
----[`wezterm.permute_any_mods`](lua://Wezterm.permute_any_mods)
----and `wezterm.permute_any_or_no_mods`).
+---A `KeyBinding` array is returned.
 ---
----A [`KeyBinding`](lua://KeyBinding)
----array is returned.
+---If this is either the only binding or the last one, the resulting array
+---can be unpacked into a Lua table initializer by using `table.unpack()`.
 ---
----If this is either the only binding or the last one,
----the resulting array can be unpacked into a
----Lua table initializer by using
----[`table.unpack()`](lua://table.unpack).
+---See:
+--- - [`KeyBinding`](lua://KeyBinding)
+--- - [`table.unpack()`](lua://table.unpack)
+--- - [`wezterm.permute_any_mods()`](lua://Wezterm.permute_any_mods)
 ---
 ---@param T table
 ---@return KeyBinding[] key_bindings
 function M.permute_any_or_no_mods(T) end
 
----This function is intended to help with generating
----[`MouseBinding`](lua://MouseBinding)
----entries.
----These should apply regardless of
----the combination of modifier keys pressed.
+---This function is intended to help with generating `MouseBinding` entries.
+---These should apply regardless of the combination of modifier keys pressed.
 ---
----For each combination of modifiers
----`CTRL`, `ALT`, `SHIFT` and `SUPER`,
----the supplied `table` value `T`
----is copied with a `mods = <value>` entry.
+---For each combination of modifiers (`CTRL`, `ALT`, `SHIFT` and `SUPER`),
+---the supplied `table` value `T` is copied with a `mods = <value>` entry.
 ---
----In addition, an entry for `NONE` is generated
----(this is the only difference between
----[`wezterm.permute_any_mods`](lua://Wezterm.permute_any_mods)
----and `wezterm.permute_any_or_no_mods`).
+---In addition, an entry for `NONE` is generated. This is the only difference between
+---`wezterm.permute_any_mods()` and `wezterm.permute_any_or_no_mods()`.
 ---
----A [`MouseBinding`](lua://MouseBinding)
----array is returned.
+---A `MouseBinding` array is returned.
 ---
----If this is either the only binding or the last one,
----the resulting array can be unpacked into a
----Lua table initializer by using
----[`table.unpack()`](lua://table.unpack).
+---If this is either the only binding or the last one, the resulting array
+---can be unpacked into a Lua table initializer by using `table.unpack()`.
+---
+---See:
+--- - [`MouseBinding`](lua://MouseBinding)
+--- - [`table.unpack()`](lua://table.unpack)
+--- - [`wezterm.permute_any_mods()`](lua://Wezterm.permute_any_mods)
 ---
 ---@param T table
 ---@return MouseBinding[] mouse_bindings
 function M.permute_any_or_no_mods(T) end
 
----Returns an array containing the absolute file name paths
----of the directory `path` specified.
+---Returns an array containing the absolute file name paths of
+---the directory `path` specified.
 ---
----Due to limitations in the Lua bindings,
----all of the paths must be able to be represented
----as `UTF-8` or this function will generate an error.
+---Due to limitations in the Lua bindings, all of the paths must be able
+---to be represented as `UTF-8` or this function will generate an error.
 ---
 ---@param path string
 ---@return string[] fire_paths
@@ -1928,20 +2049,17 @@ function M.read_dir(path) end
 
 ---Immediately causes the configuration to be reloaded and re-applied.
 ---
----**If you call this at the file scope in your config
----you are in danger of creating an infinite loop
----that renders WezTerm unresponsive.**
+---**If you call this at the file scope in your config you are in danger of creating
+---an infinite loop that renders WezTerm unresponsive.**
 ---
----The intent is for this to be used from an event or
----timer callback function.
+---The intent is for this to be used from an event or timer callback function.
 ---
 function M.reload_configuration() end
 
----This function accepts an argument list; it will attempt to spawn
----that command.
+---This function accepts an argument list; it will attempt to spawn that command.
 ---
----It will return a tuple consisting of the boolean `success`
----of the invocation, the `stdout` data and the `stderr` data.
+---It will return a tuple consisting of the boolean `success` of the invocation,
+---the `stdout` data and the `stderr` data.
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
@@ -1949,7 +2067,7 @@ function M.reload_configuration() end
 ---```
 ---
 ---See also:
---- - [`wezterm.background_child_process`](lua://Wezterm.background_child_process)
+--- - [`wezterm.background_child_process()`](lua://Wezterm.background_child_process)
 ---
 ---@param args string[]
 ---@return boolean success A `boolean` to denote a successful invocation
@@ -1957,8 +2075,8 @@ function M.reload_configuration() end
 ---@return string stderr The `stderr` data as a `string`
 function M.run_child_process(args) end
 
----This function returns a `boolean` indicating whether it is believed
----that WezTerm runs in a WSL container.
+---This function returns a `boolean` indicating whether it is believed that WezTerm
+---runs in a WSL container.
 ---
 ---In such an environment, `wezterm.target_triple` will indicate that the process
 ---is running in Linux with some slight differences in system behavior
@@ -1981,31 +2099,28 @@ function M.run_child_process(args) end
 ---@return boolean wsl
 function M.running_under_wsl() end
 
----Joins together its array arguments by applying
----POSIX-style shell quoting on each argument
----and then adding a space.
+---Joins together its array arguments by applying POSIX-style shell quoting
+---on each argument and then adding a space.
 ---
 ---@param args string[]
 ---@return string joined_args
 function M.shell_join_args(args) end
 
----Quotes its single argument `s` using
----POSIX shell quoting rules.
+---Quotes its single argument `s` using POSIX shell quoting rules.
 ---
 ---@param s string
----@return string
+---@return string quoted_arg
 function M.shell_quote_arg(s) end
 
----Splits a command line into a `string` argument array
----in accordance with POSIX shell rules.
+---Splits a command line into a `string` argument array in accordance with
+---POSIX shell rules.
 ---
 ---@param line string
----@return string[]
+---@return string[] lines
 function M.shell_split(line) end
 
 ---Suspends the execution of the script for `ms` milliseconds.
----When the time period has elapsed,
----the script continues running at the next statement.
+---When the time period has elapsed, the script continues running at the next statement.
 ---
 ---@param ms integer
 function M.sleep_ms(ms) end
@@ -2019,30 +2134,28 @@ function M.sleep_ms(ms) end
 ---@return string[] lines
 function M.split_by_newlines(s) end
 
----Formats the current local date/time into a string using
----the Rust `chrono strftime` syntax.
+---Formats the current local date/time into a string using the Rust `chrono strftime`
+---syntax.
 ---
 ---@param format string
 ---@return string str
 function M.strftime(format) end
 
----Formats the current UTC date/time into a string using
----the Rust `chrono strftime` syntax.
+---Formats the current UTC date/time into a string using the Rust `chrono strftime`
+---syntax.
 ---
 ---@param format string
 ---@return string utc_str
 function M.strftime_utc(format) end
 
----Returns a copy of a string that is no longer than
----`max_width` columns as measured by
----[`wezterm.column_width()`](lua://Wezterm.column_width).
----Truncation occurs by removing excess characters
----from the left end of the string.
+---Returns a copy of a string that is no longer than `max_width` columns
+---as measured by `wezterm.column_width()`.
+---Truncation occurs by removing excess characters from the left end of the string.
 ---
----For example, `wezterm.truncate_left("hello", 3)`
----returns `"llo"`.
+---For example, `wezterm.truncate_left("hello", 3)` returns `"llo"`.
 ---
 ---See also:
+--- - [`wezterm.column_width()`](lua://Wezterm.column_width)
 --- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
 --- - [`wezterm.pad_right()`](lua://Wezterm.pad_right)
 ---
@@ -2051,8 +2164,8 @@ function M.strftime_utc(format) end
 ---@return string trunc_str
 function M.truncate_left(s, max_width) end
 
----Returns a copy of a string that is no longer than
----`max_width` columns as measured by `wezterm.column_width()`.
+---Returns a copy of a string that is no longer than `max_width` columns
+---as measured by `wezterm.column_width()`.
 ---
 ---Truncation occurs by reemoving excess characters from the right end of the string.
 ---For example, `wezterm.truncate_right("hello", 3)` returns `"hel"`.
@@ -2067,50 +2180,12 @@ function M.truncate_left(s, max_width) end
 ---@return string trunc_str
 function M.truncate_right(s, max_width) end
 
----Overly specific and exists primarily to workaround this wsl.exe issue.
+---Overly specific and exists primarily to workaround this `wsl.exe` issue.
 ---It takes as input a string and attempts to convert it from utf16 to utf8.
 ---
 ---@param s string
 ---@return string str
 function M.utf16_to_utf8(s) end
-
----This function is a helper to register a custom event
----and return an action triggering it.
----
----It is helpful to write custom key bindings directly,
----without having to declare the event and use it in a different place.
----
----The implementation is essentially the same as:
----
----```lua
----function wezterm.action_callback(callback)
----  local event_id = '...' -- the function generates a unique event id
----  wezterm.on(event_id, callback)
----  return wezterm.action.EmitEvent(event_id)
----end
----```
----
----@param callback function
----@return { EmitEvent: string } event
-function M.action_callback(callback) end
-
----Adds path to the list of files that are watched for config changes.
----
----If [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
----is enabled, then the config will be reloaded
----when any of the files that have been added to the watch list have changed.
----
----@param path string
-function M.add_to_config_reload_watch_list(path) end
-
----Accepts an argument list; it will attempt to spawn that command in the background.
----
----@param args string[]
-function M.background_child_process(args) end
-
----@param action string
----@return boolean has
-function M.has_action(action) end
 
 return M
 

@@ -8,11 +8,11 @@
 
 ---@enum (key) QuickSelectAlphabet
 local QSA = {
-  asdfqwerzxcvjklmiuopghtybn = 1,
-  asdfqweryxcvjkluiopmghtzbn = 1,
-  qsdfazerwxcvjklmuiopghtybn = 1,
   aoeuqjkxpyhtnsgcrlmwvzfidb = 1,
   arstqwfpzxcvneioluymdhgjbk = 1,
+  asdfqweryxcvjkluiopmghtzbn = 1,
+  asdfqwerzxcvjklmiuopghtybn = 1,
+  qsdfazerwxcvjklmuiopghtybn = 1,
 }
 
 ---@enum (key) DroppedFileQuoting
@@ -35,20 +35,20 @@ local DCS = {
 }
 
 ---@class HsbTransform
+---@field brightness? number
 ---@field hue? number
 ---@field saturation? number
----@field brightness? number
 
 ---@class WindowPadding
+---@field bottom? integer|string
 ---@field left? integer|string
 ---@field right? integer|string
 ---@field top? integer|string
----@field bottom? integer|string
 
 ---@class DaemonOptions
----@field stdout? string
----@field stderr? string
 ---@field pid_file? string
+---@field stderr? string
+---@field stdout? string
 
 ---@enum (key) VBTarget
 local vb_target = {
@@ -58,8 +58,8 @@ local vb_target = {
 
 ---@class VisualBell
 ---@field fade_in_duration_ms? integer
----@field fade_out_duration_ms? integer
 ---@field fade_in_function? EasingFunction
+---@field fade_out_duration_ms? integer
 ---@field fade_out_function? EasingFunction
 ---@field target? VBTarget
 
@@ -107,9 +107,6 @@ local horiz_align = {
 ---Represents the `BackgroundLayer` type.
 ---
 ---@class BackgroundLayer
----Defines the source of the layer texture data.
----
----@field source? { File: string, speed?: number }|{ Gradient: Gradient, Color: string }
 ---Controls whether the layer is fixed to the viewport or moves as it scrolls:
 ---
 --- - `"Fixed"`: (default) to not move as the window scrolls
@@ -119,6 +116,48 @@ local horiz_align = {
 ---                       scrolled in the viewport
 ---
 ---@field attachment? BackgroundLayerAttachments|{ Parallax: number }
+---Controls the height of the image.
+---
+---The following values are accepted:
+---
+--- - `"Cover"`: (default) scales the image, preserving aspect ratio, to the smallest
+--- -          possible size to fill the viewport, leaving no empty space.
+--- -          If the aspect ratio of the viewport differs from the image, the image is cropped
+--- - `"Contain"`: Scales the image as large as possible without cropping or stretching.
+--- -            If the viewport is larger than the image, tiles the image
+--- -            unless `repeat_y` is set to `"NoRepeat"`
+--- - `123`: Specifies a height of `123` pixels
+--- - `"50%"`: Specifies a size of `50%` of the viewport height
+--- - `"2cell"`: Specifies a size equivalent to 2 rows
+---
+---@field height? "Cover"|"Contain"|number|string
+---Controls the initial horizontal position of the layer, relative to the viewport:
+---
+--- - `"Left"` (default)
+--- - `"Center"`
+--- - `"Right"`
+---
+---@field horizontal_align? HorizontalAlign
+---`vertical_offset` is identical to this one, but it affects the y-direction.
+---
+---See:
+--- - [`vertical_offset`](lua://BackgroundLayer.vertical_offset)
+---
+---@field horizontal_offset? number|string
+---A _hue_, _saturation_ and _brightness_ transformation that can be used
+---to adjust those attributes of the layer.
+---
+---For more information about this kind of transform, see:
+--- - [`HsbTransform`](lua://HsbTransform)
+---
+---@field hsb? HsbTransform
+---A number in the range `0.0` through `1.0` inclusive that is multiplied
+---with the alpha channel of the source to adjust the opacity of the layer.
+---
+---The default is `1.0` to use the source alpha channel as-is.
+---Using a smaller value makes the layer less opaque/more transparent.
+---
+---@field opacity? number
 ---Controls whether the image is repeated in the x-direction:
 ---
 --- - `"Repeat"`: Repeat as much as possible to cover the area.
@@ -153,6 +192,9 @@ local horiz_align = {
 --- - [`repeat_x_size`](lua://BackgroundLayer.repeat_x_size)
 ---
 ---@field repeat_y_size? number|string
+---Defines the source of the layer texture data.
+---
+---@field source? { File: string, speed?: number }|{ Gradient: Gradient, Color: string }
 ---Controls the initial vertical position of the layer, relative to the viewport:
 ---
 --- - `"Top"` (default)
@@ -167,48 +209,6 @@ local horiz_align = {
 --- - `"10cell"`: to specify a size based on terminal cell metrics
 ---
 ---@field vertical_offset? number|string
----Controls the initial horizontal position of the layer, relative to the viewport:
----
---- - `"Left"` (default)
---- - `"Center"`
---- - `"Right"`
----
----@field horizontal_align? HorizontalAlign
----`vertical_offset` is identical to this one, but it affects the y-direction.
----
----See:
---- - [`vertical_offset`](lua://BackgroundLayer.vertical_offset)
----
----@field horizontal_offset? number|string
----A number in the range `0.0` through `1.0` inclusive that is multiplied
----with the alpha channel of the source to adjust the opacity of the layer.
----
----The default is `1.0` to use the source alpha channel as-is.
----Using a smaller value makes the layer less opaque/more transparent.
----
----@field opacity? number
----A _hue_, _saturation_ and _brightness_ transformation that can be used
----to adjust those attributes of the layer.
----
----For more information about this kind of transform, see:
---- - [`HsbTransform`](lua://HsbTransform)
----
----@field hsb? HsbTransform
----Controls the height of the image.
----
----The following values are accepted:
----
---- - `"Cover"`: (default) scales the image, preserving aspect ratio, to the smallest
---- -          possible size to fill the viewport, leaving no empty space.
---- -          If the aspect ratio of the viewport differs from the image, the image is cropped
---- - `"Contain"`: Scales the image as large as possible without cropping or stretching.
---- -            If the viewport is larger than the image, tiles the image
---- -            unless `repeat_y` is set to `"NoRepeat"`
---- - `123`: Specifies a height of `123` pixels
---- - `"50%"`: Specifies a size of `50%` of the viewport height
---- - `"2cell"`: Specifies a size equivalent to 2 rows
----
----@field height? "Cover"|"Contain"|number|string
 ---Controls the width of the image.
 ---
 ---Same details as `height` but applied to the x-direction.
@@ -220,15 +220,64 @@ local horiz_align = {
 
 ---@alias AllFontAttributes Fonts|FontAttributes|FontFamilyAttributes
 
+---@enum (key) FontRules.Blink
+local blink = {
+  None = 1,
+  Rapid = 1,
+  Slow = 1,
+}
+
 ---@class FontRules
+---@field blink? FontRules.Blink
 ---@field font? AllFontAttributes
+---@field intensity? FormatItemAttribute.Intensity
+---@field invisible? boolean
 ---@field italic? boolean
 ---@field reverse? boolean
 ---@field strikethrough? boolean
----@field invisible? boolean
----@field intensity? "Normal"|"Bold"|"Half"
----@field underline? "None"|"Single"|"Double"
----@field blink? "None"|"Rapid"|"Slow"
+---@field underline? TabBarColor.Underline
+
+---@enum (key) AllowSquareGlyphs
+local allow_square_glyphs_to_overflow_width = {
+  Always = 1,
+  Never = 1,
+  WhenFollowedBySpace = 1,
+}
+
+---@enum (key) AudibleBell
+local audible_bell = {
+  Disabled = 1,
+  SystemBeep = 1,
+}
+
+---@enum (key) BidiDirection
+local bidi_direction = {
+  AutoLeftToRight = 1,
+  AutoRightToLeft = 1,
+  LeftToRight = 1,
+  RightToLeft = 1,
+}
+
+---@enum (key) DisplayPixelGeometry
+local display_pixel_geometry = {
+  BGR = 1,
+  RGB = 1,
+}
+
+---@enum (key) ExitBehavior
+local exit_behavior = {
+  Close = 1,
+  CloseOnCleanExit = 1,
+  Hold = 1,
+}
+
+---@enum (key) ExitBehaviorMessaging
+local exit_behavior_messaging = {
+  Brief = 1,
+  None = 1,
+  Terse = 1,
+  Verbose = 1,
+}
 
 ---The `return` statement at the end of your `wezterm.lua` file returns
 ---a table that is interpreted as the internal `Config` struct type.
@@ -252,20 +301,16 @@ local horiz_align = {
 ---
 ---@class Config
 ---Control whether changing the font size adjusts the dimensions
----of the window (`true`) or adjusts the number of
----terminal rows/columns (`false`).
+---of the window (`true`) or adjusts the number of terminal rows/columns (`false`).
 ---
----If you use a tiling window manager then you may wish
----to set this to `false`.
+---If you use a tiling window manager then you may wish to set this to `false`.
 ---
----The default value is now `nil` which causes wezterm to match
----the name of the connected window environment
----(which you can see if you open the debug overlay) against
----the list of known tiling environments configured by `config.tiling_desktop_environments`.
+---The default value is now `nil` which causes wezterm to match the name of the connected
+---window environment, which you can see if you open the debug overlay, against the list of
+---known tiling environments configured by `config.tiling_desktop_environments`.
 ---
 ---If the environment is known to be tiling then the effective value of
----`config.adjust_window_size_when_changing_font_size` is `false`,
----and `true` if that's not the case.
+---`config.adjust_window_size_when_changing_font_size` is `false`, and `true` if otherwise.
 ---
 ---See also:
 --- - [DecreaseFontSize](https://wezterm.org/config/lua/keyassignment/DecreaseFontSize.html)
@@ -276,51 +321,47 @@ local horiz_align = {
 ---@field allow_download_protocols? boolean
 ---Configures how square symbol glyph's cell is rendered:
 ---
---- - `"WhenFollowedBySpace"`: (default) Deliberately overflow the cell width when
----                          the next cell is a space
 --- - `"Always"`: Overflow the cell regardless of the next cell being a space
 --- - `"Never"`: Strictly respect the cell width
+--- - `"WhenFollowedBySpace"`: (default) Deliberately overflow the cell width when
+---                          the next cell is a space
 ---
 ---This setting now applies to any glyph with an aspect ratio larger than `0.9`,
 ---which covers more symbol glyphs than in earlier releases.
 ---
----@field allow_square_glyphs_to_overflow_width? "Always"|"Never"|"WhenFollowedBySpace"
----When set to `true`, wezterm will honor an escape sequence generated
----by the Windows ConPTY layer to switch the keyboard encoding to
----a proprietary scheme that has maximum compatibility with
----win32 console applications.
+---@field allow_square_glyphs_to_overflow_width? AllowSquareGlyphs
+---When set to `true`, wezterm will honor an escape sequence generated by
+---the Windows ConPTY layer to switch the keyboard encoding to a proprietary scheme
+---that has maximum compatibility with win32 console applications.
 ---
 ---The default is `true`.
 ---
 ---See also [Improved Keyboard Handling in ConPTY](https://github.com/microsoft/terminal/blob/main/doc/specs/%234999%20-%20Improved%20keyboard%20handling%20in%20Conpty.md).
+---
 ---@field allow_win32_input_mode? boolean
 ---Normally the vertical mouse wheel will scroll the terminal viewport so that
 ---different sections of the scrollback are visible.
 ---
----When an application activates the _Alternate Screen Buffer_
----(this is common for "full screen" terminal programs such as pagers and editors),
----the alternate screen doesn't have a scrollback.
----In this mode, if the application hasn't enabled mouse reporting,
----wezterm will generate `Arrow Up` / `Arrow Down` key events
----when the vertical mouse wheel is scrolled.
+---When an application activates the _Alternate Screen Buffer_ (this is common for
+---"full screen" terminal programs such as pagers and editors), the alternate screen
+---doesn't have a scrollback. In this mode, if the application hasn't enabled mouse reporting,
+---wezterm will generate `Arrow Up` / `Arrow Down` key events when the vertical mouse wheel
+---is scrolled.
 ---
 ---`config.alternate_buffer_wheel_scroll_speed` specifies how many arrow key presses
 ---are generated by a single scroll wheel "tick".
 ---
----The default for this value is `3`, meaning a single _wheel up_ "tick"
----will appear to the application as though the user pressed `Arrow Up`
----three times in quick succession.
+---The default for this value is `3`, meaning a single _wheel up_ "tick" will appear
+---to the application as though the user pressed `Arrow Up` three times in quick succession.
 ---
 ---@field alternate_buffer_wheel_scroll_speed? integer
----This setting controls the maximum frame rate used when rendering
----easing effects for blinking cursors, blinking text and visual bell.
----Setting it larger will result in smoother easing effects, but
----will increase GPU usage.
+---This setting controls the maximum frame rate used when rendering easing effects
+---for blinking cursors, blinking text and visual bell. Setting it larger will result in
+---smoother easing effects, but will increase GPU usage.
 ---
----If you are running with a CPU renderer (e.g. you have `config.front_end` set to
----`"Software"`, or your system doesn't have a GPU), then setting this option
----to `1` is recommended, as doing so will disable easing effects and instead
----will use transitions.
+---If you are running with a CPU renderer (e.g. you have `config.front_end` set to `"Software"`,
+---or your system doesn't have a GPU), then setting this option to `1` is recommended,
+---as doing so will disable easing effects and instead will use transitions.
 ---
 ---```lua
 ---config.animation_fps = 1
@@ -332,27 +373,24 @@ local horiz_align = {
 --- - [`config.front_end`](lua://Config.front_end)
 ---
 ---@field animation_fps? integer
----Controls whether the glyphs set in `config.custom_block_glyphs`
----are rendered using anti-aliasing or not.
+---Controls whether the glyphs set in `config.custom_block_glyphs` are rendered
+---using anti-aliasing or not.
 ---
----Anti-aliasing makes lines look smoother but may not
----look so nice at smaller font sizes.
+---Anti-aliasing makes lines look smoother but may not look so nice at smaller font sizes.
 ---
 ---See:
 --- - [`config.custom_block_glyphs`](lua://Config.custom_block_glyphs)
 ---
 ---@field anti_alias_custom_block_glyphs? boolean
----When the BEL ascii sequence is sent to a pane, the bell is "rung"
----in that pane.
+---When the BEL ascii sequence is sent to a pane, the bell is "rung" in that pane.
 ---
----You may choose to configure the audible_bell option to change
----the sound that wezterm makes when the bell rings.
+---You may choose to configure the audible_bell option to change the sound that WezTerm
+---makes when the bell rings.
 ---
 ---The follow are possible values:
 ---
 --- - `"Disabled"`: Don't make a sound
---- - `"SystemBeep"`: Perform the system beep or alert sound.
----                 This is the default.
+--- - `"SystemBeep"`: Perform the system beep or alert sound. This is the default.
 ---                 On Wayland systems, which have no system beep function,
 ---                 it won't produce a sound
 ---
@@ -360,41 +398,35 @@ local horiz_align = {
 --- - [`config.visual_bell`](lua://Config.visual_bell)
 --- - [Bell Event](https://wezterm.org/config/lua/window-events/bell.html)
 ---
----@field audible_bell? "Disabled"|"SystemBeep"
----When `true`, watch the config file and reload it automatically
----when it is detected as changing.
+---@field audible_bell? AudibleBell
+---When `true`, watch the config file and reload it automatically when changes are detected.
 ---
 ---@field automatically_reload_config? boolean
----The `config.background` option allows you to compose a number of layers
----to produce the background content in the terminal.
+---The `config.background` option allows you to compose a number of layers to produce
+---the background content in the terminal.
 ---
----Layers can be image files, gradients or solid blocks of color.
----Layers composite over each other based on their alpha channel.
----Images in layers can be made to fill the viewport or to tile, and also
----to scroll with optional parallax as the viewport is scrolled.
+---Layers can be image files, gradients or solid blocks of color. Layers composite over
+---each other based on their alpha channel. Images in layers can be made to fill the viewport
+---or to tile, and also to scroll with optional parallax as the viewport is scrolled.
 ---
----This option is a table that lists the desired layers starting with
----the deepest/back-most layer.
+---This option is a table that lists the desired layers starting with the deepest/back-most layer.
 ---Subsequent layers are composited over the top of preceding layers.
 ---
 ---@field background? BackgroundLayer[]
----@field bidi_direction? "LeftToRight"|"RightToLeft"|"AutoLeftToRight"|"AutoRightToLeft"
+---@field bidi_direction? BidiDirection
 ---@field bidi_enabled? boolean
 ---When `true` (the default), PaletteIndex 0-7 are shifted to **bright**
 ---when the font intensity is bold.
 ---
----This brightening effect doesn't occur when the text is set to
----the default foreground color.
+---This brightening effect doesn't occur when the text is set to the default foreground color.
 ---
----This defaults to `true` for better compatibility with software;
----for instance, a lot of software assumes that `Black+Bold` renders
----as a `Dark Grey`, which is legible on a `Black` background,
----but if this option is set to `false`,
----it would render as `Black on Black`.
+---This defaults to `true` for better compatibility with software; for instance,
+---a lot of software assumes that `Black+Bold` renders as a `Dark Grey`, which is legible
+---on a `Black` background, but if this option is set to `false`, it would render as
+---`Black on Black`.
 ---
 ---This option can also have one of three `string` values:
 ---
---- - `"No"`: The _bold_ attribute will not influence palette selection
 --- - `"BrightAndBold"`: The _bold_ attribute will select a bright version
 ---                    of palette indices (`0-7`) and preserve the _bold_ attribute
 ---                    on the text, using both a bold font and a brighter color
@@ -402,10 +434,10 @@ local horiz_align = {
 ---                 of palette indices (`0-7`), but the intensity will be
 ---                 treated as _normal_ and a non-bold font will be used
 ---                 for the text
+--- - `"No"`: The _bold_ attribute will not influence palette selection
 ---
 ---You may use `true` or `false` for backwards compatibility.
----`true` is equivalent to `"BrightAndBold"`.
----`false` is equivalent to `"No"`.
+---`true` is equivalent to `"BrightAndBold"`, while `false` is equivalent to `"No"`.
 ---
 ---@field bold_brightens_ansi_colors? "No"|"BrightAndBold"|"BrightOnly"|boolean
 ---If an application has enabled mouse reporting mode, mouse events are sent directly
@@ -415,10 +447,9 @@ local horiz_align = {
 ---will prevent the event from being passed to the application.
 ---
 ---The default value for `config.bypass_mouse_reporting_modifiers` is `"SHIFT"`,
----which means that holding down shift while clicking will not send
----the mouse event to e.g. _vim running in mouse mode_
----and will instead treat the event as though `"SHIFT"` was not pressed
----and then match it against the mouse assignments.
+---which means that holding down shift while clicking will not send the mouse event to,
+---e.g. _vim running in mouse mode_, and will instead treat the event as though `"SHIFT"`
+---was not pressed and then match it against the mouse assignments.
 ---
 ---@field bypass_mouse_reporting_modifiers? Modifiers
 ---Controls whether pasted text will have newlines normalized.
@@ -427,67 +458,56 @@ local horiz_align = {
 ---of this configuration option is `"None"`.
 ---
 ---@field canonicalize_pasted_newlines? "None"|"LineFeed"|"CarriageReturn"|"CarriageReturnAndLineFeed"|boolean
----Scales the computed cell width to adjust the spacing
----between successive cells of text.
+---Scales the computed cell width to adjust the spacing between successive cells of text.
 ---
----If possible, you should prefer to specify the stretch parameter
----when selecting a font using either
----`wezterm.font` or `wezterm.font_with_fallback`,
----as that will generally look better and have fewer undesirable side effects.
+---If possible, you should prefer to specify the stretch parameter when selecting a font
+---using either `wezterm.font()` or `wezterm.font_with_fallback()`, as that will generally
+---look better and have fewer undesirable side effects.
 ---
 ---If your preferred font doesn't have variations with different stretches,
----or if the font spacing still doesn't look right to you,
----then `config.cell_width` gives you a simple way to influence the spacing.
+---or if the font spacing still doesn't look right to you, then `config.cell_width`
+---gives you a simple way to influence the spacing.
 ---
----The default cell width is indirectly controlled by the `config.font`
----and `config.font_size` configuration options.
----The selected font and font size controls the height of the font,
----while the font designer controls the aspect ratio
----of the glyphs in the font.
+---The default cell width is indirectly controlled by the `config.font` and `config.font_size`
+---configuration options. The selected font and font size controls the height of the font,
+---while the font designer controls the aspect ratio of the glyphs in the font.
 ---
----The base font (the first font resolved from `config.font`) defines
----the cell metrics for the terminal display grid.
----Those metrics are then then used to place glyphs, regardless of
+---The base font (the first font resolved from `config.font`) defines the cell metrics
+---for the terminal display grid. Those metrics are then then used to place glyphs, regardless of
 ---which fallback font might be resolved for a given glyph.
 ---
----If you feel that your chosen font feels too horizontally cramped
----then you can set this to `1.2` to increase
----the horizontal spacing by `20%`.
----Conversely, setting this to `0.9` will decrease
----the horizontal spacing by `10%`.
+---If you feel that your chosen font feels too horizontally cramped then you can set this
+---to `1.2` to increase the horizontal spacing by `20%`. Conversely, setting this to `0.9`
+---will decrease the horizontal spacing by `10%`.
 ---
----This option doesn't adjust the rasterized width of glyphs,
----it just changes what wezterm considers to be the cell boundaries.
----When rendering _monospace_, wezterm advances by the cell width to place
----successive glyphs.
+---This option doesn't adjust the rasterized width of glyphs, it just changes what WezTerm
+---considers  to be the cell boundaries. When rendering _monospace_, WezTerm advances
+---by the cell width to place successive glyphs.
 ---
----If you set the scale less than `1.0` then the glyphs won't be
----truncated or squished, rather they will render on top of each other.
----Conversely, if you set the scale to greater than `1.0`, the glyphs
----won't be stretched but will render further apart from each other.
+---If you set the scale less than `1.0` then the glyphs won't be truncated or squished,
+---rather they will render on top of each other. Conversely, if you set the scale
+---to greater than `1.0`, the glyphs won't be stretched but will render further apart
+---from each other.
 ---
----Changing `config.cell_width` doesn't adjust the positioning of
----the glyph within the cell; it remains at its usual x-position.
----It is not centered within the adjusted space.
----Doing so may have undesirable consequences,
----particularly for fonts that use ligatures.
+---Changing `config.cell_width` doesn't adjust the positioning of the glyph within the cell;
+---it remains at its usual x-position. It is not centered within the adjusted space. Doing so
+---may have undesirable consequences, particularly for fonts that use ligatures.
 ---
----Depending on the font, you may find that some ligatured sequences are
----misaligned or render strangely.
----**This is not a bug**: the font is designed to be rendered with a
----`config.cell_width` value of `1.0`, so running with a different value
----will have this sort of side effect.
+---Depending on the font, you may find that some ligatured sequences are misaligned
+---or render strangely. **This is not a bug**: the font is designed to be rendered with a
+---`config.cell_width` value of `1.0`, so running with a different value will have
+---this sort of side effect.
 ---
 ---See also:
---- - [`wezterm.font`](lua://Wezterm.font)
---- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
---- - [`config.font`](lua://Config.font)
 --- - [`config.font_size`](lua://Config.font_size)
+--- - [`config.font`](lua://Config.font)
 --- - [`config.line_height`](lua://Config.line_height)
+--- - [`wezterm.font()`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
 ---@field cell_width? number
----The character width recommended by the Unicode standard is occasionally
----inconsistent and may not align with linguistic tradition.
+---The character width recommended by the Unicode standard is occasionally inconsistent
+---and may not align with linguistic tradition.
 ---
 --- - circled numbers width: ⓪①..⑳㉑
 --- - lowercase Roman numerals width: ⅹⅺⅻ
@@ -495,13 +515,12 @@ local horiz_align = {
 --- - ambiguous character width for CJK text
 --- - square emojis defined as EAW=Neutral
 ---
----The `config.cell_widths` configuration parameter allows users
----to override the default character width.
+---The `config.cell_widths` configuration parameter allows users to override
+---the default character width.
 ---
----[Nerd Font](https://www.nerdfonts.com/) has square glyphs
----and is an example of half advance width.
----Below is a configuration example that treats these character widths
----as full-width:
+---[Nerd Font](https://www.nerdfonts.com/) has square glyphs and is an example of half advance width.
+---
+---Below is a configuration example that treats these character widths as full-width:
 ---
 ---```lua
 ---config.cell_widths = {
@@ -512,13 +531,11 @@ local horiz_align = {
 ---
 ---This setting takes priority over `config.treat_east_asian_ambiguous_width_as_wide`.
 ---
----Note that changing this setting may have consequences for layout
----in text UI applications if their expectation of width differs
----from your choice of configuration.
+---Note that changing this setting may have consequences for layout in text UI applications
+---if their expectation of width differs from your choice of configuration.
 ---
 ---For example, Vim has a built-in function [`setcellwidths()`](https://vimhelp.org/builtin.txt.html#setcellwidths%28%29),
----and shells like Bash or Zsh determine character width
----based on the `glibc` locale.
+---and shells like Bash or Zsh determine character width based on the `glibc` locale.
 ---
 ---See also:
 --- - [`config.treat_east_asian_ambiguous_width_as_wide`](lua://Config.treat_east_asian_ambiguous_width_as_wide)
@@ -532,19 +549,18 @@ local horiz_align = {
 ---@field char_select_fg_color? string
 ---Configures the font to use for character selection.
 ---
----The `config.char_select_font` setting can specify a set of fallbacks
----and other options.
----It is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
+---The `config.char_select_font` setting can specify a set of fallbacks and other options.
+---It is described in more detail in the [Fonts](https://wezterm.org/config/fonts.html) section.
 ---
 ---If not specified, the font is same as the font in `config.window_frame.font`.
 ---
----You will typically use either `wezterm.font` or `wezterm.font_with_fallback`
+---You will typically use either `wezterm.font()` or `wezterm.font_with_fallback()`
 ---to specify the font.
 ---
 ---See:
---- - [`wezterm.font`](lua://Wezterm.font)
---- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
 --- - [`config.window_frame.font`](lua://WindowFrameConfig.font)
+--- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
+--- - [`wezterm.font()`](lua://Wezterm.font)
 ---
 ---@field char_select_font? Fonts|FontFamilyAttributes
 ---Specifies the size of the font used with [`CharSelect`](https://wezterm.org/config/lua/keyassignment/CharSelect.html).
@@ -566,23 +582,21 @@ local horiz_align = {
 ---You may change this option for an alternative update interval.
 ---
 ---@field check_for_updates_interval_seconds? integer
----Defines the set of exit codes that are considered to be a "clean" exit by
----`config.exit_behavior` when the program running in the terminal completes.
+---Defines the set of exit codes that are considered to be a "clean" exit by `config.exit_behavior`
+---when the program running in the terminal completes.
 ---
----Acceptable values are an array of integer exit codes that you wish
----to treat as successful.
+---Acceptable values are an array of integer exit codes that you wish to treat as successful.
 ---
----For example, if you often `CTRL-C` a program and then `CTRL-D`,
----bash will typically exit with status `130` to indicate
----that a program was terminated with `SIGINT`, but that bash itself wasn't.
----In that situation you may wish to set this config to treat `130` as `OK`:
+---For example, if you often `CTRL-C` a program and then `CTRL-D`, `bash` will typically exit
+---with status `130` to indicate that a program was terminated with `SIGINT`,
+---but that `bash` itself wasn't. In that situation you may wish to set this config
+---to treat `130` as `OK`:
 ---
 ---```lua
 ---config.clean_exit_codes = { 130 } --- `OK`
 ---```
 ---
----Note that `0` is always treated as a clean exit code
----and can be omitted from the list.
+---Note that `0` is always treated as a clean exit code and can be omitted from the list.
 ---
 ---See:
 --- - [`config.exit_behavior`](lua://Config.exit_behavior)
@@ -594,16 +608,16 @@ local horiz_align = {
 --- - [Colors & Appearance](https://wezterm.org/config/appearance.html)
 ---
 ---@field color_scheme? Colorschemes|string
----If you wish to place your color scheme files in some other location,
----then you will need to instruct wezterm where to look for your scheme files.
----The `config.color_scheme_dirs` setting specifies a list of directories to be searched:
+---If you wish to place your color scheme files in some other location, then you will need
+---to instruct wezterm where to look for your scheme files. The `config.color_scheme_dirs` setting
+---specifies a list of directories to be searched:
 ---
 ---```lua
 ---config.color_scheme_dirs = { '/some/path/to/my/color/schemes' }
 ---```
 ---
----Color scheme names that are defined in files in `config.color_scheme_dirs`
----take precedence over the built-in color schemes.
+---Color scheme names that are defined in files in `config.color_scheme_dirs` take precedence
+---over the built-in color schemes.
 ---
 ---@field color_scheme_dirs? string[]
 ---Specifies various named color schemes in your configuration file.
@@ -630,13 +644,12 @@ local horiz_align = {
 ---@field command_palette_fg_color? string
 ---Configures the font to use for command palette.
 ---
----The `config.command_palette_font` setting can specify a set of fallbacks
----and other options, and is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
+---The `config.command_palette_font` setting can specify a set of fallbacks and other options,
+---and is described in more detail in the [Fonts](https://wezterm.org/config/fonts.html) section.
 ---
 ---If not specified, the font is same as the font in `config.window_frame.font`.
 ---
----You will typically use `wezterm.font` or `wezterm.font_with_fallback`
----to specify the font.
+---You will typically use `wezterm.font()` or `wezterm.font_with_fallback()` to specify the font.
 ---
 ---To specify `config.command_palette_font`:
 ---
@@ -645,9 +658,9 @@ local horiz_align = {
 ---```
 ---
 ---See:
---- - [`wezterm.font`](lua://Wezterm.font)
---- - [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
 --- - [`config.window_frame.font`](lua://WindowFrameConfig.font)
+--- - [`wezterm.font()`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
 ---@field command_palette_font? AllFontAttributes
 ---Specifies the size of the font used with `ActivateCommandPalette`.
@@ -664,40 +677,37 @@ local horiz_align = {
 --- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
 ---@field command_palette_rows? integer|nil
----Specifies the easing function to use when computing the color
----for the text cursor when it is set to a blinking style.
+---Specifies the easing function to use when computing the color for the text cursor
+---when it is set to a blinking style.
 ---
 ---For more information about easing functions, see:
 --- - [`config.visual_bell`](lua://Config.visual_bell)
 ---
 ---@field cursor_blink_ease_in? EasingFunction
----Specifies the easing function to use when computing the color
----for the text cursor when it's set to a blinking style.
+---Specifies the easing function to use when computing the color for the text cursor
+---when it is set to a blinking style.
 ---
 ---For more information about easing functions, see:
 --- - [`config.visual_bell`](lua://Config.visual_bell)
 ---
 ---@field cursor_blink_ease_out? EasingFunction
----Specifies how often a blinking cursor transitions between _visible_ and
----_invisible_, expressed in milliseconds.
+---Specifies how often a blinking cursor transitions between _visible_ and _invisible_,
+---expressed in milliseconds.
 ---
 ---Setting this to `0` disables blinking.
 ---
----Note that this value is approximate due to the way that the system event loop
----schedulers manage timers; non-zero values will be at least the interval specified
----with some degree of slop.
+---Note that this value is approximate due to the way that the system event loop schedulers
+---manage timers; non-zero values will be at least the interval specified with some degree of slop.
 ---
----Note: It is recommended to avoid blinking cursors when on battery power,
----as it is relatively costly to keep re-rendering for the blink.
+---Note: It is recommended to avoid blinking cursors when on battery power, as it is
+---relatively costly to keep re-rendering for the blink.
 ---
 ---@field cursor_blink_rate? integer
----If specified, overrides the base thickness of the lines used to render
----the textual cursor glyph.
+---If specified, overrides the base thickness of the lines used to render the textual cursor glyph.
 ---
 ---The default is to use `config.underline_thickness`.
 ---
----This config option accepts different units that have
----slightly different interpretations:
+---This config option accepts different units that have slightly different interpretations:
 ---
 --- - `2`, `2.0` or `"2px"`: All specify a thickness of 2 pixels
 --- - `"2pt"`: Specifies a thickness of `2` points, which scales according to
@@ -713,22 +723,19 @@ local horiz_align = {
 --- - [`config.underline_thickness`](lua://Config.underline_thickness)
 ---
 ---@field cursor_thickness? number|string
----When set to `true` (the default), WezTerm will compute its own idea
----of what the glyphs in the following unicode ranges should be,
----instead of using glyphs resolved from a font.
+---When set to `true` (the default), WezTerm will compute its own idea of what the glyphs
+---in the following unicode ranges should be, instead of using glyphs resolved from a font.
 ---
----Ideally this option wouldn't exist, but it is present to work around a
----[hinting issue in freetype](https://gitlab.freedesktop.org/freetype/freetype/-/issues/761).
+---Ideally this option wouldn't exist, but it is present to work around a [hinting issue in freetype](https://gitlab.freedesktop.org/freetype/freetype/-/issues/761).
 ---
----You can set this to `false` to use the block characters
----provided by your font selection.
+---You can set this to `false` to use the block characters provided by your font selection.
 ---
 ---@field custom_block_glyphs? boolean
----Allows configuring the multiplexer (mux) server and how it
----places itself into the background to run as a daemon process.
+---Allows configuring the multiplexer (mux) server and how it places itself into the background
+---to run as a daemon process.
 ---
----You should not normally need to configure this setting;
----the defaults should be sufficient in most cases.
+---You should not normally need to configure this setting; the defaults should be sufficient
+---in most cases.
 ---
 ---There are three fields supported:
 ---
@@ -743,36 +750,33 @@ local horiz_align = {
 ---           or `$HOME/.local/share/wezterm/stderr`
 ---
 ---@field daemon_options? DaemonOptions
----When set to `true`, each key event will be logged by the GUI layer
----as an `INFO` level log message on the `stderr` stream from wezterm.
+---When set to `true`, each key event will be logged by the GUI layer as an `INFO` level
+---log message on the `stderr` stream from WezTerm.
 ---
----You will typically need to launch wezterm directly from another terminal
----to see this logging.
+---You will typically need to launch WezTerm directly from another terminal to see this logging.
 ---
----This can be helpful in figuring out how keys are being decoded on your system,
----or for discovering the system-dependent "raw" key code values.
+---This can be helpful in figuring out how keys are being decoded on your system, or for
+---discovering the system-dependent "raw" key code values.
 ---
 ---@field debug_key_events? boolean
 ---Specifies the default cursor style.
 ---
----Various escape sequences can override the default style
----in different situations (e.g. an editor can change it depending on the mode),
----but this value controls how the cursor appears when it is reset to default.
+---Various escape sequences can override the default style in different situations
+---(e.g. an editor can change it depending on the mode), but this value controls how the cursor
+---appears when it is reset to default.
 ---
 ---Acceptable values are:
 ---
---- - `"SteadyBlock"`
+--- - `"BlinkingBar"`
 --- - `"BlinkingBlock"`
---- - `"SteadyUnderline"`
 --- - `"BlinkingUnderline"`
 --- - `"SteadyBar"`
---- - `"BlinkingBar"`
----
----The default is `"SteadyBlock"`.
+--- - `"SteadyBlock"` (default)
+--- - `"SteadyUnderline"`
 ---
 ---@field default_cursor_style? DefaultCursorStyle
----Specifies the default current working directory if none is specified
----through configuration or OSC 7.
+---Specifies the default current working directory if none is specified through configuration
+---or OSC 7.
 ---
 ---@field default_cwd? string
 ---Note: This option only applies to the GUI.
@@ -781,32 +785,27 @@ local horiz_align = {
 --- - [`config.default_mux_server_domain`](lua://Config.default_mux_server_domain)
 ---
 ------
----When starting the GUI (not using the serial or connect subcommands),
----by default wezterm will set the built-in `"local"` domain
----as the default multiplexing domain.
+---When starting the GUI (not using the serial or connect subcommands), by default WezTerm
+---will set the built-in `"local"` domain as the default multiplexing domain.
 ---
----The `"local"` domain represents processes that are spawned
----directly on the local system.
+---The `"local"` domain represents processes that are spawned directly on the local system.
 ---
----Windows users, particularly those who use WSL, may wish to
----override the default domain to instead use a particular
----WSL distribution so that wezterm launches directly
----into a Linux shell rather than having to manually invoke `wsl.exe`.
----Using a `WslDomain` for this has the advantage that wezterm can then use
----[shell integration](https://wezterm.org/shell-integration.html) to track the current directory
----inside WSL and use it when splitting new panes or spawning new tabs.
+---Windows users, particularly those who use WSL, may wish to override the default domain to
+---instead use a particular WSL distribution so that wezterm launches directly into a Linux shell
+---rather than having to manually invoke `wsl.exe`. Using a `WslDomain` for this has the advantage
+---that WezTerm can then use [shell integration](https://wezterm.org/shell-integration.html) to track
+---the current directory inside WSL and use it when splitting new panes or spawning new tabs.
 ---
 ---See:
 --- - [`Wsldomain`](lua://WslDomain)
 ---
 ---@field default_domain? string
 ---When launching the GUI using either `wezterm` or `wezterm-gui`
----(with no subcommand explicitly specified), WezTerm will use
----the value of `config.default_gui_startup_args` to pick
----a default mode for running the GUI.
+---(with no subcommand explicitly specified), WezTerm will use the value
+---of `config.default_gui_startup_args` to pick a default mode for running the GUI.
 ---
----The default for this config is `{ "start" }` which makes `wezterm`
----with no additional subcommand arguments equivalent to `wezterm start`.
+---The default for this config is `{ "start" }` which makes `wezterm` with no additional
+---subcommand arguments equivalent to `wezterm start`.
 ---
 ---If you always want to use wezterm's ssh client to login to a particular host,
 ---then you might consider using this configuration:
@@ -815,15 +814,14 @@ local horiz_align = {
 ---config.default_gui_startup_args = { "ssh", "some-host" }
 ---```
 ---
----which will cause `wezterm` with no additional subcommand arguments
----to be equivalent to running `wezterm ssh some-host`.
+---which will cause `wezterm` with no additional subcommand arguments to be equivalent
+---to running `wezterm ssh some-host`.
 ---
----_Specifying subcommand arguments on the command line is **NOT** additive_
----_with this config; the command line arguments always take precedence._
+---_Specifying subcommand arguments on the command line is **NOT** additive with this config;
+---the command line arguments always take precedence._
 ---
----Depending on your desktop environment, you may find it simpler to use
----your operating system shortcut or alias function to set up a shortcut
----that runs the subcommand you desire.
+---Depending on your desktop environment, you may find it simpler to use your operating system
+---shortcut or alias function to set up a shortcut that runs the subcommand you desire.
 ---
 ---@field default_gui_startup_args? string[]|{ [1]: "start" }
 ---**Note: This option only applies to the standalone mux server.**
@@ -832,39 +830,32 @@ local horiz_align = {
 --- - [`config.default_domain`](lua://Config.default_domain).
 ---
 --- ---
----When starting the mux server, by default wezterm will set
----the built-in `"local"` domain as the default multiplexing domain.
----The `"local"` domain represents processes that are spawned directly
----on the local system.
+---When starting the mux server, by default wezterm will set the built-in `"local"` domain
+---as the default multiplexing domain. The `"local"` domain represents processes that are
+---spawned directly on the local system.
 ---
----This option allows you to change the default domain to some other domain,
----such as an `ExecDomain`.
+---This option allows you to change the default domain to some other domain, such as an `ExecDomain`.
 ---
----It is not possible to configure a client multiplexing domain such as a TLS,
----SSH or UNIX domain as the default for the multiplexer server.
----That is prohibited in order to prevent recursion when a client
----connects to the server.
+---It is not possible to configure a client multiplexing domain such as a TLS, SSH or UNIX domain
+---as the default for the multiplexer server. That is prohibited in order to prevent recursion
+---when a client connects to the server.
 ---
 ---See:
 --- - [`ExecDomain`](lua://ExecDomain)
 ---
 ---@field default_mux_server_domain? string
----If no `prog` is specified on the command line, use this
----instead of running the user's shell.
+---If no `prog` is specified on the command line, use this instead of running the user's shell.
 ---
----`config.default_prog` is implemented as an array where the 0th element
----is the command to run and the rest of the elements are passed
----as the positional arguments to that command.
+---`config.default_prog` is implemented as an array where the 0th element is the command to run
+---and the rest of the elements are passed as the positional arguments to that command.
 ---
 ---@field default_prog? string[]
----Setting this value will cause wezterm to replace the the value of the
----`SSH_AUTH_SOCK` environment when it first starts up, and to use this value
----for the auth socket registered with the multiplexer server
----(visible via `wezterm cli list-clients`).
+---Setting this value will cause wezterm to replace the the value of the `SSH_AUTH_SOCK` environment
+---when it first starts up, and to use this value for the auth socket registered
+---with the multiplexer server (visible via `wezterm cli list-clients`).
 ---
----You won't normally need to set this, but if you are running
----with an alternative identity agent and want to replace
----the default on your system, this gives you that ability.
+---You won't normally need to set this, but if you are running with an alternative identity agent
+---and wish to replace the default on your system, this gives you that ability.
 ---
 ---@field default_ssh_auth_sock? string
 ---Specifies the name of the default workspace.
@@ -887,13 +878,12 @@ local horiz_align = {
 ---
 ---@field detect_password_input? boolean
 ---@field disable_default_key_bindings? boolean
----If set to `true`, the default mouse assignments will not be used,
----allowing you to tightly control those assignments.
+---If set to `true`, the default mouse assignments will not be used, allowing you
+---to tightly control those assignments.
 ---
 ---@field disable_default_mouse_bindings? boolean
 ---When set to `true`, the default set of quick select patterns are omitted, and
----`config.quick_select_patterns` specifies the total set of patterns used
----for quick select mode.
+---`config.quick_select_patterns` specifies the total set of patterns used for quick select mode.
 ---
 ---Defaults to `false`.
 ---
@@ -901,21 +891,18 @@ local horiz_align = {
 --- - [`config.quick_select_patterns`](lua://Config.quick_select_patterns)
 ---
 ---@field disable_default_quick_select_patterns? boolean
----Configures whether subpixel anti-aliasing should produce either
----`"RGB"` or `"BGR"` ordered output.
+---Configures whether subpixel anti-aliasing should produce either `"RGB"` or `"BGR"` ordered output.
 ---
----If your display has a `BGR` pixel geometry then you will want
----to set this to `"BGR"` for the best results
----when using subpixel antialiasing.
+---If your display has a `BGR` pixel geometry then you will want to set this to `"BGR"`
+---for the best results when using subpixel antialiasing.
 ---
 ---The default value is `"RGB"`.
 ---
----@field display_pixel_geometry? "RGB"|"BGR"
+---@field display_pixel_geometry? DisplayPixelGeometry
 ---Override the detected DPI (_dots per inch_) for the display.
 ---
----This can be useful if the detected DPI is inaccurate and the text
----appears either blurry or too small, particularly
----if you are using a 4K display on X11 or Wayland.
+---This can be useful if the detected DPI is inaccurate and the text appears either blurry
+---or too small, particularly if you are using a 4K display on either X11 or Wayland.
 ---
 ---The default value is system specific:
 ---
@@ -926,41 +913,37 @@ local horiz_align = {
 -- | X11     | `96.0`                  | `96.0`                  |
 -- | Wayland | `96.0`                  | `192.0`                 |
 ---
----In macOS and Wayland environments there isn't strictly
----a system DPI value that can be queried; instead standard density
----has a fixed value and the system will inform WezTerm when the display
+---In macOS and Wayland environments there isn't strictly a system DPI value that can be queried;
+---instead standard density has a fixed value and the system will inform WezTerm when the display
 ---is high density by communicating a scaling factor for the display.
 ---
----The Wayland protocol only allows for integer scaling factors,
----but some compositors support fractional scaling.
----That fractional scaling can result in blurry text and you may wish
+---The Wayland protocol only allows for integer scaling factors, but some compositors support
+---fractional scaling. That fractional scaling can result in blurry text and you may wish
 ---to specify a DPI value to compensate.
 ---
----On macOS the scaling factor changes based on the monitor
----on which the window is displayed; dragging the window from a
----retina laptop display to an external standard DPI display
+---On macOS the scaling factor changes based on the monitor on which the window is displayed;
+---dragging the window from a retina laptop display to an external standard DPI display
 ---causes the window to automatically adjust to the DPI scaling.
 ---
----Microsoft Windows reports the true DPI for the monitor on which
----the window is displayed, and will similarly adjust as the window
----is dragged between monitors.
+---Microsoft Windows reports the true DPI for the monitor on which the window is displayed,
+---and will similarly adjust as the window is dragged between monitors.
 ---
----**DPI is poorly supported by X11 itself**.
----While it is possible to query the displays to determine
----their dimensions, the results are generally inaccurate.
----It is common for X11 environments to publish an `Xft.dpi` value
----as a property of the root window as a hint for the DPI of the display.
----While that is a reasonable workaround for a single-monitor system,
----it isn't ideal for a multi-monitor setup where the monitors have varying DPIs.
+---**DPI is poorly supported by X11 itself**. While it is possible to query the displays
+---to determine their dimensions, the results are generally inaccurate.
+---
+---It is common for X11 environments to publish an `Xft.dpi` value as a property
+---of the root window as a hint for the DPI of the display. While that is a reasonable workaround
+---for a single-monitor system, it isn't ideal for a multi-monitor setup where the monitors
+---have varying DPIs.
 ---
 ---@field dpi? number
 ---@field dpi_by_screen? table<string, number>
 ---When set to `true`, the [keyboard encoding](https://wezterm.org/config/key-encoding.html) will be changed
 ---to use the scheme that is [described here](http://www.leonerd.org.uk/hacks/fixterms/).
 ---
----It is not recommended to enable this option as it does change the behavior
----of some keys in backwards incompatible ways and there isn't a way for applications
----to detect or request this behavior.
+---It is not recommended to enable this option as it does change the behavior of some keys
+---in backwards incompatible ways and there isn't a way for applications to detect or request
+---this behavior.
 ---
 ---The default for this option is `false`.
 ---
@@ -971,14 +954,13 @@ local horiz_align = {
 ---
 ---@field enable_csi_u_key_encoding? boolean
 ---@field enable_kitty_graphics? boolean
----When set to `true`, wezterm will honor `kitty` keyboard protocol escape sequences
----that modify the [keyboard encoding](https://wezterm.org/config/key-encoding.html).
+---When set to `true`, wezterm will honor `kitty` keyboard protocol escape sequences that modify
+---the [keyboard encoding](https://wezterm.org/config/key-encoding.html).
 ---
 ---@field enable_kitty_keyboard? boolean
 ---Enable the scrollbar.
 ---
----**This is currently disabled by default.**
----It will occupy the right window padding space.
+---**This is currently disabled by default.** It will occupy the right window padding space.
 ---
 ---If right padding is set to `0` then it will be increased to a single cell width.
 ---
@@ -988,19 +970,16 @@ local horiz_align = {
 ---Set it to `false` to disable it.
 ---
 ---@field enable_tab_bar? boolean
----Whether the terminal should respond to requests to read the
----title string.
+---Whether the terminal should respond to requests to read the title string.
 ---
----Disabled by default for security concerns with shells that might
----otherwise attempt to execute the response.
----More info [here](https://marc.info/?l=bugtraq&m=104612710031920&w=2).
+---Disabled by default for security concerns with shells that might otherwise attempt
+---to execute the response. More info [here](https://marc.info/?l=bugtraq&m=104612710031920&w=2).
 ---
 ---@field enable_title_reporting? boolean
----If `false`, do not try to use a Wayland protocol connection
----when starting the gui frontend, and instead use X11.
+---If `false`, do not try to use a Wayland protocol connection when starting the GUI frontend,
+---and instead use X11.
 ---
----This option is only considered on X11/Wayland systems and
----has no effect on macOS or Windows.
+---This option is only considered on X11/Wayland systems and has no effect on macOS or Windows.
 ---
 ---The default is `true`.
 ---
@@ -1021,11 +1000,10 @@ local horiz_align = {
 ---           The pane must be manually closed via [`CloseCurrentPane`](https://wezterm.org/config/lua/keyassignment/CloseCurrentPane.html),
 ---           [`CloseCurrentTab`](https://wezterm.org/config/lua/keyassignment/CloseCurrentTab.html) or closing the window
 --- - `"CloseOnCleanExit"`: if the shell program exited with a successful status,
----                       behave like `"Close"`.
----                       Otherwise, behave like `"Hold"`
+---                       behave like `"Close"`. Otherwise, behave like `"Hold"`
 ---
----Note that most UNIX shells will exit with the status of the last command
----that it ran if you don't specify an exit status.
+---Note that most UNIX shells will exit with the status of the last command that it ran
+---if you don't specify an exit status.
 ---
 ---For example, if you interrupt a command and then use `exit` (with no arguments),
 ---or `CTRL-D` to send `EOF` to the shell, it will return an unsuccessful exit status.
@@ -1041,14 +1019,12 @@ local horiz_align = {
 ---For fine tuning what is considered to be a clean exit status, see also:
 --- - [`config.clean_exit_codes`](lua://Config.clean_exit_codes)
 ---
----@field exit_behavior? "Close"|"CloseOnCleanExit"|"Hold"
----Controls how wezterm indicates the exit status of the
----spawned process in a pane when it terminates.
+---@field exit_behavior? ExitBehavior
+---Controls how wezterm indicates the exit status of the spawned process in a pane
+---when it terminates.
 ---
----[`config.exit_behavior`](lua://Config.exit_behavior)
----being set to keep the pane open after the process has
----completed, wezterm will display a message to let you know
----that it has finished.
+---`config.exit_behavior` being set to keep the pane open after the process has completed,
+---WezTerm will display a message to let you know that it has finished.
 ---
 ---This option controls that message.
 ---
@@ -1060,22 +1036,26 @@ local horiz_align = {
 --- - `"Terse"`: A very short indication of the exit status is shown in square brackets
 --- - `"None"`: No message is shown
 ---
----In earlier versions of wezterm, this was not configurable
----and behaved equivalently to the `"Verbose"` setting.
+---In earlier versions of wezterm, this was not configurable and behaved equivalently
+---to the `"Verbose"` setting.
 ---
 ---Examples can be found [here](https://wezterm.org/config/lua/config/exit_behavior_messaging.html).
 ---
----@field exit_behavior_messaging? "Verbose"|"Brief"|"Terse"|"None"
+---See:
+--- - [`config.exit_behavior`](lua://Config.exit_behavior)
+---
+---@field exit_behavior_messaging? ExitBehaviorMessaging
 ---@field experimental_pixel_positioning? boolean
 ---Configures the font to use by default.
 ---
----The font setting can specify a set of fallbacks and other options,
----and is described in more detail in the [Fonts section](https://wezterm.org/config/fonts.html).
+---The font setting can specify a set of fallbacks and other options, and is described
+---in more detail in the [Fonts](https://wezterm.org/config/fonts.html) section.
 ---
----You will typically use
----[`wezterm.font`](lua://Wezterm.font)
----or [`wezterm.font_with_fallback`](lua://Wezterm.font_with_fallback)
----to specify the font.
+---You will typically use `wezterm.font()` or `wezterm.font_with_fallback()` to specify the font.
+---
+---See:
+--- - [`wezterm.font()`](lua://Wezterm.font)
+--- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
 ---@field font? AllFontAttributes
 ---@field font_colr_rasterizer? "FreeType"|"Harfbuzz"
