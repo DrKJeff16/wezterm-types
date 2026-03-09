@@ -1903,6 +1903,18 @@ function M.on(event, callback) end
 
 ---=================================================================================
 
+---===================== smart_workspace_switcher.wezterm ==========================
+
+---@param event "smart_workspace_switcher.workspace_switcher.chosen"
+---@param callback fun(window: MuxWindow, workspace: string)
+function M.on(event, callback) end
+
+---@param event "smart_workspace_switcher.workspace_switcher.created"
+---@param callback fun(window: MuxWindow, workspace: string)
+function M.on(event, callback) end
+
+---=================================================================================
+
 ---============================= tabsets.wezterm ===================================
 
 ---This is for `tabsets.wezterm` only!
