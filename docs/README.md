@@ -31,6 +31,7 @@ We will keep adding more community plugins as we find them.
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-cmd-sender](./cmd-sender.md)
 - [wezterm-config.nvim](./wezterm-config.md)
+- [wezterm-quota-limit](./quota-limit.md)
 - [wezterm-replay](./replay.md)
 - [wezterm-status](./wezterm-status.md)
 - [wezterm-tabs](./wezterm-tabs.md)
