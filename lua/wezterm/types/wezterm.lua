@@ -1887,6 +1887,22 @@ function M.on(event, callback) end
 
 ---=================================================================================
 
+---============================== modal.wezterm ====================================
+
+---This is for `modal.wezterm only!`
+---
+---@param event "modal.enter"
+---@param callback fun(name: string, window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---This is for `modal.wezterm only!`
+---
+---@param event "modal.exit"
+---@param callback fun(name: string, window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---=================================================================================
+
 ---============================= tabsets.wezterm ===================================
 
 ---This is for `tabsets.wezterm` only!
