@@ -198,6 +198,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for quota-limit.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.quota-limit
+          description: "`quota-limit` types"
+          pandoc: docs/quota-limit.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for replay.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
