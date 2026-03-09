@@ -27,17 +27,17 @@ local log_level = {
 ---@class SmartSplitsWeztermConfig
 ---The number of cells to resize by.
 ---
----@field default_amount integer
+---@field default_amount? integer
 ---Keys to use for movements, not including the modifier key (such as `ALT` or `CTRL`),
 ---in order of left, down, up, right.
 ---
----@field direction_keys string[]|DirectionKeys
----@field log_level SmartSplits.LogLevel
+---@field direction_keys? string[]|DirectionKeys
+---@field log_level? SmartSplits.LogLevel
 ---Modifier keys to use for movement and resize actions.
 ---
 ---These should be WezTerm's modifier key strings such as 'META', 'CTRL', etc.
 ---
----@field modifiers SmartSplitsWeztermModifiers
+---@field modifiers? SmartSplitsWeztermModifiers
 
 ---@class SmartSplitsWezterm
 local M = {}
