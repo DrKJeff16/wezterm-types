@@ -76,9 +76,8 @@ _file_rw_not_empty() {
 
 ! _cmd_exists 'cp' 'touch' && die 1 "Either \`cp\` or \`touch\` not found in your PATH"
 
-if _file_rw_not_empty "${TARGET_DIR}/${TARGET}.lua"; then
-    die 1 "${TARGET}.lua already exists and is not empty!"
-fi
+_file_rw_not_empty "${TARGET_DIR}/${TARGET}.lua" \
+    && die 1 "${TARGET}.lua already exists and is not empty!"
 
 if ! [[ -f "${TARGET_DIR}/${TARGET}.lua" ]]; then
     cp "scripts/${TEMPLATE}" "${TARGET_DIR}/${TARGET}.lua" || exit 1
@@ -88,8 +87,7 @@ if ! _file_rw_not_empty "docs/${TARGET}.md"; then
     cp "scripts/${TEMPLATE_DOC}" "docs/${TARGET}.md" || exit 1
 fi
 
-if ! _file_rw_not_empty "doc/wezterm-types-${TARGET}.txt"; then
-    touch "doc/wezterm-types-${TARGET}.txt"
-fi
+! _file_rw_not_empty "doc/wezterm-types-plugin.${TARGET}.txt" \
+    && touch "doc/wezterm-types-plugin.${TARGET}.txt"
 
 die 0
