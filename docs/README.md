@@ -30,6 +30,7 @@ We will keep adding more community plugins as we find them.
 - [wez-pain-control](./wez-pain-control.md)
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-cmd-sender](./cmd-sender.md)
+- [wezterm-cmdpicker](./cmdpicker.md)
 - [wezterm-config.nvim](./wezterm-config.md)
 - [wezterm-quota-limit](./quota-limit.md)
 - [wezterm-replay](./replay.md)
