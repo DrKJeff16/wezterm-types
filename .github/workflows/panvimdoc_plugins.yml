@@ -81,6 +81,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for cmdpicker.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.cmdpicker
+          description: "`cmdpicker` types"
+          pandoc: docs/cmdpicker.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for dev.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
