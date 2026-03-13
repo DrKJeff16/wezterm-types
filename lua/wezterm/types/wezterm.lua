@@ -1943,6 +1943,52 @@ function M.on(event, callback) end
 
 ---=================================================================================
 
+---============================= wezterm-sessions ==================================
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "delete_session"
+---@param callback fun(window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "edit_session"
+---@param callback fun(window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "fork_session"
+---@param callback fun(window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "load_session"
+---@param callback fun(window: Window, pane: Pane)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "restore_session"
+---@param callback fun(window: Window)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "save_session"
+---@param callback fun(window: Window)
+function M.on(event, callback) end
+
+---This is for `wezterm-sessions` only!
+---
+---@param event "toggle_autosave"
+---@param callback fun(window: Window)
+function M.on(event, callback) end
+
+---=================================================================================
+
 ---This function opens the specified `path_or_url` with
 ---either the specified application or the default application
 ---if `application` was not passed in.
