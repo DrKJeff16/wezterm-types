@@ -393,6 +393,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for wezterm-sessions.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.wezterm-sessions
+          description: "`wezterm-sessions` types"
+          pandoc: docs/wezterm-sessions.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wezterm-status.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
