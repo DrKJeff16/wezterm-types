@@ -34,6 +34,7 @@ We will keep adding more community plugins as we find them.
 - [wezterm-config.nvim](./wezterm-config.md)
 - [wezterm-quota-limit](./quota-limit.md)
 - [wezterm-replay](./replay.md)
+- [wezterm-sessions](./wezterm-sessions.md)
 - [wezterm-status](./wezterm-status.md)
 - [wezterm-tabs](./wezterm-tabs.md)
 - [wezterm-theme-rotator](./wezterm-theme-rotator.md)
