@@ -1,5 +1,15 @@
 # Changelog
 
+## [v2.8.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.8.0-1) (2026-03-13)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.7.0-1...v2.8.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-sessions\): add type annotations [\#141](https://github.com/DrKJeff16/wezterm-types/pull/141) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-cmdpicker\): add type annotations [\#140](https://github.com/DrKJeff16/wezterm-types/pull/140) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-quota-limit\): add type annotations [\#139](https://github.com/DrKJeff16/wezterm-types/pull/139) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.7.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.7.0-1) (2026-03-06)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.6.0-1...v2.7.0-1)
