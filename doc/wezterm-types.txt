@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 12
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 March 13
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -138,6 +138,8 @@ issue.**
   wezterm-quota-limit                docs/quota-limit.md                :h wezterm-types-plugin.quota-limit.txt
 
   wezterm-replay                     docs/replay.md                     :h wezterm-types-plugin.replay.txt
+
+  wezterm-sessions                   docs/wezterm-sessions.md           :h wezterm-types-plugin.wezterm-sessions.txt
 
   wezterm-status                     docs/wezterm-status.md             :h wezterm-types-plugin.wezterm-status.txt
 
