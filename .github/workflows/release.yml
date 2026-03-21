@@ -19,7 +19,7 @@ jobs:
       - name: Build Project Assets
         run: |
           mkdir -pv wezterm-types
-          cp -rv assets lua doc docs README.md LICENSE wezterm-types
+          cp -rv assets lua doc docs README.md LICENSE .luarc.json Makefile wezterm-types
           tar cvJf wezterm-types.tar.xz wezterm-types
           tar cvzf wezterm-types.tar.gz wezterm-types
           zip -r -9 wezterm-types.zip wezterm-types
