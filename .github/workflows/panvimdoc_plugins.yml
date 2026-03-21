@@ -16,12 +16,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Run panvimdoc for ai-commander.md
+      - name: Run panvimdoc for agent-deck.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.ai-commander
-          description: "`ai-commander` types"
-          pandoc: docs/ai-commander.md
+          vimdoc: wezterm-types-plugin.agent-deck
+          description: "`agent-deck` types"
+          pandoc: docs/agent-deck.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -29,12 +29,12 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
-      - name: Run panvimdoc for agent-deck.md
+      - name: Run panvimdoc for ai-commander.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
-          vimdoc: wezterm-types-plugin.agent-deck
-          description: "`agent-deck` types"
-          pandoc: docs/agent-deck.md
+          vimdoc: wezterm-types-plugin.ai-commander
+          description: "`ai-commander` types"
+          pandoc: docs/ai-commander.md
           toc: false
           demojify: true
           dedupsubheadings: false

@@ -14,6 +14,7 @@
 ---@module "wezterm.types.wezterm.time"
 ---@module "wezterm.types.wezterm.url"
 
+---@module "wezterm.types.plugins.agent-deck"
 ---@module "wezterm.types.plugins.ai-commander"
 ---@module "wezterm.types.plugins.ai-helper"
 ---@module "wezterm.types.plugins.bar"
