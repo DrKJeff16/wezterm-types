@@ -29,6 +29,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for agent-deck.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.agent-deck
+          description: "`agent-deck` types"
+          pandoc: docs/agent-deck.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for ai-helper.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
