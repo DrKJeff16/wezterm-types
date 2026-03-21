@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.0.0-1) (2026-03-21)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.8.0-1...v3.0.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-agent-deck\): add type annotations [\#143](https://github.com/DrKJeff16/wezterm-types/pull/143) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v2.8.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v2.8.0-1) (2026-03-13)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v2.7.0-1...v2.8.0-1)
