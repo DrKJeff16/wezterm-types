@@ -6,6 +6,51 @@
 ---@module "wezterm.types.wezterm"
 ---@module "wezterm.types.harfbuzz"
 
+---@enum (key) Config.FrontEnd
+local front_end = {
+  OpenGL = 1,
+  Software = 1,
+  WebGpu = 1,
+}
+
+---@enum (key) FreeTypeLoadTarget
+local freetype_load_target = {
+  HorizontalLcd = 1,
+  Light = 1,
+  Mono = 1,
+  Normal = 1,
+  VerticalLcd = 1,
+}
+
+---@enum (key) Config.FontLocator
+local font_locator = {
+  ConfigDirsOnly = 1,
+  CoreText = 1,
+  FontConfig = 1,
+  Gdi = 1,
+}
+
+---@enum (key) FontShaper
+local font_shaper = {
+  Allsorts = 1,
+  Harfbuzz = 1,
+}
+
+---@enum (key) FontRasterizer
+local font_rasterizer = {
+  FreeType = 1,
+  Harfbuzz = 1,
+}
+
+---@enum (key) Config.Win32SystemBackdrop
+local win32_system_backdrop = {
+  Acrylic = 1,
+  Auto = 1,
+  Disable = 1,
+  Mica = 1,
+  Tabbed = 1,
+}
+
 ---@enum (key) QuickSelectAlphabet
 local QSA = {
   aoeuqjkxpyhtnsgcrlmwvzfidb = 1,
@@ -13,6 +58,12 @@ local QSA = {
   asdfqweryxcvjkluiopmghtzbn = 1,
   asdfqwerzxcvjklmiuopghtybn = 1,
   qsdfazerwxcvjklmuiopghtybn = 1,
+}
+
+---@enum (key) Config.WebGpuPowerPreference
+local webgpu_power_preference = {
+  HighPerformance = 1,
+  LowPower = 1,
 }
 
 ---@enum (key) DroppedFileQuoting
@@ -1058,7 +1109,7 @@ local exit_behavior_messaging = {
 --- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
 ---@field font? AllFontAttributes
----@field font_colr_rasterizer? "FreeType"|"Harfbuzz"
+---@field font_colr_rasterizer? FontRasterizer
 ---By default, wezterm will use an appropriate system-specific method
 ---for locating the fonts that you specify using the options below.
 ---Additionally, if you configure the `config.font_dirs` option,
@@ -1099,11 +1150,11 @@ local exit_behavior_messaging = {
 ---
 ---Otherwise, it is recommended to omit this setting.
 ---
----@field font_locator? "FontConfig"|"Gdi"|"CoreText"|"ConfigDirsOnly"
+---@field font_locator? Config.FontLocator
 ---Specifies the method by which fonts are rendered on screen.
 ---Possible values are `"FreeType"` and `"Harfbuzz"`.
 ---
----@field font_rasterizer? "FreeType"|"Harfbuzz"
+---@field font_rasterizer? FontRasterizer
 ---When textual output in the terminal is styled with `bold`, `italic`
 ---or other attributes, wezterm uses `config.font_rules` to decide
 ---how to render that text.
@@ -1144,7 +1195,7 @@ local exit_behavior_messaging = {
 ---
 ---Possible values are `"Harfbuzz"` and `"Allsorts"`.
 ---
----@field font_shaper? "Harfbuzz"|"Allsorts"
+---@field font_shaper? FontShaper
 ---Specifies the size of the font, measured in points.
 ---
 ---You may use fractional point sizes, such as `13.3`,
@@ -1282,7 +1333,7 @@ local exit_behavior_messaging = {
 ---[`wezterm.font`](lua://Wezterm.font)
 ---override is not sufficient.
 ---
----@field freetype_load_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"
+---@field freetype_load_target? FreeTypeLoadTarget
 ---This option provides control over the [no-long-family-names](https://freetype.org/freetype2/docs/reference/ft2-properties.html#no-long-family-names)
 ---FreeType PCF font driver property.
 ---
@@ -1335,7 +1386,7 @@ local exit_behavior_messaging = {
 ---config.freetype_render_target = 'HorizontalLcd'
 ---```
 ---
----@field freetype_render_target? "Normal"|"HorizontalLcd"|"Light"|"Mono"|"VerticalLcd"
+---@field freetype_render_target? FreeTypeLoadTarget
 ---Specify the features to enable when using harfbuzz for font shaping.
 ---
 ---There is some light documentation [here](https://harfbuzz.github.io/shaping-opentype-features.html).
@@ -1366,7 +1417,7 @@ local exit_behavior_messaging = {
 --- - Vulkan
 --- - DirectX 12 (on Windows)
 ---
----@field front_end? "OpenGL"|"WebGpu"|"Software"
+---@field front_end? Config.FrontEnd
 ---@field glyph_cache_image_cache_size? integer
 ---When `config.font_shaper = "Harfbuzz"`, this setting affects how font shaping takes place.
 ---
@@ -2552,7 +2603,7 @@ local exit_behavior_messaging = {
 ---
 ---Defaults to `"LowPower"`.
 ---
----@field webgpu_power_preference? "LowPower"|"HighPerformance"
+---@field webgpu_power_preference? Config.WebGpuPowerPreference
 ---Specifies which `WebGpu` adapter should be used.
 ---
 ---This option is only applicable when you have set `"WebGpu"` to
@@ -2572,7 +2623,7 @@ local exit_behavior_messaging = {
 ---[`config.window_background_opacity`](lua://Config.window_background_opacity)
 ---it chooses from available window background effects provided by Windows.
 ---
----@field win32_system_backdrop? "Auto"|"Disable"|"Acrylic"|"Mica"|"Tabbed"
+---@field win32_system_backdrop? Config.Win32SystemBackdrop
 ---Dynamically generates a
 ---[`config.window_background_image`](lua://Config.window_background_image)
 ---from the provided gradient specification.
