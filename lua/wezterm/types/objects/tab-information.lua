@@ -12,8 +12,10 @@
 ---for the active pane in this tab.
 ---
 ---@field active_pane PaneInformation
----The [`PaneInformation`](lua://PaneInformation)
----for all panes in this tab.
+---The `PaneInformation` array for all panes in the tab.
+---
+---See:
+--- - [`PaneInformation`](lua://PaneInformation)
 ---
 ---@field panes PaneInformation[]
 ---
