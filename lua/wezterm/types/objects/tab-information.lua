@@ -12,6 +12,11 @@
 ---for the active pane in this tab.
 ---
 ---@field active_pane PaneInformation
+---The [`PaneInformation`](lua://PaneInformation)
+---for all panes in this tab.
+---
+---@field panes PaneInformation[]
+---
 ---Is `true` if this tab is the active tab.
 ---
 ---@field is_active boolean
