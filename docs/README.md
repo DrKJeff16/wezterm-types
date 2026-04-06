@@ -13,6 +13,7 @@ We will keep adding more community plugins as we find them.
 - [lib.wezterm](./lib.md)
 - [listeners.wezterm](./listeners.md)
 - [modal.wezterm](./modal.md)
+- [passrelay.wezterm](./passrelay.md)
 - [pinned-tabs.wezterm](./pinned-tabs.md)
 - [pivot_panes.wezterm](./pivot-panes.md)
 - [presentation.wez](./presentation.md)
