@@ -393,6 +393,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for wezterm-attention.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.wezterm-attention
+          description: "`wezterm-attention` types"
+          pandoc: docs/wezterm-attention.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wezterm-config.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
