@@ -51,7 +51,7 @@
 ---|{ JumpBackward: { prev_char: boolean } }
 ---|{ JumpForward: { prev_char: boolean } }
 ---|{ MoveBackwardZoneOfType: "Input"|"Output"|"Prompt" }
----|{ MoveByPage: number }
+---|{ MoveByPage: integer }
 ---|{ MoveForwardZoneOfType: "Input"|"Output"|"Prompt" }
 ---|{ SetSelectionMode: SelectionMode }
 
