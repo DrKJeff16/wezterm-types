@@ -96,6 +96,8 @@ issue.**
 
   modal.wezterm                      docs/modal.md                      :h wezterm-types-plugin.modal.txt
 
+  passrelay.wezterm                  docs/passrelay.md                  :h wezterm-types-plugin.passrelay.txt
+
   pinned-tabs.wezterm                docs/pinned-tabs.md                :h wezterm-types-plugin.pinned-tabs.txt
 
   pivot_panes.wezterm                docs/pivot-panes.md                :h wezterm-types-plugin.pivot-panes.txt
