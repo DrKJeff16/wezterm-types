@@ -1,4 +1,4 @@
----@meta
+---@meta wezterm
 ---@diagnostic disable:unused-local
 
 ---@module "wezterm.types.config"
