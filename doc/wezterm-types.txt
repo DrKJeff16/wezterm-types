@@ -96,6 +96,8 @@ issue.**
 
   listeners.wezterm                  docs/listeners.md                  :h wezterm-types-plugin.listeners.txt
 
+  memo.wz                            docs/memo.md                       :h wezterm-types-plugin.memo.txt
+
   modal.wezterm                      docs/modal.md                      :h wezterm-types-plugin.modal.txt
 
   passrelay.wezterm                  docs/passrelay.md                  :h wezterm-types-plugin.passrelay.txt
