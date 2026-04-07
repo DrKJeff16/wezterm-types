@@ -120,6 +120,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for kanagawa.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.kanagawa
+          description: "`kanagawa` types"
+          pandoc: docs/kanagawa.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for lib.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
