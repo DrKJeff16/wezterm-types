@@ -1,15 +1,16 @@
-# `wezterm-types` Plugins
+### `wezterm-types` Plugins
 
 This project features support for many community plugins for WezTerm.
 We will keep adding more community plugins as we find them.
 
-## Supported Plugins
+### Supported Plugins
 
 - [ai-commander.wezterm](./ai-commander.md)
 - [ai-helper.wezterm](./ai-helper.md)
 - [bar.wezterm](./bar.md)
 - [battery.wez](./battery.md)
 - [dev.wezterm](./dev.md)
+- [kanagawa.wz](./kanagawa.md)
 - [lib.wezterm](./lib.md)
 - [listeners.wezterm](./listeners.md)
 - [modal.wezterm](./modal.md)
