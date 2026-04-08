@@ -11,6 +11,7 @@ contributing code, knowing what to do in specific cases, etc.
 
 - [Guidelines](#guidelines)
   - [What I Will Not Accept](#what-i-will-not-accept)
+  - [Plugins](#plugins)
 - [Recommendations](#recommendations)
   - [`pre-commit`](#pre-commit)
 - [Annotations Guide](#annotations-guide)
@@ -44,6 +45,35 @@ contributing code, knowing what to do in specific cases, etc.
 
   vim.opt.fileformat = 'unix' -- AVOID THIS
   ```
+
+### Plugins
+
+If you're a plugin author and you wish to add type annotations for it, please follow these steps
+in order:
+
+- Make sure your plugin isn't already listed either in either [README.md](./README.md)
+or [docs/README.md](./docs/README.md). If it is, then make a PR to suggest fixes to the existing
+annotations.
+- Make a new branch, please avoid a PR from your fork's `main` branch:
+  ```bash
+  git checkout -b feat/PLUGIN-NAME
+  ```
+- Execute [`scripts/new-plugin.sh`](./scripts/new-plugin.sh) in your shell:
+  ```bash
+  ./scripts/new-plugin.sh PLUGIN-NAME # ONLY DASHES `-` ALLOWED!
+  ```
+- Edit your plugin annotations in [`lua/wezterm/types/plugins`](./lua/wezterm/types/plugins). Use
+  other plugin's annotations as references, and make sure to read the [Annotations Guide](#annotations-guide)
+  section.
+- Edit `docs/<MY-PLUGIN>.md`. Use the other plugin docs as reference.
+- Add the document mentioned above in [docs/README.md](./docs/README.md). **RESPECT THE ALPHABETIC ORDER**!
+- Add a new entry in the `README.md`'s [Featured Plugins](https://github.com/DrKJeff16/wezterm-types#featured-plugins).
+  Respect the alphabetic order and the table specification!
+- Commit then push your changes. Make your PR afterwards.
+  - Your commit message must look like this:
+    ```
+    feat(PLUGIN-NAME): add type annotations
+    ```
 
 ---
 

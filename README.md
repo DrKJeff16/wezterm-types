@@ -68,7 +68,7 @@ We recommend using [folke/lazy.nvim](https://github.com/folke/lazy.nvim) as a pa
 
 This project also features type annotations for various WezTerm plugins.
 
-**_If you want to have your plugin featured please request it through an issue._**
+**_If you want to add your plugin, please read [`CONTRIBUTING.md`](https://github.com/DrKJeff16/wezterm-types/blob/main/CONTRIBUTING.md#plugins)._**
 
 | Plugin                                                                                           | Documentation                                                          | Neovim Help                                                                                                     |
 |--------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
