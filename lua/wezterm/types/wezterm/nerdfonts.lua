@@ -10755,4 +10755,5 @@
 ---@field weather_wind_south_east ""
 ---@field weather_wind_south_west ""
 ---@field weather_wind_west ""
----@field weather_windy ""
+
+-- vim: set ts=2 sts=2 sw=2 et ai si sta:---@field weather_windy ""
