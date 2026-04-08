@@ -1503,7 +1503,7 @@ function M.on(event, callback) end
 --- - [`wezterm.format()`](lua://Wezterm.format)
 ---
 ---@param event "format-tab-title"
----@param callback fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: number): string|FormatItem
+---@param callback fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: integer): string|FormatItem
 function M.on(event, callback) end
 
 ---The parameters to the event are:
