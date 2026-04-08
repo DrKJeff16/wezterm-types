@@ -4,7 +4,7 @@
 
 ---@alias WezTerm.NerrdFont Wezterm.NerdFont
 
----@class (excact) WezTerm.NerdFont
+---@class (exact) Wezterm.NerdFont
 ---@field cod_account string
 ---@field cod_activate_breakpoints string
 ---@field cod_add string
