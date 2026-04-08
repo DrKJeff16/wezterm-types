@@ -2,12 +2,21 @@
 ---@diagnostic disable:unused-local
 
 ---@enum (key) WeztermAttentionOpts.Attention
-local priority = {
-  notify = 1,
-  review = 1,
-  stop = 1,
-  thinking = 1,
-}
+local priority = { notify = 1, review = 1, stop = 1, thinking = 1 }
+
+---@enum (key) WeztermAttentionOpts.Renderer
+local renderers = { manual = 1, tab = 1 }
+
+---@class WeztermAttention.WrapTitleFormatterCtx
+---@field attention any
+---@field config Config
+---@field default_title string
+---@field hover boolean
+---@field max_width integer
+---@field panes PaneInformation[]
+---@field tabs TabInformation[]
+
+---@alias WeztermAttention.TitleFormatter fun(tab: TabInformation, ctx: WeztermAttention.WrapTitleFormatterCtx): string
 
 ---@class WeztermAttentionOpts.ReviewKey: SendKeyParams
 ---@field key? string
@@ -30,11 +39,17 @@ local priority = {
 ---@field dir? string
 ---@field indicators? WeztermAttentionOpts.Indicators
 ---@field priority? WeztermAttentionOpts.Attention[]
+---@field renderer? WeztermAttentionOpts.Renderer
 ---@field review_key? WeztermAttentionOpts.ReviewKey
+---@field title_formatter? WeztermAttention.TitleFormatter
 
 ---@class WeztermAttention
 ---@field private _active_dir string
 local M = {}
+
+---@param config Config
+---@param opts? WeztermAttentionOpts
+function M.apply_to_config(config, opts) end
 
 ---Read the cached attention state for a pane.
 ---
@@ -61,8 +76,8 @@ function M.remove_marker(pane_id, opts) end
 ---@param opts? WeztermAttentionOpts
 function M.poll(window, opts) end
 
----@param config Config
----@param opts? WeztermAttentionOpts
-function M.apply_to_config(config, opts) end
+---@param base_fn WeztermAttention.TitleFormatter
+---@return fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: integer): string|FormatItem
+function M.wrap_title_formatter(base_fn) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
