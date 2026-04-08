@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 07
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 08
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -74,8 +74,7 @@ FEATURED PLUGINS                              *wezterm-types-featured-plugins*
 
 This project also features type annotations for various WezTerm plugins.
 
-**If you want to have your plugin featured please request it through an
-issue.**
+**If you want to add your plugin, please read CONTRIBUTING.md.**
 
   -------------------------------------------------------------------------------------------------------------------------
   Plugin                             Documentation                      Neovim Help
