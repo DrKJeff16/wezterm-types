@@ -30,6 +30,7 @@ We will keep adding more community plugins as we find them.
 - [tabline.wez](./tabline.md)
 - [tabsets.wezterm](./tabsets.md)
 - [toggle_terminal.wez](./toggle-terminal.md)
+- [warp.wz](./warp.md)
 - [wez-pain-control](./wez-pain-control.md)
 - [wez-tmux](./wez-tmux.md)
 - [wezterm-agent-deck](./agent-deck.md)
