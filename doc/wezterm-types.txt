@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 08
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 09
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -129,6 +129,8 @@ This project also features type annotations for various WezTerm plugins.
   tabsets.wezterm                    docs/tabsets.md                    :h wezterm-types-plugin.tabsets.txt
 
   toggle_terminal.wez                docs/toggle-terminal.md            :h wezterm-types-plugin.toggle-terminal.txt
+
+  warp.wz                            docs/warp.md                       :h wezterm-types-plugin.warp.txt
 
   wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-plugin.wez-pain-control.txt
 
