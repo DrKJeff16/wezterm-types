@@ -8,7 +8,7 @@ local priority = { notify = 1, review = 1, stop = 1, thinking = 1 }
 local renderers = { manual = 1, tab = 1 }
 
 ---@class WeztermAttention.WrapTitleFormatterCtx
----@field attention any
+---@field attention string[]|string
 ---@field config Config
 ---@field default_title string
 ---@field hover boolean
