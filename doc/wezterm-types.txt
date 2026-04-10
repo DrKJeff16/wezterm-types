@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 09
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 10
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -138,7 +138,7 @@ This project also features type annotations for various WezTerm plugins.
 
   wezterm-agent-deck                 docs/agent-deck.md                 :h wezterm-types-plugin.agent-deck.txt
 
-  wezterm-attention                  docs/wezterm-attention.md          :h wezterm-types-plugin.wezterm-attention.txt
+  wezterm-attention                  docs/attention.md                  :h wezterm-types-plugin.wezterm-attention.txt
 
   wezterm-cmd-sender                 docs/cmd-sender.md                 :h wezterm-types-plugin.cmd-sender.txt
 
