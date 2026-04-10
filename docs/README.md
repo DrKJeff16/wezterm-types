@@ -13,6 +13,7 @@ We will keep adding more community plugins as we find them.
 - [kanagawa.wz](./kanagawa.md)
 - [lib.wezterm](./lib.md)
 - [listeners.wezterm](./listeners.md)
+- [log.wz](./log.md)
 - [memo.wz](./memo.md)
 - [modal.wezterm](./modal.md)
 - [passrelay.wezterm](./passrelay.md)
