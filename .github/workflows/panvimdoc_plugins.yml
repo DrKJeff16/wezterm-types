@@ -1,4 +1,4 @@
-name: panvimdoc
+name: panvimdoc plugins
 on:
   push:
     branches:
