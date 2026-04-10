@@ -95,6 +95,8 @@ This project also features type annotations for various WezTerm plugins.
 
   listeners.wezterm                  docs/listeners.md                  :h wezterm-types-plugin.listeners.txt
 
+  log.wz                             docs/log.md                        :h wezterm-types-plugin.log.txt
+
   memo.wz                            docs/memo.md                       :h wezterm-types-plugin.memo.txt
 
   modal.wezterm                      docs/modal.md                      :h wezterm-types-plugin.modal.txt
