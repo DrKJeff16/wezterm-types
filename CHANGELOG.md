@@ -1,5 +1,40 @@
 # Changelog
 
+## [v3.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.3.0-1) (2026-04-10)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.2.0-1...v3.3.0-1)
+
+**Implemented enhancements:**
+
+- feat\(log.wz\): add type annotations [\#155](https://github.com/DrKJeff16/wezterm-types/pull/155) ([sravioli](https://github.com/sravioli))
+- feat\(warp.wz\): add type annotations [\#154](https://github.com/DrKJeff16/wezterm-types/pull/154) ([DrKJeff16](https://github.com/DrKJeff16))
+- docs: add plugin PR instructions [\#152](https://github.com/DrKJeff16/wezterm-types/pull/152) ([DrKJeff16](https://github.com/DrKJeff16))
+- fix\(plugins.wezterm-attention\): sync with plugin's changes [\#151](https://github.com/DrKJeff16/wezterm-types/pull/151) ([DrKJeff16](https://github.com/DrKJeff16))
+
+**Merged pull requests:**
+
+- feat\(nerdfonts\): add icon preview to type def [\#153](https://github.com/DrKJeff16/wezterm-types/pull/153) ([KevinSilvester](https://github.com/KevinSilvester))
+- feat\(nerdfonts\): add missing nerdfonts [\#150](https://github.com/DrKJeff16/wezterm-types/pull/150) ([KevinSilvester](https://github.com/KevinSilvester))
+
+## [v3.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.2.0-1) (2026-04-07)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.1.0-1...v3.2.0-1)
+
+**Implemented enhancements:**
+
+- feat\(memo.wz\): add type annotations [\#149](https://github.com/DrKJeff16/wezterm-types/pull/149) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(kanagawa.wz\): add type annotations [\#148](https://github.com/DrKJeff16/wezterm-types/pull/148) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v3.1.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.1.0-1) (2026-04-06)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.0.1-1...v3.1.0-1)
+
+**Implemented enhancements:**
+
+- feat\(passrelay.wezterm\): add type annotations [\#146](https://github.com/DrKJeff16/wezterm-types/pull/146) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(wezterm-attention\): add type annotations [\#145](https://github.com/DrKJeff16/wezterm-types/pull/145) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(tab-information\): add missing `panes` field to `TabInformation` [\#144](https://github.com/DrKJeff16/wezterm-types/pull/144) ([KevinSilvester](https://github.com/KevinSilvester))
+
 ## [v3.0.1-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.0.1-1) (2026-03-21)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.0.0-1...v3.0.1-1)
