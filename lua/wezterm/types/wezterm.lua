@@ -896,14 +896,31 @@ local weight = {
 ---   object that represents the GUI window
 --- - The second event parameter is a `Pane`
 ---   object that represents the pane in which
----   the bell was rung, which may not be active pane;
----   it could be in an unfocused pane or tab
+---   the event was triggered.
 ---
 ---See:
 --- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
 ---
 ---@alias CallbackWindowPane fun(window: Window, pane: Pane)
+
+---Action callback type for `InputSelectorParams.action`
+---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`InputSelectorParams`](lua://InputSelectorParams)
+---
+---@alias CallbackInputSelector fun(window: Window, pane: Pane, id?: string, label?: string)
+
+---Action callback type for `PromptInputLineParams.action`
+---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`PromptInputLineParams`](lua://PromptInputLineParams)
+---
+---@alias CallbackPromptInputLine fun(window: Window, pane: Pane, line?: string)
 
 ---@alias WezTerm Wezterm
 
@@ -1066,8 +1083,7 @@ local M = {}
 ---  return wezterm.action.EmitEvent(event_id)
 ---end
 ---```
----
----@param callback function
+---@param callback function|CallbackWindowPane|CallbackInputSelector|CallbackPromptInputLine
 ---@return { EmitEvent: string } event
 function M.action_callback(callback) end
 
@@ -1402,10 +1418,23 @@ function M.log_info(msg, ...) end
 ---@param ... any
 function M.log_warn(msg, ...) end
 
----A custom declared event function.
+---A custom declared event handler.
+---
+---You may register handlers for arbitrary events for which wezterm itself has no special knowledge.
+---
+---It is recommended that you avoid event names that are likely to be used future versions of wezterm
+---in order to avoid unexpected behavior if/when those names might be used in future.
+---
+---The `wezterm.emit` function and the `EmitEvent` key assignment can be used to emit events.
+---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
+--- - [`wezterm.emit`](lua://Wezterm.emit)
+--- - [`EmitEvent`](lua://KeyAssignment.EmitEvent)
 ---
 ---@param event string
----@param callback function
+---@param callback CallbackWindowPane
 function M.on(event, callback) end
 
 ---This event is emitted when the Command Palette is shown.
@@ -1654,18 +1683,21 @@ function M.on(event, callback) end
 --- - The first event parameter is a `Window` object that represents the GUI window
 --- - The second event parameter is a `Pane` object that represents the active pane in the window
 ---
---- ---
+------
 ---The `"new-tab-button-click"` event is emitted when the user clicks on the
 ---`"new tab"` button in the tab bar.
 ---
 ---This is the `+` button that is drawn to the right of the last tab.
+---
+---Returning early with `false` in the callback will prevent the event handler from
+---performing the default actions of the button pressed.
 ---
 ---For more information, see:
 --- - [`Pane`](lua://Pane)
 --- - [`Window`](lua://Window)
 ---
 ---@param event "new-tab-button-click"
----@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action)
+---@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action): false|nil
 function M.on(event, callback) end
 
 --- - The first event parameter is a `Window` object that represents the GUI window
@@ -1677,14 +1709,15 @@ function M.on(event, callback) end
 ---the `CompleteSelectionOrOpenLinkAtMouseCursor` key/mouse assignment is triggered.
 ---
 ---The default action is to open the active URI in your browser,
----but if you register for this event you can co-opt the default behavior.
+---but if you register for this event and return early with `false`,
+---you can co-opt the default behavior.
 ---
 ---For more information, see:
 --- - [`Pane`](lua://Pane)
 --- - [`Window`](lua://Window)
 ---
 ---@param event "open-uri"
----@param callback fun(window: Window, pane: Pane, uri: string): boolean|nil
+---@param callback fun(window: Window, pane: Pane, uri: string): false|nil
 function M.on(event, callback) end
 
 ---This event is considered to be deprecated and you should migrate to using `"update-status"`,
