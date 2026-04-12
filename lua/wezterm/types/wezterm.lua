@@ -1697,7 +1697,7 @@ function M.on(event, callback) end
 --- - [`Window`](lua://Window)
 ---
 ---@param event "new-tab-button-click"
----@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action: Action): false|nil
+---@param callback fun(window: Window, pane: Pane, button: "Left"|"Middle"|"Right", default_action?: Action): false|nil
 function M.on(event, callback) end
 
 --- - The first event parameter is a `Window` object that represents the GUI window
