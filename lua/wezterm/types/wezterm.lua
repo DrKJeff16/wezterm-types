@@ -1420,17 +1420,32 @@ function M.log_warn(msg, ...) end
 
 ---A custom declared event handler.
 ---
----You may register handlers for arbitrary events for which wezterm itself has no special knowledge.
+---You may register handlers for arbitrary events for which Wezterm itself has no special knowledge.
 ---
----It is recommended that you avoid event names that are likely to be used future versions of wezterm
----in order to avoid unexpected behavior if/when those names might be used in future.
+---It is recommended that you avoid event names that are likely to be used future versions of Wezterm
+---in order to avoid unexpected behavior if or when those names might be used in future.
 ---
----The `wezterm.emit` function and the `EmitEvent` key assignment can be used to emit events.
+---The `wezterm.emit()` function and the `EmitEvent` key assignment can be used to emit events.
 ---
 ---See:
 --- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
---- - [`wezterm.emit`](lua://Wezterm.emit)
+--- - [`EmitEvent`](lua://KeyAssignment.EmitEvent)
+--- - [`wezterm.emit()`](lua://Wezterm.emit)
+---
+---@param event string
+---@param callback fun(...:any): any
+function M.on(event, callback) end
+
+---A custom declared event handler for events emitted by the `EmitEvent` key assignment.
+---
+--- - The first event parameter is a `Window` object that represents the GUI window
+--- - The second event parameter is a `Pane` object that represents the pane
+---   in which the event was triggered
+---
+---See:
+--- - [`Window`](lua://Window)
+--- - [`Pane`](lua://Pane)
 --- - [`EmitEvent`](lua://KeyAssignment.EmitEvent)
 ---
 ---@param event string
@@ -1709,7 +1724,7 @@ function M.on(event, callback) end
 ---the `CompleteSelectionOrOpenLinkAtMouseCursor` key/mouse assignment is triggered.
 ---
 ---The default action is to open the active URI in your browser,
----but if you register for this event and return early with `false`,
+---but if you register for this event and return early with `false`
 ---you can co-opt the default behavior.
 ---
 ---For more information, see:
