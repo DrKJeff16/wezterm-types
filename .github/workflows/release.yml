@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
       - name: Build Project Assets
         run: |
           mkdir -pv wezterm-types
@@ -31,7 +31,7 @@ jobs:
         with:
           latest: true
           prerelease: true
-          pattern: '^v.*'
+          pattern: "^v.*"
           debug: true
           throwing: true
         env:
@@ -41,7 +41,7 @@ jobs:
           echo ${{ github.sha }} > Release.txt
           cat Release.txt
       - name: Release
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v3.0.0
         if: github.ref_type == 'tag'
         with:
           files: |
