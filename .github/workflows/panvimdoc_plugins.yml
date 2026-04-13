@@ -1,4 +1,4 @@
-name: panvimdoc
+name: panvimdoc plugins
 on:
   push:
     branches:
@@ -48,6 +48,19 @@ jobs:
           vimdoc: wezterm-types-plugin.ai-helper
           description: "`ai-helper` types"
           pandoc: docs/ai-helper.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for attention.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.attention
+          description: "`attention` types"
+          pandoc: docs/attention.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -152,6 +165,19 @@ jobs:
           vimdoc: wezterm-types-plugin.listeners
           description: "`listeners` types"
           pandoc: docs/listeners.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
+      - name: Run panvimdoc for log.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.log
+          description: "`log` types"
+          pandoc: docs/log.md
           toc: false
           demojify: true
           dedupsubheadings: false
@@ -406,6 +432,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for warp.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.warp
+          description: "`warp` types"
+          pandoc: docs/warp.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for wez-pain-control.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
@@ -425,19 +464,6 @@ jobs:
           vimdoc: wezterm-types-plugin.wez-tmux
           description: "`wez-tmux` types"
           pandoc: docs/wez-tmux.md
-          toc: false
-          demojify: true
-          dedupsubheadings: false
-          treesitter: true
-          ignorerawblocks: true
-          docmapping: false
-          docmappingprojectname: false
-      - name: Run panvimdoc for wezterm-attention.md
-        uses: kdheepak/panvimdoc@v4.0.1
-        with:
-          vimdoc: wezterm-types-plugin.wezterm-attention
-          description: "`wezterm-attention` types"
-          pandoc: docs/wezterm-attention.md
           toc: false
           demojify: true
           dedupsubheadings: false

@@ -80,14 +80,16 @@ _file_rw_not_empty "${TARGET_DIR}/${TARGET}.lua" \
     && die 1 "${TARGET}.lua already exists and is not empty!"
 
 if ! [[ -f "${TARGET_DIR}/${TARGET}.lua" ]]; then
-    cp "scripts/${TEMPLATE}" "${TARGET_DIR}/${TARGET}.lua" || exit 1
+    cp -v "scripts/${TEMPLATE}" "${TARGET_DIR}/${TARGET}.lua" || exit 1
 fi
 
 if ! _file_rw_not_empty "docs/${TARGET}.md"; then
-    cp "scripts/${TEMPLATE_DOC}" "docs/${TARGET}.md" || exit 1
+    cp -v "scripts/${TEMPLATE_DOC}" "docs/${TARGET}.md" || exit 1
 fi
 
-! _file_rw_not_empty "doc/wezterm-types-plugin.${TARGET}.txt" \
-    && touch "doc/wezterm-types-plugin.${TARGET}.txt"
+if ! _file_rw_not_empty "doc/wezterm-types-plugin.${TARGET}.txt"; then
+    touch "doc/wezterm-types-plugin.${TARGET}.txt"
+    echo "Created \`doc/wezterm-types-plugin.${TARGET}.txt\`"
+fi
 
 die 0

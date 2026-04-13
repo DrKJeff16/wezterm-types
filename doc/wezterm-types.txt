@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 08
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 10
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -95,6 +95,8 @@ This project also features type annotations for various WezTerm plugins.
 
   listeners.wezterm                  docs/listeners.md                  :h wezterm-types-plugin.listeners.txt
 
+  log.wz                             docs/log.md                        :h wezterm-types-plugin.log.txt
+
   memo.wz                            docs/memo.md                       :h wezterm-types-plugin.memo.txt
 
   modal.wezterm                      docs/modal.md                      :h wezterm-types-plugin.modal.txt
@@ -130,13 +132,15 @@ This project also features type annotations for various WezTerm plugins.
 
   toggle_terminal.wez                docs/toggle-terminal.md            :h wezterm-types-plugin.toggle-terminal.txt
 
+  warp.wz                            docs/warp.md                       :h wezterm-types-plugin.warp.txt
+
   wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-plugin.wez-pain-control.txt
 
   wez-tmux                           docs/wez-tmux.md                   :h wezterm-types-plugin.wez-tmux.txt
 
   wezterm-agent-deck                 docs/agent-deck.md                 :h wezterm-types-plugin.agent-deck.txt
 
-  wezterm-attention                  docs/wezterm-attention.md          :h wezterm-types-plugin.wezterm-attention.txt
+  wezterm-attention                  docs/attention.md                  :h wezterm-types-plugin.wezterm-attention.txt
 
   wezterm-cmd-sender                 docs/cmd-sender.md                 :h wezterm-types-plugin.cmd-sender.txt
 

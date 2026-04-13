@@ -1,4 +1,4 @@
-*wezterm-types-plugin.wezterm-attention.txt*         `wezterm-attention` types
+*wezterm-types-plugin.attention.txt*                         `attention` types
 
 WEZTERM-ATTENTION ~
 
