@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.4.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.4.0-1) (2026-04-13)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.3.0-1...v3.4.0-1)
+
+**Merged pull requests:**
+
+- Events [\#157](https://github.com/DrKJeff16/wezterm-types/pull/157) ([KevinSilvester](https://github.com/KevinSilvester))
+
 ## [v3.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.3.0-1) (2026-04-10)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.2.0-1...v3.3.0-1)
