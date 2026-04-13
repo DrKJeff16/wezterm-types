@@ -87,8 +87,8 @@ local set_window_level = {
 }
 
 ---@alias SpawnTabDomain
----|'CurrentPaneDomain'
----|'DefaultDomain'
+---|"CurrentPaneDomain"
+---|"DefaultDomain"
 ---|{ DomainId: integer }
 ---|{ DomainName: string }
 
