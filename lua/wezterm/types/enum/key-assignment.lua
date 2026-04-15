@@ -73,14 +73,6 @@ local copy_mode = {
   PriorMatchPage = 1,
 }
 
----@enum (key) SpawnTabDomain
-local spawn_tab_domain = {
-  CurrentPaneDomain = 1,
-  DefaultDomain = 1,
-  DomainId = 1,
-  DomainName = 1,
-}
-
 ---@enum (key) ScrollbackEraseMode
 local scrollback_erase_mode = {
   ScrollbackAndViewport = 1,
@@ -93,6 +85,12 @@ local set_window_level = {
   AlwaysOnTop = 1,
   Normal = 1,
 }
+
+---@alias SpawnTabDomain
+---|"CurrentPaneDomain"
+---|"DefaultDomain"
+---|{ DomainId: integer }
+---|{ DomainName: string }
 
 ---@alias CopyModeParams
 ---|CopyModeStr
@@ -814,16 +812,16 @@ local key_assignment = {
 ---If `true`, `InputSelector` will start in its fuzzy finding mode,
 ---equivalent to starting the `InputSelector` and pressing `/` in the default mode.
 ---
----@field fuzzy boolean
+---@field fuzzy? boolean
 ---A string of unique characters.
 ---
 ---@field alphabet? QuickSelectAlphabet|string
 ---A string to display when in the default mode.
 ---
----@field description string
+---@field description? string
 ---A string to display when in fuzzy finding mode.
 ---
----@field fuzzy_description string
+---@field fuzzy_description? string
 
 ---@class CharSelectParams
 ---@field copy_on_select boolean
