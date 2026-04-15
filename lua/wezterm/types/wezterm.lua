@@ -574,29 +574,29 @@ local freetype_target = {
 
 ---@enum (key) GpuInfo.DeviceType
 local gpu_device_type = {
-  Other = 1,
-  IntegratedGpu = 1,
-  DiscreteGpu = 1,
   Cpu = 1,
+  DiscreteGpu = 1,
+  IntegratedGpu = 1,
+  Other = 1,
 }
 
 ---@enum (key) GpuInfo.Backend
 local gpu_backend = {
-  Vulkan = 1,
-  Metal = 1,
   Dx12 = 1,
   Gl = 1,
+  Metal = 1,
+  Vulkan = 1,
 }
 
----Corresponds to [`wgpu::AdapterInfo`](https://docs.rs/wgpu/latest/wgpu/struct.AdapterInfo.html)
+---Corresponds to [`wgpu::AdapterInfo`](https://docs.rs/wgpu/latest/wgpu/struct.AdapterInfo.html).
 ---@class GpuInfo
----@field name string
----@field vendor integer
+---@field backend GpuInfo.Backend
 ---@field device integer
 ---@field device_type GpuInfo.DeviceType
----@field backend GpuInfo.Backend
 ---@field driver? string
 ---@field driver_info? string
+---@field name string
+---@field vendor integer
 
 ---@class UnixDomain
 ---If `true`, connect to this domain on startup.
