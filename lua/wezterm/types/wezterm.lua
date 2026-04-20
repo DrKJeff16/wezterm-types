@@ -483,6 +483,9 @@ local freetype_target = {
 }
 
 ---@class FontAttributesBase
+---To control whether a font is considered to have emoji (rather than text)
+---presentation glyphs for emoji.
+---
 ---@field assume_emoji_presentation? boolean
 ---@field family string
 ---you can combine the flags like `"NO_HINTING|MONOCHROME"`
@@ -504,22 +507,21 @@ local freetype_target = {
 ---
 ---@field harfbuzz_features? HarfbuzzFeatures[]
 ---@field stretch? FontStretch
----This will only be respected if the `italic` field is `nil`.
+---This option will only be respected if the `italic` option is `nil`.
 ---
 ---@field style? FontStyle
 ---@field weight? FontWeight
 ---@field scale? number
 
----The one of the accepted argument types for `Wezterm.font()`
----and `Wezterm.font_with_fallback()`.
----@class FontAttributesInput: FontAttributesBase
----Setting this field to `true`, will overwrite the `style` field to `Italic`.
----Setting this field to `false` will overwrite the `style` field to `Normal`.
+---Argument type for `Wezterm.font()` and `Wezterm.font_with_fallback()`.
+---@class FontFamilyAttributes: FontAttributesBase
+---Setting this option to `true`, will overwrite the `style` option to `Italic`.
+---Setting this option to `false` will overwrite the `style` option to `Normal`.
 ---
 ---@field italic? boolean
 
----The final set of attributes for a font after processing the inputs to `Wezterm.font()`
----and `Wezterm.font_with_fallback()`.
+---Corresponds to the internal `FontAttributes` struct that is used to
+---select a single named font.
 ---@class FontAttributes: FontAttributesBase
 ---@field is_fallback? boolean
 ---@field is_synthetic? boolean
@@ -1251,7 +1253,7 @@ function M.emit(event, ...) end
 function M.enumerate_ssh_hosts(ssh_config_file_name) end
 
 ---This function constructs a Lua table that corresponds to the internal
----`FontFamilyAttributes` struct that is used to select a single named font:
+---`FontAttributes` struct that is used to select a single named font:
 ---
 ---```lua
 ---local wezterm = require 'wezterm'
@@ -1272,23 +1274,31 @@ function M.enumerate_ssh_hosts(ssh_config_file_name) end
 --- - The postscript name, which is an ostensibly unique name identifying a given font and style
 ---   that is encoded into the font by the font designer.
 ---
----See also:
---- - [`FontAttributes`](lua://FontAttributes)
---- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
----
----@param name string
----@param attributes? TextStyleAttributes
----@return TextStyle
-function M.font(name, attributes) end
-
----This function constructs a Lua table that corresponds to the internal
----`FontFamilyAttributes` struct that is used to select a single named font.
----
----When specifying a font using its family name, the second attributes parameter is
+---When specifying a font using its family name, the second `attributes` parameter is
 ---an **optional** table that can be used to specify style attributes.
 ---
----You can use the expanded form mentioned above to override freetype and harfbuzz settings
+---See:
+--- - [`TextStyleAttributes`](lua://TextStyleAttributes)
+--- - [`TextStyle`](lua://TextStyle)
+---
+---@param font string|FontFamilyAttributes
+---@param attributes? TextStyleAttributes
+---@return TextStyle
+function M.font(font, attributes) end
+
+---This function constructs a Lua table that corresponds to the internal
+---`FontAttributes` struct that is used to select a single named font.
+---
+---The first parameter is a table where the font family and the attributes are combined.
+---
+---You can use this expanded table form to override freetype and harfbuzz settings
 ---just for the specified font.
+---
+---The second attributes parameter is an **optional** table that can also be used
+---to specify style attributes.
+---
+---**Note**, that the attributes specified in the second `attributes` parameter will take precedence over
+---any attributes specified in the first `font` parameter.
 ---
 ---This example shows how to disable the default ligature feature just for this particular font:
 ---
@@ -1302,29 +1312,51 @@ function M.font(name, attributes) end
 ---}
 ---```
 ---
----The following options can be specified in the same way:
---- - [`harfbuzz_features`](lua://FontFamilyAttributes.harfbuzz_features)
---- - [`freetype_load_target`](lua://FontFamilyAttributes.freetype_load_target)
---- - [`freetype_render_target`](lua://FontFamilyAttributes.freetype_render_target)
---- - [`freetype_load_flags`](lua://FontFamilyAttributes.freetype_load_flags)
---- - [`assume_emoji_presentation`](lua://FontFamilyAttributes.assume_emoji_presentation)
----   to control whether a font is considered to have emoji (rather than text) presentation glyphs
----   for emoji
+---See:
+--- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
+--- - [`TextStyleAttributes`](lua://TextStyleAttributes)
+--- - [`TextStyle`](lua://TextStyle)
 ---
---- See:
----  - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
----
----@param font FontAttributesInput
----@param attributes TextStyleAttributes
+---@param font FontFamilyAttributes
+---@param attributes? TextStyleAttributes
 ---@return TextStyle
 function M.font(font, attributes) end
 
----TODO: Complete description.
+---This function constructs a lua table that configures a font with fallback processing.
+---Glyphs are looked up in the first font in the list but if missing the next font is checked and so on.
 ---
----Here's some [info](https://wezterm.org/config/lua/wezterm/font_with_fallback.html) on this
----function.
+---The first parameter is a table listing the fonts in their preferred order.
+---The fonts can be specified by the their family or using the alternative form where the family and attributes
+---are specified as part of the same lua table:
 ---
----@param fonts (string|FontAttributes)[]
+---```lua
+---local wezterm = require 'wezterm'
+---return {
+---  font = wezterm.font_with_fallback {
+---  {
+---    family = 'JetBrains Mono'
+---    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+---    weight = 'Medium'
+---  },
+---  { family = 'Terminus', weight = 'Bold' },
+---  'Noto Color Emoji',
+---}
+---```
+---
+---WezTerm implicitly adds its default fallback to the list that you specify.
+---
+---The second `attributes` parameter is an **optional** table that can also be used
+---to specify style attributes.
+---
+---**Note**, that the attributes specified in the second `attributes` parameter will take precedence over
+---any attributes specified in the individual font tables and will affect all listed fonts.
+---
+---See:
+--- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
+--- - [`TextStyleAttributes`](lua://TextStyleAttributes)
+--- - [`TextStyle`](lua://TextStyle)
+---
+---@param fonts (string|FontFamilyAttributes)[]
 ---@param attributes? TextStyleAttributes
 ---@return TextStyle
 function M.font_with_fallback(fonts, attributes) end
