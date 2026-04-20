@@ -456,6 +456,13 @@ local font_stretch = {
   UltraExpanded = 1,
 }
 
+---@enum (key) FontStyle
+local font_style = {
+  Italic = 1,
+  Normal = 1,
+  Oblique = 1,
+}
+
 ---@enum (key) FreeTypeLoadFlags
 local freetype_load_flags = {
   DEFAUlT = 1,
@@ -466,18 +473,6 @@ local freetype_load_flags = {
   NO_HINTING = 1,
 }
 
----@class FontAttributes
----@field is_fallback? boolean
----@field is_synthetic? boolean
----@field scale? number
----@field stretch? FontStretch
----Whether the font should be an italic variant.
----
----@field style? "Normal"|"Italic"|"Oblique"
----Whether the font should be a bold variant.
----
----@field weight? FontWeight
-
 ---@enum (key) FreeTypeTarget
 local freetype_target = {
   HorizontalLcd = 1,
@@ -487,10 +482,7 @@ local freetype_target = {
   VerticalLcd = 1,
 }
 
----`FontAttributes`-like class but with font family
----and other extensions included.
----
----@class FontFamilyAttributes: FontAttributes
+---@class FontAttributesBase
 ---@field assume_emoji_presentation? boolean
 ---@field family string
 ---you can combine the flags like `"NO_HINTING|MONOCHROME"`
@@ -511,9 +503,47 @@ local freetype_target = {
 --- - [`config.font_shaper`](lua://Config.font_shaper)
 ---
 ---@field harfbuzz_features? HarfbuzzFeatures[]
+---@field stretch? FontStretch
+---This will only be respected if the `italic` field is `nil`.
+---
+---@field style? FontStyle
+---@field weight? FontWeight
+---@field scale? number
 
----@class Fonts
+---The one of the accepted argument types for `Wezterm.font()`
+---and `Wezterm.font_with_fallback()`.
+---@class FontAttributesInput: FontAttributesBase
+---Setting this field to `true`, will overwrite the `style` field to `Italic`.
+---Setting this field to `false` will overwrite the `style` field to `Normal`.
+---
+---@field italic? boolean
+
+---The final set of attributes for a font after processing the inputs to `Wezterm.font()`
+---and `Wezterm.font_with_fallback()`.
+---@class FontAttributes: FontAttributesBase
+---@field is_fallback? boolean
+---@field is_synthetic? boolean
+
+---@class TextStyleAttributes
+---@field bold? boolean
+---If set, when rendering text that is set to the default
+---foreground color, use this color instead.  This is most
+---useful in a `Config.font_rules` section to implement changing
+---the text color for eg: bold text.
+---
+---For more information and examples, see:
+--- - [Font Rules](ttps://wezterm.org/config/lua/config/font_rules.html)
+--- - [`config.font_rules`](lua://Config.font_rules)
+---
+---@field foreground? string
+---@field italic? boolean
+---@field stretch? FontStretch
+---@field style? FontStyle
+---@field weight? FontWeight
+
+---@class TextStyle
 ---@field fonts FontAttributes[]
+---@field foreground? string
 
 ---@class WindowFrameConfig
 ---@field active_titlebar_bg? string
@@ -1247,8 +1277,8 @@ function M.enumerate_ssh_hosts(ssh_config_file_name) end
 --- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
 ---
 ---@param name string
----@param attributes? FontAttributes
----@return Fonts|FontFamilyAttributes
+---@param attributes? TextStyleAttributes
+---@return TextStyle
 function M.font(name, attributes) end
 
 ---This function constructs a Lua table that corresponds to the internal
@@ -1284,9 +1314,10 @@ function M.font(name, attributes) end
 --- See:
 ---  - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
 ---
----@param attributes FontFamilyAttributes
----@return Fonts|FontFamilyAttributes fonts
-function M.font(attributes) end
+---@param font FontAttributesInput
+---@param attributes TextStyleAttributes
+---@return TextStyle
+function M.font(font, attributes) end
 
 ---TODO: Complete description.
 ---
@@ -1294,8 +1325,9 @@ function M.font(attributes) end
 ---function.
 ---
 ---@param fonts (string|FontAttributes)[]
----@return Fonts fallback_fonts
-function M.font_with_fallback(fonts) end
+---@param attributes? TextStyleAttributes
+---@return TextStyle
+function M.font_with_fallback(fonts, attributes) end
 
 ---Can be used to produce a formatted string with terminal graphic attributes
 ---such as `bold`, `italic` and `colors`.
@@ -2330,3 +2362,4 @@ function M.utf16_to_utf8(s) end
 return M
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
+
