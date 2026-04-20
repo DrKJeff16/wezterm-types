@@ -563,7 +563,7 @@ local freetype_target = {
 ---@field button_fg? string
 ---@field button_hover_bg? string
 ---@field button_hover_fg? string
----@field font? AllFontAttributes
+---@field font? TextStyle
 ---@field font_size? number
 ---@field inactive_titlebar_bg? string
 ---@field inactive_titlebar_border_bottom? string
@@ -2394,4 +2394,3 @@ function M.utf16_to_utf8(s) end
 return M
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
-

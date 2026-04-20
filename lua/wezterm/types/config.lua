@@ -269,8 +269,6 @@ local horiz_align = {
 ---
 ---@field width? "Cover"|"Contain"|number|string
 
----@alias AllFontAttributes Fonts|FontAttributes|FontFamilyAttributes
-
 ---@enum (key) FontRules.Blink
 local blink = {
   None = 1,
@@ -280,7 +278,7 @@ local blink = {
 
 ---@class FontRules
 ---@field blink? FontRules.Blink
----@field font? AllFontAttributes
+---@field font? TextStyle
 ---@field intensity? FormatItemAttribute.Intensity
 ---@field invisible? boolean
 ---@field italic? boolean
@@ -613,7 +611,7 @@ local exit_behavior_messaging = {
 --- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 --- - [`wezterm.font()`](lua://Wezterm.font)
 ---
----@field char_select_font? Fonts|FontFamilyAttributes
+---@field char_select_font? TextStyle
 ---Specifies the size of the font used with [`CharSelect`](https://wezterm.org/config/lua/keyassignment/CharSelect.html).
 ---
 ---@field char_select_font_size? number
@@ -713,7 +711,7 @@ local exit_behavior_messaging = {
 --- - [`wezterm.font()`](lua://Wezterm.font)
 --- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
----@field command_palette_font? AllFontAttributes
+---@field command_palette_font? TextStyle
 ---Specifies the size of the font used with `ActivateCommandPalette`.
 ---
 ---See:
@@ -1108,7 +1106,7 @@ local exit_behavior_messaging = {
 --- - [`wezterm.font()`](lua://Wezterm.font)
 --- - [`wezterm.font_with_fallback()`](lua://Wezterm.font_with_fallback)
 ---
----@field font? AllFontAttributes
+---@field font? TextStyle
 ---@field font_colr_rasterizer? FontRasterizer
 ---By default, wezterm will use an appropriate system-specific method
 ---for locating the fonts that you specify using the options below.
@@ -1818,7 +1816,7 @@ local exit_behavior_messaging = {
 ---config.pane_select_font = wezterm.font 'Roboto'
 ---```
 ---
----@field pane_select_font? AllFontAttributes
+---@field pane_select_font? TextStyle
 ---@field pane_select_font_size? number
 ---If non-zero, specifies the period (in seconds) at which various statistics are logged.
 ---
