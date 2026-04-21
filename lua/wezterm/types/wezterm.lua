@@ -506,12 +506,12 @@ local freetype_target = {
 --- - [`config.font_shaper`](lua://Config.font_shaper)
 ---
 ---@field harfbuzz_features? HarfbuzzFeatures[]
+---@field scale? number
 ---@field stretch? FontStretch
 ---This option will only be respected if the `italic` option is `nil`.
 ---
 ---@field style? FontStyle
 ---@field weight? FontWeight
----@field scale? number
 
 ---Argument type for `Wezterm.font()` and `Wezterm.font_with_fallback()`.
 ---@class FontFamilyAttributes: FontAttributesBase
@@ -522,6 +522,7 @@ local freetype_target = {
 
 ---Corresponds to the internal `FontAttributes` struct that is used to
 ---select a single named font.
+---
 ---@class FontAttributes: FontAttributesBase
 ---@field is_fallback? boolean
 ---@field is_synthetic? boolean
