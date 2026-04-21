@@ -14,8 +14,12 @@ local positions = {
 ---@field space? integer
 
 ---@class BarWeztermOpts.Tabs
----@field active_tab_fg? integer
----@field inactive_tab_fg? integer
+---@field active_tab_bg? number|string
+---@field active_tab_fg? number|string
+---@field inactive_tab_bg? number|string
+---@field inactive_tab_fg? number|string
+---@field new_tab_bg? number|string
+---@field new_tab_fg? number|string
 
 ---@class BarWeztermOpts.Module
 ---@field color? integer
@@ -35,10 +39,12 @@ local positions = {
 ---@field hostname? BarWeztermOpts.Module
 ---@field leader? BarWeztermOpts.Module
 ---@field pane? BarWeztermOpts.Module
+---@field ssh? BarWeztermOpts.Module
 ---@field spotify? BarWeztermOpts.Spotify
 ---@field tabs? BarWeztermOpts.Tabs
 ---@field username? BarWeztermOpts.Module
 ---@field workspace? BarWeztermOpts.Module
+---@field zoom? BarWeztermOpts.Module
 
 ---@class BarWeztermOpts.Padding.Tabs
 ---@field left? integer
