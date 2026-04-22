@@ -1,5 +1,18 @@
 # Changelog
 
+## [v3.5.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.5.0-1) (2026-04-22)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.4.0-1...v3.5.0-1)
+
+**Implemented enhancements:**
+
+- feat\(plugins.bar\): add new zoom and ssh modules, new tab theming options [\#159](https://github.com/DrKJeff16/wezterm-types/pull/159) ([lalvarezt](https://github.com/lalvarezt))
+- feat: enumerate `GpuInfo` device\_type and backend fields [\#158](https://github.com/DrKJeff16/wezterm-types/pull/158) ([KevinSilvester](https://github.com/KevinSilvester))
+
+**Merged pull requests:**
+
+- feat\(fonts\): updated font related type defs and doc comments + added missing doc for `Wezterm.font_with_fallback` [\#160](https://github.com/DrKJeff16/wezterm-types/pull/160) ([KevinSilvester](https://github.com/KevinSilvester))
+
 ## [v3.4.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.4.0-1) (2026-04-13)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.3.0-1...v3.4.0-1)
