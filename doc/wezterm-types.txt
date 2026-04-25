@@ -1,4 +1,4 @@
-*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 13
+*wezterm-types.txt*        For NVIM >=v0.7.0        Last change: 2026 April 25
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -58,8 +58,8 @@ To get it running in Neovim please refer to this discussion
 
 NEOVIM ~
 
-We recommend using folke/lazy.nvim <https://github.com/folke/lazy.nvim> as a
-package manager:
+We recommend using lazy.nvim <https://github.com/folke/lazy.nvim> as a package
+manager:
 
 >lua
     {
