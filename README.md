@@ -2,18 +2,16 @@
 
 <p><a href="https://github.com/michaelbrusegard/awesome-wezterm"><img alt="Mentioned in Awesome WezTerm" src="https://awesome.re/mentioned-badge.svg" /></a><br /><a href="https://github.com/rockerBOO/awesome-neovim"><img alt="Mentioned in Awesome Neovim" src="https://awesome.re/mentioned-badge.svg" /></a></p>
 
-<img alt="Showcase" src="https://github.com/DrKJeff16/wezterm-types/blob/main/assets/showcase.png" />
+<a href="#"><img alt="Showcase" src="https://github.com/DrKJeff16/wezterm-types/blob/main/assets/showcase.png" /></a>
 
-This project aims to provide LuaCATS-like
-[LuaLS type annotations](https://luals.github.io/wiki/annotations/) for your
-[WezTerm](https://github.com/wezterm/wezterm) config.
+This project aims to provide LuaCATS-like [LuaLS type annotations](https://luals.github.io/wiki/annotations/)
+for your [WezTerm](https://github.com/wezterm/wezterm) config.
 
-Example videos can be found in
-[EXAMPLES.md](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
+Example videos can be found in [EXAMPLES.md](https://github.com/DrKJeff16/wezterm-types/blob/main/EXAMPLES.md).
 
-NOTE: For any missing or unclear types you should always double-check the
-[WezTerm Lua Reference](https://wezterm.org/config/lua/general.html). If using an annotated plugin
-featured in this repository please refer to its author for any unclear types.
+NOTE: For any missing or unclear types you should always double-check the [WezTerm Lua Reference](https://wezterm.org/config/lua/general.html).
+If using an annotated plugin featured in this repository please refer to its author
+for any unclear types.
 
 ## Features
 
@@ -48,12 +46,11 @@ luarocks install wezterm-types # Global install
 luarocks install --local wezterm-types # Local install
 ```
 
-To get it running in Neovim please refer to
-[this discussion](https://github.com/DrKJeff16/wezterm-types/discussions/93).
+To get it running in Neovim please refer to [this discussion](https://github.com/DrKJeff16/wezterm-types/discussions/93).
 
 ### Neovim
 
-We recommend using [folke/lazy.nvim](https://github.com/folke/lazy.nvim) as a package manager:
+We recommend using [lazy.nvim](https://github.com/folke/lazy.nvim) as a package manager:
 
 ```lua
 {
