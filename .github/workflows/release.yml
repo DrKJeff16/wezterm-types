@@ -3,13 +3,15 @@ on:
   push:
     tags:
       - "v*.*.*"
-      - "v*.*.*-*"
   merge_group:
     branches:
       - main
   release:
     types:
       - created
+permissions:
+  contents: write
+  discussions: write
 jobs:
   build:
     runs-on: ubuntu-latest
