@@ -1,5 +1,9 @@
 # Changelog
 
+## [v4.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.0.0-1) (2026-05-04)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.5.0-1...v4.0.0-1)
+
 ## [v3.5.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.5.0-1) (2026-04-22)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.4.0-1...v3.5.0-1)
