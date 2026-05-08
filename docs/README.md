@@ -11,6 +11,7 @@ We will keep adding more community plugins as we find them.
 - [battery.wez](./battery.md)
 - [dev.wezterm](./dev.md)
 - [kanagawa.wz](./kanagawa.md)
+- [lantern.wz](./lantern.md)
 - [lib.wezterm](./lib.md)
 - [listeners.wezterm](./listeners.md)
 - [log.wz](./log.md)
