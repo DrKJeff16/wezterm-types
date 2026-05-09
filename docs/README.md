@@ -9,6 +9,7 @@ We will keep adding more community plugins as we find them.
 - [ai-helper.wezterm](./ai-helper.md)
 - [bar.wezterm](./bar.md)
 - [battery.wez](./battery.md)
+- [chord.wz](./chord.md)
 - [dev.wezterm](./dev.md)
 - [kanagawa.wz](./kanagawa.md)
 - [lib.wezterm](./lib.md)
