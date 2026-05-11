@@ -3,6 +3,16 @@
 
 ---@class Memo.Cache.Namespace
 ---@field _prefix string
+---@field get fun(key: string): any|nil
+---@field set fun(key: string, value: any, opts?: Memo.CacheOpts)
+---@field has fun(key: string): boolean
+---@field delete fun(key: string)
+---@field compute fun(name: string, fn: fun(...: any): any, ...: any): any
+---@field expire fun(key: string)
+---@field is_fresh fun(key: string): boolean
+---@field touch fun(key: string)
+---@field clear fun(selector?: table)
+---@field keys fun(selector?: table): string[]
 
 ---@class Memo.CacheOpts
 ---Whether to log debug messages.
@@ -11,19 +21,21 @@
 ---Eviction policy when max_entries reached ("expire-first").
 ---
 ---@field eviction? string
+---Force `cache.set` to overwrite an existing value.
+---
+---@field force? boolean
 ---Max number of cache entries; `nil` == unlimited.
 ---
----@field max_entries? integer|nil
+---@field max_entries? integer|false|nil
 ---Whether to track hit/miss statistics.
 ---
 ---@field stats? boolean
 ---TTL configuration; `nil` == disabled.
 ---
----@field ttl? table|nil
-local CO = {}
-
----@return integer time
-function CO.clock() end
+---@field ttl? table|false|nil
+---Clock function used for TTL checks.
+---
+---@field clock? fun(): number
 
 ---@class Memo.Cache
 local C = {}
@@ -204,7 +216,7 @@ function ST:delete(key) end
 ---Retrieve a value by key.
 ---
 ---@param key string
----@return any
+---@return any|nil
 function ST:get(key) end
 
 ---Check whether a key exists.
