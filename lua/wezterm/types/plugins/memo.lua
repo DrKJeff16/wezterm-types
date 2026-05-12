@@ -3,16 +3,46 @@
 
 ---@class Memo.Cache.Namespace
 ---@field _prefix string
----@field get fun(key: string): any|nil
----@field set fun(key: string, value: any, opts?: Memo.CacheOpts)
----@field has fun(key: string): boolean
----@field delete fun(key: string)
----@field compute fun(name: string, fn: fun(...: any): any, ...: any): any
----@field expire fun(key: string)
----@field is_fresh fun(key: string): boolean
----@field touch fun(key: string)
----@field clear fun(selector?: table)
----@field keys fun(selector?: table): string[]
+local NS = {}
+
+---@param selector? table
+function NS.clear(selector) end
+
+---@param name string
+---@param fn fun(...: any): any
+---@param ... any
+---@return any
+function NS.compute(name, fn, ...) end
+
+---@param key string
+function NS.delete(key) end
+
+---@param key string
+function NS.expire(key) end
+
+---@param key string
+---@return any
+function NS.get(key) end
+
+---@param key string
+---@return boolean has
+function NS.has(key) end
+
+---@param key string
+---@return boolean fresh
+function NS.is_fresh(key) end
+
+---@param selector? table
+---@return string[] keys
+function NS.keys(selector) end
+
+---@param key string
+---@param value any
+---@field opts? Memo.CacheOpts
+function NS.set(key, value, opts) end
+
+---@param key string
+function NS.touch(key) end
 
 ---@class Memo.CacheOpts
 ---Whether to log debug messages.
@@ -21,7 +51,10 @@
 ---Eviction policy when max_entries reached ("expire-first").
 ---
 ---@field eviction? string
----Force `cache.set` to overwrite an existing value.
+---Force `cache.set()` to overwrite an existing value.
+---
+---See:
+--- - [`cache.set()`](lua://Memo.Cache.set)
 ---
 ---@field force? boolean
 ---Max number of cache entries; `nil` == unlimited.
@@ -216,7 +249,7 @@ function ST:delete(key) end
 ---Retrieve a value by key.
 ---
 ---@param key string
----@return any|nil
+---@return any
 function ST:get(key) end
 
 ---Check whether a key exists.
