@@ -93,6 +93,8 @@ This project also features type annotations for various WezTerm plugins.
 
   kanagawa.wz                        docs/kanagawa.md                   :h wezterm-types-plugin.kanagawa.txt
 
+  lantern.wz                         docs/lantern.md                    :h wezterm-types-plugin.lantern.txt
+
   lib.wezterm                        docs/lib.md                        :h wezterm-types-plugin.lib.txt
 
   listeners.wezterm                  docs/listeners.md                  :h wezterm-types-plugin.listeners.txt
