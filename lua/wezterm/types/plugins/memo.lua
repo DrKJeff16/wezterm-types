@@ -3,6 +3,46 @@
 
 ---@class Memo.Cache.Namespace
 ---@field _prefix string
+local NS = {}
+
+---@param selector? table
+function NS.clear(selector) end
+
+---@param name string
+---@param fn fun(...: any): any
+---@param ... any
+---@return any
+function NS.compute(name, fn, ...) end
+
+---@param key string
+function NS.delete(key) end
+
+---@param key string
+function NS.expire(key) end
+
+---@param key string
+---@return any
+function NS.get(key) end
+
+---@param key string
+---@return boolean has
+function NS.has(key) end
+
+---@param key string
+---@return boolean fresh
+function NS.is_fresh(key) end
+
+---@param selector? table
+---@return string[] keys
+function NS.keys(selector) end
+
+---@param key string
+---@param value any
+---@field opts? Memo.CacheOpts
+function NS.set(key, value, opts) end
+
+---@param key string
+function NS.touch(key) end
 
 ---@class Memo.CacheOpts
 ---Whether to log debug messages.
@@ -11,19 +51,24 @@
 ---Eviction policy when max_entries reached ("expire-first").
 ---
 ---@field eviction? string
+---Force `cache.set()` to overwrite an existing value.
+---
+---See:
+--- - [`cache.set()`](lua://Memo.Cache.set)
+---
+---@field force? boolean
 ---Max number of cache entries; `nil` == unlimited.
 ---
----@field max_entries? integer|nil
+---@field max_entries? integer|false|nil
 ---Whether to track hit/miss statistics.
 ---
 ---@field stats? boolean
 ---TTL configuration; `nil` == disabled.
 ---
----@field ttl? table|nil
-local CO = {}
-
----@return integer time
-function CO.clock() end
+---@field ttl? table|false|nil
+---Clock function used for TTL checks.
+---
+---@field clock? fun(): number
 
 ---@class Memo.Cache
 local C = {}
