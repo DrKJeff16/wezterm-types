@@ -1,7 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@alias Sigil.Padding false|"left"|"right"|"both"|boolean
+---@alias Sigil.Padding boolean|"left"|"right"|"both"
 ---@alias Sigil.FormatItem string|table
 
 ---@class Sigil.Entry
@@ -34,7 +34,7 @@
 ---@field padding? Sigil.Padding Padding to apply around the icon.
 ---@field reset? boolean Append `ResetAttributes` after the icon.
 
----@class Sigil.Api
+---@class Sigil
 ---@field config Sigil.Config
 local M = {}
 
