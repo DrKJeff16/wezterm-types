@@ -4,7 +4,7 @@
 ---@enum (key) Lantern.ResetBehavior
 local reset_behaviors = { clear = 1, persist = 1 }
 
----@alias Lantern.FlameDir string|string[]
+---@alias Lantern.FlameDir string[]|string
 
 ---@alias Lantern.GlowResult Lantern.Choice|Lantern.Choice[]|string|number
 
@@ -28,18 +28,21 @@ local reset_behaviors = { clear = 1, persist = 1 }
 ---@field glow? fun(ctx?: Lantern.BuildContext): Lantern.GlowResult
 ---Apply a selected choice to the provided config table.
 ---
----@field ignite? fun(config: Config|table, ctx: Lantern.Context)
+---@field ignite? fun(config: Config, ctx: Lantern.Context)
 ---Legacy alias for `glow`.
 ---
 ---@field get? fun(ctx?: Lantern.BuildContext): Lantern.GlowResult
 ---Legacy alias for `ignite`.
 ---
----@field pick? fun(config: Config|table, ctx: Lantern.Context)
+---@field pick? fun(config: Config, ctx: Lantern.Context)
 
 ---@class Lantern.GpuFlame: Lantern.Flame
----Choose the best detected GPU adapter.
+local G = {}
+
+---Choose the best detected GPU adapter, if any.
 ---
----@field best fun(): GpuInfo|nil
+---@return GpuInfo|nil info
+function G.best() end
 
 ---@class Lantern.InternalChoice
 ---@field flame Lantern.Flame
@@ -97,9 +100,13 @@ local reset_behaviors = { clear = 1, persist = 1 }
 ---@field fuzzy_description string
 ---@field alphabet string
 ---@field icons Lantern.Icons
----@field comp fun(sort_by: string): fun(a: Lantern.Choice, b: Lantern.Choice): boolean
 ---@field format_choices Lantern.FormatChoices
 ---@field format_description Lantern.FormatDescription
+local DC = {}
+
+---@param sort_by string
+---@return fun(a: Lantern.Choice, b: Lantern.Choice): boolean
+function DC.comp(sort_by) end
 
 ---@class Lantern.DefaultOpts
 ---@field title? string
@@ -159,7 +166,7 @@ function W:register(flame_spec) end
 
 ---Apply one selected choice to a config override table.
 ---
----@param config Config|table
+---@param config Config
 ---@param ctx Lantern.Context
 function W:select(config, ctx) end
 
@@ -256,13 +263,13 @@ local C = {}
 
 ---Set tab button style in a config table from a Lantern colorscheme.
 ---
----@param config Config|table
+---@param config Config
 ---@param scheme Palette
 function C.set_tab_button(config, scheme) end
 
 ---Apply a colorscheme to a WezTerm config override table.
 ---
----@param config Config|table
+---@param config Config
 ---@param scheme Palette
 ---@param name string
 function C.apply_scheme(config, scheme, name) end
@@ -375,8 +382,8 @@ function M.wick(name) end
 
 ---Restore persisted Lantern selections into a config table.
 ---
----@param config? Config|table
----@return Config|table config
+---@param config? Config
+---@return Config config
 function M.rekindle(config) end
 
 ---Return the built-in GPU flame module.
