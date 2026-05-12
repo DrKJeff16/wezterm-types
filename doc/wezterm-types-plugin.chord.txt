@@ -1,4 +1,4 @@
-*wezterm-types-plugin.chord.txt*                                  `chord` types
+*wezterm-types-plugin.chord.txt*                                 `chord` types
 
 CHORD.WZ ~
 
