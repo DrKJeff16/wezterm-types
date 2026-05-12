@@ -6,7 +6,7 @@ You can import type annotations for `sravioli/sigil.wz`
 <https://github.com/sravioli/sigil.wz> as shown below:
 
 >lua
-    ---@type Sigil.Api
+    ---@type Sigil
     local sigil = wezterm.plugin.require("https://github.com/sravioli/sigil.wz")
 <
 
