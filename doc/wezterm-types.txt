@@ -125,6 +125,8 @@ This project also features type annotations for various WezTerm plugins.
 
   sessionizer.wezterm                docs/sessionizer.md                :h wezterm-types-plugin.sessionizer.txt
 
+  sigil.wz                           docs/sigil.md                      :h wezterm-types-plugin.sigil.txt
+
   smart-splits.nvim                  docs/smart-splits.md               :h wezterm-types-plugin.smart-splits.txt
 
   smart_workspace_switcher.wezterm   docs/smart-workspace-switcher.md   :h
