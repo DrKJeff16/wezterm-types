@@ -25,6 +25,7 @@ We will keep adding more community plugins as we find them.
 - [quick_domains.wezterm](./quick-domains.md)
 - [quickselect.wezterm](./quickselect.md)
 - [resurrect.wezterm](./resurrect.md)
+- [ribbon.wz](./ribbon.md)
 - [rosepine](./rosepine.md)
 - [sessionizer.wezterm](./sessionizer.md)
 - [smart-splits.nvim](./smart-splits.md)

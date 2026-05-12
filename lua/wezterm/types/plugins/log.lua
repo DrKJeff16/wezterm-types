@@ -63,6 +63,7 @@ function ConfigModule.setup(overrides) end
 ---@field formatter? Log.Sinks.FileFormatter Custom formatter. When provided, it overrides `format`.
 
 ---@class Log.Sinks.FileSink
+---@operator call(Log.Event)
 ---@field path      string                       Resolved destination file path.
 ---@field format    Log.Sinks.FileFormat          Output format for written entries.
 ---@field formatter Log.Sinks.FileFormatter|nil   Custom formatter used for serialization.
@@ -88,6 +89,7 @@ function FileSink:append(payload) end
 function FileSink:write(event) end
 
 ---@class Log.Sinks.Json
+---@operator call(Log.Event)
 local Json = {}
 
 ---Encode a Lua value to a JSON string.
@@ -112,6 +114,7 @@ function Json.write(event) end
 ---@field max_entries? integer Maximum stored entries. Oldest are evicted when full. 0 = unlimited. Defaults to 10 000.
 
 ---@class Log.Sinks.MemorySink
+---@operator call(Log.Event)
 ---@field entries     Log.Event[] Stored log events.
 ---@field max_entries integer     Maximum stored entries (0 = unlimited).
 local MemorySink = {}

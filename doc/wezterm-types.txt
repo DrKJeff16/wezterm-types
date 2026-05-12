@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0         Last change: 2026 May 11
+*wezterm-types.txt*         For NVIM >=v0.7.0         Last change: 2026 May 12
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -116,6 +116,8 @@ This project also features type annotations for various WezTerm plugins.
   quickselect.wezterm                docs/quickselect.md                :h wezterm-types-plugin.quickselect.txt
 
   resurrect.wezterm                  docs/resurrect.md                  :h wezterm-types-plugin.resurrect.txt
+
+  ribbon.wz                          docs/ribbon.md                     :h wezterm-types-plugin.ribbon.txt
 
   rosepine                           docs/rosepine.md                   :h wezterm-types-plugin.rosepine.txt
 
