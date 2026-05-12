@@ -1,5 +1,18 @@
 # Changelog
 
+## [v4.1.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.1.0-1) (2026-05-12)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.0.0-1...v4.1.0-1)
+
+**Implemented enhancements:**
+
+- feat\(sigil\): add type annotations [\#167](https://github.com/DrKJeff16/wezterm-types/pull/167) ([sravioli](https://github.com/sravioli))
+- feat\(ribbon\): add type annotations [\#166](https://github.com/DrKJeff16/wezterm-types/pull/166) ([sravioli](https://github.com/sravioli))
+- feat\(lantern\): add type annotations [\#165](https://github.com/DrKJeff16/wezterm-types/pull/165) ([sravioli](https://github.com/sravioli))
+- fix\(log\): update type annotations [\#164](https://github.com/DrKJeff16/wezterm-types/pull/164) ([sravioli](https://github.com/sravioli))
+- fix\(memo\): update type annotations [\#163](https://github.com/DrKJeff16/wezterm-types/pull/163) ([sravioli](https://github.com/sravioli))
+- feat\(chord\): add type annotations [\#162](https://github.com/DrKJeff16/wezterm-types/pull/162) ([sravioli](https://github.com/sravioli))
+
 ## [v4.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.0.0-1) (2026-05-04)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v3.5.0-1...v4.0.0-1)
@@ -33,12 +46,9 @@
 
 - feat\(log.wz\): add type annotations [\#155](https://github.com/DrKJeff16/wezterm-types/pull/155) ([sravioli](https://github.com/sravioli))
 - feat\(warp.wz\): add type annotations [\#154](https://github.com/DrKJeff16/wezterm-types/pull/154) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(nerdfonts\): add icon preview to type def [\#153](https://github.com/DrKJeff16/wezterm-types/pull/153) ([KevinSilvester](https://github.com/KevinSilvester))
 - docs: add plugin PR instructions [\#152](https://github.com/DrKJeff16/wezterm-types/pull/152) ([DrKJeff16](https://github.com/DrKJeff16))
 - fix\(plugins.wezterm-attention\): sync with plugin's changes [\#151](https://github.com/DrKJeff16/wezterm-types/pull/151) ([DrKJeff16](https://github.com/DrKJeff16))
-
-**Merged pull requests:**
-
-- feat\(nerdfonts\): add icon preview to type def [\#153](https://github.com/DrKJeff16/wezterm-types/pull/153) ([KevinSilvester](https://github.com/KevinSilvester))
 - feat\(nerdfonts\): add missing nerdfonts [\#150](https://github.com/DrKJeff16/wezterm-types/pull/150) ([KevinSilvester](https://github.com/KevinSilvester))
 
 ## [v3.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v3.2.0-1) (2026-04-07)
