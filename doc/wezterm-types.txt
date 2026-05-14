@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0         Last change: 2026 May 12
+*wezterm-types.txt*         For NVIM >=v0.7.0         Last change: 2026 May 14
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -163,6 +163,8 @@ This project also features type annotations for various WezTerm plugins.
   wezterm-sessions                   docs/wezterm-sessions.md           :h wezterm-types-plugin.wezterm-sessions.txt
 
   wezterm-status                     docs/wezterm-status.md             :h wezterm-types-plugin.wezterm-status.txt
+
+  wezterm-sync                       docs/sync.md                       :h wezterm-types-plugin.sync.txt
 
   wezterm-tabs                       docs/wezterm-tabs.md               :h wezterm-types-plugin.wezterm-tabs.txt
 
