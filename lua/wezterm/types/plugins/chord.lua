@@ -79,18 +79,18 @@ local source = {
 ---@class Chord.KeyTableDef
 ---Key definitions in Vim-style notation.
 ---
----@field keys Chord.VimMapping[]
+---@field keys? Chord.VimMapping[]
 ---Key-table metadata used by hints and mode displays.
 ---
----@field meta Chord.KeyMeta
+---@field meta? Chord.KeyMeta
 
 ---@class Chord.HintsConfig
 ---Prefix for per-pane hint page cache keys.
 ---
----@field page_cache_prefix string
+---@field page_cache_prefix? string
 ---Separator between hint entries.
 ---
----@field separator string
+---@field separator? string
 
 ---@class Chord.CommandConfig
 ---InputSelector shortcut alphabet.
@@ -98,61 +98,61 @@ local source = {
 ---@field alphabet? string
 ---Dedupe entries by binding identity.
 ---
----@field dedupe boolean
+---@field dedupe? boolean
 ---Description for the injected command picker binding.
 ---
----@field desc string
----InputSelector description.
+---@field desc? string
+---`InputSelector` description.
 ---
----@field description string
+---@field description? string
 ---Whether InputSelector fuzzy matching is enabled.
 ---
----@field fuzzy boolean
+---@field fuzzy? boolean
 ---InputSelector fuzzy description.
 ---
----@field fuzzy_description string
+---@field fuzzy_description? string
 ---Include `wezterm.gui.default_keys()` entries.
 ---
----@field include_defaults boolean
+---@field include_defaults? boolean
 ---Include `config.key_tables` entries.
 ---
----@field include_key_tables boolean
+---@field include_key_tables? boolean
 ---Include top-level `config.keys` entries.
 ---
----@field include_keys boolean
+---@field include_keys? boolean
 ---Include commands registered through `chord.command.register()`.
 ---
 ---See:
 --- - [`chord.command.register()`](lua://Chord.CommandApi.register)
 ---
----@field include_registered boolean
+---@field include_registered? boolean
 ---Include entries without `desc` or `label`.
 ---
----@field include_undocumented boolean
+---@field include_undocumented? boolean
 ---Key binding that opens the command picker.
 ---
----@field key string
----InputSelector title.
+---@field key? string
+---`InputSelector` title.
 ---
----@field title string
+---@field title? string
 
 ---@class Chord.LogConfig
----@field enabled boolean
----@field threshold string|integer
+---@field enabled? boolean
+---@field threshold? string|integer
 
 ---@class Chord.Config
 ---Vim-style key aliases mapped to WezTerm key names.
 ---
----@field aliases table<string, string>
----@field command Chord.CommandConfig
----@field hints Chord.HintsConfig
+---@field aliases? table<string, string>
+---@field command? Chord.CommandConfig
+---@field hints? Chord.HintsConfig
 ---Leader token used in Vim-style key notation.
 ---
 ---@field leader string
----@field log Chord.LogConfig
+---@field log? Chord.LogConfig
 ---Vim-style modifier aliases mapped to WezTerm modifiers.
 ---
----@field modifiers table<string, string>
+---@field modifiers? table<string, string>
 
 ---@class Chord.Command
 ---WezTerm action executed when the command is selected.
