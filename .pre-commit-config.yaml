@@ -12,7 +12,7 @@ repos:
       - id: forbid-crlf
         verbose: true
   - repo: https://github.com/qoomon/git-conventional-commits
-    rev: v2.7.2
+    rev: v2.9.0
     hooks:
       - id: conventional-commits
         verbose: true
