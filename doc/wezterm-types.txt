@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0         Last change: 2026 May 14
+*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 June 01
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -76,106 +76,105 @@ This project also features type annotations for various WezTerm plugins.
 
 **If you want to add your plugin, please read CONTRIBUTING.md.**
 
-  -------------------------------------------------------------------------------------------------------------------------
-  Plugin                             Documentation                      Neovim Help
-  ---------------------------------- ---------------------------------- ---------------------------------------------------
-  ai-commander.wezterm               docs/ai-commander.md               :h wezterm-types-plugin.ai-commander.txt
+  ---------------------------------------------------------------------------
+  Plugin                             Documentation    Neovim Help
+  ---------------------------------- ---------------- -----------------------
+  ai-commander.wezterm               Documentation    Neovim Helpdoc
 
-  ai-helper.wezterm                  docs/ai-helper.md                  :h wezterm-types-plugin.ai-helper.txt
+  ai-helper.wezterm                  Documentation    Neovim Helpdoc
 
-  bar.wezterm                        docs/bar.md                        :h wezterm-types-plugin.bar.txt
+  bar.wezterm                        Documentation    Neovim Helpdoc
 
-  battery.wez                        docs/battery.md                    :h wezterm-types-plugin.battery.txt
+  battery.wez                        Documentation    Neovim Helpdoc
 
-  chord.wz                           docs/chord.md                      :h wezterm-types-plugin.chord.txt
+  chord.wz                           Documentation    Neovim Helpdoc
 
-  dev.wezterm                        docs/dev.md                        :h wezterm-types-plugin.dev.txt
+  dev.wezterm                        Documentation    Neovim Helpdoc
 
-  kanagawa.wz                        docs/kanagawa.md                   :h wezterm-types-plugin.kanagawa.txt
+  kanagawa.wz                        Documentation    Neovim Helpdoc
 
-  lantern.wz                         docs/lantern.md                    :h wezterm-types-plugin.lantern.txt
+  lantern.wz                         Documentation    Neovim Helpdoc
 
-  lib.wezterm                        docs/lib.md                        :h wezterm-types-plugin.lib.txt
+  lib.wezterm                        Documentation    Neovim Helpdoc
 
-  listeners.wezterm                  docs/listeners.md                  :h wezterm-types-plugin.listeners.txt
+  listeners.wezterm                  Documentation    Neovim Helpdoc
 
-  log.wz                             docs/log.md                        :h wezterm-types-plugin.log.txt
+  log.wz                             Documentation    Neovim Helpdoc
 
-  memo.wz                            docs/memo.md                       :h wezterm-types-plugin.memo.txt
+  memo.wz                            Documentation    Neovim Helpdoc
 
-  modal.wezterm                      docs/modal.md                      :h wezterm-types-plugin.modal.txt
+  modal.wezterm                      Documentation    Neovim Helpdoc
 
-  passrelay.wezterm                  docs/passrelay.md                  :h wezterm-types-plugin.passrelay.txt
+  passrelay.wezterm                  Documentation    Neovim Helpdoc
 
-  pinned-tabs.wezterm                docs/pinned-tabs.md                :h wezterm-types-plugin.pinned-tabs.txt
+  pinned-tabs.wezterm                Documentation    Neovim Helpdoc
 
-  pivot_panes.wezterm                docs/pivot-panes.md                :h wezterm-types-plugin.pivot-panes.txt
+  pivot_panes.wezterm                Documentation    Neovim Helpdoc
 
-  presentation.wez                   docs/presentation.md               :h wezterm-types-plugin.presentation.txt
+  presentation.wez                   Documentation    Neovim Helpdoc
 
-  quick_domains.wezterm              docs/quick-domains.md              :h wezterm-types-plugin.quick_domains.txt
+  quick_domains.wezterm              Documentation    Neovim Helpdoc
 
-  quickselect.wezterm                docs/quickselect.md                :h wezterm-types-plugin.quickselect.txt
+  quickselect.wezterm                Documentation    Neovim Helpdoc
 
-  resurrect.wezterm                  docs/resurrect.md                  :h wezterm-types-plugin.resurrect.txt
+  resurrect.wezterm                  Documentation    Neovim Helpdoc
 
-  ribbon.wz                          docs/ribbon.md                     :h wezterm-types-plugin.ribbon.txt
+  ribbon.wz                          Documentation    Neovim Helpdoc
 
-  rosepine                           docs/rosepine.md                   :h wezterm-types-plugin.rosepine.txt
+  rosepine                           Documentation    Neovim Helpdoc
 
-  sessionizer.wezterm                docs/sessionizer.md                :h wezterm-types-plugin.sessionizer.txt
+  sessionizer.wezterm                Documentation    Neovim Helpdoc
 
-  sigil.wz                           docs/sigil.md                      :h wezterm-types-plugin.sigil.txt
+  sigil.wz                           Documentation    Neovim Helpdoc
 
-  smart-splits.nvim                  docs/smart-splits.md               :h wezterm-types-plugin.smart-splits.txt
+  smart-splits.nvim                  Documentation    Neovim Helpdoc
 
-  smart_workspace_switcher.wezterm   docs/smart-workspace-switcher.md   :h
-                                                                        wezterm-types-plugin.smart_workspace_switcher.txt
+  smart_workspace_switcher.wezterm   Documentation    Neovim Helpdoc
 
-  stack.wez                          docs/stack.md                      :h wezterm-types-plugin.stack.txt
+  stack.wez                          Documentation    Neovim Helpdoc
 
-  tabline.wez                        docs/tabline.md                    :h wezterm-types-plugin.tabline.txt
+  tabline.wez                        Documentation    Neovim Helpdoc
 
-  tabsets.wezterm                    docs/tabsets.md                    :h wezterm-types-plugin.tabsets.txt
+  tabsets.wezterm                    Documentation    Neovim Helpdoc
 
-  toggle_terminal.wez                docs/toggle-terminal.md            :h wezterm-types-plugin.toggle-terminal.txt
+  toggle_terminal.wez                Documentation    Neovim Helpdoc
 
-  warp.wz                            docs/warp.md                       :h wezterm-types-plugin.warp.txt
+  warp.wz                            Documentation    Neovim Helpdoc
 
-  wez-pain-control                   docs/wez-pain-control.md           :h wezterm-types-plugin.wez-pain-control.txt
+  wez-pain-control                   Documentation    Neovim Helpdoc
 
-  wez-tmux                           docs/wez-tmux.md                   :h wezterm-types-plugin.wez-tmux.txt
+  wez-tmux                           Documentation    Neovim Helpdoc
 
-  wezterm-agent-deck                 docs/agent-deck.md                 :h wezterm-types-plugin.agent-deck.txt
+  wezterm-agent-deck                 Documentation    Neovim Helpdoc
 
-  wezterm-attention                  docs/attention.md                  :h wezterm-types-plugin.wezterm-attention.txt
+  wezterm-attention                  Documentation    Neovim Helpdoc
 
-  wezterm-cmd-sender                 docs/cmd-sender.md                 :h wezterm-types-plugin.cmd-sender.txt
+  wezterm-cmd-sender                 Documentation    Neovim Helpdoc
 
-  wezterm-cmdpicker                  docs/cmdpicker.md                  :h wezterm-types-plugin.cmdpicker.txt
+  wezterm-cmdpicker                  Documentation    Neovim Helpdoc
 
-  wezterm-config.nvim                docs/wezterm-config.md             :h wezterm-types-plugin.wezterm-config.txt
+  wezterm-config.nvim                Documentation    Neovim Helpdoc
 
-  wezterm-quota-limit                docs/quota-limit.md                :h wezterm-types-plugin.quota-limit.txt
+  wezterm-quota-limit                Documentation    Neovim Helpdoc
 
-  wezterm-replay                     docs/replay.md                     :h wezterm-types-plugin.replay.txt
+  wezterm-replay                     Documentation    Neovim Helpdoc
 
-  wezterm-sessions                   docs/wezterm-sessions.md           :h wezterm-types-plugin.wezterm-sessions.txt
+  wezterm-sessions                   Documentation    Neovim Helpdoc
 
-  wezterm-status                     docs/wezterm-status.md             :h wezterm-types-plugin.wezterm-status.txt
+  wezterm-status                     Documentation    Neovim Helpdoc
 
-  wezterm-sync                       docs/sync.md                       :h wezterm-types-plugin.sync.txt
+  wezterm-sync                       Documentation    Neovim Helpdoc
 
-  wezterm-tabs                       docs/wezterm-tabs.md               :h wezterm-types-plugin.wezterm-tabs.txt
+  wezterm-tabs                       Documentation    Neovim Helpdoc
 
-  wezterm-theme-rotator              docs/wezterm-theme-rotator.md      :h wezterm-types-plugin.wezterm-theme-rotator.txt
+  wezterm-theme-rotator              Documentation    Neovim Helpdoc
 
-  workspace-picker.wezterm           docs/workspace-picker.md           :h wezterm-types-plugin.workspace-picker.txt
+  workspace-picker.wezterm           Documentation    Neovim Helpdoc
 
-  workspacesionizer.wezterm          docs/workspacesionizer.md          :h wezterm-types-plugin.workspacesionizer.txt
+  workspacesionizer.wezterm          Documentation    Neovim Helpdoc
 
-  wsinit.wezterm                     docs/wsinit.md                     :h wezterm-types-plugin.wsinit.txt
-  -------------------------------------------------------------------------------------------------------------------------
+  wsinit.wezterm                     Documentation    Neovim Helpdoc
+  ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
