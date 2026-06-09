@@ -13,7 +13,7 @@ jobs:
     name: pandoc to vimdoc
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
       - name: Run panvimdoc for README
         uses: kdheepak/panvimdoc@v4.0.1
         with:
