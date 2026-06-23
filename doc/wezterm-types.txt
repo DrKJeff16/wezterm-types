@@ -76,109 +76,109 @@ This project also features type annotations for various WezTerm plugins.
 
 **If you want to add your plugin, please read CONTRIBUTING.md.**
 
-  ---------------------------------------------------------------------------
+  -------------------------------------------------------------------------
   Plugin                             Documentation    Neovim Help
-  ---------------------------------- ---------------- -----------------------
-  ai-commander.wezterm               Documentation    Neovim Helpdoc
+  ---------------------------------- ---------------- ---------------------
+  ai-commander.wezterm               Documentation    Helpdoc
 
-  ai-helper.wezterm                  Documentation    Neovim Helpdoc
+  ai-helper.wezterm                  Documentation    Helpdoc
 
-  bar.wezterm                        Documentation    Neovim Helpdoc
+  bar.wezterm                        Documentation    Helpdoc
 
-  battery.wez                        Documentation    Neovim Helpdoc
+  battery.wez                        Documentation    Helpdoc
 
-  chord.wz                           Documentation    Neovim Helpdoc
+  chord.wz                           Documentation    Helpdoc
 
-  dev.wezterm                        Documentation    Neovim Helpdoc
+  dev.wezterm                        Documentation    Helpdoc
 
-  kanagawa.wz                        Documentation    Neovim Helpdoc
+  kanagawa.wz                        Documentation    Helpdoc
 
-  lantern.wz                         Documentation    Neovim Helpdoc
+  lantern.wz                         Documentation    Helpdoc
 
-  lib.wezterm                        Documentation    Neovim Helpdoc
+  lib.wezterm                        Documentation    Helpdoc
 
-  listeners.wezterm                  Documentation    Neovim Helpdoc
+  listeners.wezterm                  Documentation    Helpdoc
 
-  log.wz                             Documentation    Neovim Helpdoc
+  log.wz                             Documentation    Helpdoc
 
-  memo.wz                            Documentation    Neovim Helpdoc
+  memo.wz                            Documentation    Helpdoc
 
-  modal.wezterm                      Documentation    Neovim Helpdoc
+  modal.wezterm                      Documentation    Helpdoc
 
-  passrelay.wezterm                  Documentation    Neovim Helpdoc
+  passrelay.wezterm                  Documentation    Helpdoc
 
-  pinned-tabs.wezterm                Documentation    Neovim Helpdoc
+  pinned-tabs.wezterm                Documentation    Helpdoc
 
-  pivot_panes.wezterm                Documentation    Neovim Helpdoc
+  pivot_panes.wezterm                Documentation    Helpdoc
 
-  presentation.wez                   Documentation    Neovim Helpdoc
+  presentation.wez                   Documentation    Helpdoc
 
-  quick_domains.wezterm              Documentation    Neovim Helpdoc
+  quick_domains.wezterm              Documentation    Helpdoc
 
-  quickselect.wezterm                Documentation    Neovim Helpdoc
+  quickselect.wezterm                Documentation    Helpdoc
 
-  resurrect.wezterm                  Documentation    Neovim Helpdoc
+  resurrect.wezterm                  Documentation    Helpdoc
 
-  ribbon.wz                          Documentation    Neovim Helpdoc
+  ribbon.wz                          Documentation    Helpdoc
 
-  rosepine                           Documentation    Neovim Helpdoc
+  rosepine                           Documentation    Helpdoc
 
-  sessionizer.wezterm                Documentation    Neovim Helpdoc
+  sessionizer.wezterm                Documentation    Helpdoc
 
-  sigil.wz                           Documentation    Neovim Helpdoc
+  sigil.wz                           Documentation    Helpdoc
 
-  smart-splits.nvim                  Documentation    Neovim Helpdoc
+  smart-splits.nvim                  Documentation    Helpdoc
 
-  smart_workspace_switcher.wezterm   Documentation    Neovim Helpdoc
+  smart_workspace_switcher.wezterm   Documentation    Helpdoc
 
-  stack.wez                          Documentation    Neovim Helpdoc
+  stack.wez                          Documentation    Helpdoc
 
-  sync-panes.wez                     Documentation    Neovim Helpdoc
+  sync-panes.wez                     Documentation    Helpdoc
 
-  tabline.wez                        Documentation    Neovim Helpdoc
+  tabline.wez                        Documentation    Helpdoc
 
-  tabsets.wezterm                    Documentation    Neovim Helpdoc
+  tabsets.wezterm                    Documentation    Helpdoc
 
-  toggle_terminal.wez                Documentation    Neovim Helpdoc
+  toggle_terminal.wez                Documentation    Helpdoc
 
-  warp.wz                            Documentation    Neovim Helpdoc
+  warp.wz                            Documentation    Helpdoc
 
-  wez-pain-control                   Documentation    Neovim Helpdoc
+  wez-pain-control                   Documentation    Helpdoc
 
-  wez-tmux                           Documentation    Neovim Helpdoc
+  wez-tmux                           Documentation    Helpdoc
 
-  wezterm-agent-deck                 Documentation    Neovim Helpdoc
+  wezterm-agent-deck                 Documentation    Helpdoc
 
-  wezterm-attention                  Documentation    Neovim Helpdoc
+  wezterm-attention                  Documentation    Helpdoc
 
-  wezterm-cmd-sender                 Documentation    Neovim Helpdoc
+  wezterm-cmd-sender                 Documentation    Helpdoc
 
-  wezterm-cmdpicker                  Documentation    Neovim Helpdoc
+  wezterm-cmdpicker                  Documentation    Helpdoc
 
-  wezterm-config.nvim                Documentation    Neovim Helpdoc
+  wezterm-config.nvim                Documentation    Helpdoc
 
-  wezterm-quota-limit                Documentation    Neovim Helpdoc
+  wezterm-quota-limit                Documentation    Helpdoc
 
-  wezterm-replay                     Documentation    Neovim Helpdoc
+  wezterm-replay                     Documentation    Helpdoc
 
-  wezterm-sessions                   Documentation    Neovim Helpdoc
+  wezterm-sessions                   Documentation    Helpdoc
 
-  wezterm-status                     Documentation    Neovim Helpdoc
+  wezterm-status                     Documentation    Helpdoc
 
-  wezterm-sync                       Documentation    Neovim Helpdoc
+  wezterm-sync                       Documentation    Helpdoc
 
-  wezterm-tabs                       Documentation    Neovim Helpdoc
+  wezterm-tabs                       Documentation    Helpdoc
 
-  wezterm-theme-rotator              Documentation    Neovim Helpdoc
+  wezterm-theme-rotator              Documentation    Helpdoc
 
-  widgets.wez                        Documentation    Neovim Helpdoc
+  widgets.wez                        Documentation    Helpdoc
 
-  workspace-picker.wezterm           Documentation    Neovim Helpdoc
+  workspace-picker.wezterm           Documentation    Helpdoc
 
-  workspacesionizer.wezterm          Documentation    Neovim Helpdoc
+  workspacesionizer.wezterm          Documentation    Helpdoc
 
-  wsinit.wezterm                     Documentation    Neovim Helpdoc
-  ---------------------------------------------------------------------------
+  wsinit.wezterm                     Documentation    Helpdoc
+  -------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*
