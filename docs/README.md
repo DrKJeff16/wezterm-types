@@ -32,6 +32,7 @@ We will keep adding more community plugins as we find them.
 - [smart-splits.nvim](./smart-splits.md)
 - [smart_workspace_switcher.wezterm](./smart-workspace-switcher.md)
 - [stack.wez](./stack.md)
+- [sync-panes.wez](./sync-panes.md)
 - [tabline.wez](./tabline.md)
 - [tabsets.wezterm](./tabsets.md)
 - [toggle_terminal.wez](./toggle-terminal.md)
