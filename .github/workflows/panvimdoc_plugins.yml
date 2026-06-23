@@ -601,6 +601,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for widgets.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.widgets
+          description: "`widgets` types"
+          pandoc: docs/widgets.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for workspace-picker.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
