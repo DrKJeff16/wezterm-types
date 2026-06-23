@@ -133,6 +133,8 @@ This project also features type annotations for various WezTerm plugins.
 
   stack.wez                          Documentation    Neovim Helpdoc
 
+  sync-panes.wez                     Documentation    Neovim Helpdoc
+
   tabline.wez                        Documentation    Neovim Helpdoc
 
   tabsets.wezterm                    Documentation    Neovim Helpdoc
