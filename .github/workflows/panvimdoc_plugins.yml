@@ -458,6 +458,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for sync-panes.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.sync-panes
+          description: "`sync-panes` types"
+          pandoc: docs/sync-panes.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for tabline.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
