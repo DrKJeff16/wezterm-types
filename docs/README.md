@@ -50,6 +50,7 @@ We will keep adding more community plugins as we find them.
 - [wezterm-sync](./sync.md)
 - [wezterm-tabs](./wezterm-tabs.md)
 - [wezterm-theme-rotator](./wezterm-theme-rotator.md)
+- [widgets.wez](./widgets.md)
 - [workspace-picker.wezterm](./workspace-picker.md)
 - [workspacesionizer.wezterm](./workspacesionizer.md)
 - [wsinit.wezterm](./wsinit.md)
