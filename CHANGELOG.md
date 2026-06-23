@@ -1,5 +1,22 @@
 # Changelog
 
+## [v4.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.3.0-1) (2026-06-23)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.2.0-1...v4.3.0-1)
+
+**Implemented enhancements:**
+
+- feat\(sync-panes.wez\): add type annotations [\#170](https://github.com/DrKJeff16/wezterm-types/pull/170) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(widgets.wez\): add type annotations [\#169](https://github.com/DrKJeff16/wezterm-types/pull/169) ([DrKJeff16](https://github.com/DrKJeff16))
+
+## [v4.2.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.2.0-1) (2026-05-14)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.1.0-1...v4.2.0-1)
+
+**Implemented enhancements:**
+
+- feat\(wezterm-sync\): add type annotations [\#168](https://github.com/DrKJeff16/wezterm-types/pull/168) ([DrKJeff16](https://github.com/DrKJeff16))
+
 ## [v4.1.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.1.0-1) (2026-05-12)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.0.0-1...v4.1.0-1)
