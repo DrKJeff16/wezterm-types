@@ -9,7 +9,7 @@
 ---@class WidgetsOpts
 ---@field left? Widgets.Widget[]
 ---@field right? Widgets.Widget[]
----@field separator? { text?: string, color?: string }
+---@field separator? { color?: string, text?: string }
 
 ---@class Widgets.Battery
 ---@field charge Widgets.Battery.Charge
@@ -89,10 +89,10 @@ function Upload.widget(opts) end
 ---@field opts Widgets.WidgetOpts
 local W = {}
 
----@return string formatted
+---@return string text
 function W.get_text() end
 
----@return { [1]: { Foreground: string }, [2]: { Text: string } }
+---@return { [1]: { Foreground: string }, [2]: { Text: string } } formatted
 function W.get_formatted() end
 
 ---@class Widgets
@@ -104,7 +104,7 @@ function W.get_formatted() end
 local M = {}
 
 ---@param config Config
----@param opts WidgetsOpts
+---@param opts? WidgetsOpts
 function M.apply_to_config(config, opts) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
