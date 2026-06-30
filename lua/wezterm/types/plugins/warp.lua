@@ -29,9 +29,9 @@ local merge_behaviors = { error = 1, force = 1, keep = 1 }
 ---@field os Warp.OsType
 
 ---@class Warp.FileSystem
----@field target_triple string
----@field is_win boolean
 ---@field home string
+---@field is_win boolean
+---@field target_triple string
 local F = {}
 
 ---Extract base name from path.
@@ -195,9 +195,9 @@ function L.cartesian_iter_copy(sets) end
 --- - [warp.table.contains()](lua://Warp.Table.contains).
 ---
 ---@generic T
----@param list  T[] List to search.
----@param value T   Value to find.
----@return boolean `true` if `list` contains `value`.
+---@param list T[] List to search.
+---@param value T Value to find.
+---@return boolean contains `true` if `list` contains `value`.
 function L.contains(list, value) end
 
 ---Append elements from one list into another in-place.

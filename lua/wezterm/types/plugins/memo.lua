@@ -38,7 +38,7 @@ function NS.keys(selector) end
 
 ---@param key string
 ---@param value any
----@field opts? Memo.CacheOpts
+---@param opts? Memo.CacheOpts
 function NS.set(key, value, opts) end
 
 ---@param key string
