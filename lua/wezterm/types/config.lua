@@ -6,84 +6,29 @@
 ---@module "wezterm.types.wezterm"
 ---@module "wezterm.types.harfbuzz"
 
----@enum (key) Config.FrontEnd
-local front_end = {
-  OpenGL = 1,
-  Software = 1,
-  WebGpu = 1,
-}
-
----@enum (key) FreeTypeLoadTarget
-local freetype_load_target = {
-  HorizontalLcd = 1,
-  Light = 1,
-  Mono = 1,
-  Normal = 1,
-  VerticalLcd = 1,
-}
-
----@enum (key) Config.FontLocator
-local font_locator = {
-  ConfigDirsOnly = 1,
-  CoreText = 1,
-  FontConfig = 1,
-  Gdi = 1,
-}
-
----@enum (key) FontShaper
-local font_shaper = {
-  Allsorts = 1,
-  Harfbuzz = 1,
-}
-
----@enum (key) FontRasterizer
-local font_rasterizer = {
-  FreeType = 1,
-  Harfbuzz = 1,
-}
-
----@enum (key) Config.Win32SystemBackdrop
-local win32_system_backdrop = {
-  Acrylic = 1,
-  Auto = 1,
-  Disable = 1,
-  Mica = 1,
-  Tabbed = 1,
-}
-
----@enum (key) QuickSelectAlphabet
-local QSA = {
-  aoeuqjkxpyhtnsgcrlmwvzfidb = 1,
-  arstqwfpzxcvneioluymdhgjbk = 1,
-  asdfqweryxcvjkluiopmghtzbn = 1,
-  asdfqwerzxcvjklmiuopghtybn = 1,
-  qsdfazerwxcvjklmuiopghtybn = 1,
-}
-
----@enum (key) Config.WebGpuPowerPreference
-local webgpu_power_preference = {
-  HighPerformance = 1,
-  LowPower = 1,
-}
-
----@enum (key) DroppedFileQuoting
-local DFQ = {
-  None = 1,
-  Posix = 1,
-  SpacesOnly = 1,
-  Windows = 1,
-  WindowsAlwaysQuoted = 1,
-}
-
----@enum (key) DefaultCursorStyle
-local DCS = {
-  BlinkingBar = 1,
-  BlinkingBlock = 1,
-  BlinkingUnderline = 1,
-  SteadyBar = 1,
-  SteadyBlock = 1,
-  SteadyUnderline = 1,
-}
+---@alias AllowSquareGlyphs "Always"|"Never"|"WhenFollowedBySpace"
+---@alias AudibleBell "Disabled"|"SystemBeep"
+---@alias BidiDirection "AutoLeftToRight"|"AutoRightToLeft"|"LeftToRight"|"RightToLeft"
+---@alias DisplayPixelGeometry "BGR"|"RGB"
+---@alias ExitBehavior "Close"|"CloseOnCleanExit"|"Hold"
+---@alias ExitBehaviorMessaging "Brief"|"None"|"Terse"|"Verbose"
+---@alias VerticalAlign "Bottom"|"Middle"|"Top"
+---@alias HorizontalAlign "Center"|"Left"|"Right"
+---@alias FontRules.Blink "None"|"Rapid"|"Slow"
+---@alias BackgroundLayerAttachments "Fixed"|"Scroll"
+---@alias BackgroundLayerRepeat "Mirror"|"NoRepeat"|"Repeat"
+---@alias Config.FontLocator "ConfigDirsOnly"|"CoreText"|"FontConfig"|"Gdi"
+---@alias Config.FrontEnd "OpenGL"|"Software"|"WebGpu"
+---@alias Config.WebGpuPowerPreference "HighPerformance"|"LowPower"
+---@alias Config.Win32SystemBackdrop "Acrylic"|"Auto"|"Disable"|"Mica"|"Tabbed"
+---@alias DefaultCursorStyle "BlinkingBar"|"BlinkingBlock"|"BlinkingUnderline"|"SteadyBar"|"SteadyBlock"|"SteadyUnderline"
+---@alias DroppedFileQuoting "None"|"Posix"|"SpacesOnly"|"Windows"|"WindowsAlwaysQuoted"
+---@alias FontRasterizer "FreeType"|"Harfbuzz"
+---@alias FontShaper "Allsorts"|"Harfbuzz"
+---@alias FreeTypeLoadTarget "HorizontalLcd"|"Light"|"Mono"|"Normal"|"VerticalLcd"
+---@alias NotifyHandler "AlwaysShow"|"NeverShow"|"SuppressFromFocusedPane"|"SuppressFromFocusedTab"|"SuppressFromFocusedWindow"
+---@alias QuickSelectAlphabet "aoeuqjkxpyhtnsgcrlmwvzfidb"|"arstqwfpzxcvneioluymdhgjbk"|"asdfqweryxcvjkluiopmghtzbn"|"asdfqwerzxcvjklmiuopghtybn"|"qsdfazerwxcvjklmuiopghtybn"
+---@alias VBTarget "BackgroundColor"|"CursorColor"
 
 ---@class HsbTransform
 ---@field brightness? number
@@ -101,54 +46,12 @@ local DCS = {
 ---@field stderr? string
 ---@field stdout? string
 
----@enum (key) VBTarget
-local vb_target = {
-  BackgroundColor = 1,
-  CursorColor = 1,
-}
-
 ---@class VisualBell
 ---@field fade_in_duration_ms? integer
 ---@field fade_in_function? EasingFunction
 ---@field fade_out_duration_ms? integer
 ---@field fade_out_function? EasingFunction
 ---@field target? VBTarget
-
----@enum (key) NotifyHandler
-local NH = {
-  AlwaysShow = 1,
-  NeverShow = 1,
-  SuppressFromFocusedPane = 1,
-  SuppressFromFocusedTab = 1,
-  SuppressFromFocusedWindow = 1,
-}
-
----@enum (key) BackgroundLayerAttachments
-local bgl_attachments = {
-  Fixed = 1,
-  Scroll = 1,
-}
-
----@enum (key) BackgroundLayerRepeat
-local bgl_repeat = {
-  Mirror = 1,
-  NoRepeat = 1,
-  Repeat = 1,
-}
-
----@enum (key) VerticalAlign
-local vert_align = {
-  Bottom = 1,
-  Middle = 1,
-  Top = 1,
-}
-
----@enum (key) HorizontalAlign
-local horiz_align = {
-  Center = 1,
-  Left = 1,
-  Right = 1,
-}
 
 ---@class CellWidth
 ---@field first integer
@@ -269,13 +172,6 @@ local horiz_align = {
 ---
 ---@field width? "Cover"|"Contain"|number|string
 
----@enum (key) FontRules.Blink
-local blink = {
-  None = 1,
-  Rapid = 1,
-  Slow = 1,
-}
-
 ---@class FontRules
 ---@field blink? FontRules.Blink
 ---@field font? TextStyle
@@ -285,48 +181,6 @@ local blink = {
 ---@field reverse? boolean
 ---@field strikethrough? boolean
 ---@field underline? TabBarColor.Underline
-
----@enum (key) AllowSquareGlyphs
-local allow_square_glyphs_to_overflow_width = {
-  Always = 1,
-  Never = 1,
-  WhenFollowedBySpace = 1,
-}
-
----@enum (key) AudibleBell
-local audible_bell = {
-  Disabled = 1,
-  SystemBeep = 1,
-}
-
----@enum (key) BidiDirection
-local bidi_direction = {
-  AutoLeftToRight = 1,
-  AutoRightToLeft = 1,
-  LeftToRight = 1,
-  RightToLeft = 1,
-}
-
----@enum (key) DisplayPixelGeometry
-local display_pixel_geometry = {
-  BGR = 1,
-  RGB = 1,
-}
-
----@enum (key) ExitBehavior
-local exit_behavior = {
-  Close = 1,
-  CloseOnCleanExit = 1,
-  Hold = 1,
-}
-
----@enum (key) ExitBehaviorMessaging
-local exit_behavior_messaging = {
-  Brief = 1,
-  None = 1,
-  Terse = 1,
-  Verbose = 1,
-}
 
 ---The `return` statement at the end of your `wezterm.lua` file returns
 ---a table that is interpreted as the internal `Config` struct type.
