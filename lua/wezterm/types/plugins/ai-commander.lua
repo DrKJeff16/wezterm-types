@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) AICommanderConfig.Provider
-local provider = {
-  anthropic = 1,
-  openai = 1,
-}
+---@alias AICommanderConfig.Provider "anthropic"|"openai"
 
 ---@class AICommanderConfig.APIKey
 ---Your Anthropic API key.

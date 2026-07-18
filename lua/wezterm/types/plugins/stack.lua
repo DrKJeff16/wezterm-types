@@ -1,6 +1,8 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
+---@alias SpawnDirection "Bottom"|"Left"|"Right"|"Top"
+
 ---@class StackWezAction
 ---@field SpawnPane { EmitEvent: string }
 local Action = {}
@@ -8,14 +10,6 @@ local Action = {}
 ---@param direction integer
 ---@return { EmitEvent: string } action_callback
 function Action.ActivatePaneRelative(direction) end
-
----@enum (key) SpawnDirection
-local spawn_direction = {
-  Bottom = 1,
-  Left = 1,
-  Right = 1,
-  Top = 1,
-}
 
 ---@class StackWezTabInfo
 ---@field count integer

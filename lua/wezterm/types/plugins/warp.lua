@@ -1,14 +1,9 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) Warp.OsType
-local os_types = { windows = 1, linux = 1, mac = 1, unknown = 1 }
-
----@enum (key) Warp.String.TruncateMode
-local truncate_modes = { left = 1, middle = 1, right = 1 }
-
----@enum (key) Warp.Table.MergeBehavior
-local merge_behaviors = { error = 1, force = 1, keep = 1 }
+---@alias Warp.OsType "linux"|"mac"|"unknown"|"windows"
+---@alias Warp.String.TruncateMode "left"|"middle"|"right"
+---@alias Warp.Table.MergeBehavior "error"|"force"|"keep"
 
 ---@class Warp.Table.MergeOpts
 ---@field behavior? Warp.Table.MergeBehavior

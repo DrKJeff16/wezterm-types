@@ -1,61 +1,56 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) HourStrings
-local hours = {
-  ["00"] = 1,
-  ["01"] = 1,
-  ["02"] = 1,
-  ["03"] = 1,
-  ["04"] = 1,
-  ["05"] = 1,
-  ["06"] = 1,
-  ["07"] = 1,
-  ["08"] = 1,
-  ["09"] = 1,
-  ["10"] = 1,
-  ["11"] = 1,
-  ["12"] = 1,
-  ["13"] = 1,
-  ["14"] = 1,
-  ["15"] = 1,
-  ["16"] = 1,
-  ["17"] = 1,
-  ["18"] = 1,
-  ["19"] = 1,
-  ["20"] = 1,
-  ["21"] = 1,
-  ["22"] = 1,
-  ["23"] = 1,
-}
+---@alias HourStrings
+---|"00"
+---|"01"
+---|"02"
+---|"03"
+---|"04"
+---|"05"
+---|"06"
+---|"07"
+---|"08"
+---|"09"
+---|"10"
+---|"11"
+---|"12"
+---|"13"
+---|"14"
+---|"15"
+---|"16"
+---|"17"
+---|"18"
+---|"19"
+---|"20"
+---|"21"
+---|"22"
+---|"23"
 
----@enum (key) TablineWezWinComponent
-local win_components = {
-  battery = 1,
-  cpu = 1,
-  datetime = 1,
-  domain = 1,
-  hostname = 1,
-  mode = 1,
-  ram = 1,
-  window = 1,
-  workspace = 1,
-}
+---@alias TablineWezWinComponent
+---|"battery"
+---|"cpu"
+---|"datetime"
+---|"domain"
+---|"hostname"
+---|"mode"
+---|"ram"
+---|"window"
+---|"workspace"
 
----@enum (key) TablineWezTabComponent
-local tab_components = {
-  cwd = 1,
-  index = 1,
-  output = 1,
-  parent = 1,
-  process = 1,
-  tab = 1,
-  zoomed = 1,
-}
+---@alias TablineWezTabComponent
+---|"cwd"
+---|"index"
+---|"output"
+---|"parent"
+---|"process"
+---|"tab"
+---|"zoomed"
 
 ---@alias TablineWezSectionPadding integer|{ left?: integer, right?: integer }
 ---@alias TablineWezSeparators { left?: string, right?: string }
 ---@alias TablineWezSectionOverrides { fg?: string, bg?: string }
+---@alias TablineWezExtension "presentation"|"quick_domains"|"resurrect"|"smart_workspace_switcher"
 
 ---@class TablineWezComponentSpec
 ---@field [1] string
@@ -65,14 +60,6 @@ local tab_components = {
 ---@field icons_enabled? boolean
 ---@field icons_only? boolean
 ---@field padding? TablineWezSectionPadding
-
----@enum (key) TablineWezExtension
-local extensions = {
-  presentation = 1,
-  quick_domains = 1,
-  resurrect = 1,
-  smart_workspace_switcher = 1,
-}
 
 ---@class BatteryToIcon
 ---@field empty? string

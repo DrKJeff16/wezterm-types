@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) UserListFormat
-local format = {
-  json = 1,
-  text = 1,
-}
+---@alias UserListFormat "json"|"text"
 
 ---@class PassRelay.UserListSpec
 ---@field format? UserListFormat

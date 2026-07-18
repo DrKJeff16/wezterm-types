@@ -1,12 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) Behavior
-local behavior = {
-  error = 1,
-  keep = 1,
-  force = 1,
-}
+---@alias Behavior "error"|"keep"|"force"
 
 ---@class DevOpts
 ---@field auto? boolean

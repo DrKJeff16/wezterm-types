@@ -1,33 +1,10 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) AgentDeckStatus
-local filter = {
-  idle = 1,
-  inactive = 1,
-  waiting = 1,
-  working = 1,
-}
-
----@enum (key) AgentDeck.ComponentSpec.Type
-local comp_types = {
-  badge = 1,
-  icon = 1,
-  separator = 1,
-}
-
----@enum (key) AgentDeckOpts.Icons.Style
-local styles = {
-  emoji = 1,
-  nerd = 1,
-  unicode = 1,
-}
-
----@enum (key) AgentDeck.Notifications.Backend
-local backends = {
-  ["terminal-notifier"] = 1,
-  native = 1,
-}
+---@alias AgentDeckStatus "idle"|"inactive"|"waiting"|"working"
+---@alias AgentDeck.ComponentSpec.Type "badge"|"icon"|"separator"
+---@alias AgentDeckOpts.Icons.Style "emoji"|"nerd"|"unicode"
+---@alias AgentDeck.Notifications.Backend "terminal-notifier"|"native"
 
 ---@class AgentDeck.AgentsSpec.StatusPatterns
 ---@field idle? string[]

@@ -1,14 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) BatteryCondition
-local condition = {
-  Charging = 1,
-  Discharging = 1,
-  Empty = 1,
-  Full = 1,
-  Unknown = 1,
-}
+---@alias BatteryCondition "Charging"|"Discharging"|"Empty"|"Full"|"Unknown"
 
 --- BatteryComponent class representing battery information.
 ---@class BatteryComponent

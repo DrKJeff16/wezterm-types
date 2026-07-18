@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) WorkspacesionizerOpts.Show
-local show = {
-  base = 1,
-  full = 1,
-}
+---@alias WorkspacesionizerOpts.Show "base"|"full"
 
 ---@class WorkspacesionizerOpts.Binding: SendKeyParams
 ---The key to press.

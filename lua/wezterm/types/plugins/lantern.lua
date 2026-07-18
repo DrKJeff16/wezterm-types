@@ -1,26 +1,22 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) Lantern.ResetBehavior
-local reset_behaviors = { clear = 1, persist = 1 }
-
----@alias Lantern.FlameDir string[]|string
-
----@alias Lantern.GlowResult Lantern.Choice|Lantern.Choice[]|string|number
+---@alias Lantern.ResetBehavior "clear"|"persist"
+---@alias Lantern.GlowResult Lantern.Choice[]|Lantern.Choice|string|number
 
 ---@class Lantern.Choice
 ---@field id string
 ---@field label? string
 
 ---@class Lantern.BuildContext
----@field window Window
 ---@field pane Pane
+---@field window Window
 
 ---@class Lantern.Context
----@field window? Window
----@field pane? Pane
 ---@field choice Lantern.Choice
+---@field pane? Pane
 ---@field wick? Lantern.Wick
+---@field window? Window
 
 ---@class Lantern.Flame
 ---Return one choice, multiple choices, or a scalar value that Lantern can normalize.
@@ -138,7 +134,7 @@ function DC.comp(sort_by) end
 ---@field name? string
 ---@field title? string
 ---@field flames? (string|Lantern.Flame)[]
----@field flame_dirs? Lantern.FlameDir[]
+---@field flame_dirs? (string[]|string)[]
 ---@field sort_by? string
 ---@field fuzzy? boolean
 ---@field alphabet? string
@@ -248,13 +244,13 @@ local F = {}
 ---Pass a string for an absolute/custom directory, or path segments for a
 ---built-in Lantern flame directory under `plugin/lantern/flames`.
 ---
----@param dir Lantern.FlameDir
+---@param dir string[]|string
 ---@return string[] modules
 function F.from_dir(dir) end
 
 ---Return cached flame module paths from multiple directories.
 ---
----@param dirs Lantern.FlameDir[]
+---@param dirs (string[]|string)[]
 ---@return string[] modules
 function F.from_dirs(dirs) end
 

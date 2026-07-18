@@ -3,20 +3,10 @@
 
 ---Orientation enum for panes.
 ---
----@enum (key) Orientation
-local orientation = {
-  horizontal = 1,
-  unknown = 1,
-  vertical = 1,
-}
+---@alias Orientation "horizontal"|"unknown"|"vertical"
 
----@enum (key) LoggerLevel
-local log_level = {
-  debug = 1,
-  error = 1,
-  info = 1,
-  warn = 1,
-}
+---@alias LoggerLevel "debug"|"error"|"info"|"warn"
+---@alias LibWezterm.Env.Separator "/"|"\\"
 
 ---Process information returned from `get_pane_process()`.
 ---
@@ -247,12 +237,6 @@ function L:set_prefix(prefix) end
 ---
 ---@param ... any
 function L:warn(...) end
-
----@enum (key) LibWezterm.Env.Separator
-local separator = {
-  ["/"] = 1,
-  ["\\"] = 1,
-}
 
 ---@class LibWezterm.Env
 ---@field home string

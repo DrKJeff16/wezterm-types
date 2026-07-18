@@ -1,12 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) SmartSplits.LogLevel
-local log_level = {
-  error = 1,
-  info = 1,
-  warn = 1,
-}
+---@alias SmartSplits.LogLevel "error"|"info"|"warn"
 
 ---@class SmartSplitsWeztermModifierMap
 ---@field neovim string

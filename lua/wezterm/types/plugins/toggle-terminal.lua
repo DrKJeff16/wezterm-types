@@ -1,13 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) ToggleTerminalOpts.Direction
-local direction = {
-  Down = 1,
-  Left = 1,
-  Right = 1,
-  Up = 1,
-}
+---@alias ToggleTerminalOpts.Direction "Down"|"Left"|"Right"|"Up"
 
 ---@class ToggleTerminalOpts.Zoom
 ---Automatically zoom invoker pane.

@@ -1,8 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) Kanagawa.PaletteName
-local scheme_names = { dragon = 1, lotus = 1, wave = 1 }
+---@alias Kanagawa.PaletteName "dragon"|"lotus"|"wave"
 
 ---Options for `apply_to_config`.
 ---

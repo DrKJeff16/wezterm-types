@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) BarWeztermOpts.Position
-local positions = {
-  bottom = 1,
-  top = 1,
-}
+---@alias BarWeztermOpts.Position "bottom"|"top"
 
 ---@class BarWeztermOpts.Separator
 ---@field field_icon? string

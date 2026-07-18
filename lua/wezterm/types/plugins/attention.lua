@@ -1,11 +1,9 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) WeztermAttentionOpts.Attention
-local priority = { notify = 1, review = 1, stop = 1, thinking = 1 }
-
----@enum (key) WeztermAttentionOpts.Renderer
-local renderers = { manual = 1, tab = 1 }
+---@alias WeztermAttentionOpts.Attention "notify"|"review"|"stop"|"thinking"
+---@alias WeztermAttentionOpts.Renderer "manual"|"tab"
+---@alias WeztermAttention.TitleFormatter fun(tab: TabInformation, ctx: WeztermAttention.WrapTitleFormatterCtx): string
 
 ---@class WeztermAttention.WrapTitleFormatterCtx
 ---@field attention string[]|string
@@ -15,8 +13,6 @@ local renderers = { manual = 1, tab = 1 }
 ---@field max_width integer
 ---@field panes PaneInformation[]
 ---@field tabs TabInformation[]
-
----@alias WeztermAttention.TitleFormatter fun(tab: TabInformation, ctx: WeztermAttention.WrapTitleFormatterCtx): string
 
 ---@class WeztermAttentionOpts.ReviewKey: SendKeyParams
 ---@field key? string

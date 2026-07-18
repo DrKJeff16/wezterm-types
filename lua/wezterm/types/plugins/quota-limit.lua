@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) QuotaLimitOpts.Position
-local pos = {
-  left = 1,
-  right = 1,
-}
+---@alias QuotaLimitOpts.Position "left"|"right"
 
 ---@class QuotaLimitOpts.Icons
 ---@field bolt? string

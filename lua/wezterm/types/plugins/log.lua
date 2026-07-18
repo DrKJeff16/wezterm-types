@@ -4,8 +4,7 @@
 ---@enum Log.Levels.Level
 local levels = { DEBUG = 0, INFO = 1, WARN = 2, ERROR = 3 }
 
----@enum (key) Log.Sinks.FileFormat
-local ff = { json = 1, text = 1 }
+---@alias Log.Sinks.FileFormat "json"|"text"
 
 ---@class Log.Levels
 ---Level constants.

@@ -1,11 +1,7 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) ZoomIndicatorType
-local zoom_indicators = {
-  icon = 1,
-  number = 1,
-}
+---@alias ZoomIndicatorType "icon"|"number"
 
 ---@class WeztermTabs.TabConfig
 ---Whether to hide the tab bar when only one tab exists.

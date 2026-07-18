@@ -5,92 +5,113 @@
 ---https://github.com/wezterm/wezterm/blob/main/config/src/keyassignment.rs
 ---
 
----@enum (key) CharGroup
-local char_groups = {
-  Activities = 1,
-  AnimalsAndNature = 1,
-  Flags = 1,
-  FoodAndDrink = 1,
-  NerdFonts = 1,
-  Objects = 1,
-  PeopleAndBody = 1,
-  RecentlyUsed = 1,
-  ShortCodes = 1,
-  SmileysAndEmotion = 1,
-  Symbols = 1,
-  TravelAndPlaces = 1,
-  UnicodeNames = 1,
-}
+---@alias SearchParams { Regex: string }|{ CaseSensitiveString: string }|{ CaseInSensitiveString: string }
+---@alias ScrollbackEraseMode "ScrollbackAndViewport"|"ScrollbackOnly"
+---@alias SetWindowLevelParams "AlwaysOnBottom"|"AlwaysOnTop"|"Normal"
+---@alias SpawnTabDomain "CurrentPaneDomain"|"DefaultDomain"|{ DomainId: integer }|{ DomainName: string }
+---@alias ClipboardCopyDestination "Clipboard"|"ClipboardAndPrimarySelection"|"PrimarySelection"
+---@alias PaneDirection "Up"|"Down"|"Left"|"Right"|"Next"|"Prev"
+---@alias ClipboardPasteDestination "Clipboard"|"PrimarySelection"
+---@alias PaneSelectMode "Activate"|"MoveToNewTab"|"MoveToNewWindow"|"SwapWithActive"|"SwapWithActiveKeepFocus"
+---@alias RotationDirection "Clockwise"|"CounterClockwise"
 
----@enum (key) ClipboardCopyDestination
-local copy_to = {
-  Clipboard = 1,
-  ClipboardAndPrimarySelection = 1,
-  PrimarySelection = 1,
-}
+---@alias KeyAssignmentLiterals
+---|"ActivateCommandPalette"
+---|"ActivateCopyMode"
+---|"ActivateLastTab"
+---|"ClearKeyTableStack"
+---|"ClearSelection"
+---|"DecreaseFontSize"
+---|"DisableDefaultAssignment"
+---|"Hide"
+---|"HideApplication"
+---|"IncreaseFontSize"
+---|"Nop"
+---|"OpenLinkAtMouseCursor"
+---|"PopKeyTable"
+---|"QuickSelect"
+---|"QuitApplication"
+---|"ReloadConfiguration"
+---|"ResetFontAndWindowSize"
+---|"ResetFontSize"
+---|"ResetTerminal"
+---|"ScrollByCurrentEventWheelDelta"
+---|"ScrollToBottom"
+---|"ScrollToTop"
+---|"Show"
+---|"ShowDebugOverlay"
+---|"ShowLauncher"
+---|"ShowTabNavigator"
+---|"SpawnWindow"
+---|"StartWindowDrag"
+---|"ToggleAlwaysOnBottom"
+---|"ToggleAlwaysOnTop"
+---|"ToggleFullScreen"
+---|"TogglePaneZoomState"
 
----@enum (key) ClipboardPasteDestination
-local paste_from = {
-  Clipboard = 1,
-  PrimarySelection = 1,
-}
+---@alias Action
+---|Actions
+---|KeyAssignmentLiterals
+---|CharSelect
+---|Multiple
+---|PaneSelect
+---|QuickSelectArgs
+---|SpawnCommandInNewTab
+---|SpawnCommandInNewWindow
+---|SplitHorizontal
+---|SplitVertical
+---|SwitchToWorkspace
 
----@enum (key) CopyModeStr
-local copy_mode = {
-  AcceptPattern = 1,
-  ClearPattern = 1,
-  ClearSelectionMode = 1,
-  Close = 1,
-  CycleMatchType = 1,
-  EditPattern = 1,
-  JumpAgain = 1,
-  JumpReverse = 1,
-  MoveBackwardSemanticZone = 1,
-  MoveBackwardWord = 1,
-  MoveDown = 1,
-  MoveForwardSemanticZone = 1,
-  MoveForwardWord = 1,
-  MoveForwardWordEnd = 1,
-  MoveLeft = 1,
-  MoveRight = 1,
-  MoveToEndOfLineContent = 1,
-  MoveToScrollbackBottom = 1,
-  MoveToScrollbackTop = 1,
-  MoveToSelectionOtherEnd = 1,
-  MoveToSelectionOtherEndHoriz = 1,
-  MoveToStartOfLine = 1,
-  MoveToStartOfLineContent = 1,
-  MoveToStartOfNextLine = 1,
-  MoveToViewportBottom = 1,
-  MoveToViewportMiddle = 1,
-  MoveToViewportTop = 1,
-  MoveUp = 1,
-  NextMatch = 1,
-  NextMatchPage = 1,
-  PageDown = 1,
-  PageUp = 1,
-  PriorMatch = 1,
-  PriorMatchPage = 1,
-}
+---@alias CharGroup
+---|"Activities"
+---|"AnimalsAndNature"
+---|"Flags"
+---|"FoodAndDrink"
+---|"NerdFonts"
+---|"Objects"
+---|"PeopleAndBody"
+---|"RecentlyUsed"
+---|"ShortCodes"
+---|"SmileysAndEmotion"
+---|"Symbols"
+---|"TravelAndPlaces"
+---|"UnicodeNames"
 
----@enum (key) ScrollbackEraseMode
-local scrollback_erase_mode = {
-  ScrollbackAndViewport = 1,
-  ScrollbackOnly = 1,
-}
-
----@enum (key) SetWindowLevelParams
-local set_window_level = {
-  AlwaysOnBottom = 1,
-  AlwaysOnTop = 1,
-  Normal = 1,
-}
-
----@alias SpawnTabDomain
----|"CurrentPaneDomain"
----|"DefaultDomain"
----|{ DomainId: integer }
----|{ DomainName: string }
+---@alias CopyModeStr
+---|"AcceptPattern"
+---|"ClearPattern"
+---|"ClearSelectionMode"
+---|"Close"
+---|"CycleMatchType"
+---|"EditPattern"
+---|"JumpAgain"
+---|"JumpReverse"
+---|"MoveBackwardSemanticZone"
+---|"MoveBackwardWord"
+---|"MoveDown"
+---|"MoveForwardSemanticZone"
+---|"MoveForwardWord"
+---|"MoveForwardWordEnd"
+---|"MoveLeft"
+---|"MoveRight"
+---|"MoveToEndOfLineContent"
+---|"MoveToScrollbackBottom"
+---|"MoveToScrollbackTop"
+---|"MoveToSelectionOtherEnd"
+---|"MoveToSelectionOtherEndHoriz"
+---|"MoveToStartOfLine"
+---|"MoveToStartOfLineContent"
+---|"MoveToStartOfNextLine"
+---|"MoveToViewportBottom"
+---|"MoveToViewportMiddle"
+---|"MoveToViewportTop"
+---|"MoveUp"
+---|"NextMatch"
+---|"NextMatchPage"
+---|"PageDown"
+---|"PageUp"
+---|"PriorMatch"
+---|"PriorMatchPage"
 
 ---@alias CopyModeParams
 ---|CopyModeStr
@@ -198,21 +219,6 @@ local set_window_level = {
 ---(e.g. by re-saving it) to get back in.
 ---
 ---@field prevent_fallback? boolean
-
----@enum (key) PaneSelectMode
-local pane_select_mode = {
-  Activate = 1,
-  MoveToNewTab = 1,
-  MoveToNewWindow = 1,
-  SwapWithActive = 1,
-  SwapWithActiveKeepFocus = 1,
-}
-
----@enum (key) RotationDirection
-local rotation_direction = {
-  Clockwise = 1,
-  CounterClockwise = 1,
-}
 
 ---@enum (key) LauncherArgsFlags
 local launcher_args_flags = {
@@ -447,11 +453,6 @@ local launcher_args_flags = {
 ---The scope will be increased to the current viewport height if the viewport is smaller.
 ---
 ---@field scope_lines? integer
-
----@alias SearchParams
----|{ Regex: string }
----|{ CaseSensitiveString: string }
----|{ CaseInSensitiveString: string }
 
 ---@class CopyTextToParams
 ---@field text string
@@ -740,44 +741,6 @@ local launcher_args_flags = {
 ---@field ToggleFullScreen "ToggleFullScreen"
 ---@field TogglePaneZoomState "TogglePaneZoomState"
 
----@enum (key) KeyAssignmentLiterals
-local key_assignment = {
-  ActivateCommandPalette = 1,
-  ActivateCopyMode = 1,
-  ActivateLastTab = 1,
-  ClearKeyTableStack = 1,
-  ClearSelection = 1,
-  DecreaseFontSize = 1,
-  DisableDefaultAssignment = 1,
-  Hide = 1,
-  HideApplication = 1,
-  IncreaseFontSize = 1,
-  Nop = 1,
-  OpenLinkAtMouseCursor = 1,
-  PopKeyTable = 1,
-  QuickSelect = 1,
-  QuitApplication = 1,
-  ReloadConfiguration = 1,
-  ResetFontAndWindowSize = 1,
-  ResetFontSize = 1,
-  ResetTerminal = 1,
-  ScrollByCurrentEventWheelDelta = 1,
-  ScrollToBottom = 1,
-  ScrollToTop = 1,
-  Show = 1,
-  ShowDebugOverlay = 1,
-  ShowLauncher = 1,
-  ShowTabNavigator = 1,
-  SpawnWindow = 1,
-  StartWindowDrag = 1,
-  ToggleAlwaysOnBottom = 1,
-  ToggleAlwaysOnTop = 1,
-  ToggleFullScreen = 1,
-  TogglePaneZoomState = 1,
-}
-
----@alias Action (Actions|KeyAssignmentLiterals|CharSelect|Multiple|PaneSelect|QuickSelectArgs|SpawnCommandInNewTab|SpawnCommandInNewWindow|SplitHorizontal|SplitVertical|SwitchToWorkspace)
-
 ---@class InputSelectorParams
 ---The title that will be set for the overlay pane.
 ---
@@ -827,16 +790,6 @@ local key_assignment = {
 ---@field copy_on_select boolean
 ---@field copy_to ClipboardCopyDestination
 ---@field group? CharGroup
-
----@enum (key) PaneDirection
-local pane_direction = {
-  Up = 1,
-  Down = 1,
-  Left = 1,
-  Right = 1,
-  Next = 1,
-  Prev = 1,
-}
 
 ---@class SendKeyParams
 ---A single unicode character, like 'A' or 'a'. Pay attention to the case of the text that you use
