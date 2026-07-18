@@ -1,13 +1,29 @@
 ---@meta
 ---@diagnostic disable:unused-local
 
----@enum (key) Chord.CommandSource
-local source = {
-  default = 1,
-  key_table = 1,
-  keys = 1,
-  registered = 1,
-}
+---@alias Chord.CommandSource "default"|"key_table"|"keys"|"registered"
+
+---@class Chord.ModeActivateOptions
+---@field one_shot? boolean
+---@field replace_current? boolean
+---@field timeout_milliseconds? integer
+---@field until_unknown? boolean
+
+---@class Chord.ConflictEntry
+---@field action Action
+---@field desc? string
+---@field index integer
+
+---@class Chord.Conflict
+---@field entries Chord.ConflictEntry[]
+---@field key string
+---@field lhs string
+---@field mods? string
+---@field scope string
+
+---@class Chord.ConflictOptions
+---@field include_descriptions? boolean
+---@field include_key_tables? boolean
 
 ---@class Chord.KeyEntry: Key
 ---WezTerm action assigned to the key.
@@ -212,6 +228,18 @@ local source = {
 ---
 ---@field rhs? Action
 
+---@class Chord.Mode
+---@field __chord_mode boolean
+---@field def Chord.KeyTableDef|fun(theme: table): def: Chord.KeyTableDef
+---@field name string
+local Mode = {}
+
+---@param lhs string|table
+---@param desc? string
+---@param opts? Chord.ModeActivateOptions
+---@return Chord.KeyEntry|nil entry
+function Mode:activate(lhs, desc, opts) end
+
 ---@class Chord.CommandApi
 local C = {}
 
@@ -271,6 +299,11 @@ function M.apply_overrides(config_table, overrides) end
 ---@return Chord.Config config
 function M.config() end
 
+---@param config Config
+---@param opts? Chord.ConflictOptions
+---@return Chord.Conflict[] conflicts
+function M.conflicts(config, opts) end
+
 ---Return registered key-table metadata for mode displays.
 ---
 ---@param theme table Theme or color table passed to key-table definition functions.
@@ -318,17 +351,22 @@ function M.key(lhs_or_spec, action, desc) end
 ---@param target table Target list to mutate.
 function M.map(lhs_or_spec, action, target) end
 
+---Append a batch of key mappings to a target table.
+---
+---@param mappings (Chord.VimMapping|Chord.KeyEntry)[]
+---@param target table Target list to mutate.
+function M.map_batch(mappings, target) end
+
 ---Append mappings to `config.keys`.
 ---
 ---@param config_table Config WezTerm config table.
 ---@param mappings (Chord.VimMapping|Chord.KeyEntry)[]
 function M.maps(config_table, mappings) end
 
----Append a batch of key mappings to a target table.
----
----@param mappings (Chord.VimMapping|Chord.KeyEntry)[]
----@param target table Target list to mutate.
-function M.map_batch(mappings, target) end
+---@param name string
+---@param def Chord.KeyTableDef|fun(theme: table): def: Chord.KeyTableDef
+---@return Chord.Mode mode
+function M.mode(name, def) end
 
 ---Normalize a Vim-style key expression to a WezTerm key entry fragment.
 ---
