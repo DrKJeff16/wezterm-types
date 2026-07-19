@@ -229,7 +229,6 @@ local launcher_args_flags = {
   LAUNCH_MENU_ITEMS = 1,
   TABS = 1,
   WORKSPACES = 1,
-
   ["COMMANDS|DOMAINS"] = 1,
   ["COMMANDS|FUZZY"] = 1,
   ["COMMANDS|KEY_ASSIGNMENTS"] = 1,
@@ -272,7 +271,6 @@ local launcher_args_flags = {
   ["WORKSPACES|KEY_ASSIGNMENTS"] = 1,
   ["WORKSPACES|LAUNCH_MENU_ITEMS"] = 1,
   ["WORKSPACES|TABS"] = 1,
-
   -- ["COMMANDS|DOMAINS|FUZZY"] = 1,
   -- ["COMMANDS|DOMAINS|KEY_ASSIGNMENTS"] = 1,
   -- ["COMMANDS|DOMAINS|LAUNCH_MENU_ITEMS"] = 1,
