@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wezterm-types plugin maintenance</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f4eb;
+      --surface: #fffdf7;
+      --ink: #1a1e17;
+      --muted: #5d6556;
+      --border: #d8d3c4;
+      --good: #207227;
+      --warn: #9f6b00;
+      --bad: #a12a21;
+      --accent: #173b7a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top right, rgba(23, 59, 122, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfaf5 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+    main {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 48px 20px 72px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+    }
+    p {
+      color: var(--muted);
+      max-width: 70ch;
+    }
+    a { color: var(--accent); }
+    .card {
+      margin: 28px 0;
+      padding: 24px;
+      background: rgba(255, 253, 247, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(30, 41, 24, 0.08);
+      overflow-x: auto;
+    }
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .summary li {
+      margin: 0;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 20px;
+    }
+    .filter-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .filter-toggle input {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--accent);
+    }
+    .results-count {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1240px;
+    }
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      height: 20px;
+      overflow: hidden;
+      border-radius: 3px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 11px;
+      line-height: 20px;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .badge__label,
+    .badge__value {
+      padding: 0 7px;
+      color: #fff;
+    }
+    .badge__label {
+      background: #555;
+    }
+    .badge__value--reviewed {
+      background: #4c1;
+    }
+    .badge__value--review-required {
+      background: #dfb317;
+    }
+    .badge__value--untracked {
+      background: #fe7d37;
+    }
+    .badge__value--error {
+      background: #e05d44;
+    }
+    .badge__value--ref {
+      background: #007ec6;
+    }
+    .compare-link {
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+    .error-text {
+      max-width: 32ch;
+      margin-top: 8px;
+      color: var(--bad);
+      font-size: 0.86rem;
+    }
+    .empty-state[hidden] {
+      display: none;
+    }
+    .empty-state {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Plugin Maintenance Status</h1>
+    <p>
+      This report compares the last upstream ref deliberately reviewed for each supported plugin
+      against the latest GitHub release, tag, or default-branch commit. Review the upstream change
+      before creating an acceptance PR. The README badges in this repository point at these results.
+    </p>
+    <section class="card">
+__SUMMARY_HTML__
+    </section>
+    <section class="card">
+      <div class="filters">
+        <label class="filter-toggle" for="outstanding-only">
+          <input type="checkbox" id="outstanding-only" checked>
+          <span>Show outstanding packages only</span>
+        </label>
+        <div class="results-count" id="results-count" aria-live="polite"></div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Plugin</th>
+            <th>Documentation</th>
+            <th>Neovim Help</th>
+            <th>Status</th>
+            <th>Reviewed baseline</th>
+            <th>Latest upstream</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+__PLUGIN_ROWS__
+        </tbody>
+      </table>
+      <p class="empty-state" id="empty-state" hidden>No packages match the current filter.</p>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const checkbox = document.getElementById('outstanding-only');
+      const resultsCount = document.getElementById('results-count');
+      const emptyState = document.getElementById('empty-state');
+      const rows = Array.from(document.querySelectorAll('tbody tr[data-status]'));
+      const total = rows.length;
+
+      if (!checkbox || !resultsCount || !emptyState || rows.length === 0) {
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const anchor = window.location.hash.slice(1);
+      const anchoredRow = anchor ? document.getElementById(anchor) : null;
+      const hasPluginAnchor = anchoredRow && anchoredRow.matches('tbody tr[data-status]');
+      checkbox.checked = !hasPluginAnchor && params.get('filter') !== 'all';
+
+      function applyFilter() {
+        const outstandingOnly = checkbox.checked;
+        let visible = 0;
+
+        rows.forEach((row) => {
+          const matches = !outstandingOnly || row.dataset.status !== 'reviewed';
+          row.hidden = !matches;
+          if (matches) {
+            visible += 1;
+          }
+        });
+
+        resultsCount.textContent = visible + ' of ' + total + ' packages shown';
+        emptyState.hidden = visible !== 0;
+
+        if (outstandingOnly) {
+          params.delete('filter');
+        } else {
+          params.set('filter', 'all');
+        }
+
+        const query = params.toString();
+        const nextUrl = query
+          ? window.location.pathname + '?' + query + window.location.hash
+          : window.location.pathname + window.location.hash;
+        window.history.replaceState(null, '', nextUrl);
+      }
+
+      checkbox.addEventListener('change', applyFilter);
+
+      applyFilter();
+    }());
+  </script>
+</body>
+</html>

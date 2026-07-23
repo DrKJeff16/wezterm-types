@@ -6,7 +6,9 @@
 TARGET_DIR="lua/wezterm/types/plugins"
 TEMPLATE="template.lua"
 TEMPLATE_DOC="template.md"
+MANIFEST="metadata/plugins.json"
 TARGET="$1"
+BACKUPS=()
 
 # Print each argument as a line to stderr
 error() {
@@ -74,7 +76,15 @@ _file_rw_not_empty() {
 
 [[ $# -eq 0 ]] && die 127 "No arguments!"
 
-! _cmd_exists 'cp' 'touch' && die 1 "Either \`cp\` or \`touch\` not found in your PATH"
+! _cmd_exists 'cp' 'jq' 'mktemp' 'mv' 'touch' \
+    && die 1 "One or more required commands are not available: cp, jq, mktemp, mv, touch"
+
+[[ "$TARGET" =~ ^[a-z0-9][a-z0-9-]*$ ]] \
+    || die 1 "Invalid plugin slug: $TARGET (use lowercase letters, numbers, and dashes)"
+[[ -f "$MANIFEST" ]] || die 1 "Missing plugin manifest: $MANIFEST"
+
+jq -e --arg slug "$TARGET" 'all(.[]; .slug != $slug)' "$MANIFEST" >/dev/null \
+    || die 1 "Plugin \`$TARGET\` is already registered in $MANIFEST"
 
 _file_rw_not_empty "${TARGET_DIR}/${TARGET}.lua" \
     && die 1 "${TARGET}.lua already exists and is not empty!"
@@ -92,4 +102,22 @@ if ! _file_rw_not_empty "doc/wezterm-types-plugin.${TARGET}.txt"; then
     echo "Created \`doc/wezterm-types-plugin.${TARGET}.txt\`"
 fi
 
-die 0
+MANIFEST_TMP=$(mktemp)
+BACKUPS+=("$MANIFEST_TMP")
+jq --arg slug "$TARGET" '
+    . + [{
+        slug: $slug,
+        repo: "TODO: replace with owner/repository",
+        readme_name: "TODO: replace with repository display name",
+        reviewed_ref: null
+    }]
+    | sort_by(.slug)
+' "$MANIFEST" >"$MANIFEST_TMP" || die 1 "Failed to update $MANIFEST"
+mv "$MANIFEST_TMP" "$MANIFEST" || die 1 "Failed to replace $MANIFEST"
+
+die 0 \
+    "Added a placeholder entry for \`$TARGET\` to $MANIFEST." \
+    "Next steps:" \
+    "1. Replace both TODO values in $MANIFEST." \
+    "2. Run ./scripts/plugin-maintenance.sh generate." \
+    "3. Complete the Lua and Markdown stubs, then run ./scripts/plugin-maintenance.sh validate."

@@ -1,0 +1,24 @@
+name: panvimdoc plugins
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/panvimdoc_plugins.yml
+      - docs/*.md
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  plugins:
+    runs-on: ubuntu-latest
+    name: pandoc to vimdoc (plugins)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+__PLUGIN_STEPS__
+      - name: Auto-Commit
+        uses: stefanzweifel/git-auto-commit-action@v7.1.0
+        with:
+          commit_message: "docs: auto generate docs"
+          branch: ${{ github.head_ref }}
