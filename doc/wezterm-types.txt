@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 June 23
+*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 July 24
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -76,109 +76,209 @@ This project also features type annotations for various WezTerm plugins.
 
 **If you want to add your plugin, please read CONTRIBUTING.md.**
 
-  -------------------------------------------------------------------------
-  Plugin                             Documentation    Neovim Help
-  ---------------------------------- ---------------- ---------------------
-  ai-commander.wezterm               Documentation    Helpdoc
+  --------------------------------------------------------------------------------------------------------------
+  Plugin                             Documentation                                       Maintenance
+  ---------------------------------- --------------------------------------------------- -----------------------
+  ai-commander.wezterm               docs/ai-commander.md:h                              [Status][Reviewed
+                                     wezterm-types-plugin.ai-commander.txt               baseline][Latest
+                                                                                         upstream]
 
-  ai-helper.wezterm                  Documentation    Helpdoc
+  ai-helper.wezterm                  docs/ai-helper.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.ai-helper.txt                  baseline][Latest
+                                                                                         upstream]
 
-  bar.wezterm                        Documentation    Helpdoc
+  bar.wezterm                        docs/bar.md:h wezterm-types-plugin.bar.txt          [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  battery.wez                        Documentation    Helpdoc
+  battery.wez                        docs/battery.md:h wezterm-types-plugin.battery.txt  [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  chord.wz                           Documentation    Helpdoc
+  chord.wz                           docs/chord.md:h wezterm-types-plugin.chord.txt      [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  dev.wezterm                        Documentation    Helpdoc
+  dev.wezterm                        docs/dev.md:h wezterm-types-plugin.dev.txt          [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  kanagawa.wz                        Documentation    Helpdoc
+  kanagawa.wz                        docs/kanagawa.md:h                                  [Status][Reviewed
+                                     wezterm-types-plugin.kanagawa.txt                   baseline][Latest
+                                                                                         upstream]
 
-  lantern.wz                         Documentation    Helpdoc
+  lantern.wz                         docs/lantern.md:h wezterm-types-plugin.lantern.txt  [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  lib.wezterm                        Documentation    Helpdoc
+  lib.wezterm                        docs/lib.md:h wezterm-types-plugin.lib.txt          [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  listeners.wezterm                  Documentation    Helpdoc
+  listeners.wezterm                  docs/listeners.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.listeners.txt                  baseline][Latest
+                                                                                         upstream]
 
-  log.wz                             Documentation    Helpdoc
+  log.wz                             docs/log.md:h wezterm-types-plugin.log.txt          [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  memo.wz                            Documentation    Helpdoc
+  memo.wz                            docs/memo.md:h wezterm-types-plugin.memo.txt        [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  modal.wezterm                      Documentation    Helpdoc
+  modal.wezterm                      docs/modal.md:h wezterm-types-plugin.modal.txt      [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  passrelay.wezterm                  Documentation    Helpdoc
+  passrelay.wezterm                  docs/passrelay.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.passrelay.txt                  baseline][Latest
+                                                                                         upstream]
 
-  pinned-tabs.wezterm                Documentation    Helpdoc
+  pinned-tabs.wezterm                docs/pinned-tabs.md:h                               [Status][Reviewed
+                                     wezterm-types-plugin.pinned-tabs.txt                baseline][Latest
+                                                                                         upstream]
 
-  pivot_panes.wezterm                Documentation    Helpdoc
+  pivot_panes.wezterm                docs/pivot-panes.md:h                               [Status][Reviewed
+                                     wezterm-types-plugin.pivot-panes.txt                baseline][Latest
+                                                                                         upstream]
 
-  presentation.wez                   Documentation    Helpdoc
+  presentation.wez                   docs/presentation.md:h                              [Status][Reviewed
+                                     wezterm-types-plugin.presentation.txt               baseline][Latest
+                                                                                         upstream]
 
-  quick_domains.wezterm              Documentation    Helpdoc
+  quick_domains.wezterm              docs/quick-domains.md:h                             [Status][Reviewed
+                                     wezterm-types-plugin.quick-domains.txt              baseline][Latest
+                                                                                         upstream]
 
-  quickselect.wezterm                Documentation    Helpdoc
+  quickselect.wezterm                docs/quickselect.md:h                               [Status][Reviewed
+                                     wezterm-types-plugin.quickselect.txt                baseline][Latest
+                                                                                         upstream]
 
-  resurrect.wezterm                  Documentation    Helpdoc
+  resurrect.wezterm                  docs/resurrect.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.resurrect.txt                  baseline][Latest
+                                                                                         upstream]
 
-  ribbon.wz                          Documentation    Helpdoc
+  ribbon.wz                          docs/ribbon.md:h wezterm-types-plugin.ribbon.txt    [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  rosepine                           Documentation    Helpdoc
+  rosepine                           docs/rosepine.md:h                                  [Status][Reviewed
+                                     wezterm-types-plugin.rosepine.txt                   baseline][Latest
+                                                                                         upstream]
 
-  sessionizer.wezterm                Documentation    Helpdoc
+  sessionizer.wezterm                docs/sessionizer.md:h                               [Status][Reviewed
+                                     wezterm-types-plugin.sessionizer.txt                baseline][Latest
+                                                                                         upstream]
 
-  sigil.wz                           Documentation    Helpdoc
+  sigil.wz                           docs/sigil.md:h wezterm-types-plugin.sigil.txt      [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  smart-splits.nvim                  Documentation    Helpdoc
+  smart-splits.nvim                  docs/smart-splits.md:h                              [Status][Reviewed
+                                     wezterm-types-plugin.smart-splits.txt               baseline][Latest
+                                                                                         upstream]
 
-  smart_workspace_switcher.wezterm   Documentation    Helpdoc
+  smart_workspace_switcher.wezterm   docs/smart-workspace-switcher.md:h                  [Status][Reviewed
+                                     wezterm-types-plugin.smart-workspace-switcher.txt   baseline][Latest
+                                                                                         upstream]
 
-  stack.wez                          Documentation    Helpdoc
+  stack.wez                          docs/stack.md:h wezterm-types-plugin.stack.txt      [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  sync-panes.wez                     Documentation    Helpdoc
+  sync-panes.wez                     docs/sync-panes.md:h                                [Status][Reviewed
+                                     wezterm-types-plugin.sync-panes.txt                 baseline][Latest
+                                                                                         upstream]
 
-  tabline.wez                        Documentation    Helpdoc
+  tabline.wez                        docs/tabline.md:h wezterm-types-plugin.tabline.txt  [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  tabsets.wezterm                    Documentation    Helpdoc
+  tabsets.wezterm                    docs/tabsets.md:h wezterm-types-plugin.tabsets.txt  [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  toggle_terminal.wez                Documentation    Helpdoc
+  toggle_terminal.wez                docs/toggle-terminal.md:h                           [Status][Reviewed
+                                     wezterm-types-plugin.toggle-terminal.txt            baseline][Latest
+                                                                                         upstream]
 
-  warp.wz                            Documentation    Helpdoc
+  warp.wz                            docs/warp.md:h wezterm-types-plugin.warp.txt        [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  wez-pain-control                   Documentation    Helpdoc
+  wez-pain-control                   docs/wez-pain-control.md:h                          [Status][Reviewed
+                                     wezterm-types-plugin.wez-pain-control.txt           baseline][Latest
+                                                                                         upstream]
 
-  wez-tmux                           Documentation    Helpdoc
+  wez-tmux                           docs/wez-tmux.md:h                                  [Status][Reviewed
+                                     wezterm-types-plugin.wez-tmux.txt                   baseline][Latest
+                                                                                         upstream]
 
-  wezterm-agent-deck                 Documentation    Helpdoc
+  wezterm-agent-deck                 docs/agent-deck.md:h                                [Status][Reviewed
+                                     wezterm-types-plugin.agent-deck.txt                 baseline][Latest
+                                                                                         upstream]
 
-  wezterm-attention                  Documentation    Helpdoc
+  wezterm-attention                  docs/attention.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.attention.txt                  baseline][Latest
+                                                                                         upstream]
 
-  wezterm-cmd-sender                 Documentation    Helpdoc
+  wezterm-cmd-sender                 docs/cmd-sender.md:h                                [Status][Reviewed
+                                     wezterm-types-plugin.cmd-sender.txt                 baseline][Latest
+                                                                                         upstream]
 
-  wezterm-cmdpicker                  Documentation    Helpdoc
+  wezterm-cmdpicker                  docs/cmdpicker.md:h                                 [Status][Reviewed
+                                     wezterm-types-plugin.cmdpicker.txt                  baseline][Latest
+                                                                                         upstream]
 
-  wezterm-config.nvim                Documentation    Helpdoc
+  wezterm-config.nvim                docs/wezterm-config.md:h                            [Status][Reviewed
+                                     wezterm-types-plugin.wezterm-config.txt             baseline][Latest
+                                                                                         upstream]
 
-  wezterm-quota-limit                Documentation    Helpdoc
+  wezterm-quota-limit                docs/quota-limit.md:h                               [Status][Reviewed
+                                     wezterm-types-plugin.quota-limit.txt                baseline][Latest
+                                                                                         upstream]
 
-  wezterm-replay                     Documentation    Helpdoc
+  wezterm-replay                     docs/replay.md:h wezterm-types-plugin.replay.txt    [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  wezterm-sessions                   Documentation    Helpdoc
+  wezterm-sessions                   docs/wezterm-sessions.md:h                          [Status][Reviewed
+                                     wezterm-types-plugin.wezterm-sessions.txt           baseline][Latest
+                                                                                         upstream]
 
-  wezterm-status                     Documentation    Helpdoc
+  wezterm-status                     docs/wezterm-status.md:h                            [Status][Reviewed
+                                     wezterm-types-plugin.wezterm-status.txt             baseline][Latest
+                                                                                         upstream]
 
-  wezterm-sync                       Documentation    Helpdoc
+  wezterm-sync                       docs/sync.md:h wezterm-types-plugin.sync.txt        [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  wezterm-tabs                       Documentation    Helpdoc
+  wezterm-tabs                       docs/wezterm-tabs.md:h                              [Status][Reviewed
+                                     wezterm-types-plugin.wezterm-tabs.txt               baseline][Latest
+                                                                                         upstream]
 
-  wezterm-theme-rotator              Documentation    Helpdoc
+  wezterm-theme-rotator              docs/wezterm-theme-rotator.md:h                     [Status][Reviewed
+                                     wezterm-types-plugin.wezterm-theme-rotator.txt      baseline][Latest
+                                                                                         upstream]
 
-  widgets.wez                        Documentation    Helpdoc
+  widgets.wez                        docs/widgets.md:h wezterm-types-plugin.widgets.txt  [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
 
-  workspace-picker.wezterm           Documentation    Helpdoc
+  workspace-picker.wezterm           docs/workspace-picker.md:h                          [Status][Reviewed
+                                     wezterm-types-plugin.workspace-picker.txt           baseline][Latest
+                                                                                         upstream]
 
-  workspacesionizer.wezterm          Documentation    Helpdoc
+  workspacesionizer.wezterm          docs/workspacesionizer.md:h                         [Status][Reviewed
+                                     wezterm-types-plugin.workspacesionizer.txt          baseline][Latest
+                                                                                         upstream]
 
-  wsinit.wezterm                     Documentation    Helpdoc
-  -------------------------------------------------------------------------
+  wsinit.wezterm                     docs/wsinit.md:h wezterm-types-plugin.wsinit.txt    [Status][Reviewed
+                                                                                         baseline][Latest
+                                                                                         upstream]
+  --------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------
 
 USAGE                                                    *wezterm-types-usage*

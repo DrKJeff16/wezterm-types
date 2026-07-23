@@ -12,6 +12,7 @@ contributing code, knowing what to do in specific cases, etc.
 - [Guidelines](#guidelines)
   - [What I Will Not Accept](#what-i-will-not-accept)
   - [Plugins](#plugins)
+  - [Plugin Maintenance](#plugin-maintenance)
 - [Recommendations](#recommendations)
   - [`pre-commit`](#pre-commit)
 - [Annotations Guide](#annotations-guide)
@@ -62,18 +63,87 @@ annotations.
   ```bash
   ./scripts/new-plugin.sh PLUGIN-NAME # ONLY DASHES `-` ALLOWED!
   ```
+  The helper creates the Lua, Markdown, and Vimdoc files and inserts a slug-sorted placeholder entry
+  in `metadata/plugins.json`. Replace its `repo` and `readme_name` TODO values before continuing.
 - Edit your plugin annotations in [`lua/wezterm/types/plugins`](./lua/wezterm/types/plugins). Use
   other plugin's annotations as references, and make sure to read the [Annotations Guide](#annotations-guide)
   section.
 - Edit `docs/<MY-PLUGIN>.md`. Use the other plugin docs as reference.
-- Add the document mentioned above in [docs/README.md](./docs/README.md). **RESPECT THE ALPHABETIC ORDER**!
-- Add a new entry in the `README.md`'s [Featured Plugins](https://github.com/DrKJeff16/wezterm-types#featured-plugins).
-  Respect the alphabetic order and the table specification!
+- Follow the [Plugin Maintenance](#plugin-maintenance) workflow below to register the plugin,
+  regenerate the derived files, and run validation.
 - Commit then push your changes. Make your PR afterwards.
   - Your commit message must look like this:
     ```
     feat(PLUGIN-NAME): add type annotations
     ```
+
+### Plugin Maintenance
+
+The plugin manifest is the source of truth for the generated `README.md` table and maintenance dashboard.
+`metadata/plugin-maintenance.json` records the canonical repository, default branch, and Pages URL used by
+tracked generated documentation.
+
+1. Add or update the plugin entry in [`metadata/plugins.json`](./metadata/plugins.json). For new
+   plugins, `new-plugin.sh` creates this slug-sorted placeholder:
+   ```json
+   {
+     "slug": "plugin-name",
+     "repo": "TODO: replace with owner/repository",
+     "readme_name": "TODO: replace with repository display name",
+     "reviewed_ref": null
+   }
+   ```
+   Replace both TODO values. `reviewed_ref` records only the last upstream release, tag, or commit
+   deliberately reviewed by a maintainer; it does not record annotation provenance or coverage.
+   Use `null` when a plugin is not yet tracked by maintenance.
+
+2. For a new plugin, complete every inventory step above. Validation requires exactly one matching
+   Lua file, Markdown document, and Vimdoc file.
+
+3. Regenerate the plugin indexes and panvimdoc workflow:
+   ```bash
+   ./scripts/plugin-maintenance.sh generate
+   ```
+   This updates the generated sections in `README.md` and `docs/README.md`, plus
+   `.github/workflows/panvimdoc_plugins.yml`. Do not edit those generated sections or workflow by
+   hand.
+
+4. Run local validation:
+   ```bash
+   ./scripts/plugin-maintenance.sh validate
+   ```
+   `validate` checks the maintenance configuration, exact manifest schema and order, every plugin
+   inventory, and all generated files for freshness.
+
+5. Use the dedicated issue named `Plugin maintenance: upstream changes to review` for maintenance
+   commands. Commands are accepted only on that issue, from collaborators with write access, and
+   must be the only content in a comment:
+   - `/help` prints the complete command reference.
+   - `/accept <slug>` accepts the latest upstream ref. For a commit-tracked plugin,
+     `/accept <slug> commit:<full-sha>` accepts an intermediate commit. Combine selections as
+     `/accept <slug> [commit:<full-sha>] <slug> [commit:<full-sha>] ...` to open one PR containing
+     the selected reviewed-baseline changes in `metadata/plugins.json`.
+   - `/refresh` starts the maintenance workflow to refresh the dashboard and issue digest.
+
+6. Review plugins marked `review_required` or `untracked` on the published maintenance dashboard.
+   Leave the baseline unchanged while functional work remains outstanding. Acceptance records only
+   the reviewed upstream baseline; it does not claim annotation coverage.
+
+7. The maintenance dashboard is published by the `Plugin Maintenance` workflow:
+   - every Sunday at `17:00 UTC`;
+   - after `/refresh` or a manual workflow run on `main`; and
+   - after a push to `main` changes maintenance inputs. Pull requests validate the maintenance
+     implementation and plugin inventory but do not publish the site.
+
+8. Before the first upstream run, an administrator must select **GitHub Actions** as the Pages
+   publishing source and enable **Allow GitHub Actions to create and approve pull requests** under
+   the repository's Actions settings.
+
+9. If the dedicated issue is missing, open the repository's **Actions** tab, select
+   **Plugin Maintenance**, choose **Run workflow**, and run it on `main`. After Pages is deployed,
+   the workflow creates the labeled issue when at least one plugin needs review. If every plugin is
+   reviewed, an existing digest is updated with the all-reviewed state and remains open. Only a
+   maintainer may close the issue.
 
 ---
 
