@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v7.0.1
       - name: Configure Pages
         id: pages
-        uses: actions/configure-pages@v6.0.0
+        uses: actions/configure-pages@v6
       - name: Build maintenance report
         env:
           WEZTERM_TYPES_PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
@@ -116,7 +116,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5.0.0
+        uses: actions/deploy-pages@v5
   update-maintenance-digest:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     needs:
