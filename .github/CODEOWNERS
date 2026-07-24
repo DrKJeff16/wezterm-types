@@ -1,8 +1,12 @@
 * @DrKJeff16
 /.github/CODEOWNERS @DrKJeff16
-/.github/workflows/stylua.yml @DrKJeff16
 /.github/ISSUE_TEMPLATE/1-missing_types.yml @DrKJeff16
 /.github/ISSUE_TEMPLATE/2-feature_request.yml @DrKJeff16
 /.github/ISSUE_TEMPLATE/3-lazydev-bug.yml @DrKJeff16
 /.github/ISSUE_TEMPLATE/config.yml @DrKJeff16
+/.github/workflows/plugin-maintenance-accept.yml @lalvarezt
+/.github/workflows/plugin-maintenance-comment.yml @lalvarezt
+/.github/workflows/plugin-maintenance.yml @lalvarezt
+/.github/workflows/stylua.yml @DrKJeff16
 /scripts/ @DrKJeff16
+/scripts/plugin-maintenance.sh @lalvarezt
