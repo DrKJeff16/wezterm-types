@@ -1,0 +1,268 @@
+name: Plugin Maintenance
+on:
+  schedule:
+    - cron: "0 17 * * 0"
+  workflow_dispatch:
+    inputs:
+      comment_id:
+        description: Issue comment to acknowledge after a successful refresh
+        required: false
+        type: string
+  pull_request:
+    paths:
+      - ".github/workflows/plugin-maintenance*.yml"
+      - ".github/workflows/panvimdoc_plugins.yml"
+      - "docs/README.md"
+      - "metadata/plugin-maintenance.json"
+      - "metadata/plugins.json"
+      - "scripts/new-plugin.sh"
+      - "scripts/plugin-maintenance.sh"
+      - "scripts/templates/panvimdoc-plugins.yml.tmpl"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/plugin-maintenance.yml"
+      - "metadata/plugin-maintenance.json"
+      - "metadata/plugins.json"
+      - "scripts/plugin-maintenance.sh"
+      - "scripts/templates/plugin-maintenance-*.tmpl"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+      - name: Validate maintenance implementation
+        run: |
+          bash -n scripts/new-plugin.sh scripts/plugin-maintenance.sh
+          shellcheck scripts/new-plugin.sh scripts/plugin-maintenance.sh
+          ./scripts/plugin-maintenance.sh validate
+      - name: Lint workflows
+        run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
+  build-report:
+    # Pull requests stop after validation; report generation and publication are non-PR concerns.
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      error_count: ${{ steps.report.outputs.error_count }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PLUGIN_MAINTENANCE_BUILD_DIR: .tmp/plugin-maintenance
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v6.0.0
+      - name: Build maintenance report
+        env:
+          WEZTERM_TYPES_PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          WEZTERM_TYPES_REPO_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          ./scripts/plugin-maintenance.sh sync
+          ./scripts/plugin-maintenance.sh render-pages
+      - name: Record report metadata
+        id: report
+        run: |
+          echo "error_count=$(jq -r '.summary.error' "${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json")" >> "$GITHUB_OUTPUT"
+      - name: Write workflow summary
+        run: |
+          jq -r '
+            "## Plugin Maintenance",
+            "",
+            "| Metric | Value |",
+            "|--------|-------|",
+            "| Total | \(.summary.total) |",
+            "| Reviewed | \(.summary.reviewed) |",
+            "| To Review | \(.summary.review_required) |",
+            "| Untracked | \(.summary.untracked) |",
+            "| Errors | \(.summary.error) |",
+            "",
+            "| Plugin | Reviewed | Upstream | Status |",
+            "|--------|----------|----------|--------|",
+            (
+              .plugins[]
+              | "| \(.readme_name) | "
+                + (if .reviewed_ref == null then "none" elif .reviewed_ref.kind == "commit" then "\(.reviewed_ref.kind):\(.reviewed_ref.value[0:7])" else "\(.reviewed_ref.kind):\(.reviewed_ref.value)" end)
+                + " | "
+                + (if .upstream_ref == null then "-" elif .upstream_ref.kind == "commit" then "\(.upstream_ref.kind):\(.upstream_ref.value[0:7])" else "\(.upstream_ref.kind):\(.upstream_ref.value)" end)
+                + " | \(.status) |"
+            )
+          ' "${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json" >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: .tmp/plugin-maintenance/pages
+      - name: Upload report artifact
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: plugin-maintenance-report
+          path: .tmp/plugin-maintenance/report.json
+          retention-days: 1
+  deploy-pages:
+    needs: build-report
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5.0.0
+  update-maintenance-digest:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    needs:
+      - build-report
+      - deploy-pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DIGEST_TITLE: "Plugin maintenance: upstream changes to review"
+    steps:
+      - name: Download report artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+          name: plugin-maintenance-report
+          path: .tmp/plugin-maintenance
+      - name: Render and update rolling digest
+        run: |
+          set -euo pipefail
+          report=.tmp/plugin-maintenance/report.json
+          body=$(mktemp)
+
+          jq -r '
+            def ref_text($ref):
+              if $ref == null then "none" else $ref.kind + ":" + $ref.value end;
+            def upstream_url:
+              if .upstream_ref == null then .repo_url
+              elif .upstream_ref.kind == "commit" then .repo_url + "/commit/" + .upstream_ref.value
+              elif .upstream_ref.kind == "release" then .repo_url + "/releases/tag/" + .upstream_ref.value
+              else .repo_url + "/tree/" + .upstream_ref.value
+              end;
+            (.pages_base_url + "/plugin-maintenance/") as $dashboard
+            | "<!-- plugin-maintenance-digest -->",
+              "# Plugin maintenance: upstream changes to review",
+              "",
+              "Last checked: `\(.checked_at)`",
+              "",
+              "Reviewed: **\(.summary.reviewed)** · To Review: **\(.summary.review_required)** · Untracked: **\(.summary.untracked)** · Errors: **\(.summary.error)**",
+              "",
+              "[Open the maintenance dashboard](\($dashboard))",
+              "",
+              "Maintenance commands are accepted only on this issue. Make the command the only content of the comment.",
+              "To accept reviewed refs, copy one command below or combine multiple plugin selections in one comment.",
+              "Use `/accept slug-one slug-two` for latest refs. A `commit:<full-sha>` applies to the slug immediately before it.",
+              "Comment `/refresh` to regenerate this report or `/help` to list every command.",
+              "",
+              (
+                .plugins[]
+                | select(.status != "reviewed")
+                | "## [\(.readme_name)](\($dashboard)#\(.slug))",
+                  "",
+                  "- Status: `\(.status)`",
+                  "- Reviewed baseline: `\(ref_text(.reviewed_ref))`",
+                  "- Latest upstream: `\(ref_text(.upstream_ref))`",
+                  (
+                    if .status == "error" then "- Error: \(.error)"
+                    elif .compare_url then "- [Review diff](\(.compare_url))"
+                    else "- [Review upstream](\(upstream_url))"
+                    end
+                  ),
+                  (
+                    if .status == "review_required" or .status == "untracked" then
+                      "",
+                      "Accept latest upstream:",
+                      "```text",
+                      "/accept \(.slug)",
+                      "```",
+                      (
+                        if .upstream_ref.kind == "commit" then
+                          "Accept a specific commit (replace the SHA):",
+                          "```text",
+                          "/accept \(.slug) commit:\(.upstream_ref.value)",
+                          "```"
+                        else empty end
+                      )
+                    else empty end
+                  ),
+                  ""
+              )
+          ' "$report" > "$body"
+
+          outstanding=$(jq '[.plugins[] | select(.status != "reviewed")] | length' "$report")
+          gh label create plugin-maintenance --repo "$GITHUB_REPOSITORY" \
+            --color D4A72C --description "Automated plugin upstream review" --force
+
+          issue_json=$(gh issue list --repo "$GITHUB_REPOSITORY" \
+            --state all --label plugin-maintenance --limit 100 --json number,title,state \
+            --jq '[.[] | select(.title == env.DIGEST_TITLE)][0] // {}')
+          issue_number=$(jq -r '.number // empty' <<< "$issue_json")
+          issue_state=$(jq -r '.state // empty' <<< "$issue_json")
+
+          if (( outstanding > 0 )); then
+            if [[ -z "$issue_number" ]]; then
+              gh issue create --repo "$GITHUB_REPOSITORY" \
+                --title "$DIGEST_TITLE" --label plugin-maintenance --body-file "$body"
+            else
+              gh issue edit "$issue_number" --repo "$GITHUB_REPOSITORY" --body-file "$body"
+              if [[ "$issue_state" == "CLOSED" ]]; then
+                gh issue reopen "$issue_number" --repo "$GITHUB_REPOSITORY"
+              fi
+            fi
+          elif [[ -n "$issue_number" ]]; then
+            {
+              echo '<!-- plugin-maintenance-digest -->'
+              echo '# Plugin maintenance: all reviewed'
+              echo
+              echo "No upstream changes require review as of \`$(jq -r '.checked_at' "$report")\`."
+            } > "$body"
+            gh issue edit "$issue_number" --repo "$GITHUB_REPOSITORY" --body-file "$body"
+          fi
+  report-health:
+    if: always() && needs.build-report.result == 'success'
+    needs:
+      - build-report
+      - deploy-pages
+      - update-maintenance-digest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check deployment, digest, and upstream health
+        env:
+          ERROR_COUNT: ${{ needs.build-report.outputs.error_count }}
+          DEPLOY_RESULT: ${{ needs.deploy-pages.result }}
+          DIGEST_RESULT: ${{ needs.update-maintenance-digest.result }}
+        run: |
+          set -euo pipefail
+          [[ "$DEPLOY_RESULT" != "failure" ]] || { echo "GitHub Pages deployment failed" >&2; exit 1; }
+          [[ "$DIGEST_RESULT" != "failure" ]] || { echo "Maintenance digest update failed" >&2; exit 1; }
+          [[ "$ERROR_COUNT" == "0" ]] || { echo "$ERROR_COUNT upstream repositories could not be resolved" >&2; exit 1; }
+  acknowledge-refresh:
+    if: >-
+      always() && github.event_name == 'workflow_dispatch' && inputs.comment_id != '' && needs.report-health.result == 'success'
+    needs: report-health
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      COMMENT_ID: ${{ inputs.comment_id }}
+    steps:
+      - name: Mark refresh comment as completed
+        run: |
+          set -euo pipefail
+          [[ "$COMMENT_ID" =~ ^[0-9]+$ ]] || { echo "Invalid comment ID: $COMMENT_ID" >&2; exit 1; }
+          gh api --method POST \
+            -H "Accept: application/vnd.github+json" \
+            "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" \
+            -f content='+1' >/dev/null

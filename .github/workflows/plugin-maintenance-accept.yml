@@ -1,0 +1,240 @@
+name: Accept Plugin Reviews
+run-name: Accept plugin review selection
+on:
+  workflow_call:
+    inputs:
+      accept_specs:
+        description: JSON array of plugin and optional custom_commit objects
+        required: true
+        type: string
+concurrency:
+  group: plugin-maintenance-accept
+  cancel-in-progress: false
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+jobs:
+  accept:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ACCEPT_SPECS_JSON: ${{ inputs.accept_specs }}
+      PLUGIN_MAINTENANCE_BUILD_DIR: .tmp/plugin-maintenance
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+      - name: Validate acceptance specs
+        run: |
+          set -euo pipefail
+          jq -e '
+            type == "array"
+            and length > 0
+            and all(.[];
+              (keys == ["custom_commit", "plugin"])
+              and (.plugin | type == "string" and test("^[a-z0-9][a-z0-9-]*$"))
+              and (.custom_commit | type == "string" and (. == "" or test("^[0-9a-fA-F]{40}$")))
+            )
+            and ([.[].plugin] | length == (unique | length))
+          ' <<< "$ACCEPT_SPECS_JSON" >/dev/null \
+            || { echo "Invalid acceptance specs: $ACCEPT_SPECS_JSON" >&2; exit 1; }
+
+          canonical_specs=$(jq -c '
+            map(.custom_commit |= ascii_downcase)
+            | sort_by(.plugin)
+          ' <<< "$ACCEPT_SPECS_JSON")
+          echo "ACCEPT_SPECS_JSON=$canonical_specs" >> "$GITHUB_ENV"
+      - name: Refresh selected upstream refs
+        run: |
+          set -euo pipefail
+          mapfile -t plugins < <(jq -r '.[].plugin' <<< "$ACCEPT_SPECS_JSON")
+          ./scripts/plugin-maintenance.sh sync "${plugins[@]}"
+      - name: Resolve acceptance refs
+        run: |
+          set -euo pipefail
+          report="${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json"
+          acceptances='[]'
+
+          while IFS= read -r spec; do
+            plugin=$(jq -r '.plugin' <<< "$spec")
+            custom_commit=$(jq -r '.custom_commit' <<< "$spec")
+            count=$(jq --arg slug "$plugin" '[.plugins[] | select(.slug == $slug)] | length' "$report")
+            [[ "$count" == "1" ]] \
+              || { echo "Unknown or ambiguous plugin slug: $plugin" >&2; exit 1; }
+
+            status=$(jq -r --arg slug "$plugin" '.plugins[] | select(.slug == $slug) | .status' "$report")
+            [[ "$status" != "error" ]] \
+              || { echo "Cannot accept $plugin because upstream resolution failed" >&2; exit 1; }
+
+            reviewed_ref=$(jq -r --arg slug "$plugin" '
+              .plugins[] | select(.slug == $slug)
+              | if .reviewed_ref == null then "none" else .reviewed_ref.kind + ":" + .reviewed_ref.value end
+            ' "$report")
+            upstream_ref=$(jq -r --arg slug "$plugin" '
+              .plugins[] | select(.slug == $slug)
+              | if .upstream_ref == null then "none" else .upstream_ref.kind + ":" + .upstream_ref.value end
+            ' "$report")
+
+            candidate_ref="$upstream_ref"
+            if [[ -n "$custom_commit" ]]; then
+              [[ "$upstream_ref" == commit:* ]] \
+                || { echo "Custom commits are only supported for commit-tracked plugins" >&2; exit 1; }
+              candidate_ref="commit:$custom_commit"
+            fi
+            [[ "$candidate_ref" != "none" ]] \
+              || { echo "No upstream ref is available for $plugin" >&2; exit 1; }
+
+            acceptances=$(jq -c \
+              --arg plugin "$plugin" \
+              --arg expected_reviewed_ref "$reviewed_ref" \
+              --arg candidate_ref "$candidate_ref" \
+              '. + [{
+                plugin: $plugin,
+                expected_reviewed_ref: $expected_reviewed_ref,
+                candidate_ref: $candidate_ref
+              }]' \
+              <<< "$acceptances")
+          done < <(jq -c '.[]' <<< "$ACCEPT_SPECS_JSON")
+
+          echo "ACCEPTANCES_JSON=$(jq -c 'sort_by(.plugin)' <<< "$acceptances")" >> "$GITHUB_ENV"
+      - name: Record reviewed baselines
+        id: update
+        run: |
+          set -euo pipefail
+          rollback() {
+            git restore -- metadata/plugins.json
+          }
+          trap rollback ERR
+
+          while IFS= read -r acceptance; do
+            plugin=$(jq -r '.plugin' <<< "$acceptance")
+            expected_reviewed_ref=$(jq -r '.expected_reviewed_ref' <<< "$acceptance")
+            candidate_ref=$(jq -r '.candidate_ref' <<< "$acceptance")
+
+            ./scripts/plugin-maintenance.sh accept "$plugin" \
+              --from "$expected_reviewed_ref" \
+              --to "$candidate_ref" \
+              --defer-generated
+          done < <(jq -c '.[]' <<< "$ACCEPTANCES_JSON")
+
+          ./scripts/plugin-maintenance.sh validate
+          trap - ERR
+
+          if git diff --quiet -- metadata/plugins.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Every requested plugin is already reviewed at its selected ref." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Prepare PR metadata
+        if: steps.update.outputs.changed == 'true'
+        id: pr
+        run: |
+          set -euo pipefail
+          diff_fingerprint=$(git diff --binary -- metadata/plugins.json | sha256sum | cut -c1-12)
+          branch_prefix="plugin-maintenance/accept-${diff_fingerprint}-"
+          branch="${branch_prefix}${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          existing_pr=$(
+            gh pr list --state open --limit 100 --json headRefName,url |
+              jq -r --arg prefix "$branch_prefix" \
+                '[.[] | select(.headRefName | startswith($prefix))][0].url // empty'
+          )
+          acceptance_count=$(jq 'length' <<< "$ACCEPTANCES_JSON")
+
+          if [[ "$acceptance_count" == "1" ]]; then
+            plugin=$(jq -r '.[0].plugin' <<< "$ACCEPTANCES_JSON")
+            candidate_ref=$(jq -r '.[0].candidate_ref' <<< "$ACCEPTANCES_JSON")
+            commit_message="chore(${plugin}): record reviewed upstream ${candidate_ref}"
+            pr_title="$commit_message"
+          else
+            commit_message="chore(plugins): record ${acceptance_count} reviewed upstream refs"
+            pr_title="$commit_message"
+          fi
+
+          {
+            echo "branch=$branch"
+            echo "existing_pr=$existing_pr"
+            echo "commit_message=$commit_message"
+            echo "pr_title=$pr_title"
+          } >> "$GITHUB_OUTPUT"
+
+          if [[ -n "$existing_pr" ]]; then
+            echo "An acceptance PR already contains this metadata change: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Commit reviewed baselines
+        if: steps.update.outputs.changed == 'true' && steps.pr.outputs.existing_pr == ''
+        env:
+          BRANCH: ${{ steps.pr.outputs.branch }}
+          COMMIT_MESSAGE: ${{ steps.pr.outputs.commit_message }}
+          BOT_NAME: github-actions[bot]
+          # 41898282 is GitHub's account ID for the Actions bot.
+          BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          set -euo pipefail
+          git switch -c "$BRANCH"
+          git add metadata/plugins.json
+
+          changed_files=$(git diff --cached --name-only)
+          [[ "$changed_files" == 'metadata/plugins.json' ]] \
+            || { echo "Unexpected files in acceptance commit:" >&2; printf '%s\n' "$changed_files" >&2; exit 1; }
+
+          git -c user.name="$BOT_NAME" -c user.email="$BOT_EMAIL" \
+            commit -m "$COMMIT_MESSAGE"
+          git push origin "HEAD:$BRANCH"
+      - name: Open acceptance PR
+        if: steps.update.outputs.changed == 'true' && steps.pr.outputs.existing_pr == ''
+        env:
+          BRANCH: ${{ steps.pr.outputs.branch }}
+          PR_TITLE: ${{ steps.pr.outputs.pr_title }}
+        run: |
+          set -euo pipefail
+          report="${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json"
+          body=$(mktemp)
+          {
+            echo "Records deliberately reviewed upstream baselines for the selected plugins."
+            echo
+
+            while IFS= read -r acceptance; do
+              plugin=$(jq -r '.plugin' <<< "$acceptance")
+              expected_reviewed_ref=$(jq -r '.expected_reviewed_ref' <<< "$acceptance")
+              candidate_ref=$(jq -r '.candidate_ref' <<< "$acceptance")
+              dashboard=$(jq -r --arg slug "$plugin" '.pages_base_url + "/plugin-maintenance/#" + $slug' "$report")
+              repo_url=$(jq -r --arg slug "$plugin" '.plugins[] | select(.slug == $slug) | .repo_url' "$report")
+              candidate_kind=${candidate_ref%%:*}
+              candidate_value=${candidate_ref#*:}
+
+              if [[ "$expected_reviewed_ref" != "none" ]]; then
+                review_url="$repo_url/compare/${expected_reviewed_ref#*:}...$candidate_value"
+              else
+                case "$candidate_kind" in
+                  commit) review_url="$repo_url/commit/$candidate_value" ;;
+                  release) review_url="$repo_url/releases/tag/$candidate_value" ;;
+                  tag) review_url="$repo_url/tree/$candidate_value" ;;
+                esac
+              fi
+
+              echo "### \`$plugin\`"
+              echo
+              echo "- Previous reviewed ref: \`$expected_reviewed_ref\`"
+              echo "- Accepted upstream ref: \`$candidate_ref\`"
+              echo "- [Reviewed upstream change]($review_url)"
+              echo "- [Maintenance dashboard]($dashboard)"
+              echo
+            done < <(jq -c '.[]' <<< "$ACCEPTANCES_JSON")
+
+            echo "[Acceptance workflow run](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})"
+            echo
+            echo "This PR does not claim annotation coverage and does not modify annotation files."
+          } > "$body"
+
+          pr_url=$(gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "$PR_TITLE" \
+            --label plugin-maintenance \
+            --body-file "$body")
+
+          echo "Created acceptance PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"

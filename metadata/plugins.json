@@ -1,0 +1,452 @@
+[
+  {
+    "slug": "agent-deck",
+    "repo": "Eric162/wezterm-agent-deck",
+    "readme_name": "wezterm-agent-deck",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "bd5a57e7806032998e6cae56ade67b72a08b7868"
+    }
+  },
+  {
+    "slug": "ai-commander",
+    "repo": "dimao/ai-commander.wezterm",
+    "readme_name": "ai-commander.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v0.0.2"
+    }
+  },
+  {
+    "slug": "ai-helper",
+    "repo": "Michal1993r/ai-helper.wezterm",
+    "readme_name": "ai-helper.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "ae5055b447d9a53eb8138ee80d8d3d649c696497"
+    }
+  },
+  {
+    "slug": "attention",
+    "repo": "pro-vi/wezterm-attention",
+    "readme_name": "wezterm-attention",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v0.3.3"
+    }
+  },
+  {
+    "slug": "bar",
+    "repo": "adriankarlen/bar.wezterm",
+    "readme_name": "bar.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.4.0"
+    }
+  },
+  {
+    "slug": "battery",
+    "repo": "rootiest/battery.wez",
+    "readme_name": "battery.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "0b6d503db725ea11b26ef5723a29707bdf3a3f8b"
+    }
+  },
+  {
+    "slug": "chord",
+    "repo": "sravioli/chord.wz",
+    "readme_name": "chord.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.1.0"
+    }
+  },
+  {
+    "slug": "cmd-sender",
+    "repo": "aureolebigben/wezterm-cmd-sender",
+    "readme_name": "wezterm-cmd-sender",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v1.0.1"
+    }
+  },
+  {
+    "slug": "cmdpicker",
+    "repo": "abidibo/wezterm-cmdpicker",
+    "readme_name": "wezterm-cmdpicker",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "0.2.0"
+    }
+  },
+  {
+    "slug": "dev",
+    "repo": "ChrisGVE/dev.wezterm",
+    "readme_name": "dev.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "40dea555a1112e1d353a61646647c739a3ce112f"
+    }
+  },
+  {
+    "slug": "kanagawa",
+    "repo": "sravioli/kanagawa.wz",
+    "readme_name": "kanagawa.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.0.1"
+    }
+  },
+  {
+    "slug": "lantern",
+    "repo": "sravioli/lantern.wz",
+    "readme_name": "lantern.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.2.0"
+    }
+  },
+  {
+    "slug": "lib",
+    "repo": "ChrisGVE/lib.wezterm",
+    "readme_name": "lib.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "ea5163d22ee4fd9045e6df9a0ba647eb38feba22"
+    }
+  },
+  {
+    "slug": "listeners",
+    "repo": "ChrisGVE/listeners.wezterm",
+    "readme_name": "listeners.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "990e1d1f06b692035866cbd65df203bb19227471"
+    }
+  },
+  {
+    "slug": "log",
+    "repo": "sravioli/log.wz",
+    "readme_name": "log.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.0.2"
+    }
+  },
+  {
+    "slug": "memo",
+    "repo": "sravioli/memo.wz",
+    "readme_name": "memo.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "0.1.3"
+    }
+  },
+  {
+    "slug": "modal",
+    "repo": "MLFlexer/modal.wezterm",
+    "readme_name": "modal.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.0"
+    }
+  },
+  {
+    "slug": "passrelay",
+    "repo": "dfaerch/passrelay.wezterm",
+    "readme_name": "passrelay.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "8a80a945bb1637bfac612a848012f1e8691d94d9"
+    }
+  },
+  {
+    "slug": "pinned-tabs",
+    "repo": "selectnull/pinned-tabs.wezterm",
+    "readme_name": "pinned-tabs.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "a58ed31eade25eea6f70699babd6a08508e735cd"
+    }
+  },
+  {
+    "slug": "pivot-panes",
+    "repo": "ChrisGVE/pivot_panes.wezterm",
+    "readme_name": "pivot_panes.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "6d4d6282bed987962069eccf9c210eb82ed21ee8"
+    }
+  },
+  {
+    "slug": "presentation",
+    "repo": "xarvex/presentation.wez",
+    "readme_name": "presentation.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "55f4bbfe17d3273a2347d6e04903fcecd3f2ee11"
+    }
+  },
+  {
+    "slug": "quick-domains",
+    "repo": "DavidRR-F/quick_domains.wezterm",
+    "readme_name": "quick_domains.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "e026c6a807b68ce727453c0a19067452d6474c23"
+    }
+  },
+  {
+    "slug": "quickselect",
+    "repo": "quantonganh/quickselect.wezterm",
+    "readme_name": "quickselect.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "2b16aaae387321ac32d682663afb954f1c1916d0"
+    }
+  },
+  {
+    "slug": "quota-limit",
+    "repo": "EdenGibson/wezterm-quota-limit",
+    "readme_name": "wezterm-quota-limit",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "5dd4ec735c5e7cae9b74e2907733514d46fa0289"
+    }
+  },
+  {
+    "slug": "replay",
+    "repo": "btrachey/wezterm-replay",
+    "readme_name": "wezterm-replay",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "936fc26b616ab151091f435c97b1e62cce0908f8"
+    }
+  },
+  {
+    "slug": "resurrect",
+    "repo": "MLFlexer/resurrect.wezterm",
+    "readme_name": "resurrect.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v1.0.0"
+    }
+  },
+  {
+    "slug": "ribbon",
+    "repo": "sravioli/ribbon.wz",
+    "readme_name": "ribbon.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.1.1"
+    }
+  },
+  {
+    "slug": "rosepine",
+    "repo": "neapsix/wezterm",
+    "readme_name": "rosepine",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "7b7dff56fea74454c4844f9bb4e59e0ec9cb468c"
+    }
+  },
+  {
+    "slug": "sessionizer",
+    "repo": "mikkasendke/sessionizer.wezterm",
+    "readme_name": "sessionizer.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v1.0.0"
+    }
+  },
+  {
+    "slug": "sigil",
+    "repo": "sravioli/sigil.wz",
+    "readme_name": "sigil.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.0.1"
+    }
+  },
+  {
+    "slug": "smart-splits",
+    "repo": "mrjones2014/smart-splits.nvim",
+    "readme_name": "smart-splits.nvim",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v2.0.5"
+    }
+  },
+  {
+    "slug": "smart-workspace-switcher",
+    "repo": "MLFlexer/smart_workspace_switcher.wezterm",
+    "readme_name": "smart_workspace_switcher.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.2.0"
+    }
+  },
+  {
+    "slug": "stack",
+    "repo": "bad-noodles/stack.wez",
+    "readme_name": "stack.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "237ce91593d15f457974fff516ad37fa076f7cfc"
+    }
+  },
+  {
+    "slug": "sync",
+    "repo": "dfsramos/wezterm-sync",
+    "readme_name": "wezterm-sync",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "da46378c11cbd51478111ad04a474bc1964eb01e"
+    }
+  },
+  {
+    "slug": "sync-panes",
+    "repo": "annie444/sync-panes.wez",
+    "readme_name": "sync-panes.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "2cfa9fea761e507b62a09daa1d8bef440a40265c"
+    }
+  },
+  {
+    "slug": "tabline",
+    "repo": "michaelbrusegard/tabline.wez",
+    "readme_name": "tabline.wez",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v1.6.0"
+    }
+  },
+  {
+    "slug": "tabsets",
+    "repo": "srackham/tabsets.wezterm",
+    "readme_name": "tabsets.wezterm",
+    "reviewed_ref": {
+      "kind": "tag",
+      "value": "v1.0.0"
+    }
+  },
+  {
+    "slug": "toggle-terminal",
+    "repo": "zsh-sage/toggle_terminal.wez",
+    "readme_name": "toggle_terminal.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "5eb0115d04cfd61351de2350c9af89616595c7c0"
+    }
+  },
+  {
+    "slug": "warp",
+    "repo": "sravioli/warp.wz",
+    "readme_name": "warp.wz",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "0.1.1"
+    }
+  },
+  {
+    "slug": "wez-pain-control",
+    "repo": "sei40kr/wez-pain-control",
+    "readme_name": "wez-pain-control",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "f11241a846af2aaec6d41ece80f429cae09e3b86"
+    }
+  },
+  {
+    "slug": "wez-tmux",
+    "repo": "sei40kr/wez-tmux",
+    "readme_name": "wez-tmux",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "d53fb08b8212d82c34abacfce167bfa79919bb41"
+    }
+  },
+  {
+    "slug": "wezterm-config",
+    "repo": "winter-again/wezterm-config.nvim",
+    "readme_name": "wezterm-config.nvim",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "53aebc69c74bbfd708ea07a3459c8ca6ef9d9432"
+    }
+  },
+  {
+    "slug": "wezterm-sessions",
+    "repo": "abidibo/wezterm-sessions",
+    "readme_name": "wezterm-sessions",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.7.1"
+    }
+  },
+  {
+    "slug": "wezterm-status",
+    "repo": "yriveiro/wezterm-status",
+    "readme_name": "wezterm-status",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "e53799372fb1f38c138b719fd39d9e41bb7b423d"
+    }
+  },
+  {
+    "slug": "wezterm-tabs",
+    "repo": "yriveiro/wezterm-tabs",
+    "readme_name": "wezterm-tabs",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "47e53745191048b970fe11752d7131842c0791f6"
+    }
+  },
+  {
+    "slug": "wezterm-theme-rotator",
+    "repo": "koh-sh/wezterm-theme-rotator",
+    "readme_name": "wezterm-theme-rotator",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "a3ce87f68f753a2a30d3a43e47c79b198fec2b1a"
+    }
+  },
+  {
+    "slug": "widgets",
+    "repo": "usrivastava92/widgets.wez",
+    "readme_name": "widgets.wez",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "0eaf01c12abcddc9d0973ed826692754c0b1cb50"
+    }
+  },
+  {
+    "slug": "workspace-picker",
+    "repo": "isseii10/workspace-picker.wezterm",
+    "readme_name": "workspace-picker.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "v0.2.0"
+    }
+  },
+  {
+    "slug": "workspacesionizer",
+    "repo": "vieitesss/workspacesionizer.wezterm",
+    "readme_name": "workspacesionizer.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "b6cc1b0b8beb58c2f2d8edf73113f5a0b6379c26"
+    }
+  },
+  {
+    "slug": "wsinit",
+    "repo": "JuanraCM/wsinit.wezterm",
+    "readme_name": "wsinit.wezterm",
+    "reviewed_ref": {
+      "kind": "release",
+      "value": "1.0.0"
+    }
+  }
+]

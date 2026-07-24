@@ -5,6 +5,7 @@ We will keep adding more community plugins as we find them.
 
 ### Supported Plugins
 
+<!-- plugin-docs:start -->
 - [ai-commander.wezterm](./ai-commander.md)
 - [ai-helper.wezterm](./ai-helper.md)
 - [bar.wezterm](./bar.md)
@@ -55,5 +56,6 @@ We will keep adding more community plugins as we find them.
 - [workspace-picker.wezterm](./workspace-picker.md)
 - [workspacesionizer.wezterm](./workspacesionizer.md)
 - [wsinit.wezterm](./wsinit.md)
+<!-- plugin-docs:end -->
 
 <!-- vim: set ts=2 sts=2 sw=2 et ai si sta: -->
