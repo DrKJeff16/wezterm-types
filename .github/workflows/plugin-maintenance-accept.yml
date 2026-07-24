@@ -1,7 +1,5 @@
 name: Accept Plugin Reviews
-
 run-name: Accept plugin review selection
-
 on:
   workflow_call:
     inputs:
@@ -9,16 +7,13 @@ on:
         description: JSON array of plugin and optional custom_commit objects
         required: true
         type: string
-
 concurrency:
   group: plugin-maintenance-accept
   cancel-in-progress: false
-
 permissions:
   contents: write
   issues: write
   pull-requests: write
-
 jobs:
   accept:
     runs-on: ubuntu-latest
@@ -32,7 +27,6 @@ jobs:
         with:
           ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
-
       - name: Validate acceptance specs
         run: |
           set -euo pipefail
@@ -53,13 +47,11 @@ jobs:
             | sort_by(.plugin)
           ' <<< "$ACCEPT_SPECS_JSON")
           echo "ACCEPT_SPECS_JSON=$canonical_specs" >> "$GITHUB_ENV"
-
       - name: Refresh selected upstream refs
         run: |
           set -euo pipefail
           mapfile -t plugins < <(jq -r '.[].plugin' <<< "$ACCEPT_SPECS_JSON")
           ./scripts/plugin-maintenance.sh sync "${plugins[@]}"
-
       - name: Resolve acceptance refs
         run: |
           set -euo pipefail
@@ -108,7 +100,6 @@ jobs:
           done < <(jq -c '.[]' <<< "$ACCEPT_SPECS_JSON")
 
           echo "ACCEPTANCES_JSON=$(jq -c 'sort_by(.plugin)' <<< "$acceptances")" >> "$GITHUB_ENV"
-
       - name: Record reviewed baselines
         id: update
         run: |
@@ -138,7 +129,6 @@ jobs:
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-
       - name: Prepare PR metadata
         if: steps.update.outputs.changed == 'true'
         id: pr
@@ -174,7 +164,6 @@ jobs:
           if [[ -n "$existing_pr" ]]; then
             echo "An acceptance PR already contains this metadata change: $existing_pr" >> "$GITHUB_STEP_SUMMARY"
           fi
-
       - name: Commit reviewed baselines
         if: steps.update.outputs.changed == 'true' && steps.pr.outputs.existing_pr == ''
         env:
@@ -195,7 +184,6 @@ jobs:
           git -c user.name="$BOT_NAME" -c user.email="$BOT_EMAIL" \
             commit -m "$COMMIT_MESSAGE"
           git push origin "HEAD:$BRANCH"
-
       - name: Open acceptance PR
         if: steps.update.outputs.changed == 'true' && steps.pr.outputs.existing_pr == ''
         env:
@@ -248,4 +236,5 @@ jobs:
             --title "$PR_TITLE" \
             --label plugin-maintenance \
             --body-file "$body")
+
           echo "Created acceptance PR: $pr_url" >> "$GITHUB_STEP_SUMMARY"

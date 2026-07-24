@@ -1,28 +1,20 @@
 name: Plugin Maintenance Commands
-
 run-name: Maintenance command from @${{ github.actor }}
-
 on:
   issue_comment:
     types:
       - created
-
 concurrency:
   group: plugin-maintenance-comment-${{ github.event.issue.number }}
   cancel-in-progress: false
-
 permissions:
   actions: write
   contents: read
   issues: write
-
 jobs:
   handle-maintenance-command:
     if: >-
-      github.event.issue.pull_request == null &&
-      github.event.issue.title == 'Plugin maintenance: upstream changes to review' &&
-      contains(github.event.issue.labels.*.name, 'plugin-maintenance') &&
-      (startsWith(github.event.comment.body, '/accept') ||
+      github.event.issue.pull_request == null && github.event.issue.title == 'Plugin maintenance: upstream changes to review' && contains(github.event.issue.labels.*.name, 'plugin-maintenance') && (startsWith(github.event.comment.body, '/accept') ||
        startsWith(github.event.comment.body, '/refresh') ||
        startsWith(github.event.comment.body, '/help'))
     runs-on: ubuntu-latest
@@ -105,7 +97,6 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID/reactions" \
             -f content=eyes >/dev/null
-
       - name: Acknowledge acceptance request
         if: steps.command.outputs.action == 'accept'
         env:
@@ -126,7 +117,6 @@ jobs:
           workflow_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body \
             "$(printf 'Acceptance requested for %s in one PR.\n\n[Track the maintenance command](%s).' "$selection" "$workflow_url")"
-
       - name: Dispatch maintenance refresh
         if: steps.command.outputs.action == 'refresh'
         run: |
@@ -139,7 +129,6 @@ jobs:
           workflow_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/workflows/plugin-maintenance.yml"
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body \
             "$(printf 'Maintenance refresh requested.\n\n[Track the maintenance workflow](%s).' "$workflow_url")"
-
       - name: Show command help
         if: steps.command.outputs.action == 'help'
         run: |
@@ -157,13 +146,11 @@ jobs:
           Commands work only on the dedicated `Plugin maintenance: upstream changes to review` issue and must be the only content in a comment. Acceptance commands create one PR when they change a reviewed baseline; they do not modify annotation files directly.
           EOF
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file "$body"
-
   accept-reviewed-refs:
     name: Accept reviewed refs
     needs: handle-maintenance-command
     if: >-
-      needs.handle-maintenance-command.outputs.accept_specs != '' &&
-      needs.handle-maintenance-command.outputs.accept_specs != '[]'
+      needs.handle-maintenance-command.outputs.accept_specs != '' && needs.handle-maintenance-command.outputs.accept_specs != '[]'
     permissions:
       contents: write
       issues: write

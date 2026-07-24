@@ -1,5 +1,4 @@
 name: Plugin Maintenance
-
 on:
   schedule:
     - cron: "0 17 * * 0"
@@ -28,23 +27,19 @@ on:
       - "metadata/plugins.json"
       - "scripts/plugin-maintenance.sh"
       - "scripts/templates/plugin-maintenance-*.tmpl"
-
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
-
       - name: Validate maintenance implementation
         run: |
           bash -n scripts/new-plugin.sh scripts/plugin-maintenance.sh
           shellcheck scripts/new-plugin.sh scripts/plugin-maintenance.sh
           ./scripts/plugin-maintenance.sh validate
-
       - name: Lint workflows
         run: go run github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
-
   build-report:
     # Pull requests stop after validation; report generation and publication are non-PR concerns.
     if: github.event_name != 'pull_request'
@@ -60,11 +55,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
-
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v6.0.0
-
       - name: Build maintenance report
         env:
           WEZTERM_TYPES_PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
@@ -72,12 +65,10 @@ jobs:
         run: |
           ./scripts/plugin-maintenance.sh sync
           ./scripts/plugin-maintenance.sh render-pages
-
       - name: Record report metadata
         id: report
         run: |
           echo "error_count=$(jq -r '.summary.error' "${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json")" >> "$GITHUB_OUTPUT"
-
       - name: Write workflow summary
         run: |
           jq -r '
@@ -102,12 +93,10 @@ jobs:
                 + " | \(.status) |"
             )
           ' "${PLUGIN_MAINTENANCE_BUILD_DIR}/report.json" >> "$GITHUB_STEP_SUMMARY"
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: .tmp/plugin-maintenance/pages
-
       - name: Upload report artifact
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v7.0.1
@@ -115,7 +104,6 @@ jobs:
           name: plugin-maintenance-report
           path: .tmp/plugin-maintenance/report.json
           retention-days: 1
-
   deploy-pages:
     needs: build-report
     runs-on: ubuntu-latest
@@ -129,7 +117,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5.0.0
-
   update-maintenance-digest:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     needs:
@@ -148,7 +135,6 @@ jobs:
         with:
           name: plugin-maintenance-report
           path: .tmp/plugin-maintenance
-
       - name: Render and update rolling digest
         run: |
           set -euo pipefail
@@ -243,7 +229,6 @@ jobs:
             } > "$body"
             gh issue edit "$issue_number" --repo "$GITHUB_REPOSITORY" --body-file "$body"
           fi
-
   report-health:
     if: always() && needs.build-report.result == 'success'
     needs:
@@ -262,13 +247,9 @@ jobs:
           [[ "$DEPLOY_RESULT" != "failure" ]] || { echo "GitHub Pages deployment failed" >&2; exit 1; }
           [[ "$DIGEST_RESULT" != "failure" ]] || { echo "Maintenance digest update failed" >&2; exit 1; }
           [[ "$ERROR_COUNT" == "0" ]] || { echo "$ERROR_COUNT upstream repositories could not be resolved" >&2; exit 1; }
-
   acknowledge-refresh:
     if: >-
-      always() &&
-      github.event_name == 'workflow_dispatch' &&
-      inputs.comment_id != '' &&
-      needs.report-health.result == 'success'
+      always() && github.event_name == 'workflow_dispatch' && inputs.comment_id != '' && needs.report-health.result == 'success'
     needs: report-health
     runs-on: ubuntu-latest
     permissions:
