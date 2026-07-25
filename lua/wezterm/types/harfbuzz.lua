@@ -1,5 +1,4 @@
 ---@meta
----@diagnostic disable:unused-local
 
 ---See the [Harfbuzz Features](https://learn.microsoft.com/en-us/typography/opentype/spec/featurelist).
 ---

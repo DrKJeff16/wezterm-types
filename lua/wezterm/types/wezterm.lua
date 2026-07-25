@@ -75,13 +75,11 @@
 ---   the event was triggered.
 ---
 ---See:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 ---
 ---@alias CallbackWindowPane fun(window: Window, pane: Pane)
 
----@alias WezTerm Wezterm
----@alias MouseEvent { Down: MouseEventInfo }|{ Drag: MouseEventInfo }|{ Up: MouseEventInfo }
 ---@alias BatteryInfo.State "Charging"|"Discharging"|"Empty"|"Full"|"Unknown"
 ---@alias ColorSpec { AnsiColor: AnsiColor }|{ Color: string }
 ---@alias FontStyle "Italic"|"Normal"|"Oblique"
@@ -93,13 +91,10 @@
 ---@alias GpuInfo.DeviceType "Cpu"|"DiscreteGpu"|"IntegratedGpu"|"Other"
 ---@alias Gradient.Blend "Hsv"|"LinearRgb"|"Oklab"|"Rgb"
 ---@alias Gradient.Interpolation "Basis"|"CatmullRom"|"Linear"
+---@alias GradientOrientation "Horizontal"|"Vertical"|{ Linear: LinearGradientOrientation }|{ Radial: RadialGradientOrientation }
+---@alias MouseEvent { Down: MouseEventInfo }|{ Drag: MouseEventInfo }|{ Up: MouseEventInfo }
 ---@alias TabBarColor.Underline "Double"|"None"|"Single"
-
----@alias GradientOrientation
----|"Horizontal"
----|"Vertical"
----|{ Linear: LinearGradientOrientation }
----|{ Radial: RadialGradientOrientation }
+---@alias WezTerm Wezterm
 
 ---@alias CursorStyle
 ---|"BlinkingBar"
@@ -480,8 +475,8 @@
 ---Argument type for `Wezterm.font()` and `Wezterm.font_with_fallback()`.
 ---
 ---@class FontFamilyAttributes: FontAttributesBase
----Setting this option to `true`, will overwrite the `style` option to `Italic`.
----Setting this option to `false` will overwrite the `style` option to `Normal`.
+---Setting this option to `true` will overwrite the `style` option to `Italic`.
+---Otherwise it will overwrite the `style` option to `Normal`.
 ---
 ---@field italic? boolean
 
@@ -571,6 +566,7 @@
 ---@field port string
 
 ---Corresponds to [`wgpu::AdapterInfo`](https://docs.rs/wgpu/latest/wgpu/struct.AdapterInfo.html).
+---
 ---@class GpuInfo
 ---@field backend GpuInfo.Backend
 ---@field device integer
@@ -606,8 +602,7 @@
 ---
 ---@field proxy_command string[]
 ---@field read_timeout integer
----If we decide that we need to start the server,
----the command to run to set that up.
+---If we decide that we need to start the server, the command to run to set that up.
 ---
 ---The default is to spawn:
 ---
@@ -622,13 +617,11 @@
 ---```
 ---
 ---@field serve_command string[]
----If `true`, bypass checking for secure ownership
----of the `socket_path`.
+---If `true`, bypass checking for secure ownership of `socket_path`.
 ---
----This is not recommended on a multi-user system,
----but is useful, for example, when running the server
----inside a WSL container but with the socket
----on the host NTFS volume.
+---This is not recommended on a multi-user system, but is useful, for example,
+---when running the server inside a WSL container but with the socket on
+---the host NTFS volume.
 ---
 ---@field skip_permissions_check boolean
 ---@field socket_path string
@@ -642,27 +635,23 @@
 ---@field timeout_milliseconds? integer
 
 ---@class HyperLinkRule
----Controls which parts of the regex match will be used
----to form the link.
+---Controls which parts of the regex match will be used to form the link.
 ---
----Must have a prefix: signaling the protocol type
----(e.g. `https:/mailto:`), which can either come from
----the regex match or needs to be explicitly added.
+---Must have a prefix: signaling the protocol type (e.g. `https:/mailto:`),
+---which can either come from the regex match or needs to be explicitly added.
 ---
----The format string can use placeholders like `$0`, `$1`, `$2` etc.
----that will be replaced with that numbered capture group.
----So, `$0` will take the entire region of text matched
----by the whole regex, while `$1` matches out
----the first capture group.
+---The format string can use placeholders like `$0`, `$1`, `$2` etc., that will be replaced
+---with that numbered capture group. So, `$0` will take the entire region of text matched
+---by the whole regex, while `$1` matches out the first capture group.
 ---
 ---@field format string
----Specifies the range of the matched text that should be
----highlighted/underlined when the mouse hovers over the link.
+---Specifies the range of the matched text that should be highlighted/underlined
+---when the mouse hovers over the link.
 ---
 ---The value is a number that corresponds to a capture group in the regex.
 ---
----The default is `0`, highlighting the entire region of text
----matched by the regex.
+---The default is `0`, highlighting the entire region of text matched by the regex.
+---
 ---`1` would be the first capture group, and so on...
 ---
 ---@field highlight? number
@@ -678,8 +667,7 @@
 ---
 ---@field serial string
 ---@field state BatteryInfo.State
----The battery level expressed as a number between `0.0` (empty)
----and `1.0` (full).
+---The battery level expressed as a number between `0.0` (empty) and `1.0` (full).
 ---
 ---@field state_of_charge number
 ---If discharing, how long until the battery is empty (in seconds).
@@ -704,9 +692,8 @@
 ---The brief description for the entry.
 ---
 ---@field brief string
----A long description that may be shown after the entry,
----or that may be used in future versions of WezTerm to provide
----more information about the command.
+---A long description that may be shown after the entry, or that may be used
+---in future versions of WezTerm to provide more information about the command.
 ---
 ---@field doc? string
 ---**(OPTIONAL)** Nerd Fonts glyph name to use for the icon for the entry.
@@ -794,32 +781,30 @@
 ---You will typically place:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require("wezterm")
 ---```
 ---
 ---at the top of your configuration file to enable it.
 ---
 ---@class Wezterm: ExecDomain
----`wezterm.GLOBAL` is a special `userdata` value that acts
----like a table.
----Writing to keys will copy the data that you assign
----into a global in-memory table and allow it to be read back later.
+---`wezterm.GLOBAL` is a special `userdata` value that acts like a table.
 ---
----Provides global, in-process, in-memory, data storage
----for JSON-like variables that persists across config reloads.
+---Writing to keys will copy the data that you assign into a global in-memory table
+---and allow it to be read back later.
 ---
----WezTerm's Lua files may be re-loaded and re-evaluated
----multiple times in different contexts or in different threads.
----If you'd like to keep track of state that lasts
----for the lifetime of your wezterm process then
----you cannot simply use global variables in the Lua script.
+---Provides global, in-process, in-memory, data storage for JSON-like variables
+---that persist across config reloads.
 ---
----Reads and writes from/to `wezterm.GLOBAL` are thread-safe
----but don't currently provide synchronization primitives for managing
----read-modify-write operations.
+---WezTerm's Lua files may be re-loaded and re-evaluated multiple times in
+---different contexts or in different threads.
+---
+---If you'd like to keep track of state that lasts for the lifetime of your wezterm process,
+---then you cannot simply use global variables in the Lua script.
+---
+---Reads and writes from/to `wezterm.GLOBAL` are thread-safe but can't currently provide
+---synchronization primitives for managing read-modify-write operations.
 ---
 ---You may store values with the following types:
----
 --- -  `string`
 --- -  `number`
 --- -  `table`
@@ -828,43 +813,36 @@
 ---**Attempting to assign other types will raise an error.**
 ---
 ---@field GLOBAL table<string, string|number|table|boolean>
----Helper for defining key assignment actions
----in your configuration file.
+---Helper for defining key assignment actions in your configuration file.
 ---
----This is really just sugar for the underlying Lua ==> Rust
----deserialation mapping that makes it a bit easier to identify
----where syntax errors may exist in your configuration file.
+---This is really just sugar for the underlying `Lua ==> Rust` deserialation mapping
+---that makes it a bit easier to identify where syntax errors may exist in your configuration.
 ---
 ---For more information, see:
---- - [`KeyAssignment`](lua://KeyAssignment)
 --- - [`Action`](lua://Action)
+--- - [`KeyAssignment`](lua://KeyAssignment)
 ---
 ---@field action KeyAssignment
----The `wezterm.color` module exposes functions
----that work with colors.
+---The `wezterm.color` module exposes functions that work with colors.
 ---
 ---For more information, see:
 --- - [`Wezterm.Color`](lua://Wezterm.Color)
 ---
 ---@field color Wezterm.Color
----This constant is set to the path to the directory
----in which your `wezterm.lua` configuration file was found.
+---This constant is set to the path to the directory in which your `wezterm.lua`
+---configuration file was found.
 ---
 ---@field config_dir string
----This constant is set to the path to the `wezterm.lua`
----that is in use.
+---This constant is set to the path to the `wezterm.lua` that is in use.
 ---
 ---@field config_file string
----This constant is set to the directory containing
----the wezterm executable file.
+---This constant is set to the directory containing the WezTerm executable file.
 ---
 ---@field executable_dir string
----The `wezterm.gui` module exposes functions that operate
----on the GUI layer.
+---The `wezterm.gui` module exposes functions that operate on the GUI layer.
 ---
----The multiplexer may not be connected to a GUI,
----so attempting to resolve this module from the mux server
----will return `nil`.
+---The multiplexer may not be connected to a GUI, so attempting to resolve this module
+---from the mux server will return `nil`.
 ---
 ---For more information, see:
 --- - [`Wezterm.Gui`](lua://Wezterm.Gui)
@@ -879,55 +857,49 @@
 --- - [`Wezterm.NerdFont`](lua://Wezterm.NerdFont)
 ---
 ---@field nerdfonts Wezterm.NerdFont
----The `wezterm.plugin` module provides functions
----to manage WezTerm plugins.
+---The `wezterm.plugin` module provides functions to manage WezTerm plugins.
 ---
 ---For more information, see:
 --- - [`Wezterm.Plugin`](lua://Wezterm.Plugin)
 ---
 ---@field plugin Wezterm.Plugin
----The `wezterm.procinfo` module exposes functions
----that allow querying information about processes
----that are running on the local system.
+---The `wezterm.procinfo` module exposes functions that allow querying information about
+---processes that are running on the local system.
 ---
 ---For more information, see:
 --- - [`Wezterm.ProcInfo`](lua://Wezterm.ProcInfo)
 ---
 ---@field procinfo Wezterm.ProcInfo
----The `wezterm.serde` module provides functions for parsing
----the given string as JSON, YAML, or TOML, returning
----the corresponding Lua values, and vice versa.
+---The `wezterm.serde` module provides functions for parsing the given string
+---as JSON, YAML, or TOML, returning the corresponding Lua values, and vice-versa.
 ---
 ---For more information, see:
 --- - [`Wezterm.Serde`](lua://Wezterm.Serde)
 ---
 ---@field serde Wezterm.Serde
----This constant is set to the Rust target triple for
----the platform on which wezterm was built.
+---This constant is set to the Rust target triple for the platform on which
+---WezTerm was built.
 ---
----This can be useful when you wish to conditionally adjust
----your configuration based on the platform.
+---This can be useful when you wish to conditionally adjust your configuration
+---based on the platform.
 ---
 ---@field target_triple string
----The `wezterm.time` module exposes functions that allow
----working with time.
+---The `wezterm.time` module exposes functions that allow working with time.
 ---
 ---For more information, see:
 --- - [`Wezterm.Time`](lua://Wezterm.Time)
 ---
 ---@field time Wezterm.Time
----The `wezterm.url` module exposes functions that allow
----working with URLs.
+---The `wezterm.url` module exposes functions that allow working with URLs.
 ---
 ---For more information, see:
 --- - [`Wezterm.Url`](lua://Wezterm.Url)
 ---
 ---@field url Wezterm.Url
----This constant is set to the wezterm version string
----that is also reported by running `wezterm -V`.
+---This constant is set to the wezterm version string that is also reported
+---by running `wezterm -V`.
 ---
----This can potentially be used to adjust configuration
----according to the installed version.
+---This can potentially be used to adjust configuration according to the installed version.
 ---
 ---@field version string
 local M = {}
@@ -947,15 +919,19 @@ local M = {}
 ---  return wezterm.action.EmitEvent(event_id)
 ---end
 ---```
+---
 ---@param callback function|CallbackWindowPane|CallbackInputSelector|CallbackPromptInputLine
 ---@return { EmitEvent: string } event
 function M.action_callback(callback) end
 
 ---Adds path to the list of files that are watched for config changes.
 ---
----If [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
----is enabled, then the config will be reloaded
----when any of the files that have been added to the watch list have changed.
+---If `config.automatically_reload_config`
+---is enabled, then the config will be reloaded when any of the files
+---that have been added to the watch list have changed.
+---
+---See:
+--- - [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
 ---
 ---@param path string
 function M.add_to_config_reload_watch_list(path) end
@@ -965,21 +941,18 @@ function M.add_to_config_reload_watch_list(path) end
 ---@param args string[]
 function M.background_child_process(args) end
 
----Returns the battery information for each of the
----installed batteries on the system.
+---Returns the battery information for each of the installed batteries on the system.
 ---
----This is useful for example to assemble status information
----for the status bar.
+---This is useful for example to assemble status information for the status bar.
 ---
 ---@return BatteryInfo[] info
 function M.battery_info() end
 
----Given a `string` parameter, returns the number of columns
----that text occupies in the terminal.
+---Given a `string` parameter, returns the number of columns that text occupies
+---in the terminal.
 ---
----This is useful together with the `"format-tab-title"`
----and `"update-right-status"` events to compute/layout tabs
----and status information.
+---This is useful together with the `"format-tab-title"` and `"update-right-status"` events
+---to compute/layout tabs and status information.
 ---
 ---@param value string
 ---@return number width
@@ -1034,8 +1007,7 @@ function M.default_ssh_domains() end
 function M.default_wsl_domains() end
 
 ---`wezterm.emit` resolves the registered callback(s) for the specified event name
----and calls each of them in turn, passing the additional arguments
----through to the callback.
+---and calls each of them in turn, passing the additional arguments through to the callback.
 ---
 ---If a callback returns `false` then it prevents later callbacks from being called
 ---for this particular call to `wezterm.emit`, and `wezterm.emit` will return `false`
@@ -1044,7 +1016,7 @@ function M.default_wsl_domains() end
 ---If none of the callbacks returned `false` then `wezterm.emit` will itself return `true`
 ---to indicate that default processing should take place.
 ---
----This function has no special knowledge of which events are defined by wezterm,
+---This function has no special knowledge of which events are defined by WezTerm,
 ---or what their required arguments might be.
 ---
 ---For more information on event handling, see:
@@ -1071,11 +1043,8 @@ function M.enumerate_ssh_hosts(ssh_config_file_name) end
 ---`FontAttributes` struct that is used to select a single named font:
 ---
 ---```lua
----local wezterm = require 'wezterm'
----
----return {
----  font = wezterm.font 'JetBrains Mono',
----}
+---local wezterm = require("wezterm")
+---return { font = wezterm.font 'JetBrains Mono' }
 ---```
 ---
 ---The first parameter is the name of the font; the name can be one of the following types of names:
@@ -1118,12 +1087,12 @@ function M.font(font, attributes) end
 ---This example shows how to disable the default ligature feature just for this particular font:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require('wezterm')
 ---return {
----  font = wezterm.font {
+---  font = wezterm.font({
 ---    family = 'JetBrains Mono',
 ---    harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
----  },
+---  }),
 ---}
 ---```
 ---
@@ -1131,21 +1100,23 @@ function M.font(font, attributes) end
 --- - [`FontFamilyAttributes`](lua://FontFamilyAttributes)
 --- - [`TextStyleAttributes`](lua://TextStyleAttributes)
 --- - [`TextStyle`](lua://TextStyle)
+--- - [`wezterm.font()`](lua://Wezterm.font)
 ---
 ---@param font FontFamilyAttributes
 ---@param attributes? TextStyleAttributes
 ---@return TextStyle
 function M.font(font, attributes) end
 
----This function constructs a lua table that configures a font with fallback processing.
+---This function constructs a Lua table that configures a font with fallback processing.
 ---Glyphs are looked up in the first font in the list but if missing the next font is checked and so on.
 ---
 ---The first parameter is a table listing the fonts in their preferred order.
----The fonts can be specified by the their family or using the alternative form where the family and attributes
----are specified as part of the same lua table:
+---
+---The fonts can be specified by the their family or using the alternative form
+---where the family and attributes are specified as part of the same Lua table:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require("wezterm")
 ---return {
 ---  font = wezterm.font_with_fallback {
 ---  {
@@ -1187,7 +1158,7 @@ function M.format(...) end
 
 ---While this function is still valid, it is recommended to use instead:
 ---
---- - [`wezterm.color.get_builtin_schemes`](lua://Wezterm.Color.get_builtin_schemes)
+--- - [`wezterm.color.get_builtin_schemes()`](lua://Wezterm.Color.get_builtin_schemes)
 ---
 --- ---
 ---Returns a Lua table keyed by color scheme name and whose values are
@@ -1198,14 +1169,13 @@ function M.format(...) end
 ---a couple of entries from your `wezterm.lua` configuration file.
 ---
 ---@return table<string, Palette> builtin
----@deprecated
+---@deprecated Use `wezterm.color.get_builtin_color_schemes()` instead
 function M.get_builtin_color_schemes() end
 
 ---This function evalutes the glob pattern and returns an array
 ---containing the absolute file names of the matching results.
 ---
----Due to limitations in the Lua bindings,
----all of the paths must be able to be represented
+---Due to limitations in the Lua bindings, all of the paths must be able to be represented
 ---as `UTF-8` or this function will generate an error.
 ---
 ---@param pattern string
@@ -1216,14 +1186,12 @@ function M.glob(pattern, relative_to) end
 ---This function was moved to `wezterm.color.gradient`.
 ---In addition, the returned colors are now of `Color` type.
 ---
---- ---
----Given a gradient spec (`gradient`) and a number of colors
----(`num_colors`), returns a table holding that many colors
----spaced evenly across the range of the gradient.
+------
+---Given a gradient spec (`gradient`) and a number of colors (`num_colors`), returns a table
+---holding that many colors spaced evenly across the range of the gradient.
 ---
----This is useful, for instance, for generating colors for tabs,
----or doing something fancy like interpolating colors across a gradient
----based on the time of the day.
+---This is useful, for instance, for generating colors for tabs, or doing something fancy
+---like interpolating colors across a gradient based on the time of the day.
 ---
 ---See:
 --- - [`Color`](lua://Color)
@@ -1232,7 +1200,7 @@ function M.glob(pattern, relative_to) end
 ---@param gradient Gradient
 ---@param num_colors number
 ---@return Color[]
----@deprecated
+---@deprecated Use `wezterm.color.gradient()` instead
 function M.gradient_colors(gradient, num_colors) end
 
 ---@param action string
@@ -1256,12 +1224,11 @@ function M.json_parse(value) end
 ---
 ---If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
 ---
----If running as a daemon for the multiplexer server then it will be logged
----to the daemon output path.
+---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require 'wezterm'
----wezterm.log_error 'Hello!'
+---local wezterm = require("wezterm")
+---wezterm.log_error('Hello!')
 ---```
 ---
 ---See also:
@@ -1281,8 +1248,8 @@ function M.log_error(msg, ...) end
 ---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require 'wezterm'
----wezterm.log_info 'Hello!'
+---local wezterm = require("wezterm")
+---wezterm.log_info('Hello!')
 ---```
 ---
 ---See also:
@@ -1294,21 +1261,20 @@ function M.log_error(msg, ...) end
 function M.log_info(msg, ...) end
 
 ---This function logs the provided message string through wezterm's logging layer
----at the `'WARN'` level, which can be displayed via the
----[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---at the `'WARN'` level, which can be displayed via the [`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
 ---
 ---If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
 ---
 ---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require 'wezterm'
----wezterm.log_warn 'Hello!'
+---local wezterm = require("wezterm")
+---wezterm.log_warn('Hello!')
 ---```
 ---
 ---See also:
---- - [`wezterm.log_info()`](lua://Wezterm.log_info)
 --- - [`wezterm.log_error()`](lua://Wezterm.log_error)
+--- - [`wezterm.log_info()`](lua://Wezterm.log_info)
 ---
 ---@param msg string
 ---@param ... any
@@ -1324,9 +1290,9 @@ function M.log_warn(msg, ...) end
 ---The `wezterm.emit()` function and the `EmitEvent` key assignment can be used to emit events.
 ---
 ---See:
---- - [`Window`](lua://Window)
---- - [`Pane`](lua://Pane)
 --- - [`EmitEvent`](lua://KeyAssignment.EmitEvent)
+--- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 --- - [`wezterm.emit()`](lua://Wezterm.emit)
 ---
 ---@param event string
@@ -1340,9 +1306,9 @@ function M.on(event, callback) end
 ---   in which the event was triggered
 ---
 ---See:
---- - [`Window`](lua://Window)
---- - [`Pane`](lua://Pane)
 --- - [`EmitEvent`](lua://KeyAssignment.EmitEvent)
+--- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 ---
 ---@param event string
 ---@param callback CallbackWindowPane
@@ -1376,16 +1342,15 @@ function M.on(event, callback) end
 ---   rather it could be in an unfocused pane or tab
 ---
 ------
----The `"bell"` event is emitted when the ASCII `BEL` sequence
----is emitted to a pane in the window.
+---The `"bell"` event is emitted when the ASCII `BEL` sequence is emitted to a pane
+---in the window.
 ---
 ---Defining an event handler doesn't alter wezterm's handling of the bell;
----the event supplements it and allows you
----to take additional action over the configured behavior.
+---the event supplements it and allows you to take additional action over the configured behavior.
 ---
 ---See:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 ---
 ---@param event "bell"
 ---@param callback CallbackWindowPane
@@ -1393,20 +1358,20 @@ function M.on(event, callback) end
 
 ---The parameters to the event are:
 ---
---- - `tab`: The `TabInformation` for the active tab
---- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
---- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
 --- - `config`: The effective configuration for the window
 --- - `hover`: `true` if the current tab is in the hover state
---- - `max_width`: The maximum number of cells available to draw this tab
----              when using the retro tab bar style
+--- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
+--- - `tab`: The `TabInformation` for the active tab
+--- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
+--- - `max_width`: The maximum number of cells available to draw this tab when using
+---              the retro tab bar style
 ---
 ---The return value of the event can be:
 ---
 --- - A string, holding the text to use for the tab title
 --- - A `FormatItem` object as used in the `wezterm.format()` function.
----   This allows formatting style and color information
----   for individual elements within the tab
+---   This allows formatting style and color information for individual elements
+---   within the tab
 ---
 ---If the event encounters an error, or returns something that is not
 ---one of the types mentioned above, then the default tab title text
@@ -1439,8 +1404,8 @@ function M.on(event, callback) end
 ---
 ---See:
 --- - [`FormatItem`](lua://FormatItem)
---- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
 --- - [`wezterm.format()`](lua://Wezterm.format)
+--- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
 ---
 ---@param event "format-tab-title"
 ---@param callback fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: integer): string|FormatItem
@@ -1448,14 +1413,14 @@ function M.on(event, callback) end
 
 ---The parameters to the event are:
 ---
---- - `tab`: The `TabInformation` object for the active tab
---- - `pane`: The `PaneInformation` object for the active pane
---- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
---- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
 --- - `config`: The effective configuration for the window
+--- - `pane`: The `PaneInformation` object for the active pane
+--- - `panes`: An array containing `PaneInformation` objects for each of the panes in the active tab
+--- - `tab`: The `TabInformation` object for the active tab
+--- - `tabs`: An array containing `TabInformation` objects for each of the tabs in the window
 ---
----The return value of the event should be a `string`,
----and if it is then it will be used as the title text in the window title bar.
+---The return value of the event should be a `string`, and if it is then it will be used
+---as the title text in the window title bar.
 ---
 ---If the event encounters an error, or returns something that is not a `string`,
 ---then the default window title text will be computed and used instead.
@@ -1472,8 +1437,11 @@ function M.on(event, callback) end
 ---
 ---The most notable consequence of this is that some functions that are asynchronous
 ---(e.g. `wezterm.run_child_process()`) are not possible to call from inside
----the event handler and will generate a
----`format-window-title: runtime error: attempt to yield from outside a coroutine` error.
+---the event handler and will generate the following error:
+---
+---```
+---format-window-title: runtime error: attempt to yield from outside a coroutine
+---```
 ---
 ---For more information, see:
 --- - [`wezterm.run_child_process()`](lua://Wezterm.run_child_process)
@@ -1541,8 +1509,7 @@ function M.on(event, callback) end
 ---The hook can return one of the following values:
 --- - `true`: to indicate that this process tree is considered to be stateful
 ---         and that the user should be prompted before terminating the pane
---- - `false`: to indicate that the process tree can be terminated
----          without prompting the user
+--- - `false`: to indicate that the process tree can be terminated without prompting the user
 ---
 ---Any other value means to use the default behavior,
 ---which is to consider the configuration option:
@@ -1567,14 +1534,14 @@ function M.on(event, callback) end
 ---Example:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require("wezterm")
 ---local mux = wezterm.mux
 ---
 ----- this is called by the mux server when it starts up.
 ----- It makes a window split top/bottom
 ---wezterm.on('mux-startup', function()
----  local tab, pane, window = mux.spawn_window {}
----  pane:split { direction = 'Top' }
+---  local tab, pane, window = mux.spawn_window({})
+---  pane:split({ direction = 'Top' })
 ---end)
 ---
 ---return {
@@ -1659,7 +1626,7 @@ function M.on(event, callback) end
 ---
 ---@param event "update-right-status"
 ---@param callback CallbackWindowPane
----@deprecated
+---@deprecated Use the `"update-status"` event instead
 function M.on(event, callback) end
 
 --- - The first event parameter is a `Window` object that represents the GUI window
@@ -1698,7 +1665,7 @@ function M.on(event, callback) end
 ---Then, if you have this in your config:
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require("wezterm")
 ---
 ---wezterm.on('user-var-changed', function(window, pane, name, value)
 ---  wezterm.log_info('var', name, value)
@@ -2081,8 +2048,8 @@ function M.reload_configuration() end
 ---the `stdout` data and the `stderr` data.
 ---
 ---```lua
----local wezterm = require 'wezterm'
----local success, stdout, stderr = wezterm.run_child_process { 'ls', '-l' }
+---local wezterm = require("wezterm")
+---local success, stdout, stderr = wezterm.run_child_process({ 'ls', '-l' })
 ---```
 ---
 ---See also:
@@ -2102,7 +2069,7 @@ function M.run_child_process(args) end
 ---(such as filesystem capabilities) that you may wish to probe for in the configuration.
 ---
 ---```lua
----local wezterm = require 'wezterm'
+---local wezterm = require("wezterm")
 ---
 ---wezterm.log_error(
 ---  'System '
