@@ -76,6 +76,7 @@
 ---@field backend? AgentDeck.Notifications.Backend
 ---@field enabled? boolean
 ---@field on_waiting? boolean
+---@field suppress_osc_notifications? boolean
 ---@field terminal_notifier? AgentDeck.Notifications.TerminalNotifier
 ---@field timeout_ms? integer
 
