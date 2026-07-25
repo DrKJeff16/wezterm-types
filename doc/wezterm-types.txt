@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 July 24
+*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 July 25
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
