@@ -37,6 +37,7 @@
 ---@field priority? WeztermAttentionOpts.Attention[]
 ---@field renderer? WeztermAttentionOpts.Renderer
 ---@field review_key? WeztermAttentionOpts.ReviewKey
+---@field stale_after_ms? { thinking: integer }|false
 ---@field title_formatter? WeztermAttention.TitleFormatter
 
 ---@class WeztermAttention
@@ -67,6 +68,11 @@ function M.remove_marker(pane_id, opts) end
 ---
 ---Call from your own `update-status` handler if you set `auto_poll` to `false`,
 ---or if WezTerm only fires one handler.
+---
+---Only refreshes entries for panes in the current window. Cross-window cache entries
+---are left alone — pruning them here would cause cache thrash when multiple windows fire
+---`update-status` (each window would wipe the other's entries every tick, producing visible
+---tab-indicator blinking). Stale entries are cleaned up by the pane-destroyed handler.
 ---
 ---@param window Window
 ---@param opts? WeztermAttentionOpts
