@@ -8,5 +8,7 @@
 /.github/workflows/plugin-maintenance-comment.yml @lalvarezt
 /.github/workflows/plugin-maintenance.yml @lalvarezt
 /.github/workflows/stylua.yml @DrKJeff16
+/metadata/ @lalvarezt
 /scripts/ @DrKJeff16
+/scripts/templates/ @lalvarezt
 /scripts/plugin-maintenance.sh @lalvarezt
