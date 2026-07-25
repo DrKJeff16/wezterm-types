@@ -119,6 +119,9 @@ jobs:
         uses: actions/deploy-pages@v5
   update-maintenance-digest:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    concurrency:
+      group: plugin-maintenance-digest
+      cancel-in-progress: false
     needs:
       - build-report
       - deploy-pages
@@ -204,16 +207,35 @@ jobs:
           gh label create plugin-maintenance --repo "$GITHUB_REPOSITORY" \
             --color D4A72C --description "Automated plugin upstream review" --force
 
-          issue_json=$(gh issue list --repo "$GITHUB_REPOSITORY" \
-            --state all --label plugin-maintenance --limit 100 --json number,title,state \
-            --jq '[.[] | select(.title == env.DIGEST_TITLE)][0] // {}')
+          issue_json=$(
+            gh api --paginate \
+              "repos/$GITHUB_REPOSITORY/issues?state=all&per_page=100" |
+              jq -sc --arg title "$DIGEST_TITLE" '
+                add
+                | map(select(
+                    (has("pull_request") | not)
+                    and .title == $title
+                    and ((.body // "") | startswith("<!-- plugin-maintenance-digest -->"))
+                  ))
+                | if length > 1 then
+                    error("Multiple plugin maintenance digest issues found")
+                  elif length == 1 then
+                    {number: .[0].number, state: (.[0].state | ascii_upcase)}
+                  else
+                    {}
+                  end
+              '
+          )
           issue_number=$(jq -r '.number // empty' <<< "$issue_json")
           issue_state=$(jq -r '.state // empty' <<< "$issue_json")
 
           if (( outstanding > 0 )); then
             if [[ -z "$issue_number" ]]; then
-              gh issue create --repo "$GITHUB_REPOSITORY" \
-                --title "$DIGEST_TITLE" --label plugin-maintenance --body-file "$body"
+              issue_url=$(gh issue create --repo "$GITHUB_REPOSITORY" \
+                --title "$DIGEST_TITLE" --body-file "$body")
+              issue_number=${issue_url##*/}
+              [[ "$issue_url" == */issues/"$issue_number" && "$issue_number" =~ ^[0-9]+$ ]] \
+                || { echo "Invalid maintenance digest issue URL: $issue_url" >&2; exit 1; }
             else
               gh issue edit "$issue_number" --repo "$GITHUB_REPOSITORY" --body-file "$body"
               if [[ "$issue_state" == "CLOSED" ]]; then
@@ -228,6 +250,16 @@ jobs:
               echo "No upstream changes require review as of \`$(jq -r '.checked_at' "$report")\`."
             } > "$body"
             gh issue edit "$issue_number" --repo "$GITHUB_REPOSITORY" --body-file "$body"
+          fi
+
+          if [[ -n "$issue_number" ]]; then
+            has_label=$(gh api "repos/$GITHUB_REPOSITORY/issues/$issue_number" \
+              --jq '[.labels[].name] | index("plugin-maintenance") != null')
+            if [[ "$has_label" != "true" ]]; then
+              gh api --method POST \
+                "repos/$GITHUB_REPOSITORY/issues/$issue_number/labels" \
+                -f 'labels[]=plugin-maintenance' >/dev/null
+            fi
           fi
   report-health:
     if: always() && needs.build-report.result == 'success'
