@@ -16,6 +16,9 @@ contributing code, knowing what to do in specific cases, etc.
 - [Recommendations](#recommendations)
   - [`pre-commit`](#pre-commit)
 - [Annotations Guide](#annotations-guide)
+  - [Types](#types)
+  - [Aliases](#aliases)
+  - [Class Definitions](#class-definitions)
 
 ---
 
@@ -74,7 +77,7 @@ annotations.
 - Commit then push your changes. Make your PR afterwards.
   - Your commit message must look like this:
     ```
-    feat(PLUGIN-NAME): add type annotations
+    feat(plugins.PLUGIN-NAME): add type annotations
     ```
 
 ### Plugin Maintenance
@@ -251,10 +254,9 @@ local l ---@type string|nil
 ---@alias Str string
 ```
 
-- If your alias can be turned into a enum, prefer using one:
+- If your alias has multiple types, use a newline as described below:
 
 ```lua
----AVOID THIS
 ---@alias MyChoices
 ---|"0"
 ---|"1"
@@ -290,46 +292,6 @@ local l ---@type string|nil
 ---|"31"
 ---|"32"
 ---|"33"
-
----CORRECT
----Replace the values for whatever you need, if at all.
----@enum (key) MyChoices
-local choices = {
-  ["0"] = 1,
-  ["1"] = 1,
-  ["2"] = 1,
-  ["3"] = 1,
-  ["4"] = 1,
-  ["5"] = 1,
-  ["6"] = 1,
-  ["7"] = 1,
-  ["8"] = 1,
-  ["9"] = 1,
-  ["10"] = 1,
-  ["11"] = 1,
-  ["12"] = 1,
-  ["13"] = 1,
-  ["14"] = 1,
-  ["15"] = 1,
-  ["16"] = 1,
-  ["17"] = 1,
-  ["18"] = 1,
-  ["19"] = 1,
-  ["20"] = 1,
-  ["21"] = 1,
-  ["22"] = 1,
-  ["23"] = 1,
-  ["24"] = 1,
-  ["25"] = 1,
-  ["26"] = 1,
-  ["27"] = 1,
-  ["28"] = 1,
-  ["29"] = 1,
-  ["30"] = 1,
-  ["31"] = 1,
-  ["32"] = 1,
-  ["33"] = 1,
-}
 ```
 
 - Use brackets in your aliases wisely!
@@ -342,6 +304,16 @@ local choices = {
 ---
 ---The `fun(): ...` type is a bit funny (AKA a headache)
 ---@alias ListOrFunction (fun(): string)|string[]
+```
+
+### Class Definitions
+
+When defining a class, make sure to include all the public elements:
+
+```lua
+---@class MyClass
+---@field foo string
+---@field bar? boolean
 ```
 
 [conventional_commits]: https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13
