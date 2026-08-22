@@ -4,8 +4,8 @@
 ---@alias UserListFormat "json"|"text"
 
 ---@class PassRelay.UserListSpec
----@field format? UserListFormat
 ---@field command? string
+---@field format? UserListFormat
 ---@field id_path? string
 ---@field label_path? string
 
@@ -14,7 +14,7 @@
 ---@field mods string
 
 ---@class PassRelayOpts
----@field debug? 1|nil
+---@field debug? integer
 ---@field get_password string|fun(user: string): password: string
 ---@field get_userlist? string|fun(): user_list: string[]
 ---@field hotkey? PassRelayOpts.Hotkey
@@ -26,10 +26,16 @@ local M = {}
 ---@param window Window
 ---@param pane Pane
 ---@param module_settings PassRelayOpts
-function M.exec_password_manager(window, pane, module_settings) end
+---@param bypass_local_echo_check? boolean
+function M._continue_password(window, pane, module_settings, bypass_local_echo_check) end
 
 ---@param config Config
 ---@param module_settings PassRelayOpts
 function M.apply_to_config(config, module_settings) end
+
+---@param window Window
+---@param pane Pane
+---@param module_settings PassRelayOpts
+function M.exec_password_manager(window, pane, module_settings) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
