@@ -3,7 +3,7 @@
 
 ---@alias WeztermAttentionOpts.Attention "notify"|"review"|"stop"|"thinking"
 ---@alias WeztermAttentionOpts.Renderer "manual"|"tab"
----@alias WeztermAttention.TitleFormatter fun(tab: TabInformation, ctx: WeztermAttention.WrapTitleFormatterCtx): string
+---@alias WeztermAttention.TitleFormatter fun(tab: TabInformation, ctx: WeztermAttention.WrapTitleFormatterCtx): title: string
 
 ---@class WeztermAttention.WrapTitleFormatterCtx
 ---@field attention string[]|string
@@ -30,6 +30,7 @@
 ---@field thinking_frames? string[]
 
 ---@class WeztermAttentionOpts
+---@field acknowledge_types? ("notify"|"stop"|string)[]
 ---@field auto_clear? WeztermAttentionOpts.Attention[]
 ---@field colors? WeztermAttentionOpts.Colors
 ---@field dir? string
@@ -40,8 +41,24 @@
 ---@field stale_after_ms? { thinking: integer }|false
 ---@field title_formatter? WeztermAttention.TitleFormatter
 
+---@class WeztermAttention.Internal
+local I = {}
+
+---@param pane_id integer
+---@param opts? WeztermAttentionOpts|{ now_ms?: integer }|{ write_acknowledgement?: fun(dir: string, pane_id: string, identity: string): success: boolean }
+---@return "absent"|"acknowledged"|"failed"|"kept" acknowledge_type
+function I.acknowledge_focused_pane(pane_id, opts) end
+
+---@param pane_ids string[]
+---@param opts? WeztermAttentionOpts
+---@return { color?: string, indicator: string, type?: string } visible_attention
+function I.resolve_visible_attention(pane_ids, opts) end
+
 ---@class WeztermAttention
+---@field private _active_acknowledge_set table<string, boolean>
+---@field private _active_colors WeztermAttentionOpts.Colors
 ---@field private _active_dir string
+---@field private _internal WeztermAttention.Internal
 local M = {}
 
 ---@param config Config
@@ -54,8 +71,8 @@ function M.apply_to_config(config, opts) end
 ---
 ---@param pane_id integer
 ---@param opts? WeztermAttentionOpts
----@return string|nil type
----@return integer|nil frame
+---@return string|nil|? type
+---@return integer|nil|? frame
 function M.get_attention(pane_id, opts) end
 
 ---Remove the attention marker for a pane.
