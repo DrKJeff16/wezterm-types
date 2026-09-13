@@ -1,4 +1,4 @@
-*wezterm-types.txt*         For NVIM >=v0.7.0        Last change: 2026 July 25
+*wezterm-types.txt*      For NVIM >=v0.7.0      Last change: 2026 September 13
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -129,6 +129,10 @@ This project also features type annotations for various WezTerm plugins.
 
   modal.wezterm                      docs/modal.md:h wezterm-types-plugin.modal.txt      [Status][Reviewed
                                                                                          baseline][Latest
+                                                                                         upstream]
+
+  nu-utf8-hack.wezterm               docs/nu-utf8-hack.md:h                              [Status][Reviewed
+                                     wezterm-types-plugin.nu-utf8-hack.txt               baseline][Latest
                                                                                          upstream]
 
   passrelay.wezterm                  docs/passrelay.md:h                                 [Status][Reviewed
