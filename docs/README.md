@@ -19,6 +19,7 @@ We will keep adding more community plugins as we find them.
 - [log.wz](./log.md)
 - [memo.wz](./memo.md)
 - [modal.wezterm](./modal.md)
+- [nu-utf8-hack.wezterm](./nu-utf8-hack.md)
 - [passrelay.wezterm](./passrelay.md)
 - [pinned-tabs.wezterm](./pinned-tabs.md)
 - [pivot_panes.wezterm](./pivot-panes.md)
