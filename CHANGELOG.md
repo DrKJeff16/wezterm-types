@@ -1,5 +1,35 @@
 # Changelog
 
+## [v5.0.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v5.0.0-1) (2026-09-13)
+
+[Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.3.0-1...v5.0.0-1)
+
+**Implemented enhancements:**
+
+- feat\(plugin.nu\_utf8\_hack\): add type annotations [\#191](https://github.com/DrKJeff16/wezterm-types/pull/191) ([DrKJeff16](https://github.com/DrKJeff16))
+- fix\(plugins.attention\): updated type annotations [\#189](https://github.com/DrKJeff16/wezterm-types/pull/189) ([DrKJeff16](https://github.com/DrKJeff16))
+- fix\(plugins.passrelay\): update type annotations [\#185](https://github.com/DrKJeff16/wezterm-types/pull/185) ([DrKJeff16](https://github.com/DrKJeff16))
+- fix\(plugins.kanagawa\): updated type annotations for `kanagawa.wz` [\#174](https://github.com/DrKJeff16/wezterm-types/pull/174) ([DrKJeff16](https://github.com/DrKJeff16))
+- feat\(plugin-maintenance\): introduce plugin management workflow [\#172](https://github.com/DrKJeff16/wezterm-types/pull/172) ([lalvarezt](https://github.com/lalvarezt))
+
+**Fixed bugs:**
+
+- fix\(plugin-maintenance\): prevent duplicate maintenance labels [\#184](https://github.com/DrKJeff16/wezterm-types/pull/184) ([lalvarezt](https://github.com/lalvarezt))
+
+**Merged pull requests:**
+
+- chore\(attention\): record reviewed upstream release:v0.6.0 [\#190](https://github.com/DrKJeff16/wezterm-types/pull/190) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(passrelay\): record reviewed upstream commit:f3ec52a2d7638ec9fa9f654b4dd2cc43284ef703 [\#188](https://github.com/DrKJeff16/wezterm-types/pull/188) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(wezterm-tabs\): record reviewed upstream commit:09c21a3524eba274be756bf741e353b149d8d15b [\#183](https://github.com/DrKJeff16/wezterm-types/pull/183) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(wezterm-status\): record reviewed upstream commit:76041f6487d4fad83313798fcee800464c16bde5 [\#182](https://github.com/DrKJeff16/wezterm-types/pull/182) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(quota-limit\): record reviewed upstream commit:2349fdb49bf06b54c36fa7a2b841b39e0265cb5c [\#181](https://github.com/DrKJeff16/wezterm-types/pull/181) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(wezterm-config\): record reviewed upstream commit:be1fa045daea1957127464ce2fe07588997006f8 [\#180](https://github.com/DrKJeff16/wezterm-types/pull/180) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(attention\): record reviewed upstream release:v0.5.0 [\#179](https://github.com/DrKJeff16/wezterm-types/pull/179) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(agent-deck\): record reviewed upstream commit:0bdd442bbe1c4a8d310580819a98790d0d66e670 [\#178](https://github.com/DrKJeff16/wezterm-types/pull/178) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(warp\): record reviewed upstream release:0.1.3 [\#177](https://github.com/DrKJeff16/wezterm-types/pull/177) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(smart-splits\): record reviewed upstream release:v2.1.0 [\#176](https://github.com/DrKJeff16/wezterm-types/pull/176) ([github-actions[bot]](https://github.com/apps/github-actions))
+- chore\(kanagawa\): record reviewed upstream release:1.0.3 [\#175](https://github.com/DrKJeff16/wezterm-types/pull/175) ([github-actions[bot]](https://github.com/apps/github-actions))
+
 ## [v4.3.0-1](https://github.com/DrKJeff16/wezterm-types/tree/v4.3.0-1) (2026-06-23)
 
 [Full Changelog](https://github.com/DrKJeff16/wezterm-types/compare/v4.2.0-1...v4.3.0-1)
