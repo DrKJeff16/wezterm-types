@@ -153,6 +153,15 @@
     }
   },
   {
+    "slug": "nu-utf8-hack",
+    "repo": "KawaiiSelbst/nu_utf8_hack.wez",
+    "readme_name": "nu-utf8-hack.wezterm",
+    "reviewed_ref": {
+      "kind": "commit",
+      "value": "237310500276b860751271fa95201a74461a4cdb"
+    }
+  },
+  {
     "slug": "passrelay",
     "repo": "dfaerch/passrelay.wezterm",
     "readme_name": "passrelay.wezterm",

@@ -237,6 +237,19 @@ jobs:
           ignorerawblocks: true
           docmapping: false
           docmappingprojectname: false
+      - name: Run panvimdoc for nu-utf8-hack.md
+        uses: kdheepak/panvimdoc@v4.0.1
+        with:
+          vimdoc: wezterm-types-plugin.nu-utf8-hack
+          description: "`nu-utf8-hack` types"
+          pandoc: docs/nu-utf8-hack.md
+          toc: false
+          demojify: true
+          dedupsubheadings: false
+          treesitter: true
+          ignorerawblocks: true
+          docmapping: false
+          docmappingprojectname: false
       - name: Run panvimdoc for passrelay.md
         uses: kdheepak/panvimdoc@v4.0.1
         with:
