@@ -1,5 +1,4 @@
 ---@meta
----@diagnostic disable:unused-local
 
 ---@alias Colorschemes
 ---|"Abernathy"

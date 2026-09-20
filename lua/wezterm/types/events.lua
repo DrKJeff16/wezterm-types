@@ -1,5 +1,4 @@
 ---@meta
----@diagnostic disable:unused-local
 
 ---@alias GuiEvent "gui-attached"|"gui-startup"
 ---@alias TabsetsEvent "delete_tabset"|"load_tabset"|"rename_tabset"|"save_tabset"

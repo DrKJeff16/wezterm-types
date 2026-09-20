@@ -1,5 +1,4 @@
 ---@meta wezterm
----@diagnostic disable:unused-local
 
 ---@module "wezterm.types.config"
 ---@module "wezterm.types.events"
@@ -896,7 +895,7 @@
 --- - [`Wezterm.Url`](lua://Wezterm.Url)
 ---
 ---@field url Wezterm.Url
----This constant is set to the wezterm version string that is also reported
+---This constant is set to the WezTerm version string that is also reported
 ---by running `wezterm -V`.
 ---
 ---This can potentially be used to adjust configuration according to the installed version.
@@ -979,7 +978,7 @@ function M.default_hyperlink_rules() end
 ---
 ---Each host will have both a plain SSH and a multiplexing SSH domain
 ---generated and returned in the list of domains.
----The former don't require wezterm to be installed on the remote host,
+---The former don't require WezTerm to be installed on the remote host,
 ---while the latter do require it.
 ---
 ---The intended purpose of this function is to give you the opportunity
@@ -1006,20 +1005,21 @@ function M.default_ssh_domains() end
 ---@return WslDomain[] domains
 function M.default_wsl_domains() end
 
----`wezterm.emit` resolves the registered callback(s) for the specified event name
+---`wezterm.emit()` resolves the registered callback(s) for the specified event name
 ---and calls each of them in turn, passing the additional arguments through to the callback.
 ---
 ---If a callback returns `false` then it prevents later callbacks from being called
----for this particular call to `wezterm.emit`, and `wezterm.emit` will return `false`
----to indicate that no additional/default processing should take place.
+---for this particular call to `wezterm.emit()` so it will return `false` to indicate that
+---no additional/default processing should take place.
 ---
----If none of the callbacks returned `false` then `wezterm.emit` will itself return `true`
+---If none of the callbacks returned `false` then `wezterm.emit()` will itself return `true`
 ---to indicate that default processing should take place.
 ---
----This function has no special knowledge of which events are defined by WezTerm,
----or what their required arguments might be.
+---This function has no special knowledge of which events are defined by WezTerm, or what
+---their required arguments might be.
 ---
 ---For more information on event handling, see:
+---- [`wezterm.emit()`](lua://Wezterm.emit)
 ---- [`wezterm.on`](lua://Wezterm.on)
 ---
 ---@param event string
@@ -1043,7 +1043,7 @@ function M.enumerate_ssh_hosts(ssh_config_file_name) end
 ---`FontAttributes` struct that is used to select a single named font:
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---return { font = wezterm.font 'JetBrains Mono' }
 ---```
 ---
@@ -1087,7 +1087,7 @@ function M.font(font, attributes) end
 ---This example shows how to disable the default ligature feature just for this particular font:
 ---
 ---```lua
----local wezterm = require('wezterm')
+---local wezterm = require('wezterm') ---@type Wezterm
 ---return {
 ---  font = wezterm.font({
 ---    family = 'JetBrains Mono',
@@ -1116,7 +1116,7 @@ function M.font(font, attributes) end
 ---where the family and attributes are specified as part of the same Lua table:
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---return {
 ---  font = wezterm.font_with_fallback {
 ---  {
@@ -1150,7 +1150,7 @@ function M.font_with_fallback(fonts, attributes) end
 ---Can be used to produce a formatted string with terminal graphic attributes
 ---such as `bold`, `italic` and `colors`.
 ---
----The result is a string with wezterm-compatible escape sequences embedded.
+---The result is a string with WezTerm-compatible escape sequences embedded.
 ---
 ---@param ... FormatItem[]
 ---@return string str
@@ -1161,22 +1161,21 @@ function M.format(...) end
 --- - [`wezterm.color.get_builtin_schemes()`](lua://Wezterm.Color.get_builtin_schemes)
 ---
 --- ---
----Returns a Lua table keyed by color scheme name and whose values are
----the color scheme definition of the builtin color schemes.
+---Returns a Lua table keyed by color scheme name and whose values are the color scheme definition
+---of the builtin color schemes.
 ---
----This is useful for programmatically deciding things about the scheme
----to use based on its color, or for taking a scheme and overriding
----a couple of entries from your `wezterm.lua` configuration file.
+---This is useful for programmatically deciding things about the scheme to use based on its color,
+---or for taking a scheme and overriding a couple of entries from your configuration file.
 ---
 ---@return table<string, Palette> builtin
 ---@deprecated Use `wezterm.color.get_builtin_color_schemes()` instead
 function M.get_builtin_color_schemes() end
 
----This function evalutes the glob pattern and returns an array
----containing the absolute file names of the matching results.
+---This function evalutes the glob pattern and returns an array containing the absolute file names
+---of the matching results.
 ---
----Due to limitations in the Lua bindings, all of the paths must be able to be represented
----as `UTF-8` or this function will generate an error.
+---Due to limitations in the Lua bindings, all of the paths must be able to be represented as `UTF-8`
+---or this function will generate an error.
 ---
 ---@param pattern string
 ---@param relative_to? string
@@ -1218,16 +1217,15 @@ function M.json_encode(value) end
 ---@return any data
 function M.json_parse(value) end
 
----This function logs the provided message string through wezterm's logging layer
----at `'ERROR'` level, which can be displayed via the
----[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---This function logs the provided message string through WezTerm's logging layer at `'ERROR'`
+---level, which can be displayed via the [`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
 ---
----If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---If you started WezTerm from a terminal that text will print to the `stdout` of that terminal.
 ---
 ---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---wezterm.log_error('Hello!')
 ---```
 ---
@@ -1239,16 +1237,15 @@ function M.json_parse(value) end
 ---@param ... any
 function M.log_error(msg, ...) end
 
----This function logs the provided message string through wezterm's logging layer
----at the `'INFO'` level, which can be displayed via the
----[`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---This function logs the provided message string through WezTerm's logging layer at the `'INFO'`
+---level, which can be displayed via the [`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
 ---
----If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---If you started WezTerm from a terminal that text will print to the `stdout` of that terminal.
 ---
 ---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---wezterm.log_info('Hello!')
 ---```
 ---
@@ -1260,15 +1257,15 @@ function M.log_error(msg, ...) end
 ---@param ... any
 function M.log_info(msg, ...) end
 
----This function logs the provided message string through wezterm's logging layer
----at the `'WARN'` level, which can be displayed via the [`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
+---This function logs the provided message string through WezTerm's logging layer at the `'WARN'`
+---level, which can be displayed via the [`ShowDebugOverlay`](https://wezterm.org/config/lua/keyassignment/ShowDebugOverlay.html) action.
 ---
----If you started wezterm from a terminal that text will print to the `stdout` of that terminal.
+---If you started WezTerm from a terminal that text will print to the `stdout` of that terminal.
 ---
 ---If running as a daemon for the multiplexer server then it will be logged to the daemon output path.
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---wezterm.log_warn('Hello!')
 ---```
 ---
@@ -1342,11 +1339,10 @@ function M.on(event, callback) end
 ---   rather it could be in an unfocused pane or tab
 ---
 ------
----The `"bell"` event is emitted when the ASCII `BEL` sequence is emitted to a pane
----in the window.
+---The `"bell"` event is emitted when the ASCII `BEL` sequence is emitted to a pane in the window.
 ---
----Defining an event handler doesn't alter wezterm's handling of the bell;
----the event supplements it and allows you to take additional action over the configured behavior.
+---Defining an event handler doesn't alter WezTerm's handling of the bell; the event supplements it
+---and allows you to take additional action over the configured behavior.
 ---
 ---See:
 --- - [`Pane`](lua://Pane)
@@ -1383,9 +1379,8 @@ function M.on(event, callback) end
 ---and then call the event again for the set of tabs,
 ---this time with appropriate hover and max_width values.
 ---
----Only the first `"format-tab-title"` event will be executed;
----it doesn't make sense to define multiple instances of the event
----with multiple `wezterm.on("format-tab-title", ...)` calls.
+---Only the first `"format-tab-title"` event will be executed; it doesn't make sense to define
+---multiple instances of the event with multiple `wezterm.on("format-tab-title", ...)` calls.
 ---
 --- ---
 ---The `"format-tab-title"` event is emitted when the text for a tab title
@@ -1425,15 +1420,14 @@ function M.on(event, callback) end
 ---If the event encounters an error, or returns something that is not a `string`,
 ---then the default window title text will be computed and used instead.
 ---
----Only the first `"format-window-title"` event will be executed;
----it doesn't make sense to define multiple instances of the event
----with multiple `wezterm.on("format-window-title", ...)` calls.
+---Only the first `"format-window-title"` event will be executed; it doesn't make sense to define
+---multiple instances of the event with multiple `wezterm.on("format-window-title", ...)` calls.
 ---
 ---The `"format-window-title"` event is emitted when the text for the window title
 ---needs to be recomputed.
 ---
----This event is a bit special in that it is synchronous and must return
----as quickly as possible in order to avoid blocking the GUI thread.
+---This event is a bit special in that it is synchronous and must return as quickly as possible
+---in order to avoid blocking the GUI thread.
 ---
 ---The most notable consequence of this is that some functions that are asynchronous
 ---(e.g. `wezterm.run_child_process()`) are not possible to call from inside
@@ -1469,51 +1463,47 @@ function M.on(event, callback) end
 ---@param callback fun(domain: MuxDomain|ExecDomain)
 function M.on(event, callback) end
 
----The `gui-startup` event is emitted once when the GUI server
----is starting up when running the `wezterm start` subcommand.
+---The `gui-startup` event is emitted once when the GUI server is starting up when running
+---the `wezterm start` subcommand.
 ---
----If no explicit program was passed to `wezterm start`,
----and if the `gui-startup` event causes any panes to be created
----then those will take precedence
----over the default program configuration
+---If no explicit program was passed to `wezterm start`, and if the `gui-startup` event causes
+---any panes to be created then those will take precedence over the default program configuration
 ---and no additional default program will be spawned.
 ---
----This event is useful for starting a set of programs in a
----standard configuration to save you the effort of doing it
----manually each time.
+---This event is useful for starting a set of programs in a standard configuration
+---to save you the effort of doing it manually each time.
 ---
 --- - It is triggered before any default program is started
---- - This event fires before `gui-attached`
+--- - This event fires before `'gui-attached'`
 --- - This event does not fire for `wezterm connect` invocations
---- - The event receives an optional `SpawnCommand` argument
----   that corresponds to any arguments that may have been passed
----   via `wezterm start`
+--- - The event receives an optional `SpawnCommand` argument that corresponds to any arguments
+---   that may have been passed via `wezterm start`
 ---
----The intent is for you to use the information in the command object
----to spawn a new window, but you can choose to use or ignore it
----as suits your purpose.
+---The intent is for you to use the information in the command object to spawn a new window,
+---but you can choose to use or ignore it as suits your purpose.
 ---
 ---@param event "gui-startup"
 ---@param callback fun(cmd?: SpawnCommand)
 function M.on(event, callback) end
 
----The `mux-is-process-stateful` event is emitted when the multiplexer layer
----wants to determine whether a given `Pane` can be closed without prompting the user.
+---The `mux-is-process-stateful` event is emitted when the multiplexer layer wants to determine
+---whether a given `Pane` can be closed without prompting the user.
 ---
----This event is synchronous and must return as quickly as possible
----in order to avoid blocking the multiplexer.
+---This event is synchronous and must return as quickly as possible in order to avoid
+---blocking the multiplexer.
 ---
----The event is passed a `LocalProcessInfo` object representing the process
----that corresponds to the pane.
+---The event is passed a `LocalProcessInfo` object representing the process that corresponds
+---to the pane.
 ---
 ---The hook can return one of the following values:
---- - `true`: to indicate that this process tree is considered to be stateful
----         and that the user should be prompted before terminating the pane
---- - `false`: to indicate that the process tree can be terminated without prompting the user
 ---
----Any other value means to use the default behavior,
----which is to consider the configuration option:
----[`skip_close_confirmation_for_processes_named`](lua://Config.skip_close_confirmation_for_processes_named)
+--- - `false`: to indicate that the process tree can be terminated without prompting the user
+--- - `true`: to indicate that this process tree is considered to be stateful and that the user
+---         should be prompted before terminating the pane
+---
+---Any other value means to use the default behavior, which is to consider the configuration option:
+---
+----[`config.skip_close_confirmation_for_processes_named`](lua://Config.skip_close_confirmation_for_processes_named)
 ---
 ---@param event "mux-is-process-stateful"
 ---@param callback fun(info: LocalProcessInfo): boolean
@@ -1523,24 +1513,22 @@ function M.on(event, callback) end
 ---
 ---It is triggered before any default program is started.
 ---
----If the `mux-startup` event causes any panes to be created then
----those will take precedence over the default program configuration
----and no additional default program will be spawned.
+---If the `mux-startup` event causes any panes to be created then those will take precedence
+---over the default program configuration and no additional default program will be spawned.
 ---
----This event is useful for starting a set of programs in a
----standard configuration to save you the effort of
----manually doing it each time.
+---This event is useful for starting a set of programs in a standard configuration to save you
+---the effort of manually doing it each time.
 ---
 ---Example:
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---local mux = wezterm.mux
 ---
 ----- this is called by the mux server when it starts up.
 ----- It makes a window split top/bottom
 ---wezterm.on('mux-startup', function()
----  local tab, pane, window = mux.spawn_window({})
+---  local _, pane = mux.spawn_window({})
 ---  pane:split({ direction = 'Top' })
 ---end)
 ---
@@ -1605,22 +1593,20 @@ function M.on(event, callback) end
 --- - The first event parameter is a `Window` object that represents the GUI window
 --- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
----There is no defined return value for the event, but its purpose is
----to allow you the chance to carry out some activity and then ultimately call
----`Window:set_right_status()`.
+---There is no defined return value for the event, but its purpose is to allow you the chance
+---to carry out some activity and then ultimately call `Window:set_right_status()`.
 ---
----WezTerm will ensure that only a single instance of this event is outstanding;
----if the hook takes longer than the `config.status_update_interval` to complete,
----`wezterm` won't schedule another call until `config.status_update_interval` time
----has elapsed since the last call completed.
+---WezTerm will ensure that only a single instance of this event is outstanding; if the hook
+---takes longer than the `config.status_update_interval` to complete, `wezterm` won't schedule
+---another call until `config.status_update_interval` time has elapsed since the last call completed.
 ---
 ------
 ---The `"update-right-status"` event is emitted periodically
 ---(based on the interval specified by `config.status_update_interval`).
 ---
 ---For more information, see:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 --- - [`Window:set_right_status()`](lua://Window.set_right_status)
 --- - [`config.status_update_interval`](lua://Config.status_update_interval)
 ---
@@ -1636,18 +1622,17 @@ function M.on(event, callback) end
 ---to allow you the chance to carry out some activity and then ultimately call
 ---`Window:set_left_status()`.
 ---
----WezTerm will ensure that only a single instance of this event is outstanding;
----if the hook takes longer than the `config.status_update_interval` to complete,
----`wezterm` won't schedule another call until `config.status_update_interval` time
----has elapsed since the last call completed.
+---WezTerm will ensure that only a single instance of this event is outstanding; if the hook
+---takes longer than `config.status_update_interval` to complete, `wezterm` won't schedule
+---another call until `config.status_update_interval` time has elapsed since the last call completed.
 ---
 ------
 ---The `"update-left-status"` event is emitted periodically
 ---(based on the interval specified by `config.status_update_interval`).
 ---
 ---For more information, see:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 --- - [`Window:set_left_status()`](lua://Window.set_left_status)
 --- - [`config.status_update_interval`](lua://Config.status_update_interval)
 ---
@@ -1659,14 +1644,14 @@ function M.on(event, callback) end
 ---to set the user var named `foo` to the value `bar`:
 ---
 ---```sh
+---# Shell script
 ---printf "\033]1337;SetUserVar=%s=%s\007" foo `echo -n bar | base64`
 ---```
 ---
 ---Then, if you have this in your config:
 ---
 ---```lua
----local wezterm = require("wezterm")
----
+---local wezterm = require("wezterm") ---@type Wezterm
 ---wezterm.on('user-var-changed', function(window, pane, name, value)
 ---  wezterm.log_info('var', name, value)
 ---end)
@@ -1687,11 +1672,11 @@ function M.on(event, callback) end
 ---@param callback fun(window: Window, pane: Pane, name: string, value: string)
 function M.on(event, callback) end
 
----This event is _fire-and-forget_ from the perspective of wezterm;
----it fires the event to advise of the config change, but has no other expectations.
+---This event is _fire-and-forget_ from Wezterm's perspective; it fires the event to advise
+---of the config change, but has no other expectations.
 ---
----If you call `Window:set_config_overrides()` from inside this event callback
----then an additional `window-config-reloaded` event will be triggered.
+---If you call `Window:set_config_overrides()` from inside this event callback then an additional
+---`window-config-reloaded` event will be triggered.
 ---
 ---You should take care to avoid creating a loop by only calling `Window:set_config_overrides()`
 ---when the actual override values are changed.
@@ -1700,17 +1685,17 @@ function M.on(event, callback) end
 --- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
 ------
----The `"window-config-reloaded"` event is emitted when the configuration for
----a window has been reloaded.
+---The `"window-config-reloaded"` event is emitted when the configuration for a window
+---has been reloaded.
 ---
 ---This can occur when the configuration file is detected as changed
----(when `config.automatically_reload_config` is enabled), when the configuration
----is explicitly reloaded via the `ReloadConfiguration` key action, and when
----`Window:set_config_overrides()` is called for the window.
+---(when `config.automatically_reload_config` is enabled), when the configuration is explicitly
+---reloaded via the `ReloadConfiguration` key action, and when `Window:set_config_overrides()`
+---is called for the window.
 ---
 ---For more information, see:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 --- - [`Window:set_config_overrides()`](lua://Window.set_config_overrides)
 --- - [`config.automatically_reload_config`](lua://Config.automatically_reload_config)
 ---
@@ -1718,19 +1703,18 @@ function M.on(event, callback) end
 ---@param callback CallbackWindowPane
 function M.on(event, callback) end
 
----This event is _fire-and-forget_ from the perspective of wezterm;
----it fires the event to advise of the config change, but has no other expectations.
+---This event is _fire-and-forget_ from WezTerm's perspective; it fires the event to advise
+---of the config change, but has no other expectations.
 ---
 --- - The first event parameter is a `Window` object that represents the GUI window
 --- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
 ------
----The `"window-focus-changed"` event is emitted when the focus state
----for a window is changed.
+---The `"window-focus-changed"` event is emitted when the focus state for a window is changed.
 ---
 ---For more information, see:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 ---
 ---@param event "window-focus-changed"
 ---@param callback CallbackWindowPane
@@ -1739,17 +1723,16 @@ function M.on(event, callback) end
 --- - The first event parameter is a `Window` object that represents the GUI window
 --- - The second event parameter is a `Pane` object that represents the active pane in that window
 ---
----The `"window-resized"` event is emitted when the window is resized
----and when transitioning between full-screen and regular windowed mode.
+---The `"window-resized"` event is emitted when the window is resized and when transitioning
+---between full-screen and regular windowed mode.
 ---
 ---The event is triggered asynchronously with respect to the potentially-ongoing
----live resize operation. `wezterm` will coalesce the stream of multiple events
----generated by a live resize such that there can be
----a maximum of 1 event executing and 1 event buffered.
+---live resize operation. `wezterm` will coalesce the stream of multiple events generated by a live
+---resize such that there can be a maximum of one executing event, and one buffered event.
 ---
 ---For more information, see:
---- - [`Window`](lua://Window)
 --- - [`Pane`](lua://Pane)
+--- - [`Window`](lua://Window)
 ---
 ---@param event "window-resized"
 ---@param callback CallbackWindowPane
@@ -1801,15 +1784,15 @@ function M.on(event, callback) end
 
 ---============================== modal.wezterm ====================================
 
----This is for `modal.wezterm only!`
+---This is for `modal.wezterm` only!
 ---
----@param event "modal.enter"
+---@param event "modal.enter" This is for `modal.wezterm` only!
 ---@param callback fun(name: string, window: Window, pane: Pane)
 function M.on(event, callback) end
 
----This is for `modal.wezterm only!`
+---This is for `modal.wezterm` only!
 ---
----@param event "modal.exit"
+---@param event "modal.exit" This is for `modal.wezterm` only!
 ---@param callback fun(name: string, window: Window, pane: Pane)
 function M.on(event, callback) end
 
@@ -1817,11 +1800,15 @@ function M.on(event, callback) end
 
 ---===================== smart_workspace_switcher.wezterm ==========================
 
----@param event "smart_workspace_switcher.workspace_switcher.chosen"
+---This is for `smart_workspace_switcher.wezterm` only!
+---
+---@param event "smart_workspace_switcher.workspace_switcher.chosen" This is for `smart_workspace_switcher.wezterm` only!
 ---@param callback fun(window: MuxWindow, workspace: string)
 function M.on(event, callback) end
 
----@param event "smart_workspace_switcher.workspace_switcher.created"
+---This is for `smart_workspace_switcher.wezterm` only!
+---
+---@param event "smart_workspace_switcher.workspace_switcher.created" This is for `smart_workspace_switcher.wezterm` only!
 ---@param callback fun(window: MuxWindow, workspace: string)
 function M.on(event, callback) end
 
@@ -1831,25 +1818,25 @@ function M.on(event, callback) end
 
 ---This is for `tabsets.wezterm` only!
 ---
----@param event "delete_tabset"
+---@param event "delete_tabset" This is for `tabsets.wezterm` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---This is for `tabsets.wezterm` only!
 ---
----@param event "load_tabset"
+---@param event "load_tabset" This is for `tabsets.wezterm` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---This is for `tabsets.wezterm` only!
 ---
----@param event "rename_tabset"
+---@param event "rename_tabset" This is for `tabsets.wezterm` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---This is for `tabsets.wezterm` only!
 ---
----@param event "save_tabset"
+---@param event "save_tabset" This is for `tabsets.wezterm` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
@@ -1859,94 +1846,90 @@ function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "delete_session"
+---@param event "delete_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window, pane: Pane)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "edit_session"
+---@param event "edit_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window, pane: Pane)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "fork_session"
+---@param event "fork_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window, pane: Pane)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "load_session"
+---@param event "load_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window, pane: Pane)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "restore_session"
+---@param event "restore_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "save_session"
+---@param event "save_session" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---This is for `wezterm-sessions` only!
 ---
----@param event "toggle_autosave"
+---@param event "toggle_autosave" This is for `wezterm-sessions` only!
 ---@param callback fun(window: Window)
 function M.on(event, callback) end
 
 ---=================================================================================
 
----This function opens the specified `path_or_url` with
----either the specified application or the default application
----if `application` was not passed in.
+---This function opens the specified `path_or_url` with either the specified application,
+---or the default application if `application` was not passed in.
 ---
 ---```lua
------ Opens a URL in your default browser
----wezterm.open_with('http://example.com')
+---local wezterm = require("wezterm") ---@type Wezterm
 ---
------ Opens a URL specifically in firefox
----wezterm.open_with('http://example.com', 'firefox')
+---wezterm.open_with('http://example.com') -- Opens a URL in your default browser
+---wezterm.open_with('http://example.com', 'firefox') -- Opens a URL specifically in Firefox
 ---```
 ---
 ---@param path_or_url string
 ---@param application? string
 function M.open_with(path_or_url, application) end
 
----Returns a copy of a string `s` that is at least
----`min_width` columns as measured by `wezterm.column_width()`.
+---Returns a copy of a string `s` that is at least `min_width` columns as measured
+---by `wezterm.column_width()`.
 ---
----If the string `s` is shorter than `min_width`, spaces are added
----to the left end of the string.
+---If the string `s` is shorter than `min_width`, spaces are added to the left end of the string.
 ---
 ---For example, `wezterm.pad_left("o", 3)` returns `" o"`.
 ---
 ---See also:
 --- - [`wezterm.column_width()`](lua://Wezterm.column_width)
---- - [`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
 --- - [`wezterm.pad_right()`](lua://Wezterm.pad_right)
+--- - [`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
 ---
 ---@param s string
 ---@param min_width integer
 ---@return string str
 function M.pad_left(s, min_width) end
 
----Returns a copy of a string `s` that is at least
----`min_width` columns as measured by `wezterm.column_width()`.
+---Returns a copy of a string `s` that is at least `min_width` columns as measured
+---by `wezterm.column_width()`.
 ---
----If the string `s` is shorter than `min_width`, spaces are added
----to the right end of the string.
+---If the string `s` is shorter than `min_width`, spaces are added to the right end of the string.
 ---
 ---For example, `wezterm.pad_right("o", 3)` returns `"o "`.
 ---
 ---See also:
 --- - [`wezterm.column_width()`](lua://Wezterm.column_width)
---- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
 --- - [`wezterm.pad_left()`](lua://Wezterm.pad_left)
+--- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
 ---
 ---@param s string
 ---@param min_width integer
@@ -1956,26 +1939,27 @@ function M.pad_right(s, min_width) end
 ---This function is intended to help with generating `KeyBinding` entries.
 ---These should apply regardless of the combination of modifier keys pressed.
 ---
----For each combination of modifiers, the supplied `table` value `T`
----is copied with a `mods = <value>` entry:
----
+---For each combination of modifiers, the supplied `table` value `T` is copied with
+---a `mods = <value>` entry:
 --- - `CTRL`
 --- - `ALT`
 --- - `SHIFT`
 --- - `SUPER`
 ---
----An entry for `NONE` is **NOT** generated. This is the only difference
----between `wezterm.permute_any_or_no_mods()` `wezterm.permute_any_mods()`.
+---An entry for `NONE` is **NOT** generated.
 ---
----Either a `KeyBinding` array or a `MouseBinding` is returned.
+---This is the only difference between `wezterm.permute_any_or_no_mods()` and
+---`wezterm.permute_any_mods()`.
 ---
----See:
+---Either a `KeyBinding` or a `MouseBinding` array is returned.
+---
+---For more information, see:
 --- - [`KeyBinding`](lua://KeyBinding)
 --- - [`MouseBinding`](lua://MouseBinding)
 --- - [`wezterm.permute_any_or_no_mods()`](lua://Wezterm.permute_any_or_no_mods)
 ---
 ---@param T table
----@return (MouseBinding|KeyBinding)[] bindings
+---@return MouseBinding[]|KeyBinding[] bindings
 function M.permute_any_mods(T) end
 
 ---This function is intended to help with generating `KeyBinding` entries.
@@ -2023,11 +2007,10 @@ function M.permute_any_or_no_mods(T) end
 ---@return MouseBinding[] mouse_bindings
 function M.permute_any_or_no_mods(T) end
 
----Returns an array containing the absolute file name paths of
----the directory `path` specified.
+---Returns an array containing the absolute file name paths of the directory `path` specified.
 ---
----Due to limitations in the Lua bindings, all of the paths must be able
----to be represented as `UTF-8` or this function will generate an error.
+---Due to limitations in the Lua bindings, all of the paths must be able to be represented as `UTF-8`
+---or this function will generate an error.
 ---
 ---@param path string
 ---@return string[] fire_paths
@@ -2035,8 +2018,8 @@ function M.read_dir(path) end
 
 ---Immediately causes the configuration to be reloaded and re-applied.
 ---
----**If you call this at the file scope in your config you are in danger of creating
----an infinite loop that renders WezTerm unresponsive.**
+---**If you call this at the file scope in your config you are in danger of creating an infinite loop
+---that renders WezTerm unresponsive.**
 ---
 ---The intent is for this to be used from an event or timer callback function.
 ---
@@ -2048,7 +2031,7 @@ function M.reload_configuration() end
 ---the `stdout` data and the `stderr` data.
 ---
 ---```lua
----local wezterm = require("wezterm")
+---local wezterm = require("wezterm") ---@type Wezterm
 ---local success, stdout, stderr = wezterm.run_child_process({ 'ls', '-l' })
 ---```
 ---
@@ -2061,16 +2044,15 @@ function M.reload_configuration() end
 ---@return string stderr The `stderr` data as a `string`
 function M.run_child_process(args) end
 
----This function returns a `boolean` indicating whether it is believed that WezTerm
----runs in a WSL container.
+---This function returns a `boolean` indicating whether it is believed that WezTerm runs
+---in a WSL container.
 ---
----In such an environment, `wezterm.target_triple` will indicate that the process
----is running in Linux with some slight differences in system behavior
----(such as filesystem capabilities) that you may wish to probe for in the configuration.
+---In such an environment, `wezterm.target_triple` will indicate that the process is running
+---in Linux with some slight differences in system behavior (such as filesystem capabilities)
+---that you may wish to probe for in the configuration.
 ---
 ---```lua
----local wezterm = require("wezterm")
----
+---local wezterm = require("wezterm") ---@type Wezterm
 ---wezterm.log_error(
 ---  'System '
 ---  .. wezterm.target_triple
@@ -2080,13 +2062,14 @@ function M.run_child_process(args) end
 ---```
 ---
 ---See:
+--- - [`wezterm.log_error()`](lua://Wezterm.log_error)
 --- - [`wezterm.target_triple`](lua://Wezterm.target_triple)
 ---
 ---@return boolean wsl
 function M.running_under_wsl() end
 
----Joins together its array arguments by applying POSIX-style shell quoting
----on each argument and then adding a space.
+---Joins together its array arguments by applying POSIX-style shell quoting on each argument
+---and then adding a space.
 ---
 ---@param args string[]
 ---@return string joined_args
@@ -2098,20 +2081,21 @@ function M.shell_join_args(args) end
 ---@return string quoted_arg
 function M.shell_quote_arg(s) end
 
----Splits a command line into a `string` argument array in accordance with
----POSIX shell rules.
+---Splits a command line into a `string` argument array in accordance with POSIX shell rules.
 ---
 ---@param line string
 ---@return string[] lines
 function M.shell_split(line) end
 
 ---Suspends the execution of the script for `ms` milliseconds.
+---
 ---When the time period has elapsed, the script continues running at the next statement.
 ---
 ---@param ms integer
 function M.sleep_ms(ms) end
 
 ---Takes the input string and splits it by newlines.
+---
 ---The result as an array of strings with the newlines removed.
 ---
 ---Both `\n` (LF) and `\r\n` (CRLF) are recognized as newlines.
@@ -2120,46 +2104,44 @@ function M.sleep_ms(ms) end
 ---@return string[] lines
 function M.split_by_newlines(s) end
 
----Formats the current local date/time into a string using the Rust `chrono strftime`
----syntax.
+---Formats the current local date/time into a string using the Rust `chrono strftime` syntax.
 ---
 ---@param format string
 ---@return string str
 function M.strftime(format) end
 
----Formats the current UTC date/time into a string using the Rust `chrono strftime`
----syntax.
+---Formats the current UTC date/time into a string using the Rust `chrono strftime` syntax.
 ---
 ---@param format string
 ---@return string utc_str
 function M.strftime_utc(format) end
 
----Returns a copy of a string that is no longer than `max_width` columns
----as measured by `wezterm.column_width()`.
----Truncation occurs by removing excess characters from the left end of the string.
+---Returns a copy of a string that is no longer than `max_width` columns as measured
+---by `wezterm.column_width()`. Truncation occurs by removing excess characters from the left end
+---of the string.
 ---
 ---For example, `wezterm.truncate_left("hello", 3)` returns `"llo"`.
 ---
 ---See also:
 --- - [`wezterm.column_width()`](lua://Wezterm.column_width)
---- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
 --- - [`wezterm.pad_right()`](lua://Wezterm.pad_right)
+--- - [`wezterm.truncate_right()`](lua://Wezterm.truncate_right)
 ---
 ---@param s string
 ---@param max_width integer
 ---@return string trunc_str
 function M.truncate_left(s, max_width) end
 
----Returns a copy of a string that is no longer than `max_width` columns
----as measured by `wezterm.column_width()`.
+---Returns a copy of a string that is no longer than `max_width` columns as measured
+---by `wezterm.column_width()`.
 ---
 ---Truncation occurs by reemoving excess characters from the right end of the string.
 ---For example, `wezterm.truncate_right("hello", 3)` returns `"hel"`.
 ---
 ---See also:
---- - [`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
---- - [`wezterm.pad_left()`](lua://Wezterm.pad_left)
 --- - [`wezterm.column_width()`](lua://Wezterm.column_width)
+--- - [`wezterm.pad_left()`](lua://Wezterm.pad_left)
+--- - [`wezterm.truncate_left()`](lua://Wezterm.truncate_left)
 ---
 ---@param s string
 ---@param max_width integer
@@ -2167,7 +2149,8 @@ function M.truncate_left(s, max_width) end
 function M.truncate_right(s, max_width) end
 
 ---Overly specific and exists primarily to workaround this `wsl.exe` issue.
----It takes as input a string and attempts to convert it from utf16 to utf8.
+---
+---It takes as input a string and attempts to convert it from `utf16` to `utf8`.
 ---
 ---@param s string
 ---@return string str
