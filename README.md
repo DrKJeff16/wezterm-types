@@ -37,7 +37,8 @@ for any unclear types.
 
 ## Installation
 
-### LuaRocks
+<details>
+<summary>LuaRocks</summary>
 
 You can install `wezterm-types` using LuaRocks:
 
@@ -48,7 +49,9 @@ luarocks install --local wezterm-types # Local install
 
 To get it running in Neovim please refer to [this discussion](https://github.com/DrKJeff16/wezterm-types/discussions/93).
 
-### Neovim
+</details>
+<details>
+<summary>Neovim</summary>
 
 We recommend using [lazy.nvim](https://github.com/folke/lazy.nvim) as a package manager:
 
@@ -58,6 +61,8 @@ We recommend using [lazy.nvim](https://github.com/folke/lazy.nvim) as a package 
   version = false, -- Get the latest version
 },
 ```
+
+</details>
 
 ---
 
@@ -133,8 +138,9 @@ when running `require("wezterm")` in your configuration.
 A useful example:
 
 ```lua
+-- WezTerm configuration
 local wezterm = require("wezterm") ---@type Wezterm
-local config = wezterm.config_builder() ---@type Config
+local config = wezterm.config_builder()
 
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 
@@ -146,7 +152,7 @@ and autocompletion for WezTerm configuration options.
 
 ### Using lazydev.nvim
 
-Install [lazydev.nvim](https://github.com/folke/lazydev.nvim) as suggested:
+If you're using [folke/lazydev.nvim](https://github.com/folke/lazydev.nvim), install it as suggested below:
 
 ```lua
 {
