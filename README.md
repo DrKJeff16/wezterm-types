@@ -19,9 +19,9 @@ for any unclear types.
 - Built-in colorschemes included (`config.color_scheme`)
 - Up-to-date descriptions
 - Community plugin annotations
-- Neovim support
-  - Through lazydev.nvim
+- [Neovim](https://neovim.io/) support:
   - Through the built-in LSP API
+  - Through [folke/lazydev.nvim](https://github.com/folke/lazydev.nvim)
 - VSCode/VSCodium support by cloning this into `~/.config/wezterm`, then editing your config
   in that directory
 
