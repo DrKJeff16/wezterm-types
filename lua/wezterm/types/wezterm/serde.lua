@@ -6,54 +6,54 @@
 ---JSON, YAML, or TOML, returning the corresponding Lua values, and vice versa.
 ---
 ---@class Wezterm.Serde
-local Serde = {}
+local M = {}
 
 ---Parses the supplied string as JSON and returns the equivalent Lua values.
 ---
 ---@param value string
 ---@return table data
-function Serde.json_decode(value) end
+function M.json_decode(value) end
 
 ---Encodes the supplied Lua value as JSON.
 ---
 ---@param value table
 ---@return string data
-function Serde.json_encode(value) end
+function M.json_encode(value) end
 
 ---Encodes the supplied Lua value as a pretty-printed string of JSON.
 ---
 ---@param value table
 ---@return string data
-function Serde.json_encode_pretty(value) end
+function M.json_encode_pretty(value) end
 
 ---Parses the supplied string as TOML and returns the equivalent Lua values.
 ---
 ---@param value string
 ---@return table data
-function Serde.toml_decode(value) end
+function M.toml_decode(value) end
 
 ---Encodes the supplied Lua value as TOML.
 ---
 ---@param value table
 ---@return string data
-function Serde.toml_encode(value) end
+function M.toml_encode(value) end
 
 ---Encodes the supplied Lua value as a pretty-printed string of TOML.
 ---
 ---@param value table
 ---@return string data
-function Serde.toml_encode_pretty(value) end
+function M.toml_encode_pretty(value) end
 
 ---Parses the supplied string as YAML and returns the equivalent Lua values.
 ---
 ---@param value string
 ---@return table data
-function Serde.yaml_decode(value) end
+function M.yaml_decode(value) end
 
 ---Encodes the supplied Lua value as YAML.
 ---
 ---@param value table
 ---@return string data
-function Serde.yaml_encode(value) end
+function M.yaml_encode(value) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

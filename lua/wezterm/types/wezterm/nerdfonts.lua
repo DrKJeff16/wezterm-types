@@ -2,7 +2,7 @@
 
 ---NOTE: (DrKJeff16) I am not touching this file ever again
 
----@alias WezTerm.NerrdFont Wezterm.NerdFont
+---@alias WezTerm.NerdFont Wezterm.NerdFont
 
 ---@class (exact) Wezterm.NerdFont
 ---@field cod_account ""

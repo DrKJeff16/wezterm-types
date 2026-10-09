@@ -47,7 +47,7 @@ local Pivot = {}
 ---
 ---@param panes Pane[] Array of panes to check
 ---@return boolean can_pivot
----@return string|nil orientation Current orientation if can pivot
+---@return string|nil|? orientation Current orientation if can pivot
 function Pivot.can_pivot(panes) end
 
 ---Capture state of a pane.

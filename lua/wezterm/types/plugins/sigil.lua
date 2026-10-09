@@ -52,19 +52,19 @@ function M.add(key, entry) end
 ---Return a Sigil entry by key or alias.
 ---@param key any Lookup key.
 ---@param opts? Sigil.LookupOptions Lookup options.
----@return Sigil.Entry|nil entry
+---@return Sigil.Entry|nil|? entry
 function M.get(key, opts) end
 
 ---Return only the icon for a key or alias.
 ---@param key any Lookup key.
 ---@param opts? Sigil.LookupOptions Lookup options.
----@return string|nil icon
+---@return string|nil|? icon
 function M.icon(key, opts) end
 
 ---Return only the color for a key or alias.
 ---@param key any Lookup key.
 ---@param opts? Sigil.LookupOptions Lookup options.
----@return string|nil color
+---@return string|nil|? color
 function M.color(key, opts) end
 
 ---Return raw `wezterm.format` items for a key or alias.

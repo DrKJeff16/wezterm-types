@@ -59,13 +59,13 @@ function NS.touch(key) end
 ---@field force? boolean
 ---Max number of cache entries; `nil` == unlimited.
 ---
----@field max_entries? integer|false|nil
+---@field max_entries? integer|false
 ---Whether to track hit/miss statistics.
 ---
 ---@field stats? boolean
 ---TTL configuration; `nil` == disabled.
 ---
----@field ttl? table|false|nil
+---@field ttl? table|false
 ---Clock function used for TTL checks.
 ---
 ---@field clock? fun(): number
@@ -100,7 +100,7 @@ function C._sync_to_global(target, source) end
 --- - `{ prefix = "foo" }` — Deletes all keys starting with `"foo"`.
 --- - `{ older_than = N }` — Deletes entries older than `N` seconds (TTL mode).
 ---
----@param selector table|nil
+---@param selector? table
 function C.clear(selector) end
 
 ---Execute a function and cache its result using an argument-derived key.
@@ -137,7 +137,7 @@ function C.expire(key) end
 ---Retrieve a cached value.
 ---
 ---@param key string  Cache key.
----@return any|nil value Stored value or `nil`.
+---@return any value Stored value or `nil`.
 function C.get(key) end
 
 ---Check whether a key exists and is fresh.
@@ -177,7 +177,7 @@ function C.namespace(name) end
 ---
 ---@param key string Cache key.
 ---@param value any Value to store (must not be a function).
----@param opts Memo.CacheOpts|nil Per-call options `{ ttl = N }`.
+---@param opts? Memo.CacheOpts Per-call options `{ ttl = N }`.
 function C.set(key, value, opts) end
 
 ---Return cache statistics.

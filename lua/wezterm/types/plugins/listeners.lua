@@ -118,7 +118,7 @@ local F = {}
 ---@param key string
 ---@param ... any
 ---@return any result
----@return string|nil error
+---@return string|nil|? error
 function F.call(key, ...) end
 
 ---@param key string
@@ -132,7 +132,7 @@ function F.get(key) end
 ---Get the options for a function.
 ---
 ---@param key string
----@return Listeners.FunctionOpts|nil opts
+---@return Listeners.FunctionOpts|nil|? opts
 function F.get_options(key) end
 
 ---@param key string

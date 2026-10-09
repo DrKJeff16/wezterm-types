@@ -47,7 +47,7 @@ function T.shallowcopy(original) end
 -- extend table
 ---@param behavior Behavior
 ---@param ... table
----@return table|nil new_tbl
+---@return table|nil|? new_tbl
 function T.tbl_deep_extend(behavior, ...) end
 
 ---@class LibWezterm.FileIO
@@ -56,22 +56,22 @@ local F = {}
 ---Create the folder if it does not exist.
 ---
 ---@param path string
----@return boolean|nil success
----@return number|nil signal
+---@return boolean|nil|? success
+---@return number|nil|? signal
 function F.ensure_folder_exists(path) end
 
 ---Execute a cmd and return its stdout.
 ---
 ---@param cmd string command
 ---@return boolean success result
----@return string|nil error
+---@return string|nil|? error
 function F.execute(cmd) end
 
 ---Read a file and return its content.
 ---
 ---@param file_path string full filename
 ---@return boolean success result
----@return string|nil content_or_error
+---@return string|nil|? content_or_error
 function F.read_file(file_path) end
 
 ---Write a file with the content of a string.
@@ -79,7 +79,7 @@ function F.read_file(file_path) end
 ---@param file_path string full filename
 ---@param str string content to write
 ---@return boolean success result
----@return string|nil error
+---@return string|nil|? error
 function F.write_file(file_path, str) end
 
 ---@class LibWezterm.Math
@@ -98,7 +98,7 @@ function S.array_hash(arr) end
 ---Get basename for dir/file.
 ---
 ---@param str string string with the dir/file
----@return string|nil basename
+---@return string|nil|? basename
 function S.basename(str) end
 
 ---WezTerm module name decoder.
@@ -151,7 +151,7 @@ local W = {}
 ---
 ---@param pane Pane WezTerm pane object
 ---@param max_lines? integer Maximum number of lines to capture (`nil` for all available)
----@return string|nil scrollback
+---@return string|nil|? scrollback
 function W.capture_scrollback(pane, max_lines) end
 
 ---Get current working directory from a pane.

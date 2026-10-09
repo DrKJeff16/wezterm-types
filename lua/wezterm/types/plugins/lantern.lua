@@ -37,7 +37,7 @@ local G = {}
 
 ---Choose the best detected GPU adapter, if any.
 ---
----@return GpuInfo|nil info
+---@return GpuInfo|nil|? info
 function G.best() end
 
 ---@class Lantern.InternalChoice
@@ -273,7 +273,7 @@ function C.apply_scheme(config, scheme, name) end
 ---Return a built-in Lantern colorscheme table by name.
 ---
 ---@param name string
----@return Palette|nil scheme
+---@return Palette|nil|? scheme
 function C.scheme(name) end
 
 ---@class Lantern.StateEntry
@@ -297,7 +297,7 @@ function S.save(wick_name, entry) end
 ---Return one saved wick selection.
 ---
 ---@param wick_name string
----@return Lantern.StateEntry|nil entry
+---@return Lantern.StateEntry|nil|? entry
 function S.get(wick_name) end
 
 ---Clear all saved state, or one wick when `wick_name` is passed.
@@ -373,7 +373,7 @@ function M.add_wick(name, spec) end
 ---Return a registered wick by name.
 ---
 ---@param name string
----@return Lantern.Wick|nil wick
+---@return Lantern.Wick|nil|? wick
 function M.wick(name) end
 
 ---Restore persisted Lantern selections into a config table.

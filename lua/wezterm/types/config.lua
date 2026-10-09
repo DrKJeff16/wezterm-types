@@ -215,7 +215,7 @@
 --- - [IncreaseFontSize](https://wezterm.org/config/lua/keyassignment/IncreaseFontSize.html)
 --- - [`config.tiling_desktop_environments`](lua://Config.tiling_desktop_environments)
 ---
----@field adjust_window_size_when_changing_font_size? boolean|nil
+---@field adjust_window_size_when_changing_font_size? boolean
 ---@field allow_download_protocols? boolean
 ---Configures how square symbol glyph's cell is rendered:
 ---
@@ -573,7 +573,7 @@
 ---See:
 --- - [`ActivateCommandPalette`](https://wezterm.org/config/lua/keyassignment/ActivateCommandPalette.html)
 ---
----@field command_palette_rows? integer|nil
+---@field command_palette_rows? integer
 ---Specifies the easing function to use when computing the color for the text cursor
 ---when it is set to a blinking style.
 ---
@@ -2118,7 +2118,7 @@
 ---if you find that your selected color scheme has poor contrast
 ---in the applications that you run in your terminal.
 ---
----@field text_min_contrast_ratio? number|nil
+---@field text_min_contrast_ratio? number
 ---Contains a list of Window Environments that are known to be tiling window managers.
 ---
 ---A tiling window manager is one that automatically resizes windows

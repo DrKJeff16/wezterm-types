@@ -56,7 +56,7 @@ local R = {}
 ---@param foreground? string Foreground color name or value.
 ---@param text? string Text to insert.
 ---@param attributes? Ribbon.Attribute Text attributes or aliases.
----@return Ribbon|nil self
+---@return Ribbon|nil|? self
 function R:add(action, background, foreground, text, attributes) end
 
 ---Append a formatted text segment.
@@ -64,7 +64,7 @@ function R:add(action, background, foreground, text, attributes) end
 ---@param foreground? string Foreground color name or value.
 ---@param text? string Text to insert.
 ---@param attributes? Ribbon.Attribute Text attributes or aliases.
----@return Ribbon|nil self
+---@return Ribbon|nil|? self
 function R:append(background, foreground, text, attributes) end
 
 ---Prepend a formatted text segment.
@@ -72,16 +72,16 @@ function R:append(background, foreground, text, attributes) end
 ---@param foreground? string Foreground color name or value.
 ---@param text? string Text to insert.
 ---@param attributes? Ribbon.Attribute Text attributes or aliases.
----@return Ribbon|nil self
+---@return Ribbon|nil|? self
 function R:prepend(background, foreground, text, attributes) end
 
 ---Append raw `wezterm.format` items.
----@param items Ribbon.FormatItem|Ribbon.FormatItem[]|nil Format item or list of items.
+---@param items? Ribbon.FormatItem[]|Ribbon.FormatItem Format item or list of items.
 ---@return Ribbon self
 function R:append_items(items) end
 
 ---Prepend raw `wezterm.format` items.
----@param items Ribbon.FormatItem|Ribbon.FormatItem[]|nil Format item or list of items.
+---@param items? Ribbon.FormatItem[]|Ribbon.FormatItem Format item or list of items.
 ---@return Ribbon self
 function R:prepend_items(items) end
 

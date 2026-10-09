@@ -24,16 +24,16 @@
 ---@field bootstrap boolean
 ---@field cache table<string, CacheElement>
 ---@field dev_cache_element CacheElement
----@field substitutions table<string, string>|nil
+---@field substitutions? table<string, string>
 ---@field utils boolean
 local M = {}
 
 ---@param hashkey string
----@return string|nil plugin_path
+---@return string|nil|? plugin_path
 function M.get_plugin_path(hashkey) end
 
 ---@param hashkey string
----@return string|nil require_path
+---@return string|nil|? require_path
 function M.get_require_path(hashkey) end
 
 ---@param url string
@@ -50,8 +50,8 @@ function M.set_substitutions(substitute_dict) end
 function M.set_wezterm_require_path(hashkey) end
 
 ---@param opts? DevOpts
----@return string|nil hashkey
----@return string|nil plugin_path
+---@return string|nil|? hashkey
+---@return string|nil|? plugin_path
 function M.setup(opts) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

@@ -15,7 +15,7 @@
 ---The `wezterm.color` module exposes functions that work with colors.
 ---
 ---@class Wezterm.Color
-local C = {}
+local M = {}
 
 ---This function loads an image from the specified filename
 ---and analyzes it to determine a set of distinct colors present
@@ -47,7 +47,7 @@ local C = {}
 ---
 ---@param filename string
 ---@return string[] colors
-function C.extract_colors_from_image(filename) end
+function M.extract_colors_from_image(filename) end
 
 ---This function loads an image from the specified filename
 ---and analyzes it to determine a set of distinct colors present
@@ -78,9 +78,9 @@ function C.extract_colors_from_image(filename) end
 ---You can find more examples [here](https://wezterm.org/config/lua/wezterm.color/extract_colors_from_image.html).
 ---
 ---@param filename string
----@param params ImageExtractorParams|nil
+---@param params? ImageExtractorParams
 ---@return string[] colors
-function C.extract_colors_from_image(filename, params) end
+function M.extract_colors_from_image(filename, params) end
 
 ---Constructs a new
 ---[`Color`](lua://Color) object
@@ -94,7 +94,7 @@ function C.extract_colors_from_image(filename, params) end
 ---@param l string|number
 ---@param a string|number
 ---@return Color color
-function C.from_hsla(h, s, l, a) end
+function M.from_hsla(h, s, l, a) end
 
 ---Returns a Lua table keyed by color scheme name,
 ---whose values are the color scheme definition
@@ -106,7 +106,7 @@ function C.from_hsla(h, s, l, a) end
 ---just from your `wezterm.lua` configuration file.
 ---
 ---@return table<string, Palette> schemes
-function C.get_builtin_schemes() end
+function M.get_builtin_schemes() end
 
 ---Returns the set of colors that would be used by default.
 ---
@@ -114,7 +114,7 @@ function C.get_builtin_schemes() end
 ---in a color scheme definition.
 ---
 ---@return Palette colors
-function C.get_default_colors() end
+function M.get_default_colors() end
 
 ---Given a gradient spec and a number of colors,
 ---returns a table holding that many colors spaced evenly
@@ -136,7 +136,7 @@ function C.get_default_colors() end
 ---@param gradient Gradient
 ---@param num_colors number
 ---@return Color[] colors
-function C.gradient(gradient, num_colors) end
+function M.gradient(gradient, num_colors) end
 
 ---Loads a YAML file in `base16` format and returns it
 ---as a WezTerm color scheme.
@@ -154,7 +154,7 @@ function C.gradient(gradient, num_colors) end
 ---@param file_name string
 ---@return Palette colors
 ---@return ColorSchemeMetaData metadata
-function C.load_base16_scheme(file_name) end
+function M.load_base16_scheme(file_name) end
 
 ---Loads a wezterm color scheme from a TOML file.
 ---
@@ -168,7 +168,7 @@ function C.load_base16_scheme(file_name) end
 ---@param file_name string
 ---@return Palette scheme
 ---@return ColorSchemeMetaData metadata
-function C.load_scheme(file_name) end
+function M.load_scheme(file_name) end
 
 ---Loads a json file exported from [`terminal.sexy`](https://terminal.sexy/)
 ---and returns it as a wezterm color scheme.
@@ -186,7 +186,7 @@ function C.load_scheme(file_name) end
 ---@param file_name string
 ---@return Palette colors
 ---@return ColorSchemeMetaData metadata
-function C.load_terminal_sexy_scheme(file_name) end
+function M.load_terminal_sexy_scheme(file_name) end
 
 ---Parses the passed color and returns a
 ---[`Color`](lua://Color) object.
@@ -211,7 +211,7 @@ function C.load_terminal_sexy_scheme(file_name) end
 ---
 ---@param color_name string
 ---@return Color color
-function C.parse(color_name) end
+function M.parse(color_name) end
 
 ---Saves a color scheme as a wezterm TOML file.
 ---
@@ -230,6 +230,6 @@ function C.parse(color_name) end
 ---@param colors Palette
 ---@param metadata PaneMetadata
 ---@param file_name string
-function C.save_scheme(colors, metadata, file_name) end
+function M.save_scheme(colors, metadata, file_name) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

@@ -28,7 +28,7 @@ local M = {}
 function M.apply_to_config(_, user_config) end
 
 ---@param tab_id integer
----@return StackWezTabInfo|nil info
+---@return StackWezTabInfo|nil|? info
 function M.tab_info(tab_id) end
 
 ---@param tab_info TabInformation

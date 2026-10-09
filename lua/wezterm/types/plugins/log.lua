@@ -21,7 +21,7 @@ local Levels = {}
 ---integer value. Returns `nil` for unrecognised level strings.
 ---
 ---@param level Log.Levels.Level|string|integer Level representation to normalize.
----@return integer|nil level Normalized numeric level, or `nil` if unrecognised.
+---@return integer|nil|? level Normalized numeric level, or `nil` if unrecognised.
 function Levels.normalize(level) end
 
 ---@class Log.Event
@@ -116,7 +116,7 @@ function FileSink:serialize(event) end
 ---
 ---@param payload string
 ---@return boolean ok
----@return string|nil err
+---@return string|nil|? err
 function FileSink:append(payload) end
 
 ---Encode and append an event as a formatted line.

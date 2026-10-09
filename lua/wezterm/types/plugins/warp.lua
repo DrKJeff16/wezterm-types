@@ -44,7 +44,7 @@ function F.basename(path) end
 ---Traverses up the directory tree looking for a `.git` directory.
 ---
 ---@param directory string Starting directory path.
----@return string|nil git_root Root directory of the Git repository, or `nil` if not found.
+---@return string|nil|? git_root Root directory of the Git repository, or `nil` if not found.
 function F.find_git_dir(directory) end
 
 ---Get the current working directory from the given pane.
@@ -100,7 +100,7 @@ function F.platform() end
 ---Returns `nil` when the file cannot be opened.
 ---
 ---@param path string File path to read.
----@return string|nil contents File contents, or `nil` on failure.
+---@return string|nil|? contents File contents, or `nil` on failure.
 function F.read_file(path) end
 
 ---@class Warp.List.BisectOpts
@@ -169,7 +169,7 @@ function L.cartesian(sets) end
 ---```
 ---
 ---@param sets any[][] List of sub-lists for the product.
----@return fun(): integer|nil, any[]|nil iterator
+---@return fun(): integer|nil|?, any[]|nil|? iterator
 function L.cartesian_iter(sets) end
 
 ---Compute Cartesian product of multiple lists (copying iterator).
@@ -178,7 +178,7 @@ function L.cartesian_iter(sets) end
 ---that the caller can safely store or mutate.
 ---
 ---@param sets any[][] List of sub-lists for the product.
----@return fun(): integer|nil, any[]|nil iterator
+---@return fun(): integer|nil|?, any[]|nil|? iterator
 function L.cartesian_iter_copy(sets) end
 
 ---Check if a list contains a given value.
@@ -234,8 +234,8 @@ function L.extend_unique(dst, src) end
 ---@generic T
 ---@param list T[] List to search.
 ---@param fn fun(v: T): any Predicate function.
----@return T|nil value First matching element, or `nil`.
----@return integer|nil index Index of the match, or `nil`.
+---@return T|nil|? value First matching element, or `nil`.
+---@return integer|nil|? index Index of the match, or `nil`.
 function L.find(list, fn) end
 
 ---Flatten a nested list.
@@ -433,7 +433,7 @@ function P.normalize(path) end
 ---@field space " "
 local S = {}
 
----@alias Warp.String.Padding integer|{ left: integer|nil, right: integer|nil }
+---@alias Warp.String.Padding integer|{ left?: integer, right?: integer }
 
 ---Alias for `wezterm.column_width`.
 ---
@@ -462,7 +462,7 @@ function S.fits(s, budget) end
 ---@param s string Input string to split.
 ---@param sep string Separator pattern.
 ---@param opts? Warp.String.SplitOpts Optional splitting behavior.
----@return fun(): string|nil iterator
+---@return fun(): string|nil|? iterator
 function S.gsplit(s, sep, opts) end
 
 ---Left-justify `s` to a total visible width.
@@ -713,7 +713,7 @@ function T.filter(tbl, fn) end
 ---
 ---@param tbl table Table to index.
 ---@param ... any Keys to traverse (one or more).
----@return any|nil value Nested value, or `nil` if not found.
+---@return any value Nested value, or `nil` if not found.
 function T.get(tbl, ...) end
 
 ---Swap keys and values of a table.
@@ -745,7 +745,7 @@ function T.isarray(tbl) end
 ---Returns `true` when `tbl` is `nil` or `next(tbl)` is `nil`, meaning no array
 ---or hash-map keys exist.
 ---
----@param tbl table|nil Table to check.
+---@param tbl? table Table to check.
 ---@return boolean blank
 function T.isblank(tbl) end
 
@@ -755,7 +755,7 @@ function T.isblank(tbl) end
 ---
 ---Hash-only entries are ignored; use `warp.table.isblank()` to test for a completely empty table.
 ---
----@param tbl table|nil List to check.
+---@param tbl? table List to check.
 ---@return boolean empty
 function T.isempty(tbl) end
 
@@ -841,7 +841,7 @@ function T.reduce(tbl, fn, init) end
 ---
 ---@generic K, V
 ---@param tbl table<K, V> Table to iterate.
----@return fun(): K|nil, V|nil iterator Sorted key-value iterator.
+---@return fun(): K|nil|?, V|nil|? iterator Sorted key-value iterator.
 function T.spairs(tbl) end
 
 ---Return all values of a table.

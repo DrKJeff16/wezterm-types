@@ -128,7 +128,7 @@ function M:activate() end
 ---to set it to an FTP URL or some other kind of URL,
 ---which is why this method doesn't simply return a file path string
 ---
----@return Url|nil cwd
+---@return Url|nil|? cwd
 function M:get_current_working_dir() end
 
 ---Returns a Lua representation of the `StableCursorPosition` struct
@@ -176,7 +176,7 @@ function M:get_domain_name() end
 ---
 ---If the process cannot be determined then this method returns `nil`.
 ---
----@return LocalProcessInfo|nil proc_info
+---@return LocalProcessInfo|nil|? proc_info
 function M:get_foreground_process_info() end
 
 ---Returns the path to the executable image for the pane.
@@ -203,7 +203,7 @@ function M:get_foreground_process_info() end
 ---
 ---If the path is not known then this method returns `nil`.
 ---
----@return string|nil name
+---@return string|nil|? name
 function M:get_foreground_process_name() end
 
 ---Returns the textual representation
@@ -253,7 +253,7 @@ function M:get_lines_as_escapes() end
 ---pane:get_lines_as_escapes(pane:get_dimensions().scrollback_rows)
 ---```
 ---
----@param nlines integer|nil
+---@param nlines? integer
 ---@return string output
 function M:get_lines_as_escapes(nlines) end
 
@@ -308,7 +308,7 @@ function M:get_lines_as_text() end
 ---than you might expect if the pane only had
 ---a couple of lines of output.
 ---
----@param nlines integer|nil
+---@param nlines? integer
 ---@return string text
 function M:get_lines_as_text(nlines) end
 
@@ -371,7 +371,7 @@ function M:get_logical_lines_as_text() end
 ---pane:get_logical_lines_as_text(pane:get_dimensions().scrollback_rows)
 ---```
 ---
----@param nlines integer|nil
+---@param nlines? integer
 ---@return string text
 function M:get_logical_lines_as_text(nlines) end
 
@@ -390,7 +390,7 @@ function M:get_logical_lines_as_text(nlines) end
 ---local meta = pane:get_metadata() or {}
 ---```
 ---
----@return PaneMetadata|nil metadata
+---@return PaneMetadata|nil|? metadata
 function M:get_metadata() end
 
 ---Returns the progress state associated with the pane.
@@ -505,7 +505,7 @@ function M:get_title() end
 --- - This information is only available on UNIX systems.
 ---   Windows systems do not have an equivalent concept
 ---
----@return string|nil name
+---@return string|nil|? name
 function M:get_tty_name() end
 
 ---Returns a table holding the user variables that have been
@@ -580,7 +580,7 @@ function M:move_to_new_tab() end
 ---@return MuxWindow window
 function M:move_to_new_window() end
 
----@param workspace string|nil
+---@param workspace? string
 ---@return MuxTab tab
 ---@return MuxWindow window
 function M:move_to_new_window(workspace) end
@@ -631,7 +631,7 @@ function M:send_text(text) end
 ---@return Pane split_pane
 function M:split() end
 
----@param args SpawnSplit|nil
+---@param args? SpawnSplit
 ---@return Pane split_pane
 function M:split(args) end
 
@@ -641,7 +641,7 @@ function M:split(args) end
 ---a GUI-managed overlay pane (such as the debug overlay),
 ---because those panes are not managed by the mux layer.
 ---
----@return MuxTab|nil tab
+---@return MuxTab|nil|? tab
 function M:tab() end
 
 ---Returns

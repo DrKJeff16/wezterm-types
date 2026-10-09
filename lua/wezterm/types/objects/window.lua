@@ -38,14 +38,12 @@ function M:active_tab() end
 ---@return string name
 function M:active_workspace() end
 
----Returns either a string holding the current dead key
----or IME composition text, or `nil` if the input layer
----is not in a composition state.
+---Returns either a string holding the current dead key or IME composition text, or `nil`
+---if the input layer is not in a composition state.
 ---
----This is the same text that is shown
----at the cursor position when composing.
+---This is the same text that is shown at the cursor position when composing.
 ---
----@return string|nil status
+---@return string|nil|? status
 function M:composition_status() end
 
 ---Puts text into the specified clipboard.
@@ -54,7 +52,7 @@ function M:composition_status() end
 function M:copy_to_clipboard(text) end
 
 ---@param text string
----@param target "Clipboard"|"PrimarySelection"|"ClipboardAndPrimarySelection"|nil
+---@param target? "Clipboard"|"PrimarySelection"|"ClipboardAndPrimarySelection"
 function M:copy_to_clipboard(text, target) end
 
 ---Returns the current event.
@@ -275,13 +273,13 @@ function M:toast_notification(title, message) end
 
 ---@param title string
 ---@param message string
----@param url string|nil
+---@param url? string
 function M:toast_notification(title, message, url) end
 
 ---@param title string
 ---@param message string
----@param url string|nil
----@param timeout integer|nil
+---@param url? string
+---@param timeout? integer
 function M:toast_notification(title, message, url, timeout) end
 
 ---Toggles full screen mode for the window.
@@ -303,7 +301,7 @@ function M:window_id() end
 ---
 ---See [Key Tables](https://wezterm.org/config/key-tables.html) for a detailed example.
 ---
----@return string|nil stack
+---@return string|nil|? stack
 function M:active_key_table() end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

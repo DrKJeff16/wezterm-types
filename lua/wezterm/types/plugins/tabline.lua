@@ -55,7 +55,7 @@
 ---@class TablineWezComponentSpec
 ---@field [1] string
 ---@field cond? nil|fun(): boolean
----@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
+---@field fmt? fun(str: string, win: Window|TabInformation): string
 ---@field icon? nil|string|{ [1]: string, align?: 'left'|'right', color?: { fg?: string } }
 ---@field icons_enabled? boolean
 ---@field icons_only? boolean
@@ -181,7 +181,7 @@
 
 ---@class TablineWezOpts.Options
 ---@field component_separators? TablineWezSeparators|''
----@field fmt? (fun(str: string, win: Window|TabInformation): string)|nil
+---@field fmt? fun(str: string, win: Window|TabInformation): string
 ---@field icons_enabled? boolean
 ---@field section_separators? TablineWezSeparators|''
 ---@field tab_separators? TablineWezSeparators|''

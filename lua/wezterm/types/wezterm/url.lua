@@ -1,6 +1,8 @@
 ---@meta
 
 ---@alias WezTerm.Url Wezterm.Url
+---@alias Wezterm.URL Wezterm.Url
+---@alias WezTerm.URL Wezterm.Url
 
 ---The `Url` object represents a parsed URL.
 ---
@@ -25,29 +27,29 @@
 ---@class Url
 ---The URL scheme such as `"file"`, or `"https"`.
 ---
----@field scheme string|"file"|"https"|"http"|nil
+---@field scheme? string|"file"|"https"|"http"
 ---Decodes the path field and interprets it as a file path.
 ---
----@field file_path string|nil
+---@field file_path? string
 ---The `username` portion of the URL, or an empty string
 ---if none is specified.
 ---
 ---@field username string|""
 ---The password portion of the URL, or `nil` if none is specified.
 ---
----@field password string|nil
+---@field password? string
 ---The `hostname` portion of the URL, with IDNA decoded to UTF-8.
 ---
----@field host string|nil
+---@field host? string
 ---The `path` portion of the URL, complete with percent encoding.
 ---
----@field path string|nil
+---@field path? string
 ---The `fragment` portion of the URL.
 ---
----@field fragment string|nil
+---@field fragment? string
 ---The `query` portion of the URL.
 ---
----@field query string|nil
+---@field query? string
 
 ---The `wezterm.url` module exposes functions that
 ---allow working with URLs.
@@ -63,7 +65,7 @@ local M = {}
 ---If successful, returns a `Url` object representing said URL.
 ---
 ---@param url_string string
----@return Url|nil data
+---@return Url|nil|? data
 function M.parse(url_string) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

@@ -115,7 +115,7 @@ function M:spawn_tab() end
 ---
 ---When no arguments are passed, the default program is spawned.
 ---
----@param args SpawnTab|nil
+---@param args? SpawnTab
 ---@return MuxTab tab
 ---@return Pane pane
 ---@return MuxWindow window

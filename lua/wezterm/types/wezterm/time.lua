@@ -6,7 +6,7 @@
 ---allow working with time.
 ---
 ---@class Wezterm.Time
-local Time = {}
+local M = {}
 
 ---Arranges to call your callback function after the specified
 ---number of seconds have elapsed.
@@ -15,7 +15,7 @@ local Time = {}
 ---
 ---@param interval number
 ---@param callback function
-function Time.call_after(interval, callback) end
+function M.call_after(interval, callback) end
 
 ---Returns a `Time` object representing the time
 ---at which this function is called.
@@ -23,7 +23,7 @@ function Time.call_after(interval, callback) end
 ---See [`Time`](lua://Time).
 ---
 ---@return Time current
-function Time.now() end
+function M.now() end
 
 ---Parses a string that is formatted according to the supplied format string:
 ---
@@ -38,7 +38,7 @@ function Time.now() end
 ---@param str string
 ---@param format string
 ---@return Time parsed
-function Time.parse(str, format) end
+function M.parse(str, format) end
 
 ---Parses a string that is formatted according to `RFC 3339`
 ---and returns a `Time` object representing said time.
@@ -48,6 +48,6 @@ function Time.parse(str, format) end
 ---
 ---@param str string
 ---@return Time parsed
-function Time.parse_rfc3339(str) end
+function M.parse_rfc3339(str) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

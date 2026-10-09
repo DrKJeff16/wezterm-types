@@ -72,13 +72,13 @@
 ---For more information, see:
 --- - [`Pane:get_foreground_process_name()`](lua://Pane.get_foreground_process_name)
 ---
----@field foreground_process_name string|""
+---@field foreground_process_name string
 ---The current working directory, per `Pane:get_current_working_dir()`.
 ---
 ---For more information, see:
 --- -[`Pane:get_current_working_dir()`](lua://Pane.get_current_working_dir)
 ---
----@field current_working_dir Url|nil
+---@field current_working_dir? Url
 ---Returns `true` if there has been output in the pane
 ---since the last time the pane was focused.
 ---
@@ -96,6 +96,6 @@
 ---For more information, see:
 --- - [`Pane:get_tty_name()`](lua://Pane.get_tty_name)
 ---
----@field tty_name string|nil
+---@field tty_name? string
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

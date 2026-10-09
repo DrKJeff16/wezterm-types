@@ -146,7 +146,7 @@ function S.periodic_save(opts) end
 ---Callback for resurrecting workspaces on startup.
 ---
 ---@return boolean success
----@return string|nil err
+---@return string|nil|? err
 function S.resurrect_on_gui_startup() end
 
 ---Save state to a file.
@@ -168,7 +168,7 @@ function S.set_max_nlines(max_nlines) end
 ---@param name string
 ---@param type string
 ---@return boolean success
----@return string|nil err
+---@return string|nil|? err
 function S.write_current_state(name, type) end
 
 ---@class Resurrect

@@ -237,7 +237,7 @@ local Mode = {}
 ---@param lhs string|table
 ---@param desc? string
 ---@param opts? Chord.ModeActivateOptions
----@return Chord.KeyEntry|nil entry
+---@return Chord.KeyEntry|nil|? entry
 function Mode:activate(lhs, desc, opts) end
 
 ---@class Chord.CommandApi
@@ -274,7 +274,7 @@ function C.collect(config_table, opts) end
 ---Register an action-only command or a key-backed command.
 ---
 ---@param spec Chord.CommandSpec
----@return Chord.Command|nil command
+---@return Chord.Command|nil|? command
 function C.register(spec) end
 
 ---Register many commands.
@@ -341,7 +341,7 @@ function M.hint_layout(config_table, name, width_cols, window, opts) end
 ---@param lhs_or_spec string|Chord.VimMapping|Chord.KeyEntry
 ---@param action? Action WezTerm action when `lhs_or_spec` is a string.
 ---@param desc? string Optional description.
----@return Chord.KeyEntry|nil entry
+---@return Chord.KeyEntry|nil|? entry
 function M.key(lhs_or_spec, action, desc) end
 
 ---Append a single key mapping to a target table.
@@ -371,8 +371,8 @@ function M.mode(name, def) end
 ---Normalize a Vim-style key expression to a WezTerm key entry fragment.
 ---
 ---@param lhs string Vim-style key expression.
----@return table|nil entry
----@return string|nil error_message
+---@return table|nil|? entry
+---@return string|nil|? error_message
 function M.normalize(lhs) end
 
 ---Configure Chord.
@@ -397,7 +397,7 @@ function M.tables(config_table, defs) end
 ---
 ---@param lhs string Vim-style key expression.
 ---@return boolean valid
----@return string|nil error_message
+---@return string|nil|? error_message
 function M.validate(lhs) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:

@@ -68,7 +68,7 @@
 ---@class AgentDeck.Notifications.TerminalNotifier
 ---@field activate? boolean
 ---@field group? string
----@field path? string|nil
+---@field path? string
 ---@field sound? string
 ---@field title? string
 
@@ -138,7 +138,7 @@ function M.set_config(opts) end
 function M.setup(opts) end
 
 ---@param pane Pane
----@return AgentDeckState|nil state
+---@return AgentDeckState|nil|? state
 function M.update_pane(pane) end
 
 -- vim: set ts=2 sts=2 sw=2 et ai si sta:
