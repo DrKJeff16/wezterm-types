@@ -11,8 +11,7 @@
 ---|"Word" Selection expands by a word at a time
 ---|"SemanticZone" Selection expands to the current semantic zone
 
----Represents a pre-defined function that can be applied to control `CopyMode`
----and [Search Mode](https://wezterm.org/scrollback.html#enabledisable-scrollbar)
+---Represents a pre-defined function that can be applied to control `CopyMode` and [Search Mode](https://wezterm.org/scrollback.html#enabledisable-scrollbar)
 ---@alias CopyModeAssignment
 ---|"AcceptPattern" Takes `CopyMode` / `SearchMode` out of editing mode: keyboard input will no longer be directed to the search pattern editor
 ---|"ClearPattern" Clear the `CopyMode` / `SearchMode` search pattern

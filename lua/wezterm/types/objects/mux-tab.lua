@@ -7,7 +7,7 @@
 ---@field pixel_height integer
 ---@field dpi number
 
----Mirrors `MuxPaneInfo` in wezterm upstream:
+---Mirrors `MuxPaneInfo` in WezTerm upstream:
 ---https://github.com/wezterm/wezterm/blob/main/lua-api-crates/mux/src/lib.rs
 ---
 ---@class MuxTab.PaneInfo
@@ -20,12 +20,12 @@
 ---Is `true` if the pane is in the zoomed state.
 ---
 ---@field is_zoomed boolean
----The offset from the top left corner of the containing tab
----to the top left corner of this pane, in cells.
+---The offset from the top left corner of the containing tab to the top left corner of this pane,
+---in cells.
 ---
 ---@field left integer
----The offset from the top left corner of the containing tab
----to the top left corner of this pane, in cells.
+---The offset from the top left corner of the containing tab to the top left corner of this pane,
+---in cells.
 ---
 ---@field top integer
 ---The width of the pane in cells.
@@ -44,8 +44,7 @@
 ---
 ---@field pane Pane
 
----`MuxTab` represents a tab that is managed
----by the multiplexer.
+---`MuxTab` represents a tab that is managed by the multiplexer.
 ---
 ---@class MuxTab
 local M = {}
@@ -54,24 +53,21 @@ local M = {}
 ---
 function M:activate() end
 
----A convenience accessor for returning the active pane
----in the tab.
+---A convenience accessor for returning the active pane in the tab.
 ---
 ---@return Pane active_pane
 function M:active_pane() end
 
----Returns the pane adjacent to the active pane
----of the current tab, in the `direction` direction.
+---Returns the pane adjacent to the active pane of the current tab, in the `direction` direction.
 ---
----See [`ActivatePaneDirection`](https://wezterm.org/config/lua/keyassignment/ActivatePaneDirection.html) for more information
----about how panes are selected given direction.
+---See:
+--- - [`ActivatePaneDirection`](https://wezterm.org/config/lua/keyassignment/ActivatePaneDirection.html)
 ---
 ---@param direction "Down"|"Left"|"Next"|"Prev"|"Right"|"Up"
 ---@return Pane adjacent_pane
 function M:get_pane_direction(direction) end
 
----Returns the overall size of the tab,
----taking into account all of the contained panes.
+---Returns the overall size of the tab, taking into account all of the contained panes.
 ---
 ---See:
 --- - [`MuxSize`](lua://MuxSize)
@@ -79,21 +75,24 @@ function M:get_pane_direction(direction) end
 ---@return MuxSize size
 function M:get_size() end
 
----Returns the tab title as set by
----[`MuxTab:set_title()`](lua://MuxTab.set_title).
+---Returns the tab title as set by `MuxTab:set_title()`.
+---
+---See:
+--- - [`MuxTab:set_title()`](lua://MuxTab.set_title)
 ---
 ---@return string title
 function M:get_title() end
 
----Returns an array table containing the set of
----[`Pane`](lua://Pane) objects
----contained by this tab.
+---Returns an array table containing the set of `Pane` objects contained by this tab.
+---
+---See:
+--- - [`Pane`](lua://Pane)
 ---
 ---@return Pane[] panes
 function M:panes() end
 
----Returns an array table containing an extended info entry
----for each of the panes contained by this tab.
+---Returns an array table containing an extended info entry for each of the panes contained
+---by this tab.
 ---
 ---See:
 --- - [`MuxTab.PaneInfo`](lua://MuxTab.PaneInfo)
@@ -114,12 +113,9 @@ function M:rotate_counter_clockwise() end
 ---@param title string
 function M:set_title(title) end
 
----Sets the zoomed state for the active pane
----within the current tab.
+---Sets the zoomed state for the active pane within the current tab.
 ---
----A zoomed pane takes up all available space
----in the tab, hiding all other panes
----while it is zoomed.
+---A zoomed pane takes up all available space in the tab, hiding all other panes while it is zoomed.
 ---
 --- - Switching its zoom state off will restore the prior split arrangement
 --- - Setting the zoom state to `true` zooms the pane if it wasn't already zoomed

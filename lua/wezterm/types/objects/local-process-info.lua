@@ -27,10 +27,10 @@
 ---@field children LocalProcessInfo[]
 ---The current working directory for the process (may be empty).
 ---
----@field cwd string|""
+---@field cwd string
 ---the full path to the executable image for the process (may be empty).
 ---
----@field executable string|""
+---@field executable string
 ---A short name for the process.
 ---
 ---Due to platform limitations, this may be inaccurate and/or truncated;

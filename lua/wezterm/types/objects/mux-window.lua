@@ -4,8 +4,7 @@
 ---The 0-based tab index.
 ---
 ---@field index integer
----A `boolean` indicating whether this is
----the active tab within the window.
+---A `boolean` indicating whether this is the active tab within the window.
 ---
 ---@field is_active boolean
 ---A `MuxTab` object.
@@ -18,22 +17,21 @@
 ---If omitted the default program for the domain will be spawned.
 ---
 ---@field args? string[]
----Specifies the current working directory that should be
----used for the program.
+---Specifies the current working directory that should be used for the program.
 ---
----If unspecified, it'll follow the spec from
----[`config.default_cwd`](lua://Config.default_cwd).
+---If unspecified, it'll follow the spec from `config.default_cwd`.
+---
+---See:
+--- - [`config.default_cwd`](lua://Config.default_cwd)
 ---
 ---@field cwd? string
----Specifies the multiplexer domain into which the program
----should be spawned.
+---Specifies the multiplexer domain into which the program should be spawned.
 ---
----The default value is assumed to be `"CurrentPaneDomain"`,
----which causes the domain from the currently active pane to be used.
+---The default value is assumed to be `"CurrentPaneDomain"`, which causes the domain
+---from the currently active pane to be used.
 ---
 ---@field domain? SpawnTabDomain|{ DomainName: string }
----Sets additional environment variables in the environment
----for this command invocation.
+---Sets additional environment variables in the environment for this command invocation.
 ---
 ---@field set_environment_variables? table<string, any>
 
@@ -42,34 +40,33 @@
 ---@class MuxWindow
 local M = {}
 
----A convenience accessor for returning
----the active pane in the active tab of the window.
+---A convenience accessor for returning the active pane in the active tab of the window.
 ---
----@param self MuxWindow
+---See:
+--- - [`Pane`](lua://Pane)
+---
 ---@return Pane pane
 function M:active_pane() end
 
----A convenience accessor for returning
----the active tab within the window.
+---A convenience accessor for returning the active tab within the window.
 ---
----@param self MuxWindow
 ---@return MuxTab tab
 function M:active_tab() end
 
----Returns the window title as set by `OSC 0`, `OSC 2`
----in a contained pane, or through
----[`MuxWindow:set_title()`](lua://MuxWindow.set_title).
+---Returns the window title as set by `OSC 0`, `OSC 2` in a contained pane, or through
+---`MuxWindow:set_title()`.
 ---
----@param self MuxWindow
+---See:
+--- - [`MuxWindow:set_title()`](lua://MuxWindow.set_title)
+---
 ---@return string title
 function M:get_title() end
 
 ---Returns the name of the workspace to which the window belongs.
 ---
----@param self MuxWindow
 function M:get_workspace() end
 
----Attempts to resolve this mux window to its corresponding `GUI Window`.
+---Attempts to resolve this mux window to its corresponding _"GUI Window"_.
 ---
 ---This may not succeed for a couple of reasons:
 ---
@@ -78,42 +75,48 @@ function M:get_workspace() end
 ---
 ---This method is the inverse of `Window:mux_window()`.
 ---
----@param self MuxWindow
+---See:
+--- - [`Window:mux_window()`](lua://Window.mux_window)
+---
 ---@return Window window
 function M:gui_window() end
 
 ---Sets the window title to the provided string.
 ---
----Note that applications may subsequently change the title
----via escape sequences.
+---Note that applications may subsequently change the title via escape sequences.
 ---
----@param self MuxWindow
 ---@param title string
 function M:set_title(title) end
 
----Changes the name of the workspace to which
----the window belongs to.
+---Changes the name of the workspace to which the window belongs to.
 ---
----@param self MuxWindow
 ---@param name string
 function M:set_workspace(name) end
 
----Spawns a program into a new tab within this window,
----returning the `MuxTab`, `Pane` and `MuxWindow` objects
----associated with it.
+---Spawns a program into a new tab within this window, returning the `MuxTab`, `Pane`
+---and `MuxWindow` objects associated with it.
 ---
 ---When no arguments are passed, the default program is spawned.
+---
+---See:
+--- - [`MuxTab`](lua://MuxTab)
+--- - [`MuxWindow`](lua://MuxWindow)
+--- - [`Pane`](lua://Pane)
 ---
 ---@return MuxTab tab
 ---@return Pane pane
 ---@return MuxWindow window
 function M:spawn_tab() end
 
----Spawns a program into a new tab within this window,
----returning the `MuxTab`, `Pane` and `MuxWindow` objects
----associated with it.
+---Spawns a program into a new tab within this window, returning the `MuxTab`, `Pane`
+---and `MuxWindow` objects associated with it.
 ---
 ---When no arguments are passed, the default program is spawned.
+---
+---See:
+--- - [`MuxTab`](lua://MuxTab)
+--- - [`MuxWindow`](lua://MuxWindow)
+--- - [`Pane`](lua://Pane)
 ---
 ---@param args? SpawnTab
 ---@return MuxTab tab
@@ -121,14 +124,13 @@ function M:spawn_tab() end
 ---@return MuxWindow window
 function M:spawn_tab(args) end
 
----Returns an array table holding each of the `MuxTab` objects
----contained within this window.
+---Returns an array table holding each of the `MuxTab` objects contained within this window.
 ---
 ---@return MuxTab[] tabs
 function M:tabs() end
 
----Returns an array table holding an extended info entry
----for each of the tabs contained within this window.
+---Returns an array table holding an extended info entry for each of the tabs contained
+---within this window.
 ---
 ---@return MuxWindow.TabInfo[] tabs
 function M:tabs_with_info() end

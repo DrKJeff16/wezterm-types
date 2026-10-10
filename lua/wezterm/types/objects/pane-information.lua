@@ -9,15 +9,18 @@
 ---|{ Percentage: integer }
 ---|{ Error: integer }
 
----Describes a [`Pane`](lua://Pane).
+---Describes a `Pane` object.
 ---
----Unlike the `Pane` object, `PaneInformation` is a snapshot of
----some of the key characteristics of the pane,
----intended for use in synchronous, fast, event callbacks
----that format GUI elements such as the window and tab title bars.
+---Unlike the `Pane` object, `PaneInformation` is a snapshot of some of the key characteristics
+---of the pane, intended for use in synchronous, fast, event callbacks that format GUI elements
+---such as the window and tab title bars.
 ---
 ---Mirrors `PaneInformation` in wezterm upstream:
 ---https://github.com/wezterm/wezterm/blob/main/wezterm-gui/src/termwindow/mod.rs
+---
+---See:
+--- - [`PaneInformation`](lua://PaneInformation)
+--- - [`Pane`](lua://Pane)
 ---
 ---@class PaneInformation
 ---The height of the pane in cells.
@@ -44,9 +47,10 @@
 ---The width of the pane in pixels.
 ---
 ---@field pixel_width integer
----The progress state,
----per [`Pane:get_progress()`](lua://Pane.get_progress)
----at the time the pane information was captured.
+---The progress state, per `Pane:get_progress()` at the time the pane information was captured.
+---
+---See:
+--- - [`Pane:get_progress()`](lua://Pane.get_progress)
 ---
 ---@field progress PaneProgress
 ---The title of the pane,
@@ -90,7 +94,7 @@
 ---For more information, see:
 --- - [`Pane:get_domain_name()`](lua://Pane.get_domain_name)
 ---
----@field domain_name string|""
+---@field domain_name string
 ---The tty device name, per `Pane:get_tty_name()`.
 ---
 ---For more information, see:
