@@ -1,4 +1,4 @@
-*wezterm-types.txt*      For NVIM >=v0.7.0      Last change: 2026 September 20
+*wezterm-types.txt*       For NVIM >=v0.7.0       Last change: 2026 October 14
 
 ==============================================================================
 1. wezterm-types                                 *wezterm-types-wezterm-types*
@@ -175,10 +175,6 @@ This project also features type annotations for various WezTerm plugins.
 
   sigil.wz                           docs/sigil.md:h wezterm-types-plugin.sigil.txt      [Status][Reviewed
                                                                                          baseline][Latest
-                                                                                         upstream]
-
-  smart-splits.nvim                  docs/smart-splits.md:h                              [Status][Reviewed
-                                     wezterm-types-plugin.smart-splits.txt               baseline][Latest
                                                                                          upstream]
 
   smart_workspace_switcher.wezterm   docs/smart-workspace-switcher.md:h                  [Status][Reviewed
