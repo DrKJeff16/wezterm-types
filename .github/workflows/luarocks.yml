@@ -17,7 +17,6 @@ jobs:
           detailed_description: |
             LuaCATS-like Lua Language Server type annotations for your WezTerm config
           labels: |
-            wezterm
             neovim
           copy_directories: |
             {{ neovim.plugin.dirs }}
