@@ -31,7 +31,6 @@ We will keep adding more community plugins as we find them.
 - [rosepine](./rosepine.md)
 - [sessionizer.wezterm](./sessionizer.md)
 - [sigil.wz](./sigil.md)
-- [smart-splits.nvim](./smart-splits.md)
 - [smart_workspace_switcher.wezterm](./smart-workspace-switcher.md)
 - [stack.wez](./stack.md)
 - [sync-panes.wez](./sync-panes.md)

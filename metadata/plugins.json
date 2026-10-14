@@ -279,15 +279,6 @@
     }
   },
   {
-    "slug": "smart-splits",
-    "repo": "mrjones2014/smart-splits.nvim",
-    "readme_name": "smart-splits.nvim",
-    "reviewed_ref": {
-      "kind": "release",
-      "value": "v3.0.0"
-    }
-  },
-  {
     "slug": "smart-workspace-switcher",
     "repo": "MLFlexer/smart_workspace_switcher.wezterm",
     "readme_name": "smart_workspace_switcher.wezterm",
