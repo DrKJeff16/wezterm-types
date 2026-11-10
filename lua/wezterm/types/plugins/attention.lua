@@ -19,26 +19,64 @@
 
 ---@class WeztermAttentionOpts.Colors
 ---@field notify? string
+---@field quiet? string
 ---@field review? string
 ---@field stop? string
 ---@field thinking? string
 
 ---@class WeztermAttentionOpts.Indicators
+---@field held? string
+---@field muted? string
 ---@field notify? string
+---@field quiet? string
 ---@field review? string
 ---@field stop? string
 ---@field thinking_frames? string[]
 
 ---@class WeztermAttentionOpts
+---These types are acknowledged when their pane becomes active.
+---
 ---@field acknowledge_types? ("notify"|"stop"|string)[]
 ---@field auto_clear? WeztermAttentionOpts.Attention[]
+---Tab background tint per attention type (subtle, dark).
+---
 ---@field colors? WeztermAttentionOpts.Colors
 ---@field dir? string
+---Tab text indicators.
+---
 ---@field indicators? WeztermAttentionOpts.Indicators
+---Keybind to mute and unmute the active tab (set to `false` to disable).
+---
+---@field mute_key? WeztermAttentionOpts.ReviewKey|false
+---Higher index equals higher priority when multiple panes have attention.
+---
 ---@field priority? WeztermAttentionOpts.Attention[]
+---Render mode:
+---
+--- - `"tab"`: Plugin owns format-tab-title (default)
+--- - `"manual"`: Plugin registers no tab handler; use `wrap_title_formatter()` or API
+---
+---See:
+--- - [`wrap_title_formatter()`](lua://WeztermAttention.wrap_title_formatter)
+---
 ---@field renderer? WeztermAttentionOpts.Renderer
----@field review_key? WeztermAttentionOpts.ReviewKey
+---Ask WezTerm to rebuild the tab bar when a pane's attention changes.
+---
+---Set to `false` when the host already repaints titles on its own tick.
+---
+---@field request_redraw? boolean
+---Keybind to toggle the user's review flag on the active tab (set to `false` to disable).
+---
+---@field review_key? WeztermAttentionOpts.ReviewKey|false
+---Base-title sources: the tab's own title, then directory, then a pane title that held for
+---two polls, and the pane title as it is right now only when none of those has anything to say.
+---
+---@field show_directory? boolean
+---Optional provider suffix. Off preserves the shipped title shape.
+---
+---@field show_provider? boolean
 ---@field stale_after_ms? { thinking: integer }|false
+---@field settled_title_fallback? boolean
 ---@field title_formatter? WeztermAttention.TitleFormatter
 
 ---@class WeztermAttention.Internal
@@ -94,6 +132,10 @@ function M.remove_marker(pane_id, opts) end
 ---@param window Window
 ---@param opts? WeztermAttentionOpts
 function M.poll(window, opts) end
+
+---@param pane_ids integer[]
+---@return string visible_attention
+function M.visible_attention(pane_ids) end
 
 ---@param base_fn WeztermAttention.TitleFormatter
 ---@return fun(tab: TabInformation, tabs: TabInformation[], panes: PaneInformation[], config: Config, hover: boolean, max_width: integer): string|FormatItem
