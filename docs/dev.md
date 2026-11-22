@@ -1,12 +1,12 @@
 ### `dev.wezterm`
 
-You can import type annotations for
-[`ChrisGVE/dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm) as shown below:
+You can import type annotations for [`ChrisGVE/dev.wezterm`](https://github.com/ChrisGVE/dev.wezterm) as shown below:
 
 ```lua
----@type Dev
-local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm")
+local dev = wezterm.plugin.require("https://github.com/ChrisGVE/dev.wezterm") --[[@as Dev]]
 ```
+
+---
 
 This integration also adds the following events to `wezterm.on()`:
 

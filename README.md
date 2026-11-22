@@ -138,7 +138,7 @@ A useful example:
 
 ```lua
 -- WezTerm configuration
-local wezterm = require("wezterm") ---@type Wezterm
+local wezterm = require("wezterm") --[[@as Wezterm]]
 local config = wezterm.config_builder()
 
 config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
